@@ -20,6 +20,6 @@
 | `AST-M4-013` | 4-Step Capability Calculator | `M4L3-S06` | Animated SVG | Step-by-step equation cards for `σ_within = 0.0268`, `Cp = 1.87`, `Cpk = 1.64`, `Pp = 1.31`, `Ppk = 1.15` | Equation steps reveal sequentially |
 | `AST-M4-014` | 3 Prerequisite Gates Pipeline | `M4L4-S01` | Animated SVG | 3 sequential padlocks: `1) MSA (%GRR < 10%)` → `2) Stable Chart` → `3) Normality (p ≥ 0.05)` | Gates unlock green left-to-right |
 | `AST-M4-015` | AIAG / VDA Threshold Table | `M4L4-S02` | SVG Table Graphic | Clean comparison card: Initial PPAP (`Ppk ≥ 1.67`) vs Ongoing (`Cpk ≥ 1.33`) + containment note | Threshold rows highlight |
-| `AST-M4-016` | JEDEC Semiconductor Standard | `M4L4-S03` | Animated SVG | IC package / wire bond / wafer probe icons paired with `1.33`, `1.67–2.00`, `1-sided`, and `OCAP` rules | Process cards illuminate in sequence |
-| `AST-M4-017` | Unified Traffic-Light Gate | `M4L4-S04` | Animated SVG | 3-tier decision flowchart: `≥ 1.67 Green` | `1.33–1.66 Amber` | `< 1.33 Red` | Flow branches animate downward |
+| `AST-M4-016` | JEDEC JESD557 & EV Drivers | `M4L4-S03` | Animated SVG | Top EV/ADAS/Smart-Factory drivers flowing into IC Wire Bond, Leakage & Auto OCAP cards | Process cards & OCAP alert pulse |
+| `AST-M4-017` | AIAG vs JEDEC Bridge & Gate | `M4L4-S04` | Animated SVG | Side-by-side bridge showing identical Cpk math (`1.33/1.67`) feeding 3-tier Traffic-Light Flow | Bridge lines connect then flow downward |
 | `AST-M4-018` | Workshop Before/After Drift Fix | `M4L4-S07` | SVG Dashboard | Subgroup plot highlighting `SG-15..20` Night drift (`Ppk = 1.15` Red) vs `SG-01..14` stable (`Ppk = 1.93` Green) | Highlight toggles `SG-15..20` shift removal |

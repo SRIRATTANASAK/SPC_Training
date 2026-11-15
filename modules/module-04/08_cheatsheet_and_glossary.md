@@ -42,7 +42,7 @@
 
 ---
 
-## 4. เกณฑ์มาตรฐาน AIAG/VDA & JEDEC (3 Gates + Traffic Light)
+## 4. เกณฑ์มาตรฐาน AIAG/VDA & JEDEC `JESD557` (3 Gates + ความเชื่อมโยง)
 
 **3 ด่านบังคับก่อนรายงาน $C_{pk}$:** `1) MSA ผ่าน (%GRR < 10%)` → `2) Control Chart เสถียร` → `3) Normality ผ่าน (p ≥ 0.05)`
 
@@ -50,7 +50,10 @@
 |---|---|---|---|
 | **AIAG / VDA — Initial PPAP (`Ppk`)** | **`Ppk ≥ 1.67`** | `1.33 – 1.66` (ต้องมี Containment & Plan) | **`< 1.33`** (100% Sort / ห้ามปล่อย) |
 | **AIAG / VDA — Ongoing (`Cpk`)** | **`Cpk ≥ 1.33`** (`≥ 1.67` สำหรับ CC/SC) | `1.00 – 1.32` (เฝ้าระวังใกล้ชิด) | `< 1.00` (ของเสียสูงมาก) |
-| **JEDEC (Semiconductor / Electronics)** | **`Cpk ≥ 1.33`** (ปกติ) / **`1.67–2.00`** (Automotive/Critical) | ตรวจ 1-Sided (`Cpl/Cpu`) & Non-Normal + ผูก OCAP | Hold Lot ทันทีตาม OCAP |
+| **JEDEC `JESD557` (Semi / Electronics)** | **`Cpk ≥ 1.33`** (ปกติ) / **`1.67–2.00`** (EV / AEC-Q / Critical) | ตรวจ 1-Sided (`Cpl/Cpu`), Non-Normal & Multi-level (Wafer/Lot) | **Automated OCAP + Auto Lot Hold + PAT/SBL/SYL** |
+
+> **ความเชื่อมโยง `Cpk` ของ JEDEC กับ AIAG & ทำไม `JESD557` จึงสำคัญมากในปัจจุบัน:**  
+> ทั้งคู่ใช้ **สูตรคณิตศาสตร์และเกณฑ์ `1.33 / 1.67` ตัวเดียวกัน 100%** แต่ในยุค **EV, ADAS และ Smart Factory** ชิปและบอร์ดอิเล็กทรอนิกส์ต้องส่งรายงาน **AIAG PPAP** ควบคู่กับ **AEC-Q** โดยบริหารระบบ SPC ระดับหลายสิบล้านชิ้นในไลน์ด้วย **JEDEC `JESD557`** (รองรับสเปก 1 ด้าน, ข้อมูลเบ้, ความแปรปรวนข้าม Wafer/Lot และ Auto Lot Hold แบบ Real-time)
 
 ---
 
@@ -69,4 +72,5 @@
 | **Process Performance ($P_p, P_{pk}$)** | สมรรถนะรวมระยะยาวของกระบวนการที่ใช้ $s_{\text{overall}}$ เป็นตัวหาร |
 | **PPM / DPPM** | จำนวนชิ้นงานบกพร่องที่คาดว่าจะเกิดขึ้นต่อหนึ่งล้านชิ้น (Parts / Defects Per Million) |
 | **PPAP Initial Process Study** | การศึกษาสมรรถนะเบื้องต้นก่อนอนุมัติผลิตจริงในอุตสาหกรรมยานยนต์ (ใช้ $P_{pk} \ge 1.67$) |
-| **JEDEC Standard (JESD557)** | มาตรฐาน SPC และ Process Capability สำหรับอุตสาหกรรมเซมิคอนดักเตอร์และอิเล็กทรอนิกส์ |
+| **JEDEC `JESD557` / `AEC-Q`** | มาตรฐานระบบ SPC (`JESD557`) และคุณสมบัติชิ้นส่วนอิเล็กทรอนิกส์เกรดยานยนต์ (`AEC-Q`) เพื่อเป้าหมาย Zero-Defect |
+| **OCAP / PAT / SBL / SYL** | แผนจัดการเมื่อหลุดควบคุมอัตโนมัติ (OCAP) และการคัดกรองทางสถิติในสายผลิตเซมิคอนดักเตอร์ (PAT, Bin/Yield Limits) |

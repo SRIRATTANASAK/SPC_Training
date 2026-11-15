@@ -162,21 +162,33 @@ $$P_p = \frac{\text{USL} - \text{LSL}}{6 s_{\text{overall}}}, \qquad P_{pk} = \m
 | **Initial Process Study / PPAP Release** (Short-term 25+ Subgroups / ≥ 100 ชิ้น) | **$P_{pk}$** | **≥ 1.67** (ผ่าน)<br>`1.33 – 1.67` (มีเงื่อนไข)<br>`< 1.33` (ไม่ผ่าน) | ถ้า `1.33–1.67` หรือ `< 1.33`: ต้องทำ Containment (เช่น 100% Sorting / Poka-Yoke) + Corrective Action Plan ส่งลูกค้าอนุมัติ |
 | **Ongoing Production Monitoring** (กระบวนการเดินเสถียรแล้ว) | **$C_{pk}$** | **≥ 1.33** (ทั่วไป)<br>**≥ 1.67** (CC / SC สำคัญ) | ปรับปรุง Centering / ลดความแปรปรวน + คงความถี่ SPC ใน Control Plan |
 
-## M4L4-S03 — JEDEC Standard Requirements (Semiconductor & Electronics)
+## M4L4-S03 — JEDEC Standard Requirements (`JESD557`: Semiconductor & Electronics)
 `<Asset id="AST-M4-016" />`
-- **บริบทอุตสาหกรรมเซมิคอนดักเตอร์ & อิเล็กทรอนิกส์ (JEDEC JESD557 SPC & Qualification):**
-  - ใช้คุม Critical Parameters ใน Wafer Fab, Wire Bonding (Pull/Shear), Die Attach, Solder Ball Shear, Mold Thickness, และ Electrical Test
-  - **เกณฑ์ Capability & DPPM:**
-    - Ongoing Production: **$C_{pk} \ge 1.33$** (`≤ 63 DPPM`)
-    - New Process Qualification / Automotive Grade (AEC-Q / Zero-Defect mindset): **$C_{pk} / P_{pk} \ge 1.67$** (หลายโรงงาน Automotive Semiconductor ตั้งเป้า **$C_{pk} \ge 2.00$** สำหรับพารามิเตอร์วิกฤต)
-  - **จุดเน้นเฉพาะของ JEDEC:**
-    1. **One-Sided Specs เยอะมาก:** เช่น Wire Bond Pull Strength (`LSL only → Cpl`), Leakage Current (`USL only → Cpu`)
-    2. **Non-Normal Distribution Awareness:** พารามิเตอร์ไฟฟ้า/ความต้านทาน/Leakage มักเบ้ขวา ต้องตรวจ Normality หรือใช้ Log-transformation ก่อนคำนวณ $C_{pk}$ เสมอ
-    3. **OCAP & Automated FDC/SPC:** ผูกจุด Out-of-Control กับ Out-of-Control Action Plan (OCAP) และ Lot Hold อัตโนมัติทันที
+- **JEDEC `JESD557` (*Statistical Process Control Systems*):** มาตรฐานระบบ SPC และ Process Capability สำหรับอุตสาหกรรมเซมิคอนดักเตอร์และอิเล็กทรอนิกส์ (Wafer Fab, Wire Bonding, Die Attach, Mold/Solder Ball, และ Automated Electrical Test / ATE)
+- **ทำไมมาตรฐาน JEDEC (`JESD557`) ถึงมีความสำคัญมากขึ้นอย่างมากในอุตสาหกรรมปัจจุบัน?**
+  1. **การเปลี่ยนผ่านสู่ยุค EV, ADAS และ Smart Mobility:** รถยนต์สมัยใหม่ไม่ได้มีแค่ชิ้นส่วนกลึง-ปั๊มโลหะ แต่เต็มไปด้วย **ชิปกำลัง SiC/IGBT, ECU, Radar/LiDAR, BMS และเซนเซอร์ความปลอดภัย** — ส่งผลให้โรงงานอิเล็กทรอนิกส์ต้องผ่านมาตรฐาน **AEC-Q100/101/200 + JESD557** ควบคู่กับ **IATF 16949 / AIAG PPAP**
+  2. **Zero-Defect & Sub-PPM Mindset:** สายการผลิตเซมิคอนดักเตอร์ผลิตระดับ **หลายสิบล้านชิ้น/เดือน** ถ้าใช้เกณฑ์เดิม (`Cpk = 1.00 ≈ 2,700 DPPM`) จะมีชิปเสียหลุดเข้าสู่ระบบเบรกหรือแบตเตอรี่ EV มหาศาล อุตสาหกรรมจึงยกระดับเป้าเป็น **$C_{pk} \ge 1.67 - 2.00$** พร้อมเสริม **PAT (Part Average Testing)** และ **SBL/SYL (Statistical Bin/Yield Limits)**
+  3. **Smart Factory / Automated FDC & OCAP:** เครื่องจักรเซมิคอนดักเตอร์และ SMT เก็บข้อมูลอัตโนมัติความถี่สูงตลอด 24 ชม. **`JESD557`** จึงกำหนดให้ผูกสัญญาณ Out-of-Control เข้ากับ **Automated OCAP (Out-of-Control Action Plan) และ Auto Lot Hold** ทันที
+- **จุดเน้นทางเทคนิคของ JEDEC:**
+  - **One-Sided Specs เยอะมาก:** เช่น Wire Bond Pull (`LSL only → Cpl`), Leakage Current (`USL only → Cpu`)
+  - **Non-Normal Distribution Awareness:** พารามิเตอร์ไฟฟ้ามักเบ้ขวา (Log-normal/Weibull) ต้องตรวจ Normality หรือ Transform ข้อมูลก่อนคำนวณ $C_{pk}$ เสมอ
 
-## M4L4-S04 — AIAG/VDA vs JEDEC Decision Flow
+## M4L4-S04 — ความเชื่อมโยง $C_{pk}$ ของ JEDEC กับ AIAG & Decision Flow
 `<Asset id="AST-M4-017" />`
-- เปรียบเทียบ Traffic Light Gate: **`>= 1.67` (Release / Green)** | **`1.33 – 1.66` (Conditional / Amber)** | **`< 1.33` (Reject & Contain / Red)**
+
+- **คำถามยอดฮิตของวิศวกร: "$C_{pk}$ ของ JEDEC ต่างจาก $C_{pk}$ ของ AIAG อย่างไร?"**
+  - **สูตรคณิตศาสตร์เดียวกัน 100%:** ทั้ง AIAG และ JEDEC ใช้สมการ $C_p, C_{pk}, P_p, P_{pk}$ แบบเดียวกันเป๊ะ รวมถึงความหมายของระดับเกณฑ์ (`1.33 ≈ 63 DPPM` สำหรับ Ongoing, และ `1.67 ≈ 0.57 DPPM` สำหรับ Qualification/Critical)
+  - **จุดบรรจบในยุค EV & Electronics Supply Chain:** เมื่อโรงงานชิปหรือ PCBA ส่งงานให้ Tier-1/OEM ยานยนต์ ลูกค้าจะขอ **AIAG PPAP (`Ppk/Cpk ≥ 1.67`)** ขณะที่ในไลน์ผลิตจริงใช้ระบบ SPC ตาม **JEDEC `JESD557`** — ทั้งสองมาตรฐานจึงทำหน้าที่เป็น **"สะพานเชื่อมภาษาเดียวกัน"** ระหว่างฝั่งยานยนต์และฝั่งเซมิคอนดักเตอร์!
+
+| มิติเปรียบเทียบ | AIAG / VDA (Automotive / Mechanical) | JEDEC `JESD557` (Semiconductor / Electronics) |
+|---|---|---|
+| **สูตรคำนวณ $C_{pk}, P_{pk}$** | มาตรฐานเดียวกัน ($\bar{\bar{x}}$, $\hat{\sigma}_{\text{within}}$, $s_{\text{overall}}$) | **สูตรเดียวกัน 100%** (แต่เจอบ่อยที่ Non-normal ต้อง Transform ก่อน) |
+| **เกณฑ์มาตรฐานหลัก** | Initial PPAP: **`Ppk ≥ 1.67`** / Ongoing: **`Cpk ≥ 1.33`** | Ongoing: **`Cpk ≥ 1.33`** / Automotive AEC-Q & Critical: **`1.67 – 2.00`** |
+| **ลักษณะ Spec ที่พบบ่อย** | ส่วนใหญ่เป็น **2-Sided** (ขนาดเพลา, รูเจาะ, ระยะตัด) | ส่วนใหญ่เป็น **1-Sided** (`Cpl/Cpu`: Pull, Shear, Leakage, Resistance) |
+| **โครงสร้าง Variation** | Within-subgroup vs Between-hour/Shift (`Ppk`) | Multi-level: **Within-Wafer / Wafer-to-Wafer / Lot-to-Lot** |
+| **มาตรการเมื่อหลุดเกณฑ์** | Containment (100% Sort) + Control Plan + Action Plan | **Automated OCAP + Auto Lot Hold + SYL/SBL/PAT Screening** |
+
+- **Unified Traffic Light Gate:** **`≥ 1.67` (Release / Green)** | **`1.33 – 1.66` (Conditional: Containment + Action / Amber)** | **`< 1.33` (Hold / Reject & OCAP / Red)**
 
 ## M4L4-S05 — Interactive Release Gate Decision Simulator
 `<Interactive id="INT-M4-L4-01" />`

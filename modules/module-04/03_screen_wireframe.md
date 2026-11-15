@@ -36,8 +36,8 @@
 ## M4-L4: AIAG/VDA, JEDEC & Workshop (8 Screens)
 - **M4L4-S01 Prerequisite Gates:** 3-Gate Pipeline (`AST-M4-014`: MSA → Stability → Normality)
 - **M4L4-S02 AIAG / VDA / IATF 16949:** Standard Threshold Table (`AST-M4-015`)
-- **M4L4-S03 JEDEC Standard:** Semiconductor Process Cards + Thresholds (`AST-M4-016`)
-- **M4L4-S04 Decision Flow:** Traffic-Light Flow (`AST-M4-017`)
+- **M4L4-S03 JEDEC `JESD557` & Modern Industry:** EV/ADAS Drivers + Semiconductor Pillars + Auto OCAP (`AST-M4-016`)
+- **M4L4-S04 AIAG vs JEDEC $C_{pk}$ & Decision Flow:** Convergence Table + Traffic-Light Flow (`AST-M4-017`)
 - **M4L4-S05 Release Gate Simulator (`INT-M4-L4-01`):** 5-Case Release Console (`Approve / Conditional / Hold`)
 - **M4L4-S06 Workshop Capability (`INT-M4-L4-02`):** 100-Part Pin Length CSV Lab + Subgroup Drift Plot + 4 Questions
 - **M4L4-S07 Workshop Solution:** Before/After Drift Fix Dashboard (`AST-M4-018`)

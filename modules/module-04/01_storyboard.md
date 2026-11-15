@@ -273,29 +273,29 @@
 - **Accessibility Notes:** Full table readout.
 - **Developer Notes:** Include CC/SC (Critical/Special Characteristics) note.
 
-## Screen M4L4-S03 — JEDEC Standard Requirements (Semiconductor & Electronics)
-- **Learning Objective:** เข้าใจข้อกำหนด JEDEC (JESD557) ด้าน Capability, 1-sided specs, Non-normal data และ OCAP
-- **Duration:** 45s
-- **Layout:** Semiconductor Process Cards + JEDEC Threshold Table (`AST-M4-016`)
+## Screen M4L4-S03 — JEDEC `JESD557` Requirements & Why It Matters Today
+- **Learning Objective:** เข้าใจข้อกำหนด JEDEC (`JESD557`) และเหตุผลที่อุตสาหกรรมยุคใหม่ (EV, ADAS, Zero-Defect, Smart Factory) ให้ความสำคัญสูงขึ้นมาก
+- **Duration:** 50s
+- **Layout:** Top EV/Semiconductor Drivers + Bottom JEDEC Technical Pillars (`AST-M4-016`)
 - **Asset ID:** `AST-M4-016`
-- **On Screen Text:** `JEDEC Standard`: "Wafer/Assembly/Test Critical Parameters | Ongoing Cpk ≥ 1.33, Automotive/Critical ≥ 1.67–2.00 | 1-Sided & Skewed Handling"
+- **On Screen Text:** `JEDEC JESD557`: "ทำไมสำคัญยิ่งขึ้น? ยุค EV/ADAS + Zero-Defect + Auto FDC/OCAP | Ongoing ≥ 1.33, Critical ≥ 1.67–2.00 | 1-Sided & Skewed Handling"
 - **Voice Over Script Ref:** `AUD-M4L4-S03`
-- **Motion Specification:** Wire bond pull, solder ball shear, and leakage current cards animate.
+- **Motion Specification:** EV/Chip convergence graphic lights up, then Wire Bond Pull, Leakage, and Automated OCAP cards animate.
 - **Trigger Logic:** Narration complete unlocks Next.
-- **Accessibility Notes:** Clear comparison cards.
-- **Developer Notes:** Addresses PaPa's explicit JEDEC requirement.
+- **Accessibility Notes:** Clear pillar comparison cards.
+- **Developer Notes:** Explains why JESD557 is critical across modern automotive & electronics supply chains.
 
-## Screen M4L4-S04 — AIAG/VDA vs JEDEC Summary & Decision Flow
-- **Learning Objective:** เปรียบเทียบ Traffic-Light Action Flow ของทั้งมาตรฐานยานยนต์และอิเล็กทรอนิกส์
-- **Duration:** 30s
-- **Layout:** Unified Traffic Light Decision Tree (`AST-M4-017`)
+## Screen M4L4-S04 — AIAG vs JEDEC $C_{pk}$ Connection & Decision Flow
+- **Learning Objective:** เชื่อมโยงความสัมพันธ์ของ $C_{pk}$ ระหว่าง AIAG กับ JEDEC และใช้ Traffic-Light Gate ตัดสินใจได้อย่างถูกต้อง
+- **Duration:** 45s
+- **Layout:** Top AIAG vs JEDEC Convergence Table + Bottom Unified Traffic-Light Tree (`AST-M4-017`)
 - **Asset ID:** `AST-M4-017`
-- **On Screen Text:** `≥ 1.67 (Green: Release)` | `1.33–1.66 (Amber: Containment + Improve)` | `< 1.33 (Red: Reject / 100% Sort)`
+- **On Screen Text:** "JEDEC Cpk × AIAG Cpk: สูตรเดียวกัน เกณฑ์เดียวกัน (`1.33 / 1.67`) — เชื่อม IATF 16949 PPAP เข้ากับ AEC-Q & JESD557 ในไลน์จริง!"
 - **Voice Over Script Ref:** `AUD-M4L4-S04`
-- **Motion Specification:** Decision branches animate downward.
+- **Motion Specification:** Side-by-side bridge lines connect AIAG formulas to JEDEC multi-level/1-sided context, then traffic-light flow animates downward.
 - **Trigger Logic:** Narration complete unlocks Next.
-- **Accessibility Notes:** Icon + color paired badges.
-- **Developer Notes:** Clean reference before simulator.
+- **Accessibility Notes:** Semantic comparison table + icon/color paired badges.
+- **Developer Notes:** Clarifies "same statistical math, complementary industrial scope."
 
 ## Screen M4L4-S05 — Interactive Release Gate Decision Simulator
 - **Learning Objective:** ประเมินผล Capability Study 5 เคสจริงตามกฎ AIAG/VDA & JEDEC
