@@ -99,8 +99,15 @@
     - `sigma > 1.2`: High Risk (`✕ High Variation — Producing Defects!`)
 
 ### INT-M1-L3-03 — Statistics Match Game (`M1L3-S08`)
-- **Pairs (7 Terms):** `Mean`, `Median`, `Mode`, `Range`, `Variance`, `Standard Deviation`, `CV`
-- **Passing:** `>= 6/7` (`85%`).
+- **Type:** 7-Pair Card/Term Matching (`Passing >= 6/7 = 85%`)
+- **Pairs (`Term` ↔ `Definition`):**
+  1. `Mean (ค่าเฉลี่ย)` ↔ `ผลรวมข้อมูลทั้งหมดหารด้วยจำนวนตัวอย่าง — บอก Process Centering แต่วิ่งตาม Outlier`
+  2. `Median (มัธยฐาน)` ↔ `ค่าตรงกลางเมื่อเรียงข้อมูลจากน้อยไปมาก — ทนทานต่อ Outlier และข้อมูลเบ้`
+  3. `Mode (ฐานนิยม)` ↔ `ค่าที่เกิดซ้ำบ่อยที่สุด — ใช้จับสัญญาณ Bimodal (ข้อมูล 2 แหล่งปนกัน) ได้`
+  4. `Range (พิสัย)` ↔ `ค่าสูงสุดลบค่าต่ำสุด (Max − Min) — คำนวณเร็วหน้างานสำหรับกลุ่มเล็ก n ≤ 10`
+  5. `Variance (ความแปรปรวน)` ↔ `ค่าเฉลี่ยกำลังสองของระยะห่างจาก Mean (หาร n − 1) — มีหน่วยเป็นกำลังสอง`
+  6. `Standard Deviation (SD)` ↔ `รากที่สองของ Variance — หน่วยเดียวกับชิ้นงานจริง ใช้สร้างกฎ ±3σ`
+  7. `CV (%)` ↔ `(SD / Mean) × 100% — ใช้เทียบความนิ่งข้ามขนาดหรือข้ามหน่วย`
 
 ---
 
@@ -116,14 +123,28 @@
   5. "ต้องการติดตามว่าขนาดเพลาไหล (Drift) ตั้งแต่เช้าถึงบ่ายหรือไม่" → `Run Chart`
 
 ### INT-M1-L4-02 — Workshop 2 Factory Dashboard (`M1L4-S07`)
-- **Type:** Interactive Multi-Chart Data Explorer
+- **Type:** Interactive Multi-Chart Data Explorer + 3 Diagnostic Questions
 - **Data Source:** `data/workshop_m1_dimensions_and_defects.csv` (30 records)
-- **User Actions:**
-  1. Switch between `Histogram`, `Box Plot (MC-A vs MC-B)`, `Pareto (Defects)`, `Scatter (Temp vs Diameter)`, `Run Chart (Time)`
-  2. Answer 3 diagnostic questions:
-     - Which machine has higher variation and an outlier (`50.14 mm`)? → `MC-B`
-     - Which top 2 defects contribute >80% of defect count? → `Scratch + Burr (86.7%)`
-     - What is the relationship between `Mold_Temp_C` and `Shaft_Diameter_mm`? → `Strong Positive Correlation (r = +0.99)`
+- **User Actions:** Switch between `Histogram`, `Box Plot (MC-A vs MC-B)`, `Pareto (Defects)`, `Scatter (Temp vs Diameter)`, `Run Chart (Time)`
+- **Diagnostic Questions (4 Choices each + Feedback):**
+  1. **Q1:** จาก Box Plot เปรียบเทียบ เครื่องจักรใดมีความแปรปรวนสูงกว่าและเกิดจุด Outlier (`50.14 mm`)?
+     - `A)` MC-A (`SD = 0.015 mm`)
+     - `B)` MC-B (`SD = 0.030 mm`, มี Outlier `50.14 mm`) ✅
+     - `C)` ทั้งสองเครื่องนิ่งเท่ากัน
+     - `D)` สรุปไม่ได้จาก Box Plot
+     - *Explanation:* กล่องของ MC-B กว้างกว่าและเลื่อนสูงขึ้น (`Median = 50.04 mm`) พร้อมจุด Outlier ที่ `50.14 mm`
+  2. **Q2:** จาก Pareto Chart การแก้ไข Defect 2 อันดับแรกข้อใดจะช่วยลดจำนวนจุดเสียได้ถึง `86.7%` (กฎ 80/20)?
+     - `A)` Dent + Crack (`13.3%`)
+     - `B)` Burr + Dent (`33.3%`)
+     - `C)` Scratch (`9`) + Burr (`4`) = `13/15` (`86.7%`) ✅
+     - `D)` Scratch + Crack (`66.7%`)
+     - *Explanation:* Scratch (60.0%) และ Burr (26.7%) รวมกันคิดเป็น 86.7% ของจุดเสียทั้งหมด 15 จุด
+  3. **Q3:** จาก Scatter Plot และ Run Chart แนวโน้มขนาดเพลาที่ไหลสูงขึ้นช่วงบ่ายสัมพันธ์กับตัวแปรใดมากที่สุด?
+     - `A)` ความสัมพันธ์เชิงลบกับอุณหภูมิแม่พิมพ์
+     - `B)` ความสัมพันธ์เชิงบวกแข็งแรงกับอุณหภูมิแม่พิมพ์ (`Mold_Temp_C`, `r = +0.9949`) ✅
+     - `C)` ไม่มีความสัมพันธ์ใดๆ (`r ≈ 0`)
+     - `D)` เกิดจากการคัดงานเสียทิ้ง (Cliff shape)
+     - *Explanation:* เมื่อ `Mold_Temp_C` สูงขึ้นจาก 179°C เป็น 192°C ขนาดเพลาขยายใหญ่ขึ้นตาม (`r = +0.9949`) จึงควรตรวจสอบระบบระบายความร้อนของ MC-B
 
 ---
 

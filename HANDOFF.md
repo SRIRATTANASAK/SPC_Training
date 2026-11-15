@@ -21,10 +21,10 @@
 | พื้นที่งาน | สถานะ | รายละเอียด |
 |---|---|---|
 | **Repo Governance & Handoff** | ✅ เสร็จสมบูรณ์ | สร้าง `README.md`, `HANDOFF.md`, `CURRICULUM_ROADMAP.md`, `.gitattributes`, `.gitignore` |
-| **Module 1: Content & Specs** | ✅ เสร็จสมบูรณ์ (Golden Template) | ปรับปรุงและซิงก์เลข Screen ID ทั้ง 29 หน้าจอตรงกันทุกไฟล์ใน `modules/module-01/` + เขียนข้อสอบจริงครบ `Q001–Q060` + บทพากย์ไทยครบ + ข้อมูล Workshop `.csv` 2 ชุด |
-| **Module 1: Visual Assets (`AST-M1-001..020`)** | ⏳ รอผลิตไฟล์ภาพ/SVG | มี Prompt และ Spec ครบใน `05_asset_spec.md` แล้ว (ยังไม่มีไฟล์ `.png`/`.webp`/`.svg` จริงใน `assets/`) |
-| **Module 1: Audio Narration (`.mp3`)** | ⏳ รอ Generate/อัดเสียง | มีสคริปต์ภาษาไทยพร้อม `[PAUSE]` และคำอ่านครบใน `02_voiceover_th_en.md` แล้ว |
-| **Module 1: Web Prototype** | ⏳ ถัดไป (Phase B) | พร้อมสร้าง Interactive Web Prototype ของ Module 1 ทันทีเมื่อปะป๊าตรวจสอบเนื้อหาเสร็จ |
+| **Module 1: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 29 หน้าจอ + เนื้อหาหน้าจอเต็ม (`00_lesson_content.md`) + บทพากย์ไทยแบบ TTS Clean (`02_voiceover_th_en.md`) + Interactive Spec ครบตัวเลือก/นิยาม + ข้อสอบจริง `Q001–Q060` + Cheat Sheet & Glossary + ข้อมูล Workshop `.csv` 2 ชุด |
+| **Module 1: Visual Assets (`AST-M1-001..020`)** | ⏳ รอผลิตไฟล์ภาพ/SVG | มี Prompt และ Spec ครบใน `05_asset_spec.md` แล้ว (พร้อมส่งต่อทีมทำเว็บ/กราฟิก) |
+| **Module 1: Audio Narration (`.mp3`)** | ⏳ รอ Generate/อัดเสียง | มี `TTS Clean Script (TH)` ครบทั้ง 29 Tracks ใน `02_voiceover_th_en.md` พร้อมป้อนเข้า TTS ทันที |
+| **Module 1: Web Prototype** | ⏳ ถัดไป (Phase B) | พร้อมพัฒนาเป็น Interactive Web + Animation + Voice Player ได้ทันที |
 | **Modules 2–10** | 📋 Planned | มีโครงแผนแม่บทใน `CURRICULUM_ROADMAP.md` แล้ว รอผลิตทีละ Module ตามลำดับ |
 
 ---
@@ -36,15 +36,17 @@
 ### 3.1 โครงสร้างโฟลเดอร์ต่อ 1 Module
 ```text
 modules/module-XX/
-├── 01_storyboard.md          # ตาราง/หัวข้อครบทุก Screen ID
-├── 02_voiceover_th_en.md     # บทพากย์ไทย + EN Reference + Audio Cue + Pronunciation
-├── 03_screen_wireframe.md    # Layout หน้าจอ + Accessibility + Navigation
-├── 04_interactive_logic.md   # State, Variables, Formula, Scoring, Pass/Fail Rules
-├── 05_asset_spec.md          # รายการรูปภาพ, SVG, Animation Spec
-├── 06_assessment_bank.md     # ข้อสอบจริงพร้อม Choice A–D, เฉลย, Bloom, LO, คำอธิบาย
-├── 07_workshop_guide.md      # โจทย์ Workshop + ขั้นตอนทำ + เฉลยสำหรับผู้สอน
-├── data/                     # ชุดข้อมูล CSV/JSON สำหรับ Workshop และ Simulator
-└── assets/                   # (เพิ่มเมื่อผลิต) รูปภาพ .webp/.svg และไฟล์เสียง .mp3
+├── 00_lesson_content.md         # เนื้อหาบนหน้าจอฉบับเต็ม สูตร ตาราง ตัวอย่างคำนวณ (MDX Ready)
+├── 01_storyboard.md             # ตาราง/หัวข้อครบทุก Screen ID
+├── 02_voiceover_th_en.md        # บทพากย์ไทย + TTS Clean Script + EN Reference + Audio Cue
+├── 03_screen_wireframe.md       # Layout หน้าจอ + Accessibility + Navigation
+├── 04_interactive_logic.md      # State, Variables, Formula, Scoring, Quiz/Game Options
+├── 05_asset_spec.md             # รายการรูปภาพ, SVG, Animation Spec
+├── 06_assessment_bank.md        # ข้อสอบจริงพร้อม Choice A–D, เฉลย, Bloom, LO, คำอธิบาย
+├── 07_workshop_guide.md         # โจทย์ Workshop + ขั้นตอนทำ + เฉลยสำหรับผู้สอน
+├── 08_cheatsheet_and_glossary.md# สรุปสูตร 1 หน้าจบ & คำศัพท์ TH/EN สำหรับปุ่ม Resources
+├── data/                        # ชุดข้อมูล CSV/JSON สำหรับ Workshop และ Simulator
+└── assets/                      # (เพิ่มเมื่อผลิต) รูปภาพ .webp/.svg และไฟล์เสียง .mp3
 ```
 
 ### 3.2 ระบบรหัส (ID Naming Standard)

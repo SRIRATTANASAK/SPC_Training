@@ -343,7 +343,6 @@
 - **Layout:** Interactive Correlation Explorer (Positive / Negative / No Correlation + Temp vs Diameter Lab)
 - **Asset ID:** `AST-M1-019`
 - **Motion Specification:** Scatter dots plot sequentially; best-fit trendline draws across points.
-- **Asset ID:** `AST-M1-019`
 - **On Screen Text:** `Scatter Plot` — "เช็คความสัมพันธ์ระหว่างตัวแปร X (เช่น Mold Temp) กับ Y (Shaft Diameter): r = +0.99"
 - **Voice Over Script Ref:** `AUD-M1L4-S05`
 - **Trigger Logic:** Toggle between Positive, Negative, and Zero correlation patterns.
