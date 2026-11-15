@@ -90,17 +90,52 @@
 `<Interactive id="INT-M9-L2-01" />`
 - ทดลองสลับ 2 สถานการณ์บน Control Chart (`Range Chart by Appraiser` และ `Xbar Chart by Appraiser`): **`EV > AV`** vs **`AV > AV (Appraiser B กดแรง)`** แล้วเลือกวิธีแก้ไขให้ `%GRR` ลดต่ำกว่า `10%` และ `ndc >= 5` (`+10 pts`)
 
-## M9L2-S07 — Lesson 2 Knowledge Check (`KC-M9-L2`)
+## M9L2-S07 — Calculation Methods: `X̄-R` (Average & Range) vs `ANOVA`
+`<Asset id="AST-M9-019" />`
+- **วิธีคำนวณ Gage R&R มี 2 วิธีหลัก — เลือกใช้เมื่อไร?**
+
+| เกณฑ์เปรียบเทียบ | `X̄-R` Method (Average & Range) | `ANOVA` Method (Analysis of Variance) |
+|---|---|---|
+| **หลักการคำนวณ** | ใช้ค่าเฉลี่ยและพิสัย ($\bar{\bar{R}}, \bar{X}_{\text{diff}}, R_p$) คูณค่าคงที่ $K_1, K_2, K_3$ | วิเคราะห์ความแปรปรวนเชิงสถิติแยกองค์ประกอบทั้งหมด |
+| **จุดเด่น** | คำนวณมือ/Excel ง่าย รวดเร็ว เหมาะกับหน้างานที่ไม่มีซอฟต์แวร์ | **แม่นยำกว่า** และ **แยก `Part × Appraiser Interaction` ได้!** |
+| **ข้อจำกัด** | **แยก Interaction ไม่ได้**, ใช้ไม่ได้กับข้อมูลไม่สมดุล | ต้องใช้ซอฟต์แวร์สถิติ (Minitab, JMP, R/Python) |
+| **เมื่อไรควรเลือกใช้** | ต้องการ **Quick Check หน้าไลน์** หรือสอนพื้นฐานให้เข้าใจกลไก | **รายงานส่งลูกค้า (PPAP / AIAG 4th Ed. แนะนำหลัก)** หรือสงสัย Interaction |
+
+## M9L2-S08 — Variable MSA: `Non-Destructive` vs `Destructive` Data & Prep
+`<Asset id="AST-M9-020" />`
+- **1. Non-Destructive Data (วัดแล้วชิ้นงานไม่เสีย):**
+  - *ตัวอย่าง:* วัดขนาดด้วยไมโครมิเตอร์, CMM, เวอร์เนียร์ → ชิ้นงานเดิมสามารถนำกลับมาวัดซ้ำได้
+  - *การเตรียมงาน:* ใช้ **Crossed Study** (`10 Parts × 3 Appraisers × 3 Trials = 90` การวัด) สุ่มชิ้นงานให้ครอบคลุม Process Range, ปิดเบอร์ชิ้นงาน, และสุ่มลำดับวัด
+- **2. Destructive Data (วัดแล้วชิ้นงานพัง/เสียรูป):**
+  - *ตัวอย่าง:* Pull Test (ดึงขาด), Weld Strength, Burst Test, ผ่าตัดขวาง (`Cross-Section`) → **วัดซ้ำชิ้นเดิมไม่ได้!**
+  - *การเตรียมงาน:* ใช้ **Nested Study** — เตรียมชิ้นงานจาก **Batch เดียวกันที่ผลิตต่อเนื่องติดกันในสภาวะนิ่ง** (Homogeneous Batch เพื่อสมมติว่าชิ้นงานในกลุ่มย่อยมีขนาดใกล้เคียงกัน) แล้วแบ่งให้ Appraiser A, B, C วัดคนละชุด (เช่น `10 Batches × 3 Appraisers × 3 Samples`)
+
+## M9L2-S09 — Special Cases: `Appraiser = 1` & Automated Gage (No Human Effect)
+`<Asset id="AST-M9-021" />`
+- **กรณีที่ 1: มี `Appraiser = 1` ทำ Gage R&R มาตรฐานได้หรือไม่?**
+  - **ไม่ได้!** เพราะ Gage R&R ต้องเปรียบเทียบระหว่างผู้วัด (`2–3` คน) เพื่อคำนวณ **`Reproducibility (AV)`** — หากมีคนเดียวจะหาได้แค่ `Repeatability (EV)`
+  - *วิธีแก้ไข:* 1) หากมีคนวัดจริงหลายคนให้เพิ่มเป็น `2–3` คน; 2) หากมีผู้ปฏิบัติงานคนเดียวจริงๆ ให้ทำ **Type 1 Gage Study** (วัด Master ชิ้นเดียวซ้ำ `50` ครั้ง หา $C_g, C_{gk}$) หรือ **Repeatability Study (`EV + Bias + Stability`)** และระบุหมายเหตุในรายงาน
+- **กรณีที่ 2: Appraiser ไม่มีผลต่อการวัด (แค่ Load งานเข้าเครื่องแล้วกดปุ่ม เช่น CMM / Vision / Auto Tester):**
+  - ทำ **Automated Gage / Type 1 Study** (`1` Appraiser × `10` Parts × `3–5` Trials) เพื่อประเมิน **`EV`** ของเครื่องจักรวัดเอง
+  - *Pro Tip:* หากสงสัยว่าการวางชิ้นงานเข้า Fixture ของคนมีผล ให้สลับ `2–3` คนมา **Load ชิ้นงาน** เพื่อพิสูจน์ว่า `AV ≈ 0`!
+
+## M9L2-S10 — Lesson 2 Knowledge Check (`KC-M9-L2`)
 - ทบทวน 2 ข้อ (`M9-Q016`, `M9-Q023`)
 
 ---
 
 # LESSON M9-L3: `Bias`, `Linearity` & `Stability` (`9.3` – `9.5`)
 
-## M9L3-S01 — Accuracy vs Precision: The 4 Location & Variation Errors
+## M9L3-S01 — Precision vs Accuracy & Where to Start MSA First?
 `<Asset id="AST-M9-009" />`
-- **Gage R&R** วัดเฉพาะ **Precision (ความเกาะกลุ่ม)** เท่านั้น — ยังไม่พอบอกว่าค่าที่วัด **"ตรงความจริง (Accuracy)"** หรือไม่!
-- ระบบการวัดที่สมบูรณ์ต้องตรวจ **Location (ความแม่นยำเชิงตำแหน่ง)** เพิ่มอีก 3 ตัว: **Bias**, **Linearity**, และ **Stability**
+- **ความหมายที่ต้องแยกให้ขาด:**
+  - **Precision (ความแม่นยำเชิงเกาะกลุ่ม):** วัดซ้ำหลายครั้งแล้วค่า **เกาะกลุ่มชิดกัน** (ประเมินด้วย **Gage R&R: `EV` & `AV`**)
+  - **Accuracy (ความถูกต้องตรงเป้า):** ค่าเฉลี่ยที่วัดได้ **ตรงกับค่าจริงของ Master** (ประเมินด้วย **Bias, Linearity, Stability**)
+- **คำถามสำคัญ: การทำ MSA ควรเริ่มจากส่วนไหนก่อน และระหว่าง Precision กับ Accuracy ควรทำอันไหนก่อน?**
+  1. **Step 1 — เตรียมความพร้อม:** เช็กความละเอียด **`10-to-1` Resolution** และสอบเทียบ (**Calibration**)
+  2. **Step 2 — ตรวจ Accuracy (`Bias & Linearity`) ก่อน:** เพื่อให้มั่นใจว่าเครื่องวัด **"เล็งตรงเป้า"** (ถ้าเกจชี้ผิดที่ การทำ Gage R&R ต่อให้เกาะกลุ่มดีก็ยังอ่านค่าผิด!)
+  3. **Step 3 — ตรวจ Precision (`Gage R&R`):** ทดสอบ `EV` และ `AV` ให้ผ่าน `< 10%` และ `ndc >= 5`
+  4. **Step 4 — คุมระยะยาว (`Stability`):** ใช้ Control Chart เฝ้าระวังเกจต่อเนื่องทุกกะ/ทุกวัน!
 
 ## M9L3-S02 — Bias (`9.3`): Systematic Offset From Master Reference
 `<Asset id="AST-M9-010" />`
@@ -158,11 +193,16 @@
 - **Before:** `%GRR = 51.25%`, `%Tol = 37.74%`, `ndc = 2` (ใช้คุม SPC ไม่ได้!)
 - **After Standardizing Ratchet Stop (`X̄_diff` ลดเหลือ `0.0019`):** `AV` ลดฮวบ → **`%GRR < 8%`**, **`%Tol < 6%`**, **`ndc >= 15`** → **ผ่านเกณฑ์ AIAG 100% พร้อมขึ้น Control Chart!**
 
-## M9L4-S05 — Attribute MSA (Kappa) Quick Note
+## M9L4-S05 — Attribute MSA (`Kappa`): การเตรียมงานและแนวทางการพิจารณา
 `<Asset id="AST-M9-016" />`
-- สำหรับงาน **Attribute (Pass/Fail ด้วยสายตา)** ใช้ **Attribute Agreement Analysis (`Kappa`)**:
-  - **$\kappa \ge 0.75$:** ยอมรับได้ดี (Good Agreement)
-  - **$\kappa < 0.40$:** แย่ (Poor — ต้องทำ Visual Boundary Sample & อบรมใหม่!)
+- สำหรับงาน **Attribute (ตรวจด้วยสายตา Pass/Fail หรือ Go/No-Go)** ที่ไม่มีตัวเลขต่อเนื่อง ใช้ **Attribute Agreement Analysis**:
+- **วิธีเตรียมการวัดที่ถูกต้อง (AIAG MSA):**
+  1. **คัดชิ้นงาน `30–50 ชิ้น`:** ต้องมีครบทั้ง **ชิ้นดีชัดเจน (Good)**, **ชิ้นเสียชัดเจน (Bad)**, และ **ชิ้นงานก้ำกึ่งใกล้ขอบ Spec (`Marginal / Borderline` ~20–30%)** — *ห้ามเลือกเฉพาะชิ้นที่ดีสุดกับเสียสุด เพราะจะทำให้คะแนนหลอกตา!*
+  2. **กำหนด Master / Expert Reference:** ให้ผู้เชี่ยวชาญตัดสินค่าจริงของทุกชิ้นไว้ก่อนล่วงหน้า
+  3. **ให้ `2–3 Appraisers` ตรวจซ้ำคนละ `2–3 รอบ`** แบบ **Blind & Randomized**
+- **แนวทางการพิจารณาผล:**
+  - ดูทั้ง **`%Agreement`** (ตัวเองซ้ำกัน, ตรงกับ Master, ตรงกันทุกคน) และค่า **Kappa ($\kappa$)**
+  - **$\kappa \ge 0.75$:** ยอมรับได้ดี (Good Agreement) | **$\kappa < 0.40$:** แย่ (Poor — ต้องทำ **Visual Boundary Samples** วางเทียบหน้าจุดตรวจและอบรมใหม่!)
 
 ## M9L4-S06 — Module 9 Summary & Bridge to Module 10 (`Capstone Industrial Cases`)
 `<Asset id="AST-M9-017" />`

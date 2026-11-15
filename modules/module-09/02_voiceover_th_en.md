@@ -1,7 +1,7 @@
 # Module 9 Voice Over Script Package (Thai Primary + TTS-Ready + EN Reference)
 
 **Module:** Module 9 — MSA Connection to SPC (`Why MSA Before SPC`, `Gage R&R`, `Bias / Linearity / Stability` & Report Workshop)  
-**Total Audio Tracks:** 27 Tracks (`AUD-M9L1-S01` .. `AUD-M9L4-S09`)  
+**Total Audio Tracks:** 30 Tracks (`AUD-M9L1-S01` .. `AUD-M9L4-S09`)  
 **Dual Format Ready:** Display Script (TH) สำหรับนักพากย์/Sync Animation + TTS Clean Script (TH) ปลอดสัญลักษณ์ พร้อมป้อน AI Thai TTS ทันที
 
 ---
@@ -100,13 +100,37 @@
 - **EN Reference:**  
   Toggle between EV-dominant and AV-dominant scenarios below and apply the right corrective fix.
 
-### AUD-M9L2-S07 (20 sec) — Lesson 2 Knowledge Check
+### AUD-M9L2-S07 (40 sec) — `X̄-R` vs `ANOVA` Calculation Methods
 - **Display Script (TH):**  
-  ทบทวนความเข้าใจเรื่อง Gage R&R และเกณฑ์ AIAG จำนวน 2 ข้อครับ
+  วิธีคำนวณ Gage R&R มี 2 แบบครับ [ANIM: xbar_r_vs_anova] **`X̄-R` Method** คำนวณมือง่าย ไว เหมาะกับ Quick Check หน้าไลน์ แต่แยก Interaction ไม่ได้ครับ ส่วน **`ANOVA` Method** ใช้ซอฟต์แวร์คำนวณ แม่นยำกว่า แยก **`Part × Appraiser Interaction`** ได้ จึงเป็นวิธีที่ AIAG แนะนำหลักสำหรับรายงานส่งลูกค้าครับ
 - **TTS Clean Script (TH):**  
-  ทบทวนความเข้าใจเรื่อง เกจ อาร์แอนด์อาร์ และเกณฑ์ เอไอเอจี จำนวน 2 ข้อครับ
+  วิธีคำนวณ เกจ อาร์แอนด์อาร์ มี 2 แบบครับ เอ็กซ์บาร์ อาร์ เมธอด คำนวณมือง่าย ไว เหมาะกับ ควิก เช็ก หน้าไลน์ แต่แยก อินเตอร์แอคชั่น ไม่ได้ครับ ส่วน อะโนวา เมธอด ใช้ซอฟต์แวร์คำนวณ แม่นยำกว่า แยก พาร์ต คูณ แอปเพรเซอร์ อินเตอร์แอคชั่น ได้ จึงเป็นวิธีที่ เอไอเอจี แนะนำหลักสำหรับรายงานส่งลูกค้าครับ
 - **EN Reference:**  
-  Complete two review questions on Gage R&R metrics and AIAG acceptance criteria.
+  Use the X-bar R method for quick shop-floor checks, and choose ANOVA whenever software is available or you need to detect part-by-appraiser interaction for customer PPAP reports.
+
+### AUD-M9L2-S08 (40 sec) — Non-Destructive vs Destructive MSA
+- **Display Script (TH):**  
+  สำหรับ Variable MSA แบ่งเป็น 2 แบบครับ [ANIM: destructive_msa] **Non-Destructive** ชิ้นงานไม่เสีย วัดซ้ำชิ้นเดิมได้ ใช้ Crossed Study 10×3×3 ปกติ แต่ถ้าเป็น **Destructive** เช่น Pull Test ดึงขาด วัดซ้ำไม่ได้ ให้ใช้ **Nested Study** โดยสุ่มชิ้นงานจาก **Batch เดียวกันที่ผลิตต่อเนื่องติดกัน** แบ่งให้แต่ละคนวัดครับ
+- **TTS Clean Script (TH):**  
+  สำหรับ แวริเอเบิล เอ็มเอสเอ แบ่งเป็น 2 แบบครับ นอนดีสตรักทีฟ ชิ้นงานไม่เสีย วัดซ้ำชิ้นเดิมได้ ใช้ ครอส สตัดดี้ 10 คูณ 3 คูณ 3 ปกติ แต่ถ้าเป็น ดีสตรักทีฟ เช่น พูล เทสต์ ดึงขาด วัดซ้ำไม่ได้ ให้ใช้ เนสเต็ด สตัดดี้ โดยสุ่มชิ้นงานจาก แบตช์ เดียวกันที่ผลิตต่อเนื่องติดกัน แบ่งให้แต่ละคนวัดครับ
+- **EN Reference:**  
+  Non-destructive tests repeat measurements on the same parts in a crossed study, whereas destructive tests require a nested design using homogeneous consecutive batches.
+
+### AUD-M9L2-S09 (40 sec) — Special Cases: `Appraiser = 1` & Automated Gage
+- **Display Script (TH):**  
+  ถ้ามี **Appraiser แค่ 1 คน** ทำ Gage R&R มาตรฐานไม่ได้นะครับ เพราะหา `AV` ไม่ได้ ให้แก้โดยทำ **Type 1 Gage Study** วัด Master ซ้ำ 50 ครั้งแทนครับ [PAUSE-1] ส่วนกรณี **เครื่องวัดอัตโนมัติ** ที่คนแค่ Load งานแล้วกดปุ่ม ให้ทำ **EV Study** ของเครื่อง และลองสลับ 2–3 คนมา Load งานเพื่อพิสูจน์ว่าคนไม่มีผลครับ
+- **TTS Clean Script (TH):**  
+  ถ้ามี แอปเพรเซอร์ แค่ 1 คน ทำ เกจ อาร์แอนด์อาร์ มาตรฐานไม่ได้นะครับ เพราะหา เอวี ไม่ได้ ให้แก้โดยทำ ไทป์ วัน เกจ สตัดดี้ วัด มาสเตอร์ ซ้ำ 50 ครั้งแทนครับ, ส่วนกรณี เครื่องวัดอัตโนมัติ ที่คนแค่ โหลด งานแล้วกดปุ่ม ให้ทำ อีวี สตัดดี้ ของเครื่อง และลองสลับ 2 ถึง 3 คนมา โหลด งานเพื่อพิสูจน์ว่าคนไม่มีผลครับ
+- **EN Reference:**  
+  With only one appraiser, AV cannot be estimated—run a Type 1 Gage Study on a master part instead. For automated gages, evaluate machine EV and verify part-loading consistency across operators.
+
+### AUD-M9L2-S10 (20 sec) — Lesson 2 Knowledge Check
+- **Display Script (TH):**  
+  ทบทวนความเข้าใจเรื่อง Gage R&R, `X̄-R` vs `ANOVA`, และ Destructive MSA จำนวน 2 ข้อครับ
+- **TTS Clean Script (TH):**  
+  ทบทวนความเข้าใจเรื่อง เกจ อาร์แอนด์อาร์ เอ็กซ์บาร์ อาร์ เทียบ อะโนวา และ ดีสตรักทีฟ เอ็มเอสเอ จำนวน 2 ข้อครับ
+- **EN Reference:**  
+  Complete two review questions on Gage R&R methods, destructive studies, and special appraiser cases.
 
 ---
 

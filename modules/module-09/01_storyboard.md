@@ -145,17 +145,53 @@
 - **Accessibility Notes:** Keyboard tab & radio controls.
 - **Developer Notes:** Interactive reinforcement.
 
-## Screen M9L2-S07 — Lesson 2 Knowledge Check (`KC-M9-L2`)
+## Screen M9L2-S07 — Calculation Methods: `X̄-R` (Average & Range) vs `ANOVA`
+- **Learning Objective:** เปรียบเทียบและเลือกใช้ `X̄-R Method` กับ `ANOVA Method` ได้เหมาะสมกับสถานการณ์
+- **Duration:** 40s
+- **Layout:** Comparison Table (`AST-M9-019`: `X̄-R` Quick Shop-Floor vs `ANOVA` Interaction & PPAP)
+- **Asset ID:** `AST-M9-019`
+- **On Screen Text:** "`X̄-R` คำนวณมือง่าย | `ANOVA` แยก `Part × Appraiser Interaction` ได้ (AIAG แนะนำหลัก!)"
+- **Voice Over Script Ref:** `AUD-M9L2-S07`
+- **Motion Specification:** Table highlights `Interaction` row as key differentiator.
+- **Trigger Logic:** Narration complete unlocks Next.
+- **Accessibility Notes:** Scoped comparison table.
+- **Developer Notes:** Answers when to pick `X̄-R` vs `ANOVA`.
+
+## Screen M9L2-S08 — Variable MSA: `Non-Destructive` vs `Destructive` Data & Prep
+- **Learning Objective:** แยก `Non-Destructive` vs `Destructive` Variable MSA และเตรียมชิ้นงานแบบ Crossed vs Nested ได้ถูกต้อง
+- **Duration:** 40s
+- **Layout:** Split Flow (`AST-M9-020`: Crossed `10×3×3` vs Nested Homogeneous Batch)
+- **Asset ID:** `AST-M9-020`
+- **On Screen Text:** "`Non-Destructive` วัดซ้ำชิ้นเดิม (`Crossed`) | `Destructive` วัดแล้วพัง ใช้ `Nested` จาก Batch ต่อเนื่อง!"
+- **Voice Over Script Ref:** `AUD-M9L2-S08`
+- **Motion Specification:** Left part returns to tray; right part breaks in pull-test, highlighting sequential batch sampling.
+- **Trigger Logic:** Narration complete unlocks Next.
+- **Accessibility Notes:** Clear process labels.
+- **Developer Notes:** Essential for pull/weld/destructive tests.
+
+## Screen M9L2-S09 — Special Cases: `Appraiser = 1` & Automated Gage (No Human Effect)
+- **Learning Objective:** แก้ปัญหาเมื่อมี `Appraiser = 1` และวางแผนทำ MSA สำหรับเครื่องวัดอัตโนมัติที่คนแค่ Load งาน
+- **Duration:** 40s
+- **Layout:** Two-Scenario Solution Card (`AST-M9-021`)
+- **Asset ID:** `AST-M9-021`
+- **On Screen Text:** "`Appraiser = 1` ทำ `GRR` ไม่ได้ (หา `AV` ไม่ได้) → ใช้ `Type 1 / EV Study` | เครื่อง Auto: ทดสอบ `EV` + สลับคน Load!"
+- **Voice Over Script Ref:** `AUD-M9L2-S09`
+- **Motion Specification:** Single operator routes to `Type 1 Study`; CMM/Auto tester routes to `EV + Load Check`.
+- **Trigger Logic:** Narration complete unlocks Next.
+- **Accessibility Notes:** Clear decision branches.
+- **Developer Notes:** Solves common shop-floor questions.
+
+## Screen M9L2-S10 — Lesson 2 Knowledge Check (`KC-M9-L2`)
 - **Learning Objective:** ทดสอบ Gage R&R (`M9-Q016`, `M9-Q023`)
 - **Duration:** 30s
 - **Layout:** Centered 2-Question Card
 - **Asset ID:** N/A
 - **On Screen Text:** "แบบทดสอบท้ายบทที่ 2 (2 ข้อ)"
-- **Voice Over Script Ref:** `AUD-M9L2-S07`
+- **Voice Over Script Ref:** `AUD-M9L2-S10`
 - **Motion Specification:** Card flip validation.
 - **Trigger Logic:** Complete 2 questions to unlock Lesson 3.
 - **Accessibility Notes:** Accessible quiz markup.
-- **Developer Notes:** Progress 43%.
+- **Developer Notes:** Progress 50%.
 
 ---
 

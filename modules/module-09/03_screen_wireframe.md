@@ -1,7 +1,7 @@
 # Module 9 Screen Wireframe (Web-First & Responsive Ready)
 
 ## Global Layout Standard
-- Header (10%): Breadcrumb (`Module 9 > Lesson > Screen`), Progress (`X / 28`), Language Toggle (`TH / EN`)
+- Header (10%): Breadcrumb (`Module 9 > Lesson > Screen`), Progress (`X / 30`), Language Toggle (`TH / EN`)
 - Stage (75%): Gage R&R Impact Simulator / EV vs AV Lab / Bias-Linearity-Stability Diagnostic / Gage R&R Report Workshop
 - Audio & Caption Bar (5%): Play/Pause `AUD-M9*`, Speed (`1.0x / 1.25x`), Captions
 - Footer (10%): `Back` | Screen Indicator | `Resources (M9 Cheat Sheet)` | `Next`
@@ -15,14 +15,17 @@
 - **M9L1-S04 Gage R&R Impact Simulator (`INT-M9-L1-01`):** `%EV/%AV` Sliders + Live Chart/Cpk
 - **M9L1-S05 Knowledge Check (`KC-M9-L1`):** 2-Question Card
 
-## M9-L2: Gage R&R (`Repeatability`, `Reproducibility`, `%GRR`, `ndc`) (7 Screens)
+## M9-L2: Gage R&R (`Repeatability`, `Reproducibility`, `%GRR`, `ndc`) (10 Screens)
 - **M9L2-S01 Repeatability vs Reproducibility:** `EV` vs `AV` Bullseye (`AST-M9-004`)
 - **M9L2-S02 Standard `10 × 3 × 3` Study:** Blind & Randomized Matrix (`AST-M9-005`)
 - **M9L2-S03 Key Formulas:** `EV, AV, GRR, %GRR, %Tol, ndc` (`AST-M9-006`)
 - **M9L2-S04 AIAG Acceptance Criteria:** `< 10%`, `10–30%`, `> 30%` & `ndc >= 5` (`AST-M9-007`)
 - **M9L2-S05 Diagnosing `EV > AV` vs `AV > EV`:** Root Cause & Fix (`AST-M9-008`)
 - **M9L2-S06 Repeatability vs Reproducibility Lab (`INT-M9-L2-01`):** Appraiser `Xbar-R` Switcher
-- **M9L2-S07 Knowledge Check (`KC-M9-L2`):** 2-Question Card
+- **M9L2-S07 `X̄-R` vs `ANOVA` Methods:** Quick Shop-Floor vs Interaction (`AST-M9-019`)
+- **M9L2-S08 Non-Destructive vs Destructive MSA:** Crossed vs Nested Batch (`AST-M9-020`)
+- **M9L2-S09 `Appraiser = 1` & Automated Gage:** Type 1 Study & Load Check (`AST-M9-021`)
+- **M9L2-S10 Knowledge Check (`KC-M9-L2`):** 2-Question Card
 
 ## M9-L3: `Bias`, `Linearity` & `Stability` (6 Screens)
 - **M9L3-S01 Accuracy vs Precision:** 4-Target Matrix (`AST-M9-009`)

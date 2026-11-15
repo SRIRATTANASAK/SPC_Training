@@ -23,3 +23,6 @@
 | `AST-M9-016` | Attribute MSA (`Kappa >= 0.75`) Scale | `M9L4-S05` | SVG Diagram | Kappa meter from `< 0.40 Poor` to `>= 0.75 Good` + Boundary Sample card | Meter sweep |
 | `AST-M9-017` | Module 9 to 10 Capstone Bridge | `M9L4-S06` | Animated SVG | MSA Shield locking onto Control Chart illuminating 4 AIAG Industrial Cases | Shield lock |
 | `AST-M9-018` | AIAG MSA Quick Reference Card | `M9L4-S08` | SVG Graphic | Compact pre-exam checklist of `<10%`, `ndc >= 5`, `10-to-1`, `Kappa >= 0.75` | Checkmark reveal |
+| `AST-M9-019` | `X̄-R` vs `ANOVA` Calculation Comparison | `M9L2-S07` | SVG Table | Comparison card highlighting `Part × Appraiser Interaction` detection in `ANOVA` | Row highlight |
+| `AST-M9-020` | Non-Destructive vs Destructive MSA | `M9L2-S08` | Animated SVG | Crossed `10×3×3` reusable part vs Nested sequential homogeneous batch for pull test | Split flow animation |
+| `AST-M9-021` | `Appraiser = 1` & Automated Gage MSA | `M9L2-S09` | SVG Diagram | Single operator Type 1 (`50`x Master) & CMM/Auto Tester `EV` + Load check | Branch glow |
