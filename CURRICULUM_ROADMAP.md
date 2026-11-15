@@ -114,10 +114,10 @@
 ---
 
 ## Module 10 : Industrial Case Study (AIAG-Based)
-- **สถานะ:** 📋 Planned
+- **สถานะ:** ✅ พร้อมใช้งานใน [modules/module-10/](modules/module-10/)
 - **เนื้อหาหลัก & Workshop ครบวงจร:**
-  - **Case 1:** Machining Process — Diameter Control ($\bar{X}$-$R$ Chart + $C_p/C_{pk}$)
-  - **Case 2:** Assembly Process — Torque Monitoring ($I$-$MR$ Chart)
-  - **Case 3:** Defect Monitoring — P Chart & U Chart (Surface Defect & Assembly Scrap)
-  - **Case 4:** Process Release Study — $P_{pk}$ Study & Production Trial Run (AIAG PPAP Run-at-Rate / Initial Process Study)
-- **Interactive / Animation:** **Capstone SPC Case Dashboard** (โหลด Dataset จริงของ Case 1–4 วิเคราะห์ Chart, Rules, Capability และสรุป Report การตัดสินใจ Release Process)
+  - **Case 1:** Machining Process — Shaft OD (`30.000 ± 0.050 mm`, `case1_machining_xbar_r.csv`, $\bar{X}$-$R$ + $C_p/C_{pk} = 8.08$, จับ Tool Wear `SG-16..20`)
+  - **Case 2:** Assembly Process — Bolt Torque (`25.0 ± 3.0 Nm`, `case2_assembly_imr_torque.csv`, $I$-$MR$ + PLC Auto-Interlock จับ Clutch Slippage `PT-21..25`)
+  - **Case 3:** Defect Monitoring — `p` Chart & `u` Chart (`20 Lots`, `∑n = 2,835`, `case3_defect_p_u_chart.csv`, จับ `LOT-13` OOC `p` & `LOT-17` OOC `u`)
+  - **Case 4:** Process Release Study — `Ppk` Study & PPAP Run-at-Rate (`100` ชิ้น, `case4_ppap_release_ppk.csv`, 3 Prerequisite Gates + `Ppk = 2.474 >= 1.67` Approved)
+- **Interactive / Animation:** **Capstone 4-Case Dashboards (`INT-M10-L1-01..L4-01`)** + **Course Completion Certificate**

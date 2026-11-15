@@ -33,7 +33,7 @@
 | **Module 7: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 26 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 26 Tracks + ข้อสอบจริง `M7-Q001–Q060` + 4-Phase Roadmap, 4 Core Lines, Reaction Plan & 3-Tier Escalation SLA, LPA (`CQI-8`) + 6-Station Control Plan CSV |
 | **Module 8: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 28 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 28 Tracks + ข้อสอบจริง `M8-Q001–Q060` + `OCAP` 5-Gate, `7 QC Tools` + Stratify/Dual Pareto/Scatter, `3-Legged 5 Why` / `FTA` / `Poka-Yoke`, `PDCA/Kaizen/DMAIC/8D` + Workshop CSV 2 ชุด (`24 Subgroups` & `200 Defects`) |
 | **Module 9: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 27 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 27 Tracks + ข้อสอบจริง `M9-Q001–Q060` + `σ²_obs = σ²_part + σ²_gage`, `Gage R&R` (`EV, AV, %GRR, %Tol, ndc`), `Bias / Linearity / Stability`, `Attribute Kappa` + Workshop `10×3×3` CSV (`90` การวัด) |
-| **Module 10** | 📋 Planned | มีโครงแผนแม่บทใน `CURRICULUM_ROADMAP.md` แล้ว รอผลิต (ถัดไป: Module 10) |
+| **Module 10: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 24 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 24 Tracks + ข้อสอบจริง `M10-Q001–Q060` + 4 AIAG Industrial Cases (`X̄-R + Cpk`, `I-MR Torque`, `p/u Defects`, `PPAP Ppk Release`) + 4 CSV Datasets จริง — **ครบ 10/10 Modules พร้อมเข้าสู่เฟสสร้างเว็บ (Phase B) แล้ว!** |
 
 ---
 
