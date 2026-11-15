@@ -12,7 +12,7 @@
 |---|---|---|---|
 | **Module 1** | Statistics Foundation for Manufacturing (พื้นฐานสถิติสำหรับงานวิศวกรรม) | ✅ Content & Spec Ready (Web/Animation/TTS Ready) | [modules/module-01](modules/module-01/) |
 | **Module 2** | Probability and Distribution (ความน่าจะเป็น, การแจกแจง, CLT) | ✅ Content & Spec Ready (Web/Animation/TTS Ready) | [modules/module-02](modules/module-02/) |
-| **Module 3** | Confidence and Hypothesis Testing (Sampling, CI, T-Test, ANOVA) | 📋 Planned | `modules/module-03/` |
+| **Module 3** | Confidence and Hypothesis Testing (Sampling, CI, T-Test, ANOVA) | ✅ Content & Spec Ready (Web/Animation/TTS Ready) | [modules/module-03](modules/module-03/) |
 | **Module 4** | Process Variation and Capability (VOP/VOC, Cp/Cpk/Pp/Ppk, AIAG/VDA) | 📋 Planned | `modules/module-04/` |
 | **Module 5** | SPC Concept and Methodology (Shewhart, Control vs Spec Limit, WE Rules) | 📋 Planned | `modules/module-05/` |
 | **Module 6** | Control Chart Selection (Variable & Attribute Charts + 10 Scenarios) | 📋 Planned | `modules/module-06/` |

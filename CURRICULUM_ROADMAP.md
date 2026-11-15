@@ -29,7 +29,7 @@
 ---
 
 ## Module 3 : Confidence and Hypothesis Testing
-- **สถานะ:** 📋 Planned
+- **สถานะ:** ✅ พร้อมใช้งานใน [modules/module-03/](modules/module-03/)
 - **เนื้อหาหลัก:**
   - `3.1` Sampling Strategy (Random, Stratified, Rational Subgroup)
   - `3.2` Confidence Interval (Confidence Level, Margin of Error)
