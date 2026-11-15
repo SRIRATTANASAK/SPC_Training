@@ -24,8 +24,9 @@
 | **Module 1: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 29 หน้าจอ + เนื้อหาหน้าจอเต็ม (`00_lesson_content.md`) + บทพากย์ไทยแบบ TTS Clean (`02_voiceover_th_en.md`) + Interactive Spec ครบตัวเลือก/นิยาม + ข้อสอบจริง `Q001–Q060` + Cheat Sheet & Glossary + ข้อมูล Workshop `.csv` 2 ชุด |
 | **Module 1: Visual Assets (`AST-M1-001..020`)** | ⏳ รอผลิตไฟล์ภาพ/SVG | มี Prompt และ Spec ครบใน `05_asset_spec.md` แล้ว (พร้อมส่งต่อทีมทำเว็บ/กราฟิก) |
 | **Module 1: Audio Narration (`.mp3`)** | ⏳ รอ Generate/อัดเสียง | มี `TTS Clean Script (TH)` ครบทั้ง 29 Tracks ใน `02_voiceover_th_en.md` พร้อมป้อนเข้า TTS ทันที |
-| **Module 1: Web Prototype** | ⏳ ถัดไป (Phase B) | พร้อมพัฒนาเป็น Interactive Web + Animation + Voice Player ได้ทันที |
-| **Modules 2–10** | 📋 Planned | มีโครงแผนแม่บทใน `CURRICULUM_ROADMAP.md` แล้ว รอผลิตทีละ Module ตามลำดับ |
+| **Module 1: Web Prototype** | ⏸️ พักไว้ก่อน (ทำ Markdown ให้ครบทุก Module ก่อน) | พร้อมพัฒนาเป็น Interactive Web + Animation + Voice Player ได้ทันทีเมื่อครบ Modules 1–10 |
+| **Module 2: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 28 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 28 Tracks + ข้อสอบจริง `M2-Q001–Q060` + CTQ Dataset 50 ชิ้น (`10 Subgroups`) |
+| **Modules 3–10** | 📋 Planned | มีโครงแผนแม่บทใน `CURRICULUM_ROADMAP.md` แล้ว รอผลิตทีละ Module (ถัดไป: Module 3) |
 
 ---
 

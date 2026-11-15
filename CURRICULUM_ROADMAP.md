@@ -16,7 +16,7 @@
 ---
 
 ## Module 2 : Probability and Distribution
-- **สถานะ:** 📋 Planned
+- **สถานะ:** ✅ พร้อมใช้งานใน [modules/module-02/](modules/module-02/)
 - **เนื้อหาหลัก:**
   - `2.1` Concept of Variation (Common Cause vs Special Cause Variation)
   - `2.2` Probability Basics (Probability Concept, Sampling, Population vs Sample)
