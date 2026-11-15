@@ -31,7 +31,8 @@
 | **Module 5: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 28 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 28 Tracks + ข้อสอบจริง `M5-Q001–Q060` + WE/Nelson Rules, `Mandatory vs Optional` Rule Selection (Zero-bounds & Raw Data vs Spec) + Animation `AST-M5-020` + Workshop `Shaft_OD_mm` 125 ชิ้น (`25 Subgroups`) |
 | **Module 6: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 28 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 28 Tracks + ข้อสอบจริง `M6-Q001–Q060` + Variable (`I-MR, X̄-R, X̄-S`) & Attribute (`p, np, c, u`) Selection Matrix & Wizard + Workshop 10 สถานการณ์ + Attribute 20-Lot CSV Lab |
 | **Module 7: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 26 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 26 Tracks + ข้อสอบจริง `M7-Q001–Q060` + 4-Phase Roadmap, 4 Core Lines, Reaction Plan & 3-Tier Escalation SLA, LPA (`CQI-8`) + 6-Station Control Plan CSV |
-| **Modules 8–10** | 📋 Planned | มีโครงแผนแม่บทใน `CURRICULUM_ROADMAP.md` แล้ว รอผลิตทีละ Module (ถัดไป: Module 8) |
+| **Module 8: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 28 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 28 Tracks + ข้อสอบจริง `M8-Q001–Q060` + `OCAP` 5-Gate, `7 QC Tools` + Stratify/Dual Pareto/Scatter, `3-Legged 5 Why` / `FTA` / `Poka-Yoke`, `PDCA/Kaizen/DMAIC/8D` + Workshop CSV 2 ชุด (`24 Subgroups` & `200 Defects`) |
+| **Modules 9–10** | 📋 Planned | มีโครงแผนแม่บทใน `CURRICULUM_ROADMAP.md` แล้ว รอผลิตทีละ Module (ถัดไป: Module 9) |
 
 ---
 

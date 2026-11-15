@@ -89,14 +89,14 @@
 ---
 
 ## Module 8 : SPC Problem Solving
-- **สถานะ:** 📋 Planned
+- **สถานะ:** ✅ พร้อมใช้งานใน [modules/module-08/](modules/module-08/)
 - **เนื้อหาหลัก:**
-  - `8.1` Out of Control Action Plan (OCAP: Detection → Containment → Root Cause Analysis)
-  - `8.2` SPC + 7 QC Tools (Check Sheet, Pareto, Fishbone, Histogram, Scatter, Stratification, Control Chart)
-  - `8.3` SPC + Root Cause Analysis (5 Why, Fishbone, Fault Tree)
-  - `8.4` SPC + Continuous Improvement (PDCA, Kaizen, DMAIC)
-  - **Workshop:** Case Study จริงจาก Line Production
-- **Interactive / Animation:** **Interactive OCAP Decision Simulator** (เกิดจุด Out of Control บนไลน์ → เลือกขั้นตอน Containment → Drill-down 7 QC Tools → 5 Why → ปิด Action)
+  - `8.1` Out of Control Action Plan (`OCAP`: 5-Gate Closed-Loop Flow — Detection, `100% Backtrack Containment`, Data/Gage Verification ก่อนปรับเครื่อง, Signal Signature Map, `JESD557` Auto Lot Hold)
+  - `8.2` SPC + 7 QC Tools (Check Sheet, **Stratification**, **Dual Pareto `Count` vs `COPQ`**, Histogram Bimodal/Cliff Diagnostics, Fishbone `4M1E+M`, Scatter `r` Correlation vs Causation + Control Chart Confirmation)
+  - `8.3` Deep Root Cause Analysis (Direct vs Root vs Systemic Cause, **3-Legged 5 Why** + *Therefore Test*, Is/Is-Not Matrix, Fault Tree `AND/OR Gate`, **Preventive Poka-Yoke** Hierarchy)
+  - `8.4` Continuous Improvement (`PDCA / Kaizen / DMAIC / 8D`), Before/After SPC Proof & Living `PFMEA / Control Plan` (`Yokoten`)
+  - **Workshop:** ปิดเคสสายการผลิต `CNC Housing Bore` (`40.000 ± 0.050 mm`, `24 Subgroups × 5 = 120 ชิ้น` ใน `workshop_m8_ooc_case_study.csv` + `200 Defects` / `61,740 THB COPQ` ใน `workshop_m8_defect_pareto.csv`): จับ `SG-08..16` บน `FIX-B` (`r = -0.9955` Clamp Pressure) → ติด Pressure Switch `< 55 bar` → ยืนยัน `Ppk 0.84` (Incident `0.74`) → **`Cpk = 2.04` (`0 OOC`)**
+- **Interactive / Animation:** **OCAP Gate & Containment Router (`INT-M8-L1-01`)**, **7 QC Tools Drill-Down Explorer (`INT-M8-L2-01`)**, **Fishbone `4M1E+M` Builder (`INT-M8-L2-02`)**, **5 Why & FTA Builder (`INT-M8-L3-01`)**, **Workshop Part A Investigation (`INT-M8-L4-01`)**, **Workshop Part B 8D Closure (`INT-M8-L4-02`)**
 
 ---
 

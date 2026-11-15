@@ -1,0 +1,6 @@
+Defect_Code,Defect_Mode,Category_4M,Fixture_Source,Primary_Shift,Defect_Count,Pct_of_Defects,Cum_Pct_Defects,Unit_Cost_THB,Total_Cost_THB,Pct_of_Cost,Cum_Pct_Cost
+DEF-01,Bore Oversize & Chatter (Fixture B Clamp Leak),Machine / Fixture,FIX-B,Night+Afternoon,112,56.0,56.0,450,50400,81.6,81.6
+DEF-02,Burr at Chamfer Edge (Tool Wear),Machine / Tooling,FIX-A+B,All Shifts,38,19.0,75.0,120,4560,7.4,89.0
+DEF-03,Surface Scratch During Tray Handling,Method / Material,Post-CNC,Afternoon,24,12.0,87.0,150,3600,5.8,94.8
+DEF-04,Chip Entrapment Under Datum Pin,Method / Cleaning,FIX-A,Day+Night,16,8.0,95.0,180,2880,4.7,99.5
+DEF-05,Minor Coolant Stain (Cosmetic Rewash),Environment,Both,All Shifts,10,5.0,100.0,30,300,0.5,100.0
