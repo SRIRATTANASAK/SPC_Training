@@ -66,13 +66,13 @@
 ---
 
 ## Module 6 : Control Chart Selection (เลือก Chart ให้ถูกต้อง)
-- **สถานะ:** 📋 Planned
+- **สถานะ:** ✅ พร้อมใช้งานใน [modules/module-06/](modules/module-06/)
 - **เนื้อหาหลัก:**
-  - `6.1` Variable Data Control Chart (I-MR Chart, $\bar{X}$-$R$ Chart สำหรับ $n=2\text{–}10$, $\bar{X}$-$S$ Chart สำหรับ $n>10$ + ตารางค่าคงที่ $A_2, D_3, D_4, d_2, c_4$)
-  - `6.2` Attribute Chart (P Chart, NP Chart, C Chart, U Chart — แยก Defective vs Defect และ Constant vs Varying Sample Size)
-  - `6.3` Control Chart Selection Matrix
-  - **Workshop:** เลือก Chart จาก Case Study 10 สถานการณ์
-- **Interactive / Animation:** **Interactive Chart Selection Wizard** (ตอบคำถามทีละขั้นแล้วแนะนำ Chart ที่ถูกต้อง + เกมฝึกตัดสินใจ 10 สถานการณ์พร้อม Feedback)
+  - `6.1` Variable Data Control Chart (I-MR Chart, $\bar{X}$-$R$ Chart สำหรับ $n=2\text{–}10$, $\bar{X}$-$S$ Chart สำหรับ $n>10$ + ตารางค่าคงที่ $E_2, A_2, D_3, D_4, d_2, A_3, B_3, B_4, c_4$)
+  - `6.2` Attribute Chart (`p, np, c, u` Chart — แยก Defective vs Defect, Constant vs Varying Sample Size, Zero-Bound `LCL < 0` & Big-`n` Overdispersion `Laney p'/u'`)
+  - `6.3` Control Chart Selection Decision Tree, Master Matrix & Top 5 Mistakes
+  - **Workshop:** Part A เลือก Chart จาก Case Study 10 สถานการณ์ (`SCEN-01..10`) + Part B คำนวณจริง `p` vs `u` Chart จากข้อมูล 20 Lots (`∑n = 2,835`)
+- **Interactive / Animation:** **Interactive Chart Selection Wizard** (ตอบคำถาม 3 ขั้นแล้วแนะนำ Chart + สูตร + กฎ LCL) + **10-Scenario Decision Game** + **Attribute Staircase & Variable Efficiency Labs**
 
 ---
 
