@@ -77,14 +77,14 @@
 ---
 
 ## Module 7 : SPC for Manufacturing Process (SPC ในโรงงาน)
-- **สถานะ:** 📋 Planned
+- **สถานะ:** ✅ พร้อมใช้งานใน [modules/module-07/](modules/module-07/)
 - **เนื้อหาหลัก:**
-  - `7.1` SPC Implementation Roadmap (Identify CTQ, Select Process, Data Collection, Sampling Plan)
-  - `7.2` SPC in Production Line (Machining, Assembly, Injection, Stamping — ตัวอย่าง CTQ และ Rational Subgroup ของแต่ละกระบวนการ)
-  - `7.3` SPC and Process Monitoring (Reaction Plan, Escalation Process)
-  - `7.4` Layered Process Audit (LPA) and SPC
-  - **Workshop:** ออกแบบ SPC Monitoring Plan (เชื่อมกับ Control Plan)
-- **Interactive / Animation:** Interactive Production Line CTQ & Subgroup Planner + Reaction/Escalation Flowchart
+  - `7.1` SPC Implementation Roadmap (`4-Phase Roadmap`: Identify CTQ via PFMEA, MSA & Chart Selection, Rational Subgroup & Sampling Containment Risk `Line Rate × Interval`, Deployment)
+  - `7.2` SPC in Production Line (`4 Core Processes`: Machining, Assembly & SMT Electronics, Injection Molding Multi-Cavity Stratification, Stamping & Coil Changeover)
+  - `7.3` SPC & Process Monitoring (Real-Time Plotting vs "Wallpaper SPC", Actionable Reaction Plan & `3-Tier Escalation Matrix / SLA`: Tier 1 `0–15m` / Tier 2 `15–60m` / Tier 3 `>60m` + OCAP)
+  - `7.4` Layered Process Audit (`LPA AIAG CQI-8` 3-Layer Cadence & 6-Point Gemba Audit), Closed-Loop Ecosystem (`PFMEA ↔ Control Plan ↔ SPC ↔ LPA`) & Control Plan Workshop
+  - **Workshop:** Part A ออกแบบและคำนวณ Containment Risk ใน **6-Station Control Plan (`STN-10..60`)** (`workshop_m7_control_plan_line.csv`) + Part B ปรับปรุง `STN-40` Sampling Interval (`120 → 30 min`, ลด Containment Risk `-75%` จาก `1,200 → 300 pcs`) & เขียน Actionable Reaction Plan / LPA Audit Checklist
+- **Interactive / Animation:** **Sampling Risk Calculator (`INT-M7-L1-01`)**, **4-Line CTQ & Subgroup Planner (`INT-M7-L2-01`)**, **Escalation Flowchart Simulator (`INT-M7-L3-01`)**, **LPA Gemba Auditor (`INT-M7-L4-01`)**, **Control Plan Workbench (`INT-M7-L4-02`)**
 
 ---
 

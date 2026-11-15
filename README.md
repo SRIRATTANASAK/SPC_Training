@@ -16,7 +16,7 @@
 | **Module 4** | Process Variation and Capability (VOP/VOC, Cp/Cpk/Pp/Ppk, AIAG/VDA & JEDEC) | ✅ Content & Spec Ready (Web/Animation/TTS Ready) | [modules/module-04](modules/module-04/) |
 | **Module 5** | SPC Concept and Methodology (Shewhart, Control vs Spec Limit, WE & Nelson Rules) | ✅ Content & Spec Ready (Web/Animation/TTS Ready) | [modules/module-05](modules/module-05/) |
 | **Module 6** | Control Chart Selection (`I-MR, X̄-R, X̄-S` & `p, np, c, u` + 10 Scenarios) | ✅ Content & Spec Ready (Web/Animation/TTS Ready) | [modules/module-06](modules/module-06/) |
-| **Module 7** | SPC for Manufacturing Process (Roadmap, Production Lines, LPA) | 📋 Planned | `modules/module-07/` |
+| **Module 7** | SPC for Manufacturing Process (Roadmap, 4 Core Lines, Reaction/Escalation, LPA `CQI-8`) | ✅ Content & Spec Ready (Web/Animation/TTS Ready) | [modules/module-07](modules/module-07/) |
 | **Module 8** | SPC Problem Solving (OCAP, 7 QC Tools, RCA, PDCA/Kaizen/DMAIC) | 📋 Planned | `modules/module-08/` |
 | **Module 9** | MSA Connection to SPC (Gage R&R, Repeatability/Reproducibility, Bias, Linearity, Stability) | 📋 Planned | `modules/module-09/` |
 | **Module 10** | Industrial Case Study (AIAG-Based Cases 1–4) | 📋 Planned | `modules/module-10/` |

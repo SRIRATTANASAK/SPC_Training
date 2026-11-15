@@ -30,7 +30,8 @@
 | **Module 4: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 27 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 27 Tracks + ข้อสอบจริง `M4-Q001–Q060` + ครบทั้ง AIAG/VDA & JEDEC + Workshop `Pin_Length_mm` 100 ชิ้น (`20 Subgroups`) |
 | **Module 5: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 28 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 28 Tracks + ข้อสอบจริง `M5-Q001–Q060` + WE/Nelson Rules, `Mandatory vs Optional` Rule Selection (Zero-bounds & Raw Data vs Spec) + Animation `AST-M5-020` + Workshop `Shaft_OD_mm` 125 ชิ้น (`25 Subgroups`) |
 | **Module 6: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 28 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 28 Tracks + ข้อสอบจริง `M6-Q001–Q060` + Variable (`I-MR, X̄-R, X̄-S`) & Attribute (`p, np, c, u`) Selection Matrix & Wizard + Workshop 10 สถานการณ์ + Attribute 20-Lot CSV Lab |
-| **Modules 7–10** | 📋 Planned | มีโครงแผนแม่บทใน `CURRICULUM_ROADMAP.md` แล้ว รอผลิตทีละ Module (ถัดไป: Module 7) |
+| **Module 7: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 26 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 26 Tracks + ข้อสอบจริง `M7-Q001–Q060` + 4-Phase Roadmap, 4 Core Lines, Reaction Plan & 3-Tier Escalation SLA, LPA (`CQI-8`) + 6-Station Control Plan CSV |
+| **Modules 8–10** | 📋 Planned | มีโครงแผนแม่บทใน `CURRICULUM_ROADMAP.md` แล้ว รอผลิตทีละ Module (ถัดไป: Module 8) |
 
 ---
 
