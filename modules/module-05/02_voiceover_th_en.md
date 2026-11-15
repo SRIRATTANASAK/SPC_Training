@@ -1,7 +1,7 @@
 # Module 5 Voice Over Script Package (Thai Primary + TTS-Ready + EN Reference)
 
 **Module:** Module 5 — SPC Concept and Methodology (Shewhart, Control vs Spec Limit, Stability, Western Electric & Nelson Rules)  
-**Total Audio Tracks:** 27 Tracks (`AUD-M5L1-S01` .. `AUD-M5L4-S09`)  
+**Total Audio Tracks:** 28 Tracks (`AUD-M5L1-S01` .. `AUD-M5L4-S10`)  
 **Dual Format Ready:** Display Script (TH) สำหรับนักพากย์/Sync Animation + TTS Clean Script (TH) ปลอดสัญลักษณ์ พร้อมป้อน AI Thai TTS ทันที
 
 ---
@@ -188,7 +188,15 @@
 - **EN Reference:**  
   Nelson rules add trends, alternating waves, and hugging patterns—but enabling all rules at once drops the average run length to false alarm from 370 down to about 91 points, risking alarm fatigue.
 
-### AUD-M5L4-S04 (30 sec) — OOC Action (OCAP Hook)
+### AUD-M5L4-S04 (55 sec) — Smart SPC Rule Selection: Mandatory Rules, Zero-Bounds & Engineering Judgement
+- **Display Script (TH):**  
+  ทีนี้มาดูวิธีเลือกตั้งค่า SPC Rules อย่างมืออาชีพครับ [PAUSE-1] [ANIM: rule_selection_bounds] ปกติ **Rule 1 (`1 จุดนอก UCL/LCL`)** บน Mean Chart ใช้ได้ทั้งขอบบนและขอบล่าง แต่ระวังลักษณะงานแบบ **ยิ่งน้อยยิ่งดี** เช่น **Roughness, Flatness, Coplanarity หรือ Tilt** ที่ค่ามักเข้าใกล้ศูนย์ ทำให้สูตรคำนวณ **`LCL` ติดลบ** ซึ่งในโลกจริงวัดค่าติดลบไม่ได้ `LCL` นั้นจึงไม่ Valid ต้องตัดฝั่ง `LCL` ทิ้งและเช็กเฉพาะ **`UCL`** ครับ [PAUSE-1] เช่นเดียวกับ **Variation Chart (`R` หรือ `S`)** ที่มีค่าต่ำสุดคือศูนย์ เมื่อ `LCL = 0` ก็ไม่จำเป็นต้องตั้งกฎเช็กต่ำกว่า `LCL` ครับ [PAUSE-1] นอกจากนี้ในระบบยุคใหม่ เรายังเพิ่มกฎตรวจ **Individual Raw Data เทียบกับ Specification Limits** ควบคู่กับ **Rule 1** เรียกกลุ่มนี้ว่า **Mandatory SPC Rules** ที่ทุกชาร์ตต้องมี [PAUSE-1] ส่วนกฎเสริมที่เหลือ **ควรเลือกเปิดอย่างน้อย 1 ข้อ** โดยอาศัยทั้ง **Engineering Judgement** และ **Process Characteristic** วิศวกรต้องเข้าใจกระบวนการของตัวเองจริงๆ เพื่อหลีกเลี่ยง False Alarm ครับ
+- **TTS Clean Script (TH):**  
+  ทีนี้มาดูวิธีเลือกตั้งค่า เอสพีซี รูลส์ อย่างมืออาชีพครับ, ปกติ รูล 1 หรือ 1 จุดนอก ยูซีแอล แอลซีแอล บน มีน ชาร์ท ใช้ได้ทั้งขอบบนและขอบล่าง แต่ระวังลักษณะงานแบบ ยิ่งน้อยยิ่งดี เช่น รัฟเนส แฟลตเนส โคพลานาริตี้ หรือ ทิลต์ ที่ค่ามักเข้าใกล้ศูนย์ ทำให้สูตรคำนวณ แอลซีแอล ติดลบ ซึ่งในโลกจริงวัดค่าติดลบไม่ได้ แอลซีแอล นั้นจึงไม่แวลิด ต้องตัดฝั่ง แอลซีแอล ทิ้งและเช็กเฉพาะ ยูซีแอล ครับ, เช่นเดียวกับ แวริเอชั่น ชาร์ท อย่าง อาร์ หรือ เอส ที่มีค่าต่ำสุดคือศูนย์ เมื่อ แอลซีแอล เท่ากับศูนย์ ก็ไม่จำเป็นต้องตั้งกฎเช็กต่ำกว่า แอลซีแอล ครับ, นอกจากนี้ในระบบยุคใหม่ เรายังเพิ่มกฎตรวจ อินดิวิจวล รอว์ ดาต้า เทียบกับ สเปซิฟิเคชั่น ลิมิต ควบคู่กับ รูล 1 เรียกกลุ่มนี้ว่า แมนดาโทรี เอสพีซี รูลส์ ที่ทุกชาร์ตต้องมี, ส่วนกฎเสริมที่เหลือ ควรเลือกเปิดอย่างน้อย 1 ข้อ โดยอาศัยทั้ง เอนจิเนียริง จัดจ์เมนต์ และ โพรเซส คาแร็กเทอริสติก วิศวกรต้องเข้าใจกระบวนการของตัวเองจริงๆ เพื่อหลีกเลี่ยง ฟอลส์ อะลาร์ม ครับ
+- **EN Reference:**  
+  Rule 1 checks both UCL and LCL on standard mean charts. However, for lower-is-better traits near zero—like roughness, flatness, coplanarity, or tilt—a negative calculated LCL is physically impossible and invalid, so monitor only UCL. Likewise, on variation charts where the physical minimum is zero, an LCL of zero needs no lower rule check. Together with modern individual raw data versus specification checks, these form Mandatory SPC Rules required on every chart. Remaining rules should have at least one option selected using engineering judgement and process characteristics to prevent false alarms.
+
+### AUD-M5L4-S05 (30 sec) — OOC Action (OCAP Hook)
 - **Display Script (TH):**  
   เมื่อสัญญาณเตือนดังขึ้น ห้ามกดผ่านเฉยๆ ครับ [ANIM: ocap_hook] ให้ทำตาม 3 ขั้นของ OCAP คือ **หนึ่ง** เช็คว่าไม่ได้วัดผิด **สอง** กักกันสินค้าตั้งแต่ Subgroup ล่าสุดที่ดี และ **สาม** ลงมือหาและแก้ Special Cause ซึ่งเราจะเจาะลึกวิธีทำเต็มรูปแบบใน Module 8 ครับ
 - **TTS Clean Script (TH):**  
@@ -196,15 +204,15 @@
 - **EN Reference:**  
   When any rule triggers, execute OCAP immediately: verify measurement, contain parts since the last good subgroup, and resolve the special cause.
 
-### AUD-M5L4-S05 (35 sec) — Western Electric Rules Trigger Lab
+### AUD-M5L4-S06 (40 sec) — Western Electric, Nelson & Rule Selection Trigger Lab
 - **Display Script (TH):**  
-  มาลองเล่น **Western Electric Rules Trigger Lab** กันครับ กดจำลองเหตุการณ์ทั้ง 7 แบบและลองเปิด-ปิดสวิตช์แต่ละกฎ ดูการจับสัญญาณพร้อมค่า ARL ที่เปลี่ยนไปแบบ Real-time ครับ
+  มาลองเล่น **Trigger Lab** กันครับ [ANIM: weco_lab_profiles] ลองสลับเลือกชนิด Process ทั้งแบบปกติ แบบค่ายิ่งน้อยยิ่งดีใกล้ศูนย์ และกราฟ Variation สังเกตขอบเขต Mandatory Rules แล้วเลือกเปิด **Optional Rule อย่างน้อย 1 ข้อ** พร้อมกดจำลองเหตุการณ์ดูค่า ARL แบบ Real-time ครับ
 - **TTS Clean Script (TH):**  
-  มาลองเล่น เวสเทิร์น อิเล็กทริก รูลส์ ทริกเกอร์ แล็บ กันครับ กดจำลองเหตุการณ์ทั้ง 7 แบบและลองเปิดปิดสวิตช์แต่ละกฎ ดูการจับสัญญาณพร้อมค่า เออาร์แอล ที่เปลี่ยนไปแบบ เรียลไทม์ ครับ
+  มาลองเล่น ทริกเกอร์ แล็บ กันครับ ลองสลับเลือกชนิด โพรเซส ทั้งแบบปกติ แบบค่ายิ่งน้อยยิ่งดีใกล้ศูนย์ และกราฟ แวริเอชั่น สังเกตขอบเขต แมนดาโทรี รูลส์ แล้วเลือกเปิด ออปชันนอล รูล อย่างน้อย 1 ข้อ พร้อมกดจำลองเหตุการณ์ดูค่า เออาร์แอล แบบ เรียลไทม์ ครับ
 - **EN Reference:**  
-  Experiment in the trigger lab by simulating patterns and toggling rules to observe real-time alarms alongside false-alarm ARL impact.
+  Experiment in the trigger lab by switching process profiles—normal, near-zero lower-is-better, and variation charts—verifying mandatory rule bounds, choosing at least one optional rule, and testing real-time ARL triggers.
 
-### AUD-M5L4-S06 (45 sec) — Workshop: Special Cause Detection
+### AUD-M5L4-S07 (45 sec) — Workshop: Special Cause Detection
 - **Display Script (TH):**  
   ถึงเวลา **Workshop ประจำ Module 5** ครับ [PAUSE-1] เรามีข้อมูลเส้นผ่านศูนย์กลางเพลา 125 ชิ้น หรือ 25 Subgroups ลองคำนวณ Trial Control Limits ดูว่ากลุ่มไหนติดกฎ Western Electric ข้อใดบ้าง ทั้งที่ชิ้นงานยังอยู่ใน Spec ครับ
 - **TTS Clean Script (TH):**  
@@ -212,7 +220,7 @@
 - **EN Reference:**  
   In this workshop, analyze 25 subgroups of shaft diameter data to compute trial limits, identify triggered Western Electric rules, and establish revised limits.
 
-### AUD-M5L4-S07 (45 sec) — Workshop Solution
+### AUD-M5L4-S08 (45 sec) — Workshop Solution
 - **Display Script (TH):**  
   มาดูเฉลยกันครับ [ANIM: workshop5_solution] จุด `SG-11` พุ่งหลุด **Rule 1 ทั้งกราฟ $\bar{X}$ และ $R$ Chart** [PAUSE-1] ส่วนช่วง `SG-18` ถึง `25` ไม่มีจุดไหนหลุด `UCL` เลย แต่ **Rule 4 (8 จุดเหนือเส้นกลาง)** กับ **Rule 2 (Zone A)** จับ Shift เจอทันที! ที่น่าทึ่งคือทุกชิ้นยังอยู่ในสเปก `24.92–25.08 mm` นี่แหละครับพลังของ SPC!
 - **TTS Clean Script (TH):**  
@@ -220,15 +228,15 @@
 - **EN Reference:**  
   SG-11 breaches Rule 1 on both charts, while SG-18 to SG-25 stay inside UCL yet trigger Rule 4 and Rule 2—catching the shift before any defective part is produced.
 
-### AUD-M5L4-S08 (25 sec) — Bridge to Module 6
+### AUD-M5L4-S09 (25 sec) — Bridge to Module 6
 - **Display Script (TH):**  
-  ตอนนี้คุณเข้าใจหัวใจของ SPC และกฎตรวจจับครบถ้วนแล้ว ใน Module 6 ต่อไป เราจะมาเรียนวิธี **"เลือก Control Chart ให้ถูกชนิด"** กับงานจริง 10 สถานการณ์ครับ!
+  ตอนนี้คุณเข้าใจหัวใจของ SPC และกลยุทธ์การเลือกตั้งค่า Rules ครบถ้วนแล้ว ใน Module 6 ต่อไป เราจะมาเรียนวิธี **"เลือก Control Chart ให้ถูกชนิด"** กับงานจริง 10 สถานการณ์ครับ!
 - **TTS Clean Script (TH):**  
-  ตอนนี้คุณเข้าใจหัวใจของ เอสพีซี และกฎตรวจจับครบถ้วนแล้ว ใน โมดูล 6 ต่อไป เราจะมาเรียนวิธี เลือก คอนโทรล ชาร์ท ให้ถูกชนิด กับงานจริง 10 สถานการณ์ครับ
+  ตอนนี้คุณเข้าใจหัวใจของ เอสพีซี และกลยุทธ์การเลือกตั้งค่า รูลส์ ครบถ้วนแล้ว ใน โมดูล 6 ต่อไป เราจะมาเรียนวิธี เลือก คอนโทรล ชาร์ท ให้ถูกชนิด กับงานจริง 10 สถานการณ์ครับ
 - **EN Reference:**  
-  With SPC fundamentals mastered, Module 6 teaches how to select the exact right control chart across variable and attribute factory scenarios.
+  With SPC fundamentals and rule selection strategy mastered, Module 6 teaches how to select the exact right control chart across variable and attribute factory scenarios.
 
-### AUD-M5L4-S09 (20 sec) — Module 5 Final Exam
+### AUD-M5L4-S10 (20 sec) — Module 5 Final Exam
 - **Display Script (TH):**  
   ทำแบบทดสอบประมวลผล Module 5 จำนวน 20 ข้อให้ผ่าน 80 เปอร์เซ็นต์ เพื่อก้าวสู่ Module 6 ได้เลยครับ!
 - **TTS Clean Script (TH):**  
@@ -249,3 +257,6 @@
 | `ARL (Average Run Length)` | เอ-อาร์-แอล |
 | `Tampering / Over-Control` | แทม-เพอ-ริง / โอ-เวอร์-คอน-โทรล |
 | `Stratification` | สแตร-ทิ-ฟิ-เค-ชั่น |
+| `Roughness / Flatness / Coplanarity / Tilt` | รัฟ-เนส / แฟลต-เนส / โค-พลา-นา-ริ-ตี้ / ทิลต์ |
+| `Mandatory SPC Rules` | แมน-ดา-โทรี เอส-พี-ซี รูลส์ |
+| `Engineering Judgement` | เอน-จิ-เนีย-ริง จัดจ์-เมนต์ |

@@ -60,7 +60,18 @@ $$\text{CL}_R = \bar{R}, \quad \text{UCL}_R = D_4\bar{R}, \quad \text{LCL}_R = D
 
 ---
 
-## 5. อภิธานศัพท์ (Bilingual Glossary)
+## 5. กลยุทธ์เลือก SPC Rules (`Mandatory` vs `Optional` & ขอบเขตศูนย์)
+
+1. **ขอบเขตของ Rule 1 (`1 จุดนอกเส้นควบคุม`):**
+   - **Mean Chart ปกติ:** ใช้ได้ทั้ง `> UCL` และ `< LCL`
+   - **Lower-is-Better (ชิด 0) เช่น `Roughness, Flatness, Coplanarity, Tilt`:** หากคำนวณ **`LCL < 0`** → **ไม่ Valid** (ค่าจริงติดลบไม่ได้) ให้ตัด `< LCL` ออก เหลือเฉพาะ **`UCL`**
+   - **Variation Chart (`R / S` Chart):** ค่าต่ำสุดคือ `0` เมื่อ **`LCL = 0`** → **ไม่จำเป็น** ต้องตั้งกฎเช็ก `< LCL`
+2. **Mandatory SPC Rules (กฎบังคับทุก Chart):** **`Rule 1` (บนขอบเขตที่ Valid)** + *(ยุคใหม่)* **ตรวจ `Individual Raw Data` เทียบกับ `Specification Limits (USL/LSL)`**
+3. **Optional SPC Rules (กฎที่เหลือ):** ควรเลือกเปิดเพิ่ม **อย่างน้อย `1` Rule** ตาม **`1) Engineering Judgement`** และ **`2) Process Characteristic`** (วิศวกรต้องเข้าใจ Process ของตนเองเพื่อเลี่ยง False Alarm)
+
+---
+
+## 6. อภิธานศัพท์ (Bilingual Glossary)
 
 | Term (EN) | คำศัพท์ / ความหมาย (TH) |
 |---|---|
@@ -71,5 +82,7 @@ $$\text{CL}_R = \bar{R}, \quad \text{UCL}_R = D_4\bar{R}, \quad \text{LCL}_R = D
 | **Statistical Stability** | สภาวะเสถียรที่ไม่มี Special Cause ทำให้กระบวนการคาดการณ์ผลในอนาคตได้ |
 | **Over-Control / Tampering** | การปรับแต่งเครื่องจักรตามความแปรปรวนปกติ (Noise) จนทำให้ Variance เพิ่มขึ้น |
 | **Western Electric Rules (WECO)** | ชุดกฎ 4 ข้อมาตรฐาน (1>3σ, 2/3>2σ, 4/5>1σ, 8 ด้านเดียว) เพื่อจับสัญญาณ OOC |
+| **Mandatory SPC Rules** | กฎบังคับทุกชาร์ต (`Rule 1` บนเส้น Valid + ยุคใหม่ตรวจ `Raw Data vs Spec Limits`) |
+| **Lower-is-Better Zero Bound** | คุณลักษณะชิดศูนย์ (`Roughness, Flatness, Coplanarity, Tilt`) ที่ `LCL < 0` จะไม่ Valid |
 | **Average Run Length (`ARL`)** | จำนวน Subgroup เฉลี่ยก่อนที่กราฟจะเกิดสัญญาณ (ยิ่ง `ARL₀` สูง False Alarm ยิ่งน้อย) |
 | **OCAP (Out-of-Control Action Plan)** | ขั้นตอนมาตรฐานทันทีเมื่อเกิดจุดหลุดควบคุม: `Verify → Contain → Fix` |

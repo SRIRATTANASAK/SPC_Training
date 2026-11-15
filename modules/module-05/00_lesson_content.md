@@ -1,4 +1,4 @@
-# Module 5 Full Lesson Content (Web & MDX Ready — 27 Screens)
+# Module 5 Full Lesson Content (Web & MDX Ready — 28 Screens)
 
 **Module 5: SPC Concept and Methodology (หัวใจของ SPC — Walter Shewhart, Control Limits vs Spec Limits, Stability, Western Electric & Nelson Rules)**  
 เอกสารนี้คือ **เนื้อหาบนหน้าจอฉบับสมบูรณ์ (On-Screen Teaching Copy)** สำหรับนักพัฒนาเว็บนำไปสร้างหน้าเว็บ/สไลด์ (MDX/React) คู่กับเสียงบรรยายใน [02_voiceover_th_en.md](02_voiceover_th_en.md) และตัวจำลองใน [04_interactive_logic.md](04_interactive_logic.md)
@@ -181,25 +181,41 @@ $$\text{CL}_{R} = \bar{R}, \quad \text{UCL}_{R} = D_4\bar{R}, \quad \text{LCL}_{
 - **คำเตือนวิศวกรเรื่อง False Alarm (`ARL` Trade-off):**
   - ใช้ **Rule 1 อย่างเดียว:** False Alarm เฉลี่ยทุก **`~370 จุด`** (`p = 0.0027`)
   - เปิด **ทุกกฎ (WECO / Nelson 8 Rules) พร้อมกัน:** ความเสี่ยง False Alarm พุ่งเป็นทุก **`~91 จุด`** (เกือบ **4 เท่า**!) จนพนักงานหน้าไลน์ **"ชินชาต่อสัญญาณเตือน (Alarm Fatigue)"**
-  - **Best Practice (AIAG & JEDEC):** เปิด **Rule 1 + Trend (6–7 pts) + Shift (8–9 pts)** เป็นหลัก ส่วนกฎอื่นๆ ให้ใช้เป็น **Warning Signal** หรือเปิดเฉพาะพารามิเตอร์ที่จับอาการเฉพาะทาง!
+  - **Best Practice (AIAG & JEDEC):** ต้องวางโครงสร้างกฎอย่างเป็นระบบ (เช่น **Rule 1 + Raw Data Check** เป็นกฎบังคับ และคัดเลือกกฎเสริมตามพฤติกรรมกระบวนการจริง) ซึ่งเราจะเจาะลึกวิธีเลือกในหน้าถัดไป!
 
-## M5L4-S04 — From OOC Signal to OCAP (เชื่อมต่อสู่ Module 8)
+## M5L4-S04 — SPC Rule Selection Strategy: Mandatory Rules, Zero-Bounds & Engineering Judgement
+`<Asset id="AST-M5-020" />`
+- **1. ขอบเขตของ Rule 1 (`1 จุดออกนอกเส้นควบคุม`) บนกราฟแต่ละประเภท:**
+  - **Mean Chart ($\bar{X}$) แบบปกติ (Two-sided):** ใช้ Rule 1 ตรวจจับได้ทั้ง **เหนือ `UCL` และต่ำกว่า `LCL`**
+  - **กรณีค่าลักษณะ "ยิ่งน้อยยิ่งดี" (`Lower-is-Better` / Non-negative Near Zero):** เช่น **Roughness ($R_a$), Flatness, Coplanarity, Tilt, Warpage** ซึ่งค่ามีแนวโน้มเข้าใกล้ **`0`** → เมื่อคำนวณด้วยสูตรสถิติ ค่า **`LCL` อาจติดลบ (`LCL < 0`)!** แต่ในโลกจริง **ค่าที่วัดออกมาไม่มีทางติดลบได้** ดังนั้น **`LCL` ที่ติดลบจึงไม่ Valid (Invalid)** → ให้ **ยกเลิก `LCL` ทิ้ง (N/A)** และใช้ Rule 1 ตรวจ **เฉพาะฝั่ง `UCL` ด้านเดียวเท่านั้น!**
+  - **กรณี Variation Chart ($R$ Chart / $S$ Chart):** ค่าความแปรปรวนต่ำสุดทางกายภาพคือ **`0`** เมื่อคำนวณแล้วได้ **`LCL = 0`** (เช่น `n = 2–6` ที่ `D3 = 0`) → **ไม่จำเป็นต้องตั้ง SPC Rule ตรวจสอบว่าต่ำกว่า `LCL` ใน Variation Chart** ให้เฝ้าระวังเฉพาะด้านบน (`> UCL`)!
+- **2. กฎบังคับในยุคสมัยใหม่ — `Mandatory SPC Rules`:**
+  - **Mandatory SPC Rules** หมายถึง **กฎที่ทุก Control Chart จำเป็นต้องกำหนดเสมอ** ประกอบด้วย:
+    1. **Rule 1 (`1 จุดออกนอก UCL / LCL ที่ Valid`)** (ตัดฝั่ง `< LCL` ออกหาก `LCL < 0` หรือ `LCL_R = 0`)
+    2. **Individual Raw Data vs Specification Limits (`> USL` / `< LSL`):** ในสายผลิตยุคใหม่ มีการตรวจสอบ **ข้อมูลดิบรายชิ้น (Individual Raw Data) เทียบกับเส้น Spec** ด้วย *(เป็นการตรวจ Layer ชิ้นงานคู่ขนานกับ Control Chart — ไม่ใช่เอา Spec มาวาดแทน `UCL/LCL`!)* เพื่อป้องกันของเสียหลุดสายพานทันที
+- **3. การเลือก `Optional SPC Rules` ที่เหลือ (ควรเลือกอย่างน้อย `1` Rule เสมอ):**
+  - นอกจาก Mandatory Rules แล้ว ควรเลือกกฎเสริมอย่างน้อย **`1` SPC Rule** โดยพิจารณาจาก **`2` เสาหลัก**:
+    1. **Engineering Judgement (เหตุผลทางวิศวกรรม):** ความเสี่ยงของเครื่องจักร (เช่น มีดสึก → เปิด Trend `6 pts`, เปลี่ยนล็อต/Offset → เปิด Shift `8–9 pts`), ความไวในการจับ Shift, และต้นทุน False Alarm
+    2. **Process Characteristic (พฤติกรรมของกระบวนการนั้นๆ):** ลักษณะการแจกแจงข้อมูลจริง เช่น ข้อมูลแบบ Normal สมมาตร vs ข้อมูลเบ้ชิดศูนย์ (`Roughness / Coplanarity`) ที่ไม่ควรเปิดกฎด้านล่างให้ร้องเตือนมั่ว
+  - **หัวใจของวิศวกร:** **วิศวกรต้องเข้าใจ Process ของตนเองอย่างลึกซึ้ง** จึงจะเลือก SPC Rules ได้แม่นยำและ **หลีกเลี่ยง False Alarm (Alarm Fatigue)** หน้าไลน์ผลิตได้สำเร็จ!
+
+## M5L4-S05 — From OOC Signal to OCAP (เชื่อมต่อสู่ Module 8)
 `<Asset id="AST-M5-017" />`
 - เมื่อ Rule ใด Rule หนึ่งทำงาน → ห้ามแค่กดปิดหน้าต่าง! ต้องทำตาม **OCAP (Out-of-Control Action Plan)** ทันที:
   1. **Verify:** ตรวจซ้ำว่าวัดผิด/คีย์ผิดหรือไม่ (`1` นาที)
   2. **Contain:** กักกันสินค้าตั้งแต่จุดสุดท้ายที่ดี (Last Good Point)
   3. **Investigate & Fix:** แก้ Special Cause ที่ต้นตอ (ไม่ปรับมั่วถ้าเป็น Noise!) และบันทึก Log ลง Control Chart
 
-## M5L4-S05 — Interactive Western Electric & Nelson Rules Trigger Lab
+## M5L4-S06 — Interactive Western Electric, Nelson & Rule Selection Trigger Lab
 `<Interactive id="INT-M5-L4-01" />`
-- กดปุ่มจำลองเหตุการณ์ (`3σ Spike`, `2 of 3 Zone A`, `4 of 5 Zone B`, `8 in a row`, `6-pt Trend`, `14-pt Alternating`, `15-pt Zone C Hug`) พร้อมสวิตช์เปิด-ปิดแต่ละกฎเพื่อสังเกตทั้งการแจ้งเตือน, Zone Highlight, และค่า **False Alarm Rate (`ARL`)**
+- เลือก **Process Profile** (`Normal Mean`, `Lower-is-Better Near-Zero: Flatness/Roughness`, `Variation R Chart`) เพื่อดู **Mandatory Rules (`Rule 1 Valid Bounds` + `Raw Data vs Spec`)**, กดจำลองเหตุการณ์ทั้ง 7 แบบ พร้อมเลือก **Optional Rule (อย่างน้อย `1` ข้อ)** และสังเกตค่า **False Alarm (`ARL`)** แบบ Real-time
 
-## M5L4-S06 — Workshop: หา Special Cause จาก Control Chart ข้อมูลจริง
+## M5L4-S07 — Workshop: หา Special Cause จาก Control Chart ข้อมูลจริง
 `<Interactive id="INT-M5-L4-02" />`
 - **ไฟล์ข้อมูล:** [data/workshop_m5_control_chart_subgroups.csv](data/workshop_m5_control_chart_subgroups.csv) (`125` ชิ้น, `25 Subgroups × 5 ชิ้น`, `Shaft_OD_mm`, Spec `25.000 ± 0.080 mm`, ค่าคงที่สำหรับ `n = 5`: `A2 = 0.577, D3 = 0, D4 = 2.114`)
 - **ภารกิจ:** คำนวณ Trial Control Limits (`CL, UCL, LCL` ของ $\bar{X}$ และ $R$), ตรวจหากฎ **WE Rules 1–4** ที่ทำงาน, แยกจุด Special Cause, และคำนวณ **Revised Baseline Control Limits**
 
-## M5L4-S07 — Workshop Solution: Phase I vs Revised Limits & Diagnosis
+## M5L4-S08 — Workshop Solution: Phase I vs Revised Limits & Diagnosis
 `<Asset id="AST-M5-018" />`
 - **Trial Control Limits (`All 25 Subgroups`):**
   - $\bar{X}$ Chart: `CL = 25.0067 mm`, `UCL = 25.0226 mm`, `LCL = 24.9907 mm` | $R$ Chart: `CL_R = 0.0276 mm`, `UCL_R = 0.0584 mm`
@@ -208,9 +224,9 @@ $$\text{CL}_{R} = \bar{R}, \quad \text{UCL}_{R} = D_4\bar{R}, \quad \text{LCL}_{
   2. **`SG-18` – `SG-25` (`01:00`–`08:00`):** 8 จุดติดกันอยู่เหนือ `CL` ทั้งหมด → **WE Rule 4** (และ `SG-23..25` เข้า **WE Rule 2: 2 ใน 3 อยู่ Zone A `> +2σ`**) ทั้งที่ไม่มีจุดใดหลุด `UCL_X` เลย!
 - **Revised Control Limits (หลังตัด `SG-11` และ `SG-18..25` เหลือ `16` กลุ่มเสถียร):** `CL_X = 25.0013`, `UCL_X = 25.0181`, `LCL_X = 24.9845` | `UCL_R = 0.0616` ดูรายละเอียดใน [07_workshop_guide.md](07_workshop_guide.md)
 
-## M5L4-S08 — Module 5 Summary & Bridge to Module 6
+## M5L4-S09 — Module 5 Summary & Bridge to Module 6
 `<Asset id="AST-M5-019" />`
-- ตอนนี้คุณเข้าใจหลักการทำงานของ Control Chart แล้ว — ใน **Module 6** เราจะตอบคำถามสำคัญถัดไป: *"ข้อมูลโรงงานแต่ละแบบ (`Variable` vs `Attribute`, `n=1`, `n=5`, `n>10`, `P/NP/C/U`) ต้องเลือก Control Chart ตัวไหนให้ถูกต้อง!"*
+- ตอนนี้คุณเข้าใจหลักการทำงานของ Control Chart และวิธีเลือกใช้ SPC Rules อย่างมืออาชีพแล้ว — ใน **Module 6** เราจะตอบคำถามสำคัญถัดไป: *"ข้อมูลโรงงานแต่ละแบบ (`Variable` vs `Attribute`, `n=1`, `n=5`, `n>10`, `P/NP/C/U`) ต้องเลือก Control Chart ตัวไหนให้ถูกต้อง!"*
 
-## M5L4-S09 — Module 5 Final Assessment (`EXAM-M5`)
+## M5L4-S10 — Module 5 Final Assessment (`EXAM-M5`)
 - สอบประมวลผลสุ่ม **20 ข้อ** จากคลัง [06_assessment_bank.md](06_assessment_bank.md) (`M5-Q001`–`M5-Q060`) | เกณฑ์ผ่าน **80% (`16/20`)**

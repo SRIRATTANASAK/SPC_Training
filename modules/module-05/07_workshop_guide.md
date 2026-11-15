@@ -4,7 +4,7 @@
 
 ---
 
-## Workshop: หา Special Cause จาก Control Chart ข้อมูลจริง (`M5L4-S06` & `S07`)
+## Workshop: หา Special Cause จาก Control Chart ข้อมูลจริง (`M5L4-S07` & `S08`)
 - **ไฟล์ข้อมูล:** [data/workshop_m5_control_chart_subgroups.csv](data/workshop_m5_control_chart_subgroups.csv)
 - **บริบทหน้างาน:** วัดเส้นผ่านศูนย์กลางเพลาจากเครื่องกลึง CNC (`Shaft_OD_mm`) จำนวน **`125` ชิ้น** (`25 Subgroups × 5 ชิ้นต่อเนื่องทุกชั่วโมง`)
 - **สเปกลูกค้า (VOC):** `25.000 ± 0.080 mm` → **`LSL = 24.920 mm`**, **`USL = 25.080 mm`**

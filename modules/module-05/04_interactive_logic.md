@@ -13,6 +13,12 @@
   "var_completed_screens": [],
   "var_limit_mode": "control_limits",
   "var_excluded_subgroups": [],
+  "var_process_profile": "symmetric_mean",
+  "var_mandatory_rules": {
+    "we1_ucl": true,
+    "we1_lcl": true,
+    "raw_data_vs_spec": true
+  },
   "var_active_rules": {
     "we1": true,
     "we2": true,
@@ -60,24 +66,30 @@
 
 ## Lesson M5-L4 Interactions
 
-### INT-M5-L4-01 — Western Electric & Nelson Rules Trigger Lab (`M5L4-S05`)
+### INT-M5-L4-01 — Western Electric, Nelson & Rule Selection Trigger Lab (`M5L4-S06`)
 - **Inputs:**
-  - Rule Toggles (`var_active_rules`): `WE1 (1>3σ)`, `WE2 (2/3>2σ)`, `WE3 (4/5>1σ)`, `WE4 (8 same side)`, `Trend (6 up/down)`, `Alternating (14)`, `Zone C Hug (15)`
+  - `var_process_profile` Selector:
+    1. `"symmetric_mean"` (`Shaft OD Mean Chart`): `we1_ucl = true`, `we1_lcl = true`, `raw_data_vs_spec = true`
+    2. `"near_zero_lower_better"` (`Surface Roughness Ra / Coplanarity / Flatness / Tilt`): calculated `LCL < 0` is flagged `"INVALID (LCL < 0)"` → `we1_lcl` auto-disabled (`N/A`), keeping `we1_ucl = true` + `raw_data_vs_spec = true`
+    3. `"variation_r_chart"` (`Range / SD Variation Chart`, `n = 5`, `D3 = 0`): `LCL_R = 0` → `we1_lcl` auto-disabled (`Unnecessary: Physical Min = 0`), keeping `we1_ucl = true`
+  - Mandatory Rules Lock (`var_mandatory_rules`): Locked ON for valid upper/lower limits + modern `Individual Raw Data vs USL/LSL` check
+  - Optional Rule Toggles (`var_active_rules`): `WE2 (2/3>2σ)`, `WE3 (4/5>1σ)`, `WE4 (8 same side)`, `Trend (6 up/down)`, `Alternating (14)`, `Zone C Hug (15)` — validation badge warns if `< 1` Optional Rule is chosen or displays guidance on **Engineering Judgement** & **Process Characteristic**
   - Preset Injection Buttons:
-    1. `"Inject 3σ Spike"` → Triggers `WE1`
-    2. `"Inject 2σ Shift (2 of 3 Zone A)"` → Triggers `WE2`
-    3. `"Inject 1.5σ Drift (4 of 5 Zone B+)"` → Triggers `WE3`
-    4. `"Inject Subtle 1σ Shift (8 Above CL)"` → Triggers `WE4`
-    5. `"Inject Tool Wear (6 Increasing)"` → Triggers `Trend`
-    6. `"Simulate Tampering (14 Alternating)"` → Triggers `Alternating`
-    7. `"Simulate Mixed Subgroup (15 in Zone C)"` → Triggers `Zone C Hug`
+    1. `"Inject 3σ Spike"` → Triggers `WE1` (and tests `< LCL` validity across profiles)
+    2. `"Inject Individual Raw Data > USL"` → Triggers `Raw Data vs Spec` Mandatory Gate even when subgroup `X̄` stays inside `UCL`
+    3. `"Inject 2σ Shift (2 of 3 Zone A)"` → Triggers `WE2`
+    4. `"Inject 1.5σ Drift (4 of 5 Zone B+)"` → Triggers `WE3`
+    5. `"Inject Subtle 1σ Shift (8 Above CL)"` → Triggers `WE4`
+    6. `"Inject Tool Wear (6 Increasing)"` → Triggers `Trend`
+    7. `"Simulate Tampering (14 Alternating)"` → Triggers `Alternating`
+    8. `"Simulate Mixed Subgroup (15 in Zone C)"` → Triggers `Zone C Hug`
 - **Live False Alarm ARL Readout:**
-  - `WE1 only`: `ARL ≈ 370` subgroups (`p = 0.0027`)
-  - `WE1 + Trend + WE4`: `ARL ≈ 175` subgroups (Recommended balanced sensitivity)
-  - `All 7 Rules ON`: `ARL ≈ 91` subgroups (**Warning Badge: High False-Alarm Fatigue Risk!**)
-- **Completion Trigger:** Inject and inspect at least 4 distinct rule triggers (`+10 pts`).
+  - `WE1 only`: `ARL ≈ 370` subgroups (`p = 0.0027`) + Prompt: *"Please select ≥ 1 Optional Rule based on Engineering Judgement & Process Characteristic"*
+  - `Mandatory + WE1_Valid + Trend + WE4` (Recommended): `ARL ≈ 175` subgroups (Balanced sensitivity + low false alarm)
+  - `All Rules ON`: `ARL ≈ 91` subgroups (**Warning Badge: High False-Alarm Fatigue Risk!**)
+- **Completion Trigger:** Test `>= 2` Process Profiles (including Near-Zero or Variation `LCL=0` check), ensure `>= 1` Optional Rule selected, and inspect at least 4 distinct triggers (`+10 pts`).
 
-### INT-M5-L4-02 — Workshop: Shaft OD Control Chart Analyzer (`M5L4-S06`)
+### INT-M5-L4-02 — Workshop: Shaft OD Control Chart Analyzer (`M5L4-S07`)
 - **Data Source:** `data/workshop_m5_control_chart_subgroups.csv` (`125` records: `25 Subgroups × 5 parts`, `Shaft_OD_mm`, Spec `25.000 ± 0.080 mm`, `A2 = 0.577, D3 = 0, D4 = 2.114`)
 - **Interactive Modules Displayed:**
   - Dual Stacked `X̄` (with Zone A/B/C lines) and `R` Chart (`SG-01..25`)
@@ -106,7 +118,7 @@
 
 ---
 
-## Final Exam Logic (`EXAM-M5` on `M5L4-S09`)
+## Final Exam Logic (`EXAM-M5` on `M5L4-S10`)
 - **Question Pool:** `M5-Q001` .. `M5-Q060` (`06_assessment_bank.md`)
 - **Stratified Random Draw (20 Questions):** `4 L1 + 5 L2 + 5 L3 + 6 L4`
 - **Pass Criteria:** `>= 80%` (`16/20`), Unlimited retries with remediation links.

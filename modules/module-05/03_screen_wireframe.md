@@ -1,8 +1,8 @@
 # Module 5 Screen Wireframe (Web-First & Responsive Ready)
 
 ## Global Layout Standard
-- Header (10%): Breadcrumb (`Module 5 > Lesson > Screen`), Progress (`X / 27`), Language Toggle (`TH / EN`)
-- Stage (75%): Interactive Zone Charts / Pattern Matchers / WECO Trigger Lab
+- Header (10%): Breadcrumb (`Module 5 > Lesson > Screen`), Progress (`X / 28`), Language Toggle (`TH / EN`)
+- Stage (75%): Interactive Zone Charts / Pattern Matchers / WECO Rule Selection Trigger Lab
 - Audio & Caption Bar (5%): Play/Pause `AUD-M5*`, Speed (`1.0x / 1.25x`), Captions
 - Footer (10%): `Back` | Screen Indicator | `Resources (M5 Cheat Sheet)` | `Next`
 
@@ -32,13 +32,14 @@
 - **M5L3-S06 Pattern Diagnosis Matcher (`INT-M5-L3-01`):** 6-Pattern Interactive Matcher
 - **M5L3-S07 Knowledge Check (`KC-M5-L3`):** 2-Question Card
 
-## M5-L4: Western Electric Rules, Nelson Rules & Workshop (9 Screens)
+## M5-L4: Western Electric Rules, Nelson Rules & Workshop (10 Screens)
 - **M5L4-S01 Zone Probability Logic:** Bell Curve & Run Odds Visual (`AST-M5-014`)
 - **M5L4-S02 Western Electric Rules 1–4:** 4-Panel Zone Diagram Grid (`AST-M5-015`)
 - **M5L4-S03 Nelson Rules & `ARL` Fatigue:** 4 Additional Rules + `ARL 370 vs 91` Gauge (`AST-M5-016`)
-- **M5L4-S04 OOC to OCAP Hook:** 3-Step Response Flow (`AST-M5-017`)
-- **M5L4-S05 WECO & Nelson Trigger Lab (`INT-M5-L4-01`):** Interactive Zone Chart + Rule Switches + Live ARL
-- **M5L4-S06 Workshop SPC (`INT-M5-L4-02`):** 25-Subgroup Shaft OD CSV Lab + 4 Diagnostic Questions
-- **M5L4-S07 Workshop Solution:** Trial vs Revised `X̄-R` Dashboard (`AST-M5-018`)
-- **M5L4-S08 Summary & Bridge to M6:** Milestone Bridge Card (`AST-M5-019`)
-- **M5L4-S09 Module 5 Final Exam (`EXAM-M5`):** 20-Question Stratified Random Exam Runner
+- **M5L4-S04 Rule Selection Strategy & Zero-Bounds:** Mandatory (`Rule 1` + `Raw Data vs Spec`), Invalid `LCL<0` & `LCL=0`, and ≥1 Optional Rule Selection (`AST-M5-020`)
+- **M5L4-S05 OOC to OCAP Hook:** 3-Step Response Flow (`AST-M5-017`)
+- **M5L4-S06 WECO, Nelson & Rule Selection Trigger Lab (`INT-M5-L4-01`):** Process Profile Switcher + Interactive Zone Chart + Mandatory/Optional Rules + Live ARL
+- **M5L4-S07 Workshop SPC (`INT-M5-L4-02`):** 25-Subgroup Shaft OD CSV Lab + 4 Diagnostic Questions
+- **M5L4-S08 Workshop Solution:** Trial vs Revised `X̄-R` Dashboard (`AST-M5-018`)
+- **M5L4-S09 Summary & Bridge to M6:** Milestone Bridge Card (`AST-M5-019`)
+- **M5L4-S10 Module 5 Final Exam (`EXAM-M5`):** 20-Question Stratified Random Exam Runner

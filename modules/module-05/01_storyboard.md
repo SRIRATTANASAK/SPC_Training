@@ -1,8 +1,8 @@
 # Module 5 Production Storyboard (Developer & Web/LMS Ready)
 
 **Module:** Module 5 — SPC Concept and Methodology (Shewhart, Control vs Spec Limit, Stability, Western Electric & Nelson Rules)  
-**Total Lessons:** 4 Lessons | **Total Screens:** 27 Screens (`M5L1-S01` .. `M5L4-S09`)  
-**Estimated Duration:** ~38 minutes (including pattern labs, WECO rule simulator & workshop)  
+**Total Lessons:** 4 Lessons | **Total Screens:** 28 Screens (`M5L1-S01` .. `M5L4-S10`)  
+**Estimated Duration:** ~40 minutes (including pattern labs, WECO rule selection simulator & workshop)  
 **Delivery Target:** Web Interactive Training (MDX/React + Thai Audio Sync) & SCORM 2004 Compatible
 
 ---
@@ -273,73 +273,85 @@
 - **Accessibility Notes:** Clear ARL comparison bar.
 - **Developer Notes:** Prevents blind "enable all 8 rules" mistake in Minitab.
 
-## Screen M5L4-S04 — From OOC Signal to OCAP (Bridge to Module 8)
+## Screen M5L4-S04 — SPC Rule Selection: Mandatory Rules, Zero-Bounds & Engineering Judgement
+- **Learning Objective:** เข้าใจกฎบังคับ (`Mandatory Rules`: Rule 1 ขอบเขตที่ Valid + Raw Data vs Spec), ข้อยกเว้น `LCL < 0` บนค่ายิ่งน้อยยิ่งดี และ `LCL = 0` บน Variation Chart พร้อมหลักการเลือกกฎเสริมอย่างน้อย 1 ข้อ
+- **Duration:** 55s
+- **Layout:** Top 3-Column Chart Bound Comparison (`AST-M5-020`: Mean Normal vs Lower-is-Better Zero-Bound vs Variation R Chart) | Bottom Mandatory Shields + 2-Pillar Optional Rule Selector
+- **Asset ID:** `AST-M5-020`
+- **On Screen Text:** `Mandatory Rules (Rule 1 Valid + Raw Data vs Spec)` + `Choose ≥1 Optional Rule by Engineering Judgement & Process Characteristic`
+- **Voice Over Script Ref:** `AUD-M5L4-S04`
+- **Motion Specification:** 3-scene animation: (1) Near-zero Roughness/Flatness/Coplanarity/Tilt pushes `LCL < 0` into red invalid zone and fades `< LCL` rule off while keeping `UCL`; (2) Variation Chart snaps bottom bar onto `0` and crosses out redundant `< LCL_R` rule; (3) Modern `Individual Raw Data vs USL/LSL` shield locks alongside `Rule 1`, then Engineering Judgement + Process Characteristic scales highlight `≥ 1` tailored Optional Rule cleanly without False Alarm fatigue.
+- **Trigger Logic:** Narration complete unlocks Next.
+- **Accessibility Notes:** Colorblind-safe strike-through badges (`Invalid LCL < 0`, `Unnecessary LCL = 0`) + full TH/EN captions.
+- **Developer Notes:** Core rule-configuration blueprint tying straight into `INT-M5-L4-01`.
+
+## Screen M5L4-S05 — From OOC Signal to OCAP (Bridge to Module 8)
 - **Learning Objective:** รู้ขั้นตอนปฏิบัติทันทีเมื่อเกิดสัญญาณ Out-of-Control (`Verify → Contain → Fix`)
 - **Duration:** 30s
 - **Layout:** 3-Step OCAP Flow Strip (`AST-M5-017`)
 - **Asset ID:** `AST-M5-017`
 - **On Screen Text:** `1) Verify Data` → `2) Contain Since Last Good Subgroup` → `3) Find & Fix Special Cause`
-- **Voice Over Script Ref:** `AUD-M5L4-S04`
+- **Voice Over Script Ref:** `AUD-M5L4-S05`
 - **Motion Specification:** OOC siren flows cleanly through 3 structured OCAP cards.
 - **Trigger Logic:** Narration complete unlocks Next.
 - **Accessibility Notes:** Step flow descriptions.
 - **Developer Notes:** Preview of Module 8 OCAP.
 
-## Screen M5L4-S05 — Interactive Western Electric Rules Trigger Lab
-- **Learning Objective:** ทดลองจำลองสัญญาณทั้ง 7 รูปแบบและสังเกตทั้ง Rule Triggers และค่า False Alarm ARL
-- **Duration:** 60s
-- **Layout:** Full Interactive Rule Lab Canvas + Rule Checkboxes (`INT-M5-L4-01`)
+## Screen M5L4-S06 — Interactive Western Electric, Nelson & Rule Selection Trigger Lab
+- **Learning Objective:** ทดลองเลือก Process Profile (Normal vs Near-Zero Lower-is-Better vs Variation R Chart), จำลองสัญญาณ 7 รูปแบบ, ดู Mandatory Rule Bounds (`Rule 1` + `Raw Data vs Spec`) และเลือก Optional Rule อย่างน้อย 1 ข้อพร้อมเช็ก `ARL`
+- **Duration:** 65s
+- **Layout:** Process Profile Switcher + Interactive Rule Lab Canvas + Rule Checkboxes (`INT-M5-L4-01`)
 - **Asset ID:** N/A | **Interactive ID:** `INT-M5-L4-01`
-- **On Screen Text:** "คลิกจำลองเหตุการณ์และสลับเปิด-ปิด WE / Nelson Rules เพื่อดูการแจ้งเตือนพร้อมค่า ARL แบบ Real-time"
-- **Voice Over Script Ref:** `AUD-M5L4-S05`
-- **Motion Specification:** Points animate onto Zone A/B/C chart and trigger live rule badges at 60fps.
-- **Trigger Logic:** Trigger at least 4 distinct rules in lab (`+10 pts`).
+- **On Screen Text:** "เลือก Process Characteristic แล้วลองเปิดกฎ Mandatory + อย่างน้อย 1 Optional Rule เพื่อดูการแจ้งเตือนและค่า ARL แบบ Real-time"
+- **Voice Over Script Ref:** `AUD-M5L4-S06`
+- **Motion Specification:** Points animate onto Zone A/B/C chart; `LCL` fades/locks dynamically when Near-Zero or Variation mode is active.
+- **Trigger Logic:** Configure valid Mandatory + ≥1 Optional rule and trigger at least 4 distinct rules in lab (`+10 pts`).
 - **Accessibility Notes:** Keyboard event triggers + live ARIA alerts.
-- **Developer Notes:** Directly implements the Roadmap's "Western Electric Rules Trigger Lab".
+- **Developer Notes:** Directly implements the Roadmap's "Western Electric Rules Trigger Lab" + engineering rule selection.
 
-## Screen M5L4-S06 — Workshop: หา Special Cause จาก Control Chart ข้อมูลจริง
+## Screen M5L4-S07 — Workshop: หา Special Cause จาก Control Chart ข้อมูลจริง
 - **Learning Objective:** วิเคราะห์ไฟล์ `workshop_m5_control_chart_subgroups.csv` (25 Subgroups) เพื่อคำนวณ Limits และหา Special Causes
 - **Duration:** 120s
 - **Layout:** Interactive X̄-R Chart Analyzer (`INT-M5-L4-02`) + CSV Download + 4 Diagnostic Questions
 - **Asset ID:** N/A | **Interactive ID:** `INT-M5-L4-02`
 - **On Screen Text:** "Workshop: ข้อมูล Shaft OD 125 ชิ้น (25 Subgroups × 5 ชิ้น | Spec 25.000 ± 0.080 mm) — หา Trial Limits & Special Causes!"
-- **Voice Over Script Ref:** `AUD-M5L4-S06`
+- **Voice Over Script Ref:** `AUD-M5L4-S07`
 - **Motion Specification:** Interactive X̄-R chart renders `SG-01..25` with hover values and toggleable Revised Limits.
 - **Trigger Logic:** Score `>= 3/4` on Workshop diagnostic quiz.
 - **Accessibility Notes:** Full subgroup `X̄, R` table fallback.
 - **Developer Notes:** Exact numbers verified in `07_workshop_guide.md`.
 
-## Screen M5L4-S07 — Workshop Solution: Phase I vs Revised Limits & Diagnosis
+## Screen M5L4-S08 — Workshop Solution: Phase I vs Revised Limits & Diagnosis
 - **Learning Objective:** สรุปการตรวจจับ `SG-11` (Rule 1) และ `SG-18..25` (Rule 4 + Rule 2) ทั้งที่ไม่มีชิ้นงานหลุด Spec เลย
 - **Duration:** 45s
 - **Layout:** Annotated Dual X̄-R Solution Dashboard (`AST-M5-018`)
 - **Asset ID:** `AST-M5-018`
 - **On Screen Text:** "เฉลย: จับ SG-11 (Rule 1 X̄&R) + SG-18..25 (Rule 4 & Rule 2) ทั้งที่ทุกชิ้นยังอยู่ใน Spec (24.960–25.068 mm)!"
-- **Voice Over Script Ref:** `AUD-M5L4-S07`
+- **Voice Over Script Ref:** `AUD-M5L4-S08`
 - **Motion Specification:** Trial limits tighten to Revised Limits after flagging `SG-11` and `SG-18..25`.
 - **Trigger Logic:** Review solution to continue.
 - **Accessibility Notes:** Clear limit comparison table.
 - **Developer Notes:** Highlights SPC early-warning power.
 
-## Screen M5L4-S08 — Module 5 Summary & Bridge to Module 6
-- **Learning Objective:** สรุปหลักการ SPC และเตรียมพร้อมเข้าสู่การเลือกชนิด Control Chart ใน Module 6
+## Screen M5L4-S09 — Module 5 Summary & Bridge to Module 6
+- **Learning Objective:** สรุปหลักการ SPC, การเลือกใช้ Rules อย่างมีวิจารณญาณ และเตรียมพร้อมเข้าสู่การเลือกชนิด Control Chart ใน Module 6
 - **Duration:** 25s
 - **Layout:** Bridge Milestone Card (`AST-M5-019`)
 - **Asset ID:** `AST-M5-019`
 - **On Screen Text:** "จบบทเรียน Module 5 → ก้าวต่อไปใน Module 6: เลือก Control Chart ให้ถูกชนิด (Variable vs Attribute)"
-- **Voice Over Script Ref:** `AUD-M5L4-S08`
+- **Voice Over Script Ref:** `AUD-M5L4-S09`
 - **Motion Specification:** Bridge arrow illuminates Module 6 chart matrix preview.
 - **Trigger Logic:** Click to enter Final Exam.
 - **Accessibility Notes:** Clear summary bullets.
 - **Developer Notes:** Smooth transition cue.
 
-## Screen M5L4-S09 — Module 5 Final Assessment (`EXAM-M5`)
+## Screen M5L4-S10 — Module 5 Final Assessment (`EXAM-M5`)
 - **Learning Objective:** วัดผลสัมฤทธิ์ Module 5 (เกณฑ์ผ่าน 80% = 16/20 ข้อ)
 - **Duration:** 10–15 min
 - **Layout:** Exam Runner (20 Randomized Questions from `M5-Q001..M5-Q060`)
 - **Asset ID:** N/A
 - **On Screen Text:** "แบบทดสอบประมวลผล Module 5 (สุ่ม 20 ข้อ จากคลัง 60 ข้อ | เกณฑ์ผ่าน 80% | ทำซ้ำได้ไม่จำกัด)"
-- **Voice Over Script Ref:** `AUD-M5L4-S09`
+- **Voice Over Script Ref:** `AUD-M5L4-S10`
 - **Motion Specification:** Lesson breakdown progress rings.
 - **Trigger Logic:** Stratify `4 L1 + 5 L2 + 5 L3 + 6 L4 = 20 Qs`; Pass `>= 80%` unlocks Module 6.
 - **Accessibility Notes:** Untimed accessible exam.

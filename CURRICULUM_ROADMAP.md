@@ -59,9 +59,9 @@
   - `5.1` Introduction to SPC (History, Walter Shewhart Concept, AIAG SPC Framework, JEDEC `JESD557`)
   - `5.2` Control Chart Principle (Natural Variation, `UCL/CL/LCL` vs `USL/LSL`, Phase I Trial vs Phase II Frozen Limits)
   - `5.3` Stability Assessment (Reading $R$ Before $\bar{X}$, 6 Special Cause Signatures, Tampering & Early OOC Warning)
-  - `5.4` Western Electric Rules (`1–4`) & Nelson Rules (`5–8`) + False Alarm `ARL` (`370` vs `91`) & OCAP Hook
+  - `5.4` Western Electric Rules (`1–4`), Nelson Rules (`5–8`), `ARL` Trade-off, **SPC Rule Selection Strategy** (`Mandatory Rules`: Rule 1 ขอบเขตที่ Valid + `Raw Data vs Spec Limits`, ข้อยกเว้น `LCL < 0` บน Lower-is-Better และ `LCL = 0` บน Variation Chart, การเลือก `≥ 1 Optional Rule` ด้วย Engineering Judgement & Process Characteristic) & OCAP Hook
   - **Workshop:** หา Special Cause จาก Control Chart ข้อมูล Shaft OD 125 ชิ้น (`25 Subgroups × 5`)
-- **Interactive / Animation:** **Western Electric & Nelson Rules Trigger Lab** (กดจำลองทั้ง 7 อาการและสลับเปิด-ปิดกฎเพื่อดู Zone Alert และค่า False Alarm `ARL`) + **Phase I/II Control vs Spec Builder** + **6-Pattern Diagnosis Matcher**
+- **Interactive / Animation:** **Western Electric, Nelson & Rule Selection Trigger Lab** (สลับ Process Profile + กดจำลองทั้ง 7 อาการและเลือก Mandatory/Optional Rules ดูค่า `ARL`) + **Rule Selection & Zero-Bound Animation (`AST-M5-020`)** + **Phase I/II Control vs Spec Builder** + **6-Pattern Diagnosis Matcher**
 
 ---
 
