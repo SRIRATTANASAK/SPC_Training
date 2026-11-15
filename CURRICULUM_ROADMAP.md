@@ -101,15 +101,15 @@
 ---
 
 ## Module 9 : MSA Connection to SPC (หัวข้อที่ Engineer ใหม่มักไม่เข้าใจ)
-- **สถานะ:** 📋 Planned
+- **สถานะ:** ✅ พร้อมใช้งานใน [modules/module-09/](modules/module-09/)
 - **เนื้อหาหลัก:**
-  - `9.1` Why MSA Before SPC (Measurement Error, Observed Variance $\sigma^2_{\text{obs}} = \sigma^2_{\text{part}} + \sigma^2_{\text{gage}}$, False Signal)
-  - `9.2` Gage R&R Overview (Repeatability vs Reproducibility, %GRR, %Tolerance, ndc $\ge 5$)
-  - `9.3` Bias
-  - `9.4` Linearity
-  - `9.5` Stability
-  - **Workshop:** อ่านผล Gage R&R Report
-- **Interactive / Animation:** **Gage R&R Impact Simulator** (ปรับ %Repeatability / %Reproducibility แล้วเห็น Control Chart เกิด False Out-of-Control Signal และเห็นค่า Cpk จริงถูกกดต่ำลง)
+  - `9.1` Why MSA Before SPC (Observed Variance $\sigma^2_{\text{obs}} = \sigma^2_{\text{part}} + \sigma^2_{\text{gage}}$, False Signal & $C_{pk}$ Deflation, `10-to-1` Resolution Rule)
+  - `9.2` Gage R&R (`Repeatability EV` vs `Reproducibility AV`, `10×3×3` Blind & Randomized Study, `%GRR %SV` vs `%Tolerance`, `ndc >= 5`, Diagnosing `EV > AV` vs `AV > EV`)
+  - `9.3` Bias (Offset from Master Gage Block & `95% CI`)
+  - `9.4` Linearity (5-Point Operating Range Slope)
+  - `9.5` Stability (Check Standard $\bar{X}$-$R$ Control Chart Over Time) + Attribute MSA (`Kappa >= 0.75`)
+  - **Workshop:** อ่านและวินิจฉัยผล Gage R&R Report (`workshop_m9_gage_rr_study.csv`, `10 Parts × 3 Appraisers × 3 Trials = 90` การวัด, Pin OD `12.000 ± 0.100 mm`): `%GRR = 51.25%`, `%Tol = 37.74%`, `ndc = 2` (`AV = 0.01252 >> EV = 0.00126` จาก Appraiser B กดแรง `-0.022 mm`) → แก้ด้วย **Ratchet Stop Micrometer** เหลือ **`%GRR < 8%`**, `ndc >= 15`
+- **Interactive / Animation:** **Gage R&R Impact Simulator (`INT-M9-L1-01`)**, **Repeatability vs Reproducibility Lab (`INT-M9-L2-01`)**, **Bias, Linearity & Stability Diagnostic (`INT-M9-L3-01`)**, **Gage R&R Report Reader Workshop (`INT-M9-L4-01`)**
 
 ---
 
