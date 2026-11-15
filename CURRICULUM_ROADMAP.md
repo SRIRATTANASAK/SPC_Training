@@ -42,14 +42,14 @@
 ---
 
 ## Module 4 : Process Variation and Capability (จุดเชื่อมก่อนเข้า SPC)
-- **สถานะ:** 📋 Planned
+- **สถานะ:** ✅ พร้อมใช้งานใน [modules/module-04/](modules/module-04/)
 - **เนื้อหาหลัก:**
-  - `4.1` Understanding Process Variation (Voice of Process vs Voice of Customer)
-  - `4.2` Specification vs Process (USL, LSL, Target)
-  - `4.3` Process Capability Index ($C_p, C_{pk}, P_p, P_{pk}$ — ความต่างของ $\sigma_{\text{within}}$ vs $\sigma_{\text{overall}}$)
-  - `4.4` AIAG/VDA SPC Requirement (Stable Process & Capable Process, เกณฑ์ 1.33 vs 1.67, PPM Conversion)
-  - **Workshop:** คำนวณ $C_p/C_{pk}$ จากข้อมูลจริง
-- **Interactive / Animation:** **Cp vs Cpk Interactive Playground** (Slider ปรับ Mean Shift และ $\sigma$ พร้อมเส้น USL/LSL/Target แสดงค่า Cp, Cpk และ Expected PPM แบบ Real-time)
+  - `4.1` Understanding Process Variation (Voice of Process vs Voice of Customer, 4-Quadrant Matrix)
+  - `4.2` Specification vs Process (USL, LSL, Target, Taguchi Loss, Bilateral vs Unilateral Specs, 3 Limits)
+  - `4.3` Process Capability Index ($C_p, C_{pk}, P_p, P_{pk}$ — ความต่างของ $\hat{\sigma}_{\text{within}}$ vs $s_{\text{overall}}$, PPM Conversion)
+  - `4.4` AIAG/VDA & JEDEC Standard Requirements (3 Prerequisite Gates, PPAP `1.67` vs Ongoing `1.33`, JEDEC Semiconductor 1-Sided/Non-Normal/OCAP)
+  - **Workshop:** คำนวณ $C_p/C_{pk}/P_p/P_{pk}$ จากข้อมูล Pin Length 100 ชิ้น (`20 Subgroups × 5`) พร้อมวินิจฉัย Shift กะดึก
+- **Interactive / Animation:** **Cp vs Cpk Interactive Playground** (Slider ปรับ Mean Shift และ $\sigma$ พร้อมสลับ Spec 2 ด้าน/1 ด้าน แสดงค่า Cp, Cpk, Expected PPM แบบ Real-time) + **AIAG/VDA & JEDEC Release Gate Simulator**
 
 ---
 
