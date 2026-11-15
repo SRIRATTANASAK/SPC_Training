@@ -54,14 +54,14 @@
 ---
 
 ## Module 5 : SPC Concept and Methodology
-- **สถานะ:** 📋 Planned
+- **สถานะ:** ✅ พร้อมใช้งานใน [modules/module-05/](modules/module-05/)
 - **เนื้อหาหลัก:**
-  - `5.1` Introduction to SPC (History, Walter Shewhart Concept, AIAG SPC Framework, JEDEC Standard)
-  - `5.2` Control Chart Principle (Natural Variation, UCL/CL/LCL vs USL/LSL — ความแตกต่างที่สำคัญที่สุด)
-  - `5.3` Stability Assessment (Process Stability, Out of Control Condition)
-  - `5.4` Western Electric Rules (Rule 1–4 + เปรียบเทียบกับ Nelson Rules เพื่อป้องกัน False Alarm)
-  - **Workshop:** หา Special Cause จาก Control Chart
-- **Interactive / Animation:** **Western Electric Rules Trigger Lab** (กดจำลอง Point Beyond 3$\sigma$, 2 of 3, 4 of 5, 8 in a row / Run / Trend แล้วดูการแจ้งเตือนและคำอธิบาย Root Cause เบื้องต้น)
+  - `5.1` Introduction to SPC (History, Walter Shewhart Concept, AIAG SPC Framework, JEDEC `JESD557`)
+  - `5.2` Control Chart Principle (Natural Variation, `UCL/CL/LCL` vs `USL/LSL`, Phase I Trial vs Phase II Frozen Limits)
+  - `5.3` Stability Assessment (Reading $R$ Before $\bar{X}$, 6 Special Cause Signatures, Tampering & Early OOC Warning)
+  - `5.4` Western Electric Rules (`1–4`) & Nelson Rules (`5–8`) + False Alarm `ARL` (`370` vs `91`) & OCAP Hook
+  - **Workshop:** หา Special Cause จาก Control Chart ข้อมูล Shaft OD 125 ชิ้น (`25 Subgroups × 5`)
+- **Interactive / Animation:** **Western Electric & Nelson Rules Trigger Lab** (กดจำลองทั้ง 7 อาการและสลับเปิด-ปิดกฎเพื่อดู Zone Alert และค่า False Alarm `ARL`) + **Phase I/II Control vs Spec Builder** + **6-Pattern Diagnosis Matcher**
 
 ---
 

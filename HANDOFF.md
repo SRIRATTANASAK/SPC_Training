@@ -28,7 +28,8 @@
 | **Module 2: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 28 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 28 Tracks + ข้อสอบจริง `M2-Q001–Q060` + CTQ Dataset 50 ชิ้น (`10 Subgroups`) |
 | **Module 3: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 26 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 26 Tracks + ข้อสอบจริง `M3-Q001–Q060` + Workshop `MC-A vs MC-B` 40 ชิ้น |
 | **Module 4: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 27 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 27 Tracks + ข้อสอบจริง `M4-Q001–Q060` + ครบทั้ง AIAG/VDA & JEDEC + Workshop `Pin_Length_mm` 100 ชิ้น (`20 Subgroups`) |
-| **Modules 5–10** | 📋 Planned | มีโครงแผนแม่บทใน `CURRICULUM_ROADMAP.md` แล้ว รอผลิตทีละ Module (ถัดไป: Module 5) |
+| **Module 5: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 27 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 27 Tracks + ข้อสอบจริง `M5-Q001–Q060` + WE/Nelson Rules & ARL + Workshop `Shaft_OD_mm` 125 ชิ้น (`25 Subgroups`) |
+| **Modules 6–10** | 📋 Planned | มีโครงแผนแม่บทใน `CURRICULUM_ROADMAP.md` แล้ว รอผลิตทีละ Module (ถัดไป: Module 6) |
 
 ---
 
