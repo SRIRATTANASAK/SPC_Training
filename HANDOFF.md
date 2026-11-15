@@ -1,0 +1,104 @@
+# HANDOFF.md — SPC & Manufacturing Statistics Online Training
+
+เอกสารนี้เป็น **ศูนย์กลางส่งต่องาน (Single Source of Truth Handoff)** สำหรับการพัฒนาหลักสูตร **SPC & Manufacturing Statistics Online Training (Modules 1–10)** เพื่อให้ปะป๊า ทีมพัฒนาเว็บ และ AI ผู้ช่วย สามารถทำงานต่อเนื่องกันได้โดยไม่หลุดมาตรฐานและโครงสร้าง
+
+---
+
+## 1. ภาพรวมเป้าหมายและสถาปัตยกรรม (Project Vision & Architecture)
+
+- **เจ้าของหลักสูตร:** SRIRATTANASAK (ปะป๊า)
+- **กลุ่มผู้เรียน:** Manufacturing / Quality / Process / Maintenance Engineers และ Supervisor ในโรงงานอุตสาหกรรม (Automotive, Electronics, Machining, Injection, Stamping, Assembly)
+- **เป้าหมายการส่งมอบ (Delivery Target):**
+  1. **Markdown Repository (`SPC_Training`)**: เก็บเนื้อหา, Storyboard, บทเสียงบรรยาย, สเปก Interactive, ข้อสอบ, และชุดข้อมูล Workshop อย่างเป็นระบบ (รองรับทั้ง **Web App บน Internet** และสามารถ Export/Wrap เข้า LMS/SCORM ในอนาคตได้)
+  2. **Interactive Web Training บน Internet**: แปลงเนื้อหาจาก Markdown/MDX เป็นเว็บแอปพลิเคชัน (แนะนำ **Astro + React/MDX** หรือ **Next.js + MDX** Deploy บน **Cloudflare Pages / Vercel / GitHub Pages**)
+  3. **Animation & Interactive Simulations**: ผู้เรียนสามารถปรับค่า Slider, ลากวาง (Drag-and-Drop), กดดูการเปลี่ยนแปลงของกราฟสถิติ/SPC Chart แบบ Real-time
+  4. **Thai Voice Narration**: เสียงบรรยายภาษาไทยประจำแต่ละ Screen ที่ Sync กับจังหวะการขึ้นข้อความและ Animation (รองรับทั้ง AI Thai TTS เช่น Edge TTS / Google Cloud TTS / ElevenLabs และการอัดเสียงจริง)
+
+---
+
+## 2. สถานะปัจจุบันของโปรเจกต์ (Current Status Snapshot)
+
+| พื้นที่งาน | สถานะ | รายละเอียด |
+|---|---|---|
+| **Repo Governance & Handoff** | ✅ เสร็จสมบูรณ์ | สร้าง `README.md`, `HANDOFF.md`, `CURRICULUM_ROADMAP.md`, `.gitattributes`, `.gitignore` |
+| **Module 1: Content & Specs** | ✅ เสร็จสมบูรณ์ (Golden Template) | ปรับปรุงและซิงก์เลข Screen ID ทั้ง 29 หน้าจอตรงกันทุกไฟล์ใน `modules/module-01/` + เขียนข้อสอบจริงครบ `Q001–Q060` + บทพากย์ไทยครบ + ข้อมูล Workshop `.csv` 2 ชุด |
+| **Module 1: Visual Assets (`AST-M1-001..020`)** | ⏳ รอผลิตไฟล์ภาพ/SVG | มี Prompt และ Spec ครบใน `05_asset_spec.md` แล้ว (ยังไม่มีไฟล์ `.png`/`.webp`/`.svg` จริงใน `assets/`) |
+| **Module 1: Audio Narration (`.mp3`)** | ⏳ รอ Generate/อัดเสียง | มีสคริปต์ภาษาไทยพร้อม `[PAUSE]` และคำอ่านครบใน `02_voiceover_th_en.md` แล้ว |
+| **Module 1: Web Prototype** | ⏳ ถัดไป (Phase B) | พร้อมสร้าง Interactive Web Prototype ของ Module 1 ทันทีเมื่อปะป๊าตรวจสอบเนื้อหาเสร็จ |
+| **Modules 2–10** | 📋 Planned | มีโครงแผนแม่บทใน `CURRICULUM_ROADMAP.md` แล้ว รอผลิตทีละ Module ตามลำดับ |
+
+---
+
+## 3. มาตรฐานโครงสร้างและระบบรหัส (Canonical Conventions)
+
+ทุก Module (1 ถึง 10) **ต้อง** ใช้มาตรฐานรหัสเดียวกันเพื่อให้ Script อ่านไฟล์และทำเว็บอัตโนมัติได้:
+
+### 3.1 โครงสร้างโฟลเดอร์ต่อ 1 Module
+```text
+modules/module-XX/
+├── 01_storyboard.md          # ตาราง/หัวข้อครบทุก Screen ID
+├── 02_voiceover_th_en.md     # บทพากย์ไทย + EN Reference + Audio Cue + Pronunciation
+├── 03_screen_wireframe.md    # Layout หน้าจอ + Accessibility + Navigation
+├── 04_interactive_logic.md   # State, Variables, Formula, Scoring, Pass/Fail Rules
+├── 05_asset_spec.md          # รายการรูปภาพ, SVG, Animation Spec
+├── 06_assessment_bank.md     # ข้อสอบจริงพร้อม Choice A–D, เฉลย, Bloom, LO, คำอธิบาย
+├── 07_workshop_guide.md      # โจทย์ Workshop + ขั้นตอนทำ + เฉลยสำหรับผู้สอน
+├── data/                     # ชุดข้อมูล CSV/JSON สำหรับ Workshop และ Simulator
+└── assets/                   # (เพิ่มเมื่อผลิต) รูปภาพ .webp/.svg และไฟล์เสียง .mp3
+```
+
+### 3.2 ระบบรหัส (ID Naming Standard)
+- **Module ID**: `M1` – `M10`
+- **Lesson ID**: `M{x}-L{y}` เช่น `M1-L1`, `M4-L3`
+- **Screen ID**: `M{x}L{y}-S{zz}` (2 หลัก) เช่น `M1L1-S01` ถึง `M1L4-S08`
+- **Knowledge Check / Assessment Tag**: `KC-M{x}-L{y}` (ท้ายบท), `EXAM-M{x}` (สอบปลาย Module)
+- **Question ID**: `M{x}-Q{nnn}` (3 หลัก) เช่น `M1-Q001` ถึง `M1-Q060`
+- **Interactive Component ID**: `INT-M{x}-L{y}-{zz}` เช่น `INT-M1-L1-02` (COPQ Calculator)
+- **Visual Asset ID**: `AST-M{x}-{nnn}` เช่น `AST-M1-001`
+- **Audio File ID**: `AUD-M{x}L{y}-S{zz}.mp3` (1 ไฟล์ต่อ 1 Screen ID เพื่อ Sync ง่ายที่สุด)
+
+### 3.3 กฎ Single Source of Truth (ห้าม Screen ID เพี้ยนข้ามไฟล์)
+เมื่อเพิ่ม ลบ หรือเปลี่ยนลำดับ Screen ใน `01_storyboard.md` **ต้องอัปเดตให้ตรงกัน 100%** ใน:
+1. `02_voiceover_th_en.md` (ต้องมีครบทุก `Screen ID`)
+2. `03_screen_wireframe.md` (ต้องมีครบทุก `Screen ID`)
+3. `04_interactive_logic.md` (ทุก `INT-*` ต้องผูกกับ `Screen ID` ที่มีอยู่จริง)
+4. `05_asset_spec.md` (ทุก `AST-*` ต้องชี้ไปยัง `Screen ID` ที่มีอยู่จริง)
+
+---
+
+## 4. สิ่งที่ปรับปรุงแก้ไขจากไฟล์ร่างเดิม (`archive/module-01-initial/`)
+
+ไฟล์ร่างเดิมทั้ง 7 ไฟล์ถูกเก็บไว้ที่ `archive/module-01-initial/` เพื่ออ้างอิงประวัติ โดยเวอร์ชันใหม่ใน `modules/module-01/` ได้แก้ไขปัญหาต่อไปนี้แล้ว:
+1. **รวมและจัดแนว Screen ID ใหม่ทั้งหมดเป็น 29 Screens (`M1L1-S01`..`M1L4-S08`)**:
+   - เพิ่มหน้า **Data-Driven Decision**, **COPQ**, **Factory Examples**, **Statistical Thinking** เข้าใน `01_storyboard.md` และ `02_voiceover_th_en.md` ให้ตรงกับ Wireframe และ Outline 1.1
+   - เติมหัวข้อ **Mode**, **Variance**, **CV** และ **Run Chart** ที่เคยขาดหายไปใน Storyboard/VoiceOver ให้ครบตาม Outline 1.3 และ 1.4
+2. **เพิ่มบทพากย์ภาษาไทย (Recording / TTS Ready)** ครบทั้ง 29 Screens พร้อม `[PAUSE-1]`, `[PAUSE-2]`, `[ANIM: ...]` cues และ Pronunciation Guide คำศัพท์เทคนิคไทย-อังกฤษ
+3. **เติมคลังข้อสอบจริง `M1-Q001` ถึง `M1-Q060` ครบ 60 ข้อ** พร้อม Bloom's Taxonomy, Difficulty, Choice A–D, เฉลย และคำอธิบายเหตุผล (จากเดิมที่มีเพียงโครง Blueprint)
+4. **สร้างชุดข้อมูลโรงงานจริง (`.csv`) และคู่มือ Workshop** สำหรับ Workshop 1 (จำแนกชนิดข้อมูล) และ Workshop 2 (วิเคราะห์ Defect & Dimension ด้วยกราฟ)
+5. **ปรับเป้าหมาย Interactive Spec ให้รองรับ Web Native (HTML5/React/MDX)** เป็นหลัก โดยยังคงรองรับการ Map Field สำหรับ SCORM/xAPI ไว้ด้วย
+
+---
+
+## 5. แผนการส่งมอบขึ้น Internet (Web + Animation + Voice Plan)
+
+### 5.1 Tech Stack ที่แนะนำสำหรับเฟสสร้างเว็บ (Phase B)
+- **Framework**: **Astro + React + Tailwind CSS** (หรือ Vite + React SPA) อ่านเนื้อหาจากไฟล์ Markdown/MDX + JSON/CSV โดยตรง
+- **Interactive Charts & Math**: **SVG / Recharts / Plotly / Custom Canvas** (เพื่อทำ Slider ปรับ Mean/Sigma, Control Chart Interactive, CLT Simulator แบบลื่นไหล 60fps ไม่ต้องพึ่ง Server หนัก)
+- **Voice Narration Player**:
+  - สร้าง Script Python/Node แปลง `02_voiceover_th_en.md` → ไฟล์เสียง `.mp3` แยกตาม Screen ID (`AUD-M1L1-S01.mp3`)
+  - ในหน้าเว็บมีแถบ Audio Player พร้อม **Closed Captions (คำบรรยายภาษาไทย)**, **Auto-advance toggle**, และ **Cue Sync** (เมื่อเสียงพูดถึงคำสำคัญ Animation/Highlight บนหน้าจอขยับตาม)
+- **Hosting (Internet)**: **Cloudflare Pages** หรือ **Vercel** หรือ **GitHub Pages** (Deploy อัตโนมัติทุกครั้งที่ `git push origin main`)
+
+### 5.2 การทำงานร่วมกันระหว่าง Windows (`C:\Project\SPC_Training`) และ Cloud
+- ปะป๊าแก้เนื้อหา/ตรวจคำบน Windows → `git add . && git commit -m "..." && git push origin main`
+- เวลาเริ่มงานรอบใหม่กับ AI หรือทีมพัฒนา: ให้อ่าน `HANDOFF.md` และ `CURRICULUM_ROADMAP.md` ก่อนเสมอ แล้วเช็ค Checklist ในหัวข้อถัดไป
+
+---
+
+## 6. Next Action Checklist (ลำดับงานถัดไป)
+
+- [ ] **Step 1 (Review M1):** ปะป๊าตรวจทานเนื้อหาภาษาไทย, ตัวอย่างโรงงาน, และข้อสอบ `M1-Q001`–`M1-Q060` ใน `modules/module-01/`
+- [ ] **Step 2 (Web Prototype - ข้อ B):** สร้าง Web App Prototype ของ **Module 1** (อย่างน้อย Lesson `M1-L1` และ `M1-L3` + `M1-L4`) ที่มี Animation/Interactive จริง (COPQ Calculator, Data Classification Drag-Drop, Sigma Slider, Chart Selector + Workshop CSV Viewer) พร้อมปุ่มเล่นเสียงบรรยายไทย (TTS Prototype)
+- [ ] **Step 3 (Audio & Visuals):** Generate ไฟล์ภาพ/SVG จาก `05_asset_spec.md` และ Generate/อัดเสียงจาก `02_voiceover_th_en.md`
+- [ ] **Step 4 (Scale Modules 2–10):** ใช้ `modules/module-01/` เป็น **Golden Template** ขยายสร้างเนื้อหา Markdown + ชุดข้อมูล + Simulator Spec ของ **Module 2 ถึง Module 10** ตาม `CURRICULUM_ROADMAP.md`
+- [ ] **Step 5 (Deploy Online):** เปิดใช้งานบน Internet (Public หรือ Password/Auth Protected สำหรับพนักงานโรงงาน) พร้อมระบบเก็บ Progress/คะแนนสอบ (LocalStorage → Supabase/LMS)

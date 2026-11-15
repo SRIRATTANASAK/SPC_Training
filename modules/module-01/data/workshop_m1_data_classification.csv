@@ -1,0 +1,21 @@
+Item_ID,Process_Area,Description,Example_Values,Category_Variable_or_Attribute,Data_Type_Continuous_or_Discrete,Measurement_Scale,Rationale
+DC-01,Machining,Shaft outer diameter measured by micrometer,"49.98, 50.01, 50.03 mm",Variable,Continuous,Ratio,Has true zero (0 mm) and infinitely divisible decimal measurement.
+DC-02,Injection,Part weight weighed on digital balance,"12.45, 12.52, 12.48 g",Variable,Continuous,Ratio,Continuous weight measurement with true zero.
+DC-03,Final QC,Visual inspection result (Pass / Fail),"Pass, Fail, Pass",Attribute,Discrete,Nominal,Classification label with no numerical order.
+DC-04,Assembly,Tightening torque of M8 bolt,"24.8, 25.3, 25.0 N·m",Variable,Continuous,Ratio,Measured continuously on a torque wrench/transducer.
+DC-05,Stamping,Number of burrs counted per bracket,"0, 2, 1, 3 defects",Attribute,Discrete,Ratio,Integer count of defects (0 means zero defects).
+DC-06,Heat Treatment,Furnace zone temperature in Celsius,"180.5, 181.2, 179.8 °C",Variable,Continuous,Interval,Continuous scale; 0 °C is arbitrary (not absence of thermal energy).
+DC-07,Painting,Cosmetic rating grade (Poor / Fair / Good / Excellent),"Good, Fair, Excellent",Attribute,Discrete,Ordinal,Ordered ranking categories without equal intervals between ranks.
+DC-08,Electronics,Solder joint defect type code (Bridge / Void / Tombstone),"Bridge, Void, Bridge",Attribute,Discrete,Nominal,Named defect categories with no inherent order.
+DC-09,Machining,Cycle time per part on CNC Lathe,"42.3, 41.9, 43.1 sec",Variable,Continuous,Ratio,Time duration with true zero and continuous resolution.
+DC-10,Packaging,Number of missing labels per pallet,"0, 1, 0, 2 labels",Attribute,Discrete,Ratio,Discrete count of nonconforming items/events.
+DC-11,Injection,Mold cavity ID number (Cavity 1 / Cavity 2 / Cavity 3 / Cavity 4),"1, 2, 3, 4",Attribute,Discrete,Nominal,Numbers act purely as labels/identifiers; averaging Cavity ID is meaningless.
+DC-12,QC Lab,Surface roughness Ra value,"0.82, 0.79, 0.85 µm",Variable,Continuous,Ratio,Continuous physical measurement with true zero.
+DC-13,Customer Service,Customer satisfaction score (1 to 5 Stars),"4, 5, 3, 5",Attribute,Discrete,Ordinal,Ordered rating scale; difference between 1-2 and 4-5 stars is not guaranteed equal.
+DC-14,Assembly,Shift code (Day / Night),"Day, Night",Attribute,Discrete,Nominal,Categorical grouping variable without order.
+DC-15,Stamping,Sheet metal thickness,"1.49, 1.51, 1.50 mm",Variable,Continuous,Ratio,Continuous physical dimension measurement.
+DC-16,Incoming QC,Number of rejected lots per month,"1, 0, 2, 1 lots",Attribute,Discrete,Ratio,Discrete integer count per period.
+DC-17,Heat Treatment,Ambient storage temperature in Fahrenheit,"72.4, 73.1, 71.8 °F",Variable,Continuous,Interval,Interval scale; ratio comparison like 80°F is twice as hot as 40°F is invalid.
+DC-18,Final QC,Go / No-Go plug gauge check result,"Go, No-Go",Attribute,Discrete,Nominal,Binary attribute classification even though underlying feature is dimensional.
+DC-19,Electronics,Leak test pressure drop,"0.12, 0.15, 0.11 kPa",Variable,Continuous,Ratio,Continuous pressure measurement with true zero.
+DC-20,Assembly,Operator skill level (Level 1 Trainee / Level 2 Certified / Level 3 Trainer),"Level 1, Level 2, Level 3",Attribute,Discrete,Ordinal,Ordered hierarchy of skill levels without equal numerical distance.

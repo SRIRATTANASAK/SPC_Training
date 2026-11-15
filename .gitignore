@@ -1,0 +1,24 @@
+# OS & Editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+~$*
+
+# Dependencies & Build artifacts
+node_modules/
+dist/
+build/
+.astro/
+.next/
+out/
+
+# Environment & Secrets
+.env
+.env.*
+!.env.example
+
+# Generated temporary audio cache (keep committed final assets if desired)
+tmp/
+*.tmp
