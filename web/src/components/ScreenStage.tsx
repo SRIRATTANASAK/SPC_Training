@@ -151,22 +151,30 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
   const currentSlide = slides[slideIdx] ?? slides[0];
 
   const headerLeft = (
-    <>
-      <a href="/" className="shrink-0 rounded-lg bg-slate-900 px-2.5 py-1 text-xs font-extrabold text-white">
+    <div className="flex items-center gap-2.5 min-w-0">
+      <a
+        href="/"
+        className="shrink-0 rounded-lg bg-slate-900 px-2.5 py-1 text-xs font-extrabold text-white hover:bg-slate-800 transition"
+      >
         SPC Training
       </a>
-      <div className="truncate text-xs sm:text-sm">
-        <span className="font-bold text-sky-800">{screen.lessonId}</span>
-        <span className="mx-1.5 text-slate-400">/</span>
-        <span className="font-semibold text-slate-700">{screen.screenId}</span>
-        <span className="hidden md:inline ml-2 text-slate-500">— {screen.lessonTitle}</span>
+      <div className="flex items-center gap-1.5 text-xs sm:text-sm min-w-0 truncate">
+        <span className="font-bold text-sky-800 shrink-0">{screen.lessonId}</span>
+        <span className="text-slate-300 shrink-0">/</span>
+        <span className="font-bold text-slate-800 shrink-0">{screen.screenId}</span>
+        <span className="text-slate-300 shrink-0">—</span>
+        <span className="font-semibold text-slate-800 truncate" title={`${screen.lessonTitle}: ${screen.title}`}>
+          <span className="text-slate-800 font-bold">{screen.lessonTitle}</span>
+          <span className="mx-1.5 text-slate-400 font-normal">:</span>
+          <span className="text-slate-600 font-medium">{screen.title}</span>
+        </span>
       </div>
-    </>
+    </div>
   );
 
   const headerRight = (
     <>
-      <div className="hidden xl:flex h-8 items-center gap-2 mr-1">
+      <div className="hidden lg:flex h-8 items-center gap-2 mr-1">
         <div className="h-2 w-20 overflow-hidden rounded-full bg-slate-200">
           <div className="h-full bg-sky-600 transition-all" style={{ width: `${progressPct}%` }} />
         </div>
@@ -258,17 +266,17 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
             }`}
           >
             {screen.screenId === 'M1L1-S01' ? (
-              <div className="flex h-full flex-col items-center justify-center gap-4 max-w-6xl mx-auto">
+              <div className="flex h-full flex-col items-center justify-center gap-4 w-full max-w-6xl mx-auto">
                 <AssetViewer assetIds={screen.assetIds} screenId={screen.screenId} />
-                <div className="w-full max-w-4xl rounded-xl border border-slate-200 bg-slate-50 px-5 py-3.5 text-center text-sm sm:text-base leading-relaxed text-slate-800 shadow-sm">
+                <div className="w-full max-w-5xl xl:max-w-6xl rounded-2xl border border-slate-200 bg-slate-50/90 px-6 py-4 text-center text-sm sm:text-base leading-relaxed text-slate-800 shadow-sm transition-all">
                   พื้นฐานสถิติสำหรับงานวิศวกรรมการผลิต ในโรงงานอุตสาหกรรม ไม่ว่าเครื่องจักรจะใหม่แค่ไหน
                   หรือช่างจะเก่งเพียงใด ไม่มีกระบวนการผลิตไหนที่ทำชิ้นงานออกมาได้เท่ากันเป๊ะร้อยเปอร์เซ็นต์ทุกชิ้น
                   ความแตกต่างเล็กๆ น้อยๆ ตามธรรมชาตินี้ เราเรียกว่า{' '}
-                  <strong className="text-sky-800">ความแปรปรวน หรือ Variation</strong>
+                  <strong className="text-sky-800 font-bold whitespace-nowrap">ความแปรปรวน หรือ Variation</strong>
                 </div>
               </div>
             ) : screen.screenId === 'M1L1-S02' ? (
-              <div className="flex h-full flex-col items-center justify-center gap-3 max-w-5xl mx-auto">
+              <div className="flex h-full flex-col items-center justify-center gap-3 w-full max-w-5xl xl:max-w-6xl mx-auto">
                 <div className="w-full max-w-xl">
                   <AssetViewer assetIds={screen.assetIds} screenId={screen.screenId} />
                 </div>
@@ -283,7 +291,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                 className={
                   hasVisibleAsset && cleanMarkdown
                     ? 'grid grid-cols-1 lg:grid-cols-12 gap-5 items-center h-full'
-                    : 'flex flex-col justify-center h-full max-w-4xl mx-auto'
+                    : 'flex flex-col justify-center h-full w-full max-w-5xl xl:max-w-6xl mx-auto'
                 }
               >
                 {hasVisibleAsset && (

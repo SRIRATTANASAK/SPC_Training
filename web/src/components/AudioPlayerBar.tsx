@@ -116,7 +116,7 @@ export const AudioPlayerBar: React.FC<Props> = ({
     captionLang === 'th' ? voiceover?.displayScriptTh || voiceover?.ttsCleanTh : voiceover?.enReference;
 
   return (
-    <header className="shrink-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
+    <header className="shrink-0 z-30 border-b border-slate-200 bg-white">
       {hasMp3 && (
         <audio
           ref={audioRef}
@@ -126,12 +126,18 @@ export const AudioPlayerBar: React.FC<Props> = ({
         />
       )}
 
-      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4">
-        {/* Left: Course & Screen Breadcrumb */}
-        <div className="flex h-8 items-center gap-2.5 min-w-0">{leftSlot}</div>
+      {/* Row 1: Course & Topic Navigation Bar (Left) + Tools/Drawers (Right) */}
+      <div className="flex h-12 w-full items-center justify-between gap-3 border-b border-slate-100 px-4 sm:px-6">
+        {/* Left: Course & Full Topic Breadcrumb (Topic title has ample room, no collision) */}
+        <div className="flex items-center min-w-0 flex-1">{leftSlot}</div>
 
-        {/* Center: Audio & Caption Controls (perfectly aligned on same vertical baseline) */}
-        <div className="flex h-8 items-center gap-1.5 rounded-lg bg-slate-900 px-2.5 text-slate-100 shadow-sm shrink-0">
+        {/* Right: Progress & Drawers (สารบัญ, Resources) */}
+        <div className="flex items-center gap-2 shrink-0">{rightSlot}</div>
+      </div>
+
+      {/* Row 2: Audio Playback & Narration Toolbar */}
+      <div className="flex h-9 w-full items-center justify-center bg-slate-900 px-4 text-slate-100 shadow-inner">
+        <div className="flex items-center gap-1.5 sm:gap-2">
           <button
             type="button"
             onClick={togglePlay}
@@ -153,7 +159,7 @@ export const AudioPlayerBar: React.FC<Props> = ({
             )}
           </div>
 
-          <span className="h-4 w-px bg-slate-700 mx-0.5" />
+          <span className="h-3.5 w-px bg-slate-700 mx-1" />
 
           <button
             type="button"
@@ -200,14 +206,11 @@ export const AudioPlayerBar: React.FC<Props> = ({
             <span>CC {showCaptions ? 'ON' : 'OFF'}</span>
           </button>
         </div>
-
-        {/* Right: Progress & Drawers */}
-        <div className="flex h-8 items-center gap-2 shrink-0">{rightSlot}</div>
       </div>
 
-      {/* Caption Strip Directly Below Top Bar */}
+      {/* Row 3: Caption Strip Directly Below Top Bar */}
       {showCaptions && captionText && (
-        <div className="border-t border-slate-800 bg-slate-900 px-4 py-1.5 text-center text-xs sm:text-sm text-sky-100 leading-snug">
+        <div className="border-t border-slate-800 bg-slate-900/95 px-4 py-1.5 text-center text-xs sm:text-sm text-sky-100 leading-snug">
           {captionText}
         </div>
       )}
