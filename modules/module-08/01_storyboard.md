@@ -85,7 +85,7 @@
 
 # LESSON M8-L2: SPC + 7 QC Tools (`8.2`)
 
-## M8L2-S01 — Control Chart Tells "WHEN", 7 QC Tools Tell "WHO & WHY"
+## Screen M8L2-S01 — Control Chart Tells "WHEN", 7 QC Tools Tell "WHO & WHY"
 - **Learning Objective:** เห็นภาพรวมการประสานงานของ Control Chart กับอีก 6 เครื่องมือใน 7 QC Tools เพื่อสืบค้นต้นเหตุ
 - **Duration:** 35s
 - **Layout:** Hub-and-Spoke Investigation Map (`AST-M8-005`)
@@ -97,7 +97,7 @@
 - **Accessibility Notes:** Clear numbered sequence badges.
 - **Developer Notes:** Note Stratification is explicitly highlighted alongside classic 7 QC Tools.
 
-## M8L2-S02 — Tools 1–3: Check Sheet, Stratification & Dual Pareto (`Count` vs `COPQ`)
+## Screen M8L2-S02 — Tools 1–3: Check Sheet, Stratification & Dual Pareto (`Count` vs `COPQ`)
 - **Learning Objective:** ใช้การแยกชั้น (`Stratification`) และ **Dual Pareto (`Count` เทียบ `Cost`)** คัดกรอง `Vital Few`
 - **Duration:** 45s
 - **Layout:** Split Panel (`AST-M8-006`: Left Mixed vs Stratified Fixture/Shift | Right Count Pareto vs Cost COPQ Pareto)
@@ -109,7 +109,7 @@
 - **Accessibility Notes:** Data values displayed inside bar labels.
 - **Developer Notes:** Mirrors `workshop_m8_defect_pareto.csv` structure (`56%` count vs `81.6%` cost).
 
-## M8L2-S03 — Tools 4–5: Histogram Diagnostics & Fishbone (`4M1E + Measurement`)
+## Screen M8L2-S03 — Tools 4–5: Histogram Diagnostics & Fishbone (`4M1E + Measurement`)
 - **Learning Objective:** อ่านเบาะแส Bimodal/Skew บน Histogram และระดมสาเหตุครบ 6 หมวดบนก้างปลา (`4M1E+M`)
 - **Duration:** 45s
 - **Layout:** Left Bimodal Histogram Morph (`AST-M8-007`) | Right 6-Branch Fishbone Diagram
@@ -121,7 +121,7 @@
 - **Accessibility Notes:** Alt-text describing bimodal peaks and 6 Fishbone categories.
 - **Developer Notes:** `Measurement` branch foreshadows Module 9.
 
-## M8L2-S04 — Tools 6–7: Scatter Diagram (`r` Correlation vs Causation) & Control Chart Proof
+## Screen M8L2-S04 — Tools 6–7: Scatter Diagram (`r` Correlation vs Causation) & Control Chart Proof
 - **Learning Objective:** แปลค่า `r` ใน Scatter Diagram แยกปัจจัยจริงออกจากตัวแปรลวง และพิสูจน์ผลกลับบน Control Chart
 - **Duration:** 40s
 - **Layout:** Dual Scatter Comparison (`AST-M8-008`: Strong Negative `r = -0.996` vs Flat Noise `r = -0.207`)
@@ -133,7 +133,7 @@
 - **Accessibility Notes:** High-contrast dots and regression line labels.
 - **Developer Notes:** Prepares exact metrics used in Workshop Part A.
 
-## M8L2-S05 — Interactive 7 QC Tools Drill-Down Explorer
+## Screen M8L2-S05 — Interactive 7 QC Tools Drill-Down Explorer
 - **Learning Objective:** ฝึกเชื่อมโยงหลักฐานข้าม Stratification, Pareto (`Count` vs `COPQ`), Histogram และ Scatter
 - **Duration:** 50s
 - **Layout:** 4-Tab Interactive Investigation Canvas (`INT-M8-L2-01`)
@@ -145,7 +145,7 @@
 - **Accessibility Notes:** Accessible tablist navigation.
 - **Developer Notes:** Interactive practice before Workshop.
 
-## M8L2-S06 — Interactive Fishbone `4M1E+M` Builder
+## Screen M8L2-S06 — Interactive Fishbone `4M1E+M` Builder
 - **Learning Objective:** จัดหมวดหมู่ปัจจัยหน้างาน 8 รายการเข้าก้างปลา `4M1E + Measurement` ได้แม่นยำ
 - **Duration:** 45s
 - **Layout:** Drag-and-Drop / Click-to-Assign Fishbone Spine (`INT-M8-L2-02`)
@@ -157,7 +157,7 @@
 - **Accessibility Notes:** Keyboard menu assignment alternative to dragging.
 - **Developer Notes:** Reinforces distinguishing `Method` vs `Machine` vs `Measurement`.
 
-## M8L2-S07 — Lesson 2 Knowledge Check (`KC-M8-L2`)
+## Screen M8L2-S07 — Lesson 2 Knowledge Check (`KC-M8-L2`)
 - **Learning Objective:** ทดสอบการใช้ 7 QC Tools ร่วมกับ SPC (`M8-Q016`, `M8-Q023`)
 - **Duration:** 30s
 - **Layout:** Centered 2-Question Card
@@ -173,7 +173,7 @@
 
 # LESSON M8-L3: Deep Root Cause Analysis (`5 Why`, `Is/Is-Not`, `FTA` & `Poka-Yoke`) (`8.3`)
 
-## M8L3-S01 — Direct Cause vs Technical Root Cause vs Systemic Cause
+## Screen M8L3-S01 — Direct Cause vs Technical Root Cause vs Systemic Cause
 - **Learning Objective:** แยกอาการเฉพาะหน้า (`Symptom`) ออกจากต้นตอเทคนิค (`Root Cause`) และช่องโหว่เชิงระบบ (`Systemic Cause`)
 - **Duration:** 40s
 - **Layout:** 3-Layer Iceberg Diagram (`AST-M8-009`)
@@ -185,7 +185,7 @@
 - **Accessibility Notes:** Clear depth level text.
 - **Developer Notes:** Core RCA mindset slide.
 
-## M8L3-S02 — 3-Legged 5 Why Analysis & The "Therefore Test"
+## Screen M8L3-S02 — 3-Legged 5 Why Analysis & The "Therefore Test"
 - **Learning Objective:** เขียน 5 Why ครบทั้ง 3 ขา (`Occurrence, Detection, Systemic`) และตรวจความสมเหตุสมผลด้วย `Therefore Test`
 - **Duration:** 45s
 - **Layout:** 3-Track 5 Why Ladder with Bidirectional Arrows (`AST-M8-010`)
@@ -197,7 +197,7 @@
 - **Accessibility Notes:** Structured accordion/list hierarchy.
 - **Developer Notes:** Explicitly rejects `"Operator Error"` as a final root cause.
 
-## M8L3-S03 — Is / Is-Not Matrix & Fault Tree Analysis (`FTA`)
+## Screen M8L3-S03 — Is / Is-Not Matrix & Fault Tree Analysis (`FTA`)
 - **Learning Objective:** ตีวงปัญหาด้วย `Is / Is-Not` และวิเคราะห์โครงสร้างหลายปัจจัยร่วมด้วย `FTA (AND vs OR Gate)`
 - **Duration:** 45s
 - **Layout:** Split Screen (`AST-M8-011`: Left Is/Is-Not Table | Right Fault Tree with `AND` & `OR` Gates)
@@ -209,7 +209,7 @@
 - **Accessibility Notes:** Distinct icons/labels for `AND` vs `OR` gates.
 - **Developer Notes:** Practical manufacturing reliability link.
 
-## M8L3-S04 — Poka-Yoke (Error Proofing) & Hierarchy of Corrective Actions
+## Screen M8L3-S04 — Poka-Yoke (Error Proofing) & Hierarchy of Corrective Actions
 - **Learning Objective:** ออกแบบการแก้ไขระดับ `Preventive Poka-Yoke` แทนการพึ่งแค่คำเตือนหรืออบรมซ้ำ
 - **Duration:** 40s
 - **Layout:** Inverted Strength Pyramid (`AST-M8-012`: Retrain/Sign -> Inspection/Alarm -> Physical/PLC Interlock Poka-Yoke)
@@ -221,7 +221,7 @@
 - **Accessibility Notes:** Level ranking percentages/tiers clearly labeled.
 - **Developer Notes:** Connects directly to `FIX-B Pressure Switch < 55 bar`.
 
-## M8L3-S05 — Interactive 5 Why Chain & Fault Tree Builder
+## Screen M8L3-S05 — Interactive 5 Why Chain & Fault Tree Builder
 - **Learning Objective:** ฝึกต่อห่วงโซ่ 5 Why ตรวจด้วย `Therefore Test`, เลือก `AND/OR` Gate และเลือก `Poka-Yoke` ที่แข็งแกร่ง
 - **Duration:** 50s
 - **Layout:** Multi-Step RCA Puzzle (`INT-M8-L3-01`)
@@ -233,7 +233,7 @@
 - **Accessibility Notes:** Step-by-step aria announcements.
 - **Developer Notes:** Hands-on drill before Workshop Part B.
 
-## M8L3-S06 — Lesson 3 Knowledge Check (`KC-M8-L3`)
+## Screen M8L3-S06 — Lesson 3 Knowledge Check (`KC-M8-L3`)
 - **Learning Objective:** ทดสอบ RCA (`5 Why`, `Is/Is-Not`, `FTA`, `Poka-Yoke`) (`M8-Q031`, `M8-Q038`)
 - **Duration:** 30s
 - **Layout:** Centered 2-Question Card
@@ -249,7 +249,7 @@
 
 # LESSON M8-L4: `PDCA / Kaizen / DMAIC / 8D` & Production Line OOC Workshop (`8.4`)
 
-## M8L4-S01 — Continuous Improvement Frameworks: `PDCA`, `Kaizen`, `DMAIC` & `8D`
+## Screen M8L4-S01 — Continuous Improvement Frameworks: `PDCA`, `Kaizen`, `DMAIC` & `8D`
 - **Learning Objective:** เลือกใช้กรอบปรับปรุงต่อเนื่อง (`PDCA, Kaizen, DMAIC, 8D`) ให้เหมาะกับขนาดและความเร่งด่วนของปัญหา
 - **Duration:** 40s
 - **Layout:** 4-Card Framework Matrix (`AST-M8-013`)
@@ -261,7 +261,7 @@
 - **Accessibility Notes:** Concise comparison summary.
 - **Developer Notes:** Clarifies overlap and synergy among all 4 frameworks.
 
-## M8L4-S02 — Closing the Loop: Before/After SPC Proof & Living PFMEA / Control Plan
+## Screen M8L4-S02 — Closing the Loop: Before/After SPC Proof & Living PFMEA / Control Plan
 - **Learning Objective:** ยืนยันประสิทธิผลการแก้ไขบน Control Chart (`0 OOC`, $C_{pk}$ เพิ่ม, Update `PFMEA/CP`, `Yokoten`)
 - **Duration:** 40s
 - **Layout:** Before/After Control Chart Split + Document Feedback Loop (`AST-M8-014`)
@@ -273,7 +273,7 @@
 - **Accessibility Notes:** Clear numeric Before/After legend.
 - **Developer Notes:** Reinforces never widening Control Limits to hide defects.
 
-## M8L4-S03 — Workshop Intro: Housing Bore OOC Incident (`SG-01` .. `SG-24`)
+## Screen M8L4-S03 — Workshop Intro: Housing Bore OOC Incident (`SG-01` .. `SG-24`)
 - **Learning Objective:** ทำความเข้าใจสถานการณ์ Workshop สายการผลิต CNC Housing Bore และโครงสร้างชุดข้อมูล CSV จริง
 - **Duration:** 35s
 - **Layout:** Incident Brief + Dataset Preview Card (`AST-M8-015`)
@@ -285,7 +285,7 @@
 - **Accessibility Notes:** CSV download links labeled clearly.
 - **Developer Notes:** Loads `workshop_m8_ooc_case_study.csv` and `workshop_m8_defect_pareto.csv`.
 
-## M8L4-S04 — Interactive Workshop Part A: OCAP & 7 QC Tools Investigation
+## Screen M8L4-S04 — Interactive Workshop Part A: OCAP & 7 QC Tools Investigation
 - **Learning Objective:** ปฏิบัติการระบุ OOC Subgroups (`SG-08..16`), แยกชั้น `FIX-A vs FIX-B`, อ่าน Dual Pareto และเทียบ Scatter $r$
 - **Duration:** 90s
 - **Layout:** Split Interactive Lab Console (`INT-M8-L4-01`: Left Chart/Pareto/Scatter View | Right Step-by-Step Investigation Form)
@@ -297,7 +297,7 @@
 - **Accessibility Notes:** Tabular data view option alongside charts.
 - **Developer Notes:** Uses verified `r = -0.9955` (`Clamp Pressure`) vs `r = -0.2066` (`Coolant Temp`).
 
-## M8L4-S05 — Workshop Part A Solution: Root Cause Revealed
+## Screen M8L4-S05 — Workshop Part A Solution: Root Cause Revealed
 - **Learning Objective:** ตรวจทานคำตอบ Part A จากข้อมูลจริงของทั้ง 24 Subgroups และ 200 Defects (`61,740 THB`)
 - **Duration:** 35s
 - **Layout:** Verified Evidence Dashboard (`AST-M8-016`)
@@ -309,7 +309,7 @@
 - **Accessibility Notes:** Complete numerical callouts.
 - **Developer Notes:** Bridges directly to Part B RCA & Poka-Yoke closure.
 
-## M8L4-S06 — Interactive Workshop Part B: 5 Why, Poka-Yoke & PDCA Closure
+## Screen M8L4-S06 — Interactive Workshop Part B: 5 Why, Poka-Yoke & PDCA Closure
 - **Learning Objective:** เขียน 5 Why ของเคส `FIX-B`, เลือก Poka-Yoke Interlock และยืนยันผล `Before vs After Cpk`
 - **Duration:** 75s
 - **Layout:** Interactive CAPA & Closure Workbench (`INT-M8-L4-02`)
@@ -321,7 +321,7 @@
 - **Accessibility Notes:** Keyboard form steps and clear contrast.
 - **Developer Notes:** Enforces Yokoten horizontal deployment across sister CNC machines.
 
-## M8L4-S07 — Workshop Part B Verified Closure: Before vs After SPC Proof
+## Screen M8L4-S07 — Workshop Part B Verified Closure: Before vs After SPC Proof
 - **Learning Objective:** ยืนยันการปิดเคส 8D ด้วยตัวเลข Before (`Ppk = 0.843`) vs After (`Cpk = 2.040`, `0 OOC`)
 - **Duration:** 35s
 - **Layout:** Executive Before/After Scorecard (`AST-M8-017`)
@@ -333,7 +333,7 @@
 - **Accessibility Notes:** High-contrast scorecard summary.
 - **Developer Notes:** Celebrates real data closure.
 
-## M8L4-S08 — Module 8 Summary & Bridge to Module 9 (`MSA Connection to SPC`)
+## Screen M8L4-S08 — Module 8 Summary & Bridge to Module 9 (`MSA Connection to SPC`)
 - **Learning Objective:** สรุปหัวใจ Module 8 และเชื่อมคำถามสำคัญเรื่องความน่าเชื่อถือของระบบวัดเข้าสู่ Module 9 (`MSA`)
 - **Duration:** 35s
 - **Layout:** Summary Recap + Module 9 Teaser Bridge (`AST-M8-018`)
@@ -345,7 +345,7 @@
 - **Accessibility Notes:** Readable recap bullets.
 - **Developer Notes:** Seamless transition into MSA (`Module 9`).
 
-## M8L4-S09 — Module 8 Final Assessment (`EXAM-M8`)
+## Screen M8L4-S09 — Module 8 Final Assessment (`EXAM-M8`)
 - **Learning Objective:** วัดผลสัมฤทธิ์ Module 8 (`>= 80%` จาก 20 ข้อสุ่มจาก `M8-Q001`–`M8-Q060`)
 - **Duration:** 15m (Exam)
 - **Layout:** Full-Screen Stratified Quiz Runner
