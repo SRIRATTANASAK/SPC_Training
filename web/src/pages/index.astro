@@ -3,45 +3,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import moduleData from '../data/module-01.json';
 ---
 <BaseLayout title="SPC & Manufacturing Statistics Online Training — Module 1">
-  <div class="min-h-screen bg-slate-950 text-white">
-    <header class="border-b border-slate-800 bg-slate-900/90">
-      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+  <div class="flex h-screen w-screen flex-col overflow-hidden bg-slate-950 text-white">
+    <header class="shrink-0 border-b border-slate-800 bg-slate-900/90">
+      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
         <div class="flex items-center gap-3">
           <span class="rounded-lg bg-sky-600 px-3 py-1 text-xs font-extrabold tracking-wider">SPC TRAINING</span>
           <span class="text-sm font-semibold text-slate-300">SRIRATTANASAK Manufacturing Academy</span>
         </div>
         <a
           href="/module-01/M1L1-S01"
-          class="rounded-lg bg-amber-500 px-4 py-2 text-xs font-extrabold text-slate-950 hover:bg-amber-400 transition"
+          class="rounded-lg bg-amber-500 px-4 py-1.5 text-xs font-extrabold text-slate-950 hover:bg-amber-400 transition"
         >
           เริ่มเรียน Module 1 →
         </a>
       </div>
     </header>
 
-    <main class="mx-auto max-w-6xl px-4 py-10 space-y-10">
-      <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center rounded-2xl border border-slate-800 bg-slate-900 p-6 sm:p-8">
-        <div class="space-y-4">
+    <main class="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center gap-5 overflow-hidden px-4 py-4">
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center rounded-2xl border border-slate-800 bg-slate-900 p-5 sm:p-6">
+        <div class="lg:col-span-7 space-y-3">
           <span class="inline-block rounded-full bg-sky-900/70 px-3 py-1 text-xs font-bold text-sky-300 border border-sky-700">
             Phase B Prototype • Module 1 Ready (29 Screens)
           </span>
-          <h1 class="text-2xl sm:text-4xl font-extrabold leading-tight">
+          <h1 class="text-2xl sm:text-3xl font-extrabold leading-tight">
             {moduleData.moduleTitle}
           </h1>
-          <p class="text-base text-slate-300">
-            {moduleData.moduleTitleTh} — เรียนรู้ผ่าน Interactive Simulators, ข้อมูลโรงงานจริง (CSV), คลังข้อสอบ 60 ข้อ และเสียงบรรยายภาษาไทย
+          <p class="text-sm text-slate-300">
+            {moduleData.moduleTitleTh} — เรียนรู้ผ่าน Interactive Simulators, ข้อมูลโรงงานจริง (CSV), คลังข้อสอบ 60 ข้อ และเสียงบรรยายภาษาไทยแบบเล่นต่อเนื่องอัตโนมัติ
           </p>
-          <div class="flex flex-wrap gap-3 pt-2">
+          <div class="flex flex-wrap gap-3 pt-1">
             <a
               id="resume-btn"
               href="/module-01/M1L1-S01"
-              class="rounded-xl bg-sky-600 px-5 py-3 text-sm font-extrabold text-white hover:bg-sky-500 transition shadow-lg"
+              class="rounded-xl bg-sky-600 px-4 py-2.5 text-xs sm:text-sm font-extrabold text-white hover:bg-sky-500 transition shadow-lg"
             >
               เริ่มเรียนตั้งแต่หน้าแรก (M1L1-S01)
             </a>
             <a
               href="/module-01/M1L4-S08"
-              class="rounded-xl border border-slate-700 bg-slate-800 px-5 py-3 text-sm font-bold text-slate-200 hover:bg-slate-700 transition"
+              class="rounded-xl border border-slate-700 bg-slate-800 px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-200 hover:bg-slate-700 transition"
             >
               เข้าทำข้อสอบ EXAM-M1 (20 ข้อ)
             </a>
@@ -49,32 +49,32 @@ import moduleData from '../data/module-01.json';
           <p id="progress-summary" class="text-xs text-slate-400"></p>
         </div>
 
-        <div class="overflow-hidden rounded-xl border border-slate-700">
+        <div class="lg:col-span-5 overflow-hidden rounded-xl border border-slate-700">
           <img
             src="/images/module-01/AST-M1-001.jpg"
             alt="Manufacturing SPC Line"
-            class="aspect-video w-full object-cover"
+            class="max-h-48 w-full object-cover"
           />
         </div>
       </section>
 
-      <section class="space-y-4">
-        <h2 class="text-xl font-extrabold text-white">บทเรียนใน Module 1 (4 บทเรียน • 29 หน้าจอ)</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <section class="space-y-2.5">
+        <h2 class="text-base font-extrabold text-white">บทเรียนใน Module 1 (4 บทเรียน • 29 หน้าจอ)</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {moduleData.lessons.map((lesson) => (
             <a
               href={`/module-01/${lesson.screens[0]}`}
-              class="group rounded-xl border border-slate-800 bg-slate-900 p-5 hover:border-sky-500 transition"
+              class="group rounded-xl border border-slate-800 bg-slate-900 p-4 hover:border-sky-500 transition"
             >
               <div class="flex items-center justify-between">
                 <span class="text-xs font-extrabold uppercase text-sky-400">{lesson.id}</span>
-                <span class="rounded bg-slate-800 px-2 py-0.5 text-xs text-slate-300">
+                <span class="rounded bg-slate-800 px-2 py-0.5 text-[11px] text-slate-300">
                   {lesson.screens.length} Screens
                 </span>
               </div>
-              <h3 class="mt-2 text-lg font-bold text-white group-hover:text-sky-300">{lesson.title}</h3>
-              <p class="mt-1 text-xs text-slate-400">
-                หน้าจอ: {lesson.screens[0]} .. {lesson.screens[lesson.screens.length - 1]}
+              <h3 class="mt-1.5 text-sm font-bold text-white group-hover:text-sky-300 line-clamp-1">{lesson.title}</h3>
+              <p class="mt-1 text-[11px] text-slate-400">
+                {lesson.screens[0]} .. {lesson.screens[lesson.screens.length - 1]}
               </p>
             </a>
           ))}

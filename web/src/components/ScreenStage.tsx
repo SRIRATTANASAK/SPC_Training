@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { BookOpen, Database, ListChecks, X } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { BookOpen, ChevronLeft, ChevronRight, Database, Layers, ListChecks, X } from 'lucide-react';
 import type { ModulePayload, ScreenItem } from '../lib/types';
 import { progressStore } from '../lib/storage';
-import { MarkdownContent } from './MarkdownContent';
+import { InlineMarkdown, MarkdownContent } from './MarkdownContent';
 import { AssetViewer } from './visuals/AssetViewer';
 import { InteractiveRouter } from './interactives/InteractiveRouter';
 import { AudioPlayerBar } from './AudioPlayerBar';
@@ -12,36 +12,159 @@ interface Props {
   moduleData: ModulePayload;
 }
 
+// Screens that have an interactive component rendered by InteractiveRouter
+const INTERACTIVE_SCREENS = new Set([
+  'M1L1-S03',
+  'M1L1-S04',
+  'M1L1-S06',
+  'M1L2-S04',
+  'M1L2-S06',
+  'M1L3-S01',
+  'M1L3-S02',
+  'M1L3-S08',
+  'M1L3-S09',
+  'M1L4-S07',
+  'M1L4-S08',
+]);
+
+// Screens that have 2 separate interactive steps
+const TWO_STEP_INTERACTIVE_SCREENS = new Set(['M1L3-S08', 'M1L4-S07']);
+
+// Workshop and Quiz/Assessment screens where auto-advance to the next screen pauses for user action
+const PAUSE_AUTO_ADVANCE_SCREENS = new Set([
+  'M1L1-S06', // KC-M1-L1
+  'M1L2-S04', // Workshop 1
+  'M1L2-S06', // KC-M1-L2
+  'M1L3-S08', // Simulator & Match Game Workshop
+  'M1L3-S09', // KC-M1-L3
+  'M1L4-S07', // Workshop 2
+  'M1L4-S08', // Final Exam
+]);
+
+// Screens that actually render a visible asset in AssetViewer
+const VISIBLE_ASSET_IDS = new Set([
+  'AST-M1-001',
+  'AST-M1-002',
+  'AST-M1-003',
+  'AST-M1-006',
+  'AST-M1-007',
+  'AST-M1-010',
+  'AST-M1-016',
+]);
+
+interface SlideView {
+  id: string;
+  label: string;
+  kind: 'content' | 'visual-content' | 'interactive';
+  interactiveStep?: number;
+}
+
 export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
   const [completedCount, setCompletedCount] = useState(0);
   const [drawer, setDrawer] = useState<'none' | 'resources' | 'workshop' | 'nav'>('none');
+  const [slideIdx, setSlideIdx] = useState(0);
+  const [fadeIn, setFadeIn] = useState(true);
+
+  const hasVisibleAsset = useMemo(
+    () => (screen.assetIds ?? []).some((id) => VISIBLE_ASSET_IDS.has(id)),
+    [screen.assetIds]
+  );
+  const hasInteractive = INTERACTIVE_SCREENS.has(screen.screenId);
+  const isQuizOrWorkshop = PAUSE_AUTO_ADVANCE_SCREENS.has(screen.screenId);
+
+  // Build sub-slides so every view fits comfortably on a single viewport without vertical scrolling
+  const slides = useMemo<SlideView[]>(() => {
+    const sid = screen.screenId;
+    // Pure Quiz / Workshop / Exam screens where the markdown is just a 1-line intro
+    if (sid === 'M1L1-S06' || sid === 'M1L2-S04' || sid === 'M1L2-S06' || sid === 'M1L3-S09' || sid === 'M1L4-S08') {
+      return [{ id: 'interactive-0', label: 'กิจกรรม / แบบทดสอบ', kind: 'interactive', interactiveStep: 0 }];
+    }
+    if (TWO_STEP_INTERACTIVE_SCREENS.has(sid)) {
+      return [
+        {
+          id: 'interactive-0',
+          label: sid === 'M1L3-S08' ? 'ส่วนที่ 1: Sigma Simulator' : 'ส่วนที่ 1: จับคู่เลือกกราฟ',
+          kind: 'interactive',
+          interactiveStep: 0,
+        },
+        {
+          id: 'interactive-1',
+          label: sid === 'M1L3-S08' ? 'ส่วนที่ 2: เกมจับคู่ค่าสถิติ' : 'ส่วนที่ 2: Factory Dashboard',
+          kind: 'interactive',
+          interactiveStep: 1,
+        },
+      ];
+    }
+    // Screens with both theory/visuals AND an interactive lab (M1L1-S03, M1L1-S04, M1L3-S01, M1L3-S02)
+    if (hasInteractive) {
+      return [
+        { id: 'theory', label: 'ส่วนที่ 1: เนื้อหา & แนวคิดหลัก', kind: 'visual-content' },
+        { id: 'lab', label: 'ส่วนที่ 2: ทดลองจำลอง (Interactive Lab)', kind: 'interactive', interactiveStep: 0 },
+      ];
+    }
+    // Content + Visual screens fit side-by-side or cleanly in one full-screen slide
+    return [{ id: 'main', label: 'เนื้อหาหลัก', kind: 'visual-content' }];
+  }, [screen.screenId, hasInteractive]);
 
   useEffect(() => {
+    setSlideIdx(0);
+    setFadeIn(true);
     const next = progressStore.markScreenCompleted(screen.screenId);
     setCompletedCount(next.var_completed_screens.length);
   }, [screen.screenId]);
 
+  const goToSlide = (nextIdx: number) => {
+    if (nextIdx === slideIdx || nextIdx < 0 || nextIdx >= slides.length) return;
+    setFadeIn(false);
+    setTimeout(() => {
+      setSlideIdx(nextIdx);
+      setFadeIn(true);
+    }, 180);
+  };
+
+  // Auto-advance handler when narration finishes
+  const handleAudioEnded = () => {
+    // If there is a second sub-slide on a non-paused screen, fade to it first
+    if (!isQuizOrWorkshop) {
+      if (slideIdx + 1 < slides.length) {
+        goToSlide(slideIdx + 1);
+        // After showing the interactive preview for 4 seconds, advance to next screen
+        if (screen.nextScreenId) {
+          setTimeout(() => {
+            window.location.href = `/module-01/${screen.nextScreenId}`;
+          }, 4500);
+        }
+        return;
+      }
+      if (screen.nextScreenId) {
+        window.location.href = `/module-01/${screen.nextScreenId}`;
+      }
+    }
+  };
+
   const progressPct = Math.round((screen.index / moduleData.totalScreens) * 100);
+  const currentSlide = slides[slideIdx] ?? slides[0];
 
   return (
-    <div className="flex min-h-screen flex-col bg-slate-100 text-slate-900">
-      {/* Header (10%) */}
-      <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-3 px-4 py-3">
-          <div className="flex items-center gap-3">
-            <a href="/" className="rounded-lg bg-slate-900 px-2.5 py-1 text-xs font-extrabold text-white">
+    <div className="flex h-screen w-screen flex-col overflow-hidden bg-slate-100 text-slate-900">
+      {/* Compact Header */}
+      <header className="shrink-0 border-b border-slate-200 bg-white/95 backdrop-blur">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-2">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <a href="/" className="shrink-0 rounded-lg bg-slate-900 px-2.5 py-1 text-xs font-extrabold text-white">
               SPC Training
             </a>
-            <div className="text-xs sm:text-sm">
+            <div className="truncate text-xs sm:text-sm">
               <span className="font-bold text-sky-800">{screen.lessonId}</span>
               <span className="mx-1.5 text-slate-400">/</span>
               <span className="font-semibold text-slate-700">{screen.screenId}</span>
+              <span className="hidden md:inline ml-2 text-slate-500">— {screen.lessonTitle}</span>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
-            <div className="hidden sm:flex items-center gap-2 mr-2">
-              <div className="h-2 w-28 overflow-hidden rounded-full bg-slate-200">
+          <div className="flex items-center gap-2 shrink-0">
+            <div className="hidden sm:flex items-center gap-2 mr-1">
+              <div className="h-2 w-24 overflow-hidden rounded-full bg-slate-200">
                 <div className="h-full bg-sky-600 transition-all" style={{ width: `${progressPct}%` }} />
               </div>
               <span className="text-xs font-bold text-slate-600">
@@ -52,7 +175,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
             <button
               type="button"
               onClick={() => setDrawer((d) => (d === 'nav' ? 'none' : 'nav'))}
-              className="flex items-center gap-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs font-bold text-slate-700 hover:bg-slate-50"
+              className="flex items-center gap-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-xs font-bold text-slate-700 hover:bg-slate-50"
             >
               <ListChecks className="h-3.5 w-3.5" />
               <span>สารบัญ</span>
@@ -60,7 +183,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
             <button
               type="button"
               onClick={() => setDrawer((d) => (d === 'resources' ? 'none' : 'resources'))}
-              className="flex items-center gap-1 rounded-lg border border-sky-300 bg-sky-50 px-2.5 py-1.5 text-xs font-bold text-sky-900 hover:bg-sky-100"
+              className="flex items-center gap-1 rounded-lg border border-sky-300 bg-sky-50 px-2.5 py-1 text-xs font-bold text-sky-900 hover:bg-sky-100"
             >
               <BookOpen className="h-3.5 w-3.5" />
               <span>Resources</span>
@@ -69,70 +192,158 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
         </div>
       </header>
 
-      {/* Main Content Area (75%) */}
-      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6 space-y-6">
-        <div className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-7 shadow-sm">
-          <div className="mb-1 text-xs font-bold uppercase tracking-wider text-sky-700">
-            {screen.lessonId}: {screen.lessonTitle}
-          </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 mb-5">{screen.title}</h1>
+      {/* Full-Viewport Stage Area (no page scroll, smooth fade-in/out sub-slides) */}
+      <main className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-between overflow-hidden px-4 py-2.5">
+        <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-sm">
+          {/* Screen Title & Sub-Slide Switcher Bar */}
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2.5 shrink-0">
+            <div>
+              <div className="text-[11px] font-bold uppercase tracking-wider text-sky-700">
+                {screen.lessonId}: {screen.lessonTitle}
+              </div>
+              <h1 className="text-lg sm:text-xl font-extrabold text-slate-900">
+                <InlineMarkdown text={screen.title} />
+              </h1>
+            </div>
 
-          <div className="space-y-6">
-            <AssetViewer assetIds={screen.assetIds} screenId={screen.screenId} />
-            {screen.markdown && <MarkdownContent markdown={screen.markdown} />}
+            {slides.length > 1 && (
+              <div className="flex items-center gap-1.5 rounded-xl bg-slate-100 p-1">
+                <Layers className="ml-1.5 h-3.5 w-3.5 text-slate-500" />
+                {slides.map((sl, idx) => (
+                  <button
+                    key={sl.id}
+                    type="button"
+                    onClick={() => goToSlide(idx)}
+                    className={`rounded-lg px-2.5 py-1 text-xs font-bold transition ${
+                      slideIdx === idx
+                        ? 'bg-sky-700 text-white shadow-sm'
+                        : 'text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    {sl.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Animated Slide Body */}
+          <div
+            className={`flex-1 overflow-y-auto pr-1 transition-opacity duration-200 ${
+              fadeIn ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            {currentSlide.kind === 'visual-content' && (
+              <div
+                className={
+                  hasVisibleAsset && screen.markdown
+                    ? 'grid grid-cols-1 lg:grid-cols-12 gap-5 items-center h-full'
+                    : 'flex flex-col justify-center h-full max-w-4xl mx-auto'
+                }
+              >
+                {hasVisibleAsset && (
+                  <div className={screen.markdown ? 'lg:col-span-5' : 'w-full'}>
+                    <AssetViewer assetIds={screen.assetIds} screenId={screen.screenId} />
+                  </div>
+                )}
+                {screen.markdown && (
+                  <div className={hasVisibleAsset ? 'lg:col-span-7' : 'w-full'}>
+                    <MarkdownContent markdown={screen.markdown} />
+                  </div>
+                )}
+              </div>
+            )}
+
+            {currentSlide.kind === 'interactive' && (
+              <div className="h-full flex flex-col justify-center">
+                <InteractiveRouter
+                  screen={screen}
+                  moduleData={moduleData}
+                  stepIndex={currentSlide.interactiveStep ?? 0}
+                />
+              </div>
+            )}
           </div>
         </div>
-
-        <InteractiveRouter screen={screen} moduleData={moduleData} />
       </main>
 
-      {/* Persistent Audio & Caption Bar (5%) */}
-      <div className="sticky bottom-0 z-30 shadow-lg">
-        <AudioPlayerBar voiceover={screen.voiceover} screenId={screen.screenId} />
+      {/* Bottom Bar: Audio + Footer Navigation */}
+      <div className="shrink-0 z-30 shadow-lg">
+        <AudioPlayerBar
+          voiceover={screen.voiceover}
+          screenId={screen.screenId}
+          isQuizOrWorkshop={isQuizOrWorkshop}
+          onAudioEnded={handleAudioEnded}
+        />
 
-        {/* Footer Navigation (10%) */}
-        <footer className="border-t border-slate-200 bg-white px-4 py-2.5">
-          <div className="mx-auto flex max-w-6xl items-center justify-between gap-2">
-            {screen.prevScreenId ? (
-              <a
-                href={`/module-01/${screen.prevScreenId}`}
-                className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-50"
-              >
-                ← Back
-              </a>
-            ) : (
-              <a
-                href="/"
-                className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-50"
-              >
-                ← หน้าแรก
-              </a>
-            )}
+        <footer className="border-t border-slate-200 bg-white px-4 py-2">
+          <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              {screen.prevScreenId ? (
+                <a
+                  href={`/module-01/${screen.prevScreenId}`}
+                  className="rounded-lg border border-slate-300 bg-white px-3.5 py-1.5 text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-50"
+                >
+                  ← หน้าก่อนหน้า
+                </a>
+              ) : (
+                <a
+                  href="/"
+                  className="rounded-lg border border-slate-300 bg-white px-3.5 py-1.5 text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-50"
+                >
+                  ← หน้าแรก
+                </a>
+              )}
+
+              {slides.length > 1 && slideIdx > 0 && (
+                <button
+                  type="button"
+                  onClick={() => goToSlide(slideIdx - 1)}
+                  className="flex items-center gap-1 rounded-lg border border-sky-300 bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-800 hover:bg-sky-100"
+                >
+                  <ChevronLeft className="h-3.5 w-3.5" />
+                  <span>ส่วนก่อนหน้า</span>
+                </button>
+              )}
+            </div>
 
             <button
               type="button"
               onClick={() => setDrawer((d) => (d === 'workshop' ? 'none' : 'workshop'))}
-              className="flex items-center gap-1.5 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-xs font-bold text-amber-900 hover:bg-amber-100"
+              className="flex items-center gap-1.5 rounded-lg border border-amber-300 bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-900 hover:bg-amber-100"
             >
               <Database className="h-3.5 w-3.5" />
               <span>Workshop Data (CSV)</span>
             </button>
 
-            {screen.nextScreenId ? (
-              <a
-                href={`/module-01/${screen.nextScreenId}`}
-                className="rounded-lg bg-sky-700 px-4 py-2 text-xs sm:text-sm font-bold text-white hover:bg-sky-800"
-              >
-                Next →
-              </a>
-            ) : (
-              <a
-                href="/"
-                className="rounded-lg bg-emerald-700 px-4 py-2 text-xs sm:text-sm font-bold text-white hover:bg-emerald-800"
-              >
-                จบ Module 1 ✓
-              </a>
-            )}
+            <div className="flex items-center gap-2">
+              {slides.length > 1 && slideIdx < slides.length - 1 && (
+                <button
+                  type="button"
+                  onClick={() => goToSlide(slideIdx + 1)}
+                  className="flex items-center gap-1 rounded-lg border border-sky-600 bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-900 hover:bg-sky-100"
+                >
+                  <span>ดูส่วนถัดไป ({slideIdx + 2}/{slides.length})</span>
+                  <ChevronRight className="h-3.5 w-3.5" />
+                </button>
+              )}
+
+              {screen.nextScreenId ? (
+                <a
+                  href={`/module-01/${screen.nextScreenId}`}
+                  className="rounded-lg bg-sky-700 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-white hover:bg-sky-800"
+                >
+                  หน้าถัดไป →
+                </a>
+              ) : (
+                <a
+                  href="/"
+                  className="rounded-lg bg-emerald-700 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-white hover:bg-emerald-800"
+                >
+                  จบ Module 1 ✓
+                </a>
+              )}
+            </div>
           </div>
         </footer>
       </div>

@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import type { QuestionItem } from '../../lib/types';
 import { progressStore } from '../../lib/storage';
+import { InlineMarkdown } from '../MarkdownContent';
 
 interface Props {
   lessonId: string;
@@ -58,7 +59,7 @@ export const KnowledgeCheck: React.FC<Props> = ({ lessonId, questions }) => {
       {kcQuestions.map((q, idx) => (
         <div key={q.id} className="rounded-lg border border-slate-200 bg-slate-50 p-4 space-y-2.5">
           <div className="text-sm font-bold text-slate-900">
-            {idx + 1}. ({q.id}) {q.question}
+            {idx + 1}. ({q.id}) <InlineMarkdown text={q.question} />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {(['A', 'B', 'C', 'D'] as const).map((k) => {
@@ -83,14 +84,14 @@ export const KnowledgeCheck: React.FC<Props> = ({ lessonId, questions }) => {
                         : 'border-slate-200 bg-white hover:bg-slate-100'
                   }`}
                 >
-                  <strong>{k})</strong> {label}
+                  <strong>{k})</strong> <InlineMarkdown text={label} />
                 </button>
               );
             })}
           </div>
           {submitted && (
             <div className="rounded bg-white p-2.5 text-xs text-slate-700 border border-slate-200">
-              <strong>เฉลย ({q.correct}):</strong> {q.explanation}
+              <strong>เฉลย ({q.correct}):</strong> <InlineMarkdown text={q.explanation} />
             </div>
           )}
         </div>

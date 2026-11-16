@@ -28,19 +28,32 @@ ASSETS_AUDIO = ROOT / "modules" / "module-01" / "assets" / "audio"
 PUBLIC_AUDIO = ROOT / "web" / "public" / "audio" / "module-01"
 
 
-def synth_gemini(text: str, api_key: str, voice_name: str = "Kore") -> bytes:
-    url = (
-        "https://generativelanguage.googleapis.com/v1beta/models/"
-        f"gemini-2.5-flash-preview-tts:generateContent?key={api_key}"
-    )
+GEMINI_TTS_MODELS = [
+    "gemini-2.5-flash-preview-tts",
+    "gemini-3.1-flash-tts-preview",
+    "gemini-3.8-flash-tts",
+    "gemini-3.8-flash-lite-tts",
+    "gemini-2.5-pro-preview-tts",
+]
+
+
+def synth_gemini(
+    text: str,
+    api_key: str,
+    voice_name: str = "Achernar",
+    preferred_model: str = "",
+) -> bytes:
+    import urllib.error
+
+    models = [preferred_model] + [m for m in GEMINI_TTS_MODELS if m != preferred_model] if preferred_model else list(GEMINI_TTS_MODELS)
     payload = {
         "contents": [
             {
                 "parts": [
                     {
                         "text": (
-                            "อ่านออกเสียงข้อความภาษาไทยต่อไปนี้ด้วยน้ำเสียงสุภาพ ชัดเจน "
-                            "เป็นธรรมชาติสำหรับหลักสูตรฝึกอบรมวิศวกรรม:\n" + text
+                            "อ่านออกเสียงข้อความภาษาไทยต่อไปนี้ด้วยน้ำเสียงผู้หญิงที่อ่อนหวาน นุ่มนวล สุภาพ ชัดเจน "
+                            "เป็นธรรมชาติและฟังสบายสำหรับบทเรียนออนไลน์:\n" + text
                         )
                     }
                 ]
@@ -55,25 +68,43 @@ def synth_gemini(text: str, api_key: str, voice_name: str = "Kore") -> bytes:
             },
         },
     }
-    import urllib.error
 
-    for attempt in range(5):
-        req = urllib.request.Request(
-            url,
-            data=json.dumps(payload).encode("utf-8"),
-            headers={"Content-Type": "application/json"},
+    data = None
+    last_err: Exception | None = None
+    for model in models:
+        url = (
+            "https://generativelanguage.googleapis.com/v1beta/models/"
+            f"{model}:generateContent?key={api_key}"
         )
-        try:
-            with urllib.request.urlopen(req, timeout=90) as resp:
-                data = json.loads(resp.read().decode("utf-8"))
+        for attempt in range(3):
+            req = urllib.request.Request(
+                url,
+                data=json.dumps(payload).encode("utf-8"),
+                headers={"Content-Type": "application/json"},
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=90) as resp:
+                    data = json.loads(resp.read().decode("utf-8"))
+                break
+            except urllib.error.HTTPError as err:
+                last_err = err
+                body = err.read().decode("utf-8", errors="ignore")
+                if err.code == 429:
+                    if "PerDay" in body or "daily" in body.lower():
+                        print(f"Model {model} hit daily quota, trying next model...", flush=True)
+                        break
+                    wait_s = 22 * (attempt + 1)
+                    print(f"Rate limited (429) on {model}, waiting {wait_s}s...", flush=True)
+                    time.sleep(wait_s)
+                    continue
+                raise
+        if data is not None:
             break
-        except urllib.error.HTTPError as err:
-            if err.code == 429 and attempt < 4:
-                wait_s = 25 * (attempt + 1)
-                print(f"Rate limited (429), waiting {wait_s}s...", flush=True)
-                time.sleep(wait_s)
-                continue
-            raise
+
+    if data is None:
+        if last_err:
+            raise last_err
+        raise RuntimeError("All Gemini TTS models exhausted")
 
     part = data["candidates"][0]["content"]["parts"][0]["inlineData"]
     raw_bytes = base64.b64decode(part["data"])
@@ -150,6 +181,8 @@ def synth_elevenlabs(text: str, api_key: str, voice_id: str) -> bytes:
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate Thai MP3 tracks for Module 1.")
     parser.add_argument("--provider", choices=["gemini", "google", "elevenlabs"], required=True)
+    parser.add_argument("--voice", default="Achernar", help="Gemini prebuilt voice name (default: Achernar)")
+    parser.add_argument("--model", default="", help="Preferred Gemini TTS model")
     parser.add_argument("--limit", type=int, default=0, help="Optional limit for test runs")
     parser.add_argument("--skip-existing", action="store_true", help="Skip already generated MP3s")
     args = parser.parse_args()
@@ -187,10 +220,10 @@ def main() -> int:
             continue
         fname = f"AUD-{sid}.mp3"
         if args.skip_existing and (PUBLIC_AUDIO / fname).exists():
-            print(f"Skipping existing {fname}")
+            print(f"Skipping existing {fname}", flush=True)
             continue
         if args.provider == "gemini":
-            audio_bytes = synth_gemini(text, api_key)
+            audio_bytes = synth_gemini(text, api_key, voice_name=args.voice, preferred_model=args.model)
         elif args.provider == "google":
             audio_bytes = synth_google(text, api_key)
         else:
@@ -198,9 +231,9 @@ def main() -> int:
 
         (ASSETS_AUDIO / fname).write_bytes(audio_bytes)
         (PUBLIC_AUDIO / fname).write_bytes(audio_bytes)
-        print(f"[{idx + 1}/{len(screens)}] Generated {fname} ({len(audio_bytes)} bytes)")
+        print(f"[{idx + 1}/{len(screens)}] Generated {fname} ({len(audio_bytes)} bytes)", flush=True)
         if args.provider == "gemini" and idx + 1 < len(screens):
-            time.sleep(1.0)
+            time.sleep(2.0)
 
     return 0
 

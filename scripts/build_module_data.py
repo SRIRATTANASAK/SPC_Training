@@ -29,8 +29,15 @@ def parse_lesson_content(text: str) -> dict[str, dict[str, str]]:
         start = m.end()
         end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
         body = text[start:end].strip()
-        # Strip trailing lesson header if captured
-        body = re.sub(r"\n---\s*\n#\s+LESSON\s+M1-L\d+.*$", "", body, flags=re.S).strip()
+        # Strip trailing lesson header or module note if captured
+        body = re.sub(r"\n---\s*\n(?:#\s+LESSON\s+M1-L\d+|\*\(ใช้ตัวอย่างเพลา).*$", "", body, flags=re.S).strip()
+        # Strip trailing horizontal rules
+        body = re.sub(r"\n---\s*$", "", body).strip()
+        # Strip inline <Asset id="..." /> and <Interactive id="..." /> tags so learners don't see raw tags
+        body = re.sub(r"`<(?:Asset|Interactive)\s+id=\"[^\"]+\"\s*/>`", "", body)
+        body = re.sub(r"<(?:Asset|Interactive)\s+id=\"[^\"]+\"\s*/>", "", body)
+        # Clean up empty lines left by stripped tags
+        body = re.sub(r"\n{3,}", "\n\n", body).strip()
         sections[sid] = {"title": title, "markdown": body}
     return sections
 
@@ -61,6 +68,13 @@ def parse_storyboard(text: str) -> list[dict]:
     return screens
 
 
+def clean_display_caption(raw: str) -> str:
+    # Remove [PAUSE-1], [PAUSE-2], [ANIM: ...] and ** markdown bold markers for clean learner captions
+    text = re.sub(r"\[(?:PAUSE-\d+|ANIM:[^\]]+)\]", "", raw)
+    text = text.replace("**", "")
+    return " ".join(text.split())
+
+
 def parse_voiceover(text: str) -> dict[str, dict[str, str]]:
     tracks: dict[str, dict[str, str]] = {}
     matches = list(
@@ -87,7 +101,7 @@ def parse_voiceover(text: str) -> dict[str, dict[str, str]]:
             "audioId": f"AUD-{sid}",
             "audioFile": f"/audio/module-01/AUD-{sid}.mp3",
             "duration": duration,
-            "displayScriptTh": extract_field("Display Script (TH)"),
+            "displayScriptTh": clean_display_caption(extract_field("Display Script (TH)")),
             "ttsCleanTh": extract_field("TTS Clean Script (TH)"),
             "enReference": extract_field("EN Reference"),
         }

@@ -9,6 +9,9 @@ export const DEFAULT_PROGRESS: CourseProgressState = {
   var_exam_score: 0,
   var_exam_passed: false,
   captionLang: 'th',
+  showCaptions: true,
+  autoPlay: true,
+  audioSpeed: 1,
 };
 
 export interface ProgressStore {

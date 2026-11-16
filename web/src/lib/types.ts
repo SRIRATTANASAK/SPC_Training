@@ -83,4 +83,7 @@ export interface CourseProgressState {
   var_exam_score: number;
   var_exam_passed: boolean;
   captionLang: 'th' | 'en';
+  showCaptions: boolean;
+  autoPlay: boolean;
+  audioSpeed: 1 | 1.25;
 }

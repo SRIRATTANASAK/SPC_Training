@@ -20,3 +20,22 @@ export const MarkdownContent: React.FC<Props> = ({ markdown, className = '' }) =
     </div>
   );
 };
+
+export const InlineMarkdown: React.FC<{ text: string; className?: string }> = ({ text, className = '' }) => {
+  return (
+    <span className={className}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeKatex]}
+        components={{
+          p: ({ children }) => <>{children}</>,
+          code: ({ children }) => (
+            <code className="rounded bg-slate-100 px-1 py-0.5 font-mono text-[0.92em] text-sky-800">{children}</code>
+          ),
+        }}
+      >
+        {text}
+      </ReactMarkdown>
+    </span>
+  );
+};
