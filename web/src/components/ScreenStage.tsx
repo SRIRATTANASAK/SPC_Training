@@ -145,65 +145,83 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
   const progressPct = Math.round((screen.index / moduleData.totalScreens) * 100);
   const currentSlide = slides[slideIdx] ?? slides[0];
 
+  const headerLeft = (
+    <>
+      <a href="/" className="shrink-0 rounded-lg bg-slate-900 px-2.5 py-1 text-xs font-extrabold text-white">
+        SPC Training
+      </a>
+      <div className="truncate text-xs sm:text-sm">
+        <span className="font-bold text-sky-800">{screen.lessonId}</span>
+        <span className="mx-1.5 text-slate-400">/</span>
+        <span className="font-semibold text-slate-700">{screen.screenId}</span>
+      </div>
+    </>
+  );
+
+  const headerRight = (
+    <>
+      <div className="hidden xl:flex items-center gap-2 mr-1">
+        <div className="h-2 w-20 overflow-hidden rounded-full bg-slate-200">
+          <div className="h-full bg-sky-600 transition-all" style={{ width: `${progressPct}%` }} />
+        </div>
+        <span className="text-xs font-bold text-slate-600">
+          {screen.index}/{moduleData.totalScreens} ({completedCount} อ่านแล้ว)
+        </span>
+      </div>
+
+      <button
+        type="button"
+        onClick={() => setDrawer((d) => (d === 'nav' ? 'none' : 'nav'))}
+        className="flex items-center gap-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-xs font-bold text-slate-700 hover:bg-slate-50"
+      >
+        <ListChecks className="h-3.5 w-3.5" />
+        <span>สารบัญ</span>
+      </button>
+      <button
+        type="button"
+        onClick={() => setDrawer((d) => (d === 'resources' ? 'none' : 'resources'))}
+        className="flex items-center gap-1 rounded-lg border border-sky-300 bg-sky-50 px-2.5 py-1 text-xs font-bold text-sky-900 hover:bg-sky-100"
+      >
+        <BookOpen className="h-3.5 w-3.5" />
+        <span>Resources</span>
+      </button>
+    </>
+  );
+
+  // Strip redundant **หัวข้อ:** line from markdown on screens where the title already shows it
+  const cleanMarkdown = useMemo(() => {
+    return (screen.markdown ?? '').replace(/^\*\*หัวข้อ:\*\*.*\n?/m, '').trim();
+  }, [screen.markdown]);
+
   return (
     <div className="flex h-screen w-screen flex-col overflow-hidden bg-slate-100 text-slate-900">
-      {/* Compact Header */}
-      <header className="shrink-0 border-b border-slate-200 bg-white/95 backdrop-blur">
-        <div className="mx-auto flex max-w-7xl items-center justify-between gap-2 px-4 py-2">
-          <div className="flex items-center gap-2.5 min-w-0">
-            <a href="/" className="shrink-0 rounded-lg bg-slate-900 px-2.5 py-1 text-xs font-extrabold text-white">
-              SPC Training
-            </a>
-            <div className="truncate text-xs sm:text-sm">
-              <span className="font-bold text-sky-800">{screen.lessonId}</span>
-              <span className="mx-1.5 text-slate-400">/</span>
-              <span className="font-semibold text-slate-700">{screen.screenId}</span>
-              <span className="hidden md:inline ml-2 text-slate-500">— {screen.lessonTitle}</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 shrink-0">
-            <div className="hidden sm:flex items-center gap-2 mr-1">
-              <div className="h-2 w-24 overflow-hidden rounded-full bg-slate-200">
-                <div className="h-full bg-sky-600 transition-all" style={{ width: `${progressPct}%` }} />
-              </div>
-              <span className="text-xs font-bold text-slate-600">
-                {screen.index}/{moduleData.totalScreens} ({completedCount} อ่านแล้ว)
-              </span>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setDrawer((d) => (d === 'nav' ? 'none' : 'nav'))}
-              className="flex items-center gap-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-xs font-bold text-slate-700 hover:bg-slate-50"
-            >
-              <ListChecks className="h-3.5 w-3.5" />
-              <span>สารบัญ</span>
-            </button>
-            <button
-              type="button"
-              onClick={() => setDrawer((d) => (d === 'resources' ? 'none' : 'resources'))}
-              className="flex items-center gap-1 rounded-lg border border-sky-300 bg-sky-50 px-2.5 py-1 text-xs font-bold text-sky-900 hover:bg-sky-100"
-            >
-              <BookOpen className="h-3.5 w-3.5" />
-              <span>Resources</span>
-            </button>
-          </div>
-        </div>
-      </header>
+      {/* Unified Top Header with Audio, Auto ON, Speed, TH/EN, CC */}
+      <AudioPlayerBar
+        voiceover={screen.voiceover}
+        screenId={screen.screenId}
+        isQuizOrWorkshop={isQuizOrWorkshop}
+        onAudioEnded={handleAudioEnded}
+        leftSlot={headerLeft}
+        rightSlot={headerRight}
+      />
 
       {/* Full-Viewport Stage Area (no page scroll, smooth fade-in/out sub-slides) */}
       <main className="mx-auto flex w-full max-w-7xl flex-1 flex-col justify-between overflow-hidden px-4 py-2.5">
         <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-sm">
           {/* Screen Title & Sub-Slide Switcher Bar */}
-          <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2.5 shrink-0">
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2 shrink-0">
             <div>
               <div className="text-[11px] font-bold uppercase tracking-wider text-sky-700">
                 {screen.lessonId}: {screen.lessonTitle}
               </div>
-              <h1 className="text-lg sm:text-xl font-extrabold text-slate-900">
-                <InlineMarkdown text={screen.title} />
-              </h1>
+              <div className="flex flex-wrap items-baseline gap-2.5">
+                <h1 className="text-lg sm:text-xl font-extrabold text-slate-900">
+                  <InlineMarkdown text={screen.title} />
+                </h1>
+                {screen.screenId === 'M1L1-S01' && (
+                  <span className="text-sm font-semibold text-slate-500">ทุกกระบวนการมีความแปรปรวน</span>
+                )}
+              </div>
             </div>
 
             {slides.length > 1 && (
@@ -233,28 +251,47 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
               fadeIn ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            {currentSlide.kind === 'visual-content' && (
+            {screen.screenId === 'M1L1-S01' ? (
+              <div className="flex h-full flex-col items-center justify-center gap-4 max-w-6xl mx-auto">
+                <AssetViewer assetIds={screen.assetIds} screenId={screen.screenId} />
+                <div className="w-full max-w-4xl rounded-xl border border-slate-200 bg-slate-50 px-5 py-3.5 text-center text-sm sm:text-base leading-relaxed text-slate-800 shadow-sm">
+                  พื้นฐานสถิติสำหรับงานวิศวกรรมการผลิต ในโรงงานอุตสาหกรรม ไม่ว่าเครื่องจักรจะใหม่แค่ไหน
+                  หรือช่างจะเก่งเพียงใด ไม่มีกระบวนการผลิตไหนที่ทำชิ้นงานออกมาได้เท่ากันเป๊ะร้อยเปอร์เซ็นต์ทุกชิ้น
+                  ความแตกต่างเล็กๆ น้อยๆ ตามธรรมชาตินี้ เราเรียกว่า{' '}
+                  <strong className="text-sky-800">ความแปรปรวน หรือ Variation</strong>
+                </div>
+              </div>
+            ) : screen.screenId === 'M1L1-S02' ? (
+              <div className="flex h-full flex-col items-center justify-center gap-3 max-w-5xl mx-auto">
+                <div className="w-full max-w-xl">
+                  <AssetViewer assetIds={screen.assetIds} screenId={screen.screenId} />
+                </div>
+                {cleanMarkdown && (
+                  <div className="w-full">
+                    <MarkdownContent markdown={cleanMarkdown} />
+                  </div>
+                )}
+              </div>
+            ) : currentSlide.kind === 'visual-content' ? (
               <div
                 className={
-                  hasVisibleAsset && screen.markdown
+                  hasVisibleAsset && cleanMarkdown
                     ? 'grid grid-cols-1 lg:grid-cols-12 gap-5 items-center h-full'
                     : 'flex flex-col justify-center h-full max-w-4xl mx-auto'
                 }
               >
                 {hasVisibleAsset && (
-                  <div className={screen.markdown ? 'lg:col-span-5' : 'w-full'}>
+                  <div className={cleanMarkdown ? 'lg:col-span-5' : 'w-full'}>
                     <AssetViewer assetIds={screen.assetIds} screenId={screen.screenId} />
                   </div>
                 )}
-                {screen.markdown && (
+                {cleanMarkdown && (
                   <div className={hasVisibleAsset ? 'lg:col-span-7' : 'w-full'}>
-                    <MarkdownContent markdown={screen.markdown} />
+                    <MarkdownContent markdown={cleanMarkdown} />
                   </div>
                 )}
               </div>
-            )}
-
-            {currentSlide.kind === 'interactive' && (
+            ) : (
               <div className="h-full flex flex-col justify-center">
                 <InteractiveRouter
                   screen={screen}
@@ -267,16 +304,8 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
         </div>
       </main>
 
-      {/* Bottom Bar: Audio + Footer Navigation */}
-      <div className="shrink-0 z-30 shadow-lg">
-        <AudioPlayerBar
-          voiceover={screen.voiceover}
-          screenId={screen.screenId}
-          isQuizOrWorkshop={isQuizOrWorkshop}
-          onAudioEnded={handleAudioEnded}
-        />
-
-        <footer className="border-t border-slate-200 bg-white px-4 py-2">
+      {/* Clean Bottom Footer Navigation */}
+      <footer className="shrink-0 z-30 border-t border-slate-200 bg-white px-4 py-2 shadow-sm">
           <div className="mx-auto flex max-w-7xl items-center justify-between gap-2">
             <div className="flex items-center gap-2">
               {screen.prevScreenId ? (
@@ -346,7 +375,6 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
             </div>
           </div>
         </footer>
-      </div>
 
       {/* Slide-over Drawers */}
       {drawer !== 'none' && (

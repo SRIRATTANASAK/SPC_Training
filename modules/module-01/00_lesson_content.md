@@ -29,8 +29,6 @@
 | **มุมมองความเห็น** | เถียงกันตามความเห็นของแต่ละกะ/แผนก | ใช้ตัวเลขกลางชุดเดียวกัน คุยด้วยหลักฐาน |
 | **จังหวะการแก้ไข** | รอให้ลูกค้าเคลมหรือเกิดของเสียกองโตก่อน (Reactive) | จับสัญญาณแนวโน้มก่อนหลุด Spec (Proactive) |
 
-*(Hotspot 1: Trial & Error vs Root Cause | Hotspot 2: Opinion vs Fact | Hotspot 3: Firefighting vs Prevention)*
-
 ---
 
 ## M1L1-S03 — Cost of Poor Quality (COPQ)

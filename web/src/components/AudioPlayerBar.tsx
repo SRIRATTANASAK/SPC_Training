@@ -8,6 +8,8 @@ interface Props {
   screenId: string;
   isQuizOrWorkshop?: boolean;
   onAudioEnded?: () => void;
+  leftSlot?: React.ReactNode;
+  rightSlot?: React.ReactNode;
 }
 
 export const AudioPlayerBar: React.FC<Props> = ({
@@ -15,6 +17,8 @@ export const AudioPlayerBar: React.FC<Props> = ({
   screenId,
   isQuizOrWorkshop = false,
   onAudioEnded,
+  leftSlot,
+  rightSlot,
 }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
@@ -54,7 +58,6 @@ export const AudioPlayerBar: React.FC<Props> = ({
         .play()
         .then(() => setPlaying(true))
         .catch(() => {
-          // Browser blocked unmuted autoplay until user interacts once
           setPlaying(false);
         });
     }
@@ -113,7 +116,7 @@ export const AudioPlayerBar: React.FC<Props> = ({
     captionLang === 'th' ? voiceover?.displayScriptTh || voiceover?.ttsCleanTh : voiceover?.enReference;
 
   return (
-    <div className="border-t border-slate-800 bg-slate-900 text-slate-100">
+    <header className="shrink-0 z-30 border-b border-slate-200 bg-white/95 backdrop-blur">
       {hasMp3 && (
         <audio
           ref={audioRef}
@@ -122,80 +125,92 @@ export const AudioPlayerBar: React.FC<Props> = ({
           preload="auto"
         />
       )}
-      {showCaptions && captionText && (
-        <div className="border-b border-slate-800 bg-slate-950/95 px-4 py-1.5 text-center text-xs sm:text-sm text-sky-100 leading-snug">
-          {captionText}
-        </div>
-      )}
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-2">
-        <div className="flex items-center gap-3">
+
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2">
+        {/* Left: Course & Screen Breadcrumb */}
+        <div className="flex items-center gap-2.5 min-w-0">{leftSlot}</div>
+
+        {/* Center: Audio & Caption Controls */}
+        <div className="flex flex-wrap items-center gap-1.5 rounded-xl bg-slate-900 px-2.5 py-1 text-slate-100 shadow-sm">
           <button
             type="button"
             onClick={togglePlay}
             disabled={!hasMp3}
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-sky-600 text-white hover:bg-sky-500 disabled:opacity-40 transition"
+            className="flex h-7 w-7 items-center justify-center rounded-full bg-sky-600 text-white hover:bg-sky-500 disabled:opacity-40 transition"
             aria-label={playing ? 'Pause narration' : 'Play narration'}
           >
-            {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 ml-0.5" />}
+            {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5 ml-0.5" />}
           </button>
-          <div className="text-xs">
-            <div className="font-bold text-white flex items-center gap-2">
-              <Volume2 className="h-3.5 w-3.5 text-sky-400" />
-              <span>{voiceover?.audioId}</span>
-              <span className="text-slate-400">({voiceover?.duration})</span>
-              {isQuizOrWorkshop && (
-                <span className="rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-amber-300">
-                  โหมดลงมือทำ (หยุดรอผู้เรียน)
-                </span>
-              )}
-            </div>
-          </div>
-        </div>
 
-        <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 px-1 text-[11px] font-bold text-white">
+            <Volume2 className="h-3.5 w-3.5 text-sky-400" />
+            <span>{voiceover?.audioId}</span>
+            <span className="text-slate-400">({voiceover?.duration})</span>
+            {isQuizOrWorkshop && (
+              <span className="hidden xl:inline rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-amber-300">
+                หยุดรอผู้เรียน
+              </span>
+            )}
+          </div>
+
+          <span className="h-4 w-px bg-slate-700 mx-0.5" />
+
           <button
             type="button"
             onClick={handleAutoPlayToggle}
             title="เปิด/ปิด การเล่นและเปลี่ยนหน้าอัตโนมัติ (ยกเว้นหน้า Workshop/แบบทดสอบ)"
-            className={`flex items-center gap-1 rounded border px-2 py-1 text-xs font-bold transition ${
+            className={`flex items-center gap-1 rounded border px-2 py-0.5 text-[11px] font-bold transition ${
               autoPlay
                 ? 'border-emerald-500 bg-emerald-950 text-emerald-200'
                 : 'border-slate-700 bg-slate-800 text-slate-400'
             }`}
           >
-            <FastForward className="h-3.5 w-3.5" />
+            <FastForward className="h-3 w-3" />
             <span>Auto {autoPlay ? 'ON' : 'OFF'}</span>
           </button>
+
           <button
             type="button"
             onClick={handleSpeedToggle}
-            className="rounded border border-slate-700 bg-slate-800 px-2 py-1 text-xs font-bold text-slate-200 hover:bg-slate-700"
+            className="rounded border border-slate-700 bg-slate-800 px-2 py-0.5 text-[11px] font-bold text-slate-200 hover:bg-slate-700"
           >
             {speed}x
           </button>
+
           <button
             type="button"
             onClick={handleLangToggle}
             title="สลับภาษาคำบรรยาย (TH / EN) — จำค่าทุกหน้า"
-            className="rounded border border-slate-700 bg-slate-800 px-2.5 py-1 text-xs font-bold text-sky-300 hover:bg-slate-700"
+            className="rounded border border-slate-700 bg-slate-800 px-2 py-0.5 text-[11px] font-bold text-sky-300 hover:bg-slate-700"
           >
             {captionLang.toUpperCase()}
           </button>
+
           <button
             type="button"
             onClick={handleCaptionsToggle}
             title="เปิด/ปิด คำบรรยาย (CC) — จำค่าทุกหน้า"
-            className={`flex items-center gap-1 rounded border px-2.5 py-1 text-xs font-bold transition ${
+            className={`flex items-center gap-1 rounded border px-2 py-0.5 text-[11px] font-bold transition ${
               showCaptions
                 ? 'border-sky-500 bg-sky-950 text-sky-200'
                 : 'border-slate-700 bg-slate-800 text-slate-400'
             }`}
           >
-            <Subtitles className="h-3.5 w-3.5" />
+            <Subtitles className="h-3 w-3" />
             <span>CC {showCaptions ? 'ON' : 'OFF'}</span>
           </button>
         </div>
+
+        {/* Right: Progress & Drawers */}
+        <div className="flex items-center gap-2 shrink-0">{rightSlot}</div>
       </div>
-    </div>
+
+      {/* Caption Strip Directly Below Top Bar */}
+      {showCaptions && captionText && (
+        <div className="border-t border-slate-800 bg-slate-900 px-4 py-1 text-center text-xs sm:text-sm text-sky-100 leading-snug">
+          {captionText}
+        </div>
+      )}
+    </header>
   );
 };
