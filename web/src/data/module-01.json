@@ -1,0 +1,2206 @@
+{
+  "moduleId": "M1",
+  "moduleTitle": "Statistics Foundation for Manufacturing",
+  "moduleTitleTh": "พื้นฐานสถิติสำหรับงานวิศวกรรมการผลิต",
+  "totalScreens": 29,
+  "lessons": [
+    {
+      "id": "M1-L1",
+      "title": "Why Statistics in Manufacturing?",
+      "screens": [
+        "M1L1-S01",
+        "M1L1-S02",
+        "M1L1-S03",
+        "M1L1-S04",
+        "M1L1-S05",
+        "M1L1-S06"
+      ]
+    },
+    {
+      "id": "M1-L2",
+      "title": "Types of Data & Measurement Scales",
+      "screens": [
+        "M1L2-S01",
+        "M1L2-S02",
+        "M1L2-S03",
+        "M1L2-S04",
+        "M1L2-S05",
+        "M1L2-S06"
+      ]
+    },
+    {
+      "id": "M1-L3",
+      "title": "Descriptive Statistics",
+      "screens": [
+        "M1L3-S01",
+        "M1L3-S02",
+        "M1L3-S03",
+        "M1L3-S04",
+        "M1L3-S05",
+        "M1L3-S06",
+        "M1L3-S07",
+        "M1L3-S08",
+        "M1L3-S09"
+      ]
+    },
+    {
+      "id": "M1-L4",
+      "title": "Data Visualization & Final Assessment",
+      "screens": [
+        "M1L4-S01",
+        "M1L4-S02",
+        "M1L4-S03",
+        "M1L4-S04",
+        "M1L4-S05",
+        "M1L4-S06",
+        "M1L4-S07",
+        "M1L4-S08"
+      ]
+    }
+  ],
+  "screens": [
+    {
+      "index": 1,
+      "screenId": "M1L1-S01",
+      "lessonId": "M1-L1",
+      "lessonTitle": "Why Statistics in Manufacturing?",
+      "title": "Welcome & Variation Reality",
+      "markdown": "**หัวข้อ:** ทุกกระบวนการผลิตมีความแปรปรวน (Every Process Has Variation)  \n`<Asset id=\"AST-M1-001\" />`\n\n- **ความจริงหน้างาน:** แม้ใช้เครื่อง CNC เดิม, วัตถุดิบ Lot เดิม, และช่างคนเดิม เพลาขนาดเป้า `50.00 mm` ที่กลึงออกมาทีละชิ้นจะได้ค่าต่างกันเสมอ เช่น `49.99`, `50.01`, `50.00`, `50.02 mm`\n- **วัตถุประสงค์การเรียนรู้ประจำ Module 1:**\n  1. เข้าใจบทบาทของสถิติและการลดความแปรปรวนต่อต้นทุนคุณภาพ (COPQ)\n  2. จำแนกชนิดข้อมูล (Variable/Attribute, Continuous/Discrete) และมาตราการวัด 4 ระดับ (NOIR) ได้แม่นยำ\n  3. คำนวณและตีความสถิติเชิงพรรณนา (Mean, Median, Mode, Range, Variance, SD, CV) ได้ถูกต้อง\n  4. เลือกใช้และอ่านกราฟ 5 ชนิด (Histogram, Box Plot, Pareto, Scatter, Run Chart) จากข้อมูลโรงงานจริง\n\n---",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-001",
+        "AST-M1-002"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L1-S01",
+        "audioFile": "/audio/module-01/AUD-M1L1-S01.mp3",
+        "duration": "25 sec",
+        "displayScriptTh": "ยินดีต้อนรับเข้าสู่ Module ที่ 1 พื้นฐานสถิติสำหรับงานวิศวกรรมการผลิตครับ [PAUSE-1] [ANIM: hero_pan] ในโรงงานอุตสาหกรรม ไม่ว่าเครื่องจักรจะใหม่แค่ไหน หรือช่างจะเก่งเพียงใด **ไม่มีกระบวนการผลิตไหนที่ทำชิ้นงานออกมาได้เท่ากันเป๊ะร้อยเปอร์เซ็นต์ทุกชิ้น** [PAUSE-1] ความแตกต่างเล็กๆ น้อยๆ ตามธรรมชาตินี้ เราเรียกว่า **ความแปรปรวน หรือ Variation** ครับ",
+        "ttsCleanTh": "ยินดีต้อนรับเข้าสู่ โมดูลที่ 1 พื้นฐานสถิติสำหรับงานวิศวกรรมการผลิตครับ, ในโรงงานอุตสาหกรรม ไม่ว่าเครื่องจักรจะใหม่แค่ไหน หรือช่างจะเก่งเพียงใด ไม่มีกระบวนการผลิตไหนที่ทำชิ้นงานออกมาได้เท่ากันเป๊ะร้อยเปอร์เซ็นต์ทุกชิ้น, ความแตกต่างเล็กๆ น้อยๆ ตามธรรมชาตินี้ เราเรียกว่า ความแปรปรวน หรือ แวริเอชั่น ครับ",
+        "enReference": "Welcome to Module 1: Statistics Foundation for Manufacturing. In manufacturing, no process produces exactly the same result every time. These natural differences are called VARIATION."
+      },
+      "prevScreenId": null,
+      "nextScreenId": "M1L1-S02"
+    },
+    {
+      "index": 2,
+      "screenId": "M1L1-S02",
+      "lessonId": "M1-L1",
+      "lessonTitle": "Why Statistics in Manufacturing?",
+      "title": "Importance of Data-Driven Decision",
+      "markdown": "**หัวข้อ:** ตัดสินใจด้วยข้อมูลจริง แทนการเดาด้วยความรู้สึก  \n`<Asset id=\"AST-M1-002\" />`\n\n| มิติการตัดสินใจ | แบบเดิม (Gut Feeling / ประสบการณ์ล้วน) | แบบ Data-Driven Decision (ใช้สถิติ) |\n|---|---|---|\n| **การหาสาเหตุ** | ลองผิดลองถูก ปรับตั้งเครื่องไปเรื่อยๆ | วัดผลและทดสอบสมมติฐาน ชี้เป้าสาเหตุจริง |\n| **มุมมองความเห็น** | เถียงกันตามความเห็นของแต่ละกะ/แผนก | ใช้ตัวเลขกลางชุดเดียวกัน คุยด้วยหลักฐาน |\n| **จังหวะการแก้ไข** | รอให้ลูกค้าเคลมหรือเกิดของเสียกองโตก่อน (Reactive) | จับสัญญาณแนวโน้มก่อนหลุด Spec (Proactive) |\n\n*(Hotspot 1: Trial & Error vs Root Cause | Hotspot 2: Opinion vs Fact | Hotspot 3: Firefighting vs Prevention)*\n\n---",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-002"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L1-S02",
+        "audioFile": "/audio/module-01/AUD-M1L1-S02.mp3",
+        "duration": "35 sec",
+        "displayScriptTh": "เวลาหน้างานเกิดปัญหา หลายคนมักใช้ประสบการณ์หรือความรู้สึกเดาว่า \"สงสัยเป็นที่เครื่องนี้\" หรือ \"น่าจะเป็นเพราะล็อตวัตถุดิบ\" [PAUSE-1] [ANIM: zoom_dashboard] แต่ในโรงงานยุคใหม่ การตัดสินใจด้วย **Data-Driven Decision** คือการใช้ตัวเลขและหลักฐานทางสถิติมายืนยันก่อนลงมือแก้ เพื่อไม่ให้แก้ปัญหาผิดจุด เสียเวลา และเสียต้นทุนฟรีครับ [PAUSE-1] ลองคลิกดูจุดสำคัญทั้ง 3 จุดบนหน้าจอได้เลยครับ",
+        "ttsCleanTh": "เวลาหน้างานเกิดปัญหา หลายคนมักใช้ประสบการณ์หรือความรู้สึกเดาว่า สงสัยเป็นที่เครื่องนี้ หรือ น่าจะเป็นเพราะล็อตวัตถุดิบ, แต่ในโรงงานยุคใหม่ การตัดสินใจด้วย เดต้า ดริฟเว่น ดีซิชั่น คือการใช้ตัวเลขและหลักฐานทางสถิติมายืนยันก่อนลงมือแก้ เพื่อไม่ให้แก้ปัญหาผิดจุด เสียเวลา และเสียต้นทุนฟรีครับ, ลองคลิกดูจุดสำคัญทั้ง 3 จุดบนหน้าจอได้เลยครับ",
+        "enReference": "Instead of relying on gut feelings, data-driven decision-making uses statistical evidence to pinpoint root causes, avoid trial-and-error waste, and shift from reactive firefighting to proactive control."
+      },
+      "prevScreenId": "M1L1-S01",
+      "nextScreenId": "M1L1-S03"
+    },
+    {
+      "index": 3,
+      "screenId": "M1L1-S03",
+      "lessonId": "M1-L1",
+      "lessonTitle": "Why Statistics in Manufacturing?",
+      "title": "Cost of Poor Quality (COPQ)",
+      "markdown": "**หัวข้อ:** ภูเขาน้ำแข็งแห่งความสูญเสีย (Cost of Poor Quality)  \n`<Asset id=\"AST-M1-003\" />` `<Interactive id=\"INT-M1-L1-02\" />`\n\n$$\\text{COPQ} = \\text{Prevention} + \\text{Appraisal} + \\text{Internal Failure} + \\text{External Failure}$$\n\n- **ส่วนยอดภูเขาน้ำแข็ง (มองเห็นง่ายในบัญชี):**\n  - งานทิ้ง (**Scrap**) และ งานซ่อม (**Rework**)\n- **ส่วนใต้น้ำ (ซ่อนอยู่ แต่มักใหญ่กว่า 3–5 เท่า):**\n  - ค่าแรงคัดแยก (**100% Sorting**), เครื่องจักรเสียโอกาสผลิต (**Lost Capacity**), ค่าขนส่งด่วน (**Premium Freight**), ค่าเคลม (**Warranty**) และการสูญเสียความเชื่อมั่นจากลูกค้า\n\n---",
+      "interactiveIds": [
+        "INT-M1-L1-02"
+      ],
+      "assetIds": [
+        "AST-M1-003"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L1-S03",
+        "audioFile": "/audio/module-01/AUD-M1L1-S03.mp3",
+        "duration": "45 sec",
+        "displayScriptTh": "ทำไมผู้บริหารถึงให้ความสำคัญกับสถิติ? คำตอบอยู่ที่ **COPQ หรือ Cost of Poor Quality — ต้นทุนความสูญเสียจากคุณภาพต่ำ** ครับ [PAUSE-1] [ANIM: iceberg_reveal] ของเสียที่เราเห็นชัดๆ คือ งานทิ้ง Scrap หรืองานซ่อม Rework [PAUSE-1] แต่มันยังมีต้นทุนที่ซ่อนอยู่ใต้น้ำ เช่น ค่าแรงคัดแยก Sorting, เครื่องจักรเสียโอกาสผลิต, ค่าเคลมลูกค้า และความน่าเชื่อถือที่เสียไป [PAUSE-1] ลองกรอกตัวเลขในเครื่องคิดเลข COPQ ด้านล่าง เพื่อดูว่าความสูญเสียต่อเดือนของโรงงานสูงแค่ไหนครับ",
+        "ttsCleanTh": "ทำไมผู้บริหารถึงให้ความสำคัญกับสถิติ, คำตอบอยู่ที่ ซีโอพีคิว หรือ คอสต์ ออฟ พัวร์ ควอลิตี้ ต้นทุนความสูญเสียจากคุณภาพต่ำครับ, ของเสียที่เราเห็นชัดๆ คือ งานทิ้ง สแครป หรืองานซ่อม รีเวิร์ค, แต่มันยังมีต้นทุนที่ซ่อนอยู่ใต้น้ำ เช่น ค่าแรงคัดแยก ซอร์ตติ้ง เครื่องจักรเสียโอกาสผลิต ค่าเคลมลูกค้า และความน่าเชื่อถือที่เสียไป, ลองกรอกตัวเลขในเครื่องคิดเลข ซีโอพีคิว ด้านล่าง เพื่อดูว่าความสูญเสียต่อเดือนของโรงงานสูงแค่ไหนครับ",
+        "enReference": "Cost of Poor Quality includes visible scrap and rework, plus hidden costs like sorting labor, lost capacity, warranty claims, and customer dissatisfaction. Try the interactive COPQ calculator to see the monthly financial impact."
+      },
+      "prevScreenId": "M1L1-S02",
+      "nextScreenId": "M1L1-S04"
+    },
+    {
+      "index": 4,
+      "screenId": "M1L1-S04",
+      "lessonId": "M1-L1",
+      "lessonTitle": "Why Statistics in Manufacturing?",
+      "title": "Factory Examples & Sources of Variation (4M1E+M)",
+      "markdown": "**หัวข้อ:** ตัวอย่างการใช้สถิติในโรงงาน & 6 ปัจจัยความแปรปรวน  \n`<Asset id=\"AST-M1-004\" />` `<Asset id=\"AST-M1-005\" />` `<Interactive id=\"INT-M1-L1-01\" />`\n\n- **ตัวอย่างการใช้สถิติจริงใน 4 อุตสาหกรรม:**\n  1. **Machining (CNC):** คุมเส้นผ่านศูนย์กลางเพลา `50.00 ± 0.05 mm` และอายุการใช้งาน Tool Wear\n  2. **Injection Molding:** คุมน้ำหนักชิ้นงาน (Shot Weight) และเปรียบเทียบความต่างระหว่าง Cavity 1–4\n  3. **Stamping:** นับจำนวนครีบ (Burr) และติดตามความหนาแผ่นโลหะ\n  4. **Electronics / Assembly:** คุมแรงบิดขันสกรู (Torque) และจัดอันดับ Defect ด้วย Pareto\n- **6 แหล่งที่มาของความแปรปรวน (5M1E):**\n  `Man (คน)` • `Machine (เครื่องจักร)` • `Material (วัตถุดิบ)` • `Method (วิธีการ)` • `Measurement (ระบบการวัด)` • `Environment (สภาพแวดล้อม)`\n\n---",
+      "interactiveIds": [
+        "INT-M1-L1-01"
+      ],
+      "assetIds": [
+        "AST-M1-004",
+        "AST-M1-005"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L1-S04",
+        "audioFile": "/audio/module-01/AUD-M1L1-S04.mp3",
+        "duration": "50 sec",
+        "displayScriptTh": "ลองดูตัวอย่างจริงในโรงงานครับ [ANIM: shaft_example] สมมติเรากลึงเพลาขนาดเป้าหมาย 50.00 มิลลิเมตร แม้เครื่องจักรจะเดินนิ่งดี วัดออกมาแต่ละชิ้นก็จะได้ 49.99, 50.01, 50.00 ไม่ซ้ำกันเลย [PAUSE-1] [ANIM: icons_4m1e] ความแปรปรวนเหล่านี้มาจาก 6 ปัจจัยหลัก หรือ 4M1E ได้แก่ **วัตถุดิบ, เครื่องจักร, วิธีการทำงาน, พนักงาน, ระบบการวัด และสภาพแวดล้อม** [PAUSE-1] ลองสลับเปลี่ยนปัจจัยในกล่องจำลองด้านล่าง แล้วสังเกตดูว่าอัตราของเสียเปลี่ยนแปลงอย่างไรครับ",
+        "ttsCleanTh": "ลองดูตัวอย่างจริงในโรงงานครับ, สมมติเรากลึงเพลาขนาดเป้าหมาย 50 มิลลิเมตร แม้เครื่องจักรจะเดินนิ่งดี วัดออกมาแต่ละชิ้นก็จะได้ 49.99, 50.01, 50.00 ไม่ซ้ำกันเลย, ความแปรปรวนเหล่านี้มาจาก 6 ปัจจัยหลัก หรือ สี่เอ็ม หนึ่งอี ได้แก่ วัตถุดิบ เครื่องจักร วิธีการทำงาน พนักงาน ระบบการวัด และสภาพแวดล้อม, ลองสลับเปลี่ยนปัจจัยในกล่องจำลองด้านล่าง แล้วสังเกตดูว่าอัตราของเสียเปลี่ยนแปลงอย่างไรครับ",
+        "enReference": "Consider a shaft with a target diameter of 50 millimeters. Even when stable, measurements fluctuate due to materials, machines, methods, manpower, measurement systems, and environment. Experiment with the Variation Explorer below."
+      },
+      "prevScreenId": "M1L1-S03",
+      "nextScreenId": "M1L1-S05"
+    },
+    {
+      "index": 5,
+      "screenId": "M1L1-S05",
+      "lessonId": "M1-L1",
+      "lessonTitle": "Why Statistics in Manufacturing?",
+      "title": "Statistical Thinking",
+      "markdown": "**หัวข้อ:** หลักคิดเชิงสถิติ 3 ประการ (3 Pillars of Statistical Thinking)  \n`<Asset id=\"AST-M1-004\" />`\n\n1. **All work is a process:** ทุกงานในโรงงานคือกระบวนการที่เชื่อมโยงกัน (`Input → Process → Output`)\n2. **Variation exists in all processes:** ทุกกระบวนการมีความแปรปรวนอยู่เสมอ (เสถียร ≠ เท่ากันทุกชิ้น)\n3. **Reduce variation systematically:** ต้องแยก **Normal Variation** ออกจาก **Abnormal Variation** ให้ได้ก่อนลงมือปรับเครื่อง มิฉะนั้นจะเกิด **Tampering (ปรับเกินความจำเป็นจนเครื่องยิ่งแกว่ง)**\n\n---",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-004"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L1-S05",
+        "audioFile": "/audio/module-01/AUD-M1L1-S05.mp3",
+        "duration": "35 sec",
+        "displayScriptTh": "และนี่คือหัวใจของ **Statistical Thinking หรือการคิดเชิงสถิติ** ครับ [PAUSE-1] [ANIM: histogram_build] สถิติช่วยให้เราแปลงข้อมูลดิบเป็นข้อมูลที่มีความหมาย [PAUSE-1] และทำให้วิศวกร **แยกแยะได้ว่าความแปรปรวนแบบไหนคือความแปรปรวนปกติของเครื่องจักร และแบบไหนคือความผิดปกติที่ต้องรีบหยุดเช็ค** เพื่อไม่ให้ปรับเครื่องมั่วจนกระบวนการยิ่งแกว่งครับ",
+        "ttsCleanTh": "และนี่คือหัวใจของ สแตทิสติคอล ทิงกิ้ง หรือการคิดเชิงสถิติครับ, สถิติช่วยให้เราแปลงข้อมูลดิบเป็นข้อมูลที่มีความหมาย, และทำให้วิศวกรแยกแยะได้ว่าความแปรปรวนแบบไหนคือความแปรปรวนปกติของเครื่องจักร และแบบไหนคือความผิดปกติที่ต้องรีบหยุดเช็ค เพื่อไม่ให้ปรับเครื่องมั่วจนกระบวนการยิ่งแกว่งครับ",
+        "enReference": "Statistical thinking rests on three pillars: all work occurs in a system of interconnected processes, variation exists in all processes, and understanding and reducing variation—starting with separating normal from abnormal variation—is key to improvement."
+      },
+      "prevScreenId": "M1L1-S04",
+      "nextScreenId": "M1L1-S06"
+    },
+    {
+      "index": 6,
+      "screenId": "M1L1-S06",
+      "lessonId": "M1-L1",
+      "lessonTitle": "Why Statistics in Manufacturing?",
+      "title": "Lesson 1 Knowledge Check (`KC-M1-L1`)",
+      "markdown": "- ทบทวน 2 ข้อ (`M1-Q001`, `M1-Q005`) จาก [06_assessment_bank.md](06_assessment_bank.md)",
+      "interactiveIds": [],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M1L1-S06",
+        "audioFile": "/audio/module-01/AUD-M1L1-S06.mp3",
+        "duration": "20 sec",
+        "displayScriptTh": "ก่อนจะไปบทต่อไป มาลองเช็คความเข้าใจสั้นๆ 2 ข้อเกี่ยวกับ Statistical Thinking และ COPQ กันครับ เลือกคำตอบที่คิดว่าใช่ที่สุดแล้วกดส่งคำตอบได้เลย",
+        "ttsCleanTh": "ก่อนจะไปบทต่อไป มาลองเช็คความเข้าใจสั้นๆ 2 ข้อเกี่ยวกับ สแตทิสติคอล ทิงกิ้ง และ ซีโอพีคิว กันครับ เลือกคำตอบที่คิดว่าใช่ที่สุดแล้วกดส่งคำตอบได้เลย",
+        "enReference": "Let us check your understanding of Statistical Thinking and COPQ with two quick questions before moving to Lesson 2. ---"
+      },
+      "prevScreenId": "M1L1-S05",
+      "nextScreenId": "M1L2-S01"
+    },
+    {
+      "index": 7,
+      "screenId": "M1L2-S01",
+      "lessonId": "M1-L2",
+      "lessonTitle": "Types of Data & Measurement Scales",
+      "title": "Variable Data vs Attribute Data",
+      "markdown": "`<Asset id=\"AST-M1-006\" />` `<Asset id=\"AST-M1-007\" />`\n\n| หัวข้อเปรียบเทียบ | Variable Data (ข้อมูลเชิงปริมาณ) | Attribute Data (ข้อมูลเชิงคุณลักษณะ) |\n|---|---|---|\n| **วิธีได้มา** | **วัดค่า** ด้วยเครื่องมือวัดที่มีสเกล | **นับจำนวน** หรือ **จำแนกหมวดหมู่** |\n| **ตัวอย่างหน้างาน** | ความยาว (mm), น้ำหนัก (g), แรงบิด (N·m), อุณหภูมิ (°C) | Pass/Fail, Go/No-Go, จำนวน Scratch, Burr, Dent |\n| **ปริมาณข้อมูลเชิงลึก** | สูง (รู้ว่าใกล้ขอบ Spec แค่ไหน ใช้ตัวอย่างน้อย) | ต่ำกว่า (รู้แค่ผ่าน/ไม่ผ่าน ต้องใช้ตัวอย่างเยอะ) |\n| **Control Chart ที่ใช้** | $\\bar{X}\\text{-}R$, $\\bar{X}\\text{-}S$, $I\\text{-}MR$ | $P$, $NP$, $C$, $U$ |\n\n---",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-006",
+        "AST-M1-007"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L2-S01",
+        "audioFile": "/audio/module-01/AUD-M1L2-S01.mp3",
+        "duration": "35 sec",
+        "displayScriptTh": "ข้อมูลในโรงงานแบ่งออกเป็น 2 ตระกูลใหญ่ๆ ที่ต้องแยกให้ออกตั้งแต่ต้น คือ **Variable Data** และ **Attribute Data** ครับ [PAUSE-1] [ANIM: split_compare] **Variable Data** คือข้อมูลที่ได้จากการวัดค่าจริง เช่น ความยาว น้ำหนัก แรงบิด หรืออุณหภูมิ [PAUSE-1] ส่วน **Attribute Data** คือข้อมูลที่ได้จากการนับหรือการตัดสิน เช่น ผ่าน-ไม่ผ่าน, รอยขีดข่วน, หรือจำนวนชิ้นงานเสียครับ",
+        "ttsCleanTh": "ข้อมูลในโรงงานแบ่งออกเป็น 2 ตระกูลใหญ่ๆ ที่ต้องแยกให้ออกตั้งแต่ต้น คือ แวริเอเบิล เดต้า และ แอททริบิวต์ เดต้า ครับ, แวริเอเบิล เดต้า คือข้อมูลที่ได้จากการวัดค่าจริง เช่น ความยาว น้ำหนัก แรงบิด หรืออุณหภูมิ, ส่วน แอททริบิวต์ เดต้า คือข้อมูลที่ได้จากการนับหรือการตัดสิน เช่น ผ่านหรือไม่ผ่าน รอยขีดข่วน หรือจำนวนชิ้นงานเสียครับ",
+        "enReference": "Manufacturing data fall into two main categories: variable data measured on a scale such as diameter or torque, and attribute data classified or counted such as pass-fail or defect counts."
+      },
+      "prevScreenId": "M1L1-S06",
+      "nextScreenId": "M1L2-S02"
+    },
+    {
+      "index": 8,
+      "screenId": "M1L2-S02",
+      "lessonId": "M1-L2",
+      "lessonTitle": "Types of Data & Measurement Scales",
+      "title": "Continuous vs Discrete Data",
+      "markdown": "`<Asset id=\"AST-M1-008\" />` `<Asset id=\"AST-M1-009\" />`\n\n- **Continuous Data (ข้อมูลต่อเนื่อง):** แบ่งย่อยเป็นทศนิยมได้ไม่สิ้นสุดขึ้นกับความละเอียดเครื่องมือวัด เช่น `50.00`, `50.01`, `50.014 mm`\n- **Discrete Data (ข้อมูลไม่ต่อเนื่อง):** เป็นจำนวนนับเต็มหน่วย (`0, 1, 2, 3 จุดเสีย`) หรือหมวดหมู่ที่ชัดเจน (`Day / Night`, `Pass / Fail`)\n- **ข้อควรระวังหน้างาน:** หากใช้เครื่องมือวัดที่หยาบเกินไป (Resolution ต่ำ เช่น อ่านได้ทีละ `0.5 mm`) ข้อมูล Continuous อาจเรียงเป็นขั้นๆ เหมือน Discrete (Chunky Data) จนนำไปวิเคราะห์ SPC ได้ไม่แม่นยำ\n\n---",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-008",
+        "AST-M1-009"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L2-S02",
+        "audioFile": "/audio/module-01/AUD-M1L2-S02.mp3",
+        "duration": "35 sec",
+        "displayScriptTh": "มาดูความละเอียดลงไปอีกขั้นครับ [ANIM: gauge_vs_bin] **Continuous Data** คือข้อมูลต่อเนื่องที่ซอยละเอียดเป็นทศนิยมได้เรื่อยๆ ตามความละเอียดของเครื่องมือวัด เช่น 50.012 มิลลิเมตร [PAUSE-1] ส่วน **Discrete Data** คือข้อมูลไม่ต่อเนื่องที่เป็นจำนวนนับเต็มหน่วย หรือเป็นหมวดหมู่ชัดเจน เช่น พบจุดเสีย 0, 1, 2 จุด ไม่สามารถมี 1.5 จุดได้ครับ",
+        "ttsCleanTh": "มาดูความละเอียดลงไปอีกขั้นครับ, คอนทินิวอัส เดต้า คือข้อมูลต่อเนื่องที่ซอยละเอียดเป็นทศนิยมได้เรื่อยๆ ตามความละเอียดของเครื่องมือวัด เช่น 50.012 มิลลิเมตร, ส่วน ดิสครีต เดต้า คือข้อมูลไม่ต่อเนื่องที่เป็นจำนวนนับเต็มหน่วย หรือเป็นหมวดหมู่ชัดเจน เช่น พบจุดเสีย 0, 1, 2 จุด ไม่สามารถมี 1.5 จุดได้ครับ",
+        "enReference": "Continuous data can take any value along a measurement continuum depending on gauge resolution, whereas discrete data consist of countable whole numbers or distinct categories."
+      },
+      "prevScreenId": "M1L2-S01",
+      "nextScreenId": "M1L2-S03"
+    },
+    {
+      "index": 9,
+      "screenId": "M1L2-S03",
+      "lessonId": "M1-L2",
+      "lessonTitle": "Types of Data & Measurement Scales",
+      "title": "Measurement Scales (NOIR)",
+      "markdown": "`<Asset id=\"AST-M1-010\" />`\n\n| Scale | ความหมาย | ตัวอย่างโรงงาน | สถิติที่ใช้ได้ | ข้อควรระวัง |\n|---|---|---|---|---|\n| **N — Nominal** | ชื่อ/ป้ายกำกับ (เรียงลำดับไม่ได้) | รหัสกะ (`Day/Night`), ประเภท Defect, **`Cavity 1,2,3,4`** | Mode, % สัดส่วน, Pareto | **ห้ามหา Mean เด็ดขาด** |\n| **O — Ordinal** | จัดอันดับได้ แต่ช่วงห่างไม่เท่ากัน | เกรดผิว (`Poor/Fair/Good`), คะแนน `1–5 ดาว`, ระดับทักษะ | Median, Mode, Percentile | ระยะห่าง `1→2` ≠ `4→5` |\n| **I — Interval** | ช่วงห่างเท่ากัน แต่ **ไม่มีศูนย์แท้** | อุณหภูมิ `°C` / `°F` | Mean, SD, Variance, Range | พูดว่า `40°C ร้อนเป็น 2 เท่าของ 20°C` **ไม่ได้** |\n| **R — Ratio** | ช่วงห่างเท่ากัน และ **มีศูนย์แท้ (True Zero)** | ความยาว (`mm`), น้ำหนัก (`g`), Torque (`N·m`), จำนวน Defect | **ใช้ได้ทุกตัว** (Mean, SD, CV, % สัดส่วน) | เป็น Scale ที่ทรงพลังที่สุดในวิศวกรรม |\n\n---",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-010"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L2-S03",
+        "audioFile": "/audio/module-01/AUD-M1L2-S03.mp3",
+        "duration": "55 sec",
+        "displayScriptTh": "นอกจากแยก Variable กับ Attribute แล้ว วิศวกรต้องรู้จักมาตราการวัด 4 ระดับ หรือ **NOIR** ด้วยครับ [PAUSE-1] [ANIM: cards_4_scales] หนึ่ง **Nominal** คือแค่ชื่อหรือป้ายกำกับ เช่น เลข Cavity 1, 2, 3, 4 อันนี้ห้ามจับมาหาค่าเฉลี่ยเด็ดขาดนะครับ! [PAUSE-1] สอง **Ordinal** คือเรียงลำดับได้ เช่น เกรดสวย-พอใช้-แย่ แต่ระยะห่างแต่ละเกรดไม่เท่ากัน [PAUSE-1] สาม **Interval** มีช่วงห่างเท่ากัน แต่ไม่มีศูนย์แท้ เช่น อุณหภูมิ 0 องศาเซลเซียส ไม่ได้แปลว่าไม่มีความร้อน [PAUSE-1] สี่ **Ratio** มีศูนย์แท้ วัดได้ทั้งความยาว น้ำหนัก แรงบิด และคำนวณสถิติได้ครบทุกตัวครับ",
+        "ttsCleanTh": "นอกจากแยก แวริเอเบิล กับ แอททริบิวต์ แล้ว วิศวกรต้องรู้จักมาตราการวัด 4 ระดับด้วยครับ, หนึ่ง นอมินัล คือแค่ชื่อหรือป้ายกำกับ เช่น เลข คาวิตี้ 1 2 3 4 อันนี้ห้ามจับมาหาค่าเฉลี่ยเด็ดขาดนะครับ, สอง ออดินัล คือเรียงลำดับได้ เช่น เกรดสวย พอใช้ แย่ แต่ระยะห่างแต่ละเกรดไม่เท่ากัน, สาม อินเทอร์วัล มีช่วงห่างเท่ากัน แต่ไม่มีศูนย์แท้ เช่น อุณหภูมิ 0 องศาเซลเซียส ไม่ได้แปลว่าไม่มีความร้อน, สี่ เรโช มีศูนย์แท้ วัดได้ทั้งความยาว น้ำหนัก แรงบิด และคำนวณสถิติได้ครบทุกตัวครับ",
+        "enReference": "Measurement scales determine which statistical operations are valid: Nominal labels without order, Ordinal ranks without equal intervals, Interval scales with arbitrary zero like Celsius, and Ratio scales with a true zero like millimeters and grams."
+      },
+      "prevScreenId": "M1L2-S02",
+      "nextScreenId": "M1L2-S04"
+    },
+    {
+      "index": 10,
+      "screenId": "M1L2-S04",
+      "lessonId": "M1-L2",
+      "lessonTitle": "Types of Data & Measurement Scales",
+      "title": "Workshop 1: จำแนกข้อมูลจริงในโรงงาน",
+      "markdown": "`<Interactive id=\"INT-M1-L2-01\" />` `<Interactive id=\"INT-M1-L2-02\" />`\n- ใช้ชุดข้อมูลจริง 20 รายการจาก [data/workshop_m1_data_classification.csv](data/workshop_m1_data_classification.csv)\n- ลากวางแยก Variable / Attribute และจับคู่ Measurement Scale (`Nominal / Ordinal / Interval / Ratio`)",
+      "interactiveIds": [
+        "INT-M1-L2-01",
+        "INT-M1-L2-02"
+      ],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M1L2-S04",
+        "audioFile": "/audio/module-01/AUD-M1L2-S04.mp3",
+        "duration": "30 sec",
+        "displayScriptTh": "ถึงเวลาลงมือทำ **Workshop ที่ 1** แล้วครับ [PAUSE-1] ลองลากข้อมูลจริงจากโรงงานมาวางในหมวด **Variable** หรือ **Attribute** พร้อมระบุ Measurement Scale ให้ถูกต้อง ทำความคุ้นเคยกับตัวอย่างจริงหน้างาน แล้วดูผลเฉลยกันครับ",
+        "ttsCleanTh": "ถึงเวลาลงมือทำ เวิร์คช็อป ที่ 1 แล้วครับ, ลองลากข้อมูลจริงจากโรงงานมาวางในหมวด แวริเอเบิล หรือ แอททริบิวต์ พร้อมระบุระดับมาตราการวัดให้ถูกต้อง ทำความคุ้นเคยกับตัวอย่างจริงหน้างาน แล้วดูผลเฉลยกันครับ",
+        "enReference": "Now complete Workshop 1 by classifying real manufacturing items into Variable or Attribute data and matching their measurement scales."
+      },
+      "prevScreenId": "M1L2-S03",
+      "nextScreenId": "M1L2-S05"
+    },
+    {
+      "index": 11,
+      "screenId": "M1L2-S05",
+      "lessonId": "M1-L2",
+      "lessonTitle": "Types of Data & Measurement Scales",
+      "title": "Feedback & Rationale Layer",
+      "markdown": "สรุป 3 กับดักที่พบบ่อยจาก Workshop 1:\n1. **Go / No-Go Plug Gauge** → เป็น **Attribute (Nominal)** แม้ใช้ตรวจขนาดเพลา\n2. **หมายเลข Cavity (1, 2, 3, 4)** → เป็น **Attribute (Nominal)** ไม่ใช่ Ratio\n3. **อุณหภูมิ °C** → เป็น **Variable Continuous (Interval)** ไม่ใช่ Ratio",
+      "interactiveIds": [
+        "INT-M1-L2-01",
+        "INT-M1-L2-02"
+      ],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M1L2-S05",
+        "audioFile": "/audio/module-01/AUD-M1L2-S05.mp3",
+        "duration": "30 sec",
+        "displayScriptTh": "จุดที่วิศวกรมักพลาดบ่อยๆ คือ **Go/No-Go Gauge** ครับ แม้จะเช็คขนาดเพลา แต่ผลที่บันทึกคือ \"ผ่าน หรือ ไม่ผ่าน\" จึงถือเป็น **Attribute Nominal** ไม่ใช่ Variable [PAUSE-1] เช่นเดียวกับ **หมายเลข Cavity** ที่เป็นแค่ชื่อเรียก ไม่ใช่ตัวเลขสำหรับหาค่าเฉลี่ยครับ",
+        "ttsCleanTh": "จุดที่วิศวกรมักพลาดบ่อยๆ คือ โก โนโก เกจ ครับ แม้จะเช็คขนาดเพลา แต่ผลที่บันทึกคือ ผ่าน หรือ ไม่ผ่าน จึงถือเป็น แอททริบิวต์ นอมินัล ไม่ใช่ แวริเอเบิล, เช่นเดียวกับหมายเลข คาวิตี้ ที่เป็นแค่ชื่อเรียก ไม่ใช่ตัวเลขสำหรับหาค่าเฉลี่ยครับ",
+        "enReference": "Watch out for common traps: Go/No-Go gauge results are Attribute Nominal even when checking a dimension, and mold cavity numbers are labels rather than Ratio numbers."
+      },
+      "prevScreenId": "M1L2-S04",
+      "nextScreenId": "M1L2-S06"
+    },
+    {
+      "index": 12,
+      "screenId": "M1L2-S06",
+      "lessonId": "M1-L2",
+      "lessonTitle": "Types of Data & Measurement Scales",
+      "title": "Lesson 2 Summary & Knowledge Check (`KC-M1-L2`)",
+      "markdown": "- ทบทวน 2 ข้อ (`M1-Q012`, `M1-Q018`) จาก [06_assessment_bank.md](06_assessment_bank.md)",
+      "interactiveIds": [],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M1L2-S06",
+        "audioFile": "/audio/module-01/AUD-M1L2-S06.mp3",
+        "duration": "20 sec",
+        "displayScriptTh": "สรุปสั้นๆ ก่อนเลือกใช้กราฟหรือ Control Chart ในบทหลังๆ: ให้ถามตัวเองเสมอว่า **ข้อมูลนี้วัดค่าได้ (Variable) หรือนับเอา (Attribute)** ลองตอบคำถามทบทวน 2 ข้อเพื่อไปต่อครับ",
+        "ttsCleanTh": "สรุปสั้นๆ ก่อนเลือกใช้กราฟหรือ คอนโทรล ชาร์ท ในบทหลังๆ, ให้ถามตัวเองเสมอว่า ข้อมูลนี้วัดค่าได้แบบ แวริเอเบิล หรือนับเอาแบบ แอททริบิวต์, ลองตอบคำถามทบทวน 2 ข้อเพื่อไปต่อครับ",
+        "enReference": "Before choosing any statistical tool or control chart, always identify whether your data are variable or attribute. Complete the two check questions to unlock Lesson 3. ---"
+      },
+      "prevScreenId": "M1L2-S05",
+      "nextScreenId": "M1L3-S01"
+    },
+    {
+      "index": 13,
+      "screenId": "M1L3-S01",
+      "lessonId": "M1-L3",
+      "lessonTitle": "Descriptive Statistics",
+      "title": "Mean ($\\bar{x}$ — ค่าเฉลี่ย)",
+      "markdown": "`<Asset id=\"AST-M1-011\" />` `<Interactive id=\"INT-M1-L3-01\" />`\n\n$$\\bar{x} = \\frac{\\sum_{i=1}^{n} x_i}{n}$$\n\n- **ตัวอย่างคำนวณ:** $\\bar{x} = \\frac{50.00 + 50.01 + 49.99 + 50.02 + 50.00}{5} = \\frac{250.02}{5} = 50.004\\text{ mm}$\n- **การใช้หน้างาน:** วัด **Process Centering** (อยู่ตรง Target หรือเยื้อง)\n- **จุดอ่อน:** ไวต่อ Outlier มาก (ถ้าชิ้นที่ 5 เพี้ยนเป็น `50.50` ค่า Mean จะกระโดดไปที่ `50.100 mm` ทันที!)",
+      "interactiveIds": [
+        "INT-M1-L3-01"
+      ],
+      "assetIds": [
+        "AST-M1-011"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L3-S01",
+        "audioFile": "/audio/module-01/AUD-M1L3-S01.mp3",
+        "duration": "40 sec",
+        "displayScriptTh": "เมื่อมีข้อมูลเยอะๆ เราต้องย่อให้เหลือตัวเลขสำคัญไม่กี่ตัวเพื่ออ่านภาพรวม [PAUSE-1] [ANIM: mean_line] ตัวแรกคือ **Mean หรือค่าเฉลี่ย ($\\bar{x}$)** ใช้บอกตำแหน่งศูนย์กลางของกระบวนการ [PAUSE-1] แต่ข้อควรระวังสำคัญคือ **Mean ไวต่อค่าผิดปกติ (Outlier) มาก** ถ้ามีชิ้นงานเพี้ยนหลุดไป 1 ชิ้น ค่าเฉลี่ยจะถูกดึงเอียงตามทันที ลองแก้ตัวเลขใน Mean Builder ดูได้เลยครับ",
+        "ttsCleanTh": "เมื่อมีข้อมูลเยอะๆ เราต้องย่อให้เหลือตัวเลขสำคัญไม่กี่ตัวเพื่ออ่านภาพรวม, ตัวแรกคือ มีน หรือค่าเฉลี่ย เอ็กซ์บาร์ ใช้บอกตำแหน่งศูนย์กลางของกระบวนการ, แต่ข้อควรระวังสำคัญคือ มีน ไวต่อค่าผิดปกติ หรือ เอ้าท์ไลเออร์ มาก ถ้ามีชิ้นงานเพี้ยนหลุดไป 1 ชิ้น ค่าเฉลี่ยจะถูกดึงเอียงตามทันที ลองแก้ตัวเลขใน มีน บิวเดอร์ ดูได้เลยครับ",
+        "enReference": "The MEAN represents the arithmetic center of a data set and helps evaluate process centering, but it is sensitive to extreme outliers."
+      },
+      "prevScreenId": "M1L2-S06",
+      "nextScreenId": "M1L3-S02"
+    },
+    {
+      "index": 14,
+      "screenId": "M1L3-S02",
+      "lessonId": "M1-L3",
+      "lessonTitle": "Descriptive Statistics",
+      "title": "Median (ค่ามัธยฐาน)",
+      "markdown": "`<Asset id=\"AST-M1-012\" />`\n\n- **วิธีหา:** เรียงข้อมูลจากน้อยไปมาก: `49.99, 50.00, [50.00], 50.01, 50.02` → **Median = `50.00 mm`** (ถ้า $n$ เป็นเลขคู่ ให้เอา 2 ตัวกลางมาบวกกันหาร 2)\n- **ข้อดี:** ทนทานต่อ Outlier (แม้เปลี่ยน `50.02` เป็น `50.50` ค่า Median ยังคงเป็น `50.00 mm`!) เหมาะกับข้อมูลที่เบ้ (Skewed) เช่น Lead Time หรือ Cycle Time ที่มีสะดุดเป็นบางครั้ง",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-012"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L3-S02",
+        "audioFile": "/audio/module-01/AUD-M1L3-S02.mp3",
+        "duration": "35 sec",
+        "displayScriptTh": "เมื่อข้อมูลเบ้หรือมีค่าโดดผิดปกติ ตัวช่วยที่ดีกว่า Mean คือ **Median หรือค่ามัธยฐาน** ครับ [PAUSE-1] [ANIM: sort_animation] หลักการง่ายมาก คือจับข้อมูลมาเรียงจากน้อยไปมาก แล้วหยิบตัวที่อยู่ตรงกลางเป๊ะขึ้นมา [PAUSE-1] ค่านี้จะไม่ถูกค่า Outlier สุดโต่งมาดึงให้หลงทางครับ",
+        "ttsCleanTh": "เมื่อข้อมูลเบ้หรือมีค่าโดดผิดปกติ ตัวช่วยที่ดีกว่า มีน คือ มีเดียน หรือค่ามัธยฐานครับ, หลักการง่ายมาก คือจับข้อมูลมาเรียงจากน้อยไปมาก แล้วหยิบตัวที่อยู่ตรงกลางเป๊ะขึ้นมา, ค่านี้จะไม่ถูกค่า เอ้าท์ไลเออร์ สุดโต่งมาดึงให้หลงทางครับ",
+        "enReference": "The MEDIAN is the middle value when data are arranged in ascending order. Unlike the mean, the median is robust against outliers and skewed data."
+      },
+      "prevScreenId": "M1L3-S01",
+      "nextScreenId": "M1L3-S03"
+    },
+    {
+      "index": 15,
+      "screenId": "M1L3-S03",
+      "lessonId": "M1-L3",
+      "lessonTitle": "Descriptive Statistics",
+      "title": "Mode (ฐานนิยม)",
+      "markdown": "`<Asset id=\"AST-M1-013\" />`\n\n- **วิธีหา:** ค่าที่เกิดซ้ำบ่อยที่สุด → ในชุดตัวอย่าง `50.00 mm` ซ้ำ 2 ครั้ง → **Mode = `50.00 mm`**\n- **ประโยชน์สำคัญ:** ใช้ได้กับข้อมูลหมวดหมู่ (Nominal เช่น Defect ที่เจอบ่อยที่สุด) และหากพบ **Bimodal (มี 2 ยอด)** บนกราฟขนาดชิ้นงาน แสดงว่าอาจมี 2 เครื่องจักร, 2 กะ, หรือ 2 แม่พิมพ์ผสมกันอยู่",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-013"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L3-S03",
+        "audioFile": "/audio/module-01/AUD-M1L3-S03.mp3",
+        "duration": "30 sec",
+        "displayScriptTh": "ตัวที่สามคือ **Mode หรือฐานนิยม** คือค่าที่โผล่ซ้ำบ่อยที่สุดในชุดข้อมูล [PAUSE-1] [ANIM: mode_bars] ข้อดีคือใช้กับข้อมูลหมวดหมู่ (Nominal) ได้ด้วย เช่น Defect ไหนพบบ่อยสุด และถ้าข้อมูลวัดขนาดมี Mode โผล่มา **2 ยอด (Bimodal)** ให้สงสัยทันทีว่าอาจมีข้อมูลจาก **2 เครื่องจักร หรือ 2 แม่พิมพ์ปนกันอยู่** ครับ",
+        "ttsCleanTh": "ตัวที่สามคือ โหมด หรือฐานนิยม คือค่าที่โผล่ซ้ำบ่อยที่สุดในชุดข้อมูล, ข้อดีคือใช้กับข้อมูลหมวดหมู่ นอมินัล ได้ด้วย เช่น ดีเฟค ไหนพบบ่อยสุด, และถ้าข้อมูลวัดขนาดมี โหมด โผล่มา 2 ยอด หรือ ไบโมดัล ให้สงสัยทันทีว่าอาจมีข้อมูลจาก 2 เครื่องจักร หรือ 2 แม่พิมพ์ปนกันอยู่ครับ",
+        "enReference": "The MODE is the most frequently occurring value. In manufacturing, seeing two modes often signals mixed streams such as two machines, shifts, or mold cavities."
+      },
+      "prevScreenId": "M1L3-S02",
+      "nextScreenId": "M1L3-S04"
+    },
+    {
+      "index": 16,
+      "screenId": "M1L3-S04",
+      "lessonId": "M1-L3",
+      "lessonTitle": "Descriptive Statistics",
+      "title": "Range ($R$ — พิสัย)",
+      "markdown": "`<Asset id=\"AST-M1-014\" />`\n\n$$R = X_{\\max} - X_{\\min}$$\n\n- **ตัวอย่างคำนวณ (ทั้งหมด 30 ชิ้นใน Workshop 2):** $R = 50.14 - 49.98 = 0.16\\text{ mm}$\n- **ข้อดี/ข้อจำกัด:** คำนวณไวมากสำหรับ Subgroup เล็ก ($n = 2\\text{–}10$ ใน $\\bar{X}\\text{-}R$ Chart) แต่ดูเพียง 2 จุดปลายสุด จึงไม่เหมาะกับชุดข้อมูลใหญ่ ($n > 10$)",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-014"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L3-S04",
+        "audioFile": "/audio/module-01/AUD-M1L3-S04.mp3",
+        "duration": "30 sec",
+        "displayScriptTh": "ต่อมาคือตัววัดการกระจายตัวที่เร็วที่สุดบนไลน์ผลิต นั่นคือ **Range หรือพิสัย** ซึ่งเท่ากับ **ค่าสูงสุด ลบด้วย ค่าต่ำสุด** ครับ [PAUSE-1] [ANIM: range_expand] ข้อดีคือคำนวณง่ายมาก เหมาะกับกราฟ Xbar-R ที่เก็บตัวอย่างกลุ่มเล็กๆ แต่ข้อเสียคือดูแค่ 2 ตัวหัวท้าย จึงไม่ได้สะท้อนข้อมูลตัวที่อยู่ตรงกลางครับ",
+        "ttsCleanTh": "ต่อมาคือตัววัดการกระจายตัวที่เร็วที่สุดบนไลน์ผลิต นั่นคือ เรนจ์ หรือพิสัย ซึ่งเท่ากับ ค่าสูงสุด ลบด้วย ค่าต่ำสุดครับ, ข้อดีคือคำนวณง่ายมาก เหมาะกับกราฟ เอ็กซ์บาร์ อาร์ ที่เก็บตัวอย่างกลุ่มเล็กๆ แต่ข้อเสียคือดูแค่ 2 ตัวหัวท้าย จึงไม่ได้สะท้อนข้อมูลตัวที่อยู่ตรงกลางครับ",
+        "enReference": "The RANGE is the difference between maximum and minimum values. It is quick for small shop-floor subgroups, though it uses only two extreme points."
+      },
+      "prevScreenId": "M1L3-S03",
+      "nextScreenId": "M1L3-S05"
+    },
+    {
+      "index": 17,
+      "screenId": "M1L3-S05",
+      "lessonId": "M1-L3",
+      "lessonTitle": "Descriptive Statistics",
+      "title": "Variance ($s^2$ — ความแปรปรวน)",
+      "markdown": "`<Asset id=\"AST-M1-015\" />`\n\n$$s^2 = \\frac{\\sum_{i=1}^{n} (x_i - \\bar{x})^2}{n - 1}$$\n\n- **ตัวอย่างคำนวณ (`50.00, 50.01, 49.99, 50.02, 50.00`, $\\bar{x} = 50.004$):**\n  1. หาค่าเบี่ยงเบน $(x_i - \\bar{x})$: `-0.004, +0.006, -0.014, +0.016, -0.004`\n  2. ยกกำลังสอง (เพื่อไม่ให้บวกลบหักล้างกัน): `0.000016 + 0.000036 + 0.000196 + 0.000256 + 0.000016 = 0.000520`\n  3. หารด้วย $n - 1 = 4$: $s^2 = 0.000520 / 4 = 0.000130\\text{ mm}^2$",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-015"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L3-S05",
+        "audioFile": "/audio/module-01/AUD-M1L3-S05.mp3",
+        "duration": "40 sec",
+        "displayScriptTh": "เพื่อให้เห็นการกระจายตัวของข้อมูล **ทุกตัว** เราจึงใช้ **Variance หรือความแปรปรวน ($s^2$)** ครับ [PAUSE-1] [ANIM: variance_squares] หลักการคือวัดว่าข้อมูลแต่ละตัวห่างจากค่าเฉลี่ยเท่าไหร่ แล้วยกกำลังสองเพื่อไม่ให้ค่าบวกกับค่าลบหักล้างกัน [PAUSE-1] และสำหรับการเก็บตัวอย่าง (Sample) เราจะหารด้วย $n - 1$ เพื่อให้เป็นตัวประมาณค่าประชากรที่ไม่เอนเอียงครับ",
+        "ttsCleanTh": "เพื่อให้เห็นการกระจายตัวของข้อมูลทุกตัว เราจึงใช้ แวเรียนซ์ หรือความแปรปรวน เอสกำลังสอง ครับ, หลักการคือวัดว่าข้อมูลแต่ละตัวห่างจากค่าเฉลี่ยเท่าไหร่ แล้วยกกำลังสองเพื่อไม่ให้ค่าบวกกับค่าลบหักล้างกัน, และสำหรับการเก็บตัวอย่าง เราจะหารด้วย เอ็น ลบ หนึ่ง เพื่อให้เป็นตัวประมาณค่าประชากรที่ไม่เอนเอียงครับ",
+        "enReference": "Sample variance averages the squared deviations from the mean across all observations using n minus 1 in the denominator to provide an unbiased estimate of process spread."
+      },
+      "prevScreenId": "M1L3-S04",
+      "nextScreenId": "M1L3-S06"
+    },
+    {
+      "index": 18,
+      "screenId": "M1L3-S06",
+      "lessonId": "M1-L3",
+      "lessonTitle": "Descriptive Statistics",
+      "title": "Standard Deviation ($s$ / $\\sigma$ — ส่วนเบี่ยงเบนมาตรฐาน)",
+      "markdown": "`<Asset id=\"AST-M1-016\" />`\n\n$$s = \\sqrt{s^2} = \\sqrt{0.000130} \\approx 0.0114\\text{ mm}$$\n\n- **ข้อดี:** หน่วยกลับมาเป็น **mm** เดียวกับชิ้นงานจริง!\n- **Empirical Rule (สำหรับ Normal Distribution):**\n  - $\\bar{x} \\pm 1\\sigma$ ครอบคลุม **~68.27%** ของชิ้นงาน\n  - $\\bar{x} \\pm 2\\sigma$ ครอบคลุม **~95.45%** ของชิ้นงาน\n  - $\\bar{x} \\pm 3\\sigma$ ครอบคลุม **~99.73%** ของชิ้นงาน *(หัวใจของเส้น Control Limit ใน SPC!)*",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-016"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L3-S06",
+        "audioFile": "/audio/module-01/AUD-M1L3-S06.mp3",
+        "duration": "45 sec",
+        "displayScriptTh": "เนื่องจาก Variance มีหน่วยเป็นกำลังสอง เช่น ตารางมิลลิเมตร อ่านยากหน้างาน เราจึงถอดรากที่สองกลับมาเป็น **Standard Deviation หรือส่วนเบี่ยงเบนมาตรฐาน ($s$ / $\\sigma$)** เพื่อให้มีหน่วยเดียวกับชิ้นงานจริงครับ [PAUSE-1] [ANIM: bell_sigma] ในโค้งปกติ ข้อมูลประมาณ **68% จะอยู่ในช่วง $\\pm 1\\sigma$**, **95% อยู่ในช่วง $\\pm 2\\sigma$**, และ **99.7% อยู่ในช่วง $\\pm 3\\sigma$** ซึ่งนี่แหละครับคือรากฐานของเส้น Control Limit ใน SPC!",
+        "ttsCleanTh": "เนื่องจาก แวเรียนซ์ มีหน่วยเป็นกำลังสอง เช่น ตารางมิลลิเมตร อ่านยากหน้างาน เราจึงถอดรากที่สองกลับมาเป็น สแตนดาร์ด ดีวิเอชั่น หรือส่วนเบี่ยงเบนมาตรฐาน ซิกม่า เพื่อให้มีหน่วยเดียวกับชิ้นงานจริงครับ, ในโค้งปกติ ข้อมูลประมาณ 68 เปอร์เซ็นต์ จะอยู่ในช่วง บวกลบ 1 ซิกม่า, 95 เปอร์เซ็นต์ อยู่ในช่วง บวกลบ 2 ซิกม่า, และ 99.7 เปอร์เซ็นต์ อยู่ในช่วง บวกลบ 3 ซิกม่า ซึ่งนี่แหละครับคือรากฐานของเส้น คอนโทรล ลิมิต ใน เอสพีซี",
+        "enReference": "Standard deviation returns spread to the original measurement unit. Under a normal distribution, roughly 68%, 95%, and 99.7% of output fall within plus or minus 1, 2, and 3 sigma of the mean."
+      },
+      "prevScreenId": "M1L3-S05",
+      "nextScreenId": "M1L3-S07"
+    },
+    {
+      "index": 19,
+      "screenId": "M1L3-S07",
+      "lessonId": "M1-L3",
+      "lessonTitle": "Descriptive Statistics",
+      "title": "Coefficient of Variation (CV — สัมประสิทธิ์การแปรผัน)",
+      "markdown": "`<Asset id=\"AST-M1-017\" />`\n\n$$CV = \\left(\\frac{s}{\\bar{x}}\\right) \\times 100\\%$$\n\n- **ตัวอย่างเทียบข้ามขนาด:**\n  - พินเล็ก (`Mean = 10 mm, SD = 0.2 mm`) → $CV = (0.2 / 10) \\times 100\\% = 2.0\\%$\n  - เพลายาว (`Mean = 500 mm, SD = 2.0 mm`) → $CV = (2.0 / 500) \\times 100\\% = 0.4\\%$ → **สายเพลายาวนิ่งกว่าเมื่อเทียบสัดส่วนขนาด!**\n- **ตัวอย่างในชุดข้อมูล Workshop 2:** `MC-A` มี `CV = 0.0304%` ส่วน `MC-B` มี `CV = 0.0606%` (แกว่งกว่า 2 เท่า)",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-017"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L3-S07",
+        "audioFile": "/audio/module-01/AUD-M1L3-S07.mp3",
+        "duration": "35 sec",
+        "displayScriptTh": "แล้วถ้าอยากเทียบความนิ่งของงาน 2 ชิ้นที่ขนาดต่างกันมากๆ ล่ะครับ? เช่น เทียบพินเล็ก 10 มม. กับเพลายาว 500 มม. [PAUSE-1] [ANIM: cv_dashboard] เราจะเทียบ SD ตรงๆ ไม่ได้ ต้องใช้ **CV หรือ Coefficient of Variation** คือเอา SD หารด้วย Mean แล้วคูณ 100% [PAUSE-1] ค่ายิ่งน้อย แปลว่ากระบวนการยิ่งนิ่งเมื่อเทียบกับขนาดของมันครับ",
+        "ttsCleanTh": "แล้วถ้าอยากเทียบความนิ่งของงาน 2 ชิ้นที่ขนาดต่างกันมากๆ ล่ะครับ เช่น เทียบพินเล็ก 10 มิลลิเมตร กับเพลายาว 500 มิลลิเมตร, เราจะเทียบ เอสดี ตรงๆ ไม่ได้ ต้องใช้ ซีวี หรือ คอเอฟฟิเชียนท์ ออฟ แวริเอชั่น คือเอา เอสดี หารด้วย มีน แล้วคูณ 100 เปอร์เซ็นต์, ค่ายิ่งน้อย แปลว่ากระบวนการยิ่งนิ่งเมื่อเทียบกับขนาดของมันครับ",
+        "enReference": "The Coefficient of Variation expresses standard deviation as a percentage of the mean, allowing fair comparison of relative variation across different scales or units."
+      },
+      "prevScreenId": "M1L3-S06",
+      "nextScreenId": "M1L3-S08"
+    },
+    {
+      "index": 20,
+      "screenId": "M1L3-S08",
+      "lessonId": "M1-L3",
+      "lessonTitle": "Descriptive Statistics",
+      "title": "Sigma Simulator & Statistics Match Game",
+      "markdown": "`<Interactive id=\"INT-M1-L3-02\" />` `<Interactive id=\"INT-M1-L3-03\" />`\n- เลื่อนค่า Sigma (`0.1` – `3.0`) เทียบกับเส้น Spec (`LSL / USL`) และเล่นเกมจับคู่คำศัพท์สถิติ 7 คำ",
+      "interactiveIds": [
+        "INT-M1-L3-02",
+        "INT-M1-L3-03"
+      ],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M1L3-S08",
+        "audioFile": "/audio/module-01/AUD-M1L3-S08.mp3",
+        "duration": "45 sec",
+        "displayScriptTh": "มาลองเล่น **Sigma Simulator** กันครับ [ANIM: sigma_slider] ลองเลื่อนแถบค่า Sigma จาก 0.1 ไป 3.0 แล้วสังเกตดูว่าเมื่อ Sigma เพิ่มขึ้น ฐานของ Histogram จะกว้างออกจนล้นออกนอกเส้น Spec USL และ LSL ทำให้เกิดของเสียเพิ่มขึ้นทันที [PAUSE-1] เล่นเสร็จแล้ว ลองจับคู่คำศัพท์สถิติ 7 คำด้านล่างให้ครบนะครับ",
+        "ttsCleanTh": "มาลองเล่น ซิกม่า ซิมูเลเตอร์ กันครับ, ลองเลื่อนแถบค่า ซิกม่า จาก 0.1 ไป 3.0 แล้วสังเกตดูว่าเมื่อ ซิกม่า เพิ่มขึ้น ฐานของ ฮิสโตแกรม จะกว้างออกจนล้นออกนอกเส้น สเปก ยูเอสแอล และ แอลเอสแอล ทำให้เกิดของเสียเพิ่มขึ้นทันที, เล่นเสร็จแล้ว ลองจับคู่คำศัพท์สถิติ 7 คำด้านล่างให้ครบนะครับ",
+        "enReference": "Move the sigma slider and observe the histogram. As sigma increases, the distribution widens toward specification limits, increasing nonconformance risk. Then complete the statistics matching game."
+      },
+      "prevScreenId": "M1L3-S07",
+      "nextScreenId": "M1L3-S09"
+    },
+    {
+      "index": 21,
+      "screenId": "M1L3-S09",
+      "lessonId": "M1-L3",
+      "lessonTitle": "Descriptive Statistics",
+      "title": "Lesson 3 Knowledge Check (`KC-M1-L3`)",
+      "markdown": "- ทบทวน 5 ข้อ (`M1-Q031`, `M1-Q035`, `M1-Q040`, `M1-Q044`, `M1-Q048`)",
+      "interactiveIds": [],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M1L3-S09",
+        "audioFile": "/audio/module-01/AUD-M1L3-S09.mp3",
+        "duration": "20 sec",
+        "displayScriptTh": "มาทดสอบความเข้าใจสถิติเชิงพรรณนา 5 ข้อครับ ดูโจทย์ให้ดีว่าสถานการณ์ไหนควรใช้ Mean, Median, SD หรือ CV ครับ",
+        "ttsCleanTh": "มาทดสอบความเข้าใจสถิติเชิงพรรณนา 5 ข้อครับ ดูโจทย์ให้ดีว่าสถานการณ์ไหนควรใช้ มีน, มีเดียน, เอสดี หรือ ซีวี ครับ",
+        "enReference": "Complete the 5-question Lesson 3 check to verify your ability to interpret and choose descriptive statistics. ---"
+      },
+      "prevScreenId": "M1L3-S08",
+      "nextScreenId": "M1L4-S01"
+    },
+    {
+      "index": 22,
+      "screenId": "M1L4-S01",
+      "lessonId": "M1-L4",
+      "lessonTitle": "Data Visualization & Final Assessment",
+      "title": "Why Visualize Data?",
+      "markdown": "`<Asset id=\"AST-M1-018\" />`\n- ตารางข้อมูล 30 แถวดูด้วยตาเปล่าอาจไม่เห็นความผิดปกติ แต่กราฟช่วยเปิดเผย **รูปร่าง (Shape), กลุ่มปัญหาใหญ่ (Vital Few), ความสัมพันธ์ (Correlation), และแนวโน้มตามเวลา (Drift)** ภายใน 3 วินาที",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-018"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L4-S01",
+        "audioFile": "/audio/module-01/AUD-M1L4-S01.mp3",
+        "duration": "25 sec",
+        "displayScriptTh": "ตัวเลขในตาราง 30 แถว ดูด้วยตาเปล่าแทบไม่รู้เลยว่าเครื่องจักรกำลังมีปัญหา [PAUSE-1] [ANIM: table_to_charts] การทำ **Data Visualization หรือการแสดงผลด้วยกราฟ** ช่วยให้วิศวกรเห็นความผิดปกติ รูปทรง และแนวโน้มได้ภายในไม่กี่วินาทีครับ",
+        "ttsCleanTh": "ตัวเลขในตาราง 30 แถว ดูด้วยตาเปล่าแทบไม่รู้เลยว่าเครื่องจักรกำลังมีปัญหา, การทำ เดต้า วิชวลไลเซชั่น หรือการแสดงผลด้วยกราฟ ช่วยให้วิศวกรเห็นความผิดปกติ รูปทรง และแนวโน้มได้ภายในไม่กี่วินาทีครับ",
+        "enReference": "Visualizing data converts raw tables into clear patterns, anomalies, and trends that engineers can spot in seconds."
+      },
+      "prevScreenId": "M1L3-S09",
+      "nextScreenId": "M1L4-S02"
+    },
+    {
+      "index": 23,
+      "screenId": "M1L4-S02",
+      "lessonId": "M1-L4",
+      "lessonTitle": "Data Visualization & Final Assessment",
+      "title": "Histogram (ดูรูปร่างการกระจายตัว)",
+      "markdown": "`<Asset id=\"AST-M1-018\" />`\n\n| รูปร่างที่พบ | ชื่อเรียก | สาเหตุที่มักพบในโรงงาน |\n|---|---|---|\n| ระฆังคว่ำสมมาตร | Normal / Bell-shaped | กระบวนการเสถียรตามธรรมชาติ (Common cause เท่านั้น) |\n| หางยาวข้างเดียว | Skewed (Right/Left) | มีขีดจำกัดทางกายภาพด้านหนึ่ง หรือเกิด Tool wear ไหลทางเดียว |\n| สองยอด | Bimodal | ข้อมูลจาก 2 เครื่องจักร, 2 กะ, หรือ 2 Cavity ผสมกัน |\n| ขอบตัดตรงเป็นหน้าผา | Cliff / Truncated | มีการคัดงานเสีย (100% Sorting) ทิ้งไปก่อนบันทึกข้อมูล! |",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-018"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L4-S02",
+        "audioFile": "/audio/module-01/AUD-M1L4-S02.mp3",
+        "duration": "40 sec",
+        "displayScriptTh": "กราฟแรกที่ขาดไม่ได้คือ **Histogram** ครับ [ANIM: histogram_bars] ใช้ดูรูปร่างการกระจายตัวของข้อมูล Variable ว่าเกาะกลุ่มตรง Target ไหม เบ้ซ้าย-ขวาหรือเปล่า [PAUSE-1] และถ้าเห็น Histogram ขอบตัดตรงเหมือนหน้าผา (Cliff Shape) ให้สงสัยทันทีเลยว่าหน้างานอาจมีการคัดแยกของเสียทิ้งไปก่อนส่งข้อมูลมาครับ!",
+        "ttsCleanTh": "กราฟแรกที่ขาดไม่ได้คือ ฮิสโตแกรม ครับ, ใช้ดูรูปร่างการกระจายตัวของข้อมูล แวริเอเบิล ว่าเกาะกลุ่มตรงเป้าหมายไหม เบ้ซ้ายหรือเบ้ขวา, และถ้าเห็น ฮิสโตแกรม ขอบตัดตรงเหมือนหน้าผา ให้สงสัยทันทีเลยว่าหน้างานอาจมีการคัดแยกของเสียทิ้งไปก่อนส่งข้อมูลมาครับ",
+        "enReference": "A histogram reveals centering, spread, skewness, and patterns like bimodal peaks or cliff-shaped sorting artifacts."
+      },
+      "prevScreenId": "M1L4-S01",
+      "nextScreenId": "M1L4-S03"
+    },
+    {
+      "index": 24,
+      "screenId": "M1L4-S03",
+      "lessonId": "M1-L4",
+      "lessonTitle": "Data Visualization & Final Assessment",
+      "title": "Box Plot (เปรียบเทียบหลายกลุ่ม & จับ Outlier)",
+      "markdown": "`<Asset id=\"AST-M1-020\" />`\n- **องค์ประกอบ 5 จุด:** `Min` (ปลาย Whisker ล่าง), `Q1` (25%), `Median` (เส้นกลางกล่อง 50%), `Q3` (75%), `Max` (ปลาย Whisker บน) และ **จุด Outlier** (`> Q3 + 1.5×IQR` หรือ `< Q1 − 1.5×IQR`)\n- **ผลจากข้อมูล Workshop 2:** `MC-A` กล่องแคบกลาง Target (`IQR = 0.02 mm`) ส่วน `MC-B` เลื่อนสูง (`Median = 50.04 mm`) และพบจุด Outlier ชัดเจนที่ `50.14 mm`!",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-020"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L4-S03",
+        "audioFile": "/audio/module-01/AUD-M1L4-S03.mp3",
+        "duration": "40 sec",
+        "displayScriptTh": "กราฟที่สองคือ **Box Plot** [ANIM: boxplot_anatomy] จุดเด่นที่สุดของ Box Plot คือ **เอาไว้เทียบหลายเครื่องจักร หลายกะ หรือหลายแม่พิมพ์พร้อมๆ กัน** ในภาพเดียว [PAUSE-1] กล่องตรงกลางแสดงข้อมูล 50% ตรงกลาง (Q1 ถึง Q3) เส้นกลางกล่องคือ Median และจุดที่กระโดดแยกเดี่ยวๆ ออกไปคือ **Outlier** ที่ต้องรีบเข้าไปดูครับ",
+        "ttsCleanTh": "กราฟที่สองคือ บ็อกซ์ พล็อต, จุดเด่นที่สุดของ บ็อกซ์ พล็อต คือ เอาไว้เทียบหลายเครื่องจักร หลายกะ หรือหลายแม่พิมพ์พร้อมๆ กันในภาพเดียว, กล่องตรงกลางแสดงข้อมูล 50 เปอร์เซ็นต์ ตรงกลาง คือ คิว 1 ถึง คิว 3 เส้นกลางกล่องคือ มีเดียน และจุดที่กระโดดแยกเดี่ยวๆ ออกไปคือ เอ้าท์ไลเออร์ ที่ต้องรีบเข้าไปดูครับ",
+        "enReference": "A box plot summarizes quartiles, median, spread, and outliers, making it ideal for comparing multiple machines, shifts, or cavities side by side."
+      },
+      "prevScreenId": "M1L4-S02",
+      "nextScreenId": "M1L4-S04"
+    },
+    {
+      "index": 25,
+      "screenId": "M1L4-S04",
+      "lessonId": "M1-L4",
+      "lessonTitle": "Data Visualization & Final Assessment",
+      "title": "Pareto Chart (กฎ 80/20 จัดลำดับความสำคัญ)",
+      "markdown": "`<Asset id=\"AST-M1-019\" />`\n- เรียงแท่งความถี่จากมากไปน้อย + เส้น **Cumulative %**\n- **ผลจากข้อมูล Workshop 2 (รวม 15 Defects):**\n  - `Scratch`: 9 (`60.0%`) → `Burr`: 4 (`26.7%`, สะสม **`86.7%`**) → `Dent`: 1 (`6.7%`) → `Crack`: 1 (`6.7%`)\n  - **Action:** แก้เพียง 2 หัวข้อแรก (`Scratch + Burr`) จะลดของเสียได้ถึง **86.7%**!",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-019"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L4-S04",
+        "audioFile": "/audio/module-01/AUD-M1L4-S04.mp3",
+        "duration": "40 sec",
+        "displayScriptTh": "กราฟที่สามคือ **Pareto Chart** ตามกฎ **80/20** ครับ [ANIM: pareto_sort] เรียงปัญหาจากมากไปน้อย พร้อมเส้นเปอร์เซ็นต์สะสม [PAUSE-1] เพื่อบอกว่าเราควรเอาเวลาและทรัพยากรไปแก้ปัญหา 20% แรก ที่เป็นตัวสร้างความเสียหาย 80% ให้โรงงานก่อน แทนที่จะไล่แก้ปัญหาจุกจิกครับ",
+        "ttsCleanTh": "กราฟที่สามคือ พาเรโต้ ชาร์ท ตามกฎ 80 ยี่สิบ ครับ, เรียงปัญหาจากมากไปน้อย พร้อมเส้นเปอร์เซ็นต์สะสม, เพื่อบอกว่าเราควรเอาเวลาและทรัพยากรไปแก้ปัญหา 20 เปอร์เซ็นต์แรก ที่เป็นตัวสร้างความเสียหาย 80 เปอร์เซ็นต์ ให้โรงงานก่อน แทนที่จะไล่แก้ปัญหาจุกจิกครับ",
+        "enReference": "A Pareto chart ranks defect categories from highest to lowest alongside a cumulative percentage line to separate the vital few contributors from the trivial many."
+      },
+      "prevScreenId": "M1L4-S03",
+      "nextScreenId": "M1L4-S05"
+    },
+    {
+      "index": 26,
+      "screenId": "M1L4-S05",
+      "lessonId": "M1-L4",
+      "lessonTitle": "Data Visualization & Final Assessment",
+      "title": "Scatter Plot (ความสัมพันธ์ระหว่าง 2 ตัวแปร)",
+      "markdown": "`<Asset id=\"AST-M1-019\" />`\n- พล็อตตัวแปรต้น $X$ (แกนนอน) กับตัวแปรผล $Y$ (แกนตั้ง) เพื่อประเมินทิศทางและความแรงของสหสัมพันธ์ ($r \\in [-1, +1]$)\n- **ผลจากข้อมูล Workshop 2:** `Mold_Temp_C` vs `Shaft_Diameter_mm` ให้ค่า **$r = +0.9949$** (สหสัมพันธ์เชิงบวกสูงมาก)\n- **คำเตือนทองคำ:** **Correlation ≠ Causation** — ต้องทดสอบยืนยันเชิงวิศวกรรมเสมอว่าไม่ใช่ตัวแปรแฝง (Confounding Factor)",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-019"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L4-S05",
+        "audioFile": "/audio/module-01/AUD-M1L4-S05.mp3",
+        "duration": "40 sec",
+        "displayScriptTh": "กราฟที่สี่คือ **Scatter Plot** [ANIM: scatter_line] เอาไว้เช็คว่าตัวแปร X เช่น อุณหภูมิแม่พิมพ์ มีความสัมพันธ์กับตัวแปร Y เช่น ขนาดเส้นผ่านศูนย์กลางเพลาหรือไม่ [PAUSE-1] แต่จำไว้เสมอนะครับว่า **\"Correlation ไม่เท่ากับ Causation\"** เห็นจุดเรียงสวยเป็นเส้นตรง ต้องพิสูจน์ทางวิศวกรรมต่อด้วยเสมอครับ",
+        "ttsCleanTh": "กราฟที่สี่คือ สแก็ตเตอร์ พล็อต, เอาไว้เช็คว่าตัวแปร เอ็กซ์ เช่น อุณหภูมิแม่พิมพ์ มีความสัมพันธ์กับตัวแปร วาย เช่น ขนาดเส้นผ่านศูนย์กลางเพลาหรือไม่, แต่จำไว้เสมอนะครับว่า ความสัมพันธ์กัน ไม่ได้แปลว่าเป็นเหตุและผลกันเสมอไป เห็นจุดเรียงสวยเป็นเส้นตรง ต้องพิสูจน์ทางวิศวกรรมต่อด้วยเสมอครับ",
+        "enReference": "A scatter plot explores relationships between two numerical variables such as process temperature and part diameter—always remembering that correlation does not automatically prove causation."
+      },
+      "prevScreenId": "M1L4-S04",
+      "nextScreenId": "M1L4-S06"
+    },
+    {
+      "index": 27,
+      "screenId": "M1L4-S06",
+      "lessonId": "M1-L4",
+      "lessonTitle": "Data Visualization & Final Assessment",
+      "title": "Run Chart (แนวโน้มตามลำดับเวลา)",
+      "markdown": "`<Asset id=\"AST-M1-020\" />`\n- **ทำไมต้องมี Run Chart ทั้งที่มี Histogram แล้ว?** เพราะ Histogram มองไม่เห็น **ลำดับเวลา (Time Order)**!\n- **ผลจากข้อมูล Workshop 2:** เมื่อพล็อต `Sample 1..30` ตามเวลา `08:00–16:30` จะเห็นชัดทันทีว่าช่วงเช้า (`MC-A`) นิ่ง แต่ช่วงบ่าย (`MC-B`) ขนาดเพลาค่อยๆ ไหลสูงขึ้นเรื่อยๆ (**Upward Drift**) จนทะลุ USL (`50.05 mm`)\n- *จุดเชื่อมสู่ Module 5:* เมื่อเติมเส้น **UCL / CL / LCL** ลงใน Run Chart ก็จะได้ **SPC Control Chart**!",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M1-020"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M1L4-S06",
+        "audioFile": "/audio/module-01/AUD-M1L4-S06.mp3",
+        "duration": "40 sec",
+        "displayScriptTh": "กราฟที่ห้าสำคัญมากๆ สำหรับการปูทางสู่ SPC คือ **Run Chart** ครับ [ANIM: runchart_draw] ลองคิดดูนะครับ: Histogram มองไม่เห็น \"เวลา\" ว่าชิ้นไหนผลิตก่อน-หลัง [PAUSE-1] แต่ **Run Chart** พล็อตข้อมูลเรียงตามเวลาเป๊ะ ทำให้เราเห็นทันทีว่าขนาดเพลาเริ่มไหลสูงขึ้นเรื่อยๆ ตอนบ่าย ซึ่งนี่คือจุดเริ่มต้นของ Control Chart ใน Module หน้าครับ!",
+        "ttsCleanTh": "กราฟที่ห้าสำคัญมากๆ สำหรับการปูทางสู่ เอสพีซี คือ รัน ชาร์ท ครับ, ลองคิดดูนะครับ ฮิสโตแกรม มองไม่เห็นเวลา ว่าชิ้นไหนผลิตก่อนหลัง, แต่ รัน ชาร์ท พล็อตข้อมูลเรียงตามเวลาเป๊ะ ทำให้เราเห็นทันทีว่าขนาดเพลาเริ่มไหลสูงขึ้นเรื่อยๆ ตอนบ่าย ซึ่งนี่คือจุดเริ่มต้นของ คอนโทรล ชาร์ท ใน โมดูลหน้าครับ",
+        "enReference": "Unlike a histogram, a run chart plots measurements in time order, revealing drifts, shifts, and cycles over the shift—serving as the direct bridge to SPC control charts."
+      },
+      "prevScreenId": "M1L4-S05",
+      "nextScreenId": "M1L4-S07"
+    },
+    {
+      "index": 28,
+      "screenId": "M1L4-S07",
+      "lessonId": "M1-L4",
+      "lessonTitle": "Data Visualization & Final Assessment",
+      "title": "Workshop 2: Real Defect & Dimension Visualization",
+      "markdown": "`<Interactive id=\"INT-M1-L4-01\" />` `<Interactive id=\"INT-M1-L4-02\" />`\n- ดาวน์โหลดและวิเคราะห์ชุดข้อมูลจริง [data/workshop_m1_dimensions_and_defects.csv](data/workshop_m1_dimensions_and_defects.csv) ดูคู่มือเฉลยใน [07_workshop_guide.md](07_workshop_guide.md)",
+      "interactiveIds": [
+        "INT-M1-L4-01",
+        "INT-M1-L4-02"
+      ],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M1L4-S07",
+        "audioFile": "/audio/module-01/AUD-M1L4-S07.mp3",
+        "duration": "45 sec",
+        "displayScriptTh": "มาถึง **Workshop ที่ 2** แล้วครับ [PAUSE-1] เรามีชุดข้อมูลจริงจากการผลิตเพลา 30 ชิ้น ทั้งขนาด Diameter, อุณหภูมิ, ชื่อเครื่องจักร, และประเภท Defect [PAUSE-1] ลองจับคู่โจทย์ปัญหาหน้างาน 5 สถานการณ์กับกราฟที่ถูกต้อง แล้วเข้าไปอ่าน Dashboard ข้อมูลจริงเพื่อหาว่าปัญหาหลักของไลน์นี้อยู่ที่ไหนครับ",
+        "ttsCleanTh": "มาถึง เวิร์คช็อป ที่ 2 แล้วครับ, เรามีชุดข้อมูลจริงจากการผลิตเพลา 30 ชิ้น ทั้งขนาดเส้นผ่านศูนย์กลาง อุณหภูมิ ชื่อเครื่องจักร และประเภท ดีเฟค, ลองจับคู่โจทย์ปัญหาหน้างาน 5 สถานการณ์กับกราฟที่ถูกต้อง แล้วเข้าไปอ่าน แดชบอร์ด ข้อมูลจริงเพื่อหาว่าปัญหาหลักของไลน์นี้อยู่ที่ไหนครับ",
+        "enReference": "In Workshop 2, match five engineering questions to the right charts and analyze our 30-part shaft production dataset to pinpoint the main defect drivers and machine drift."
+      },
+      "prevScreenId": "M1L4-S06",
+      "nextScreenId": "M1L4-S08"
+    },
+    {
+      "index": 29,
+      "screenId": "M1L4-S08",
+      "lessonId": "M1-L4",
+      "lessonTitle": "Data Visualization & Final Assessment",
+      "title": "Module 1 Final Assessment (`EXAM-M1`)",
+      "markdown": "- สอบประมวลผลสุ่ม **20 ข้อ** จากคลัง [06_assessment_bank.md](06_assessment_bank.md) (`M1-Q001`–`M1-Q060`) | เกณฑ์ผ่าน **80% (`16/20`)**",
+      "interactiveIds": [],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M1L4-S08",
+        "audioFile": "/audio/module-01/AUD-M1L4-S08.mp3",
+        "duration": "25 sec",
+        "displayScriptTh": "ขอแสดงความยินดีด้วยครับ ตอนนี้ปูพื้นฐานสถิติครบทั้ง 4 บทแล้ว ตั้งแต่ความแปรปรวน, ชนิดข้อมูล, สถิติเชิงพรรณนา ไปจนถึงกราฟทั้ง 5 แบบ [PAUSE-1] ลองทำแบบทดสอบปลายบท 20 ข้อ (เกณฑ์ผ่าน 80%) เพื่อรับป้ายผ่าน Module 1 แล้วเจอกันใน Module 2 เรื่อง Probability & Distribution ครับ!",
+        "ttsCleanTh": "ขอแสดงความยินดีด้วยครับ ตอนนี้ปูพื้นฐานสถิติครบทั้ง 4 บทแล้ว ตั้งแต่ความแปรปรวน ชนิดข้อมูล สถิติเชิงพรรณนา ไปจนถึงกราฟทั้ง 5 แบบ, ลองทำแบบทดสอบปลายบท 20 ข้อ เกณฑ์ผ่าน 80 เปอร์เซ็นต์ เพื่อรับป้ายผ่าน โมดูล 1 แล้วเจอกันใน โมดูล 2 เรื่อง ความน่าจะเป็นและการแจกแจงครับ",
+        "enReference": "Congratulations on completing Module 1. Take the 20-question final exam (80% passing score) to unlock Module 2: Probability and Distribution."
+      },
+      "prevScreenId": "M1L4-S07",
+      "nextScreenId": null
+    }
+  ],
+  "questions": [
+    {
+      "id": "M1-Q001",
+      "lo": "LO-M1-01",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "TF",
+      "question": "กระบวนการผลิตที่มีความเสถียร (Stable Process) ยังคงมีความแปรปรวนตามธรรมชาติอยู่เสมอ",
+      "choices": {
+        "A": "ถูก (True) — เสถียรไม่ได้แปลว่าทุกชิ้นเท่ากันเป๊ะ",
+        "B": "ผิด (False) — ถ้าเสถียรต้องไม่มีความแปรปรวนเลย",
+        "C": "-",
+        "D": "-"
+      },
+      "correct": "A",
+      "explanation": "แม้กระบวนการเสถียรและทำงานปกติ ก็ยังมีความแปรปรวนตามธรรมชาติ (Common Cause Variation) เสมอ"
+    },
+    {
+      "id": "M1-Q002",
+      "lo": "LO-M1-01",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "เป้าหมายหลักของการใช้ Data-Driven Decision ในโรงงานคือข้อใด",
+      "choices": {
+        "A": "เพิ่มจำนวนการตรวจเช็คด้วยสายตา 100%",
+        "B": "ใช้ข้อมูลสถิติและหลักฐานจริงในการตัดสินใจแทนการเดาด้วยความรู้สึก",
+        "C": "ปรับตั้งเครื่องจักรทุกครั้งที่เห็นค่าต่างจากเป้าหมายแม้เพียงเล็กน้อย",
+        "D": "ลดความจำเป็นในการบันทึกข้อมูลหน้างาน"
+      },
+      "correct": "B",
+      "explanation": "Data-Driven Decision ช่วยให้วิศวกรตัดสินใจบนฐานข้อมูล ลดการลองผิดลองถูกและแก้ปัญหาได้ตรงจุด"
+    },
+    {
+      "id": "M1-Q003",
+      "lo": "LO-M1-01",
+      "bloom": "Remember",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ข้อใดจัดเป็นต้นทุนความสูญเสียที่ซ่อนอยู่ (Hidden COPQ) เช่นเดียวกับส่วนใต้น้ำของภูเขาน้ำแข็ง",
+      "choices": {
+        "A": "ค่าวัตถุดิบของชิ้นงาน Scrap ที่ทิ้งลงถัง",
+        "B": "ค่ายาทำความสะอาดเครื่องจักรประจำวัน",
+        "C": "ค่าแรงคัดแยกงาน (Sorting), เครื่องเสียโอกาสผลิต, และค่าเคลมลูกค้า",
+        "D": "ค่าจ้างพนักงานฝ่ายผลิตปกติ"
+      },
+      "correct": "C",
+      "explanation": "Scrap/Rework มักเห็นชัดบนรายงานบัญชี แต่ Sorting, Lost Capacity, Warranty Claim และเสียลูกค้าคือ Hidden COPQ ที่มักสูงกว่ามาก"
+    },
+    {
+      "id": "M1-Q004",
+      "lo": "LO-M1-01",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "โรงงานมีค่า Scrap 20,000 บาท, Rework 15,000 บาท และค่าแรง Sorting 10,000 บาทต่อเดือน ยอด COPQ ส่วน Internal Failure นี้รวมเป็นเท่าใด",
+      "choices": {
+        "A": "20,000 บาท",
+        "B": "35,000 บาท",
+        "C": "45,000 บาท",
+        "D": "10,000 บาท"
+      },
+      "correct": "C",
+      "explanation": "Internal Failure COPQ = Scrap + Rework + Sorting = 20,000 + 15,000 + 10,000 = 45,000 บาท/เดือน"
+    },
+    {
+      "id": "M1-Q005",
+      "lo": "LO-M1-01",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ข้อใด **ไม่ใช่** หนึ่งใน 6 แหล่งที่มาของความแปรปรวนหลัก (5M1E / 4M1E+M) ในโรงงาน",
+      "choices": {
+        "A": "Material (วัตถุดิบ)",
+        "B": "Measurement System (ระบบการวัด)",
+        "C": "Marketing Budget (งบการตลาด)",
+        "D": "Environment (สภาพแวดล้อม เช่น อุณหภูมิ)"
+      },
+      "correct": "C",
+      "explanation": "แหล่งความแปรปรวนในกระบวนการผลิตคือ Man, Machine, Material, Method, Measurement และ Environment"
+    },
+    {
+      "id": "M1-Q006",
+      "lo": "LO-M1-01",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "วิศวกรพบเพลาชิ้นหนึ่งวัดได้ 50.01 mm จากเป้า 50.00 mm (อยู่ในช่วงปกติของเครื่อง) จึงรีบสั่งปรับ Offset เครื่องทันที การกระทำนี้ขัดกับหลัก Statistical Thinking ข้อใด",
+      "choices": {
+        "A": "การปรับเครื่องโดยไม่แยก Normal vs Abnormal Variation จะยิ่งเพิ่มความแปรปรวน (Over-adjustment)",
+        "B": "เครื่องมือวัดละเอียดเกินไป",
+        "C": "ควรปรับเฉพาะกะกลางคืนเท่านั้น",
+        "D": "ค่า 50.01 mm ต้องทิ้งเป็น Scrap ทันที"
+      },
+      "correct": "A",
+      "explanation": "การเข้าไปปรับเครื่องตามความแปรปรวนปกติ (Tampering/Over-adjustment) จะทำให้กระบวนการแกว่งกว้างขึ้นกว่าเดิม"
+    },
+    {
+      "id": "M1-Q007",
+      "lo": "LO-M1-01",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ข้อใดเป็นตัวอย่างการใช้สถิติที่เหมาะสมในงานวิศวกรรมการผลิต",
+      "choices": {
+        "A": "ตั้งราคาขายสินค้าตามคู่แข่ง",
+        "B": "เก็บข้อมูลขนาดเส้นผ่านศูนย์กลางเพลาเพื่อประเมินความสามารถเครื่องจักร (Capability)",
+        "C": "คาดเดาวันหยุดของพนักงาน",
+        "D": "ออกแบบโลโก้บริษัท"
+      },
+      "correct": "B",
+      "explanation": "สถิติช่วยวิเคราะห์ขนาด CTQ, ความสามารถเครื่องจักร, อัตราของเสีย และติดตามเสถียรภาพการผลิต"
+    },
+    {
+      "id": "M1-Q008",
+      "lo": "LO-M1-01",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "หลักการ 3 ข้อของ Statistical Thinking ข้อใดกล่าวถูกต้องที่สุด",
+      "choices": {
+        "A": "งานคือกระบวนการ → ความแปรปรวนไม่มีอยู่จริง → แก้เฉพาะหน้า",
+        "B": "งานคือกระบวนการ → ทุกกระบวนการมีความแปรปรวน → เข้าใจและลดความแปรปรวนคือหัวใจของการปรับปรุง",
+        "C": "ใช้คนตรวจ 100% → ปรับเครื่องบ่อยๆ → เพิ่ม Spec ให้กว้าง",
+        "D": "เก็บข้อมูลเฉพาะตอนลูกค้าเคลมเท่านั้น"
+      },
+      "correct": "B",
+      "explanation": "Deming/Statistical Thinking เน้นว่าทุกงานเป็นกระบวนการที่มีความแปรปรวน ต้องเข้าใจและลดความแปรปรวนอย่างเป็นระบบ"
+    },
+    {
+      "id": "M1-Q009",
+      "lo": "LO-M1-01",
+      "bloom": "Apply",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "หัวหน้าไลน์กังวลเรื่อง Scrap จึงเพิ่มคน Sorting ท้ายไลน์ 5 คนโดยไม่ได้แก้ไขต้นเหตุในเครื่องจักร ผลระยะยาวต่อ COPQ จะเป็นอย่างไร",
+      "choices": {
+        "A": "COPQ ลดลงเหลือศูนย์ทันที",
+        "B": "Internal Failure COPQ (ค่าแรง Sorting) สูงขึ้น และไม่ได้ลดความแปรปรวนของกระบวนการ",
+        "C": "ความแปรปรวนของเครื่องจักรลดลงอัตโนมัติ",
+        "D": "Appraisal Cost ลดลง"
+      },
+      "correct": "B",
+      "explanation": "การเพิ่ม Sorting เป็นการเพิ่มต้นทุนโดยไม่ได้กำจัดสาเหตุรากเหง้า (Root Cause) ของความแปรปรวน"
+    },
+    {
+      "id": "M1-Q010",
+      "lo": "LO-M1-01",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ทำไมวิศวกรคุณภาพต้องแปลงข้อมูลตัวเลขจำนวนมากเป็นข้อมูลสรุปทางสถิติก่อนรายงานผู้บริหาร",
+      "choices": {
+        "A": "เพื่อให้ไฟล์ Excel มีขนาดเล็กลง",
+        "B": "เพื่อแยกสัญญาณความผิดปกติ (Signal) ออกจากเสียงรบกวนปกติ (Noise) และตัดสินใจได้แม่นยำ",
+        "C": "เพื่อหลีกเลี่ยงการวัดชิ้นงานจริง",
+        "D": "เพื่อยกเลิกการใช้ Spec ลูกค้า"
+      },
+      "correct": "B",
+      "explanation": "สถิติช่วยสกัด Pattern, แนวโน้ม และแยกความผิดปกติจริงออกจากความแกว่งตามธรรมชาติ"
+    },
+    {
+      "id": "M1-Q011",
+      "lo": "LO-M1-02",
+      "bloom": "Remember",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ข้อใดจัดเป็น **Variable Data**",
+      "choices": {
+        "A": "จำนวนชิ้นงานที่มีรอยขีดข่วน",
+        "B": "ผลการตรวจ Pass / Fail",
+        "C": "ความหนาแผ่นโลหะ (1.52 mm)",
+        "D": "รหัสกะการผลิต (Day / Night)"
+      },
+      "correct": "C",
+      "explanation": "ความหนา (mm) ได้จากการวัดบนสเกลต่อเนื่อง จึงเป็น Variable Data"
+    },
+    {
+      "id": "M1-Q012",
+      "lo": "LO-M1-02",
+      "bloom": "Remember",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ข้อใดจัดเป็น **Attribute Data**",
+      "choices": {
+        "A": "น้ำหนักชิ้นงานฉีดพลาสติก (12.45 g)",
+        "B": "แรงบิดขันน็อต (25.1 N·m)",
+        "C": "อุณหภูมิเตาอบ (180.5 °C)",
+        "D": "จำนวนจุดเสียต่อแผงวงจร (2 จุด)"
+      },
+      "correct": "D",
+      "explanation": "การนับจำนวนจุดเสียเป็นข้อมูลแบบนับ (Count) จึงจัดเป็น Attribute Data"
+    },
+    {
+      "id": "M1-Q013",
+      "lo": "LO-M1-02",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ข้อมูล \"จำนวนฟองอากาศที่พบบนชิ้นงาน 1 ชิ้น (0, 1, 2, 3 จุด)\" เป็นข้อมูลประเภทใด",
+      "choices": {
+        "A": "Variable – Continuous",
+        "B": "Attribute – Discrete",
+        "C": "Variable – Ordinal",
+        "D": "Attribute – Continuous"
+      },
+      "correct": "B",
+      "explanation": "จำนวนนับที่ไม่มีเศษทศนิยม (0, 1, 2) เป็น Attribute – Discrete Data"
+    },
+    {
+      "id": "M1-Q014",
+      "lo": "LO-M1-02",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ช่างวัดขนาดรูเจาะด้วย **Go / No-Go Plug Gauge** แล้วบันทึกผลว่า \"Go\" หรือ \"No-Go\" ข้อมูลที่ได้นี้จัดเป็นประเภทใด",
+      "choices": {
+        "A": "Variable Data เพราะวัดขนาดรู",
+        "B": "Continuous Data",
+        "C": "Attribute Data (Nominal)",
+        "D": "Ratio Data"
+      },
+      "correct": "C",
+      "explanation": "แม้จะตรวจมิติทางกล แต่ผลลัพธ์ที่บันทึกเป็นแค่ 2 กลุ่ม (ผ่าน/ไม่ผ่าน) จึงเป็น Attribute Data"
+    },
+    {
+      "id": "M1-Q015",
+      "lo": "LO-M1-02",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "เหตุใดวิศวกรจึงต้องแยก Variable Data และ Attribute Data ให้ถูกต้องตั้งแต่แรก",
+      "choices": {
+        "A": "เพราะใช้เลือกสีของกราฟใน PowerPoint",
+        "B": "เพราะข้อมูลต่างประเภทต้องใช้เครื่องมือสถิติและ Control Chart คนละชนิดกัน",
+        "C": "เพราะ Variable Data เก็บใน Excel ไม่ได้",
+        "D": "เพราะ Attribute Data คำนวณเปอร์เซ็นต์ไม่ได้"
+      },
+      "correct": "B",
+      "explanation": "Variable ใช้กราฟเช่น Xbar-R/I-MR และ Cp/Cpk ส่วน Attribute ใช้ P/NP/C/U Chart"
+    },
+    {
+      "id": "M1-Q016",
+      "lo": "LO-M1-02",
+      "bloom": "Remember",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "มาตราการวัด (Measurement Scale) ระดับใดที่ทำได้เพียงตั้งชื่อหรือจัดหมวดหมู่ โดย **เรียงลำดับมากน้อยไม่ได้**",
+      "choices": {
+        "A": "Nominal",
+        "B": "Ordinal",
+        "C": "Interval",
+        "D": "Ratio"
+      },
+      "correct": "A",
+      "explanation": "Nominal Scale ใช้สำหรับตั้งชื่อ/จัดกลุ่มเท่านั้น เช่น รหัสเครื่องจักร, ประเภท Defect"
+    },
+    {
+      "id": "M1-Q017",
+      "lo": "LO-M1-02",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ในงานฉีดพลาสติกมีการบันทึกหมายเลขแม่พิมพ์ **Cavity 1, 2, 3, 4** ตัวเลขนี้จัดอยู่ใน Measurement Scale ระดับใด",
+      "choices": {
+        "A": "Ratio",
+        "B": "Interval",
+        "C": "Ordinal",
+        "D": "Nominal"
+      },
+      "correct": "D",
+      "explanation": "เลข Cavity 1–4 เป็นเพียงป้ายระบุตำแหน่งแม่พิมพ์ ห้ามนำมาบวกหรือหาค่าเฉลี่ยว่า \"Cavity เฉลี่ย = 2.5\""
+    },
+    {
+      "id": "M1-Q018",
+      "lo": "LO-M1-02",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "อุณหภูมิในหน่วย **องศาเซลเซียส (°C)** จัดอยู่ใน Measurement Scale ระดับใด",
+      "choices": {
+        "A": "Nominal",
+        "B": "Ordinal",
+        "C": "Interval",
+        "D": "Ratio"
+      },
+      "correct": "C",
+      "explanation": "°C มีช่วงห่างเท่ากัน แต่ 0 °C ไม่ใช่จุดที่ไม่มีพลังงานความร้อน (ไม่มีศูนย์แท้) จึงเป็น Interval Scale"
+    },
+    {
+      "id": "M1-Q019",
+      "lo": "LO-M1-02",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ประโยคใดอธิบายความแตกต่างของ **Ratio Scale** เทียบกับ **Interval Scale** ได้ถูกต้องที่สุด",
+      "choices": {
+        "A": "Ratio ไม่มีตัวเลขทศนิยม",
+        "B": "Ratio มีค่าศูนย์แท้ (True Zero) จึงเปรียบเทียบเป็นสัดส่วนเท่าตัวได้ เช่น 20 mm ยาวเป็น 2 เท่าของ 10 mm",
+        "C": "Interval คำนวณค่าเฉลี่ยไม่ได้",
+        "D": "Ratio ใช้ได้กับข้อมูล Attribute เท่านั้น"
+      },
+      "correct": "B",
+      "explanation": "Ratio Scale มี Absolute/True Zero ทำให้การคูณ/หารเปรียบเทียบสัดส่วนมีความหมายจริง"
+    },
+    {
+      "id": "M1-Q020",
+      "lo": "LO-M1-02",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "การให้เกรดความสวยงามผิวชิ้นงานเป็น **\"ดีมาก / ดี / พอใช้ / ต้องซ่อม\"** จัดเป็น Measurement Scale ระดับใด",
+      "choices": {
+        "A": "Nominal",
+        "B": "Ordinal",
+        "C": "Interval",
+        "D": "Ratio"
+      },
+      "correct": "B",
+      "explanation": "มีการเรียงลำดับคุณภาพจากต่ำไปสูง แต่ระยะห่างความต่างระหว่างระดับไม่เท่ากันชัดเจน จึงเป็น Ordinal"
+    },
+    {
+      "id": "M1-Q021",
+      "lo": "LO-M1-02",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ข้อมูลคู่ใดต่อไปนี้ที่เป็น **Variable – Continuous – Ratio** ทั้งคู่",
+      "choices": {
+        "A": "ความยาว (mm) และ น้ำหนัก (g)",
+        "B": "อุณหภูมิ (°C) และ ความดัน (kPa)",
+        "C": "จำนวน Defect และ ความยาว (mm)",
+        "D": "รหัสพนักงาน และ เกรดคุณภาพ"
+      },
+      "correct": "A",
+      "explanation": "ทั้งความยาว (mm) และน้ำหนัก (g) วัดต่อเนื่องและมีค่าศูนย์แท้ทั้งคู่"
+    },
+    {
+      "id": "M1-Q022",
+      "lo": "LO-M1-02",
+      "bloom": "Analyze",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "หากเครื่องมือวัดความหนาแผ่นโลหะมีความละเอียดหยาบมาก (อ่านได้ทีละ 0.5 mm เช่น 1.0, 1.5, 2.0) จะส่งผลอย่างไรต่อข้อมูล",
+      "choices": {
+        "A": "ข้อมูลจะยังคงเป็น Attribute Nominal",
+        "B": "ข้อมูลจริงเป็น Continuous แต่บนกราฟจะดูเป็นขั้นๆ เหมือน Discrete (Chunky Data) จนวิเคราะห์ SPC ยาก",
+        "C": "ข้อมูลกลายเป็น Ordinal",
+        "D": "ไม่ส่งผลใดๆ ต่อการคำนวณ"
+      },
+      "correct": "B",
+      "explanation": "Gage resolution ที่หยาบเกินไปทำให้ Continuous data เกิดค่าซ้ำเป็นขั้นๆ (Insufficient Discrimination)"
+    },
+    {
+      "id": "M1-Q023",
+      "lo": "LO-M1-02",
+      "bloom": "Apply",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "เวลาที่ใช้ใน 1 รอบการผลิต (Cycle Time = 42.3 วินาที) จัดเป็นข้อมูลประเภทใด",
+      "choices": {
+        "A": "Attribute – Nominal",
+        "B": "Variable – Continuous – Ratio",
+        "C": "Attribute – Ordinal",
+        "D": "Variable – Interval"
+      },
+      "correct": "B",
+      "explanation": "เวลาเป็นค่าต่อเนื่องและมีศูนย์แท้ (0 วินาที = ไม่มีการใช้เวลา)"
+    },
+    {
+      "id": "M1-Q024",
+      "lo": "LO-M1-02",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ข้อใดเป็น **Discrete Ratio Data** (ข้อมูลนับที่มีศูนย์แท้)",
+      "choices": {
+        "A": "ระดับความพึงพอใจ 1–5 ดาว",
+        "B": "จำนวนรอยบิ่นต่อชิ้น (0, 1, 2, 3 รอย)",
+        "C": "ชื่อรุ่นสินค้า (Model A, B, C)",
+        "D": "อุณหภูมิห้องคลีนรูม (°C)"
+      },
+      "correct": "B",
+      "explanation": "จำนวนรอยบิ่นเป็นจำนวนนับเต็มหน่วย (Discrete) และ 0 หมายถึงไม่มีรอยบิ่นเลย (True Zero)"
+    },
+    {
+      "id": "M1-Q025",
+      "lo": "LO-M1-02",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ข้อใดคือการคำนวณที่ไม่สมเหตุสมผลที่สุดตามหลัก Measurement Scale",
+      "choices": {
+        "A": "หา Mode ของประเภท Defect (Scratch, Burr, Dent)",
+        "B": "หา Mean ของความเร็วรอบเครื่อง (RPM)",
+        "C": "หา Mean ของคะแนนระดับความพึงพอใจเชิงอันดับ (Ordinal 1–5) โดยสรุปว่า \"ห่างเท่ากันเป๊ะ\" หรือหา Mean ของหมายเลข Shift",
+        "D": "หา Median ของเกรดคุณภาพ"
+      },
+      "correct": "C",
+      "explanation": "ข้อมูล Nominal หา Mean ไม่ได้เด็ดขาด ส่วน Ordinal ควรใช้ Median/Mode มากกว่า Mean"
+    },
+    {
+      "id": "M1-Q026",
+      "lo": "LO-M1-02",
+      "bloom": "Remember",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ข้อมูลใดให้รายละเอียดเชิงลึกสำหรับปรับปรุงกระบวนการ (Process Improvement) มากกว่ากันเมื่อวัดคุณสมบัติเดียวกัน",
+      "choices": {
+        "A": "Attribute (Pass/Fail) เสมอ",
+        "B": "Variable (ค่าตัวเลขที่วัดได้จริง)",
+        "C": "ข้อมูลทั้งสองให้รายละเอียดเท่ากัน",
+        "D": "ข้อมูลแบบ Nominal"
+      },
+      "correct": "B",
+      "explanation": "Variable Data บอกได้ว่างานใกล้ขอบ Spec แค่ไหนและกระจายตัวอย่างไร จึงใช้ Sample Size น้อยกว่าแต่เห็นแนวโน้มชัดกว่า Attribute"
+    },
+    {
+      "id": "M1-Q027",
+      "lo": "LO-M1-02",
+      "bloom": "Apply",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "รหัสสาเหตุความผิดพลาด `E01 = Power Loss`, `E02 = Jam`, `E03 = Sensor Fault` คือ Scale ระดับใด",
+      "choices": {
+        "A": "Nominal",
+        "B": "Ordinal",
+        "C": "Interval",
+        "D": "Ratio"
+      },
+      "correct": "A",
+      "explanation": "เป็นรหัสระบุชื่อเหตุการณ์ที่ไม่มีลำดับสูงต่ำหรือระยะห่างเชิงปริมาณ"
+    },
+    {
+      "id": "M1-Q028",
+      "lo": "LO-M1-02",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ระดับทักษะพนักงาน (`Level 1: ฝึกหัด`, `Level 2: ปฏิบัติงานได้`, `Level 3: ครูฝึก`) คือ Scale ระดับใด",
+      "choices": {
+        "A": "Nominal",
+        "B": "Ordinal",
+        "C": "Interval",
+        "D": "Ratio"
+      },
+      "correct": "B",
+      "explanation": "บอกลำดับขั้นความเชี่ยวชาญได้ (3 > 2 > 1) แต่ช่องว่างความเก่งแต่ละขั้นไม่เท่ากัน"
+    },
+    {
+      "id": "M1-Q029",
+      "lo": "LO-M1-02",
+      "bloom": "Analyze",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "สถานการณ์ใดที่วิศวกรควรเปลี่ยนจากเก็บ **Attribute Data** มาเก็บเป็น **Variable Data**",
+      "choices": {
+        "A": "เมื่อตรวจรอยขีดข่วนที่มองด้วยตาเปล่าอย่างเดียว",
+        "B": "เมื่อต้องการลดขนาดตัวอย่างที่ใช้สุ่มตรวจและเห็นการขยับ (Drift) ของเครื่องกลึงก่อนเกิดของเสีย",
+        "C": "เมื่อต้องการนับจำนวนใบสั่งซื้อต่อวัน",
+        "D": "เมื่อแยกชนิดสินค้าตามสี"
+      },
+      "correct": "B",
+      "explanation": "การวัดขนาดจริง (Variable) ช่วยจับการไหลของเครื่องจักรก่อนชิ้นงานหลุด Spec ได้เร็วกว่าการรอให้ Fail"
+    },
+    {
+      "id": "M1-Q030",
+      "lo": "LO-M1-02",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ค่าความต่างของความดันที่รั่วไหล (Leak Pressure Drop = 0.14 kPa) จัดเป็นข้อมูลประเภทใด",
+      "choices": {
+        "A": "Variable – Continuous",
+        "B": "Attribute – Discrete",
+        "C": "Attribute – Nominal",
+        "D": "Variable – Ordinal"
+      },
+      "correct": "A",
+      "explanation": "ค่าความดันวัดต่อเนื่องได้เป็นทศนิยมและมีศูนย์แท้ (0 kPa = ไม่รั่ว)"
+    },
+    {
+      "id": "M1-Q031",
+      "lo": "LO-M1-03",
+      "bloom": "Remember",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ค่าสถิติใดใช้บอก **จุดศูนย์กลาง (Centering)** โดยนำข้อมูลทุกตัวมารวมกันแล้วหารด้วยจำนวนข้อมูล",
+      "choices": {
+        "A": "Median",
+        "B": "Mode",
+        "C": "Mean",
+        "D": "Range"
+      },
+      "correct": "C",
+      "explanation": "Mean ($\\bar{x} = \\Sigma x / n$) คือค่าเฉลี่ยเลขคณิตของข้อมูลทุกตัว"
+    },
+    {
+      "id": "M1-Q032",
+      "lo": "LO-M1-03",
+      "bloom": "Apply",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ข้อมูลความยาวเพลา 5 ชิ้น: `49.98, 50.00, 50.01, 50.01, 50.05` mm ค่า **Mean** เท่ากับข้อใด",
+      "choices": {
+        "A": "50.00 mm",
+        "B": "50.01 mm",
+        "C": "50.02 mm",
+        "D": "50.05 mm"
+      },
+      "correct": "B",
+      "explanation": "ผลรวม = 250.05 หารด้วย 5 = 50.01 mm"
+    },
+    {
+      "id": "M1-Q033",
+      "lo": "LO-M1-03",
+      "bloom": "Apply",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "จากชุดข้อมูลเดิม `49.98, 50.00, 50.01, 50.01, 50.05` mm ค่า **Median** และ **Mode** คือข้อใด",
+      "choices": {
+        "A": "Median = 50.01, Mode = 50.01",
+        "B": "Median = 50.00, Mode = 50.05",
+        "C": "Median = 50.05, Mode = 50.01",
+        "D": "Median = 50.01, Mode = 49.98"
+      },
+      "correct": "A",
+      "explanation": "เรียงแล้วตัวที่ 3 (ตรงกลาง) คือ 50.01 และค่าที่ซ้ำบ่อยสุด (2 ครั้ง) คือ 50.01"
+    },
+    {
+      "id": "M1-Q034",
+      "lo": "LO-M1-03",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ข้อมูลขนาดรู 6 ชิ้น (เรียงแล้ว): `10.01, 10.02, 10.04, 10.06, 10.07, 10.10` mm ค่า **Median** คือเท่าใด",
+      "choices": {
+        "A": "10.04 mm",
+        "B": "10.05 mm",
+        "C": "10.06 mm",
+        "D": "10.07 mm"
+      },
+      "correct": "B",
+      "explanation": "เมื่อ n เป็นเลขคู่ (6 ตัว) Median = ค่าเฉลี่ยของตัวที่ 3 และ 4 = (10.04 + 10.06) / 2 = 10.05 mm"
+    },
+    {
+      "id": "M1-Q035",
+      "lo": "LO-M1-03",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ชุดข้อมูลมีค่า Outlier สูงผิดปกติ 1 ตัว (เช่น `50.00, 50.01, 50.01, 50.02, 50.90`) ค่าใดที่ยังคงสะท้อนศูนย์กลางส่วนใหญ่ของข้อมูลได้ดีที่สุด",
+      "choices": {
+        "A": "Mean",
+        "B": "Median",
+        "C": "Range",
+        "D": "Variance"
+      },
+      "correct": "B",
+      "explanation": "Mean จะถูก 50.90 ดึงไปเป็น 50.188 ส่วน Median ยังคงอยู่ที่ 50.01 ไม่หวั่นไหวต่อ Outlier"
+    },
+    {
+      "id": "M1-Q036",
+      "lo": "LO-M1-03",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "เมื่อพล็อตความถี่ของข้อมูลขนาดชิ้นงานแล้วพบ **Mode สองยอด (Bimodal)** วิศวกรควรสงสัยสาเหตุใดเป็นอันดับแรก",
+      "choices": {
+        "A": "ข้อมูลมีความเที่ยงตรงสูงมาก",
+        "B": "มีข้อมูลจาก 2 แหล่งปนกัน เช่น 2 เครื่องจักร, 2 กะ, หรือ 2 แม่พิมพ์ที่ปรับไม่เท่ากัน",
+        "C": "จำนวนตัวอย่างเยอะเกินไป",
+        "D": "มีการลบข้อมูลทิ้ง"
+      },
+      "correct": "B",
+      "explanation": "Bimodal distribution มักเกิดจากการผสมของ 2 ประชากรย่อย (Mixed Streams) ที่ค่าเฉลี่ยต่างกัน"
+    },
+    {
+      "id": "M1-Q037",
+      "lo": "LO-M1-03",
+      "bloom": "Apply",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ชุดข้อมูล: `49.98, 50.00, 50.02, 50.04, 50.14` mm ค่า **Range ($R$)** เท่ากับเท่าใด",
+      "choices": {
+        "A": "0.04 mm",
+        "B": "0.06 mm",
+        "C": "0.14 mm",
+        "D": "0.16 mm"
+      },
+      "correct": "D",
+      "explanation": "Range = Max − Min = 50.14 − 49.98 = 0.16 mm"
+    },
+    {
+      "id": "M1-Q038",
+      "lo": "LO-M1-03",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ข้อจำกัดสำคัญของค่า **Range** เมื่อใช้กับชุดข้อมูลที่มีขนาดตัวอย่างใหญ่ ($n > 10$) คือข้อใด",
+      "choices": {
+        "A": "คำนวณยากเกินไป",
+        "B": "ใช้ข้อมูลเพียง 2 ตัว (Max กับ Min) จึงไม่สะท้อนการกระจายของข้อมูลตรงกลางและไวต่อ Outlier",
+        "C": "หน่วยเป็นกำลังสอง",
+        "D": "มีค่าติดลบได้เสมอ"
+      },
+      "correct": "B",
+      "explanation": "Range มองแค่ตัวสูงสุดและต่ำสุด ทำให้ประสิทธิภาพลดลงมากเมื่อ subgroup size ใหญ่ขึ้น"
+    },
+    {
+      "id": "M1-Q039",
+      "lo": "LO-M1-03",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "เหตุใดในการคำนวณ **Variance** จึงต้องนำค่าเบี่ยงเบน $(x - \\bar{x})$ มายกกำลังสองก่อนรวมกัน",
+      "choices": {
+        "A": "เพื่อทำให้ค่าเฉลี่ยสูงขึ้น",
+        "B": "เพื่อป้องกันไม่ให้ค่าเบี่ยงเบนฝั่งบวกกับฝั่งลบหักล้างกันจนผลรวมเป็นศูนย์",
+        "C": "เพื่อเปลี่ยนหน่วยให้เป็นเปอร์เซ็นต์",
+        "D": "เพื่อตัดค่า Outlier ออก"
+      },
+      "correct": "B",
+      "explanation": "ผลรวมของ $(x - \\bar{x})$ จะเท่ากับ 0 เสมอ การยกกำลังสองทำให้ทุกความเบี่ยงเบนเป็นบวกและให้น้ำหนักกับค่าที่ห่างมาก"
+    },
+    {
+      "id": "M1-Q040",
+      "lo": "LO-M1-03",
+      "bloom": "Remember",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "สูตร Sample Variance ($s^2$) ใช้ตัวหารเป็น **$n - 1$** แทนที่จะเป็น $n$ เพื่อวัตถุประสงค์ใด",
+      "choices": {
+        "A": "เพื่อให้คำนวณด้วยมือเร็วขึ้น",
+        "B": "เพื่อลดความลำเอียง (Unbiased Estimator) เมื่อใช้ตัวอย่างประมาณค่าความแปรปรวนของประชากร",
+        "C": "เพื่อทำให้ Variance มีค่าน้อยลง",
+        "D": "ใช้เฉพาะเมื่อข้อมูลเป็น Attribute"
+      },
+      "correct": "B",
+      "explanation": "การหารด้วย $n - 1$ (Degrees of Freedom) ชดเชยความจริงที่ว่า sample mean ใกล้ข้อมูลตัวอย่างมากกว่า population mean"
+    },
+    {
+      "id": "M1-Q041",
+      "lo": "LO-M1-03",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ข้อมูล 5 ตัว: `2, 4, 4, 4, 6` (Mean = 4) ค่า **Sample Variance ($s^2$)** และ **Sample SD ($s$)** คือข้อใด",
+      "choices": {
+        "A": "$s^2 = 2.0$, $s = 1.41$",
+        "B": "$s^2 = 8.0$, $s = 2.83$",
+        "C": "$s^2 = 1.6$, $s = 1.26$",
+        "D": "$s^2 = 4.0$, $s = 2.00$"
+      },
+      "correct": "A",
+      "explanation": "$\\Sigma(x-\\bar{x})^2 = (-2)^2 + 0 + 0 + 0 + 2^2 = 8$; $s^2 = 8 / (5-1) = 2.0$; $s = \\sqrt{2.0} \\approx 1.414$"
+    },
+    {
+      "id": "M1-Q042",
+      "lo": "LO-M1-03",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ข้อดีของ **Standard Deviation ($s$)** เมื่อเทียบกับ **Variance ($s^2$)** ในงานวิศวกรรมคือข้อใด",
+      "choices": {
+        "A": "มีหน่วยเดียวกับข้อมูลจริง (เช่น mm) จึงเทียบกับ Spec และค่า Mean ได้โดยตรง",
+        "B": "คำนวณเร็วกว่าโดยไม่ต้องถอดราก",
+        "C": "ไม่มีวันเป็นศูนย์",
+        "D": "ไม่อ่อนไหวต่อ Outlier เลย"
+      },
+      "correct": "A",
+      "explanation": "Variance มีหน่วยเป็นกำลังสอง (เช่น mm²) ส่วน SD ถอดรากกลับมาเป็น mm เหมือนค่าที่วัดจริง"
+    },
+    {
+      "id": "M1-Q043",
+      "lo": "LO-M1-03",
+      "bloom": "Remember",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ตามกฎ **Empirical Rule** สำหรับการแจกแจงปกติ (Normal Distribution) ข้อมูลประมาณกี่เปอร์เซ็นต์จะอยู่ในช่วง **$\\bar{x} \\pm 3\\sigma$**",
+      "choices": {
+        "A": "68.27%",
+        "B": "95.45%",
+        "C": "99.73%",
+        "D": "50.00%"
+      },
+      "correct": "C",
+      "explanation": "กฎ Empirical Rule: ±1σ ≈ 68.27%, ±2σ ≈ 95.45%, ±3σ ≈ 99.73%"
+    },
+    {
+      "id": "M1-Q044",
+      "lo": "LO-M1-03",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "เครื่องจักร A และ B มีค่า Mean เท่ากันที่ 50.00 mm แต่เครื่อง A มี SD = 0.015 mm ส่วนเครื่อง B มี SD = 0.030 mm ข้อใดสรุปถูกต้อง",
+      "choices": {
+        "A": "เครื่อง B นิ่งกว่าเครื่อง A",
+        "B": "เครื่อง A มีความแปรปรวนน้อยกว่า (สม่ำเสมอกว่า) เครื่อง B",
+        "C": "ทั้งสองเครื่องมีโอกาสเกิดของเสียเท่ากัน",
+        "D": "เครื่อง B ผลิตได้ค่าเฉลี่ยดีกว่า"
+      },
+      "correct": "B",
+      "explanation": "เมื่อ Mean เท่ากัน กระบวนการที่มี SD ต่ำกว่าจะมีกราฟแคบกว่า นิ่งกว่า และเสี่ยงหลุด Spec น้อยกว่า"
+    },
+    {
+      "id": "M1-Q045",
+      "lo": "LO-M1-03",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "สูตรคำนวณ **Coefficient of Variation (CV)** คือข้อใด",
+      "choices": {
+        "A": "$(\\bar{x} / s) \\times 100\\%$",
+        "B": "$(s / \\bar{x}) \\times 100\\%$",
+        "C": "$(R / \\bar{x}) \\times 100\\%$",
+        "D": "$s^2 / n$"
+      },
+      "correct": "B",
+      "explanation": "CV แสดงส่วนเบี่ยงเบนมาตรฐานเป็นสัดส่วนร้อยละเทียบกับค่าเฉลี่ย"
+    },
+    {
+      "id": "M1-Q046",
+      "lo": "LO-M1-03",
+      "bloom": "Apply",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "สายการผลิตพินขนาดเล็ก `Mean = 10 mm, SD = 0.2 mm` เทียบกับสายการผลิตเพลายาว `Mean = 500 mm, SD = 2.0 mm` กระบวนการใดมีความแปรปรวนเชิงสัมพัทธ์ (CV) **ต่ำกว่า/นิ่งกว่า**",
+      "choices": {
+        "A": "สายพิน (CV = 2.0%)",
+        "B": "สายเพลา (CV = 0.4%)",
+        "C": "เท่ากันทั้งสองสาย",
+        "D": "เปรียบเทียบไม่ได้เพราะคนละขนาด"
+      },
+      "correct": "B",
+      "explanation": "CV พิน = (0.2/10)×100 = 2.0% ส่วน CV เพลา = (2.0/500)×100 = 0.4% ดังนั้นสายเพลานิ่งกว่าเมื่อเทียบกับขนาด"
+    },
+    {
+      "id": "M1-Q047",
+      "lo": "LO-M1-03",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "หากข้อมูลทั้งหมดมีค่าเท่ากันเป๊ะทุกชิ้น (`50.00, 50.00, 50.00, 50.00`) ค่า **Standard Deviation** จะเท่ากับเท่าใด",
+      "choices": {
+        "A": "50.00",
+        "B": "1.00",
+        "C": "0.00",
+        "D": "หาค่าไม่ได้"
+      },
+      "correct": "C",
+      "explanation": "เมื่อไม่มีความแตกต่างจากค่าเฉลี่ยเลย การกระจายตัว (Range, Variance, SD) ทั้งหมดเท่ากับ 0"
+    },
+    {
+      "id": "M1-Q048",
+      "lo": "LO-M1-03",
+      "bloom": "Analyze",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "ข้อใดต่อไปนี้ **ไม่ใช่** คุณสมบัติของ Standard Deviation",
+      "choices": {
+        "A": "มีค่ามากกว่าหรือเท่ากับ 0 เสมอ",
+        "B": "ใช้ข้อมูลทุกตัวในการคำนวณ",
+        "C": "ถ้าบวกค่าคงที่ +5 ให้ข้อมูลทุกตัว ค่า SD จะเพิ่มขึ้น +5 ด้วย",
+        "D": "ถ้าคูณข้อมูลทุกตัวด้วย 2 ค่า SD จะเพิ่มเป็น 2 เท่า"
+      },
+      "correct": "C",
+      "explanation": "การบวกค่าคงที่ทำให้ตำแหน่ง (Mean) เลื่อนไป +5 แต่ความกว้างของการกระจาย (SD) ยังคงเท่าเดิม!"
+    },
+    {
+      "id": "M1-Q049",
+      "lo": "LO-M1-03",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "กระบวนการผลิตมี Mean = 100 g และ SD = 2 g ในการผลิตปกติแบบ Normal ชิ้นงานประมาณ 95% ควรมีน้ำหนักอยู่ในช่วงใด",
+      "choices": {
+        "A": "98 – 102 g",
+        "B": "96 – 104 g",
+        "C": "94 – 106 g",
+        "D": "90 – 110 g"
+      },
+      "correct": "B",
+      "explanation": "ช่วง ~95% ของ Normal distribution คือ $\\bar{x} \\pm 2\\sigma = 100 \\pm 2(2) = 96\\text{–}104$ g"
+    },
+    {
+      "id": "M1-Q050",
+      "lo": "LO-M1-03",
+      "bloom": "Evaluate",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "เมื่อข้อมูลขนาดชิ้นงานมีลักษณะเบ้ขวาอย่างรุนแรง (Right-skewed) ความสัมพันธ์ระหว่าง Mean กับ Median มักเป็นอย่างไร",
+      "choices": {
+        "A": "Mean > Median",
+        "B": "Mean < Median",
+        "C": "Mean = Median เสมอ",
+        "D": "Mean = Mode เสมอ"
+      },
+      "correct": "A",
+      "explanation": "หางยาวด้านขวา (ค่าสูงๆ) จะดึง Mean ให้มีค่าสูงกว่า Median"
+    },
+    {
+      "id": "M1-Q051",
+      "lo": "LO-M1-04",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "กราฟใดเหมาะที่สุดสำหรับการดู **รูปร่างการกระจายตัว (Distribution Shape)** ศูนย์กลาง และความกว้างของข้อมูล Variable",
+      "choices": {
+        "A": "Pareto Chart",
+        "B": "Histogram",
+        "C": "Pie Chart",
+        "D": "Scatter Plot"
+      },
+      "correct": "B",
+      "explanation": "Histogram แสดงความถี่เป็นแท่งต่อเนื่อง ช่วยเห็นรูปร่าง (Normal, Skewed, Bimodal) ของ Variable Data"
+    },
+    {
+      "id": "M1-Q052",
+      "lo": "LO-M1-04",
+      "bloom": "Analyze",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "วิศวกรพล็อต Histogram แล้วพบว่าขอบกราฟด้านขวา **ถูกตัดตรงเหมือนหน้าผา (Cliff Shape)** ที่เส้น USL พอดี สาเหตุที่เป็นไปได้มากที่สุดคือข้อใด",
+      "choices": {
+        "A": "เครื่องจักรกำลังเสถียรมาก",
+        "B": "มีการคัดแยกของเสียที่เกิน USL ทิ้งไปก่อนส่งข้อมูล (100% Sorting / Data Censoring)",
+        "C": "ความละเอียดเครื่องมือวัดดีเกินไป",
+        "D": "มีการผลิต 2 กะปนกัน"
+      },
+      "correct": "B",
+      "explanation": "Cliff-shaped histogram เป็นสัญญาณคลาสสิกของการคัดชิ้นงานที่หลุด Spec ออกก่อนเก็บข้อมูล"
+    },
+    {
+      "id": "M1-Q053",
+      "lo": "LO-M1-04",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "กราฟ **Pareto Chart** สร้างขึ้นบนหลักการสำคัญข้อใด",
+      "choices": {
+        "A": "กฎ 68–95–99.7",
+        "B": "กฎ 80/20 (Vital Few vs Trivial Many)",
+        "C": "กฎการเคลื่อนที่ของนิวตัน",
+        "D": "Central Limit Theorem"
+      },
+      "correct": "B",
+      "explanation": "Pareto ช่วยเรียงลำดับสาเหตุความสูญเสียเพื่อแก้ 20% แรกที่ก่อให้เกิดผลกระทบ ~80% ก่อน"
+    },
+    {
+      "id": "M1-Q054",
+      "lo": "LO-M1-04",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "จากข้อมูล Defect: Scratch = 9, Burr = 4, Dent = 1, Crack = 1 (รวม 15) บน **Pareto Chart** เปอร์เซ็นต์สะสมของ `Scratch + Burr` คือเท่าใด",
+      "choices": {
+        "A": "60.0%",
+        "B": "75.0%",
+        "C": "86.7%",
+        "D": "93.3%"
+      },
+      "correct": "C",
+      "explanation": "(9 + 4) / 15 = 13 / 15 = 86.67% (~86.7%)"
+    },
+    {
+      "id": "M1-Q055",
+      "lo": "LO-M1-04",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "กราฟใดเหมาะสมที่สุดในการ **เปรียบเทียบการกระจายตัวและ Outlier ระหว่าง 4 เครื่องจักรพร้อมกัน** ในรูปเดียว",
+      "choices": {
+        "A": "Box Plot",
+        "B": "Pareto Chart",
+        "C": "Scatter Plot",
+        "D": "Bar Chart ธรรมดา"
+      },
+      "correct": "A",
+      "explanation": "Box Plot แสดง Median, IQR (Q1–Q3), Whiskers และ Outlier ของหลายกลุ่มเปรียบเทียบกันได้ชัดเจนมาก"
+    },
+    {
+      "id": "M1-Q056",
+      "lo": "LO-M1-04",
+      "bloom": "Remember",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "เส้นขีดแนวนอนที่อยู่ **กลางกล่อง** ในกราฟ Box Plot แสดงค่าสถิติใด",
+      "choices": {
+        "A": "Mean",
+        "B": "Mode",
+        "C": "Median (Q2)",
+        "D": "Standard Deviation"
+      },
+      "correct": "C",
+      "explanation": "กล่องใน Box Plot ขอบล่างคือ Q1, ขอบบนคือ Q3, และเส้นแบ่งกลางกล่องคือ Median (50th percentile)"
+    },
+    {
+      "id": "M1-Q057",
+      "lo": "LO-M1-04",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "วิศวกรต้องการตรวจสอบว่า **อุณหภูมิแม่พิมพ์ (X)** มีความสัมพันธ์กับ **ขนาดเส้นผ่านศูนย์กลาง (Y)** หรือไม่ ควรเลือกใช้กราฟใด",
+      "choices": {
+        "A": "Histogram",
+        "B": "Run Chart",
+        "C": "Scatter Plot",
+        "D": "Pareto Chart"
+      },
+      "correct": "C",
+      "explanation": "Scatter Plot ใช้พล็อตคู่ตัวแปร (X, Y) เพื่อดูความสัมพันธ์เชิงบวก ลบ หรือไม่มีความสัมพันธ์"
+    },
+    {
+      "id": "M1-Q058",
+      "lo": "LO-M1-04",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "เมื่อ Scatter Plot แสดงค่าสหสัมพันธ์ $r = +0.95$ ข้อควรระวังสำคัญในการสรุปผลคือข้อใด",
+      "choices": {
+        "A": "ต้องเป็นเหตุและผลกัน 100% เสมอ",
+        "B": "**Correlation ไม่เท่ากับ Causation** ต้องตรวจสอบกลไกทางวิศวกรรมหรือทดลองยืนยันก่อนสรุปว่าเป็นต้นเหตุ",
+        "C": "ค่า r ต้องติดลบเท่านั้นจึงจะมีความสัมพันธ์",
+        "D": "ข้อมูลต้องเป็น Attribute เท่านั้น"
+      },
+      "correct": "B",
+      "explanation": "ตัวแปรสองตัวอาจเคลื่อนที่ตามกันเพราะตัวแปรที่สามแฝงอยู่ (Confounding Factor) จึงต้องพิสูจน์สาเหตุทางวิศวกรรม"
+    },
+    {
+      "id": "M1-Q059",
+      "lo": "LO-M1-04",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "จุดอ่อนของ **Histogram** ที่ทำให้ต้องใช้ **Run Chart** คู่กันคือเรื่องใด",
+      "choices": {
+        "A": "Histogram ไม่แสดงค่า Mean",
+        "B": "Histogram **ไม่แสดงลำดับเวลา (Time Order)** จึงไม่เห็นว่าค่ากำลังไหล (Drift) ช่วงบ่าย",
+        "C": "Histogram ใช้กับข้อมูล mm ไม่ได้",
+        "D": "Run Chart ใช้ดูเฉพาะข้อมูล Nominal"
+      },
+      "correct": "B",
+      "explanation": "Histogram รวมข้อมูลทุกเวลาเข้าด้วยกัน แต่ Run Chart พล็อตตามลำดับเวลาจริงทำให้เห็น Trend และ Shift ทันที"
+    },
+    {
+      "id": "M1-Q060",
+      "lo": "LO-M1-04",
+      "bloom": "Evaluate",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "สถานการณ์ใดต่อไปนี้เลือกกราฟ **ผิดประเภท**",
+      "choices": {
+        "A": "ดูแนวโน้มอุณหภูมิเตาอบทุก 15 นาทีตลอดกะ → Run Chart",
+        "B": "จัดลำดับประเภท Defect สูงสุด → Pareto Chart",
+        "C": "หาความสัมพันธ์ระหว่างความเร็วรอบกับความหยาบผิว → Scatter Plot",
+        "D": "เปรียบเทียบจำนวน Defect รายชนิด → Scatter Plot"
+      },
+      "correct": "D",
+      "explanation": "ประเภท Defect เป็นข้อมูลหมวดหมู่ (Nominal) ควรใช้ Pareto หรือ Bar Chart ไม่ใช่ Scatter Plot (ซึ่งต้องใช้ 2 ตัวแปรเชิงตัวเลข)"
+    }
+  ],
+  "workshops": {
+    "classification": [
+      {
+        "Item_ID": "DC-01",
+        "Process_Area": "Machining",
+        "Description": "Shaft outer diameter measured by micrometer",
+        "Example_Values": "49.98, 50.01, 50.03 mm",
+        "Category_Variable_or_Attribute": "Variable",
+        "Data_Type_Continuous_or_Discrete": "Continuous",
+        "Measurement_Scale": "Ratio",
+        "Rationale": "Has true zero (0 mm) and infinitely divisible decimal measurement."
+      },
+      {
+        "Item_ID": "DC-02",
+        "Process_Area": "Injection",
+        "Description": "Part weight weighed on digital balance",
+        "Example_Values": "12.45, 12.52, 12.48 g",
+        "Category_Variable_or_Attribute": "Variable",
+        "Data_Type_Continuous_or_Discrete": "Continuous",
+        "Measurement_Scale": "Ratio",
+        "Rationale": "Continuous weight measurement with true zero."
+      },
+      {
+        "Item_ID": "DC-03",
+        "Process_Area": "Final QC",
+        "Description": "Visual inspection result (Pass / Fail)",
+        "Example_Values": "Pass, Fail, Pass",
+        "Category_Variable_or_Attribute": "Attribute",
+        "Data_Type_Continuous_or_Discrete": "Discrete",
+        "Measurement_Scale": "Nominal",
+        "Rationale": "Classification label with no numerical order."
+      },
+      {
+        "Item_ID": "DC-04",
+        "Process_Area": "Assembly",
+        "Description": "Tightening torque of M8 bolt",
+        "Example_Values": "24.8, 25.3, 25.0 N·m",
+        "Category_Variable_or_Attribute": "Variable",
+        "Data_Type_Continuous_or_Discrete": "Continuous",
+        "Measurement_Scale": "Ratio",
+        "Rationale": "Measured continuously on a torque wrench/transducer."
+      },
+      {
+        "Item_ID": "DC-05",
+        "Process_Area": "Stamping",
+        "Description": "Number of burrs counted per bracket",
+        "Example_Values": "0, 2, 1, 3 defects",
+        "Category_Variable_or_Attribute": "Attribute",
+        "Data_Type_Continuous_or_Discrete": "Discrete",
+        "Measurement_Scale": "Ratio",
+        "Rationale": "Integer count of defects (0 means zero defects)."
+      },
+      {
+        "Item_ID": "DC-06",
+        "Process_Area": "Heat Treatment",
+        "Description": "Furnace zone temperature in Celsius",
+        "Example_Values": "180.5, 181.2, 179.8 °C",
+        "Category_Variable_or_Attribute": "Variable",
+        "Data_Type_Continuous_or_Discrete": "Continuous",
+        "Measurement_Scale": "Interval",
+        "Rationale": "Continuous scale; 0 °C is arbitrary (not absence of thermal energy)."
+      },
+      {
+        "Item_ID": "DC-07",
+        "Process_Area": "Painting",
+        "Description": "Cosmetic rating grade (Poor / Fair / Good / Excellent)",
+        "Example_Values": "Good, Fair, Excellent",
+        "Category_Variable_or_Attribute": "Attribute",
+        "Data_Type_Continuous_or_Discrete": "Discrete",
+        "Measurement_Scale": "Ordinal",
+        "Rationale": "Ordered ranking categories without equal intervals between ranks."
+      },
+      {
+        "Item_ID": "DC-08",
+        "Process_Area": "Electronics",
+        "Description": "Solder joint defect type code (Bridge / Void / Tombstone)",
+        "Example_Values": "Bridge, Void, Bridge",
+        "Category_Variable_or_Attribute": "Attribute",
+        "Data_Type_Continuous_or_Discrete": "Discrete",
+        "Measurement_Scale": "Nominal",
+        "Rationale": "Named defect categories with no inherent order."
+      },
+      {
+        "Item_ID": "DC-09",
+        "Process_Area": "Machining",
+        "Description": "Cycle time per part on CNC Lathe",
+        "Example_Values": "42.3, 41.9, 43.1 sec",
+        "Category_Variable_or_Attribute": "Variable",
+        "Data_Type_Continuous_or_Discrete": "Continuous",
+        "Measurement_Scale": "Ratio",
+        "Rationale": "Time duration with true zero and continuous resolution."
+      },
+      {
+        "Item_ID": "DC-10",
+        "Process_Area": "Packaging",
+        "Description": "Number of missing labels per pallet",
+        "Example_Values": "0, 1, 0, 2 labels",
+        "Category_Variable_or_Attribute": "Attribute",
+        "Data_Type_Continuous_or_Discrete": "Discrete",
+        "Measurement_Scale": "Ratio",
+        "Rationale": "Discrete count of nonconforming items/events."
+      },
+      {
+        "Item_ID": "DC-11",
+        "Process_Area": "Injection",
+        "Description": "Mold cavity ID number (Cavity 1 / Cavity 2 / Cavity 3 / Cavity 4)",
+        "Example_Values": "1, 2, 3, 4",
+        "Category_Variable_or_Attribute": "Attribute",
+        "Data_Type_Continuous_or_Discrete": "Discrete",
+        "Measurement_Scale": "Nominal",
+        "Rationale": "Numbers act purely as labels/identifiers; averaging Cavity ID is meaningless."
+      },
+      {
+        "Item_ID": "DC-12",
+        "Process_Area": "QC Lab",
+        "Description": "Surface roughness Ra value",
+        "Example_Values": "0.82, 0.79, 0.85 µm",
+        "Category_Variable_or_Attribute": "Variable",
+        "Data_Type_Continuous_or_Discrete": "Continuous",
+        "Measurement_Scale": "Ratio",
+        "Rationale": "Continuous physical measurement with true zero."
+      },
+      {
+        "Item_ID": "DC-13",
+        "Process_Area": "Customer Service",
+        "Description": "Customer satisfaction score (1 to 5 Stars)",
+        "Example_Values": "4, 5, 3, 5",
+        "Category_Variable_or_Attribute": "Attribute",
+        "Data_Type_Continuous_or_Discrete": "Discrete",
+        "Measurement_Scale": "Ordinal",
+        "Rationale": "Ordered rating scale; difference between 1-2 and 4-5 stars is not guaranteed equal."
+      },
+      {
+        "Item_ID": "DC-14",
+        "Process_Area": "Assembly",
+        "Description": "Shift code (Day / Night)",
+        "Example_Values": "Day, Night",
+        "Category_Variable_or_Attribute": "Attribute",
+        "Data_Type_Continuous_or_Discrete": "Discrete",
+        "Measurement_Scale": "Nominal",
+        "Rationale": "Categorical grouping variable without order."
+      },
+      {
+        "Item_ID": "DC-15",
+        "Process_Area": "Stamping",
+        "Description": "Sheet metal thickness",
+        "Example_Values": "1.49, 1.51, 1.50 mm",
+        "Category_Variable_or_Attribute": "Variable",
+        "Data_Type_Continuous_or_Discrete": "Continuous",
+        "Measurement_Scale": "Ratio",
+        "Rationale": "Continuous physical dimension measurement."
+      },
+      {
+        "Item_ID": "DC-16",
+        "Process_Area": "Incoming QC",
+        "Description": "Number of rejected lots per month",
+        "Example_Values": "1, 0, 2, 1 lots",
+        "Category_Variable_or_Attribute": "Attribute",
+        "Data_Type_Continuous_or_Discrete": "Discrete",
+        "Measurement_Scale": "Ratio",
+        "Rationale": "Discrete integer count per period."
+      },
+      {
+        "Item_ID": "DC-17",
+        "Process_Area": "Heat Treatment",
+        "Description": "Ambient storage temperature in Fahrenheit",
+        "Example_Values": "72.4, 73.1, 71.8 °F",
+        "Category_Variable_or_Attribute": "Variable",
+        "Data_Type_Continuous_or_Discrete": "Continuous",
+        "Measurement_Scale": "Interval",
+        "Rationale": "Interval scale; ratio comparison like 80°F is twice as hot as 40°F is invalid."
+      },
+      {
+        "Item_ID": "DC-18",
+        "Process_Area": "Final QC",
+        "Description": "Go / No-Go plug gauge check result",
+        "Example_Values": "Go, No-Go",
+        "Category_Variable_or_Attribute": "Attribute",
+        "Data_Type_Continuous_or_Discrete": "Discrete",
+        "Measurement_Scale": "Nominal",
+        "Rationale": "Binary attribute classification even though underlying feature is dimensional."
+      },
+      {
+        "Item_ID": "DC-19",
+        "Process_Area": "Electronics",
+        "Description": "Leak test pressure drop",
+        "Example_Values": "0.12, 0.15, 0.11 kPa",
+        "Category_Variable_or_Attribute": "Variable",
+        "Data_Type_Continuous_or_Discrete": "Continuous",
+        "Measurement_Scale": "Ratio",
+        "Rationale": "Continuous pressure measurement with true zero."
+      },
+      {
+        "Item_ID": "DC-20",
+        "Process_Area": "Assembly",
+        "Description": "Operator skill level (Level 1 Trainee / Level 2 Certified / Level 3 Trainer)",
+        "Example_Values": "Level 1, Level 2, Level 3",
+        "Category_Variable_or_Attribute": "Attribute",
+        "Data_Type_Continuous_or_Discrete": "Discrete",
+        "Measurement_Scale": "Ordinal",
+        "Rationale": "Ordered hierarchy of skill levels without equal numerical distance."
+      }
+    ],
+    "dimensionsAndDefects": [
+      {
+        "Sample_No": "1",
+        "Timestamp": "2026-11-01 08:00",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "180",
+        "Shaft_Diameter_mm": "50.00",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "2",
+        "Timestamp": "2026-11-01 08:15",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "181",
+        "Shaft_Diameter_mm": "50.01",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "3",
+        "Timestamp": "2026-11-01 08:30",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "179",
+        "Shaft_Diameter_mm": "49.99",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "4",
+        "Timestamp": "2026-11-01 08:45",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "182",
+        "Shaft_Diameter_mm": "50.02",
+        "Defect_Count": "1",
+        "Defect_Type": "Scratch",
+        "Inspection_Result": "Fail"
+      },
+      {
+        "Sample_No": "5",
+        "Timestamp": "2026-11-01 09:00",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "180",
+        "Shaft_Diameter_mm": "50.00",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "6",
+        "Timestamp": "2026-11-01 09:15",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "181",
+        "Shaft_Diameter_mm": "50.01",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "7",
+        "Timestamp": "2026-11-01 09:30",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "183",
+        "Shaft_Diameter_mm": "50.03",
+        "Defect_Count": "1",
+        "Defect_Type": "Burr",
+        "Inspection_Result": "Fail"
+      },
+      {
+        "Sample_No": "8",
+        "Timestamp": "2026-11-01 09:45",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "179",
+        "Shaft_Diameter_mm": "49.98",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "9",
+        "Timestamp": "2026-11-01 10:00",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "180",
+        "Shaft_Diameter_mm": "50.00",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "10",
+        "Timestamp": "2026-11-01 10:15",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "181",
+        "Shaft_Diameter_mm": "50.01",
+        "Defect_Count": "1",
+        "Defect_Type": "Scratch",
+        "Inspection_Result": "Fail"
+      },
+      {
+        "Sample_No": "11",
+        "Timestamp": "2026-11-01 10:30",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "182",
+        "Shaft_Diameter_mm": "50.02",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "12",
+        "Timestamp": "2026-11-01 10:45",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "180",
+        "Shaft_Diameter_mm": "50.00",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "13",
+        "Timestamp": "2026-11-01 11:00",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "184",
+        "Shaft_Diameter_mm": "50.04",
+        "Defect_Count": "1",
+        "Defect_Type": "Scratch",
+        "Inspection_Result": "Fail"
+      },
+      {
+        "Sample_No": "14",
+        "Timestamp": "2026-11-01 11:15",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "180",
+        "Shaft_Diameter_mm": "50.00",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "15",
+        "Timestamp": "2026-11-01 11:30",
+        "Shift": "Day",
+        "Machine": "MC-A",
+        "Mold_Temp_C": "181",
+        "Shaft_Diameter_mm": "50.01",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "16",
+        "Timestamp": "2026-11-01 13:00",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "182",
+        "Shaft_Diameter_mm": "50.02",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "17",
+        "Timestamp": "2026-11-01 13:15",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "184",
+        "Shaft_Diameter_mm": "50.04",
+        "Defect_Count": "1",
+        "Defect_Type": "Burr",
+        "Inspection_Result": "Fail"
+      },
+      {
+        "Sample_No": "18",
+        "Timestamp": "2026-11-01 13:30",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "183",
+        "Shaft_Diameter_mm": "50.03",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "19",
+        "Timestamp": "2026-11-01 13:45",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "185",
+        "Shaft_Diameter_mm": "50.05",
+        "Defect_Count": "1",
+        "Defect_Type": "Scratch",
+        "Inspection_Result": "Fail"
+      },
+      {
+        "Sample_No": "20",
+        "Timestamp": "2026-11-01 14:00",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "182",
+        "Shaft_Diameter_mm": "50.02",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "21",
+        "Timestamp": "2026-11-01 14:15",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "186",
+        "Shaft_Diameter_mm": "50.06",
+        "Defect_Count": "1",
+        "Defect_Type": "Burr",
+        "Inspection_Result": "Fail"
+      },
+      {
+        "Sample_No": "22",
+        "Timestamp": "2026-11-01 14:30",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "183",
+        "Shaft_Diameter_mm": "50.03",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "23",
+        "Timestamp": "2026-11-01 14:45",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "184",
+        "Shaft_Diameter_mm": "50.04",
+        "Defect_Count": "1",
+        "Defect_Type": "Dent",
+        "Inspection_Result": "Fail"
+      },
+      {
+        "Sample_No": "24",
+        "Timestamp": "2026-11-01 15:00",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "185",
+        "Shaft_Diameter_mm": "50.05",
+        "Defect_Count": "1",
+        "Defect_Type": "Scratch",
+        "Inspection_Result": "Fail"
+      },
+      {
+        "Sample_No": "25",
+        "Timestamp": "2026-11-01 15:15",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "183",
+        "Shaft_Diameter_mm": "50.03",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "26",
+        "Timestamp": "2026-11-01 15:30",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "187",
+        "Shaft_Diameter_mm": "50.07",
+        "Defect_Count": "2",
+        "Defect_Type": "Scratch",
+        "Inspection_Result": "Fail"
+      },
+      {
+        "Sample_No": "27",
+        "Timestamp": "2026-11-01 15:45",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "184",
+        "Shaft_Diameter_mm": "50.04",
+        "Defect_Count": "0",
+        "Defect_Type": "None",
+        "Inspection_Result": "Pass"
+      },
+      {
+        "Sample_No": "28",
+        "Timestamp": "2026-11-01 16:00",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "186",
+        "Shaft_Diameter_mm": "50.06",
+        "Defect_Count": "1",
+        "Defect_Type": "Crack",
+        "Inspection_Result": "Fail"
+      },
+      {
+        "Sample_No": "29",
+        "Timestamp": "2026-11-01 16:15",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "188",
+        "Shaft_Diameter_mm": "50.08",
+        "Defect_Count": "1",
+        "Defect_Type": "Burr",
+        "Inspection_Result": "Fail"
+      },
+      {
+        "Sample_No": "30",
+        "Timestamp": "2026-11-01 16:30",
+        "Shift": "Day",
+        "Machine": "MC-B",
+        "Mold_Temp_C": "192",
+        "Shaft_Diameter_mm": "50.14",
+        "Defect_Count": "2",
+        "Defect_Type": "Scratch",
+        "Inspection_Result": "Fail"
+      }
+    ]
+  },
+  "resourcesMarkdown": "# Module 1 Quick Reference: Formula Cheat Sheet & Glossary\n\nเอกสารอ้างอิงสำหรับปุ่ม **`Resources`** บนหน้าเว็บอบรม (1 หน้าจบ พิมพ์ติดหน้าไลน์หรือเปิดดูขณะทำ Workshop ได้)\n\n---\n\n## 1. ตารางจำแนกชนิดข้อมูลและเครื่องมือที่เลือกใช้\n\n| คำถามหน้างาน | Variable Data | Attribute Data |\n|---|---|---|\n| **ได้มาอย่างไร?** | วัดค่าด้วยเครื่องมือมีสเกล (`mm`, `g`, `N·m`, `°C`) | นับจำนวนชิ้น/จุดเสีย หรือจัดกลุ่ม (`Pass/Fail`, `Go/No-Go`) |\n| **Scale ที่พบบ่อย** | Interval (`°C`), Ratio (`mm`, `g`, `sec`) | Nominal (`Defect Type`, `Cavity ID`), Ordinal (`Grade 1–5`), Ratio (`Count`) |\n| **สถิติที่เหมาะสม** | Mean, Median, Range, Variance, SD, CV | Mode, Count, Proportion (`%`), Defect per Unit |\n| **กราฟเบื้องต้น** | Histogram, Box Plot, Scatter Plot, Run Chart | Pareto Chart, Bar Chart |\n\n---\n\n## 2. สูตรสถิติเชิงพรรณนา (Descriptive Statistics)\n\n| ตัวชี้วัด | สูตร | ใช้ทำอะไร / จุดระวัง |\n|---|---|---|\n| **Mean ($\\bar{x}$)** | $\\bar{x} = \\dfrac{\\sum x_i}{n}$ | บอกตำแหน่งศูนย์กลาง (Process Centering) — *ไวต่อ Outlier* |\n| **Median** | ค่ากลางเมื่อเรียงข้อมูลจากน้อย→มาก | ใช้แทน Mean เมื่อข้อมูลเบ้หรือมี Outlier |\n| **Mode** | ค่าที่เกิดซ้ำมากที่สุด | ใช้ได้กับ Nominal; พบ 2 ยอด (Bimodal) = อาจมี 2 เครื่อง/กะปนกัน |\n| **Range ($R$)** | $R = X_{\\max} - X_{\\min}$ | คำนวณไวหน้างาน ($n \\le 10$); ใช้แค่ 2 ค่าหัวท้าย |\n| **Sample Variance ($s^2$)** | $s^2 = \\dfrac{\\sum (x_i - \\bar{x})^2}{n - 1}$ | วัดการกระจายตัวของข้อมูลทุกตัว (หน่วยยกกำลังสอง) |\n| **Sample SD ($s$)** | $s = \\sqrt{s^2}$ | หน่วยเดียวกับชิ้นงานจริง; $\\pm 3\\sigma \\approx 99.73\\%$ (Normal) |\n| **CV (%)** | $CV = \\left(\\dfrac{s}{\\bar{x}}\\right) \\times 100\\%$ | เทียบความนิ่งระหว่างกระบวนการที่ขนาด/หน่วยต่างกัน |\n\n---\n\n## 3. เลือกกราฟให้ตรงโจทย์ (5 Core Charts)\n\n- **อยากดูรูปร่างการกระจายตัว & เทียบ Spec** → **Histogram** *(ระวัง Cliff shape = มี Sorting)*\n- **อยากเทียบหลายเครื่องจักร / หลายกะ & หา Outlier** → **Box Plot** *(Q1, Median, Q3, Outlier)*\n- **อยากจัดลำดับปัญหาใหญ่สุดเพื่อลดของเสีย 80/20** → **Pareto Chart** *(Bars + Cumulative %)*\n- **อยากเช็คความสัมพันธ์ระหว่างตัวแปร $X$ กับ $Y$** → **Scatter Plot** *(Correlation ≠ Causation)*\n- **อยากเห็นการไหล (Drift) หรือความเปลี่ยนตามเวลา** → **Run Chart** *(ฐานก่อนเข้า Control Chart)*\n\n---\n\n## 4. อภิธานศัพท์วิศวกรรม (Bilingual Glossary)\n\n| Term (EN) | คำศัพท์ / ความหมาย (TH) |\n|---|---|\n| **Variation** | ความแปรปรวน — ความแตกต่างของผลลัพธ์จากกระบวนการผลิตแม้ตั้งค่าเหมือนเดิม |\n| **COPQ (Cost of Poor Quality)** | ต้นทุนความสูญเสียจากคุณภาพต่ำ (Prevention, Appraisal, Internal & External Failure) |\n| **Data-Driven Decision** | การตัดสินใจบนฐานข้อมูลและหลักฐานทางสถิติ |\n| **Statistical Thinking** | การคิดเชิงสถิติเพื่อแยก Normal Variation ออกจาก Abnormal Variation ก่อนปรับตั้งเครื่อง |\n| **Variable / Continuous Data** | ข้อมูลเชิงปริมาณแบบวัดค่าต่อเนื่องบนสเกล (เช่น mm, g, N·m) |\n| **Attribute / Discrete Data** | ข้อมูลเชิงคุณลักษณะจากการนับจำนวนเต็มหรือจัดหมวดหมู่ (เช่น Pass/Fail, จำนวนแผล) |\n| **Measurement Scale (NOIR)** | ระดับมาตราการวัด: Nominal (ชื่อ), Ordinal (อันดับ), Interval (ช่วงไม่มีศูนย์แท้), Ratio (มีศูนย์แท้) |\n| **Outlier** | ค่าผิดปกติที่โดดแยกออกจากกลุ่มข้อมูลส่วนใหญ่ |\n| **Bimodal Distribution** | การกระจายตัวที่มี 2 ยอด มักเกิดจากข้อมูล 2 แหล่ง (เช่น 2 เครื่อง/กะ) ปนกัน |\n| **Empirical Rule (68–95–99.7)** | สัดส่วนข้อมูลในการแจกแจงปกติภายใน $\\pm 1\\sigma$, $\\pm 2\\sigma$, $\\pm 3\\sigma$ |\n| **CTQ (Critical to Quality)** | คุณลักษณะสำคัญของชิ้นงานที่มีผลโดยตรงต่อความพึงพอใจลูกค้าและฟังก์ชันการทำงาน |\n| **Tampering / Over-adjustment** | การเข้าไปปรับเครื่องจักรตามความแปรปรวนปกติ จนทำให้กระบวนการยิ่งแกว่งกว้างขึ้น |\n"
+}

@@ -1,0 +1,209 @@
+#!/usr/bin/env python3
+"""Generate Thai MP3 voiceover tracks from TTS Clean Script (TH).
+
+Supports:
+  - --provider gemini     (GEMINI_API_KEY, uses gemini-2.5-flash-preview-tts + ffmpeg -> .mp3)
+  - --provider google     (GOOGLE_TTS_API_KEY, Google Cloud Text-to-Speech)
+  - --provider elevenlabs (ELEVENLABS_API_KEY, optional ELEVENLABS_VOICE_ID)
+
+Usage:
+    GEMINI_API_KEY=... python3 scripts/generate_tts.py --provider gemini
+"""
+
+from __future__ import annotations
+
+import argparse
+import base64
+import json
+import os
+import subprocess
+import sys
+import time
+import urllib.request
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+DATA_JSON = ROOT / "web" / "src" / "data" / "module-01.json"
+ASSETS_AUDIO = ROOT / "modules" / "module-01" / "assets" / "audio"
+PUBLIC_AUDIO = ROOT / "web" / "public" / "audio" / "module-01"
+
+
+def synth_gemini(text: str, api_key: str, voice_name: str = "Kore") -> bytes:
+    url = (
+        "https://generativelanguage.googleapis.com/v1beta/models/"
+        f"gemini-2.5-flash-preview-tts:generateContent?key={api_key}"
+    )
+    payload = {
+        "contents": [
+            {
+                "parts": [
+                    {
+                        "text": (
+                            "อ่านออกเสียงข้อความภาษาไทยต่อไปนี้ด้วยน้ำเสียงสุภาพ ชัดเจน "
+                            "เป็นธรรมชาติสำหรับหลักสูตรฝึกอบรมวิศวกรรม:\n" + text
+                        )
+                    }
+                ]
+            }
+        ],
+        "generationConfig": {
+            "responseModalities": ["AUDIO"],
+            "speechConfig": {
+                "voiceConfig": {
+                    "prebuiltVoiceConfig": {"voiceName": voice_name}
+                }
+            },
+        },
+    }
+    import urllib.error
+
+    for attempt in range(5):
+        req = urllib.request.Request(
+            url,
+            data=json.dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=90) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            break
+        except urllib.error.HTTPError as err:
+            if err.code == 429 and attempt < 4:
+                wait_s = 25 * (attempt + 1)
+                print(f"Rate limited (429), waiting {wait_s}s...", flush=True)
+                time.sleep(wait_s)
+                continue
+            raise
+
+    part = data["candidates"][0]["content"]["parts"][0]["inlineData"]
+    raw_bytes = base64.b64decode(part["data"])
+    mime = part.get("mimeType", "audio/L16;rate=24000")
+    if "mp3" in mime or "mpeg" in mime:
+        return raw_bytes
+
+    # Convert PCM (audio/L16;codec=pcm;rate=24000) to MP3 via ffmpeg
+    proc = subprocess.run(
+        [
+            "ffmpeg",
+            "-y",
+            "-f",
+            "s16le",
+            "-ar",
+            "24000",
+            "-ac",
+            "1",
+            "-i",
+            "pipe:0",
+            "-codec:a",
+            "libmp3lame",
+            "-b:a",
+            "128k",
+            "-f",
+            "mp3",
+            "pipe:1",
+        ],
+        input=raw_bytes,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=True,
+    )
+    return proc.stdout
+
+
+def synth_google(text: str, api_key: str) -> bytes:
+    url = f"https://texttospeech.googleapis.com/v1/text:synthesize?key={api_key}"
+    payload = {
+        "input": {"text": text},
+        "voice": {"languageCode": "th-TH", "name": "th-TH-Standard-A"},
+        "audioConfig": {"audioEncoding": "MP3", "speakingRate": 1.0},
+    }
+    req = urllib.request.Request(
+        url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={"Content-Type": "application/json"},
+    )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        data = json.loads(resp.read().decode("utf-8"))
+    return base64.b64decode(data["audioContent"])
+
+
+def synth_elevenlabs(text: str, api_key: str, voice_id: str) -> bytes:
+    url = f"https://api.elevenlabs.io/v1/text-to-speech/{voice_id}"
+    payload = {
+        "text": text,
+        "model_id": "eleven_multilingual_v2",
+        "voice_settings": {"stability": 0.5, "similarity_boost": 0.75},
+    }
+    req = urllib.request.Request(
+        url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "Content-Type": "application/json",
+            "xi-api-key": api_key,
+            "Accept": "audio/mpeg",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=60) as resp:
+        return resp.read()
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Generate Thai MP3 tracks for Module 1.")
+    parser.add_argument("--provider", choices=["gemini", "google", "elevenlabs"], required=True)
+    parser.add_argument("--limit", type=int, default=0, help="Optional limit for test runs")
+    parser.add_argument("--skip-existing", action="store_true", help="Skip already generated MP3s")
+    args = parser.parse_args()
+
+    if not DATA_JSON.exists():
+        print("Run scripts/build_module_data.py first.", file=sys.stderr)
+        return 1
+
+    data = json.loads(DATA_JSON.read_text(encoding="utf-8"))
+    ASSETS_AUDIO.mkdir(parents=True, exist_ok=True)
+    PUBLIC_AUDIO.mkdir(parents=True, exist_ok=True)
+
+    if args.provider == "gemini":
+        api_key = os.environ.get("GEMINI_API_KEY", "")
+        if not api_key:
+            print("Missing GEMINI_API_KEY environment variable.", file=sys.stderr)
+            return 1
+    elif args.provider == "google":
+        api_key = os.environ.get("GOOGLE_TTS_API_KEY", "")
+        if not api_key:
+            print("Missing GOOGLE_TTS_API_KEY environment variable.", file=sys.stderr)
+            return 1
+    else:
+        api_key = os.environ.get("ELEVENLABS_API_KEY", "")
+        voice_id = os.environ.get("ELEVENLABS_VOICE_ID", "21m00Tcm4TlvDq8ikWAM")
+        if not api_key:
+            print("Missing ELEVENLABS_API_KEY environment variable.", file=sys.stderr)
+            return 1
+
+    screens = data["screens"][: args.limit] if args.limit > 0 else data["screens"]
+    for idx, s in enumerate(screens):
+        sid = s["screenId"]
+        text = s.get("voiceover", {}).get("ttsCleanTh", "")
+        if not text:
+            continue
+        fname = f"AUD-{sid}.mp3"
+        if args.skip_existing and (PUBLIC_AUDIO / fname).exists():
+            print(f"Skipping existing {fname}")
+            continue
+        if args.provider == "gemini":
+            audio_bytes = synth_gemini(text, api_key)
+        elif args.provider == "google":
+            audio_bytes = synth_google(text, api_key)
+        else:
+            audio_bytes = synth_elevenlabs(text, api_key, voice_id)
+
+        (ASSETS_AUDIO / fname).write_bytes(audio_bytes)
+        (PUBLIC_AUDIO / fname).write_bytes(audio_bytes)
+        print(f"[{idx + 1}/{len(screens)}] Generated {fname} ({len(audio_bytes)} bytes)")
+        if args.provider == "gemini" and idx + 1 < len(screens):
+            time.sleep(1.0)
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
