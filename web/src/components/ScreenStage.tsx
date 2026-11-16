@@ -70,7 +70,14 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
     [screen.assetIds]
   );
   const hasInteractive = INTERACTIVE_SCREENS.has(screen.screenId);
-  const isQuizOrWorkshop = PAUSE_AUTO_ADVANCE_SCREENS.has(screen.screenId);
+  const isActivityScreen = useMemo(
+    () =>
+      hasInteractive ||
+      PAUSE_AUTO_ADVANCE_SCREENS.has(screen.screenId) ||
+      screen.screenId === 'M1L1-S02' ||
+      (screen.assetIds && screen.assetIds.includes('AST-M1-002')),
+    [screen.screenId, hasInteractive, screen.assetIds]
+  );
 
   // Build sub-slides so every view fits comfortably on a single viewport without vertical scrolling
   const slides = useMemo<SlideView[]>(() => {
@@ -124,21 +131,19 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
 
   // Auto-advance handler when narration finishes
   const handleAudioEnded = () => {
-    // If there is a second sub-slide on a non-paused screen, fade to it first
-    if (!isQuizOrWorkshop) {
-      if (slideIdx + 1 < slides.length) {
-        goToSlide(slideIdx + 1);
-        // After showing the interactive preview for 4 seconds, advance to next screen
-        if (screen.nextScreenId) {
-          setTimeout(() => {
-            window.location.href = `/module-01/${screen.nextScreenId}`;
-          }, 4500);
-        }
-        return;
-      }
-      if (screen.nextScreenId) {
-        window.location.href = `/module-01/${screen.nextScreenId}`;
-      }
+    // กฎข้อที่ 1: ในกรณีที่มีกิจกรรม เช่น Hotspots ในหน้าที่ 2, คำถาม-ตอบ (KC/Exam), เครื่องคิดเลข, Lab จำลอง หรือ Workshop
+    // ต้องรอให้ผู้เรียนทำกิจกรรมเสร็จ และกดปุ่ม "Next หรือ หน้าถัดไป" ด้วยตนเองเท่านั้น ระบบจะไม่ข้ามหน้าอัตโนมัติ
+    if (isActivityScreen) {
+      return;
+    }
+
+    // สำหรับหน้าบรรยายทั่วไป (ไม่มีกิจกรรม)
+    if (slideIdx + 1 < slides.length) {
+      goToSlide(slideIdx + 1);
+      return;
+    }
+    if (screen.nextScreenId) {
+      window.location.href = `/module-01/${screen.nextScreenId}`;
     }
   };
 
@@ -161,7 +166,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
 
   const headerRight = (
     <>
-      <div className="hidden xl:flex items-center gap-2 mr-1">
+      <div className="hidden xl:flex h-8 items-center gap-2 mr-1">
         <div className="h-2 w-20 overflow-hidden rounded-full bg-slate-200">
           <div className="h-full bg-sky-600 transition-all" style={{ width: `${progressPct}%` }} />
         </div>
@@ -173,7 +178,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
       <button
         type="button"
         onClick={() => setDrawer((d) => (d === 'nav' ? 'none' : 'nav'))}
-        className="flex items-center gap-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1 text-xs font-bold text-slate-700 hover:bg-slate-50"
+        className="flex h-8 items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 text-xs font-bold text-slate-700 hover:bg-slate-50 transition"
       >
         <ListChecks className="h-3.5 w-3.5" />
         <span>สารบัญ</span>
@@ -181,7 +186,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
       <button
         type="button"
         onClick={() => setDrawer((d) => (d === 'resources' ? 'none' : 'resources'))}
-        className="flex items-center gap-1 rounded-lg border border-sky-300 bg-sky-50 px-2.5 py-1 text-xs font-bold text-sky-900 hover:bg-sky-100"
+        className="flex h-8 items-center gap-1.5 rounded-lg border border-sky-300 bg-sky-50 px-3 text-xs font-bold text-sky-900 hover:bg-sky-100 transition"
       >
         <BookOpen className="h-3.5 w-3.5" />
         <span>Resources</span>
@@ -200,7 +205,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
       <AudioPlayerBar
         voiceover={screen.voiceover}
         screenId={screen.screenId}
-        isQuizOrWorkshop={isQuizOrWorkshop}
+        isQuizOrWorkshop={isActivityScreen}
         onAudioEnded={handleAudioEnded}
         leftSlot={headerLeft}
         rightSlot={headerRight}

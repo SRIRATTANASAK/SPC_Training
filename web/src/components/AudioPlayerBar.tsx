@@ -126,29 +126,29 @@ export const AudioPlayerBar: React.FC<Props> = ({
         />
       )}
 
-      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-2 px-4 py-2">
+      <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4">
         {/* Left: Course & Screen Breadcrumb */}
-        <div className="flex items-center gap-2.5 min-w-0">{leftSlot}</div>
+        <div className="flex h-8 items-center gap-2.5 min-w-0">{leftSlot}</div>
 
-        {/* Center: Audio & Caption Controls */}
-        <div className="flex flex-wrap items-center gap-1.5 rounded-xl bg-slate-900 px-2.5 py-1 text-slate-100 shadow-sm">
+        {/* Center: Audio & Caption Controls (perfectly aligned on same vertical baseline) */}
+        <div className="flex h-8 items-center gap-1.5 rounded-lg bg-slate-900 px-2.5 text-slate-100 shadow-sm shrink-0">
           <button
             type="button"
             onClick={togglePlay}
             disabled={!hasMp3}
-            className="flex h-7 w-7 items-center justify-center rounded-full bg-sky-600 text-white hover:bg-sky-500 disabled:opacity-40 transition"
+            className="flex h-6 w-6 items-center justify-center rounded-full bg-sky-600 text-white hover:bg-sky-500 disabled:opacity-40 transition"
             aria-label={playing ? 'Pause narration' : 'Play narration'}
           >
-            {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5 ml-0.5" />}
+            {playing ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3 ml-0.5" />}
           </button>
 
           <div className="flex items-center gap-1.5 px-1 text-[11px] font-bold text-white">
             <Volume2 className="h-3.5 w-3.5 text-sky-400" />
             <span>{voiceover?.audioId}</span>
-            <span className="text-slate-400">({voiceover?.duration})</span>
+            <span className="text-slate-400 font-normal">({voiceover?.duration})</span>
             {isQuizOrWorkshop && (
-              <span className="hidden xl:inline rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-amber-300">
-                หยุดรอผู้เรียน
+              <span className="hidden sm:inline rounded bg-amber-500/20 px-1.5 py-0.5 text-[10px] font-semibold text-amber-300">
+                กิจกรรม (รอผู้เรียนกดถัดไป)
               </span>
             )}
           </div>
@@ -158,8 +158,8 @@ export const AudioPlayerBar: React.FC<Props> = ({
           <button
             type="button"
             onClick={handleAutoPlayToggle}
-            title="เปิด/ปิด การเล่นและเปลี่ยนหน้าอัตโนมัติ (ยกเว้นหน้า Workshop/แบบทดสอบ)"
-            className={`flex items-center gap-1 rounded border px-2 py-0.5 text-[11px] font-bold transition ${
+            title="เปิด/ปิด การเล่นและเปลี่ยนหน้าอัตโนมัติ (ยกเว้นหน้ากิจกรรม/Workshop/แบบทดสอบ)"
+            className={`flex h-6 items-center gap-1 rounded border px-2 text-[11px] font-bold transition ${
               autoPlay
                 ? 'border-emerald-500 bg-emerald-950 text-emerald-200'
                 : 'border-slate-700 bg-slate-800 text-slate-400'
@@ -172,7 +172,7 @@ export const AudioPlayerBar: React.FC<Props> = ({
           <button
             type="button"
             onClick={handleSpeedToggle}
-            className="rounded border border-slate-700 bg-slate-800 px-2 py-0.5 text-[11px] font-bold text-slate-200 hover:bg-slate-700"
+            className="flex h-6 items-center rounded border border-slate-700 bg-slate-800 px-2 text-[11px] font-bold text-slate-200 hover:bg-slate-700"
           >
             {speed}x
           </button>
@@ -181,7 +181,7 @@ export const AudioPlayerBar: React.FC<Props> = ({
             type="button"
             onClick={handleLangToggle}
             title="สลับภาษาคำบรรยาย (TH / EN) — จำค่าทุกหน้า"
-            className="rounded border border-slate-700 bg-slate-800 px-2 py-0.5 text-[11px] font-bold text-sky-300 hover:bg-slate-700"
+            className="flex h-6 items-center rounded border border-slate-700 bg-slate-800 px-2 text-[11px] font-bold text-sky-300 hover:bg-slate-700"
           >
             {captionLang.toUpperCase()}
           </button>
@@ -190,7 +190,7 @@ export const AudioPlayerBar: React.FC<Props> = ({
             type="button"
             onClick={handleCaptionsToggle}
             title="เปิด/ปิด คำบรรยาย (CC) — จำค่าทุกหน้า"
-            className={`flex items-center gap-1 rounded border px-2 py-0.5 text-[11px] font-bold transition ${
+            className={`flex h-6 items-center gap-1 rounded border px-2 text-[11px] font-bold transition ${
               showCaptions
                 ? 'border-sky-500 bg-sky-950 text-sky-200'
                 : 'border-slate-700 bg-slate-800 text-slate-400'
@@ -202,12 +202,12 @@ export const AudioPlayerBar: React.FC<Props> = ({
         </div>
 
         {/* Right: Progress & Drawers */}
-        <div className="flex items-center gap-2 shrink-0">{rightSlot}</div>
+        <div className="flex h-8 items-center gap-2 shrink-0">{rightSlot}</div>
       </div>
 
       {/* Caption Strip Directly Below Top Bar */}
       {showCaptions && captionText && (
-        <div className="border-t border-slate-800 bg-slate-900 px-4 py-1 text-center text-xs sm:text-sm text-sky-100 leading-snug">
+        <div className="border-t border-slate-800 bg-slate-900 px-4 py-1.5 text-center text-xs sm:text-sm text-sky-100 leading-snug">
           {captionText}
         </div>
       )}
