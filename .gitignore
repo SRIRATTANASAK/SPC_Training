@@ -22,3 +22,6 @@ out/
 # Generated temporary audio cache (keep committed final assets if desired)
 tmp/
 *.tmp
+
+__pycache__/
+*.pyc

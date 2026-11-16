@@ -18,11 +18,11 @@
 
 ### AUD-M1L2-S02 (35 sec) — Continuous vs Discrete Data
 - **Display Script (TH):**  
-  มาดูความละเอียดลงไปอีกขั้น [ANIM: gauge_vs_bin] **Continuous Data** คือข้อมูลต่อเนื่องที่ซอยละเอียดเป็นทศนิยมได้เรื่อยๆ ตามความละเอียดของเครื่องมือวัด เช่น 50.012 มิลลิเมตร [PAUSE-1] ส่วน **Discrete Data** คือข้อมูลไม่ต่อเนื่องที่เป็นจำนวนนับเต็มหน่วย หรือเป็นหมวดหมู่ชัดเจน เช่น พบจุดเสีย 0, 1, 2 จุด ไม่สามารถมี 1.5 จุดได้
+  มาดูความละเอียดลงไปอีกขั้น [ANIM: gauge_vs_bin] **Continuous Data** คือข้อมูลต่อเนื่องที่ซอยละเอียดเป็นทศนิยมได้เรื่อยๆ ตามความละเอียดของเครื่องมือวัด เช่น 50.012 มิลลิเมตร [PAUSE-1] ส่วน **Atteibute Data** คือข้อมูลไม่ต่อเนื่องที่เป็นจำนวนนับเต็มหน่วย หรือเป็นหมวดหมู่ชัดเจน เช่น พบจุดเสีย 0, 1, 2 จุด ไม่สามารถมี 1.5 จุดได้
 - **TTS Clean Script (TH):**  
   มาดูความละเอียดลงไปอีกขั้น, คอนทินิวอัส เดต้า คือข้อมูลต่อเนื่องที่ซอยละเอียดเป็นทศนิยมได้เรื่อยๆ ตามความละเอียดของเครื่องมือวัด เช่น 50.012 มิลลิเมตร, ส่วน ดิสครีต เดต้า คือข้อมูลไม่ต่อเนื่องที่เป็นจำนวนนับเต็มหน่วย หรือเป็นหมวดหมู่ชัดเจน เช่น พบจุดเสีย 0, 1, 2 จุด ไม่สามารถมี 1.5 จุดได้
 - **EN Reference:**  
-  Continuous data can take any value along a measurement continuum depending on gauge resolution, whereas discrete data consist of countable whole numbers or distinct categories.
+  Continuous data can take any value along a measurement continuum depending on gauge resolution, whereas Attribute discrete data consist of countable whole numbers or distinct categories.
 
 ### AUD-M1L2-S03 (55 sec) — Measurement Scales (NOIR)
 - **Display Script (TH):**  

@@ -37,6 +37,18 @@ GEMINI_TTS_MODELS = [
 ]
 
 
+def get_ffmpeg_cmd() -> str:
+    import shutil
+    cmd = shutil.which("ffmpeg")
+    if cmd:
+        return cmd
+    try:
+        import imageio_ffmpeg
+        return imageio_ffmpeg.get_ffmpeg_exe()
+    except Exception:
+        return "ffmpeg"
+
+
 def synth_gemini(
     text: str,
     api_key: str,
@@ -51,10 +63,7 @@ def synth_gemini(
             {
                 "parts": [
                     {
-                        "text": (
-                            "อ่านออกเสียงข้อความภาษาไทยต่อไปนี้ด้วยน้ำเสียงผู้หญิงที่อ่อนหวาน นุ่มนวล สุภาพ ชัดเจน "
-                            "เป็นธรรมชาติและฟังสบายสำหรับบทเรียนออนไลน์:\n" + text
-                        )
+                        "text": text
                     }
                 ]
             }
@@ -113,9 +122,10 @@ def synth_gemini(
         return raw_bytes
 
     # Convert PCM (audio/L16;codec=pcm;rate=24000) to MP3 via ffmpeg
+    ffmpeg_exe = get_ffmpeg_cmd()
     proc = subprocess.run(
         [
-            "ffmpeg",
+            ffmpeg_exe,
             "-y",
             "-f",
             "s16le",
@@ -194,6 +204,15 @@ def main() -> int:
     data = json.loads(DATA_JSON.read_text(encoding="utf-8"))
     ASSETS_AUDIO.mkdir(parents=True, exist_ok=True)
     PUBLIC_AUDIO.mkdir(parents=True, exist_ok=True)
+
+    # Load .env if present
+    for env_path in (ROOT / ".env", ROOT.parent / ".env"):
+        if env_path.exists():
+            for line in env_path.read_text(encoding="utf-8").splitlines():
+                line = line.strip()
+                if line and not line.startswith("#") and "=" in line:
+                    k, v = line.split("=", 1)
+                    os.environ.setdefault(k.strip(), v.strip().strip('"').strip("'"))
 
     if args.provider == "gemini":
         api_key = os.environ.get("GEMINI_API_KEY", "")
