@@ -154,6 +154,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
         <span className="font-bold text-sky-800">{screen.lessonId}</span>
         <span className="mx-1.5 text-slate-400">/</span>
         <span className="font-semibold text-slate-700">{screen.screenId}</span>
+        <span className="hidden md:inline ml-2 text-slate-500">— {screen.lessonTitle}</span>
       </div>
     </>
   );
