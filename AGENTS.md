@@ -53,20 +53,24 @@
 ## 3. Project Mission & Status
 
 - **สรุป Phase A (Curriculum Spec 10 Modules - COMPLETED):**  
-  บอกโครงสร้าง 6 ไฟล์มาตรฐานต่อโมดูล (`modules/module-01/` ถึง `modules/module-10/`):
-  1. `01_storyboard.md` — Screen-by-screen breakdown (Screens `M#L#-S##`), Visual Layouts, บทบรรยายไทย, บันทึก Technical Director
-  2. `02_tts_script_clean.md` — Clean Thai phonetic reading script สำหรับแปลง Text-to-Speech (ห้ามมีอักขระต้องห้ามเด็ดขาด)
-  3. `03_asset_manifest.md` — บัญชีรายการภาพประกอบ, Interactive Widgets, Animation, และ Diagrams พร้อมรหัสกำกับ (`AST-M#-###`)
-  4. `04_animation_specs.md` — Motion physics, keyframe timings, interactive state machines, และ Sound design
-  5. `05_interactive_wireframes.md` — โครงสร้าง UI Components, Event triggers, ช่วงตัวแปร Input, Real-time formula recalculations, และ Accessibility
-  6. `06_assessment_bank.md` — ธนาคารข้อสอบ 60 ข้อต่อโมดูล (รวม 600 ข้อ ครบ 10 โมดูล) ในรูปแบบตาราง 13 pipes เป๊ะ
-  - พร้อมชุดข้อมูลอุตสาหกรรมจริง `data/*.csv` สำหรับ Workshop และ Case Studies ในแต่ละโมดูล
+  จัดทำเนื้อหาและสเปกครบทั้ง 10 โมดูล (`modules/module-01/` ถึง `modules/module-10/` รวม 274 หน้าจอ) โดยใช้โครงสร้าง **9 ไฟล์มาตรฐานต่อโมดูล**:
+  1. `00_lesson_content.md` — เนื้อหาบนหน้าจอฉบับเต็ม พร้อมสูตร ตาราง และตัวอย่างคำนวณ (MDX Ready)
+  2. `01_storyboard.md` — Production Storyboard ครบทุกหน้าจอ (`M#L#-S##`), Visual Layouts, บทบรรยาย และบันทึก Technical Director
+  3. `02_voiceover_th_en.md` — บทพากย์ภาษาไทย (Display Script) + **TTS Clean Script (TH)** ปลอดอักขระต้องห้าม + EN Reference + Audio Cue (`AUD-M#L#-S##`)
+  4. `03_screen_wireframe.md` — โครงหน้าจอ Responsive, Navigation Rules และ Accessibility
+  5. `04_interactive_logic.md` — State, ตัวแปร Input, สูตรคำนวณ Real-time, Scoring และ Quiz/Game Options (`INT-M#-L#-##`)
+  6. `05_asset_spec.md` — บัญชีรายการภาพประกอบ, SVG, Interactive Widgets, Diagrams และ Animation (`AST-M#-###`)
+  7. `06_assessment_bank.md` — คลังข้อสอบ 60 ข้อต่อโมดูล (รวม 600 ข้อ ครบ 10 โมดูล, `M#-Q001`–`M#-Q060`) ในรูปแบบตาราง 13 pipes เป๊ะ
+  8. `07_workshop_guide.md` — คู่มือทำ Workshop พร้อมโจทย์ ขั้นตอน และเฉลย Step-by-Step
+  9. `08_cheatsheet_and_glossary.md` — สรุปสูตร 1 หน้าจบ และคำศัพท์เทคนิค TH/EN สำหรับปุ่ม Resources
+  - พร้อมชุดข้อมูลอุตสาหกรรมจริง `data/*.csv` (รวม 16 ไฟล์ across 10 modules) สำหรับ Workshop และ Case Studies ในแต่ละโมดูล
+  - หมายเหตุ: โฟลเดอร์ `assets/` (ภาพ `.webp`/`.svg` และเสียง `.mp3`) จะถูกสร้างเพิ่มใน Phase B เมื่อเริ่มผลิตสื่อจริง
 - **สรุป Phase B (Web Prototype & Interactive Platform) ที่กำลังจะทำต่อไป:**  
   สร้างเว็บแอปพลิเคชันเพื่อการเรียนรู้แบบโต้ตอบ (Interactive Learning Web Platform):
-  - ระบบ Slide/Lesson Navigation และระบบเล่นเสียงบรรยาย (Thai TTS Integration)
-  - Interactive Simulators ด้วย Canvas / SVG / D3 / Chart.js (เช่น Live Control Chart Rule Triggering, Catapult DOE/SPC, Virtual Gage R&R, OCAP Decision Trees)
+  - ระบบ Slide/Lesson Navigation และระบบเล่นเสียงบรรยาย (Thai TTS Integration + Closed Captions + Cue Sync)
+  - Interactive Simulators ด้วย SVG / Canvas / Recharts / Chart.js / D3.js (เช่น Live Control Chart Rule Triggering, CLT Simulator, Virtual Gage R&R, OCAP Decision Trees)
   - ระบบตรวจข้อสอบ Real-time Assessment Engine พร้อม Feedback อธิบายเชิงการสอนทันที
-  - Case Study Dashboards พร้อมระบบอัปโหลด CSV เพื่อคำนวณสถิติสดแบบอินเทอร์แอคทีฟ
+  - Case Study Dashboards พร้อมระบบโหลด/อัปโหลด CSV เพื่อคำนวณสถิติสดแบบอินเทอร์แอคทีฟ
 
 ---
 
@@ -98,7 +102,8 @@
 ## 5. Strict Content & Formatting Rules (กฎเหล็กในการเขียนไฟล์)
 
 - **กฎตารางแบบทดสอบต้องมี 13 pipes เป๊ะ:** ทุกแถวคำถามใน `06_assessment_bank.md` ต้องมีท่อแนวตั้ง (`|`) จำนวน 13 ตัว คั่น 12 คอลัมน์ ห้ามใส่ raw pipe (`|` หรือ `|r|`) ในเนื้อหาเซลล์เด็ดขาด ให้ใช้ em-dash (`—`), คำว่า `หรือ`, หรือ KaTeX `\lvert r \rvert` แทน
-- **กฎ TTS Clean Script ห้ามมีอักขระต้องห้าม:** ไฟล์ `02_tts_script_clean.md` ต้องไม่มีอักขระต้องห้ามเด็ดขาด ได้แก่ `$` `*` `[` `]` `±` `²` `≠` `→` `` ` `` และต้องสะกดเป็นคำอ่านภาษาไทยให้ถูกต้องตามหลักสัทศาสตร์
+- **กฎ TTS Clean Script ห้ามมีอักขระต้องห้าม:** บล็อก `TTS Clean Script (TH)` ภายในไฟล์ `02_voiceover_th_en.md` ต้องไม่มีอักขระต้องห้ามเด็ดขาด ได้แก่ `$` `*` `[` `]` `±` `²` `≠` `→` `` ` `` และต้องสะกดเป็นคำอ่านภาษาไทยให้ถูกต้องตามหลักสัทศาสตร์
+- **กฎ Single Source of Truth:** Screen ID (`M#L#-S##`) ใน `01_storyboard.md`, `02_voiceover_th_en.md`, `03_screen_wireframe.md`, `04_interactive_logic.md`, และ `05_asset_spec.md` ต้องตรงกัน 100%
 - **กฎรัน Automated Python Verification Script:** ต้องเขียนและรันสคริปต์ Python ตรวจสอบความถูกต้องของ Header, จำนวน Screen, อักขระต้องห้าม, จำนวนข้อสอบ 60 ข้อต่อโมดูล, จำนวน 13 pipes, และความสมบูรณ์ของไฟล์ CSV ก่อน `git commit` และ `git push` ทุกครั้งจนกว่าจะได้ผลลัพธ์ถูกต้อง 100%
 
 ---
@@ -112,27 +117,27 @@ SPC_Training/
 ├── CURRICULUM_ROADMAP.md      # แผนผังหลักสูตร วัตถุประสงค์การเรียนรู้ทั้ง 10 โมดูล
 ├── HANDOFF.md                 # เอกสารส่งมอบงานสำหรับนักพัฒนา Phase B และทีมลงเสียง
 ├── AGENTS.md                  # ไฟล์นี้ — แนวทางและกฎเหล็กสำหรับ AI ผู้ช่วย
-├── archive/                   # เอกสารอ้างอิงและบันทึกช่วงต้น
+├── archive/                   # เอกสารอ้างอิงและบันทึกช่วงต้น (module-01-initial)
 └── modules/
-    ├── module-01/             # Foundation of SPC & Variation
-    ├── module-02/             # Basic Statistics & Distribution
-    ├── module-03/             # Variable Control Charts (Xbar-R, Xbar-S)
-    ├── module-04/             # Variable Control Charts for Individuals (I-MR)
-    ├── module-05/             # Control Chart Interpretation & Rules
-    ├── module-06/             # Attribute Control Charts (p, np, c, u)
-    ├── module-07/             # Process Capability Analysis (Cp, Cpk, Pp, Ppk)
-    ├── module-08/             # SPC Problem Solving & OCAP
-    ├── module-09/             # Measurement System Analysis (MSA)
-    └── module-10/             # Industrial Case Studies (4 AIAG Cases)
+    ├── module-01/             # Statistics Foundation for Manufacturing (29 Screens, 2 CSVs)
+    ├── module-02/             # Probability and Distribution (28 Screens, 1 CSV)
+    ├── module-03/             # Confidence and Hypothesis Testing (26 Screens, 1 CSV)
+    ├── module-04/             # Process Variation and Capability (27 Screens, 1 CSV)
+    ├── module-05/             # SPC Concept and Methodology (28 Screens, 1 CSV)
+    ├── module-06/             # Control Chart Selection (28 Screens, 2 CSVs)
+    ├── module-07/             # SPC for Manufacturing Process (26 Screens, 1 CSV)
+    ├── module-08/             # SPC Problem Solving (28 Screens, 2 CSVs)
+    ├── module-09/             # Measurement System Analysis / MSA Connection to SPC (30 Screens, 1 CSV)
+    └── module-10/             # Industrial Case Study — 4 AIAG-Based Cases (24 Screens, 4 CSVs)
 ```
 
 ### 6.2 สถาปัตยกรรมและเทคโนโลยีสำหรับ Phase B
-- **Framework:** Next.js (App Router) หรือ Astro (Content Collections + React Islands)
+- **Framework:** Astro (Content Collections + React Islands) หรือ Next.js (App Router) *(รอปะป๊ายืนยันก่อนเริ่ม Phase B)*
 - **Styling:** Tailwind CSS + Radix UI / Shadcn UI components
-- **Charts & Simulators:** Recharts, Chart.js with Annotation Plugin, Canvas API, หรือ D3.js
+- **Charts & Simulators:** Recharts, Chart.js with Annotation Plugin, SVG, Canvas API, หรือ D3.js
 - **Math Rendering:** KaTeX (`rehype-katex` + `remark-math`)
 - **State Management:** Zustand หรือ React Context สำหรับพารามิเตอร์จำลองและบันทึกความคืบหน้าแบบทดสอบ
-- **Audio / TTS:** Web Audio API เชื่อมต่อไฟล์เสียงไทยหรือ Edge-TTS
+- **Audio / TTS:** Web Audio API เชื่อมต่อไฟล์เสียงไทย `.mp3` ที่ผลิตจาก `02_voiceover_th_en.md` (Edge-TTS / Google Cloud TTS / ElevenLabs)
 
 ---
 

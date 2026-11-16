@@ -20,7 +20,7 @@
 
 | พื้นที่งาน | สถานะ | รายละเอียด |
 |---|---|---|
-| **Repo Governance & Handoff** | ✅ เสร็จสมบูรณ์ | สร้าง `README.md`, `HANDOFF.md`, `CURRICULUM_ROADMAP.md`, `.gitattributes`, `.gitignore` |
+| **Repo Governance & Handoff** | ✅ เสร็จสมบูรณ์ | สร้าง `AGENTS.md`, `README.md`, `HANDOFF.md`, `CURRICULUM_ROADMAP.md`, `.gitattributes`, `.gitignore` |
 | **Module 1: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 29 หน้าจอ + เนื้อหาหน้าจอเต็ม (`00_lesson_content.md`) + บทพากย์ไทยแบบ TTS Clean (`02_voiceover_th_en.md`) + Interactive Spec ครบตัวเลือก/นิยาม + ข้อสอบจริง `Q001–Q060` + Cheat Sheet & Glossary + ข้อมูล Workshop `.csv` 2 ชุด |
 | **Module 1: Visual Assets (`AST-M1-001..020`)** | ⏳ รอผลิตไฟล์ภาพ/SVG | มี Prompt และ Spec ครบใน `05_asset_spec.md` แล้ว (พร้อมส่งต่อทีมทำเว็บ/กราฟิก) |
 | **Module 1: Audio Narration (`.mp3`)** | ⏳ รอ Generate/อัดเสียง | มี `TTS Clean Script (TH)` ครบทั้ง 29 Tracks ใน `02_voiceover_th_en.md` พร้อมป้อนเข้า TTS ทันที |
@@ -32,8 +32,8 @@
 | **Module 6: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 28 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 28 Tracks + ข้อสอบจริง `M6-Q001–Q060` + Variable (`I-MR, X̄-R, X̄-S`) & Attribute (`p, np, c, u`) Selection Matrix & Wizard + Workshop 10 สถานการณ์ + Attribute 20-Lot CSV Lab |
 | **Module 7: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 26 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 26 Tracks + ข้อสอบจริง `M7-Q001–Q060` + 4-Phase Roadmap, 4 Core Lines, Reaction Plan & 3-Tier Escalation SLA, LPA (`CQI-8`) + 6-Station Control Plan CSV |
 | **Module 8: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 28 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 28 Tracks + ข้อสอบจริง `M8-Q001–Q060` + `OCAP` 5-Gate, `7 QC Tools` + Stratify/Dual Pareto/Scatter, `3-Legged 5 Why` / `FTA` / `Poka-Yoke`, `PDCA/Kaizen/DMAIC/8D` + Workshop CSV 2 ชุด (`24 Subgroups` & `200 Defects`) |
-| **Module 9: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 27 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 27 Tracks + ข้อสอบจริง `M9-Q001–Q060` + `σ²_obs = σ²_part + σ²_gage`, `Gage R&R` (`EV, AV, %GRR, %Tol, ndc`), `Bias / Linearity / Stability`, `Attribute Kappa` + Workshop `10×3×3` CSV (`90` การวัด) |
-| **Module 10: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 24 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 24 Tracks + ข้อสอบจริง `M10-Q001–Q060` + 4 AIAG Industrial Cases (`X̄-R + Cpk`, `I-MR Torque`, `p/u Defects`, `PPAP Ppk Release`) + 4 CSV Datasets จริง — **ครบ 10/10 Modules พร้อมเข้าสู่เฟสสร้างเว็บ (Phase B) แล้ว!** |
+| **Module 9: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 30 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 30 Tracks + ข้อสอบจริง `M9-Q001–Q060` + `σ²_obs = σ²_part + σ²_gage`, `Gage R&R` (`EV, AV, %GRR, %Tol, ndc`), `Bias / Linearity / Stability`, `Attribute Kappa` + Workshop `10×3×3` CSV (`90` การวัด) |
+| **Module 10: Content & Specs** | ✅ เสร็จสมบูรณ์ 100% (Web/Animation/TTS Ready) | ซิงก์ครบ 24 หน้าจอ + เนื้อหาเต็ม (`00_lesson_content.md`) + TTS Clean 24 Tracks + ข้อสอบจริง `M10-Q001–Q060` + 4 AIAG Industrial Cases (`X̄-R + Cpk`, `I-MR Torque`, `p/u Defects`, `PPAP Ppk Release`) + 4 CSV Datasets จริง — **ครบ 10/10 Modules (274 หน้าจอ, 600 ข้อสอบ, 16 CSVs) พร้อมเข้าสู่เฟสสร้างเว็บ (Phase B) แล้ว!** |
 
 ---
 
@@ -54,7 +54,7 @@ modules/module-XX/
 ├── 07_workshop_guide.md         # โจทย์ Workshop + ขั้นตอนทำ + เฉลยสำหรับผู้สอน
 ├── 08_cheatsheet_and_glossary.md# สรุปสูตร 1 หน้าจบ & คำศัพท์ TH/EN สำหรับปุ่ม Resources
 ├── data/                        # ชุดข้อมูล CSV/JSON สำหรับ Workshop และ Simulator
-└── assets/                      # (เพิ่มเมื่อผลิต) รูปภาพ .webp/.svg และไฟล์เสียง .mp3
+└── assets/                      # (เพิ่มเมื่อผลิตใน Phase B) รูปภาพ .webp/.svg และไฟล์เสียง .mp3
 ```
 
 ### 3.2 ระบบรหัส (ID Naming Standard)
@@ -91,24 +91,24 @@ modules/module-XX/
 
 ## 5. แผนการส่งมอบขึ้น Internet (Web + Animation + Voice Plan)
 
-### 5.1 Tech Stack ที่แนะนำสำหรับเฟสสร้างเว็บ (Phase B)
-- **Framework**: **Astro + React + Tailwind CSS** (หรือ Vite + React SPA) อ่านเนื้อหาจากไฟล์ Markdown/MDX + JSON/CSV โดยตรง
-- **Interactive Charts & Math**: **SVG / Recharts / Plotly / Custom Canvas** (เพื่อทำ Slider ปรับ Mean/Sigma, Control Chart Interactive, CLT Simulator แบบลื่นไหล 60fps ไม่ต้องพึ่ง Server หนัก)
+### 5.1 Tech Stack สำหรับเฟสสร้างเว็บ (Phase B) — สอดคล้องกับ `AGENTS.md`
+- **Framework**: **Astro (Content Collections + React Islands)** หรือ **Next.js (App Router)** + **Tailwind CSS** (+ Radix UI / Shadcn UI) อ่านเนื้อหาจากไฟล์ Markdown/MDX + JSON/CSV โดยตรง
+- **Interactive Charts & Math**: **Recharts / Chart.js (Annotation Plugin) / SVG / Custom Canvas / D3.js** + **KaTeX** (`rehype-katex` + `remark-math`) และ **Zustand / React Context** สำหรับเก็บ state ตัวแปรจำลองและคะแนนสอบ
 - **Voice Narration Player**:
-  - สร้าง Script Python/Node แปลง `02_voiceover_th_en.md` → ไฟล์เสียง `.mp3` แยกตาม Screen ID (`AUD-M1L1-S01.mp3`)
-  - ในหน้าเว็บมีแถบ Audio Player พร้อม **Closed Captions (คำบรรยายภาษาไทย)**, **Auto-advance toggle**, และ **Cue Sync** (เมื่อเสียงพูดถึงคำสำคัญ Animation/Highlight บนหน้าจอขยับตาม)
+  - สร้าง Script Python/Node แปลงบล็อก `TTS Clean Script (TH)` ใน `02_voiceover_th_en.md` → ไฟล์เสียง `.mp3` แยกตาม Screen ID (`AUD-M1L1-S01.mp3`)
+  - ในหน้าเว็บมีแถบ Audio Player (Web Audio API) พร้อม **Closed Captions (คำบรรยายภาษาไทย)**, **Auto-advance toggle**, และ **Cue Sync** (เมื่อเสียงพูดถึงคำสำคัญ Animation/Highlight บนหน้าจอขยับตาม)
 - **Hosting (Internet)**: **Cloudflare Pages** หรือ **Vercel** หรือ **GitHub Pages** (Deploy อัตโนมัติทุกครั้งที่ `git push origin main`)
 
 ### 5.2 การทำงานร่วมกันระหว่าง Windows (`C:\Project\SPC_Training`) และ Cloud
 - ปะป๊าแก้เนื้อหา/ตรวจคำบน Windows → `git add . && git commit -m "..." && git push origin main`
-- เวลาเริ่มงานรอบใหม่กับ AI หรือทีมพัฒนา: ให้อ่าน `HANDOFF.md` และ `CURRICULUM_ROADMAP.md` ก่อนเสมอ แล้วเช็ค Checklist ในหัวข้อถัดไป
+- เวลาเริ่มงานรอบใหม่กับ AI หรือทีมพัฒนา: **ให้อ่าน `AGENTS.md` เป็นด่านแรก** ตามด้วย `HANDOFF.md` และ `CURRICULUM_ROADMAP.md` เสมอ แล้วเช็ค Checklist ในหัวข้อถัดไป
 
 ---
 
 ## 6. Next Action Checklist (ลำดับงานถัดไป)
 
-- [ ] **Step 1 (Review M1):** ปะป๊าตรวจทานเนื้อหาภาษาไทย, ตัวอย่างโรงงาน, และข้อสอบ `M1-Q001`–`M1-Q060` ใน `modules/module-01/`
-- [ ] **Step 2 (Web Prototype - ข้อ B):** สร้าง Web App Prototype ของ **Module 1** (อย่างน้อย Lesson `M1-L1` และ `M1-L3` + `M1-L4`) ที่มี Animation/Interactive จริง (COPQ Calculator, Data Classification Drag-Drop, Sigma Slider, Chart Selector + Workshop CSV Viewer) พร้อมปุ่มเล่นเสียงบรรยายไทย (TTS Prototype)
-- [ ] **Step 3 (Audio & Visuals):** Generate ไฟล์ภาพ/SVG จาก `05_asset_spec.md` และ Generate/อัดเสียงจาก `02_voiceover_th_en.md`
-- [ ] **Step 4 (Scale Modules 2–10):** ใช้ `modules/module-01/` เป็น **Golden Template** ขยายสร้างเนื้อหา Markdown + ชุดข้อมูล + Simulator Spec ของ **Module 2 ถึง Module 10** ตาม `CURRICULUM_ROADMAP.md`
-- [ ] **Step 5 (Deploy Online):** เปิดใช้งานบน Internet (Public หรือ Password/Auth Protected สำหรับพนักงานโรงงาน) พร้อมระบบเก็บ Progress/คะแนนสอบ (LocalStorage → Supabase/LMS)
+- [x] **Step 0 (Phase A — Scale Modules 1–10):** สร้างเนื้อหา Markdown + ชุดข้อมูล CSV + Simulator Spec ครบทั้ง **Module 1 ถึง Module 10** (`274 Screens`, `600 ข้อสอบ`, `16 CSVs`) ตาม `CURRICULUM_ROADMAP.md`
+- [ ] **Step 1 (Pre-Phase B QA & Review):** ตรวจแก้จุดตกหล่นจาก Phase A (เช่น `M3-Q041` 15 pipes, หัวข้อ M8 Storyboard, และเพิ่มสคริปต์ตรวจสอบ Python) พร้อมให้ปะป๊าตรวจทานเนื้อหา/ข้อสอบและตัดสินใจเรื่อง Tech Stack, TTS, Assets, Hosting
+- [ ] **Step 2 (Web Prototype - Phase B):** สร้าง Web App Prototype ของ **Module 1** (อย่างน้อย Lesson `M1-L1`, `M1-L3`, `M1-L4`) ที่มี Animation/Interactive จริง (COPQ Calculator, Data Classification Drag-Drop, Sigma Slider, Chart Selector + Workshop CSV Viewer) พร้อมปุ่มเล่นเสียงบรรยายไทย (TTS Prototype)
+- [ ] **Step 3 (Audio & Visuals):** ผลิตไฟล์ภาพ/SVG จาก `05_asset_spec.md` (`186` รายการ) และ Generate/อัดเสียง `.mp3` จาก `02_voiceover_th_en.md` (`274` Tracks)
+- [ ] **Step 4 (Scale Web App M2–M10 & Deploy Online):** ขยาย Simulator และ Interactive Dashboards ครบทั้ง 10 โมดูล แล้ว Deploy ขึ้น Internet พร้อมระบบเก็บ Progress/คะแนนสอบ (LocalStorage → Supabase/LMS)

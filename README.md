@@ -27,25 +27,25 @@
 
 ```text
 SPC_Training/
+├── AGENTS.md                     # กฎเหล็ก Persona (สีนวล) และมาตรฐานวิศวกรรมสำหรับ AI ผู้ช่วย
 ├── README.md                     # ภาพรวมโปรเจกต์และการใช้งาน
 ├── HANDOFF.md                    # เอกสารส่งต่อมาตรฐาน/สถาปัตยกรรม/Checklist สำหรับทีมและ AI
 ├── CURRICULUM_ROADMAP.md         # แผนแม่บท Module 1–10 (เนื้อหา + Interactive + เสียง)
 ├── .gitattributes                # จัดการ Line Ending (Windows <-> Linux)
 ├── .gitignore
 ├── modules/
-│   └── module-01/                # ต้นแบบมาตรฐาน (Golden Template) สำหรับทุก Module
-│       ├── 00_lesson_content.md  # เนื้อหาบนหน้าจอฉบับเต็มพร้อมสูตร/ตาราง (MDX Ready)
-│       ├── 01_storyboard.md      # Production Storyboard ครบทุกหน้าจอ (M1L1-S01..M1L4-S08)
-│       ├── 02_voiceover_th_en.md # บทพากย์เสียงภาษาไทย + TTS Clean Script + EN Reference
-│       ├── 03_screen_wireframe.md# โครงหน้าจอ Responsive & Navigation Rules
-│       ├── 04_interactive_logic.md # Logic การทำงานของ Simulator/Game/Scoring
-│       ├── 05_asset_spec.md      # สเปกภาพ SVG/Illustration/Chart Assets
-│       ├── 06_assessment_bank.md # คลังข้อสอบจริง Q001–Q060 พร้อมเฉลยและคำอธิบาย
-│       ├── 07_workshop_guide.md  # คู่มือทำ Workshop 1 & 2 พร้อมเฉลย Step-by-Step
-│       ├── 08_cheatsheet_and_glossary.md # สรุปสูตร 1 หน้าจบ & คำศัพท์ TH/EN (ปุ่ม Resources)
-│       └── data/                 # ชุดข้อมูลโรงงานจริง (.csv) สำหรับ Workshop
-│           ├── workshop_m1_data_classification.csv
-│           └── workshop_m1_dimensions_and_defects.csv
+│   ├── module-01/                # Golden Template (9 ไฟล์มาตรฐาน + data/*.csv)
+│   │   ├── 00_lesson_content.md  # เนื้อหาบนหน้าจอฉบับเต็มพร้อมสูตร/ตาราง (MDX Ready)
+│   │   ├── 01_storyboard.md      # Production Storyboard ครบทุกหน้าจอ
+│   │   ├── 02_voiceover_th_en.md # บทพากย์เสียงภาษาไทย + TTS Clean Script + EN Reference
+│   │   ├── 03_screen_wireframe.md# โครงหน้าจอ Responsive & Navigation Rules
+│   │   ├── 04_interactive_logic.md # Logic การทำงานของ Simulator/Game/Scoring
+│   │   ├── 05_asset_spec.md      # สเปกภาพ SVG/Illustration/Chart Assets
+│   │   ├── 06_assessment_bank.md # คลังข้อสอบจริง Q001–Q060 พร้อมเฉลยและคำอธิบาย
+│   │   ├── 07_workshop_guide.md  # คู่มือทำ Workshop พร้อมเฉลย Step-by-Step
+│   │   ├── 08_cheatsheet_and_glossary.md # สรุปสูตร 1 หน้าจบ & คำศัพท์ TH/EN (ปุ่ม Resources)
+│   │   └── data/                 # ชุดข้อมูลโรงงานจริง (.csv) สำหรับ Workshop
+│   └── module-02/ .. module-10/  # ใช้โครงสร้าง 9 ไฟล์มาตรฐาน + data/*.csv เดียวกับ module-01
 └── archive/
     └── module-01-initial/        # ไฟล์ร่างเริ่มต้น v2–v4 ของปะป๊า (เก็บอ้างอิงประวัติ)
 ```
@@ -66,4 +66,4 @@ git commit -m "อธิบายสิ่งที่แก้ไข"
 git push origin main
 ```
 
-รายละเอียดเชิงลึกทั้งหมดสำหรับนักพัฒนาและผู้เขียนเนื้อหา ดูได้ใน [HANDOFF.md](HANDOFF.md)
+รายละเอียดแนวทางการทำงานและมาตรฐานทั้งหมดดูได้ใน [AGENTS.md](AGENTS.md) และ [HANDOFF.md](HANDOFF.md)
