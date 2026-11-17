@@ -49,11 +49,11 @@
 
 ### AUD-M1L1-S05 (35 sec) — Statistical Thinking
 - **Display Script (TH):**  
-  และนี่คือหัวใจของ **Statistical Thinking หรือการคิดเชิงสถิติ** [PAUSE-1] [ANIM: histogram_build] สถิติช่วยให้เราแปลงข้อมูลดิบเป็นข้อมูลที่มีความหมาย [PAUSE-1] และทำให้วิศวกร **แยกแยะได้ว่าความแปรปรวนแบบไหนคือความแปรปรวนปกติของเครื่องจักร และแบบไหนคือความผิดปกติที่ต้องรีบหยุดเช็ค** เพื่อไม่ให้ปรับเครื่องมั่วจนกระบวนการยิ่งแกว่ง
+  และนี่คือหัวใจของ **Statistical Thinking หรือการคิดเชิงสถิติ** [PAUSE-1] [ANIM: histogram_build] สถิติช่วยให้เราแปลงข้อมูลดิบเป็นข้อมูลที่มีความหมาย [PAUSE-1] และทำให้วิศวกร **แยกแยะและสามารถเข้าใจในกระบวนการได้ว่าความแปรปรวนแบบไหนคือความแปรปรวนปกติของเครื่องจักร และแบบไหนคือความผิดปกติที่ต้องรีบหยุดเช็ค** เพื่อไม่ให้ปรับเครื่องมั่วจนกระบวนการยิ่งแกว่ง
 - **TTS Clean Script (TH):**  
-  และนี่คือหัวใจของ สแตทิสติคอล ทิงกิ้ง หรือการคิดเชิงสถิติ, สถิติช่วยให้เราแปลงข้อมูลดิบเป็นข้อมูลที่มีความหมาย, และทำให้วิศวกรแยกแยะได้ว่าความแปรปรวนแบบไหนคือความแปรปรวนปกติของเครื่องจักร และแบบไหนคือความผิดปกติที่ต้องรีบหยุดเช็ค เพื่อไม่ให้ปรับเครื่องมั่วจนกระบวนการยิ่งแกว่ง
+  และนี่คือหัวใจของ สแตทิสติคอล ทิงกิ้ง หรือการคิดเชิงสถิติ, สถิติช่วยให้เราแปลงข้อมูลดิบเป็นข้อมูลที่มีความหมาย, และทำให้วิศวกรแยกแยะและสามารถเข้าใจในกระบวนการได้ว่าความแปรปรวนแบบไหนคือความแปรปรวนปกติของเครื่องจักร และแบบไหนคือความผิดปกติที่ต้องรีบหยุดเช็ค เพื่อไม่ให้ปรับเครื่องมั่วจนกระบวนการยิ่งแกว่ง
 - **EN Reference:**  
-  Statistical thinking rests on three pillars: all work occurs in a system of interconnected processes, variation exists in all processes, and understanding and reducing variation—starting with separating normal from abnormal variation—is key to improvement.
+  Statistical Thinking helps us transform raw data into meaningful information. It enables engineers to understand process behavior and distinguish between normal process variation, which is inherent in the process, and abnormal variation that signals a problem requiring immediate investigation. This helps prevent unnecessary machine adjustments that can actually increase variation and make the process less stable
 
 ### AUD-M1L1-S06 (20 sec) — Lesson 1 Knowledge Check
 - **Display Script (TH):**  
