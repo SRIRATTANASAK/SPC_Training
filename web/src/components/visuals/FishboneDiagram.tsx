@@ -21,6 +21,7 @@ interface BoneDef {
   spineY: number;
   cardX: number;
   cardY: number;
+  cardWidth: number;
   colorBorder: string;
   colorBg: string;
   colorText: string;
@@ -42,8 +43,9 @@ const BONES: BoneDef[] = [
     boneStartY: 65,
     spineX: 250,
     spineY: 135,
-    cardX: 70,
+    cardX: 60,
     cardY: 12,
+    cardWidth: 198,
     colorBorder: 'border-amber-400 stroke-amber-500',
     colorBg: 'fill-amber-50 bg-amber-50',
     colorText: 'text-amber-900',
@@ -62,8 +64,9 @@ const BONES: BoneDef[] = [
     boneStartY: 65,
     spineX: 450,
     spineY: 135,
-    cardX: 270,
+    cardX: 265,
     cardY: 12,
+    cardWidth: 198,
     colorBorder: 'border-sky-400 stroke-sky-500',
     colorBg: 'fill-sky-50 bg-sky-50',
     colorText: 'text-sky-950',
@@ -84,6 +87,7 @@ const BONES: BoneDef[] = [
     spineY: 135,
     cardX: 470,
     cardY: 12,
+    cardWidth: 230,
     colorBorder: 'border-indigo-400 stroke-indigo-500',
     colorBg: 'fill-indigo-50 bg-indigo-50',
     colorText: 'text-indigo-950',
@@ -103,8 +107,9 @@ const BONES: BoneDef[] = [
     boneStartY: 205,
     spineX: 250,
     spineY: 135,
-    cardX: 70,
+    cardX: 60,
     cardY: 200,
+    cardWidth: 198,
     colorBorder: 'border-emerald-400 stroke-emerald-500',
     colorBg: 'fill-emerald-50 bg-emerald-50',
     colorText: 'text-emerald-950',
@@ -123,8 +128,9 @@ const BONES: BoneDef[] = [
     boneStartY: 205,
     spineX: 450,
     spineY: 135,
-    cardX: 270,
+    cardX: 265,
     cardY: 200,
+    cardWidth: 198,
     colorBorder: 'border-rose-400 stroke-rose-500',
     colorBg: 'fill-rose-50 bg-rose-50',
     colorText: 'text-rose-950',
@@ -145,6 +151,7 @@ const BONES: BoneDef[] = [
     spineY: 135,
     cardX: 470,
     cardY: 200,
+    cardWidth: 230,
     colorBorder: 'border-teal-400 stroke-teal-500',
     colorBg: 'fill-teal-50 bg-teal-50',
     colorText: 'text-teal-950',
@@ -169,32 +176,13 @@ export const FishboneDiagram: React.FC<Props> = ({ audioTime = 0, isPlaying = fa
     return audioTime >= bone.triggerSec && audioTime < bone.endSec;
   };
 
-  const activeBone = BONES.find((b) => isBoneActiveNarration(b));
-  const visibleCount = BONES.filter(isBoneVisible).length;
-
   return (
     <div className="w-full rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden flex flex-col">
       {/* Header Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 bg-slate-50/90 px-3.5 py-1.5">
-        <div className="flex items-center gap-2">
-          <span className="flex h-5 w-5 items-center justify-center rounded-md bg-sky-700 text-white font-extrabold text-[11px] shadow-sm">
-            5M1E
-          </span>
-          <span className="text-xs sm:text-sm font-extrabold text-slate-800">
-            แผนภูมิก้างปลา: 6 แหล่งที่มาของความแปรปรวน (Ishikawa Fishbone Diagram)
-          </span>
-        </div>
-
-        {/* Live Audio Narration Status Badge */}
-        {activeBone ? (
-          <span className="animate-pulse rounded-full bg-amber-500/20 px-2.5 py-0.5 text-xs font-bold text-amber-800 border border-amber-300">
-            กำลังบรรยาย: {activeBone.nameTh} ({activeBone.nameEn})
-          </span>
-        ) : (
-          <span className="text-[11px] text-slate-500 font-medium">
-            แสดงตามเสียงบรรยาย ({visibleCount}/6 ปัจจัย)
-          </span>
-        )}
+      <div className="border-b border-slate-200 bg-slate-50/90 px-3.5 py-1.5">
+        <h3 className="text-xs sm:text-sm font-extrabold text-slate-800">
+          แผนภูมิก้างปลา (Ishikawa /Fish bone Diagram)  : แสดงแหล่งที่มาของความแปรปรวน
+        </h3>
       </div>
 
       {/* SVG Canvas for Fishbone Diagram */}
@@ -366,7 +354,7 @@ export const FishboneDiagram: React.FC<Props> = ({ audioTime = 0, isPlaying = fa
                 <foreignObject
                   x={bone.cardX}
                   y={bone.cardY}
-                  width="190"
+                  width={bone.cardWidth}
                   height="58"
                   className="overflow-visible"
                 >
@@ -381,14 +369,14 @@ export const FishboneDiagram: React.FC<Props> = ({ audioTime = 0, isPlaying = fa
                         : 'bg-slate-100 border-slate-300 opacity-60'
                     }`}
                   >
-                    <div className="flex items-center justify-between gap-1">
+                    <div className="flex items-center justify-between gap-1.5">
                       <div className="flex items-center gap-1.5 min-w-0">
                         <span
                           className={`h-2 w-2 rounded-full shrink-0 ${
                             visible ? bone.colorDot : 'bg-slate-300'
                           } ${isSpeaking ? 'animate-ping' : ''}`}
                         />
-                        <span className="font-extrabold text-xs text-slate-900 truncate">
+                        <span className="font-extrabold text-xs text-slate-900 whitespace-nowrap">
                           {bone.id}. {bone.nameTh}
                         </span>
                       </div>
