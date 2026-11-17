@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Eye, Volume2, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { Sparkles } from 'lucide-react';
 
 interface Props {
   audioTime?: number;
@@ -153,22 +153,13 @@ const BONES: BoneDef[] = [
 ];
 
 export const FishboneDiagram: React.FC<Props> = ({ audioTime = 0, isPlaying = false }) => {
-  const [mode, setMode] = useState<'sync' | 'all'>('sync');
   const [selectedBone, setSelectedBone] = useState<number | null>(null);
 
-  // If user plays audio, auto-switch to sync mode
-  useEffect(() => {
-    if (isPlaying) {
-      setMode('sync');
-    }
-  }, [isPlaying]);
-
-  // Determine which bones are visible
+  // Determine which bones are visible according to voiceover narration
   const isBoneVisible = (bone: BoneDef) => {
-    if (mode === 'all') return true;
     if (selectedBone === bone.id) return true;
-    // If audio is playing or has advanced
-    if (audioTime >= 26.5) return true; // Audio finished all 6 factors
+    // When audio finishes or advances past factor list, all bones remain visible
+    if (audioTime >= 26.5) return true;
     return audioTime >= bone.triggerSec;
   };
 
@@ -183,54 +174,27 @@ export const FishboneDiagram: React.FC<Props> = ({ audioTime = 0, isPlaying = fa
 
   return (
     <div className="w-full rounded-xl border border-slate-200 bg-white shadow-sm overflow-hidden flex flex-col">
-      {/* Interactive Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 bg-slate-50/90 px-3.5 py-2">
+      {/* Header Bar */}
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 bg-slate-50/90 px-3.5 py-1.5">
         <div className="flex items-center gap-2">
-          <span className="flex h-6 w-6 items-center justify-center rounded-md bg-sky-700 text-white font-extrabold text-xs shadow-sm">
+          <span className="flex h-5 w-5 items-center justify-center rounded-md bg-sky-700 text-white font-extrabold text-[11px] shadow-sm">
             5M1E
           </span>
           <span className="text-xs sm:text-sm font-extrabold text-slate-800">
             แผนภูมิก้างปลา: 6 แหล่งที่มาของความแปรปรวน (Ishikawa Fishbone Diagram)
           </span>
-          {activeBone && (
-            <span className="animate-pulse rounded-full bg-amber-500/20 px-2 py-0.5 text-[11px] font-bold text-amber-800 border border-amber-300">
-              กำลังบรรยาย: {activeBone.nameTh} ({activeBone.nameEn})
-            </span>
-          )}
         </div>
 
-        {/* Mode controls & filter pills */}
-        <div className="flex items-center gap-1.5 text-xs">
-          <button
-            type="button"
-            onClick={() => setMode('sync')}
-            className={`flex items-center gap-1 rounded-lg px-2.5 py-1 font-semibold transition ${
-              mode === 'sync'
-                ? 'bg-sky-700 text-white shadow-sm'
-                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
-            }`}
-            title="แสดงก้างปลาตามเสียงบรรยายทีละขั้น"
-          >
-            <Volume2 className="h-3 w-3" />
-            <span>ตามเสียงบรรยาย ({visibleCount}/6)</span>
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              setMode('all');
-              setSelectedBone(null);
-            }}
-            className={`flex items-center gap-1 rounded-lg px-2.5 py-1 font-semibold transition ${
-              mode === 'all'
-                ? 'bg-slate-800 text-white shadow-sm'
-                : 'bg-white border border-slate-200 text-slate-700 hover:bg-slate-100'
-            }`}
-            title="แสดงก้างปลาครบทั้ง 6 ปัจจัยทันที"
-          >
-            <Eye className="h-3 w-3" />
-            <span>แสดงทั้งหมด</span>
-          </button>
-        </div>
+        {/* Live Audio Narration Status Badge */}
+        {activeBone ? (
+          <span className="animate-pulse rounded-full bg-amber-500/20 px-2.5 py-0.5 text-xs font-bold text-amber-800 border border-amber-300">
+            กำลังบรรยาย: {activeBone.nameTh} ({activeBone.nameEn})
+          </span>
+        ) : (
+          <span className="text-[11px] text-slate-500 font-medium">
+            แสดงตามเสียงบรรยาย ({visibleCount}/6 ปัจจัย)
+          </span>
+        )}
       </div>
 
       {/* SVG Canvas for Fishbone Diagram */}
