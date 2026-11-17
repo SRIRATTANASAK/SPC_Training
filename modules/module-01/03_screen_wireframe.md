@@ -19,7 +19,7 @@
 
 ## M1-L2: Types of Data & Measurement Scales (6 Screens)
 - **M1L2-S01 Variable vs Attribute:** 2-Column Split Comparison Cards (`AST-M1-006` | `AST-M1-007`)
-- **M1L2-S02 Continuous vs Discrete:** Interactive Digital Micrometer vs Defect Counter Bin (`AST-M1-008` | `AST-M1-009`)
+- **M1L2-S02 Continuous vs Attribute:** Interactive Digital Micrometer vs Defect Counter Bin (`AST-M1-008` | `AST-M1-009`)
 - **M1L2-S03 Measurement Scales:** 2×2 Grid of Flip Cards (`Nominal`, `Ordinal`, `Interval`, `Ratio` — `AST-M1-010`) + "Allowed Math" Badge
 - **M1L2-S04 Workshop 1 (`INT-M1-L2-01`, `INT-M1-L2-02`):** Top Item Cards (Drag/Select) | Bottom Drop Zones (`Variable` vs `Attribute`) + Scale Selector Dropdown (accessible keyboard fallback)
 - **M1L2-S05 Feedback & Rationale:** Diagnostic Summary Table highlighting missed items and engineering traps (Go/No-Go, Cavity ID, Celsius)

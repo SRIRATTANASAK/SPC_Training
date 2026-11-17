@@ -113,17 +113,17 @@
 - **Accessibility Notes:** High-contrast card headers + captions.
 - **Developer Notes:** Show why choosing wrong data type leads to wrong SPC chart later.
 
-## Screen M1L2-S02 — Continuous vs Discrete Data
-- **Learning Objective:** แยกข้อมูลต่อเนื่อง (Continuous) และข้อมูลไม่ต่อเนื่อง (Discrete) พร้อมเข้าใจข้อควรระวังเรื่อง Resolution
+## Screen M1L2-S02 — Continuous vs Attribute Data
+- **Learning Objective:** แยกข้อมูลต่อเนื่อง (Continuous) และข้อมูลเชิงคุณลักษณะ (Attribute) พร้อมเข้าใจข้อควรระวังเรื่อง Resolution
 - **Duration:** 35s
 - **Layout:** Animated Gauge Comparison (Digital Micrometer vs Defect Counter)
 - **Asset ID:** `AST-M1-008`, `AST-M1-009`
-- **On Screen Text:** `Continuous Data` (แบ่งละเอียดเป็นทศนิยมได้ไม่สิ้นสุด) vs `Discrete Data` (นับเป็นจำนวนเต็ม 0, 1, 2... หรือหมวดหมู่)
+- **On Screen Text:** `Continuous Data` (แบ่งละเอียดเป็นทศนิยมได้ไม่สิ้นสุด) vs `Attribute Data` (นับเป็นจำนวนเต็ม 0, 1, 2... หรือหมวดหมู่)
 - **Voice Over Script Ref:** `AUD-M1L2-S02`
 - **Motion Specification:** Smooth continuous decimal needle sweep vs integer step counter (`0 -> 1 -> 2 -> 3`).
-- **Trigger Logic:** Interactive toggle between "Continuous Zoom" and "Discrete Count".
+- **Trigger Logic:** Interactive toggle between "Continuous Zoom" and "Attribute Count".
 - **Accessibility Notes:** Text equivalents for numeric animations.
-- **Developer Notes:** Clarify that measurement resolution (เช่น ปัดเศษหยาบเกินไป) อาจทำให้ Continuous ดูเหมือน Discrete ได้.
+- **Developer Notes:** Clarify that measurement resolution (เช่น ปัดเศษหยาบเกินไป) อาจทำให้ Continuous ดูเหมือน Discrete/Attribute ได้.
 
 ## Screen M1L2-S03 — Measurement Scales (Nominal, Ordinal, Interval, Ratio)
 - **Learning Objective:** จำแนกมาตราการวัดทั้ง 4 ระดับ และรู้ว่ามาตราใดคำนวณ Mean/SD ได้จริง

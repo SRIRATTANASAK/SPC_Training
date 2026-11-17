@@ -93,10 +93,10 @@ $$\text{COPQ} = \text{Prevention} + \text{Appraisal} + \text{Internal Failure} +
 
 ---
 
-## M1L2-S02 — Continuous vs Discrete Data
+## M1L2-S02 — Continuous vs Attribute Data
 `<Asset id="AST-M1-008" />` `<Asset id="AST-M1-009" />`
 
-| มิติเปรียบเทียบ | Continuous Data (ข้อมูลต่อเนื่อง) | Discrete Data (ข้อมูลไม่ต่อเนื่อง) |
+| มิติเปรียบเทียบ | Continuous Data (ข้อมูลต่อเนื่อง) | Attribute Data (ข้อมูลเชิงคุณลักษณะ) |
 |---|---|---|
 | **ลักษณะค่าข้อมูล** | แบ่งย่อยเป็นทศนิยมได้ไม่สิ้นสุดตามความละเอียดเครื่องมือวัด | เป็นจำนวนนับเต็มหน่วย หรือหมวดหมู่ชัดเจน (ไม่มีทศนิยม) |
 | **ตัวอย่างในโรงงาน** | ขนาดเพลา `50.00`, `50.01`, `50.014 mm` | จำนวนจุดเสีย `0, 1, 2, 3 จุด` หรือ `Day / Night`, `Pass / Fail` |

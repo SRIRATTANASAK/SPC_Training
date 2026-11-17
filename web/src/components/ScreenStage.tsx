@@ -545,6 +545,148 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                   </div>
                 </div>
               </div>
+            ) : screen.screenId === 'M1L2-S02' ? (
+              <div className="flex h-full flex-col items-center justify-start gap-4 sm:gap-5 w-full max-w-5xl xl:max-w-6xl mx-auto pt-1 sm:pt-2">
+                {/* 2 Concept Highlight Cards on top */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 w-full">
+                  <div className="rounded-xl border border-sky-200 bg-gradient-to-br from-sky-50 to-white p-3.5 sm:p-4 shadow-sm">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-md bg-sky-700 text-white font-extrabold text-xs shadow-sm">
+                        C
+                      </span>
+                      <span className="text-xs font-bold uppercase tracking-wider text-sky-800">
+                        Continuous Data (ข้อมูลต่อเนื่อง)
+                      </span>
+                    </div>
+                    <p className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
+                      ได้จากการ <strong className="text-sky-800">"วัดค่า"</strong> ตามความละเอียดของเครื่องมือวัด ซอยเป็นทศนิยมได้ไม่สิ้นสุด
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl border border-amber-200 bg-gradient-to-br from-amber-50 to-white p-3.5 sm:p-4 shadow-sm">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-md bg-amber-600 text-white font-extrabold text-xs shadow-sm">
+                        A
+                      </span>
+                      <span className="text-xs font-bold uppercase tracking-wider text-amber-900">
+                        Attribute Data (ข้อมูลเชิงคุณลักษณะ)
+                      </span>
+                    </div>
+                    <p className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
+                      ได้จากการ <strong className="text-amber-800">"นับจำนวนหรือจัดหมวดหมู่"</strong> เป็นจำนวนเต็มชัดเจน ไม่มีทศนิยม
+                    </p>
+                  </div>
+                </div>
+
+                {/* Enhanced 3x3 Comparison Table */}
+                <div className="w-full">
+                  <div className="overflow-hidden rounded-xl border border-slate-300 shadow-sm bg-white">
+                    <table className="w-full border-collapse text-left">
+                      <thead>
+                        <tr className="border-b border-slate-300 bg-slate-900 text-white">
+                          <th className="w-[22%] px-4 sm:px-5 py-3 border-r border-slate-700 text-sm sm:text-base font-extrabold text-slate-100">
+                            มิติเปรียบเทียบ
+                          </th>
+                          <th className="w-[39%] px-4 sm:px-5 py-3 border-r border-slate-700 text-sm sm:text-base font-extrabold text-sky-200">
+                            Continuous Data (ข้อมูลต่อเนื่อง)
+                          </th>
+                          <th className="w-[39%] px-4 sm:px-5 py-3 text-sm sm:text-base font-extrabold text-amber-200">
+                            Attribute Data (ข้อมูลเชิงคุณลักษณะ)
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200 text-sm sm:text-base">
+                        {/* แถวที่ 1: ลักษณะค่าข้อมูล */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-4 sm:px-5 py-3.5 sm:py-4 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70 align-top">
+                            ลักษณะค่าข้อมูล
+                          </td>
+                          <td className="px-4 sm:px-5 py-3.5 sm:py-4 border-r border-slate-200 text-slate-700 leading-relaxed bg-sky-50/20 align-top">
+                            <div>
+                              แบ่งย่อยเป็นทศนิยมได้ไม่สิ้นสุดตามความละเอียดของเครื่องมือวัด
+                            </div>
+                            <div className="mt-1.5 flex flex-wrap gap-1.5 text-xs text-sky-800 font-semibold">
+                              <span className="rounded bg-sky-100 px-2 py-0.5 border border-sky-300">
+                                ซอยละเอียดเป็นช่วงต่อเนื่อง (Continuum)
+                              </span>
+                            </div>
+                          </td>
+                          <td className="px-4 sm:px-5 py-3.5 sm:py-4 text-slate-700 leading-relaxed bg-amber-50/20 align-top">
+                            <div>
+                              เป็นจำนวนนับเต็มหน่วย หรือหมวดหมู่ชัดเจน (ไม่มีทศนิยม)
+                            </div>
+                            <div className="mt-1.5 flex flex-wrap gap-1.5 text-xs text-amber-900 font-semibold">
+                              <span className="rounded bg-amber-100 px-2 py-0.5 border border-amber-300">
+                                นับเป็นจำนวนเต็มชัดเจน (ไม่มี 1.5 จุด)
+                              </span>
+                            </div>
+                          </td>
+                        </tr>
+
+                        {/* แถวที่ 2: ตัวอย่างในโรงงาน */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-4 sm:px-5 py-3.5 sm:py-4 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70 align-top">
+                            ตัวอย่างในโรงงาน
+                          </td>
+                          <td className="px-4 sm:px-5 py-3.5 sm:py-4 border-r border-slate-200 text-slate-800 leading-relaxed bg-sky-50/20 align-top">
+                            <div className="font-semibold text-slate-900 mb-1">
+                              ขนาดเพลา:
+                            </div>
+                            <div className="flex flex-wrap items-center gap-1.5 font-mono text-xs sm:text-sm">
+                              <span className="rounded bg-white px-2 py-0.5 border border-slate-300 text-sky-900 font-bold">50.00 mm</span>
+                              <span className="text-slate-400">→</span>
+                              <span className="rounded bg-white px-2 py-0.5 border border-slate-300 text-sky-900 font-bold">50.01 mm</span>
+                              <span className="text-slate-400">→</span>
+                              <span className="rounded bg-white px-2 py-0.5 border border-slate-300 text-sky-900 font-bold">50.014 mm</span>
+                            </div>
+                            <div className="text-xs text-slate-500 mt-1.5">
+                              รวมถึงน้ำหนัก (g), แรงบิด (N·m), อุณหภูมิ (°C)
+                            </div>
+                          </td>
+                          <td className="px-4 sm:px-5 py-3.5 sm:py-4 text-slate-800 leading-relaxed bg-amber-50/20 align-top">
+                            <div className="font-semibold text-slate-900 mb-1">
+                              จำนวนจุดเสีย &amp; สถานะ:
+                            </div>
+                            <div className="flex flex-wrap items-center gap-1.5 text-xs sm:text-sm">
+                              <span className="rounded bg-white px-2 py-0.5 border border-slate-300 font-mono font-bold text-amber-900">0, 1, 2, 3 จุด</span>
+                              <span className="text-slate-400">|</span>
+                              <span className="rounded bg-white px-2 py-0.5 border border-slate-300 font-semibold text-slate-800">Pass / Fail</span>
+                              <span className="text-slate-400">|</span>
+                              <span className="rounded bg-white px-2 py-0.5 border border-slate-300 font-semibold text-slate-800">Day / Night</span>
+                            </div>
+                            <div className="text-xs text-slate-500 mt-1.5">
+                              เช่น จำนวน Scratch, รอย Burr, ฟองอากาศ, คราบน้ำมัน
+                            </div>
+                          </td>
+                        </tr>
+
+                        {/* แถวที่ 3: ข้อควรระวังหน้างาน */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-4 sm:px-5 py-3.5 sm:py-4 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70 align-top">
+                            ข้อควรระวังหน้างาน
+                          </td>
+                          <td className="px-4 sm:px-5 py-3.5 sm:py-4 border-r border-slate-200 text-slate-700 leading-relaxed bg-sky-50/20 align-top">
+                            <div>
+                              หากใช้เครื่องมือวัดหยาบเกินไป (Resolution ต่ำ เช่น อ่านได้ทีละ <code className="rounded bg-slate-100 px-1 py-0.5 font-mono text-xs text-slate-800">0.5 mm</code>) ข้อมูลจะกลายเป็นขั้นๆ จนวิเคราะห์ SPC ไม่แม่นยำ
+                            </div>
+                            <div className="mt-2 inline-flex items-center gap-1.5 rounded-md bg-rose-50 border border-rose-300 px-2.5 py-1 text-xs font-bold text-rose-800">
+                              ⚠️ ระวัง Chunky Data (Insufficient Discrimination)
+                            </div>
+                          </td>
+                          <td className="px-4 sm:px-5 py-3.5 sm:py-4 text-slate-700 leading-relaxed bg-amber-50/20 align-top">
+                            <div>
+                              ต้องเก็บขนาดตัวอย่าง (<strong className="text-slate-900">Sample Size</strong>) ให้มากพอจึงจะเห็นแนวโน้มการเปลี่ยนแปลงและสัญญาณเตือน
+                            </div>
+                            <div className="mt-2 inline-flex items-center gap-1.5 rounded-md bg-amber-100/80 border border-amber-300 px-2.5 py-1 text-xs font-bold text-amber-900">
+                              💡 ต้องใช้ขนาดตัวอย่างมากกว่า Variable หลายเท่า
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             ) : currentSlide.kind === 'visual-content' ? (
               <div
                 className={
