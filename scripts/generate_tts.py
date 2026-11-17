@@ -188,9 +188,18 @@ def synth_elevenlabs(text: str, api_key: str, voice_id: str) -> bytes:
         return resp.read()
 
 
+def synth_gtts(text: str) -> bytes:
+    import io
+    from gtts import gTTS
+    tts = gTTS(text, lang="th")
+    buf = io.BytesIO()
+    tts.write_to_fp(buf)
+    return buf.getvalue()
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate Thai MP3 tracks for Module 1.")
-    parser.add_argument("--provider", choices=["gemini", "google", "elevenlabs"], required=True)
+    parser.add_argument("--provider", choices=["gemini", "google", "elevenlabs", "gtts"], required=True)
     parser.add_argument("--voice", default="Achernar", help="Gemini prebuilt voice name (default: Achernar)")
     parser.add_argument("--model", default="", help="Preferred Gemini TTS model")
     parser.add_argument("--limit", type=int, default=0, help="Optional limit for test runs")
@@ -224,12 +233,14 @@ def main() -> int:
         if not api_key:
             print("Missing GOOGLE_TTS_API_KEY environment variable.", file=sys.stderr)
             return 1
-    else:
+    elif args.provider == "elevenlabs":
         api_key = os.environ.get("ELEVENLABS_API_KEY", "")
         voice_id = os.environ.get("ELEVENLABS_VOICE_ID", "21m00Tcm4TlvDq8ikWAM")
         if not api_key:
             print("Missing ELEVENLABS_API_KEY environment variable.", file=sys.stderr)
             return 1
+    else:
+        api_key = ""
 
     screens = data["screens"][: args.limit] if args.limit > 0 else data["screens"]
     for idx, s in enumerate(screens):
@@ -245,8 +256,10 @@ def main() -> int:
             audio_bytes = synth_gemini(text, api_key, voice_name=args.voice, preferred_model=args.model)
         elif args.provider == "google":
             audio_bytes = synth_google(text, api_key)
-        else:
+        elif args.provider == "elevenlabs":
             audio_bytes = synth_elevenlabs(text, api_key, voice_id)
+        else:
+            audio_bytes = synth_gtts(text)
 
         (ASSETS_AUDIO / fname).write_bytes(audio_bytes)
         (PUBLIC_AUDIO / fname).write_bytes(audio_bytes)

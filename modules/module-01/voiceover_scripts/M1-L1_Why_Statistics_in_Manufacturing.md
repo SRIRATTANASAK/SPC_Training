@@ -26,11 +26,11 @@
 
 ### AUD-M1L1-S03 (45 sec) — Cost of Poor Quality (COPQ)
 - **Display Script (TH):**  
-  ทำไมผู้บริหารถึงให้ความสำคัญกับสถิติ? คำตอบอยู่ที่ **COPQ หรือ Cost of Poor Quality — ต้นทุนความสูญเสียจากคุณภาพต่ำ** [PAUSE-1] [ANIM: iceberg_reveal] ของเสียที่เราเห็นชัดๆ คือ งานทิ้ง Scrap หรืองานซ่อม Rework [PAUSE-1] แต่มันยังมีต้นทุนที่ซ่อนอยู่ใต้น้ำ เช่น ค่าแรงคัดแยก Sorting, เครื่องจักรเสียโอกาสผลิต, ค่าเคลมลูกค้า และความน่าเชื่อถือที่เสียไป [PAUSE-1] ลองกรอกตัวเลขในเครื่องคิดเลข COPQ ด้านล่าง เพื่อดูว่าความสูญเสียต่อเดือนของโรงงานสูงแค่ไหน
+  ทำไมผู้บริหารถึงให้ความสำคัญกับสถิติ? คำตอบอยู่ที่ **COPQ หรือ Cost of Poor Quality — ต้นทุนความสูญเสียจากคุณภาพต่ำ** [PAUSE-1] [ANIM: iceberg_reveal] ของเสียที่เราเห็นชัดๆ คือ งานทิ้ง Scrap หรืองานซ่อม Rework [PAUSE-1] แต่มันยังมีต้นทุนที่ซ่อนอยู่ใต้น้ำ เช่น ค่าแรงคัดแยก Sorting, เครื่องจักรเสียโอกาสผลิต, ค่าเคลมลูกค้า และความน่าเชื่อถือที่เสียไป [PAUSE-1] ลองดูแบบจำลองในหน้าถัดไปของโรงงานหนึ่ง เพื่อดูว่าโรงงานจะอยู่ในสภาวะแบบไหน เมื่อมีการสูญเสียเกิดขึ้น
 - **TTS Clean Script (TH):**  
-  ทำไมผู้บริหารถึงให้ความสำคัญกับสถิติ, คำตอบอยู่ที่ ซีโอพีคิว หรือ คอสต์ ออฟ พัวร์ ควอลิตี้ ต้นทุนความสูญเสียจากคุณภาพต่ำ, ของเสียที่เราเห็นชัดๆ คือ งานทิ้ง สแครป หรืองานซ่อม รีเวิร์ค, แต่มันยังมีต้นทุนที่ซ่อนอยู่ใต้น้ำ เช่น ค่าแรงคัดแยก ซอร์ตติ้ง เครื่องจักรเสียโอกาสผลิต ค่าเคลมลูกค้า และความน่าเชื่อถือที่เสียไป, ลองกรอกตัวเลขในเครื่องคิดเลข ซีโอพีคิว ด้านล่าง เพื่อดูว่าความสูญเสียต่อเดือนของโรงงานสูงแค่ไหน
+  ทำไมผู้บริหารถึงให้ความสำคัญกับสถิติ, คำตอบอยู่ที่ ซีโอพีคิว หรือ คอสต์ ออฟ พัวร์ ควอลิตี้ ต้นทุนความสูญเสียจากคุณภาพต่ำ, ของเสียที่เราเห็นชัดๆ คือ งานทิ้ง สแครป หรืองานซ่อม รีเวิร์ค, แต่มันยังมีต้นทุนที่ซ่อนอยู่ใต้น้ำ เช่น ค่าแรงคัดแยก ซอร์ตติ้ง เครื่องจักรเสียโอกาสผลิต ค่าเคลมลูกค้า และความน่าเชื่อถือที่เสียไป, ลองดูแบบจำลองในหน้าถัดไปของโรงงานหนึ่ง เพื่อดูว่าโรงงานจะอยู่ในสภาวะแบบไหน เมื่อมีการสูญเสียเกิดขึ้น
 - **EN Reference:**  
-  Cost of Poor Quality includes visible scrap and rework, plus hidden costs like sorting labor, lost capacity, warranty claims, and customer dissatisfaction. Try the interactive COPQ calculator to see the monthly financial impact.
+  Cost of Poor Quality includes visible scrap and rework, plus hidden costs like sorting labor, lost capacity, warranty claims, and customer dissatisfaction. Let's look at the model of a factory on the next page to see how the factory's operating condition changes when losses occur
 
 ### AUD-M1L1-S04 (50 sec) — Factory Examples & 4M1E Variation Sources
 - **Display Script (TH):**  
