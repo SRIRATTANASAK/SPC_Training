@@ -268,8 +268,8 @@
       "screenId": "M1L2-S04",
       "lessonId": "M1-L2",
       "lessonTitle": "Types of Data & Measurement Scales",
-      "title": "Workshop 1: จำแนกข้อมูลจริงในโรงงาน",
-      "markdown": "- ใช้ชุดข้อมูลจริง 20 รายการจาก [data/workshop_m1_data_classification.csv](data/workshop_m1_data_classification.csv)\n- ลากวางแยก Variable / Attribute และจับคู่ Measurement Scale (`Nominal / Ordinal / Interval / Ratio`)",
+      "title": "Workshop 1 : การจำแนกข้อมูล",
+      "markdown": "- ใช้ชุดข้อมูลจริงจาก [data/workshop_m1_data_classification.csv](data/workshop_m1_data_classification.csv)\n- จำแนกประเภท Variable / Attribute และจับคู่ Measurement Scale (`Nominal / Ordinal / Interval / Ratio`)",
       "interactiveIds": [
         "INT-M1-L2-01",
         "INT-M1-L2-02"
@@ -279,9 +279,9 @@
         "audioId": "AUD-M1L2-S04",
         "audioFile": "/audio/module-01/AUD-M1L2-S04.mp3",
         "duration": "30 sec",
-        "displayScriptTh": "ถึงเวลาลงมือทำ Workshop ที่ 1 แล้ว ลองลากข้อมูลจริงจากโรงงานมาวางในหมวด Variable หรือ Attribute พร้อมระบุ Measurement Scale ให้ถูกต้อง ทำความคุ้นเคยกับตัวอย่างจริงหน้างาน แล้วดูผลเฉลยกัน",
-        "ttsCleanTh": "ถึงเวลาลงมือทำ เวิร์คช็อป ที่ 1 แล้ว, ลองลากข้อมูลจริงจากโรงงานมาวางในหมวด แวริเอเบิล หรือ แอททริบิวต์ พร้อมระบุระดับมาตราการวัดให้ถูกต้อง ทำความคุ้นเคยกับตัวอย่างจริงหน้างาน แล้วดูผลเฉลยกัน",
-        "enReference": "Now complete Workshop 1 by classifying real manufacturing items into Variable or Attribute data and matching their measurement scales."
+        "displayScriptTh": "ถึงเวลาลงมือทำ Workshop 1 : การจำแนกข้อมูล แล้ว ลองจำแนกข้อมูลจริงจากโรงงานลงในหมวด Variable หรือ Attribute พร้อมระบุ Measurement Scale ให้ถูกต้อง ทำความคุ้นเคยกับตัวอย่างจริงหน้างาน แล้วดูผลเฉลยกัน",
+        "ttsCleanTh": "ถึงเวลาลงมือทำ เวิร์คช็อป หนึ่ง การจำแนกข้อมูล แล้ว, ลองจำแนกข้อมูลจริงจากโรงงานลงในหมวด แวริเอเบิล หรือ แอททริบิวต์ พร้อมระบุระดับมาตราการวัดให้ถูกต้อง ทำความคุ้นเคยกับตัวอย่างจริงหน้างาน แล้วดูผลเฉลยกัน",
+        "enReference": "Now complete Workshop 1 : Data Classification by classifying real manufacturing items into Variable or Attribute data and matching their measurement scales."
       },
       "prevScreenId": "M1L2-S03",
       "nextScreenId": "M1L2-S05"

@@ -4,7 +4,7 @@
 
 ---
 
-## Workshop 1: จำแนกข้อมูลจริงในโรงงาน (ใช้ใน `M1L2-S04`)
+## Workshop 1 : การจำแนกข้อมูล (ใช้ใน `M1L2-S04`)
 - **ไฟล์ข้อมูล:** [data/workshop_m1_data_classification.csv](data/workshop_m1_data_classification.csv) (20 รายการ `DC-01` ถึง `DC-20`)
 - **โจทย์สำหรับผู้เรียน:**
   1. จำแนกว่าแต่ละรายการเป็น **Variable Data** หรือ **Attribute Data**

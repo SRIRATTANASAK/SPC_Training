@@ -116,10 +116,10 @@ $$\text{COPQ} = \text{Prevention} + \text{Appraisal} + \text{Internal Failure} +
 
 ---
 
-## M1L2-S04 — Workshop 1: จำแนกข้อมูลจริงในโรงงาน
+## M1L2-S04 — Workshop 1 : การจำแนกข้อมูล
 `<Interactive id="INT-M1-L2-01" />` `<Interactive id="INT-M1-L2-02" />`
-- ใช้ชุดข้อมูลจริง 20 รายการจาก [data/workshop_m1_data_classification.csv](data/workshop_m1_data_classification.csv)
-- ลากวางแยก Variable / Attribute และจับคู่ Measurement Scale (`Nominal / Ordinal / Interval / Ratio`)
+- ใช้ชุดข้อมูลจริงจาก [data/workshop_m1_data_classification.csv](data/workshop_m1_data_classification.csv)
+- จำแนกประเภท Variable / Attribute และจับคู่ Measurement Scale (`Nominal / Ordinal / Interval / Ratio`)
 
 ## M1L2-S05 — Feedback & Rationale Layer
 สรุป 3 กับดักที่พบบ่อยจาก Workshop 1:

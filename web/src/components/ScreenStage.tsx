@@ -707,7 +707,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                 )}
               </div>
             ) : (
-              <div className="h-full flex flex-col justify-center">
+              <div className="min-h-full flex flex-col justify-start py-1">
                 <InteractiveRouter
                   screen={screen}
                   moduleData={moduleData}

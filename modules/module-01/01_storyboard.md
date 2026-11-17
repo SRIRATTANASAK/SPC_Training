@@ -137,12 +137,12 @@
 - **Accessibility Notes:** Flip state announced via `aria-expanded`.
 - **Developer Notes:** Highlight common trap: `Cavity 1, 2, 3, 4` is **Nominal**, NOT Ratio!
 
-## Screen M1L2-S04 — Workshop 1: จำแนกข้อมูลจริงในโรงงาน
-- **Learning Objective:** ฝึกจำแนกข้อมูลจริงจากหน้างาน 20 รายการได้ถูกต้อง ≥ 80%
+## Screen M1L2-S04 — Workshop 1 : การจำแนกข้อมูล
+- **Learning Objective:** ฝึกจำแนกข้อมูลจริงจากหน้างานผ่านระบบสุ่มแบบทดสอบได้ถูกต้อง ≥ 80%
 - **Duration:** 90s
 - **Layout:** Full-width Interactive Drag-and-Drop + Scale Matrix (`workshop_m1_data_classification.csv`)
 - **Asset ID:** N/A | **Interactive ID:** `INT-M1-L2-01`, `INT-M1-L2-02`
-- **On Screen Text:** "Workshop 1: ลากข้อมูลโรงงานลงกล่อง Variable / Attribute และระบุ Measurement Scale (Nominal / Ordinal / Interval / Ratio)"
+- **On Screen Text:** "Workshop 1 : การจำแนกข้อมูล — จำแนกข้อมูลโรงงานลงกล่อง Variable / Attribute และระบุ Measurement Scale (Nominal / Ordinal / Interval / Ratio)"
 - **Voice Over Script Ref:** `AUD-M1L2-S04`
 - **Motion Specification:** Snap-to-zone animation; green check / amber retry bounce.
 - **Trigger Logic:** Score +1 per item; passing >= 7/8 in quick round or >= 16/20 in full dataset mode.

@@ -95,13 +95,13 @@
 - **EN Reference:**  
   Measurement scales determine which statistical operations are valid: Nominal labels without order, Ordinal ranks without equal intervals, Interval scales with arbitrary zero like Celsius, and Ratio scales with a true zero like millimeters and grams.
 
-### AUD-M1L2-S04 (30 sec) — Workshop 1: Classify Real Factory Data
+### AUD-M1L2-S04 (30 sec) — Workshop 1 : Data Classification
 - **Display Script (TH):**  
-  ถึงเวลาลงมือทำ **Workshop ที่ 1** แล้ว [PAUSE-1] ลองลากข้อมูลจริงจากโรงงานมาวางในหมวด **Variable** หรือ **Attribute** พร้อมระบุ Measurement Scale ให้ถูกต้อง ทำความคุ้นเคยกับตัวอย่างจริงหน้างาน แล้วดูผลเฉลยกัน
+  ถึงเวลาลงมือทำ **Workshop 1 : การจำแนกข้อมูล** แล้ว [PAUSE-1] ลองจำแนกข้อมูลจริงจากโรงงานลงในหมวด **Variable** หรือ **Attribute** พร้อมระบุ Measurement Scale ให้ถูกต้อง ทำความคุ้นเคยกับตัวอย่างจริงหน้างาน แล้วดูผลเฉลยกัน
 - **TTS Clean Script (TH):**  
-  ถึงเวลาลงมือทำ เวิร์คช็อป ที่ 1 แล้ว, ลองลากข้อมูลจริงจากโรงงานมาวางในหมวด แวริเอเบิล หรือ แอททริบิวต์ พร้อมระบุระดับมาตราการวัดให้ถูกต้อง ทำความคุ้นเคยกับตัวอย่างจริงหน้างาน แล้วดูผลเฉลยกัน
+  ถึงเวลาลงมือทำ เวิร์คช็อป หนึ่ง การจำแนกข้อมูล แล้ว, ลองจำแนกข้อมูลจริงจากโรงงานลงในหมวด แวริเอเบิล หรือ แอททริบิวต์ พร้อมระบุระดับมาตราการวัดให้ถูกต้อง ทำความคุ้นเคยกับตัวอย่างจริงหน้างาน แล้วดูผลเฉลยกัน
 - **EN Reference:**  
-  Now complete Workshop 1 by classifying real manufacturing items into Variable or Attribute data and matching their measurement scales.
+  Now complete Workshop 1 : Data Classification by classifying real manufacturing items into Variable or Attribute data and matching their measurement scales.
 
 ### AUD-M1L2-S05 (30 sec) — Feedback & Rationale
 - **Display Script (TH):**  
