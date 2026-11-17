@@ -1,0 +1,54 @@
+name: Build Portable Desktop App (Windows)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'web/**'
+      - '.github/workflows/build-desktop.yml'
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: 'npm'
+          cache-dependency-path: web/package-lock.json
+
+      - name: Setup Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-pc-windows-msvc
+
+      - name: Rust cache
+        uses: swatinem/rust-cache@v2
+        with:
+          workspaces: web/src-tauri
+
+      - name: Install npm dependencies
+        working-directory: web
+        run: npm ci
+
+      - name: Build Tauri Desktop App
+        working-directory: web
+        run: npm run tauri build
+
+      - name: Upload Windows Executable Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: SPC-Training-Windows-Desktop-App
+          path: |
+            web/src-tauri/target/release/spc-training.exe
+            web/src-tauri/target/release/SPC-Training.exe
+            web/src-tauri/target/release/bundle/nsis/*.exe
+            web/src-tauri/target/release/bundle/msi/*.msi
+          if-no-files-found: warn

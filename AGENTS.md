@@ -137,7 +137,8 @@ SPC_Training/
 ```
 
 ### 6.2 สถาปัตยกรรมและเทคโนโลยีสำหรับ Phase B
-- **Framework:** Astro (Content Collections + React Islands) หรือ Next.js (App Router) *(รอปะป๊ายืนยันก่อนเริ่ม Phase B)*
+- **Desktop Shell & Distribution:** **Tauri v2** (Rust-backed lightweight native webview, zero open ports/no localhost, portable `.exe` standalone app สำหรับการใช้งาน Offline 100% ภายในโรงงานโดยไม่ขัดต่อนโยบายความปลอดภัย IT)
+- **Frontend Framework:** Astro 5 (Static Output + React 19 Islands)
 - **Styling:** Tailwind CSS + Radix UI / Shadcn UI components
 - **Charts & Simulators:** Recharts, Chart.js with Annotation Plugin, SVG, Canvas API, หรือ D3.js
 - **Math Rendering:** KaTeX (`rehype-katex` + `remark-math`)

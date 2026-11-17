@@ -10,7 +10,7 @@
 - **กลุ่มผู้เรียน:** Manufacturing / Quality / Process / Maintenance Engineers และ Supervisor ในโรงงานอุตสาหกรรม (Automotive, Electronics, Machining, Injection, Stamping, Assembly)
 - **เป้าหมายการส่งมอบ (Delivery Target):**
   1. **Markdown Repository (`SPC_Training`)**: เก็บเนื้อหา, Storyboard, บทเสียงบรรยาย, สเปก Interactive, ข้อสอบ, และชุดข้อมูล Workshop อย่างเป็นระบบ (รองรับทั้ง **Web App บน Internet** และสามารถ Export/Wrap เข้า LMS/SCORM ในอนาคตได้)
-  2. **Interactive Web Training บน Internet**: แปลงเนื้อหาจาก Markdown/MDX เป็นเว็บแอปพลิเคชัน (แนะนำ **Astro + React/MDX** หรือ **Next.js + MDX** Deploy บน **Cloudflare Pages / Vercel / GitHub Pages**)
+  2. **Interactive Standalone Desktop Training Application (Tauri v2 + Astro/React) & Web Platform**: พัฒนาเป็น **Portable Standalone Desktop Application (.exe) ด้วย Tauri v2** สำหรับการเรียนรู้แบบ Offline 100% ภายในโรงงาน/องค์กรโดยไม่ต้องเปิด Server หรือรัน `localhost` เพื่อให้สอดคล้องกับมาตรการความปลอดภัย IT ของบริษัท พร้อมทั้งสามารถ Build เป็น Static Web ได้ในตัว
   3. **Animation & Interactive Simulations**: ผู้เรียนสามารถปรับค่า Slider, ลากวาง (Drag-and-Drop), กดดูการเปลี่ยนแปลงของกราฟสถิติ/SPC Chart แบบ Real-time
   4. **Thai Voice Narration**: เสียงบรรยายภาษาไทยประจำแต่ละ Screen ที่ Sync กับจังหวะการขึ้นข้อความและ Animation (รองรับทั้ง AI Thai TTS เช่น Edge TTS / Google Cloud TTS / ElevenLabs และการอัดเสียงจริง)
 
