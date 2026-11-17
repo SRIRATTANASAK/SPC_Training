@@ -203,6 +203,7 @@ def main() -> int:
     parser.add_argument("--voice", default="Achernar", help="Gemini prebuilt voice name (default: Achernar)")
     parser.add_argument("--model", default="", help="Preferred Gemini TTS model")
     parser.add_argument("--limit", type=int, default=0, help="Optional limit for test runs")
+    parser.add_argument("--screen", default="", help="Generate for a specific screenId, e.g. M1L1-S03")
     parser.add_argument("--skip-existing", action="store_true", help="Skip already generated MP3s")
     args = parser.parse_args()
 
@@ -242,7 +243,16 @@ def main() -> int:
     else:
         api_key = ""
 
-    screens = data["screens"][: args.limit] if args.limit > 0 else data["screens"]
+    if args.screen:
+        target = args.screen.strip().upper().replace("AUD-", "").replace(".MP3", "")
+        screens = [s for s in data["screens"] if s["screenId"].upper() == target]
+        if not screens:
+            print(f"Error: Screen '{args.screen}' not found in {DATA_JSON.name}", file=sys.stderr)
+            return 1
+    elif args.limit > 0:
+        screens = data["screens"][: args.limit]
+    else:
+        screens = data["screens"]
     for idx, s in enumerate(screens):
         sid = s["screenId"]
         text = s.get("voiceover", {}).get("ttsCleanTh", "")
