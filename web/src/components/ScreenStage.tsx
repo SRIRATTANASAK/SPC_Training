@@ -414,24 +414,33 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                 <button
                   type="button"
                   onClick={() => goToSlide(slideIdx + 1)}
-                  className="flex items-center gap-1 rounded-lg border border-sky-600 bg-sky-50 px-3 py-1.5 text-xs font-bold text-sky-900 hover:bg-sky-100"
+                  className="flex items-center gap-1.5 rounded-lg bg-sky-700 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-white hover:bg-sky-800 shadow-sm transition"
                 >
                   <span>ดูส่วนถัดไป ({slideIdx + 2}/{slides.length})</span>
                   <ChevronRight className="h-3.5 w-3.5" />
                 </button>
               )}
 
-              {screen.nextScreenId ? (
+              {slides.length > 1 && slideIdx < slides.length - 1 ? (
+                <button
+                  type="button"
+                  disabled
+                  title={`กรุณาเปิดดูหรือทำกิจกรรมให้ครบทุกส่วนก่อน (กำลังดูส่วนที่ ${slideIdx + 1} จาก ${slides.length})`}
+                  className="flex items-center gap-1 rounded-lg border border-slate-200 bg-slate-100 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-slate-400 cursor-not-allowed select-none"
+                >
+                  <span>หน้าถัดไป →</span>
+                </button>
+              ) : screen.nextScreenId ? (
                 <a
                   href={`/module-01/${screen.nextScreenId}`}
-                  className="rounded-lg bg-sky-700 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-white hover:bg-sky-800"
+                  className="rounded-lg bg-sky-700 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-white hover:bg-sky-800 shadow-sm transition"
                 >
                   หน้าถัดไป →
                 </a>
               ) : (
                 <a
                   href="/"
-                  className="rounded-lg bg-emerald-700 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-white hover:bg-emerald-800"
+                  className="rounded-lg bg-emerald-700 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-white hover:bg-emerald-800 shadow-sm transition"
                 >
                   จบ Module 1 ✓
                 </a>
