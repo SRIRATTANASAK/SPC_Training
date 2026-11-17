@@ -8,6 +8,8 @@ interface Props {
   screenId: string;
   isQuizOrWorkshop?: boolean;
   onAudioEnded?: () => void;
+  onTimeUpdate?: (currentTime: number) => void;
+  onPlayStateChange?: (isPlaying: boolean) => void;
   leftSlot?: React.ReactNode;
   rightSlot?: React.ReactNode;
 }
@@ -17,6 +19,8 @@ export const AudioPlayerBar: React.FC<Props> = ({
   screenId,
   isQuizOrWorkshop = false,
   onAudioEnded,
+  onTimeUpdate,
+  onPlayStateChange,
   leftSlot,
   rightSlot,
 }) => {
@@ -56,9 +60,13 @@ export const AudioPlayerBar: React.FC<Props> = ({
     if (autoPlay) {
       audioRef.current
         .play()
-        .then(() => setPlaying(true))
+        .then(() => {
+          setPlaying(true);
+          onPlayStateChange?.(true);
+        })
         .catch(() => {
           setPlaying(false);
+          onPlayStateChange?.(false);
         });
     }
   }, [hydrated, hasMp3, screenId]);
@@ -68,12 +76,19 @@ export const AudioPlayerBar: React.FC<Props> = ({
       if (playing) {
         audioRef.current.pause();
         setPlaying(false);
+        onPlayStateChange?.(false);
       } else {
         audioRef.current.playbackRate = speed;
         audioRef.current
           .play()
-          .then(() => setPlaying(true))
-          .catch(() => setPlaying(false));
+          .then(() => {
+            setPlaying(true);
+            onPlayStateChange?.(true);
+          })
+          .catch(() => {
+            setPlaying(false);
+            onPlayStateChange?.(false);
+          });
       }
     }
   };
@@ -107,6 +122,7 @@ export const AudioPlayerBar: React.FC<Props> = ({
 
   const handleEnded = () => {
     setPlaying(false);
+    onPlayStateChange?.(false);
     if (autoPlay && onAudioEnded) {
       onAudioEnded();
     }
@@ -122,6 +138,7 @@ export const AudioPlayerBar: React.FC<Props> = ({
           ref={audioRef}
           src={voiceover.audioFile}
           onEnded={handleEnded}
+          onTimeUpdate={(e) => onTimeUpdate?.(e.currentTarget.currentTime)}
           preload="auto"
         />
       )}

@@ -4,6 +4,7 @@ import type { ModulePayload, ScreenItem } from '../lib/types';
 import { progressStore } from '../lib/storage';
 import { InlineMarkdown, MarkdownContent } from './MarkdownContent';
 import { AssetViewer } from './visuals/AssetViewer';
+import { FishboneDiagram } from './visuals/FishboneDiagram';
 import { InteractiveRouter } from './interactives/InteractiveRouter';
 import { AudioPlayerBar } from './AudioPlayerBar';
 
@@ -64,6 +65,8 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
   const [drawer, setDrawer] = useState<'none' | 'resources' | 'workshop' | 'nav'>('none');
   const [slideIdx, setSlideIdx] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
+  const [audioTime, setAudioTime] = useState(0);
+  const [audioPlaying, setAudioPlaying] = useState(false);
 
   const hasVisibleAsset = useMemo(
     () => (screen.assetIds ?? []).some((id) => VISIBLE_ASSET_IDS.has(id)),
@@ -116,6 +119,8 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
   useEffect(() => {
     setSlideIdx(0);
     setFadeIn(true);
+    setAudioTime(0);
+    setAudioPlaying(false);
     const next = progressStore.markScreenCompleted(screen.screenId);
     setCompletedCount(next.var_completed_screens.length);
   }, [screen.screenId]);
@@ -215,6 +220,8 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
         screenId={screen.screenId}
         isQuizOrWorkshop={isActivityScreen}
         onAudioEnded={handleAudioEnded}
+        onTimeUpdate={setAudioTime}
+        onPlayStateChange={setAudioPlaying}
         leftSlot={headerLeft}
         rightSlot={headerRight}
       />
@@ -334,6 +341,80 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                       </tbody>
                     </table>
                   </div>
+                </div>
+              </div>
+            ) : screen.screenId === 'M1L1-S04' && currentSlide.id === 'theory' ? (
+              <div className="flex h-full flex-col items-center justify-start gap-2.5 w-full max-w-5xl xl:max-w-6xl mx-auto pt-0 sm:pt-1">
+                {/* หมายเลข 1: ปรับตารางตัวอย่างอุตสาหกรรมให้สูงขึ้นและสวยงามเด่นชัด */}
+                <div className="w-full">
+                  <div className="overflow-hidden rounded-xl border border-slate-300 shadow-sm bg-white">
+                    <table className="w-full border-collapse text-left text-xs sm:text-sm">
+                      <thead>
+                        <tr className="border-b border-slate-300 bg-slate-900 text-white">
+                          <th className="w-[26%] px-3.5 py-2 border-r border-slate-700 font-extrabold text-slate-100">
+                            อุตสาหกรรม (Industry)
+                          </th>
+                          <th className="w-[34%] px-3.5 py-2 border-r border-slate-700 font-extrabold text-amber-200">
+                            ตัวแปรคุณภาพที่ควบคุม
+                          </th>
+                          <th className="w-[40%] px-3.5 py-2 font-extrabold text-sky-200">
+                            ตัวอย่างการประยุกต์ใช้สถิติ
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200 text-xs sm:text-sm">
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-3.5 py-1.5 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70">
+                            1. Machining (CNC)
+                          </td>
+                          <td className="px-3.5 py-1.5 border-r border-slate-200 font-mono text-slate-800">
+                            เส้นผ่านศูนย์กลางเพลา 50.00 ± 0.05 mm
+                          </td>
+                          <td className="px-3.5 py-1.5 text-slate-700 leading-snug">
+                            ติดตามการสึกหรอของมีดกลึง (Tool Wear) ก่อนหลุดสเปก
+                          </td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-3.5 py-1.5 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70">
+                            2. Injection Molding
+                          </td>
+                          <td className="px-3.5 py-1.5 border-r border-slate-200 text-slate-800">
+                            น้ำหนักชิ้นงาน (Shot Weight)
+                          </td>
+                          <td className="px-3.5 py-1.5 text-slate-700 leading-snug">
+                            เปรียบเทียบความสม่ำเสมอระหว่าง Cavity 1–4
+                          </td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-3.5 py-1.5 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70">
+                            3. Stamping
+                          </td>
+                          <td className="px-3.5 py-1.5 border-r border-slate-200 text-slate-800">
+                            ความหนาแผ่นโลหะ &amp; จำนวนครีบ (Burr)
+                          </td>
+                          <td className="px-3.5 py-1.5 text-slate-700 leading-snug">
+                            ควบคุมแรงกดปั๊มและนับความถี่จุดบกพร่อง
+                          </td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-3.5 py-1.5 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70">
+                            4. Electronics / Assembly
+                          </td>
+                          <td className="px-3.5 py-1.5 border-r border-slate-200 text-slate-800">
+                            แรงบิดขันสกรู (Torque)
+                          </td>
+                          <td className="px-3.5 py-1.5 text-slate-700 leading-snug">
+                            คุมค่าเฉลี่ยแรงบิดและจัดอันดับ Defect ด้วย Pareto
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* หมายเลข 2: Fishbone Diagram หัวปลาคือ "ความแปรปรวน" พร้อมก้างปลาขึ้นตามเสียงบรรยาย */}
+                <div className="w-full">
+                  <FishboneDiagram audioTime={audioTime} isPlaying={audioPlaying} />
                 </div>
               </div>
             ) : currentSlide.kind === 'visual-content' ? (
