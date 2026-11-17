@@ -99,8 +99,10 @@ modules/module-XX/
   - ในหน้าเว็บมีแถบ Audio Player (Web Audio API) พร้อม **Closed Captions (คำบรรยายภาษาไทย)**, **Auto-advance toggle**, และ **Cue Sync** (เมื่อเสียงพูดถึงคำสำคัญ Animation/Highlight บนหน้าจอขยับตาม)
 - **Hosting (Internet)**: **Cloudflare Pages** หรือ **Vercel** หรือ **GitHub Pages** (Deploy อัตโนมัติทุกครั้งที่ `git push origin main`)
 
-### 5.2 การทำงานร่วมกันระหว่าง Windows (`C:\Project\SPC_Training`) และ Cloud
-- ปะป๊าแก้เนื้อหา/ตรวจคำบน Windows → `git add . && git commit -m "..." && git push origin main`
+### 5.2 การทำงานร่วมกันระหว่างเครื่องของปะป๊า, GitHub และ AI Assistant (สีนวล)
+- **เมื่อ AI สีนวลทำงานเสร็จ:** ต้องรันสคริปต์ตรวจสอบความถูกต้องให้ผ่าน 100% จากนั้นต้องทำ `git commit` และ `git push origin main` ขึ้น GitHub ทันทีโดยอัตโนมัติ พร้อมแจ้งเตือนให้ปะป๊ารัน `git pull origin main` ทุกครั้ง
+- **เมื่อปะป๊าเริ่มงานหรือตรวจงานบนเครื่อง:** ให้รัน `git pull origin main` เพื่อดึงโค้ดและข้อมูลล่าสุดจาก GitHub เสมอ
+- **เมื่อปะป๊าแก้เนื้อหา/ตรวจคำบนเครื่องตนเอง:** รัน `git add . && git commit -m "..." && git push origin main`
 - เวลาเริ่มงานรอบใหม่กับ AI หรือทีมพัฒนา: **ให้อ่าน `AGENTS.md` เป็นด่านแรก** ตามด้วย `HANDOFF.md` และ `CURRICULUM_ROADMAP.md` เสมอ แล้วเช็ค Checklist ในหัวข้อถัดไป
 
 ---
