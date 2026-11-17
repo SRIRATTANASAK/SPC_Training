@@ -61,12 +61,11 @@ $$\text{COPQ} = \text{Prevention} + \text{Appraisal} + \text{Internal Failure} +
 ---
 
 ## M1L1-S05 — Statistical Thinking
-**หัวข้อ:** หลักคิดเชิงสถิติ 3 ประการ (3 Pillars of Statistical Thinking)  
+**หัวข้อ:** หลักคิดเชิงสถิติ (Statistical Thinking)  
 `<Asset id="AST-M1-004" />`
 
 1. **All work is a process:** ทุกงานในโรงงานคือกระบวนการที่เชื่อมโยงกัน (`Input → Process → Output`)
 2. **Variation exists in all processes:** ทุกกระบวนการมีความแปรปรวนอยู่เสมอ (เสถียร ≠ เท่ากันทุกชิ้น)
-3. **Reduce variation systematically:** ต้องแยก **Normal Variation** ออกจาก **Abnormal Variation** ให้ได้ก่อนลงมือปรับเครื่อง มิฉะนั้นจะเกิด **Tampering (ปรับเกินความจำเป็นจนเครื่องยิ่งแกว่ง)**
 
 | ประเภทความแปรปรวน | สาเหตุ (Causes) | พฤติกรรมของกระบวนการ | การจัดการที่ถูกต้อง |
 |---|---|---|---|

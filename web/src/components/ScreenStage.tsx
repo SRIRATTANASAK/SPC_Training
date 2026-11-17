@@ -417,6 +417,134 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                   <FishboneDiagram audioTime={audioTime} isPlaying={audioPlaying} />
                 </div>
               </div>
+            ) : screen.screenId === 'M1L1-S05' ? (
+              <div className="flex h-full flex-col items-center justify-start gap-4 sm:gap-5 w-full max-w-5xl xl:max-w-6xl mx-auto pt-1 sm:pt-2">
+                {/* ข้อ 2: นำ 2 หลักคิดขึ้นด้านบน และปรับขนาดตัวหนังสือให้ใหญ่ขึ้น ชัดเจน โดดเด่น */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 w-full">
+                  {/* กล่องหลักคิดที่ 1 */}
+                  <div className="rounded-xl border border-sky-200 bg-gradient-to-br from-sky-50 to-white p-4 shadow-sm hover:shadow transition">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-md bg-sky-700 text-white font-extrabold text-xs shadow-sm">
+                        1
+                      </span>
+                      <span className="text-xs font-bold uppercase tracking-wider text-sky-800">
+                        All work is a process
+                      </span>
+                    </div>
+                    <p className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+                      ทุกงานในโรงงานคือกระบวนการที่เชื่อมโยงกัน{' '}
+                      <span className="font-mono text-sm sm:text-base font-semibold text-sky-700 whitespace-nowrap bg-sky-100/70 px-2 py-0.5 rounded-md border border-sky-300/60">
+                        Input → Process → Output
+                      </span>
+                    </p>
+                  </div>
+
+                  {/* กล่องหลักคิดที่ 2 */}
+                  <div className="rounded-xl border border-indigo-200 bg-gradient-to-br from-indigo-50 to-white p-4 shadow-sm hover:shadow transition">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="flex h-6 w-6 items-center justify-center rounded-md bg-indigo-700 text-white font-extrabold text-xs shadow-sm">
+                        2
+                      </span>
+                      <span className="text-xs font-bold uppercase tracking-wider text-indigo-800">
+                        Variation exists in all processes
+                      </span>
+                    </div>
+                    <p className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+                      ทุกกระบวนการมีความแปรปรวนอยู่เสมอ{' '}
+                      <span className="font-mono text-sm sm:text-base font-semibold text-indigo-700 whitespace-nowrap bg-indigo-100/70 px-2 py-0.5 rounded-md border border-indigo-300/60">
+                        (เสถียร ≠ เท่ากันทุกชิ้น)
+                      </span>
+                    </p>
+                  </div>
+                </div>
+
+                {/* ข้อ 3: ตารางเปรียบเทียบความแปรปรวน สมดุลกับหน้าต่าง และตัวหนังสือใหญ่ขึ้น คมชัด สวยงาม */}
+                <div className="w-full">
+                  <div className="overflow-hidden rounded-xl border border-slate-300 shadow-sm bg-white">
+                    <table className="w-full border-collapse text-left">
+                      <thead>
+                        <tr className="border-b border-slate-300 bg-slate-900 text-white">
+                          <th className="w-[23%] px-4 py-3 border-r border-slate-700 text-sm sm:text-base font-extrabold text-slate-100">
+                            ประเภทความแปรปรวน
+                          </th>
+                          <th className="w-[27%] px-4 py-3 border-r border-slate-700 text-sm sm:text-base font-extrabold text-amber-200">
+                            สาเหตุ (Causes)
+                          </th>
+                          <th className="w-[25%] px-4 py-3 border-r border-slate-700 text-sm sm:text-base font-extrabold text-sky-200">
+                            พฤติกรรมของกระบวนการ
+                          </th>
+                          <th className="w-[25%] px-4 py-3 text-sm sm:text-base font-extrabold text-emerald-200">
+                            การจัดการที่ถูกต้อง
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200 text-sm sm:text-base">
+                        {/* แถวที่ 1: Normal Variation */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-4 py-3.5 border-r border-slate-200 bg-slate-50/70">
+                            <div className="font-bold text-slate-900">
+                              Normal Variation
+                            </div>
+                            <div className="text-xs text-slate-500 font-medium">
+                              (Common Cause / ผันแปรปกติ)
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5 border-r border-slate-200 text-slate-700 leading-relaxed">
+                            สภาพแวดล้อม, การสั่นสะเทือนตามธรรมชาติของเครื่องจักร
+                          </td>
+                          <td className="px-4 py-3.5 border-r border-slate-200 leading-relaxed">
+                            <span className="inline-block rounded-md bg-emerald-100 px-2 py-0.5 text-xs sm:text-sm font-bold text-emerald-800 border border-emerald-300 mb-1">
+                              In Control
+                            </span>
+                            <div className="text-slate-700 text-xs sm:text-sm">
+                              แกว่งตัวสม่ำเสมอในขอบเขตปกติ
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5 bg-amber-50/30 leading-relaxed">
+                            <div className="font-bold text-rose-700 text-sm sm:text-base">
+                              ห้ามปรับตั้งเครื่องมั่ว
+                            </div>
+                            <div className="text-xs sm:text-sm text-slate-600 mt-0.5 font-medium">
+                              (ห้าม <strong className="text-rose-800">Tampering</strong> จะยิ่งทำให้เครื่องแกว่งหนักขึ้น)
+                            </div>
+                          </td>
+                        </tr>
+
+                        {/* แถวที่ 2: Abnormal Variation */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-4 py-3.5 border-r border-slate-200 bg-slate-50/70">
+                            <div className="font-bold text-slate-900">
+                              Abnormal Variation
+                            </div>
+                            <div className="text-xs text-slate-500 font-medium">
+                              (Special Cause / ผิดปกติ)
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5 border-r border-slate-200 text-slate-700 leading-relaxed">
+                            มีดกลึงแตก (Tool wear), วัตถุดิบผิดสเปก, ช่างตั้งค่าผิด
+                          </td>
+                          <td className="px-4 py-3.5 border-r border-slate-200 leading-relaxed">
+                            <span className="inline-block rounded-md bg-rose-100 px-2 py-0.5 text-xs sm:text-sm font-bold text-rose-800 border border-rose-300 mb-1">
+                              Out of Control
+                            </span>
+                            <div className="text-slate-700 text-xs sm:text-sm">
+                              หลุดเส้นควบคุม หรือเกิดแนวโน้มผิดปกติ
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5 bg-sky-50/30 leading-relaxed">
+                            <div className="font-bold text-sky-900 text-sm sm:text-base">
+                              หยุดเครื่องและค้นหาสาเหตุรากเหง้า
+                            </div>
+                            <div className="text-xs sm:text-sm text-slate-600 mt-0.5 font-medium">
+                              (<strong className="text-sky-950">Root Cause</strong>) ทันทีเพื่อขจัดต้นตอ
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             ) : currentSlide.kind === 'visual-content' ? (
               <div
                 className={
