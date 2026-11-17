@@ -276,15 +276,65 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                 </div>
               </div>
             ) : screen.screenId === 'M1L1-S02' ? (
-              <div className="flex h-full flex-col items-center justify-center gap-3 w-full max-w-5xl xl:max-w-6xl mx-auto">
-                <div className="w-full max-w-xl">
+              <div className="flex h-full flex-col items-center justify-start gap-3 w-full max-w-5xl xl:max-w-6xl mx-auto pt-0 sm:pt-1">
+                <div className="w-full max-w-3xl lg:max-w-4xl">
                   <AssetViewer assetIds={screen.assetIds} screenId={screen.screenId} />
                 </div>
-                {cleanMarkdown && (
-                  <div className="w-full">
-                    <MarkdownContent markdown={cleanMarkdown} />
+                {/* 3x3 Comparison Table: Dimension vs Gut Feeling vs Data-Driven */}
+                <div className="w-full max-w-3xl lg:max-w-4xl">
+                  <div className="overflow-hidden rounded-xl border border-slate-300 shadow-sm bg-white">
+                    <table className="w-full border-collapse text-left text-xs sm:text-sm">
+                      <thead>
+                        <tr className="border-b border-slate-300 bg-slate-900 text-white">
+                          <th className="w-[24%] px-4 py-2.5 border-r border-slate-700 font-extrabold text-slate-100">
+                            มิติการตัดสินใจ
+                          </th>
+                          <th className="w-[38%] px-4 py-2.5 border-r border-slate-700 font-extrabold text-amber-200">
+                            แบบเดิม (Gut Feeling / ประสบการณ์ล้วน)
+                          </th>
+                          <th className="w-[38%] px-4 py-2.5 font-extrabold text-sky-200">
+                            แบบ Data-Driven Decision (ใช้สถิติ)
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200">
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-4 py-2.5 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70">
+                            การหาสาเหตุ
+                          </td>
+                          <td className="px-4 py-2.5 border-r border-slate-200 text-slate-700 leading-relaxed">
+                            ลองผิดลองถูก ปรับตั้งเครื่องไปเรื่อยๆ
+                          </td>
+                          <td className="px-4 py-2.5 text-sky-950 font-medium bg-sky-50/40 leading-relaxed">
+                            วัดผลและทดสอบสมมติฐาน ชี้เป้าสาเหตุจริง
+                          </td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-4 py-2.5 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70">
+                            มุมมองความเห็น
+                          </td>
+                          <td className="px-4 py-2.5 border-r border-slate-200 text-slate-700 leading-relaxed">
+                            เถียงกันตามความเห็นของแต่ละกะ/แผนก
+                          </td>
+                          <td className="px-4 py-2.5 text-sky-950 font-medium bg-sky-50/40 leading-relaxed">
+                            ใช้ตัวเลขกลางชุดเดียวกัน คุยด้วยหลักฐาน
+                          </td>
+                        </tr>
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-4 py-2.5 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70">
+                            จังหวะการแก้ไข
+                          </td>
+                          <td className="px-4 py-2.5 border-r border-slate-200 text-slate-700 leading-relaxed">
+                            รอให้ลูกค้าเคลมหรือเกิดของเสียกองโตก่อน (Reactive)
+                          </td>
+                          <td className="px-4 py-2.5 text-sky-950 font-medium bg-sky-50/40 leading-relaxed">
+                            จับสัญญาณแนวโน้มก่อนหลุด Spec (Proactive)
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
-                )}
+                </div>
               </div>
             ) : currentSlide.kind === 'visual-content' ? (
               <div

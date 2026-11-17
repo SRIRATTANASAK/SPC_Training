@@ -11,10 +11,44 @@ interface Props {
 
 export const MarkdownContent: React.FC<Props> = ({ markdown, className = '' }) => {
   return (
-    <div
-      className={`prose prose-slate max-w-none prose-headings:text-slate-900 prose-h3:text-lg prose-h3:font-bold prose-p:text-slate-700 prose-p:leading-relaxed prose-strong:text-slate-900 prose-code:rounded prose-code:bg-slate-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:text-sky-800 prose-table:w-full prose-table:border-collapse prose-table:border prose-table:border-slate-300 prose-table:text-xs sm:prose-table:text-sm prose-th:border prose-th:border-slate-300 prose-th:bg-slate-100 prose-th:px-3 prose-th:py-2 prose-th:text-left prose-td:border prose-td:border-slate-300 prose-td:px-3 prose-td:py-2 prose-blockquote:border-l-4 prose-blockquote:border-amber-500 prose-blockquote:bg-amber-50/70 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg ${className}`}
-    >
-      <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]}>
+    <div className={`w-full ${className}`}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeKatex]}
+        components={{
+          table: ({ children }) => (
+            <div className="w-full overflow-x-auto my-2.5 rounded-xl border border-slate-300 shadow-sm bg-white">
+              <table className="w-full border-collapse text-left text-xs sm:text-sm">{children}</table>
+            </div>
+          ),
+          thead: ({ children }) => (
+            <thead className="bg-slate-900 text-white font-bold">{children}</thead>
+          ),
+          tbody: ({ children }) => (
+            <tbody className="divide-y divide-slate-200 bg-white">{children}</tbody>
+          ),
+          tr: ({ children }) => (
+            <tr className="hover:bg-slate-50 transition-colors">{children}</tr>
+          ),
+          th: ({ children }) => (
+            <th className="px-4 py-2.5 font-bold text-slate-100 border-r border-slate-700 last:border-r-0 text-center first:text-left">
+              {children}
+            </th>
+          ),
+          td: ({ children }) => (
+            <td className="px-4 py-2.5 text-slate-700 border-r border-slate-200 last:border-r-0 leading-relaxed align-middle">
+              {children}
+            </td>
+          ),
+          p: ({ children }) => <p className="mb-2 text-slate-700 leading-relaxed">{children}</p>,
+          strong: ({ children }) => <strong className="font-bold text-slate-900">{children}</strong>,
+          blockquote: ({ children }) => (
+            <blockquote className="my-2 rounded-r-lg border-l-4 border-amber-500 bg-amber-50/80 p-3 text-sm text-slate-800 shadow-xs">
+              {children}
+            </blockquote>
+          ),
+        }}
+      >
         {markdown}
       </ReactMarkdown>
     </div>

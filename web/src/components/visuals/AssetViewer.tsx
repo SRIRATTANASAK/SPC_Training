@@ -100,7 +100,7 @@ export const AssetViewer: React.FC<Props> = ({ assetIds, screenId }) => {
                   src={item.src}
                   alt={item.caption}
                   className={`${
-                    isHotspotScreen ? 'max-h-[220px] sm:max-h-[240px]' : 'max-h-[220px] sm:max-h-[260px]'
+                    isHotspotScreen ? 'max-h-[260px] sm:max-h-[300px] lg:max-h-[330px]' : 'max-h-[220px] sm:max-h-[260px]'
                   } w-full object-cover rounded-t-xl`}
                   loading="lazy"
                 />
