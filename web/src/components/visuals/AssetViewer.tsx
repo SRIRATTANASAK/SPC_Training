@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { X } from 'lucide-react';
 import { CopqIcebergSvg, EmpiricalRuleBellSvg, NoirScaleCards } from './Module1Visuals';
 
 interface Props {
@@ -30,7 +31,7 @@ const M1L1_S02_HOTSPOTS = [
     idx: 1,
     x: '36%',
     y: '58%',
-    calloutClass: 'left-2 top-2 sm:-left-44 sm:top-6',
+    calloutClass: 'left-3 top-3 sm:left-4 sm:top-4',
     title: 'Hotspot 1: Trial & Error vs Root Cause',
     desc: 'กระดาษจดมือทำให้รู้ปัญหาช้า หลังผลิตของเสียไปแล้ว',
   },
@@ -38,7 +39,7 @@ const M1L1_S02_HOTSPOTS = [
     idx: 2,
     x: '72%',
     y: '34%',
-    calloutClass: 'right-2 top-2 sm:-right-48 sm:top-4',
+    calloutClass: 'right-3 top-3 sm:right-4 sm:top-4',
     title: 'Hotspot 2: Opinion vs Fact',
     desc: 'กราฟ Real-time เตือนทันทีเมื่อ Mean หรือ SD เริ่มขยับ',
   },
@@ -46,7 +47,7 @@ const M1L1_S02_HOTSPOTS = [
     idx: 3,
     x: '75%',
     y: '66%',
-    calloutClass: 'right-2 bottom-10 sm:-right-48 sm:bottom-10',
+    calloutClass: 'right-3 top-3 sm:right-4 sm:top-4',
     title: 'Hotspot 3: Firefighting vs Prevention',
     desc: 'จัดอันดับต้นตอด้วยข้อมูลจริง ไม่เดาสุ่ม',
   },
@@ -129,10 +130,25 @@ export const AssetViewer: React.FC<Props> = ({ assetIds, screenId }) => {
 
                     {currentHs && (
                       <div
-                        className={`absolute z-20 w-56 rounded-xl border border-amber-400 bg-slate-900/95 p-2.5 text-left text-xs text-white shadow-xl backdrop-blur ${currentHs.calloutClass}`}
+                        className={`absolute z-20 w-64 sm:w-72 max-w-[85%] rounded-xl border border-amber-400 bg-slate-900/95 p-3 text-left text-xs text-white shadow-2xl backdrop-blur transition-all ${currentHs.calloutClass}`}
                       >
-                        <div className="font-extrabold text-amber-300">{currentHs.title}</div>
-                        <div className="mt-0.5 text-[11px] leading-snug text-slate-200">
+                        <div className="flex items-center justify-between gap-2 border-b border-slate-700/80 pb-1.5">
+                          <span className="font-extrabold text-amber-300 text-xs sm:text-sm">
+                            {currentHs.title}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setActiveHotspot(null);
+                            }}
+                            className="rounded p-0.5 text-slate-400 hover:text-white hover:bg-slate-800 transition"
+                            title="ปิดคำอธิบาย"
+                          >
+                            <X className="h-3.5 w-3.5" />
+                          </button>
+                        </div>
+                        <div className="mt-1.5 text-xs leading-relaxed text-slate-200">
                           {currentHs.desc}
                         </div>
                       </div>
