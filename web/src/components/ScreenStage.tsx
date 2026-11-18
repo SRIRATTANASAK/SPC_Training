@@ -1058,19 +1058,40 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
               </div>
             ) : currentSlide.kind === 'visual-content' ? (
               screen.screenId === 'M1L3-S01' ? (
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start h-full">
-                  <div className="lg:col-span-5 flex flex-col justify-start">
-                    <div className="rounded-2xl border border-sky-200 bg-sky-50/60 p-4 sm:p-5 shadow-xs">
-                      <div className="flex items-center gap-2 mb-3">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start w-full">
+                  <div className="flex flex-col justify-start">
+                    <div className="rounded-2xl border border-sky-200 bg-sky-50/60 p-3.5 sm:p-4 shadow-xs">
+                      <div className="flex items-center gap-2 mb-2">
                         <span className="h-2 w-2 rounded-full bg-sky-600 animate-pulse" />
                         <span className="text-xs font-bold uppercase tracking-wider text-sky-900">
                           สูตรและการคำนวณหน้างาน
                         </span>
                       </div>
-                      <MarkdownContent markdown={cleanMarkdown} />
+
+                      {/* Formula Showcase: Large and Centered in Card */}
+                      <div className="my-2.5 rounded-xl border border-sky-200 bg-white py-3 px-4 shadow-2xs flex justify-center items-center text-center">
+                        <span className="text-2xl sm:text-3xl font-extrabold text-sky-950 font-serif">
+                          <InlineMarkdown text="$\LARGE \bar{X} = \frac{\sum_{i=1}^{n} X_i}{n}$" />
+                        </span>
+                      </div>
+
+                      <div className="mt-2.5 space-y-2 text-xs sm:text-sm text-slate-800">
+                        <div>
+                          <strong className="font-bold text-slate-900">ตัวอย่างคำนวณ:</strong>
+                          <div className="mt-1 rounded-lg bg-white/90 py-1.5 px-2.5 border border-sky-200/70 text-center text-xs sm:text-sm font-mono font-semibold text-slate-800 overflow-x-auto">
+                            <InlineMarkdown text="$\bar{X} = \frac{50.00 + 50.01 + 49.99 + 50.02 + 50.00}{5} = \frac{250.02}{5} = 50.004\text{ mm}$" />
+                          </div>
+                        </div>
+                        <p className="leading-relaxed">
+                          <strong className="font-bold text-slate-900">การใช้หน้างาน:</strong> วัด <strong className="text-sky-900 font-bold">Process Centering</strong> <span className="whitespace-nowrap">(อยู่ตรง Target หรือเยื้อง)</span>
+                        </p>
+                        <p className="leading-relaxed">
+                          <strong className="font-bold text-slate-900">จุดอ่อน:</strong> ไวต่อ Outlier มาก
+                        </p>
+                      </div>
                     </div>
                   </div>
-                  <div className="lg:col-span-7 flex flex-col justify-start h-full">
+                  <div className="flex flex-col justify-start">
                     <OutlierMeanMedianLab />
                   </div>
                 </div>

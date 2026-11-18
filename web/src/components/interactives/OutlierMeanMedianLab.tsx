@@ -7,7 +7,7 @@ export const OutlierMeanMedianLab: React.FC = () => {
   const [values, setValues] = useState<number[]>([...DEFAULT_VALUES]);
   const [selectedIndices, setSelectedIndices] = useState<number[]>([4]); // Default select item #5
 
-  // Slider value reflects the average of selected items or the first selected item
+  // Slider value reflects the first selected item or default
   const activeSliderValue = useMemo(() => {
     if (selectedIndices.length === 0) return 50.0;
     return values[selectedIndices[0]];
@@ -27,8 +27,7 @@ export const OutlierMeanMedianLab: React.FC = () => {
   const toggleSelectIndex = (idx: number) => {
     setSelectedIndices((prev) => {
       if (prev.includes(idx)) {
-        // Keep at least one item selected
-        if (prev.length === 1) return prev;
+        if (prev.length === 1) return prev; // Keep at least one selected
         return prev.filter((i) => i !== idx);
       }
       return [...prev, idx].sort((a, b) => a - b);
@@ -37,7 +36,7 @@ export const OutlierMeanMedianLab: React.FC = () => {
 
   const selectAll = () => {
     if (selectedIndices.length === values.length) {
-      setSelectedIndices([4]); // Keep only #5
+      setSelectedIndices([4]);
     } else {
       setSelectedIndices([0, 1, 2, 3, 4]);
     }
@@ -80,56 +79,56 @@ export const OutlierMeanMedianLab: React.FC = () => {
   const selectedLabels = selectedIndices.map((i) => `#${i + 1}`).join(', ');
 
   return (
-    <div className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 shadow-xs flex flex-col justify-between h-full">
+    <div className="rounded-2xl border border-slate-200 bg-white p-3 sm:p-3.5 shadow-xs flex flex-col justify-between">
       <div>
-        {/* Header with Title and Presets */}
-        <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+        {/* Header with Title and Presets (Compact) */}
+        <div className="flex flex-wrap items-center justify-between gap-1.5 mb-2">
           <div>
             <div className="flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full bg-rose-500 animate-pulse" />
-              <span className="text-xs font-bold uppercase tracking-wider text-rose-700">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-rose-700">
                 Interactive Simulator
               </span>
             </div>
-            <h3 className="text-base sm:text-lg font-extrabold text-slate-900 mt-0.5">
+            <h3 className="text-sm sm:text-base font-extrabold text-slate-900">
               แบบจำลองผลกระทบของ Outlier ต่อค่าเฉลี่ย
             </h3>
           </div>
-          <div className="flex flex-wrap items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-1">
             <button
               type="button"
               onClick={() => setPreset('normal')}
-              className="rounded-lg border border-slate-300 bg-slate-50 px-2.5 py-1 text-xs font-bold text-slate-700 hover:bg-slate-100 transition shadow-2xs"
+              className="rounded-md border border-slate-300 bg-slate-50 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold text-slate-700 hover:bg-slate-100 transition shadow-2xs"
             >
-              รีเซ็ตค่าปกติ (~50 mm)
+              รีเซ็ต (~50 mm)
             </button>
             <button
               type="button"
               onClick={() => setPreset('low')}
-              className="rounded-lg border border-amber-300 bg-amber-50 px-2.5 py-1 text-xs font-bold text-amber-900 hover:bg-amber-100 transition shadow-2xs"
+              className="rounded-md border border-amber-300 bg-amber-50 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold text-amber-900 hover:bg-amber-100 transition shadow-2xs"
             >
               Outlier ต่ำ (30 mm)
             </button>
             <button
               type="button"
               onClick={() => setPreset('high')}
-              className="rounded-lg border border-rose-300 bg-rose-50 px-2.5 py-1 text-xs font-bold text-rose-900 hover:bg-rose-100 transition shadow-2xs"
+              className="rounded-md border border-rose-300 bg-rose-50 px-2 py-0.5 text-[10px] sm:text-[11px] font-bold text-rose-900 hover:bg-rose-100 transition shadow-2xs"
             >
               Outlier สูง (80 mm)
             </button>
           </div>
         </div>
 
-        {/* Section 2 & 3: Selection & Slider (Range 30 to 80 mm) */}
-        <div className="mb-3.5 rounded-xl bg-slate-50 p-3 sm:p-3.5 border border-slate-200">
-          <div className="flex justify-between items-center text-xs font-bold text-slate-800 mb-1.5">
-            <span className="text-sky-950 font-bold">ลองเลือกชิ้นงานและปรับค่า:</span>
-            <div className="flex items-center gap-2">
-              <span className="text-[11px] text-slate-500 font-normal">
+        {/* Section 2 & 3: Selection & Slider (Range 30 to 80 mm) (Compact) */}
+        <div className="mb-2 rounded-xl bg-slate-50 p-2 sm:p-2.5 border border-slate-200">
+          <div className="flex justify-between items-center text-xs font-bold text-slate-800 mb-1">
+            <span className="text-sky-950 font-bold text-[11px] sm:text-xs">ลองเลือกชิ้นงานและปรับค่า:</span>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[10px] text-slate-500 font-normal">
                 กำลังปรับ {selectedLabels}:
               </span>
               <span
-                className={`font-mono text-sm px-2 py-0.5 rounded font-extrabold ${
+                className={`font-mono text-xs px-1.5 py-0.5 rounded font-extrabold ${
                   activeSliderValue <= 40
                     ? 'bg-amber-100 text-amber-900 border border-amber-300'
                     : activeSliderValue >= 60
@@ -138,14 +137,14 @@ export const OutlierMeanMedianLab: React.FC = () => {
                 }`}
               >
                 {activeSliderValue.toFixed(2)} mm
-                {activeSliderValue <= 40 && ' ⚠️ Outlier ต่ำ!'}
-                {activeSliderValue >= 60 && ' ⚠️ Outlier สูง!'}
+                {activeSliderValue <= 40 && ' ⚠️ ต่ำ!'}
+                {activeSliderValue >= 60 && ' ⚠️ สูง!'}
               </span>
             </div>
           </div>
 
           <div className="relative flex items-center gap-2">
-            <span className="text-xs font-bold font-mono text-slate-500">30</span>
+            <span className="text-[10px] font-bold font-mono text-slate-500">30</span>
             <input
               type="range"
               min={30}
@@ -153,27 +152,27 @@ export const OutlierMeanMedianLab: React.FC = () => {
               step={0.1}
               value={activeSliderValue}
               onChange={(e) => handleSliderChange(Number(e.target.value))}
-              className="w-full accent-rose-600 h-2.5 bg-slate-200 rounded-lg cursor-pointer"
+              className="w-full accent-rose-600 h-2 bg-slate-200 rounded-lg cursor-pointer"
             />
-            <span className="text-xs font-bold font-mono text-slate-500">80</span>
+            <span className="text-[10px] font-bold font-mono text-slate-500">80</span>
           </div>
 
-          {/* Section 4: Multi-item Selector */}
-          <div className="mt-3 pt-2.5 border-t border-slate-200/80">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-[11px] font-bold text-slate-600">
-                คลิกชิ้นงานเพื่อเลือกปรับค่า (เลือกได้มากกว่า 1 ชิ้น):
+          {/* Section 4: Multi-item Selector (Compact) */}
+          <div className="mt-2 pt-1.5 border-t border-slate-200/80">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-[10px] font-bold text-slate-600">
+                คลิกเลือกชิ้นงานเพื่อปรับค่า (เลือกได้หลายชิ้น):
               </span>
               <button
                 type="button"
                 onClick={selectAll}
-                className="text-[11px] font-bold text-sky-700 hover:text-sky-900 underline"
+                className="text-[10px] font-bold text-sky-700 hover:text-sky-900 underline"
               >
-                {selectedIndices.length === values.length ? 'ยกเลิกเลือกทั้งหมด' : 'เลือกทั้งหมด (5 ชิ้น)'}
+                {selectedIndices.length === values.length ? 'ยกเลิก' : 'เลือกทั้งหมด (5 ชิ้น)'}
               </button>
             </div>
 
-            <div className="grid grid-cols-5 gap-2">
+            <div className="grid grid-cols-5 gap-1.5">
               {values.map((v, i) => {
                 const isSelected = selectedIndices.includes(i);
                 const isOutlier = v <= 40 || v >= 60;
@@ -182,25 +181,25 @@ export const OutlierMeanMedianLab: React.FC = () => {
                     key={i}
                     type="button"
                     onClick={() => toggleSelectIndex(i)}
-                    className={`rounded-xl p-2 text-center transition-all border flex flex-col items-center justify-center ${
+                    className={`rounded-lg p-1 sm:p-1.5 text-center transition-all border flex flex-col items-center justify-center ${
                       isSelected
-                        ? 'bg-sky-50 border-sky-500 ring-2 ring-sky-400 shadow-sm'
+                        ? 'bg-sky-50 border-sky-500 ring-2 ring-sky-400 shadow-2xs'
                         : 'bg-white border-slate-300 hover:border-slate-400'
                     }`}
                   >
-                    <div className="flex items-center gap-1 text-[11px] font-bold text-slate-600">
-                      <span>ชิ้นที่ #{i + 1}</span>
-                      {isSelected && <span className="text-sky-700">✓</span>}
+                    <div className="flex items-center gap-0.5 text-[10px] font-bold text-slate-600">
+                      <span>#{i + 1}</span>
+                      {isSelected && <span className="text-sky-700 font-extrabold text-[11px]">✓</span>}
                     </div>
                     <div
-                      className={`text-xs sm:text-sm font-black font-mono mt-0.5 ${
+                      className={`text-xs font-black font-mono mt-0.5 ${
                         isOutlier ? 'text-rose-700 font-extrabold' : 'text-slate-900'
                       }`}
                     >
                       {v.toFixed(2)}
                     </div>
                     <span
-                      className={`mt-1 text-[10px] px-1.5 py-0.2 rounded font-semibold ${
+                      className={`mt-0.5 text-[9px] px-1 py-0 rounded font-semibold ${
                         v <= 40
                           ? 'bg-amber-100 text-amber-900 border border-amber-300'
                           : v >= 60
@@ -208,7 +207,7 @@ export const OutlierMeanMedianLab: React.FC = () => {
                           : 'bg-slate-100 text-slate-600'
                       }`}
                     >
-                      {v <= 40 ? 'Outlier ต่ำ' : v >= 60 ? 'Outlier สูง' : 'ปกติ'}
+                      {v <= 40 ? 'ต่ำ' : v >= 60 ? 'สูง' : 'ปกติ'}
                     </span>
                   </button>
                 );
@@ -217,45 +216,45 @@ export const OutlierMeanMedianLab: React.FC = () => {
           </div>
         </div>
 
-        {/* Section 5 & 6: Only 2 Stat Cards (Mean X̄ and Range R) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-center">
+        {/* Section 5 & 6: Only 2 Stat Cards (Mean X̄ and Range R) (Compact) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-center">
           {/* Card 1: Mean (X̄) with KaTeX symbol */}
           <div
-            className={`rounded-xl border p-3.5 transition-all ${
+            className={`rounded-xl border p-2 sm:p-2.5 transition-all ${
               stats.isOutlierPresent
-                ? 'border-rose-300 bg-rose-50/90 shadow-xs ring-1 ring-rose-200'
+                ? 'border-rose-300 bg-rose-50/90 shadow-2xs ring-1 ring-rose-200'
                 : 'border-slate-200 bg-slate-50'
             }`}
           >
-            <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-slate-700">
+            <div className="flex items-center justify-center gap-1 text-[11px] font-bold text-slate-700">
               <span>ค่าเฉลี่ย Mean</span>
               <span className="inline-block bg-white px-1.5 py-0.5 rounded border border-slate-200 shadow-2xs">
                 <InlineMarkdown text="$\bar{X}$" />
               </span>
-              <span>{stats.isOutlierPresent ? '(ถูกดึงเอียง!)' : '(ปกติ)'}</span>
+              <span>{stats.isOutlierPresent ? '(ถูกดึง!)' : '(ปกติ)'}</span>
             </div>
             <div
-              className={`text-2xl sm:text-3xl font-black font-mono mt-1 ${
+              className={`text-xl sm:text-2xl font-black font-mono mt-0.5 ${
                 stats.isOutlierPresent ? 'text-rose-700' : 'text-slate-900'
               }`}
             >
               {stats.mean.toFixed(3)}
-              <span className="text-xs font-normal text-slate-500 ml-1.5">mm</span>
+              <span className="text-[11px] font-normal text-slate-500 ml-1">mm</span>
             </div>
-            <div className="mt-1 text-[11px] font-semibold text-slate-600">
-              {stats.isOutlierPresent ? '⚠️ โดนค่า Outlier ดึงจุดศูนย์กลางกระบวนการ' : '✓ จุดกึ่งกลางตรงตามเป้าหมาย (~50.00 mm)'}
+            <div className="mt-0.5 text-[10px] font-semibold text-slate-600 truncate">
+              {stats.isOutlierPresent ? '⚠️ โดน Outlier ดึงศูนย์กลาง' : '✓ จุดกึ่งกลางตามเป้า (~50 mm)'}
             </div>
           </div>
 
           {/* Card 2: Range (R) */}
           <div
-            className={`rounded-xl border p-3.5 transition-all ${
+            className={`rounded-xl border p-2 sm:p-2.5 transition-all ${
               stats.range > 5
-                ? 'border-amber-300 bg-amber-50/90 shadow-xs ring-1 ring-amber-200'
+                ? 'border-amber-300 bg-amber-50/90 shadow-2xs ring-1 ring-amber-200'
                 : 'border-slate-200 bg-slate-50'
             }`}
           >
-            <div className="flex items-center justify-center gap-1.5 text-xs font-bold text-slate-700">
+            <div className="flex items-center justify-center gap-1 text-[11px] font-bold text-slate-700">
               <span>พิสัย Range</span>
               <span className="inline-block bg-white px-1.5 py-0.5 rounded border border-slate-200 shadow-2xs">
                 <InlineMarkdown text="$R$" />
@@ -263,47 +262,47 @@ export const OutlierMeanMedianLab: React.FC = () => {
               <span>(Max − Min)</span>
             </div>
             <div
-              className={`text-2xl sm:text-3xl font-black font-mono mt-1 ${
+              className={`text-xl sm:text-2xl font-black font-mono mt-0.5 ${
                 stats.range > 5 ? 'text-amber-900' : 'text-slate-900'
               }`}
             >
               {stats.range.toFixed(3)}
-              <span className="text-xs font-normal text-slate-500 ml-1.5">mm</span>
+              <span className="text-[11px] font-normal text-slate-500 ml-1">mm</span>
             </div>
-            <div className="mt-1 text-[11px] font-semibold text-slate-600">
-              {stats.range > 5 ? '⚠️ ค่าแกว่งกว้างมากจากชิ้นงาน Outlier' : '✓ ช่วงความผันแปรแคบ สม่ำเสมอดี'}
+            <div className="mt-0.5 text-[10px] font-semibold text-slate-600 truncate">
+              {stats.range > 5 ? '⚠️ แกว่งกว้างจาก Outlier' : '✓ การกระจายตัวแคบ สม่ำเสมอ'}
             </div>
           </div>
         </div>
       </div>
 
-      {/* Dynamic Shop Floor Insight Callout Box */}
-      <div className="mt-3.5 pt-2 border-t border-slate-100">
+      {/* Dynamic Shop Floor Insight Callout Box (Compact) */}
+      <div className="mt-2 pt-1.5 border-t border-slate-100">
         {stats.isOutlierPresent ? (
-          <div className="rounded-xl border border-rose-300 bg-rose-50 p-3 text-xs text-rose-900 leading-relaxed shadow-xs flex items-start gap-2.5">
-            <span className="text-base shrink-0">⚠️</span>
+          <div className="rounded-lg border border-rose-300 bg-rose-50/90 p-2 text-[11px] text-rose-900 leading-snug shadow-2xs flex items-start gap-1.5">
+            <span className="text-sm shrink-0">⚠️</span>
             <div>
-              <span className="font-bold">ข้อสังเกตหน้างาน (พบ Outlier):</span> ข้อมูลมีค่าผิดปกติหลุดไปที่{' '}
+              <span className="font-bold">ข้อสังเกต:</span> ข้อมูลหลุดไปที่{' '}
               <strong className="font-mono text-rose-800">
                 {stats.minVal <= 40 && `ต่ำสุด ${stats.minVal.toFixed(2)} mm`}
                 {stats.minVal <= 40 && stats.maxVal >= 60 && ' และ '}
                 {stats.maxVal >= 60 && `สูงสุด ${stats.maxVal.toFixed(2)} mm`}
               </strong>{' '}
-              ส่งผลให้ค่าเฉลี่ย <strong className="font-bold">Mean (<InlineMarkdown text="$\bar{X}$" />)</strong> ถูกดึงเอียงไปเป็น{' '}
-              <strong className="font-mono text-rose-800">{stats.mean.toFixed(3)} mm</strong> และทำให้ค่า{' '}
-              <strong className="font-bold">Range (<InlineMarkdown text="$R$" />)</strong> ถ่างกว้างขึ้นเป็น{' '}
-              <strong className="font-mono text-rose-800">{stats.range.toFixed(3)} mm</strong> ทันที! สะท้อนว่าค่าเฉลี่ยเลขคณิตจะวิ่งตาม Outlier เสมอ
+              ส่งผลให้ <strong className="font-bold">Mean (<InlineMarkdown text="$\bar{X}$" />)</strong> ถูกดึงไปเป็น{' '}
+              <strong className="font-mono text-rose-800">{stats.mean.toFixed(3)} mm</strong> และ{' '}
+              <strong className="font-bold">Range (<InlineMarkdown text="$R$" />)</strong> ถ่างกว้างเป็น{' '}
+              <strong className="font-mono text-rose-800">{stats.range.toFixed(3)} mm</strong> ทันที!
             </div>
           </div>
         ) : (
-          <div className="rounded-xl border border-sky-200 bg-sky-50/70 p-3 text-xs text-sky-900 leading-relaxed shadow-xs flex items-start gap-2.5">
-            <span className="text-base shrink-0">💡</span>
+          <div className="rounded-lg border border-sky-200 bg-sky-50/70 p-2 text-[11px] text-sky-900 leading-snug shadow-2xs flex items-start gap-1.5">
+            <span className="text-sm shrink-0">💡</span>
             <div>
-              <span className="font-bold">สภาวะปกติ (ไม่มี Outlier):</span> ข้อมูลทั้ง 5 ชิ้นเกาะกลุ่มชิดกันที่ ~50 mm ส่งผลให้ค่าเฉลี่ย{' '}
+              <span className="font-bold">สภาวะปกติ (ไม่มี Outlier):</span> ข้อมูลทั้ง 5 ชิ้นเกาะกลุ่มชิดกันที่ ~50 mm ค่าเฉลี่ย{' '}
               <strong className="font-bold">Mean (<InlineMarkdown text="$\bar{X}$" />)</strong> อยู่ที่{' '}
               <strong className="font-mono text-sky-900">{stats.mean.toFixed(3)} mm</strong> และค่า{' '}
               <strong className="font-bold">Range (<InlineMarkdown text="$R$" />)</strong> แคบเพียง{' '}
-              <strong className="font-mono text-sky-900">{stats.range.toFixed(3)} mm</strong> กระบวนการมีความเสถียรและสม่ำเสมอสูง
+              <strong className="font-mono text-sky-900">{stats.range.toFixed(3)} mm</strong> กระบวนการนิ่งสม่ำเสมอดี
             </div>
           </div>
         )}
