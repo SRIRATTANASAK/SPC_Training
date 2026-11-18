@@ -86,4 +86,6 @@ export interface CourseProgressState {
   showCaptions: boolean;
   autoPlay: boolean;
   audioSpeed: 1 | 1.25;
+  audioVolume?: number;
+  audioMuted?: boolean;
 }

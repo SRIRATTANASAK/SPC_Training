@@ -12,6 +12,8 @@ export const DEFAULT_PROGRESS: CourseProgressState = {
   showCaptions: true,
   autoPlay: true,
   audioSpeed: 1,
+  audioVolume: 1,
+  audioMuted: false,
 };
 
 export interface ProgressStore {

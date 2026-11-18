@@ -94,9 +94,13 @@ modules/module-XX/
 ### 5.1 Tech Stack สำหรับเฟสสร้างเว็บ (Phase B) — สอดคล้องกับ `AGENTS.md`
 - **Framework**: **Astro (Content Collections + React Islands)** หรือ **Next.js (App Router)** + **Tailwind CSS** (+ Radix UI / Shadcn UI) อ่านเนื้อหาจากไฟล์ Markdown/MDX + JSON/CSV โดยตรง
 - **Interactive Charts & Math**: **Recharts / Chart.js (Annotation Plugin) / SVG / Custom Canvas / D3.js** + **KaTeX** (`rehype-katex` + `remark-math`) และ **Zustand / React Context** สำหรับเก็บ state ตัวแปรจำลองและคะแนนสอบ
-- **Voice Narration Player**:
+- **Voice Narration Player & Master Audio Template**:
   - สร้าง Script Python/Node แปลงบล็อก `TTS Clean Script (TH)` ใน `02_voiceover_th_en.md` → ไฟล์เสียง `.mp3` แยกตาม Screen ID (`AUD-M1L1-S01.mp3`)
-  - ในหน้าเว็บมีแถบ Audio Player (Web Audio API) พร้อม **Closed Captions (คำบรรยายภาษาไทย)**, **Auto-advance toggle**, และ **Cue Sync** (เมื่อเสียงพูดถึงคำสำคัญ Animation/Highlight บนหน้าจอขยับตาม)
+  - **Master Component (`AudioPlayerBar.tsx`)**: แถบควบคุมเสียงและบทบรรยายระดับ Master Template สำหรับแชร์ใช้งานร่วมกันในทุกโมดูล (Module 01 ถึง 10)
+    - **Mute / Unmute Button**: ปุ่มสลับปิด-เปิดเสียง พร้อม Dynamic Icon (`VolumeX`, `Volume1`, `Volume2`) ตามระดับเสียงจริง
+    - **Volume Options**: แถบเลื่อนปรับระดับเสียง (Slider 0–100%) + ปุ่มลัดปรับทีละ 10% (- / +) + แสดงเปอร์เซ็นต์แบบเรียลไทม์
+    - **State Persistence**: บันทึกค่าระดับเสียง (`audioVolume`) และสถานะปิดเสียง (`audioMuted`) ลงใน LocalStorage ผ่าน `progressStore` คงค่าข้ามหน้าจอและข้ามโมดูลอัตโนมัติ
+    - **Narration Controls**: Auto-advance toggle (หยุดอัตโนมัติในหน้ากิจกรรม/Workshop), ปรับความเร็วเสียง (1x / 1.25x), สลับภาษาคำบรรยาย (TH / EN) และเปิด-ปิด CC Strip
 - **Hosting (Internet)**: **Cloudflare Pages** หรือ **Vercel** หรือ **GitHub Pages** (Deploy อัตโนมัติทุกครั้งที่ `git push origin main`)
 
 ### 5.2 การทำงานร่วมกันระหว่างเครื่องของปะป๊า, GitHub และ AI Assistant (สีนวล)
