@@ -838,6 +838,211 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                   </div>
                 </div>
               </div>
+            ) : screen.screenId === 'M1L2-S03' ? (
+              <div className="flex h-full flex-col items-center justify-start gap-3 sm:gap-3.5 w-full max-w-5xl xl:max-w-6xl mx-auto pt-0 sm:pt-1">
+                {/* 4 NOIR Hierarchy Cards on top */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 w-full">
+                  {/* Card N */}
+                  <div className="rounded-xl border border-sky-300 bg-gradient-to-br from-sky-50 to-white p-2.5 shadow-2xs">
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-md bg-sky-700 text-white font-extrabold text-[11px] shadow-xs">
+                        N
+                      </span>
+                      <span className="text-xs font-bold text-sky-900">
+                        Nominal (นามบัญญัติ)
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-600 leading-tight">
+                      แค่ชื่อหรือป้ายกำกับ <strong className="text-rose-700 font-bold">(ห้าม Mean!)</strong>
+                    </p>
+                  </div>
+
+                  {/* Card O */}
+                  <div className="rounded-xl border border-indigo-300 bg-gradient-to-br from-indigo-50 to-white p-2.5 shadow-2xs">
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-md bg-indigo-700 text-white font-extrabold text-[11px] shadow-xs">
+                        O
+                      </span>
+                      <span className="text-xs font-bold text-indigo-900">
+                        Ordinal (เรียงลำดับ)
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-600 leading-tight">
+                      จัดลำดับได้ แต่ช่วงห่างไม่เท่ากัน
+                    </p>
+                  </div>
+
+                  {/* Card I */}
+                  <div className="rounded-xl border border-amber-300 bg-gradient-to-br from-amber-50 to-white p-2.5 shadow-2xs">
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-md bg-amber-600 text-white font-extrabold text-[11px] shadow-xs">
+                        I
+                      </span>
+                      <span className="text-xs font-bold text-amber-900">
+                        Interval (อันตรภาค)
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-600 leading-tight">
+                      ช่วงห่างเท่ากัน แต่ <strong className="text-slate-800 font-semibold">ไม่มีศูนย์แท้</strong>
+                    </p>
+                  </div>
+
+                  {/* Card R */}
+                  <div className="rounded-xl border border-emerald-300 bg-gradient-to-br from-emerald-50 to-white p-2.5 shadow-2xs">
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-md bg-emerald-700 text-white font-extrabold text-[11px] shadow-xs">
+                        R
+                      </span>
+                      <span className="text-xs font-bold text-emerald-900">
+                        Ratio (อัตราส่วน)
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-600 leading-tight">
+                      มีศูนย์แท้ ทรงพลังที่สุดใน SPC
+                    </p>
+                  </div>
+                </div>
+
+                {/* Full-Width 5-Column NOIR Comparison Table */}
+                <div className="w-full">
+                  <div className="overflow-hidden rounded-xl border border-slate-300 shadow-sm bg-white">
+                    <table className="w-full border-collapse text-left text-xs sm:text-sm">
+                      <thead>
+                        <tr className="border-b border-slate-300 bg-slate-900 text-white">
+                          <th className="w-[14%] px-3.5 py-2 border-r border-slate-700 font-extrabold text-slate-100">
+                            มาตรา (Scale)
+                          </th>
+                          <th className="w-[21%] px-3.5 py-2 border-r border-slate-700 font-extrabold text-sky-200">
+                            ความหมาย &amp; นิยาม
+                          </th>
+                          <th className="w-[24%] px-3.5 py-2 border-r border-slate-700 font-extrabold text-amber-200">
+                            ตัวอย่างในโรงงาน
+                          </th>
+                          <th className="w-[20%] px-3.5 py-2 border-r border-slate-700 font-extrabold text-emerald-200">
+                            สถิติที่คำนวณได้
+                          </th>
+                          <th className="w-[21%] px-3.5 py-2 font-extrabold text-rose-200">
+                            ข้อควรระวังสำคัญ
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200">
+                        {/* แถวที่ 1: N */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-3.5 py-2 border-r border-slate-200 font-bold bg-sky-50/40 text-slate-900">
+                            <div className="flex items-center gap-1.5">
+                              <span className="rounded bg-sky-700 px-1.5 py-0.2 text-[11px] font-bold text-white">N</span>
+                              <span>Nominal</span>
+                            </div>
+                            <div className="text-[11px] font-normal text-slate-500">นามบัญญัติ</div>
+                          </td>
+                          <td className="px-3.5 py-2 border-r border-slate-200 text-slate-700 leading-snug">
+                            ชื่อ/ป้ายกำกับ จำแนกกลุ่ม <span className="text-slate-500">(เรียงลำดับไม่ได้)</span>
+                          </td>
+                          <td className="px-3.5 py-2 border-r border-slate-200 text-slate-800 leading-snug">
+                            รหัสกะ (<code className="rounded bg-slate-100 px-1 py-0.5 font-mono text-[11px]">Day/Night</code>), ชนิด Defect, <strong className="text-sky-900">Cavity 1, 2, 3, 4</strong>
+                          </td>
+                          <td className="px-3.5 py-2 border-r border-slate-200 text-slate-800 leading-snug">
+                            <span className="rounded bg-sky-100 px-1.5 py-0.5 text-xs font-bold text-sky-900 mr-1">Mode</span>
+                            % สัดส่วน, Pareto
+                          </td>
+                          <td className="px-3.5 py-2 bg-rose-50/30 text-rose-800 leading-snug font-semibold">
+                            ⚠️ ห้ามหา Mean เด็ดขาด
+                            <div className="text-[11px] font-normal text-slate-600 mt-0.5">
+                              (Cavity 1 กับ 3 เฉลี่ยเป็น 2 ไม่ได้)
+                            </div>
+                          </td>
+                        </tr>
+
+                        {/* แถวที่ 2: O */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-3.5 py-2 border-r border-slate-200 font-bold bg-indigo-50/40 text-slate-900">
+                            <div className="flex items-center gap-1.5">
+                              <span className="rounded bg-indigo-700 px-1.5 py-0.2 text-[11px] font-bold text-white">O</span>
+                              <span>Ordinal</span>
+                            </div>
+                            <div className="text-[11px] font-normal text-slate-500">เรียงลำดับ</div>
+                          </td>
+                          <td className="px-3.5 py-2 border-r border-slate-200 text-slate-700 leading-snug">
+                            จัดอันดับได้ แต่ช่วงห่างแต่ละขั้น <strong className="text-slate-900">ไม่เท่ากัน</strong>
+                          </td>
+                          <td className="px-3.5 py-2 border-r border-slate-200 text-slate-800 leading-snug">
+                            เกรดผิว (<code className="rounded bg-slate-100 px-1 py-0.5 font-mono text-[11px]">Poor/Fair/Good</code>), คะแนน <code className="rounded bg-slate-100 px-1 py-0.5 font-mono text-[11px]">1–5 ดาว</code>, ทักษะช่าง
+                          </td>
+                          <td className="px-3.5 py-2 border-r border-slate-200 text-slate-800 leading-snug">
+                            <span className="rounded bg-indigo-100 px-1.5 py-0.5 text-xs font-bold text-indigo-900 mr-1">Median</span>
+                            Mode, Percentile
+                          </td>
+                          <td className="px-3.5 py-2 bg-amber-50/30 text-slate-700 leading-snug">
+                            ระยะห่าง <code className="font-mono text-xs font-bold text-amber-900">1→2 ≠ 4→5</code>
+                            <div className="text-[11px] text-slate-600 mt-0.5">
+                              (ห้ามนำมาบวกลบตรงๆ)
+                            </div>
+                          </td>
+                        </tr>
+
+                        {/* แถวที่ 3: I */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-3.5 py-2 border-r border-slate-200 font-bold bg-amber-50/40 text-slate-900">
+                            <div className="flex items-center gap-1.5">
+                              <span className="rounded bg-amber-600 px-1.5 py-0.2 text-[11px] font-bold text-white">I</span>
+                              <span>Interval</span>
+                            </div>
+                            <div className="text-[11px] font-normal text-slate-500">อันตรภาค</div>
+                          </td>
+                          <td className="px-3.5 py-2 border-r border-slate-200 text-slate-700 leading-snug">
+                            ช่วงห่างเท่ากัน บวกลบได้ แต่ <strong className="text-amber-900 font-bold">ไม่มีศูนย์แท้</strong>
+                          </td>
+                          <td className="px-3.5 py-2 border-r border-slate-200 text-slate-800 leading-snug">
+                            อุณหภูมิเตาอบ <code className="rounded bg-slate-100 px-1 py-0.5 font-mono text-[11px]">°C / °F</code>
+                            <div className="text-[11px] text-slate-500 mt-0.5">
+                              (0°C ไม่ได้แปลว่าไร้ความร้อน)
+                            </div>
+                          </td>
+                          <td className="px-3.5 py-2 border-r border-slate-200 text-slate-800 leading-snug">
+                            <span className="rounded bg-amber-100 px-1.5 py-0.5 text-xs font-bold text-amber-900 mr-1">Mean</span>
+                            SD, Variance, Range
+                          </td>
+                          <td className="px-3.5 py-2 text-slate-700 leading-snug">
+                            ห้ามพูดว่า <strong className="text-slate-900 font-bold">"40°C ร้อนเป็น 2 เท่าของ 20°C"</strong>
+                          </td>
+                        </tr>
+
+                        {/* แถวที่ 4: R */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-3.5 py-2 border-r border-slate-200 font-bold bg-emerald-50/40 text-slate-900">
+                            <div className="flex items-center gap-1.5">
+                              <span className="rounded bg-emerald-700 px-1.5 py-0.2 text-[11px] font-bold text-white">R</span>
+                              <span>Ratio</span>
+                            </div>
+                            <div className="text-[11px] font-normal text-slate-500">อัตราส่วน</div>
+                          </td>
+                          <td className="px-3.5 py-2 border-r border-slate-200 text-slate-700 leading-snug">
+                            ช่วงห่างเท่ากัน และ <strong className="text-emerald-900 font-bold">มีศูนย์แท้ (True Zero)</strong>
+                          </td>
+                          <td className="px-3.5 py-2 border-r border-slate-200 text-slate-800 leading-snug">
+                            ความยาว (<code className="rounded bg-slate-100 px-1 py-0.5 font-mono text-[11px]">mm</code>), น้ำหนัก (<code className="rounded bg-slate-100 px-1 py-0.5 font-mono text-[11px]">g</code>), Torque (<code className="rounded bg-slate-100 px-1 py-0.5 font-mono text-[11px]">N·m</code>), จำนวน Defect
+                          </td>
+                          <td className="px-3.5 py-2 border-r border-slate-200 text-emerald-900 font-bold leading-snug">
+                            <span className="inline-block rounded bg-emerald-100 px-1.5 py-0.5 text-xs font-bold text-emerald-900 border border-emerald-300">
+                              คำนวณได้ทุกตัว
+                            </span>
+                            <div className="text-[11px] font-normal text-slate-600 mt-0.5">
+                              Mean, SD, CV, % สัดส่วน
+                            </div>
+                          </td>
+                          <td className="px-3.5 py-2 bg-emerald-50/30 text-emerald-950 leading-snug font-medium">
+                            💡 <strong className="text-emerald-900 font-bold">ทรงพลังที่สุดในวิศวกรรม</strong>
+                            <div className="text-[11px] text-slate-600 mt-0.5">
+                              (ใช้ทำ Cpk &amp; Control Charts ได้ครบ)
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             ) : currentSlide.kind === 'visual-content' ? (
               <div
                 className={
