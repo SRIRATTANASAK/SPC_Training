@@ -177,12 +177,12 @@
 
 # LESSON M1-L3: Descriptive Statistics (สถิติเชิงพรรณนา)
 
-## Screen M1L3-S01 — Mean ($\bar{x}$)
+## Screen M1L3-S01 — Mean ($\bar{X}$)
 - **Learning Objective:** คำนวณและตีความค่าเฉลี่ย (Process Centering) พร้อมรู้ข้อจำกัดเมื่อมี Outlier
 - **Duration:** 40s
 - **Layout:** Formula Panel + Interactive Mean Builder (`INT-M1-L3-01`)
 - **Asset ID:** `AST-M1-011` | **Interactive ID:** `INT-M1-L3-01`
-- **On Screen Text:** `Mean (ค่าเฉลี่ย): x̄ = Σx / n` — "ตัวแทนจุดศูนย์กลางกระบวนการ แต่ไวต่อค่าผิดปกติ (Outlier)"
+- **On Screen Text:** `Mean (ค่าเฉลี่ย): X̄ = Σx / n` — "ตัวแทนจุดศูนย์กลางกระบวนการ แต่ไวต่อค่าผิดปกติ (Outlier)"
 - **Voice Over Script Ref:** `AUD-M1L3-S01`
 - **Motion Specification:** Balance beam / average line draw animation across data points.
 - **Trigger Logic:** User can edit a sample value (e.g., change 50.02 to 50.50) and see Mean jump immediately.

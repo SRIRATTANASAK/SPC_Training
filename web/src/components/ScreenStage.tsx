@@ -6,6 +6,7 @@ import { InlineMarkdown, MarkdownContent } from './MarkdownContent';
 import { AssetViewer } from './visuals/AssetViewer';
 import { FishboneDiagram } from './visuals/FishboneDiagram';
 import { InteractiveRouter } from './interactives/InteractiveRouter';
+import { OutlierMeanMedianLab } from './interactives/OutlierMeanMedianLab';
 import { AudioPlayerBar } from './AudioPlayerBar';
 import { withBase } from '../lib/base';
 
@@ -22,7 +23,6 @@ const INTERACTIVE_SCREENS = new Set([
   'M1L2-S04',
   'M1L2-S06',
   'M1L3-S01',
-  'M1L3-S02',
   'M1L3-S08',
   'M1L3-S09',
   'M1L4-S07',
@@ -89,6 +89,14 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
     // Pure Quiz / Workshop / Exam screens where the markdown is just a 1-line intro
     if (sid === 'M1L1-S06' || sid === 'M1L2-S04' || sid === 'M1L2-S06' || sid === 'M1L3-S09' || sid === 'M1L4-S08') {
       return [{ id: 'interactive-0', label: 'กิจกรรม / แบบทดสอบ', kind: 'interactive', interactiveStep: 0 }];
+    }
+    // M1L3-S01: Merge Theory (Part 1) and Outlier Lab (Part 2) into 1 unified screen
+    if (sid === 'M1L3-S01') {
+      return [{ id: 'main', label: 'เนื้อหา & แบบจำลอง Outlier', kind: 'visual-content' }];
+    }
+    // M1L3-S02: Median comparison table fits cleanly in 1 full-screen view
+    if (sid === 'M1L3-S02') {
+      return [{ id: 'main', label: 'เนื้อหาหลัก', kind: 'visual-content' }];
     }
     if (TWO_STEP_INTERACTIVE_SCREENS.has(sid)) {
       return [
@@ -169,10 +177,15 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
         <span className="text-slate-300 shrink-0">/</span>
         <span className="font-bold text-slate-800 shrink-0">{screen.screenId}</span>
         <span className="text-slate-300 shrink-0">—</span>
-        <span className="font-semibold text-slate-800 truncate" title={`${screen.lessonTitle}: ${screen.title}`}>
+        <span
+          className="font-semibold text-slate-800 truncate"
+          title={`${screen.lessonTitle}: ${screen.title.replace(/\$\\bar\{[xX]\}\$/g, 'X̄').replace(/\$([^$]+)\$/g, '$1')}`}
+        >
           <span className="text-slate-800 font-bold">{screen.lessonTitle}</span>
           <span className="mx-1.5 text-slate-400 font-normal">:</span>
-          <span className="text-slate-600 font-medium">{screen.title}</span>
+          <span className="text-slate-600 font-medium">
+            <InlineMarkdown text={screen.title} />
+          </span>
         </span>
       </div>
     </div>
@@ -1044,24 +1057,43 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                 </div>
               </div>
             ) : currentSlide.kind === 'visual-content' ? (
-              <div
-                className={
-                  hasVisibleAsset && cleanMarkdown
-                    ? 'grid grid-cols-1 lg:grid-cols-12 gap-5 items-center h-full'
-                    : 'flex flex-col justify-center h-full w-full max-w-5xl xl:max-w-6xl mx-auto'
-                }
-              >
-                {hasVisibleAsset && (
-                  <div className={cleanMarkdown ? 'lg:col-span-5' : 'w-full'}>
-                    <AssetViewer assetIds={screen.assetIds} screenId={screen.screenId} />
+              screen.screenId === 'M1L3-S01' ? (
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start h-full">
+                  <div className="lg:col-span-5 flex flex-col justify-start">
+                    <div className="rounded-2xl border border-sky-200 bg-sky-50/60 p-4 sm:p-5 shadow-xs">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="h-2 w-2 rounded-full bg-sky-600 animate-pulse" />
+                        <span className="text-xs font-bold uppercase tracking-wider text-sky-900">
+                          สูตรและการคำนวณหน้างาน
+                        </span>
+                      </div>
+                      <MarkdownContent markdown={cleanMarkdown} />
+                    </div>
                   </div>
-                )}
-                {cleanMarkdown && (
-                  <div className={hasVisibleAsset ? 'lg:col-span-7' : 'w-full'}>
-                    <MarkdownContent markdown={cleanMarkdown} />
+                  <div className="lg:col-span-7 flex flex-col justify-start h-full">
+                    <OutlierMeanMedianLab />
                   </div>
-                )}
-              </div>
+                </div>
+              ) : (
+                <div
+                  className={
+                    hasVisibleAsset && cleanMarkdown
+                      ? 'grid grid-cols-1 lg:grid-cols-12 gap-5 items-center h-full'
+                      : 'flex flex-col justify-center h-full w-full max-w-5xl xl:max-w-6xl mx-auto'
+                  }
+                >
+                  {hasVisibleAsset && (
+                    <div className={cleanMarkdown ? 'lg:col-span-5' : 'w-full'}>
+                      <AssetViewer assetIds={screen.assetIds} screenId={screen.screenId} />
+                    </div>
+                  )}
+                  {cleanMarkdown && (
+                    <div className={hasVisibleAsset ? 'lg:col-span-7' : 'w-full'}>
+                      <MarkdownContent markdown={cleanMarkdown} />
+                    </div>
+                  )}
+                </div>
+              )
             ) : (
               <div className="min-h-full flex flex-col justify-start py-1">
                 <InteractiveRouter
