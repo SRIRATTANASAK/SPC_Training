@@ -1068,10 +1068,10 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                         </span>
                       </div>
 
-                      {/* Formula Showcase: Large and Centered in Card */}
-                      <div className="my-2.5 rounded-xl border border-sky-200 bg-white py-3 px-4 shadow-2xs flex justify-center items-center text-center">
-                        <span className="text-2xl sm:text-3xl font-extrabold text-sky-950 font-serif">
-                          <InlineMarkdown text="$\LARGE \bar{X} = \frac{\sum_{i=1}^{n} X_i}{n}$" />
+                      {/* Formula Showcase: Neat, balanced, and Centered in Card */}
+                      <div className="my-2 rounded-xl border border-sky-200 bg-white py-2 px-3 shadow-2xs flex justify-center items-center text-center">
+                        <span className="text-base sm:text-lg font-bold text-sky-950 font-serif">
+                          <InlineMarkdown text="$\bar{X} = \frac{\sum_{i=1}^{n} X_i}{n}$" />
                         </span>
                       </div>
 
