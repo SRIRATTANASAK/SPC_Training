@@ -51,8 +51,10 @@ export const AudioPlayerBar: React.FC<MasterAudioPlayerBarProps> = ({
   rightSlot,
 }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const playPromiseRef = useRef<Promise<void> | null>(null);
   const [playing, setPlaying] = useState(false);
-  const [hasMp3, setHasMp3] = useState<boolean | null>(null);
+  const [hasMp3, setHasMp3] = useState<boolean>(() => Boolean(voiceover?.audioFile));
+  const [autoplayBlocked, setAutoplayBlocked] = useState(false);
   const [speed, setSpeed] = useState<1 | 1.25>(1);
   const [captionLang, setCaptionLang] = useState<'th' | 'en'>('th');
   const [showCaptions, setShowCaptions] = useState(true);
@@ -79,62 +81,115 @@ export const AudioPlayerBar: React.FC<MasterAudioPlayerBarProps> = ({
     if (audioRef.current) {
       audioRef.current.volume = volume;
       audioRef.current.muted = muted;
+      audioRef.current.playbackRate = speed;
     }
-  }, [volume, muted, hasMp3]);
+  }, [volume, muted, speed]);
 
-  // ตรวจสอบความพร้อมของไฟล์เสียง MP3 เมื่อเปลี่ยนหน้าจอ
-  useEffect(() => {
-    setPlaying(false);
-    setHasMp3(null);
-    if (voiceover?.audioFile) {
-      const src = withBase(voiceover.audioFile);
-      fetch(src, { method: 'HEAD' })
-        .then((res) => setHasMp3(res.ok))
-        .catch(() => setHasMp3(false));
-    }
-  }, [screenId, voiceover?.audioFile]);
+  // ฟังก์ชันเริ่มเล่นเสียงอย่างปลอดภัยพร้อมจัดการ Autoplay Policy ของเบราว์เซอร์
+  const startPlayback = (audioEl?: HTMLAudioElement | null) => {
+    const el = audioEl || audioRef.current;
+    if (!el || !voiceover?.audioFile) return;
 
-  // เล่นเสียงอัตโนมัติเมื่อพร้อมและเปิดใช้งาน autoPlay
-  useEffect(() => {
-    if (!hydrated || !hasMp3 || !audioRef.current) return;
-    audioRef.current.playbackRate = speed;
-    audioRef.current.volume = volume;
-    audioRef.current.muted = muted;
-    if (autoPlay) {
-      audioRef.current
-        .play()
-        .then(() => {
+    el.playbackRate = speed;
+    el.volume = volume;
+    el.muted = muted;
+
+    const promise = el.play();
+    playPromiseRef.current = promise;
+
+    promise
+      .then(() => {
+        if (playPromiseRef.current === promise) {
           setPlaying(true);
+          setAutoplayBlocked(false);
           onPlayStateChange?.(true);
+        }
+      })
+      .catch((err: unknown) => {
+        if (playPromiseRef.current === promise) {
+          setPlaying(false);
+          onPlayStateChange?.(false);
+          // หากเบราว์เซอร์บล็อก Autoplay เนื่องจากยังไม่มี User Gesture
+          if (err instanceof Error && err.name === 'NotAllowedError') {
+            setAutoplayBlocked(true);
+          }
+        }
+      });
+  };
+
+  // ฟังก์ชันหยุดเล่นเสียงชั่วคราวอย่างปลอดภัย (ป้องกัน AbortError)
+  const pausePlayback = () => {
+    if (!audioRef.current) return;
+    if (playPromiseRef.current) {
+      playPromiseRef.current
+        .then(() => {
+          audioRef.current?.pause();
+          setPlaying(false);
+          onPlayStateChange?.(false);
         })
         .catch(() => {
+          // ละเว้นกรณี play promise ถูกปฏิเสธ
+          audioRef.current?.pause();
           setPlaying(false);
           onPlayStateChange?.(false);
         });
+    } else {
+      audioRef.current.pause();
+      setPlaying(false);
+      onPlayStateChange?.(false);
     }
-  }, [hydrated, hasMp3, screenId]);
+  };
+
+  // จัดการโหลดและเล่นเสียงเมื่อเปลี่ยนหน้าจอหรือเมื่อ Hydrated สำเร็จ
+  useEffect(() => {
+    setPlaying(false);
+    setAutoplayBlocked(false);
+
+    if (!voiceover?.audioFile) {
+      setHasMp3(false);
+      return;
+    }
+
+    setHasMp3(true);
+
+    if (audioRef.current) {
+      audioRef.current.playbackRate = speed;
+      audioRef.current.volume = volume;
+      audioRef.current.muted = muted;
+      audioRef.current.currentTime = 0;
+      audioRef.current.load();
+
+      if (hydrated && autoPlay) {
+        startPlayback(audioRef.current);
+      }
+    }
+  }, [screenId, voiceover?.audioFile, hydrated]);
+
+  // ปลดล็อกเสียงอัตโนมัติทันทีเมื่อผู้ใช้แตะหรือคลิกที่ใดก็ได้บนหน้าจอ (แก้ปัญหา Autoplay Policy ของเบราว์เซอร์)
+  useEffect(() => {
+    if (!autoplayBlocked || !autoPlay) return;
+
+    const handleUnlockInteraction = () => {
+      if (audioRef.current && audioRef.current.paused) {
+        startPlayback(audioRef.current);
+      }
+    };
+
+    window.addEventListener('pointerdown', handleUnlockInteraction, { once: true, capture: true });
+    window.addEventListener('keydown', handleUnlockInteraction, { once: true, capture: true });
+
+    return () => {
+      window.removeEventListener('pointerdown', handleUnlockInteraction, { capture: true });
+      window.removeEventListener('keydown', handleUnlockInteraction, { capture: true });
+    };
+  }, [autoplayBlocked, autoPlay, speed, volume, muted]);
 
   const togglePlay = () => {
-    if (hasMp3 && audioRef.current) {
-      if (playing) {
-        audioRef.current.pause();
-        setPlaying(false);
-        onPlayStateChange?.(false);
-      } else {
-        audioRef.current.playbackRate = speed;
-        audioRef.current.volume = volume;
-        audioRef.current.muted = muted;
-        audioRef.current
-          .play()
-          .then(() => {
-            setPlaying(true);
-            onPlayStateChange?.(true);
-          })
-          .catch(() => {
-            setPlaying(false);
-            onPlayStateChange?.(false);
-          });
-      }
+    if (!hasMp3 || !audioRef.current) return;
+    if (playing) {
+      pausePlayback();
+    } else {
+      startPlayback(audioRef.current);
     }
   };
 
@@ -231,12 +286,29 @@ export const AudioPlayerBar: React.FC<MasterAudioPlayerBarProps> = ({
 
   return (
     <header className="shrink-0 z-30 border-b border-slate-200 bg-white">
-      {hasMp3 && (
+      {voiceover?.audioFile && (
         <audio
           ref={audioRef}
           src={withBase(voiceover.audioFile)}
           onEnded={handleEnded}
           onTimeUpdate={(e) => onTimeUpdate?.(e.currentTarget.currentTime)}
+          onPlay={() => {
+            setPlaying(true);
+            setAutoplayBlocked(false);
+            onPlayStateChange?.(true);
+          }}
+          onPause={() => {
+            setPlaying(false);
+            onPlayStateChange?.(false);
+          }}
+          onError={() => {
+            setHasMp3(false);
+            setPlaying(false);
+            onPlayStateChange?.(false);
+          }}
+          onCanPlay={() => {
+            setHasMp3(true);
+          }}
           preload="auto"
         />
       )}
@@ -258,12 +330,34 @@ export const AudioPlayerBar: React.FC<MasterAudioPlayerBarProps> = ({
             type="button"
             onClick={togglePlay}
             disabled={!hasMp3}
-            className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sky-600 text-white hover:bg-sky-500 disabled:opacity-40 transition"
+            className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-white transition ${
+              autoplayBlocked
+                ? 'bg-amber-500 hover:bg-amber-400 ring-2 ring-amber-300 animate-pulse'
+                : 'bg-sky-600 hover:bg-sky-500'
+            } disabled:opacity-40`}
             aria-label={playing ? 'Pause narration' : 'Play narration'}
-            title={playing ? 'หยุดชั่วคราว (Pause)' : 'เล่นเสียงบรรยาย (Play)'}
+            title={
+              autoplayBlocked
+                ? 'เบราว์เซอร์รอการคลิก — กดตรงนี้หรือคลิกบนหน้าจอเพื่อเริ่มฟังเสียง'
+                : playing
+                ? 'หยุดชั่วคราว (Pause)'
+                : 'เล่นเสียงบรรยาย (Play)'
+            }
           >
             {playing ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3 ml-0.5" />}
           </button>
+
+          {/* Autoplay Blocked Hint Badge */}
+          {autoplayBlocked && (
+            <button
+              type="button"
+              onClick={togglePlay}
+              className="flex items-center gap-1 rounded bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold text-amber-300 border border-amber-500/40 animate-pulse shrink-0 cursor-pointer hover:bg-amber-500/30 transition"
+              title="คลิกเพื่อเริ่มฟังเสียงบรรยาย"
+            >
+              <span>🔊 คลิกเพื่อเปิดเสียง</span>
+            </button>
+          )}
 
           {/* Audio Track Badge */}
           <div className="flex items-center gap-1.5 px-1 text-[11px] font-bold text-white shrink-0">
