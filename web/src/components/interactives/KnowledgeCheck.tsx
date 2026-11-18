@@ -43,23 +43,11 @@ export const KnowledgeCheck: React.FC<Props> = ({ lessonId, questions }) => {
   };
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm space-y-4">
-      <div className="flex items-center justify-between">
-        <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-sky-700">KC-{lessonId}</span>
-          <h3 className="text-lg font-bold text-slate-900">แบบทดสอบความเข้าใจท้ายบท (2 ข้อ)</h3>
-        </div>
-        {submitted && (
-          <span className="rounded-full bg-sky-100 px-3 py-1 text-xs font-bold text-sky-900">
-            ได้ {score} / {kcQuestions.length}
-          </span>
-        )}
-      </div>
-
+    <div className="w-full space-y-3">
       {kcQuestions.map((q, idx) => (
-        <div key={q.id} className="rounded-lg border border-slate-200 bg-slate-50 p-4 space-y-2.5">
-          <div className="text-sm font-bold text-slate-900">
-            {idx + 1}. ({q.id}) <InlineMarkdown text={q.question} />
+        <div key={q.id} className="rounded-xl border border-slate-300 bg-white p-3.5 sm:p-4 shadow-sm space-y-2.5">
+          <div className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
+            ข้อ {idx + 1}. <InlineMarkdown text={q.question} />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {(['A', 'B', 'C', 'D'] as const).map((k) => {
@@ -72,38 +60,45 @@ export const KnowledgeCheck: React.FC<Props> = ({ lessonId, questions }) => {
                   key={k}
                   type="button"
                   onClick={() => setSelected((prev) => ({ ...prev, [q.id]: k }))}
-                  className={`rounded-lg border px-3 py-2 text-left text-xs transition ${
+                  className={`rounded-lg border px-3 py-2 text-left text-xs sm:text-sm transition cursor-pointer ${
                     submitted
                       ? isRight
-                        ? 'border-emerald-500 bg-emerald-50 font-bold text-emerald-900'
+                        ? 'border-emerald-500 bg-emerald-50 font-bold text-emerald-900 shadow-xs'
                         : picked
                           ? 'border-rose-500 bg-rose-50 text-rose-900'
-                          : 'border-slate-200 bg-white text-slate-600'
+                          : 'border-slate-200 bg-slate-50 text-slate-500'
                       : picked
-                        ? 'border-sky-600 bg-sky-50 font-bold text-sky-900'
-                        : 'border-slate-200 bg-white hover:bg-slate-100'
+                        ? 'border-sky-600 bg-sky-50 font-bold text-sky-900 shadow-xs ring-1 ring-sky-300'
+                        : 'border-slate-200 bg-white hover:bg-slate-50 text-slate-800'
                   }`}
                 >
-                  <strong>{k})</strong> <InlineMarkdown text={label} />
+                  <strong className="mr-1 text-slate-900">{k})</strong> <InlineMarkdown text={label} />
                 </button>
               );
             })}
           </div>
           {submitted && (
-            <div className="rounded bg-white p-2.5 text-xs text-slate-700 border border-slate-200">
-              <strong>เฉลย ({q.correct}):</strong> <InlineMarkdown text={q.explanation} />
+            <div className="rounded-lg bg-sky-50/80 p-2.5 text-xs sm:text-sm text-slate-800 border border-sky-200">
+              <strong className="text-sky-900">เฉลย ({q.correct}):</strong> <InlineMarkdown text={q.explanation} />
             </div>
           )}
         </div>
       ))}
 
-      <button
-        type="button"
-        onClick={handleSubmit}
-        className="rounded-lg bg-sky-700 px-4 py-2 text-sm font-bold text-white hover:bg-sky-800"
-      >
-        ส่งคำตอบ Knowledge Check
-      </button>
+      <div className="flex items-center justify-between gap-3 pt-1">
+        <button
+          type="button"
+          onClick={handleSubmit}
+          className="rounded-lg bg-sky-700 px-5 py-2 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-sky-800 transition"
+        >
+          ส่งคำตอบแบบทดสอบความเข้าใจ
+        </button>
+        {submitted && (
+          <span className="rounded-md bg-sky-100 px-3 py-1.5 text-xs sm:text-sm font-bold text-sky-900 border border-sky-300">
+            คะแนนที่ได้: {score} / {kcQuestions.length} ข้อ
+          </span>
+        )}
+      </div>
     </div>
   );
 };

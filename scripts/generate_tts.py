@@ -197,10 +197,48 @@ def synth_gtts(text: str) -> bytes:
     return buf.getvalue()
 
 
+def synth_edge_tts(
+    text: str,
+    voice: str = "th-TH-PremwadeeNeural",
+    rate: str = "+5%",
+) -> bytes:
+    """Generate high-quality natural Thai speech using Microsoft Edge Neural TTS.
+    
+    Default voices:
+      - th-TH-PremwadeeNeural (Female, natural, fluent e-learning voice)
+      - th-TH-NiwatNeural (Male, natural, professional corporate voice)
+    """
+    import asyncio
+    try:
+        import edge_tts
+    except ImportError:
+        raise RuntimeError("Please install edge-tts first: pip install edge-tts")
+
+    async def _generate() -> bytes:
+        comm = edge_tts.Communicate(text, voice, rate=rate)
+        chunks = []
+        async for chunk in comm.stream():
+            if chunk["type"] == "audio":
+                chunks.append(chunk["data"])
+        return b"".join(chunks)
+
+    return asyncio.run(_generate())
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate Thai MP3 tracks for Module 1.")
-    parser.add_argument("--provider", choices=["gemini", "google", "elevenlabs", "gtts"], required=True)
-    parser.add_argument("--voice", default="Achernar", help="Gemini prebuilt voice name (default: Achernar)")
+    parser.add_argument(
+        "--provider",
+        choices=["edge-tts", "gemini", "google", "elevenlabs", "gtts"],
+        default="edge-tts",
+        help="TTS engine provider (default: edge-tts for natural Neural voice)",
+    )
+    parser.add_argument(
+        "--voice",
+        default="",
+        help="Voice name (for edge-tts: th-TH-PremwadeeNeural or th-TH-NiwatNeural; for gemini: Achernar)",
+    )
+    parser.add_argument("--rate", default="+5%", help="Speaking rate for edge-tts (default: +5% for natural pace)")
     parser.add_argument("--model", default="", help="Preferred Gemini TTS model")
     parser.add_argument("--limit", type=int, default=0, help="Optional limit for test runs")
     parser.add_argument("--screen", default="", help="Generate for a specific screenId, e.g. M1L1-S03")
@@ -263,7 +301,11 @@ def main() -> int:
             print(f"Skipping existing {fname}", flush=True)
             continue
         if args.provider == "gemini":
-            audio_bytes = synth_gemini(text, api_key, voice_name=args.voice, preferred_model=args.model)
+            voice = args.voice or "Achernar"
+            audio_bytes = synth_gemini(text, api_key, voice_name=voice, preferred_model=args.model)
+        elif args.provider == "edge-tts":
+            voice = args.voice or "th-TH-PremwadeeNeural"
+            audio_bytes = synth_edge_tts(text, voice=voice, rate=args.rate)
         elif args.provider == "google":
             audio_bytes = synth_google(text, api_key)
         elif args.provider == "elevenlabs":

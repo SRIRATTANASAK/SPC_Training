@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import { RotateCcw } from 'lucide-react';
 import type { ClassificationRow } from '../../lib/types';
 import { progressStore } from '../../lib/storage';
 
@@ -8,18 +7,12 @@ interface Props {
 }
 
 export const DataClassificationLab: React.FC<Props> = ({ rows }) => {
-  // Automatically randomize a subset of 8 questions from the 20 factory items
-  const [activeRows, setActiveRows] = useState<ClassificationRow[]>(() => {
+  // สุ่มแบบฝึกหัด 8 ข้อโดยอัตโนมัติจากการเปิดหน้า page
+  const [activeRows] = useState<ClassificationRow[]>(() => {
     return [...rows].sort(() => Math.random() - 0.5).slice(0, 8);
   });
   const [answers, setAnswers] = useState<Record<string, { cat: string; scale: string }>>({});
   const [submitted, setSubmitted] = useState(false);
-
-  const handleRandomizeNewSet = () => {
-    setActiveRows([...rows].sort(() => Math.random() - 0.5).slice(0, 8));
-    setAnswers({});
-    setSubmitted(false);
-  };
 
   const score = useMemo(() => {
     let catOk = 0;
@@ -44,60 +37,65 @@ export const DataClassificationLab: React.FC<Props> = ({ rows }) => {
   };
 
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-4 sm:p-5 shadow-sm">
-      <div className="flex flex-wrap items-center justify-between gap-2 mb-4 border-b border-slate-100 pb-3">
-        <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-sky-700">INT-M1-L2-01 &amp; 02</span>
-          <h3 className="text-base sm:text-lg font-extrabold text-slate-900">Workshop 1 : การจำแนกข้อมูล</h3>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-bold text-sky-800 border border-sky-200">
-            ชุดแบบฝึกหัดสุ่ม (8 ข้อ)
-          </span>
-          <button
-            type="button"
-            onClick={handleRandomizeNewSet}
-            title="สุ่มชุดแบบฝึกหัดใหม่จากคลังข้อมูลโรงงานจริง 20 รายการ"
-            className="flex items-center gap-1.5 rounded-lg border border-slate-300 bg-white px-3 py-1 text-xs font-bold text-slate-700 hover:bg-slate-50 transition"
-          >
-            <RotateCcw className="h-3.5 w-3.5 text-slate-500" />
-            <span>สุ่มชุดใหม่</span>
-          </button>
-        </div>
-      </div>
-
-      <div className="overflow-x-auto">
-        <table className="w-full text-left text-xs border-collapse">
+    <div className="w-full flex flex-col justify-start">
+      {/* Table Area (Designed to fit comfortably on 1 screen) */}
+      <div className="overflow-hidden rounded-xl border border-slate-300 bg-white shadow-sm">
+        <table className="w-full text-left text-xs sm:text-sm border-collapse">
           <thead>
-            <tr className="border-b border-slate-200 bg-slate-50 text-slate-700">
-              <th className="p-2.5">ID / ข้อมูลหน้างาน</th>
-              <th className="p-2.5">ตัวอย่างค่า</th>
-              <th className="p-2.5">Variable vs Attribute</th>
-              <th className="p-2.5">Scale (NOIR)</th>
+            <tr className="border-b border-slate-300 bg-slate-900 text-white">
+              <th className="py-2 px-3 sm:px-4 font-extrabold w-[42%] border-r border-slate-700">
+                กระบวนการ &amp; ข้อมูลหน้างาน
+              </th>
+              <th className="py-2 px-3 sm:px-4 font-extrabold w-[24%] border-r border-slate-700 text-amber-200">
+                ตัวอย่างค่าที่วัด/นับได้
+              </th>
+              <th className="py-2 px-2.5 sm:px-3 font-extrabold w-[17%] border-r border-slate-700 text-sky-200 text-center">
+                Variable vs Attribute
+              </th>
+              <th className="py-2 px-2.5 sm:px-3 font-extrabold w-[17%] text-emerald-200 text-center">
+                Scale (NOIR)
+              </th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
-            {activeRows.map((r) => {
+          <tbody className="divide-y divide-slate-200 text-xs">
+            {activeRows.map((r, idx) => {
               const a = answers[r.Item_ID] ?? { cat: '', scale: '' };
               const catRight = a.cat === r.Category_Variable_or_Attribute;
               const scaleRight = a.scale === r.Measurement_Scale;
               return (
-                <tr key={r.Item_ID} className="align-top">
-                  <td className="p-2.5">
-                    <div className="font-bold text-slate-900">
-                      {r.Item_ID} ({r.Process_Area})
+                <tr key={r.Item_ID} className="hover:bg-slate-50 transition-colors">
+                  {/* ข้อมูลหน้างาน (ไม่แสดงรหัส ID) */}
+                  <td className="py-1.5 px-3 sm:px-4 border-r border-slate-200 align-middle">
+                    <div className="flex items-center gap-2">
+                      <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-slate-100 text-[10px] font-bold text-slate-600 border border-slate-300">
+                        {idx + 1}
+                      </span>
+                      <div className="min-w-0">
+                        <span className="font-bold text-slate-900">{r.Process_Area}</span>
+                        <span className="mx-1 text-slate-400 font-normal">:</span>
+                        <span className="text-slate-700">{r.Description}</span>
+                      </div>
                     </div>
-                    <div className="text-slate-600">{r.Description}</div>
                     {submitted && (
-                      <div className="mt-1 rounded bg-slate-50 px-2 py-1 text-[11px] text-slate-700 border border-slate-200">
-                        <strong>เฉลย:</strong> {r.Category_Variable_or_Attribute} / {r.Measurement_Scale} — {r.Rationale}
+                      <div className="mt-1 ml-6 inline-flex flex-wrap items-center gap-1.5 rounded-md bg-slate-100 px-2 py-0.5 text-[11px] text-slate-800 border border-slate-300">
+                        <span className="font-bold text-sky-900">เฉลย:</span>
+                        <span className="font-semibold text-slate-900">{r.Category_Variable_or_Attribute}</span>
+                        <span className="text-slate-400">•</span>
+                        <span className="font-semibold text-slate-900">{r.Measurement_Scale}</span>
+                        <span className="text-slate-600 font-normal">({r.Rationale})</span>
                       </div>
                     )}
                   </td>
-                  <td className="p-2.5 text-slate-600 whitespace-nowrap">{r.Example_Values}</td>
-                  <td className="p-2.5">
+
+                  {/* ตัวอย่างค่า */}
+                  <td className="py-1.5 px-3 sm:px-4 border-r border-slate-200 text-slate-700 font-mono text-[11px] sm:text-xs align-middle">
+                    {r.Example_Values}
+                  </td>
+
+                  {/* ตัวเลือก Variable vs Attribute */}
+                  <td className="py-1.5 px-2.5 sm:px-3 border-r border-slate-200 text-center align-middle">
                     <select
-                      aria-label={`${r.Item_ID} Variable or Attribute`}
+                      aria-label={`${r.Process_Area} Variable or Attribute`}
                       value={a.cat}
                       onChange={(e) =>
                         setAnswers((prev) => ({
@@ -105,12 +103,12 @@ export const DataClassificationLab: React.FC<Props> = ({ rows }) => {
                           [r.Item_ID]: { ...a, cat: e.target.value },
                         }))
                       }
-                      className={`rounded border px-2 py-1.5 text-xs ${
+                      className={`w-full max-w-[130px] rounded-md border px-2 py-1 text-xs font-semibold cursor-pointer transition ${
                         submitted
                           ? catRight
-                            ? 'border-emerald-500 bg-emerald-50'
-                            : 'border-rose-500 bg-rose-50'
-                          : 'border-slate-300'
+                            ? 'border-emerald-500 bg-emerald-50 text-emerald-900 font-bold'
+                            : 'border-rose-500 bg-rose-50 text-rose-900 font-bold'
+                          : 'border-slate-300 bg-white text-slate-800 hover:border-slate-400'
                       }`}
                     >
                       <option value="">-- เลือก --</option>
@@ -118,9 +116,11 @@ export const DataClassificationLab: React.FC<Props> = ({ rows }) => {
                       <option value="Attribute">Attribute</option>
                     </select>
                   </td>
-                  <td className="p-2.5">
+
+                  {/* ตัวเลือก Scale NOIR */}
+                  <td className="py-1.5 px-2.5 sm:px-3 text-center align-middle">
                     <select
-                      aria-label={`${r.Item_ID} Measurement Scale`}
+                      aria-label={`${r.Process_Area} Measurement Scale`}
                       value={a.scale}
                       onChange={(e) =>
                         setAnswers((prev) => ({
@@ -128,12 +128,12 @@ export const DataClassificationLab: React.FC<Props> = ({ rows }) => {
                           [r.Item_ID]: { ...a, scale: e.target.value },
                         }))
                       }
-                      className={`rounded border px-2 py-1.5 text-xs ${
+                      className={`w-full max-w-[120px] rounded-md border px-2 py-1 text-xs font-semibold cursor-pointer transition ${
                         submitted
                           ? scaleRight
-                            ? 'border-emerald-500 bg-emerald-50'
-                            : 'border-rose-500 bg-rose-50'
-                          : 'border-slate-300'
+                            ? 'border-emerald-500 bg-emerald-50 text-emerald-900 font-bold'
+                            : 'border-rose-500 bg-rose-50 text-rose-900 font-bold'
+                          : 'border-slate-300 bg-white text-slate-800 hover:border-slate-400'
                       }`}
                     >
                       <option value="">-- เลือก --</option>
@@ -150,17 +150,23 @@ export const DataClassificationLab: React.FC<Props> = ({ rows }) => {
         </table>
       </div>
 
-      <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+      {/* Submit Button & Score Display */}
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-3 px-1">
         <button
           type="button"
           onClick={handleSubmit}
-          className="rounded-lg bg-sky-700 px-4 py-2 text-sm font-bold text-white hover:bg-sky-800"
+          className="rounded-lg bg-sky-700 px-5 py-2 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-sky-800 transition"
         >
           ตรวจคำตอบ Workshop 1
         </button>
         {submitted && (
-          <div className="text-sm font-bold text-slate-900">
-            คะแนน: Category {score.catOk}/{score.total} | Scale {score.scaleOk}/{score.total}
+          <div className="flex items-center gap-3 text-xs sm:text-sm font-bold">
+            <span className="rounded-md bg-sky-100 px-3 py-1 text-sky-900 border border-sky-300">
+              Category: {score.catOk} / {score.total} ถูกต้อง
+            </span>
+            <span className="rounded-md bg-indigo-100 px-3 py-1 text-indigo-900 border border-indigo-300">
+              Scale: {score.scaleOk} / {score.total} ถูกต้อง
+            </span>
           </div>
         )}
       </div>
