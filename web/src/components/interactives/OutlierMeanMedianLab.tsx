@@ -3,7 +3,13 @@ import { InlineMarkdown } from '../MarkdownContent';
 
 const DEFAULT_VALUES = [50.00, 50.01, 49.99, 50.02, 50.00];
 
-export const OutlierMeanMedianLab: React.FC = () => {
+interface Props {
+  title?: string;
+}
+
+export const OutlierMeanMedianLab: React.FC<Props> = ({
+  title = 'แบบจำลองผลกระทบของ Outlier ต่อค่าเฉลี่ย',
+}) => {
   const [values, setValues] = useState<number[]>([...DEFAULT_VALUES]);
   const [selectedIndices, setSelectedIndices] = useState<number[]>([4]); // Default select item #5
 
@@ -91,7 +97,7 @@ export const OutlierMeanMedianLab: React.FC = () => {
               </span>
             </div>
             <h3 className="text-sm sm:text-base font-extrabold text-slate-900">
-              แบบจำลองผลกระทบของ Outlier ต่อค่าเฉลี่ยและค่ามัธยฐาน
+              {title}
             </h3>
           </div>
           <div className="flex flex-wrap items-center gap-1">

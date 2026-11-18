@@ -28,7 +28,10 @@ export const InteractiveRouter: React.FC<Props> = ({ screen, moduleData, stepInd
       {sid === 'M1L2-S04' && <DataClassificationLab rows={moduleData.workshops.classification} />}
       {sid === 'M1L2-S06' && <KnowledgeCheck lessonId="M1-L2" questions={moduleData.questions} />}
 
-      {(sid === 'M1L3-S01' || sid === 'M1L3-S02') && <OutlierMeanMedianLab />}
+      {sid === 'M1L3-S01' && <OutlierMeanMedianLab title="แบบจำลองผลกระทบของ Outlier ต่อค่าเฉลี่ย" />}
+      {sid === 'M1L3-S02' && (
+        <OutlierMeanMedianLab title="แบบจำลองผลกระทบของ Outlier ต่อค่าเฉลี่ยและค่ามัธยฐาน" />
+      )}
       {sid === 'M1L3-S08' && (stepIndex === 0 ? <SigmaSimulator /> : <StatMatchGame />)}
       {sid === 'M1L3-S09' && <KnowledgeCheck lessonId="M1-L3" questions={moduleData.questions} />}
 
