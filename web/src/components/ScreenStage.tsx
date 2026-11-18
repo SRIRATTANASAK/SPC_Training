@@ -546,6 +546,156 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                   </div>
                 </div>
               </div>
+            ) : screen.screenId === 'M1L2-S01' ? (
+              <div className="flex h-full flex-col items-center justify-start gap-2.5 sm:gap-3 w-full max-w-5xl xl:max-w-6xl mx-auto pt-0 sm:pt-1">
+                {/* 2 Comparison Image Cards (Side-by-side Variable vs Attribute) */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full">
+                  {/* Card 1: Variable Data */}
+                  <div className="overflow-hidden rounded-xl border border-sky-300 bg-white shadow-sm flex flex-col">
+                    <div className="relative h-[115px] sm:h-[130px] w-full bg-slate-950 overflow-hidden">
+                      <img
+                        src={withBase('/images/module-01/AST-M1-006.jpg')}
+                        alt="Variable Data: การวัดค่าต่อเนื่องด้วย Micrometer, Torque Wrench และ Thermocouple"
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-2 left-2 rounded-md bg-sky-700/90 backdrop-blur px-2 py-0.5 text-[11px] font-extrabold text-white shadow">
+                        Variable Data (ข้อมูลเชิงปริมาณ)
+                      </div>
+                    </div>
+                    <div className="bg-sky-50/80 px-3 py-1.5 border-t border-sky-200 flex items-center justify-between text-xs">
+                      <span className="font-semibold text-sky-950">
+                        AST-M1-006: Micrometer, Torque, อุณหภูมิ
+                      </span>
+                      <span className="text-[11px] font-bold text-sky-700">
+                        ได้จากการ "วัดค่า" มีทศนิยม
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Card 2: Attribute Data */}
+                  <div className="overflow-hidden rounded-xl border border-amber-300 bg-white shadow-sm flex flex-col">
+                    <div className="relative h-[115px] sm:h-[130px] w-full bg-slate-950 overflow-hidden">
+                      <img
+                        src={withBase('/images/module-01/AST-M1-007.jpg')}
+                        alt="Attribute Data: การตรวจสอบ Pass/Fail และ Go/No-Go Plug Gauge"
+                        className="h-full w-full object-cover"
+                        loading="lazy"
+                      />
+                      <div className="absolute top-2 left-2 rounded-md bg-amber-600/90 backdrop-blur px-2 py-0.5 text-[11px] font-extrabold text-white shadow">
+                        Attribute Data (ข้อมูลเชิงคุณลักษณะ)
+                      </div>
+                    </div>
+                    <div className="bg-amber-50/80 px-3 py-1.5 border-t border-amber-200 flex items-center justify-between text-xs">
+                      <span className="font-semibold text-amber-950">
+                        AST-M1-007: Go/No-Go Plug Gauge, Pass/Fail
+                      </span>
+                      <span className="text-[11px] font-bold text-amber-800">
+                        ได้จากการ "นับ/จำแนก" ดี-เสีย
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 4-Dimension Comparison Table */}
+                <div className="w-full">
+                  <div className="overflow-hidden rounded-xl border border-slate-300 shadow-sm bg-white">
+                    <table className="w-full border-collapse text-left text-xs sm:text-sm">
+                      <thead>
+                        <tr className="border-b border-slate-300 bg-slate-900 text-white">
+                          <th className="w-[22%] px-3.5 sm:px-4 py-2 border-r border-slate-700 font-extrabold text-slate-100">
+                            หัวข้อเปรียบเทียบ
+                          </th>
+                          <th className="w-[39%] px-3.5 sm:px-4 py-2 border-r border-slate-700 font-extrabold text-sky-200">
+                            Variable Data (ข้อมูลเชิงปริมาณ)
+                          </th>
+                          <th className="w-[39%] px-3.5 sm:px-4 py-2 font-extrabold text-amber-200">
+                            Attribute Data (ข้อมูลเชิงคุณลักษณะ)
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200">
+                        {/* แถวที่ 1: วิธีได้มา */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-3.5 sm:px-4 py-2 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70">
+                            วิธีได้มา
+                          </td>
+                          <td className="px-3.5 sm:px-4 py-2 border-r border-slate-200 text-slate-800 bg-sky-50/20 leading-snug">
+                            <strong className="text-sky-900 font-bold">วัดค่า</strong> ด้วยเครื่องมือวัดที่มีสเกลความละเอียด
+                          </td>
+                          <td className="px-3.5 sm:px-4 py-2 text-slate-800 bg-amber-50/20 leading-snug">
+                            <strong className="text-amber-900 font-bold">นับจำนวน</strong> หรือ <strong className="text-amber-900 font-bold">จำแนกหมวดหมู่</strong>
+                          </td>
+                        </tr>
+
+                        {/* แถวที่ 2: ตัวอย่างหน้างาน */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-3.5 sm:px-4 py-2 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70">
+                            ตัวอย่างหน้างาน
+                          </td>
+                          <td className="px-3.5 sm:px-4 py-2 border-r border-slate-200 text-slate-700 bg-sky-50/20 leading-snug">
+                            ความยาว (mm), น้ำหนัก (g), แรงบิด (N·m), อุณหภูมิ (°C)
+                          </td>
+                          <td className="px-3.5 sm:px-4 py-2 text-slate-700 bg-amber-50/20 leading-snug">
+                            Pass/Fail, Go/No-Go, จำนวน Scratch, Burr, Dent
+                          </td>
+                        </tr>
+
+                        {/* แถวที่ 3: ปริมาณข้อมูลเชิงลึก */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-3.5 sm:px-4 py-2 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70">
+                            ปริมาณข้อมูลเชิงลึก
+                          </td>
+                          <td className="px-3.5 sm:px-4 py-2 border-r border-slate-200 text-slate-800 bg-sky-50/20 leading-snug">
+                            <span className="inline-block rounded bg-sky-100 px-1.5 py-0.5 text-xs font-bold text-sky-900 border border-sky-300 mr-1.5">
+                              สูง
+                            </span>
+                            รู้ว่าใกล้ขอบ Spec แค่ไหน (ใช้กลุ่มตัวอย่างน้อย)
+                          </td>
+                          <td className="px-3.5 sm:px-4 py-2 text-slate-800 bg-amber-50/20 leading-snug">
+                            <span className="inline-block rounded bg-amber-100 px-1.5 py-0.5 text-xs font-bold text-amber-900 border border-amber-300 mr-1.5">
+                              ต่ำกว่า
+                            </span>
+                            รู้แค่ผ่านหรือไม่ผ่าน (ต้องใช้กลุ่มตัวอย่างเยอะ)
+                          </td>
+                        </tr>
+
+                        {/* แถวที่ 4: Control Chart ที่ใช้ */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-3.5 sm:px-4 py-2 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70">
+                            Control Chart ที่ใช้
+                          </td>
+                          <td className="px-3.5 sm:px-4 py-2 border-r border-slate-200 font-medium text-slate-900 bg-sky-50/20 leading-snug">
+                            <span className="font-mono font-bold text-sky-900 bg-white px-2 py-0.5 rounded border border-sky-300 mr-1.5">
+                              <InlineMarkdown text="$\bar{X}\text{-}R$" />
+                            </span>
+                            <span className="font-mono font-bold text-sky-900 bg-white px-2 py-0.5 rounded border border-sky-300 mr-1.5">
+                              <InlineMarkdown text="$\bar{X}\text{-}S$" />
+                            </span>
+                            <span className="font-mono font-bold text-sky-900 bg-white px-2 py-0.5 rounded border border-sky-300">
+                              <InlineMarkdown text="$I\text{-}MR$" />
+                            </span>
+                          </td>
+                          <td className="px-3.5 sm:px-4 py-2 font-medium text-slate-900 bg-amber-50/20 leading-snug">
+                            <span className="font-mono font-bold text-amber-950 bg-white px-2 py-0.5 rounded border border-amber-300 mr-1.5">
+                              <InlineMarkdown text="$P$" />
+                            </span>
+                            <span className="font-mono font-bold text-amber-950 bg-white px-2 py-0.5 rounded border border-amber-300 mr-1.5">
+                              <InlineMarkdown text="$NP$" />
+                            </span>
+                            <span className="font-mono font-bold text-amber-950 bg-white px-2 py-0.5 rounded border border-amber-300 mr-1.5">
+                              <InlineMarkdown text="$C$" />
+                            </span>
+                            <span className="font-mono font-bold text-amber-950 bg-white px-2 py-0.5 rounded border border-amber-300">
+                              <InlineMarkdown text="$U$" />
+                            </span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             ) : screen.screenId === 'M1L2-S02' ? (
               <div className="flex h-full flex-col items-center justify-start gap-4 sm:gap-5 w-full max-w-5xl xl:max-w-6xl mx-auto pt-1 sm:pt-2">
                 {/* 2 Concept Highlight Cards on top */}
