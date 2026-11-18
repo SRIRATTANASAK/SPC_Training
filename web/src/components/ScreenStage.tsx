@@ -90,13 +90,9 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
     if (sid === 'M1L1-S06' || sid === 'M1L2-S04' || sid === 'M1L2-S06' || sid === 'M1L3-S09' || sid === 'M1L4-S08') {
       return [{ id: 'interactive-0', label: 'กิจกรรม / แบบทดสอบ', kind: 'interactive', interactiveStep: 0 }];
     }
-    // M1L3-S01: Merge Theory (Part 1) and Outlier Lab (Part 2) into 1 unified screen
-    if (sid === 'M1L3-S01') {
+    // M1L3-S01 & M1L3-S02: Merge Theory and Outlier Lab into 1 unified screen
+    if (sid === 'M1L3-S01' || sid === 'M1L3-S02') {
       return [{ id: 'main', label: 'เนื้อหา & แบบจำลอง Outlier', kind: 'visual-content' }];
-    }
-    // M1L3-S02: Median comparison table fits cleanly in 1 full-screen view
-    if (sid === 'M1L3-S02') {
-      return [{ id: 'main', label: 'เนื้อหาหลัก', kind: 'visual-content' }];
     }
     if (TWO_STEP_INTERACTIVE_SCREENS.has(sid)) {
       return [
@@ -1088,6 +1084,101 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                         <p className="leading-relaxed">
                           <strong className="font-bold text-slate-900">จุดอ่อน:</strong> ไวต่อ Outlier มาก
                         </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex flex-col justify-start">
+                    <OutlierMeanMedianLab />
+                  </div>
+                </div>
+              ) : screen.screenId === 'M1L3-S02' ? (
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start w-full">
+                  <div className="flex flex-col justify-start">
+                    <div className="rounded-2xl border border-sky-200 bg-sky-50/60 p-3.5 sm:p-4 shadow-xs">
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="h-2 w-2 rounded-full bg-sky-600 animate-pulse" />
+                        <span className="text-xs font-bold uppercase tracking-wider text-sky-900">
+                          หลักการและวิธีหาค่ามัธยฐาน (Median)
+                        </span>
+                      </div>
+
+                      <div className="my-2 rounded-xl border border-sky-200 bg-white py-2 px-3 shadow-2xs">
+                        <p className="text-xs sm:text-sm text-slate-800 leading-relaxed">
+                          <strong className="font-bold text-slate-900">วิธีหา:</strong> เรียงข้อมูลจากน้อยไปมาก:
+                        </p>
+                        <div className="mt-1 rounded-lg bg-slate-50 py-1.5 px-2.5 border border-sky-200/70 text-center text-xs sm:text-sm font-mono font-semibold text-slate-800 overflow-x-auto">
+                          <span>49.99, 50.00, </span>
+                          <span className="bg-emerald-100 text-emerald-950 font-bold px-1.5 py-0.5 rounded border border-emerald-300">
+                            [50.00]
+                          </span>
+                          <span>, 50.01, 50.02</span>
+                          <span className="font-sans font-bold text-emerald-900 ml-2">
+                            → Median = 50.00 mm
+                          </span>
+                        </div>
+                        <div className="mt-1 text-[11px] text-slate-600 text-center">
+                          (ถ้า <InlineMarkdown text="$n$" /> เป็นเลขคู่ ให้เอา 2 ตัวกลางมาบวกกันหาร 2)
+                        </div>
+                      </div>
+
+                      <div className="mt-2.5 space-y-2">
+                        <div className="text-xs font-bold text-slate-900">
+                          ตารางเปรียบเทียบ Mean vs Median เมื่อมี Outlier:
+                        </div>
+                        <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-2xs">
+                          <table className="w-full text-[11px] sm:text-xs text-left border-collapse">
+                            <thead>
+                              <tr className="bg-slate-900 text-white font-bold">
+                                <th className="px-2.5 py-1.5 border-r border-slate-700">สถานการณ์</th>
+                                <th className="px-2 py-1.5 border-r border-slate-700">ข้อมูล (mm)</th>
+                                <th className="px-2 py-1.5 border-r border-slate-700 text-center">
+                                  Mean (<InlineMarkdown text="$\bar{X}$" />)
+                                </th>
+                                <th className="px-2 py-1.5 border-r border-slate-700 text-center">
+                                  Median
+                                </th>
+                                <th className="px-2.5 py-1.5">การตีความหน้างาน</th>
+                              </tr>
+                            </thead>
+                            <tbody className="divide-y divide-slate-100">
+                              <tr className="hover:bg-slate-50">
+                                <td className="px-2.5 py-2 font-bold text-slate-800 border-r border-slate-100 whitespace-nowrap">
+                                  ปกติ (ไร้ Outlier)
+                                </td>
+                                <td className="px-2 py-2 font-mono text-[10px] sm:text-[11px] text-slate-600 border-r border-slate-100">
+                                  49.99, 50.00, 50.00, 50.01, 50.02
+                                </td>
+                                <td className="px-2 py-2 font-mono text-center font-bold text-slate-800 border-r border-slate-100 whitespace-nowrap">
+                                  50.004 mm
+                                </td>
+                                <td className="px-2 py-2 font-mono text-center font-bold text-emerald-800 border-r border-slate-100 whitespace-nowrap">
+                                  50.000 mm
+                                </td>
+                                <td className="px-2.5 py-2 text-[10px] sm:text-[11px] text-slate-600">
+                                  ค่าใกล้เคียงกันมาก ข้อมูลสมมาตร
+                                </td>
+                              </tr>
+                              <tr className="bg-rose-50/40 hover:bg-rose-50/70">
+                                <td className="px-2.5 py-2 font-bold text-rose-900 border-r border-rose-100 whitespace-nowrap">
+                                  มี Outlier 1 ชิ้น
+                                </td>
+                                <td className="px-2 py-2 font-mono text-[10px] sm:text-[11px] text-slate-600 border-r border-rose-100">
+                                  49.99, 50.00, 50.00, 50.01,{' '}
+                                  <strong className="text-rose-700 font-bold">50.50</strong>
+                                </td>
+                                <td className="px-2 py-2 font-mono text-center font-bold text-rose-700 border-r border-rose-100 whitespace-nowrap">
+                                  50.100 mm <span className="text-[9px] block text-rose-600 font-semibold">(เพี้ยน!)</span>
+                                </td>
+                                <td className="px-2 py-2 font-mono text-center font-bold text-emerald-800 border-r border-rose-100 whitespace-nowrap">
+                                  50.000 mm <span className="text-[9px] block text-emerald-700 font-semibold">(นิ่ง!)</span>
+                                </td>
+                                <td className="px-2.5 py-2 text-[10px] sm:text-[11px] text-slate-700">
+                                  <strong className="text-emerald-900 font-bold">Median ทนทานต่อค่าโดด</strong> เหมาะกับข้อมูลเบ้ เช่น Lead Time / Cycle Time
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </div>
                       </div>
                     </div>
                   </div>

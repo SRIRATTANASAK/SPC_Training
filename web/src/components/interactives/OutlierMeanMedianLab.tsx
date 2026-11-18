@@ -91,7 +91,7 @@ export const OutlierMeanMedianLab: React.FC = () => {
               </span>
             </div>
             <h3 className="text-sm sm:text-base font-extrabold text-slate-900">
-              แบบจำลองผลกระทบของ Outlier ต่อค่าเฉลี่ย
+              แบบจำลองผลกระทบของ Outlier ต่อค่าเฉลี่ยและค่ามัธยฐาน
             </h3>
           </div>
           <div className="flex flex-wrap items-center gap-1">
