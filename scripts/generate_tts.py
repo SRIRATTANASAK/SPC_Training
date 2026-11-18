@@ -76,6 +76,12 @@ def synth_gemini(
                 }
             },
         },
+        "safetySettings": [
+            {"category": "HARM_CATEGORY_HARASSMENT", "threshold": "BLOCK_NONE"},
+            {"category": "HARM_CATEGORY_HATE_SPEECH", "threshold": "BLOCK_NONE"},
+            {"category": "HARM_CATEGORY_SEXUALLY_EXPLICIT", "threshold": "BLOCK_NONE"},
+            {"category": "HARM_CATEGORY_DANGEROUS_CONTENT", "threshold": "BLOCK_NONE"},
+        ],
     }
 
     data = None
@@ -85,7 +91,7 @@ def synth_gemini(
             "https://generativelanguage.googleapis.com/v1beta/models/"
             f"{model}:generateContent?key={api_key}"
         )
-        for attempt in range(3):
+        for attempt in range(4):
             req = urllib.request.Request(
                 url,
                 data=json.dumps(payload).encode("utf-8"),
@@ -93,8 +99,14 @@ def synth_gemini(
             )
             try:
                 with urllib.request.urlopen(req, timeout=90) as resp:
-                    data = json.loads(resp.read().decode("utf-8"))
-                break
+                    resp_data = json.loads(resp.read().decode("utf-8"))
+                candidates = resp_data.get("candidates", [])
+                if candidates and "content" in candidates[0] and candidates[0]["content"].get("parts"):
+                    data = resp_data
+                    break
+                else:
+                    print(f"Model {model} returned no parts: {candidates}. Retrying attempt {attempt + 1}...", flush=True)
+                    time.sleep(3.0 * (attempt + 1))
             except urllib.error.HTTPError as err:
                 last_err = err
                 body = err.read().decode("utf-8", errors="ignore")
@@ -102,11 +114,11 @@ def synth_gemini(
                     if "PerDay" in body or "daily" in body.lower():
                         print(f"Model {model} hit daily quota, trying next model...", flush=True)
                         break
-                    wait_s = 22 * (attempt + 1)
+                    wait_s = 20 * (attempt + 1)
                     print(f"Rate limited (429) on {model}, waiting {wait_s}s...", flush=True)
                     time.sleep(wait_s)
                     continue
-                raise
+                time.sleep(3.0 * (attempt + 1))
         if data is not None:
             break
 
