@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { FastForward, Pause, Play, Subtitles, Volume2 } from 'lucide-react';
 import type { VoiceoverTrack } from '../lib/types';
 import { progressStore } from '../lib/storage';
+import { withBase } from '../lib/base';
 
 interface Props {
   voiceover: VoiceoverTrack;
@@ -47,7 +48,8 @@ export const AudioPlayerBar: React.FC<Props> = ({
     setPlaying(false);
     setHasMp3(null);
     if (voiceover?.audioFile) {
-      fetch(voiceover.audioFile, { method: 'HEAD' })
+      const src = withBase(voiceover.audioFile);
+      fetch(src, { method: 'HEAD' })
         .then((res) => setHasMp3(res.ok))
         .catch(() => setHasMp3(false));
     }
@@ -136,7 +138,7 @@ export const AudioPlayerBar: React.FC<Props> = ({
       {hasMp3 && (
         <audio
           ref={audioRef}
-          src={voiceover.audioFile}
+          src={withBase(voiceover.audioFile)}
           onEnded={handleEnded}
           onTimeUpdate={(e) => onTimeUpdate?.(e.currentTarget.currentTime)}
           preload="auto"

@@ -2,6 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import type { QuestionItem } from '../../lib/types';
 import { progressStore } from '../../lib/storage';
 import { InlineMarkdown } from '../MarkdownContent';
+import { withBase } from '../../lib/base';
 
 interface Props {
   questions: QuestionItem[];
@@ -47,10 +48,10 @@ export const FinalExam: React.FC<Props> = ({ questions }) => {
 
   const weakLessons = useMemo(() => {
     const map: Record<string, { ok: number; total: number; href: string; label: string }> = {
-      'LO-M1-01': { ok: 0, total: 0, href: '/module-01/M1L1-S01', label: 'Lesson 1: Why Statistics & COPQ' },
-      'LO-M1-02': { ok: 0, total: 0, href: '/module-01/M1L2-S01', label: 'Lesson 2: Data Types & NOIR Scales' },
-      'LO-M1-03': { ok: 0, total: 0, href: '/module-01/M1L3-S01', label: 'Lesson 3: Descriptive Statistics' },
-      'LO-M1-04': { ok: 0, total: 0, href: '/module-01/M1L4-S01', label: 'Lesson 4: Data Visualization' },
+      'LO-M1-01': { ok: 0, total: 0, href: withBase('/module-01/M1L1-S01'), label: 'Lesson 1: Why Statistics & COPQ' },
+      'LO-M1-02': { ok: 0, total: 0, href: withBase('/module-01/M1L2-S01'), label: 'Lesson 2: Data Types & NOIR Scales' },
+      'LO-M1-03': { ok: 0, total: 0, href: withBase('/module-01/M1L3-S01'), label: 'Lesson 3: Descriptive Statistics' },
+      'LO-M1-04': { ok: 0, total: 0, href: withBase('/module-01/M1L4-S01'), label: 'Lesson 4: Data Visualization' },
     };
     for (const q of examSet) {
       if (map[q.lo]) {

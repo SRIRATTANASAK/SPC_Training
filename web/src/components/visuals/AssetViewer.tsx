@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X } from 'lucide-react';
 import { CopqIcebergSvg, EmpiricalRuleBellSvg, NoirScaleCards } from './Module1Visuals';
+import { withBase } from '../../lib/base';
 
 interface Props {
   assetIds: string[];
@@ -9,19 +10,19 @@ interface Props {
 
 const IMAGE_MAP: Record<string, { src: string; caption: string }> = {
   'AST-M1-001': {
-    src: '/images/module-01/AST-M1-001.jpg',
+    src: withBase('/images/module-01/AST-M1-001.jpg'),
     caption: 'สายการผลิต CNC ยุคใหม่กับการติดตามค่าสถิติและ Variation แบบ Real-time',
   },
   'AST-M1-002': {
-    src: '/images/module-01/AST-M1-002.jpg',
+    src: withBase('/images/module-01/AST-M1-002.jpg'),
     caption: 'เปลี่ยนจากการจดบันทึกแบบเดิมสู่ Data-Driven Decision บนหน้าจอวิเคราะห์',
   },
   'AST-M1-006': {
-    src: '/images/module-01/AST-M1-006.jpg',
+    src: withBase('/images/module-01/AST-M1-006.jpg'),
     caption: 'Variable Data: การวัดค่าต่อเนื่องด้วย Micrometer, Torque Wrench และ Thermocouple',
   },
   'AST-M1-007': {
-    src: '/images/module-01/AST-M1-007.jpg',
+    src: withBase('/images/module-01/AST-M1-007.jpg'),
     caption: 'Attribute Data: การตรวจสอบ Pass/Fail และ Go/No-Go Plug Gauge',
   },
 };

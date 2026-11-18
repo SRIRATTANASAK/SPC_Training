@@ -7,6 +7,7 @@ import { AssetViewer } from './visuals/AssetViewer';
 import { FishboneDiagram } from './visuals/FishboneDiagram';
 import { InteractiveRouter } from './interactives/InteractiveRouter';
 import { AudioPlayerBar } from './AudioPlayerBar';
+import { withBase } from '../lib/base';
 
 interface Props {
   screen: ScreenItem;
@@ -148,7 +149,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
       return;
     }
     if (screen.nextScreenId) {
-      window.location.href = `/module-01/${screen.nextScreenId}`;
+      window.location.href = withBase(`/module-01/${screen.nextScreenId}`);
     }
   };
 
@@ -158,7 +159,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
   const headerLeft = (
     <div className="flex items-center gap-2.5 min-w-0">
       <a
-        href="/"
+        href={withBase('/')}
         className="shrink-0 rounded-lg bg-slate-900 px-2.5 py-1 text-xs font-extrabold text-white hover:bg-slate-800 transition"
       >
         SPC Training
@@ -725,14 +726,14 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
             <div className="flex items-center gap-2">
               {screen.prevScreenId ? (
                 <a
-                  href={`/module-01/${screen.prevScreenId}`}
+                  href={withBase(`/module-01/${screen.prevScreenId}`)}
                   className="rounded-lg border border-slate-300 bg-white px-3.5 py-1.5 text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-50"
                 >
                   ← หน้าก่อนหน้า
                 </a>
               ) : (
                 <a
-                  href="/"
+                  href={withBase('/')}
                   className="rounded-lg border border-slate-300 bg-white px-3.5 py-1.5 text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-50"
                 >
                   ← หน้าแรก
@@ -783,14 +784,14 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                 </button>
               ) : screen.nextScreenId ? (
                 <a
-                  href={`/module-01/${screen.nextScreenId}`}
+                  href={withBase(`/module-01/${screen.nextScreenId}`)}
                   className="rounded-lg bg-sky-700 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-white hover:bg-sky-800 shadow-sm transition"
                 >
                   หน้าถัดไป →
                 </a>
               ) : (
                 <a
-                  href="/"
+                  href={withBase('/')}
                   className="rounded-lg bg-emerald-700 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-white hover:bg-emerald-800 shadow-sm transition"
                 >
                   จบ Module 1 ✓
@@ -833,7 +834,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                       {l.screens.map((sid) => (
                         <a
                           key={sid}
-                          href={`/module-01/${sid}`}
+                          href={withBase(`/module-01/${sid}`)}
                           className={`rounded-lg border px-2.5 py-1.5 text-xs font-bold ${
                             sid === screen.screenId
                               ? 'border-sky-600 bg-sky-50 text-sky-900'
