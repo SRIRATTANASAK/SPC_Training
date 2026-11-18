@@ -5,10 +5,12 @@ const DEFAULT_VALUES = [50.00, 50.01, 49.99, 50.02, 50.00];
 
 interface Props {
   title?: string;
+  showMedian?: boolean;
 }
 
 export const OutlierMeanMedianLab: React.FC<Props> = ({
   title = 'แบบจำลองผลกระทบของ Outlier ต่อค่าเฉลี่ย',
+  showMedian = false,
 }) => {
   const [values, setValues] = useState<number[]>([...DEFAULT_VALUES]);
   const [selectedIndices, setSelectedIndices] = useState<number[]>([4]); // Default select item #5
@@ -73,13 +75,26 @@ export const OutlierMeanMedianLab: React.FC<Props> = ({
 
   const stats = useMemo(() => {
     const mean = values.reduce((s, v) => s + v, 0) / values.length;
-    const minVal = Math.min(...values);
-    const maxVal = Math.max(...values);
+    const sorted = [...values].sort((a, b) => a - b);
+    const mid = Math.floor(sorted.length / 2);
+    const median =
+      sorted.length % 2 !== 0 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+    const minVal = sorted[0];
+    const maxVal = sorted[sorted.length - 1];
     const range = maxVal - minVal;
     const hasLowOutlier = values.some((v) => v <= 40);
     const hasHighOutlier = values.some((v) => v >= 60);
     const isOutlierPresent = hasLowOutlier || hasHighOutlier;
-    return { mean, range, minVal, maxVal, hasLowOutlier, hasHighOutlier, isOutlierPresent };
+    return {
+      mean,
+      median,
+      range,
+      minVal,
+      maxVal,
+      hasLowOutlier,
+      hasHighOutlier,
+      isOutlierPresent,
+    };
   }, [values]);
 
   const selectedLabels = selectedIndices.map((i) => `#${i + 1}`).join(', ');
@@ -222,8 +237,12 @@ export const OutlierMeanMedianLab: React.FC<Props> = ({
           </div>
         </div>
 
-        {/* Section 5 & 6: Only 2 Stat Cards (Mean X̄ and Range R) (Compact) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-center">
+        {/* Section 5 & 6: Stat Cards (Mean X̄, optional Median X̃, and Range R) */}
+        <div
+          className={`grid grid-cols-1 ${
+            showMedian ? 'sm:grid-cols-3' : 'sm:grid-cols-2'
+          } gap-2 text-center`}
+        >
           {/* Card 1: Mean (X̄) with KaTeX symbol */}
           <div
             className={`rounded-xl border p-2 sm:p-2.5 transition-all ${
@@ -252,7 +271,29 @@ export const OutlierMeanMedianLab: React.FC<Props> = ({
             </div>
           </div>
 
-          {/* Card 2: Range (R) */}
+          {/* Card 2 (Optional): Median (X̃) next to Mean */}
+          {showMedian && (
+            <div className="rounded-xl border border-emerald-300 bg-emerald-50/80 p-2 sm:p-2.5 shadow-2xs transition-all">
+              <div className="flex items-center justify-center gap-1 text-[11px] font-bold text-emerald-900">
+                <span>มัธยฐาน Median</span>
+                <span className="inline-block bg-white px-1.5 py-0.5 rounded border border-emerald-200 shadow-2xs">
+                  <InlineMarkdown text="$\tilde{X}$" />
+                </span>
+                <span>{stats.isOutlierPresent && Math.abs(stats.median - 50) <= 0.05 ? '(นิ่ง!)' : '(ปกติ)'}</span>
+              </div>
+              <div className="text-xl sm:text-2xl font-black font-mono mt-0.5 text-emerald-900">
+                {stats.median.toFixed(3)}
+                <span className="text-[11px] font-normal text-emerald-700 ml-1">mm</span>
+              </div>
+              <div className="mt-0.5 text-[10px] font-semibold text-emerald-800 truncate">
+                {Math.abs(stats.median - 50) <= 0.05
+                  ? '✓ ทนทานต่อ Outlier'
+                  : '⚠️ ค่ากลางขยับตามหลายชิ้น'}
+              </div>
+            </div>
+          )}
+
+          {/* Card 3: Range (R) */}
           <div
             className={`rounded-xl border p-2 sm:p-2.5 transition-all ${
               stats.range > 5
@@ -295,8 +336,14 @@ export const OutlierMeanMedianLab: React.FC<Props> = ({
                 {stats.maxVal >= 60 && `สูงสุด ${stats.maxVal.toFixed(2)} mm`}
               </strong>{' '}
               ส่งผลให้ <strong className="font-bold">Mean (<InlineMarkdown text="$\bar{X}$" />)</strong> ถูกดึงไปเป็น{' '}
-              <strong className="font-mono text-rose-800">{stats.mean.toFixed(3)} mm</strong> และ{' '}
-              <strong className="font-bold">Range (<InlineMarkdown text="$R$" />)</strong> ถ่างกว้างเป็น{' '}
+              <strong className="font-mono text-rose-800">{stats.mean.toFixed(3)} mm</strong>{' '}
+              {showMedian && (
+                <>
+                  ขณะที่ <strong className="font-bold text-emerald-900">Median (<InlineMarkdown text="$\tilde{X}$" />)</strong> อยู่ที่{' '}
+                  <strong className="font-mono text-emerald-900">{stats.median.toFixed(3)} mm</strong>{' '}
+                </>
+              )}
+              และ <strong className="font-bold">Range (<InlineMarkdown text="$R$" />)</strong> ถ่างกว้างเป็น{' '}
               <strong className="font-mono text-rose-800">{stats.range.toFixed(3)} mm</strong> ทันที!
             </div>
           </div>
@@ -306,8 +353,15 @@ export const OutlierMeanMedianLab: React.FC<Props> = ({
             <div>
               <span className="font-bold">สภาวะปกติ (ไม่มี Outlier):</span> ข้อมูลทั้ง 5 ชิ้นเกาะกลุ่มชิดกันที่ ~50 mm ค่าเฉลี่ย{' '}
               <strong className="font-bold">Mean (<InlineMarkdown text="$\bar{X}$" />)</strong> อยู่ที่{' '}
-              <strong className="font-mono text-sky-900">{stats.mean.toFixed(3)} mm</strong> และค่า{' '}
-              <strong className="font-bold">Range (<InlineMarkdown text="$R$" />)</strong> แคบเพียง{' '}
+              <strong className="font-mono text-sky-900">{stats.mean.toFixed(3)} mm</strong>
+              {showMedian && (
+                <>
+                  {', '}
+                  <strong className="font-bold text-emerald-900">Median (<InlineMarkdown text="$\tilde{X}$" />)</strong> อยู่ที่{' '}
+                  <strong className="font-mono text-emerald-900">{stats.median.toFixed(3)} mm</strong>
+                </>
+              )}{' '}
+              และค่า <strong className="font-bold">Range (<InlineMarkdown text="$R$" />)</strong> แคบเพียง{' '}
               <strong className="font-mono text-sky-900">{stats.range.toFixed(3)} mm</strong> กระบวนการนิ่งสม่ำเสมอดี
             </div>
           </div>

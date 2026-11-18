@@ -1183,7 +1183,10 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                     </div>
                   </div>
                   <div className="flex flex-col justify-start">
-                    <OutlierMeanMedianLab title="แบบจำลองผลกระทบของ Outlier ต่อค่าเฉลี่ยและค่ามัธยฐาน" />
+                    <OutlierMeanMedianLab
+                      title="แบบจำลองผลกระทบของ Outlier ต่อค่าเฉลี่ยและค่ามัธยฐาน"
+                      showMedian
+                    />
                   </div>
                 </div>
               ) : (
