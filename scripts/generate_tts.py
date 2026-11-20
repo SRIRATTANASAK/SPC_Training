@@ -200,15 +200,6 @@ def synth_elevenlabs(text: str, api_key: str, voice_id: str) -> bytes:
         return resp.read()
 
 
-def synth_gtts(text: str) -> bytes:
-    import io
-    from gtts import gTTS
-    tts = gTTS(text, lang="th")
-    buf = io.BytesIO()
-    tts.write_to_fp(buf)
-    return buf.getvalue()
-
-
 def synth_edge_tts(
     text: str,
     voice: str = "th-TH-PremwadeeNeural",
@@ -241,9 +232,9 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Generate Thai MP3 tracks for Module 1.")
     parser.add_argument(
         "--provider",
-        choices=["edge-tts", "gemini", "google", "elevenlabs", "gtts"],
+        choices=["edge-tts", "gemini", "google", "elevenlabs"],
         default="edge-tts",
-        help="TTS engine provider (default: edge-tts for natural Neural voice)",
+        help="TTS engine provider (default: edge-tts for natural Neural voice; gemini for Achernar voice)",
     )
     parser.add_argument(
         "--voice",
@@ -323,7 +314,10 @@ def main() -> int:
         elif args.provider == "elevenlabs":
             audio_bytes = synth_elevenlabs(text, api_key, voice_id)
         else:
-            audio_bytes = synth_gtts(text)
+            raise ValueError(
+                f"Unsupported TTS provider: {args.provider}. "
+                "Per Rule 8 of AGENTS.md, only natural neural voices (edge-tts, gemini, google, elevenlabs) are allowed."
+            )
 
         (ASSETS_AUDIO / fname).write_bytes(audio_bytes)
         (PUBLIC_AUDIO / fname).write_bytes(audio_bytes)
