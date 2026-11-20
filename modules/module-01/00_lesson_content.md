@@ -44,7 +44,7 @@ $$\text{COPQ} = \text{Prevention} + \text{Appraisal} + \text{Internal Failure} +
 
 ---
 
-## M1L1-S04 — Factory Examples & Sources of Variation (4M1E+M)
+## M1L1-S04 — Factory Examples & Sources of Variation (5M1E)
 **หัวข้อ:** ตัวอย่างการใช้สถิติในโรงงาน & 6 ปัจจัยความแปรปรวน  
 `<Asset id="AST-M1-004" />` `<Asset id="AST-M1-005" />` `<Interactive id="INT-M1-L1-01" />`
 

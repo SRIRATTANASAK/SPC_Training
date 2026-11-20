@@ -66,7 +66,7 @@
 - **Duration:** 50s
 - **Layout:** Top Case Tabs (CNC / Injection / Stamping / Electronics) + Bottom Interactive Variation Explorer
 - **Asset ID:** `AST-M1-004`, `AST-M1-005` | **Interactive ID:** `INT-M1-L1-01`
-- **On Screen Text:** "ตัวอย่างการใช้สถิติในโรงงาน & 6 ปัจจัยความแปรปรวน (4M1E+M)" — Shaft 50.00 mm target example.
+- **On Screen Text:** "ตัวอย่างการใช้สถิติในโรงงาน & 6 ปัจจัยความแปรปรวน (5M1E)" — Shaft 50.00 mm target example.
 - **Voice Over Script Ref:** `AUD-M1L1-S04`
 - **Motion Specification:** Icons appear one-by-one; defect rate bar chart animates when user toggles Machine/Material/Shift.
 - **Trigger Logic:** Changing `var_shift`, `var_machine`, or `var_material` updates simulated defect distribution.
