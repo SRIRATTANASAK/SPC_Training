@@ -103,13 +103,13 @@
 - **EN Reference:**  
   Now complete Workshop 1 : Data Classification by classifying real manufacturing items into Variable or Attribute data and matching their measurement scales.
 
-### AUD-M1L2-S05 (30 sec) — Feedback & Rationale
+### AUD-M1L2-S05 (40 sec) — Feedback & Rationale
 - **Display Script (TH):**  
-  จุดที่วิศวกรมักพลาดบ่อยๆ คือ **Go/No-Go Gauge** แม้จะเช็คขนาดเพลา แต่ผลที่บันทึกคือ "ผ่าน หรือ ไม่ผ่าน" จึงถือเป็น **Attribute Nominal** ไม่ใช่ Variable [PAUSE-1] เช่นเดียวกับ **หมายเลข Cavity** ที่เป็นแค่ชื่อเรียก ไม่ใช่ตัวเลขสำหรับหาค่าเฉลี่ย
+  จุดที่วิศวกรมักพลาดบ่อยๆ คือ ข้อแรก **Go/No-Go Gauge** แม้จะเช็คขนาดเพลา แต่ผลที่บันทึกคือ "ผ่าน หรือ ไม่ผ่าน" จึงถือเป็น **Attribute Nominal** ไม่ใช่ Variable [PAUSE-1] ข้อสอง **หมายเลข Cavity** ที่เป็นแค่ชื่อเรียกหลุมแม่พิมพ์ ไม่ใช่ตัวเลขสำหรับนำมาบวกลบหาค่าเฉลี่ย [PAUSE-1] และข้อสาม **อุณหภูมิเตาอบ** หลายคนคิดว่าเป็น Ratio Scale แต่แท้จริงเป็น **Interval Scale** เพราะศูนย์องศาเซลเซียส ไม่ใช่ศูนย์แท้ทางความร้อน จึงเปรียบเทียบสัดส่วนกี่เท่าไม่ได้
 - **TTS Clean Script (TH):**  
-  จุดที่วิศวกรมักพลาดบ่อยๆ คือ โก โนโก เกจ แม้จะเช็คขนาดเพลา แต่ผลที่บันทึกคือ ผ่าน หรือ ไม่ผ่าน จึงถือเป็น แอททริบิวต์ นอมินัล ไม่ใช่ แวริเอเบิล, เช่นเดียวกับหมายเลข คาวิตี้ ที่เป็นแค่ชื่อเรียก ไม่ใช่ตัวเลขสำหรับหาค่าเฉลี่ย
+  จุดที่วิศวกรมักพลาดบ่อยๆ คือ ข้อแรก โก โนโก เกจ แม้จะเช็คขนาดเพลา แต่ผลที่บันทึกคือ ผ่าน หรือ ไม่ผ่าน จึงถือเป็น แอททริบิวต์ นอมินัล ไม่ใช่ แวริเอเบิล, ข้อสอง หมายเลข คาวิตี้ ที่เป็นแค่ชื่อเรียกหลุมแม่พิมพ์ ไม่ใช่ตัวเลขสำหรับนำมาบวกลบหาค่าเฉลี่ย, และข้อสาม อุณหภูมิเตาอบ หลายคนคิดว่าเป็น เรโช สเกล แต่แท้จริงเป็น อินเทอร์วัล สเกล เพราะศูนย์องศาเซลเซียส ไม่ใช่ศูนย์แท้ทางความร้อน จึงเปรียบเทียบสัดส่วนกี่เท่าไม่ได้
 - **EN Reference:**  
-  Watch out for common traps: Go/No-Go gauge results are Attribute Nominal even when checking a dimension, and mold cavity numbers are labels rather than Ratio numbers.
+  Watch out for common traps: First, Go/No-Go gauge results are Attribute Nominal even when checking dimensions, because the record is Pass/Fail rather than a measured continuous value. Second, mold cavity numbers are labels (Nominal) rather than numbers for calculating averages. Third, oven temperature in Celsius is an Interval Scale rather than a Ratio Scale, because 0°C is not an absolute zero temperature and ratios cannot be computed.
 
 ### AUD-M1L2-S06 (20 sec) — Lesson 2 Summary & Check
 - **Display Script (TH):**  

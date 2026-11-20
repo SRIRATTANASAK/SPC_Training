@@ -1062,6 +1062,146 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                   </div>
                 </div>
               </div>
+            ) : screen.screenId === 'M1L2-S05' ? (
+              <div className="flex h-full flex-col items-center justify-start gap-3 sm:gap-4 w-full max-w-5xl xl:max-w-6xl mx-auto pt-0 sm:pt-1">
+                {/* Banner สรุป 3 กับดักที่พบบ่อย */}
+                <div className="w-full rounded-xl border border-amber-300 bg-gradient-to-r from-amber-50 via-white to-amber-50/50 p-3 sm:p-3.5 shadow-2xs flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-amber-600 text-white font-extrabold text-sm shadow-xs">
+                      !
+                    </span>
+                    <div>
+                      <h3 className="text-sm sm:text-base font-extrabold text-slate-900 leading-tight">
+                        สรุป 3 กับดักที่พบบ่อยจาก Workshop 1 (Common Pitfalls &amp; Statistical Rationale)
+                      </h3>
+                      <p className="text-xs text-slate-600 mt-0.5">
+                        จุดวิกฤตที่วิศวกรมักจำแนกผิดพลาด พร้อมคำอธิบายและเหตุผลทางสถิติวิศวกรรม
+                      </p>
+                    </div>
+                  </div>
+                  <span className="hidden sm:inline-flex rounded-md bg-amber-100 px-2.5 py-1 text-xs font-bold text-amber-900 border border-amber-300">
+                    Workshop 1 Review
+                  </span>
+                </div>
+
+                {/* ตาราง 3 กับดัก ขยับขึ้นด้านบน ชัดเจน โดดเด่น สวยงาม */}
+                <div className="w-full">
+                  <div className="overflow-hidden rounded-xl border border-slate-300 shadow-sm bg-white">
+                    <table className="w-full border-collapse text-left">
+                      <thead>
+                        <tr className="border-b border-slate-300 bg-slate-900 text-white">
+                          <th className="w-[28%] px-4 py-3 border-r border-slate-700 text-xs sm:text-sm font-extrabold text-slate-100">
+                            รายการข้อมูลหน้างาน
+                          </th>
+                          <th className="w-[20%] px-4 py-3 border-r border-slate-700 text-xs sm:text-sm font-extrabold text-rose-200">
+                            มักเข้าใจผิดเป็น ⚠️
+                          </th>
+                          <th className="w-[24%] px-4 py-3 border-r border-slate-700 text-xs sm:text-sm font-extrabold text-emerald-200">
+                            คำตอบที่ถูกต้อง ✓
+                          </th>
+                          <th className="w-[28%] px-4 py-3 text-xs sm:text-sm font-extrabold text-sky-200">
+                            เหตุผลทางสถิติวิศวกรรม
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-slate-200 text-xs sm:text-sm">
+                        {/* แถวที่ 1: Go / No-Go Plug Gauge */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-4 py-3.5 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70 align-top">
+                            <div className="text-sm sm:text-base text-slate-900 font-extrabold">
+                              1. Go / No-Go Plug Gauge
+                            </div>
+                            <div className="text-xs text-slate-500 font-normal mt-0.5">
+                              (เกจสวมเช็คขนาดรูหรือเพลา)
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5 border-r border-slate-200 bg-rose-50/20 text-rose-900 align-top leading-relaxed">
+                            <span className="inline-flex items-center gap-1 rounded bg-rose-100 px-2 py-0.5 text-xs font-bold text-rose-800 border border-rose-300 mb-1">
+                              ✕ Variable Data
+                            </span>
+                            <div className="text-xs text-slate-600">
+                              เห็นว่าเช็คขนาดมิติ จึงนึกว่าวัดค่าได้
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5 border-r border-slate-200 bg-emerald-50/20 text-emerald-950 align-top leading-relaxed">
+                            <span className="inline-flex items-center gap-1 rounded bg-emerald-100 px-2.5 py-0.5 text-xs font-bold text-emerald-900 border border-emerald-300 shadow-2xs mb-1">
+                              ✓ Attribute (Nominal)
+                            </span>
+                            <div className="text-xs text-slate-700">
+                              ผลที่ได้คือสถานะ "ผ่าน / ไม่ผ่าน"
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5 text-slate-700 align-top leading-relaxed">
+                            แม้ใช้ตรวจขนาดเพลา แต่ค่าที่บันทึกคือ <strong className="text-slate-900 font-bold">"ผ่าน หรือ ไม่ผ่าน"</strong> ไม่ใช่ตัวเลขต่อเนื่องที่วัดได้ จึงต้องใช้ Attribute Control Charts
+                          </td>
+                        </tr>
+
+                        {/* แถวที่ 2: หมายเลข Cavity */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-4 py-3.5 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70 align-top">
+                            <div className="text-sm sm:text-base text-slate-900 font-extrabold">
+                              2. หมายเลข Cavity (1, 2, 3, 4)
+                            </div>
+                            <div className="text-xs text-slate-500 font-normal mt-0.5">
+                              (หลุมแม่พิมพ์ฉีดพลาสติก)
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5 border-r border-slate-200 bg-rose-50/20 text-rose-900 align-top leading-relaxed">
+                            <span className="inline-flex items-center gap-1 rounded bg-rose-100 px-2 py-0.5 text-xs font-bold text-rose-800 border border-rose-300 mb-1">
+                              ✕ Ratio Scale
+                            </span>
+                            <div className="text-xs text-slate-600">
+                              เห็นตัวเลข 1, 2, 3, 4 จึงนึกว่าเป็นตัวเลข
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5 border-r border-slate-200 bg-emerald-50/20 text-emerald-950 align-top leading-relaxed">
+                            <span className="inline-flex items-center gap-1 rounded bg-emerald-100 px-2.5 py-0.5 text-xs font-bold text-emerald-900 border border-emerald-300 shadow-2xs mb-1">
+                              ✓ Attribute (Nominal)
+                            </span>
+                            <div className="text-xs text-slate-700">
+                              เป็นป้ายชื่อระบุตำแหน่ง (Label)
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5 text-slate-700 align-top leading-relaxed">
+                            ตัวเลขเป็นเพียง <strong className="text-slate-900 font-bold">ชื่อเรียกหลุมแม่พิมพ์</strong> นำมาบวกลบหรือหาค่าเฉลี่ยไม่ได้ (เช่น Cavity 1 กับ 3 ไม่ได้เฉลี่ยเป็น Cavity 2)
+                          </td>
+                        </tr>
+
+                        {/* แถวที่ 3: อุณหภูมิเตาอบ */}
+                        <tr className="hover:bg-slate-50 transition-colors">
+                          <td className="px-4 py-3.5 border-r border-slate-200 font-bold text-slate-900 bg-slate-50/70 align-top">
+                            <div className="text-sm sm:text-base text-slate-900 font-extrabold">
+                              3. อุณหภูมิเตาอบ (°C)
+                            </div>
+                            <div className="text-xs text-slate-500 font-normal mt-0.5">
+                              (องศาเซลเซียส / ฟาเรนไฮต์)
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5 border-r border-slate-200 bg-rose-50/20 text-rose-900 align-top leading-relaxed">
+                            <span className="inline-flex items-center gap-1 rounded bg-rose-100 px-2 py-0.5 text-xs font-bold text-rose-800 border border-rose-300 mb-1">
+                              ✕ Ratio Scale
+                            </span>
+                            <div className="text-xs text-slate-600">
+                              วัดค่าได้ มีทศนิยม จึงนึกว่ามีศูนย์แท้
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5 border-r border-slate-200 bg-emerald-50/20 text-emerald-950 align-top leading-relaxed">
+                            <span className="inline-flex items-center gap-1 rounded bg-emerald-100 px-2.5 py-0.5 text-xs font-bold text-emerald-900 border border-emerald-300 shadow-2xs mb-1">
+                              ✓ Variable Continuous (Interval)
+                            </span>
+                            <div className="text-xs text-slate-700">
+                              อันตรภาค (ช่วงห่างเท่ากัน แต่ไม่มีศูนย์แท้)
+                            </div>
+                          </td>
+                          <td className="px-4 py-3.5 text-slate-700 align-top leading-relaxed">
+                            ที่ <strong className="text-slate-900 font-bold">0 °C ไม่ใช่จุดที่พลังงานความร้อนเป็นศูนย์แท้</strong> (เทียบสัดส่วนกี่เท่าไม่ได้ ห้ามพูดว่า 40°C ร้อนเป็น 2 เท่าของ 20°C)
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
             ) : currentSlide.kind === 'visual-content' ? (
               screen.screenId === 'M1L3-S01' ? (
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 items-start w-full">
@@ -1262,7 +1402,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                   className={
                     hasVisibleAsset && cleanMarkdown
                       ? 'grid grid-cols-1 lg:grid-cols-12 gap-5 items-center h-full'
-                      : 'flex flex-col justify-center h-full w-full max-w-5xl xl:max-w-6xl mx-auto'
+                      : 'flex flex-col justify-start pt-2 sm:pt-4 h-full w-full max-w-5xl xl:max-w-6xl mx-auto'
                   }
                 >
                   {hasVisibleAsset && (
