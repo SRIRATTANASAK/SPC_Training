@@ -250,7 +250,7 @@ def main() -> int:
         default="",
         help="Voice name (for edge-tts: th-TH-PremwadeeNeural or th-TH-NiwatNeural; for gemini: Achernar)",
     )
-    parser.add_argument("--rate", default="+5%", help="Speaking rate for edge-tts (default: +5% for natural pace)")
+    parser.add_argument("--rate", default="+5%", help="Speaking rate for edge-tts (default: +5%% for natural pace)")
     parser.add_argument("--model", default="", help="Preferred Gemini TTS model")
     parser.add_argument("--limit", type=int, default=0, help="Optional limit for test runs")
     parser.add_argument("--screen", default="", help="Generate for a specific screenId, e.g. M1L1-S03")

@@ -32,31 +32,15 @@
 - **EN Reference:**  
   The MODE is the most frequently occurring value. In manufacturing, seeing two modes often signals mixed streams such as two machines, shifts, or mold cavities.
 
-### AUD-M1L3-S04 (30 sec) — Range
+### AUD-M1L3-S04 (65 sec) — Measures of Dispersion
 - **Display Script (TH):**  
-  ต่อมาคือตัววัดการกระจายตัวที่เร็วที่สุดบนไลน์ผลิต นั่นคือ **Range หรือพิสัย** ซึ่งเท่ากับ **ค่าสูงสุด ลบด้วย ค่าต่ำสุด** [PAUSE-1] [ANIM: range_expand] ข้อดีคือคำนวณง่ายมาก เหมาะกับกราฟ Xbar-R ที่เก็บตัวอย่างกลุ่มเล็กๆ แต่ข้อเสียคือดูแค่ 2 ตัวหัวท้าย จึงไม่ได้สะท้อนข้อมูลตัวที่อยู่ตรงกลาง
+  ในการวัดการกระจายตัวของข้อมูลบนสายการผลิต เรามี 3 เครื่องมือสำคัญ [PAUSE-1] [ANIM: range_expand] ตัวแรกคือ **Range หรือพิสัย** เท่ากับ **ค่าสูงสุด ลบ ค่าต่ำสุด** คำนวณง่ายและเร็วมาก เหมาะกับกราฟ Xbar-R ที่เก็บตัวอย่างกลุ่มเล็กๆ แต่ดูเฉพาะ 2 จุดปลายสุด [PAUSE-1] [ANIM: variance_squares] ตัวที่สองคือ **Variance หรือความแปรปรวน ($s^2$)** นำข้อมูลทุกจุดมาคิด โดยหาผลต่างจากค่าเฉลี่ยแล้วยกกำลังสอง ก่อนหารด้วย $n - 1$ [PAUSE-1] [ANIM: bell_sigma] และตัวที่สามคือ **Standard Deviation หรือส่วนเบี่ยงเบนมาตรฐาน ($s$)** ถอดรากที่สองกลับมาเพื่อให้เป็นหน่วยเดียวกับชิ้นงานจริง โดยในโค้งปกติ **68% จะอยู่ในช่วง $\pm 1\sigma$**, **95% อยู่ในช่วง $\pm 2\sigma$**, และ **99.7% อยู่ในช่วง $\pm 3\sigma$** ซึ่งเป็นรากฐานของเส้น Control Limit ใน SPC!
 - **TTS Clean Script (TH):**  
-  ต่อมาคือตัววัดการกระจายตัวที่เร็วที่สุดบนไลน์ผลิต นั่นคือ เรนจ์ หรือพิสัย ซึ่งเท่ากับ ค่าสูงสุด ลบด้วย ค่าต่ำสุด, ข้อดีคือคำนวณง่ายมาก เหมาะกับกราฟ เอ็กซ์บาร์ อาร์ ที่เก็บตัวอย่างกลุ่มเล็กๆ แต่ข้อเสียคือดูแค่ 2 ตัวหัวท้าย จึงไม่ได้สะท้อนข้อมูลตัวที่อยู่ตรงกลาง
+  ในการวัดการกระจายตัวของข้อมูลบนสายการผลิต เรามี 3 เครื่องมือสำคัญ, ตัวแรกคือ เรนจ์ หรือพิสัย เท่ากับ ค่าสูงสุด ลบ ค่าต่ำสุด คำนวณง่ายและเร็วมาก เหมาะกับกราฟ เอ็กซ์บาร์ อาร์ ที่เก็บตัวอย่างกลุ่มเล็กๆ แต่ดูเฉพาะ 2 จุดปลายสุด, ตัวที่สองคือ แวเรียนซ์ หรือความแปรปรวน เอสกำลังสอง นำข้อมูลทุกจุดมาคิด โดยหาผลต่างจากค่าเฉลี่ยแล้วยกกำลังสอง ก่อนหารด้วย เอ็น ลบ หนึ่ง, และตัวที่สามคือ สแตนดาร์ด ดีวิเอชั่น หรือส่วนเบี่ยงเบนมาตรฐาน ซิกม่า ถอดรากที่สองกลับมาเพื่อให้เป็นหน่วยเดียวกับชิ้นงานจริง โดยในโค้งปกติ 68 เปอร์เซ็นต์ จะอยู่ในช่วง บวกลบ 1 ซิกม่า, 95 เปอร์เซ็นต์ อยู่ในช่วง บวกลบ 2 ซิกม่า, และ 99.7 เปอร์เซ็นต์ อยู่ในช่วง บวกลบ 3 ซิกม่า ซึ่งเป็นรากฐานของเส้น คอนโทรล ลิมิต ใน เอสพีซี
 - **EN Reference:**  
-  The RANGE is the difference between maximum and minimum values. It is quick for small shop-floor subgroups, though it uses only two extreme points.
+  In manufacturing dispersion analysis, we use three key tools: Range gives rapid shop-floor feedback from max minus min; Variance squares all individual deviations over n minus 1; and Standard Deviation returns spread to original measurement units, underpinning the 68-95-99.7% empirical rule and SPC control limits.
 
-### AUD-M1L3-S05 (40 sec) — Variance
-- **Display Script (TH):**  
-  เพื่อให้เห็นการกระจายตัวของข้อมูล **ทุกตัว** เราจึงใช้ **Variance หรือความแปรปรวน ($s^2$)** [PAUSE-1] [ANIM: variance_squares] หลักการคือวัดว่าข้อมูลแต่ละตัวห่างจากค่าเฉลี่ยเท่าไหร่ แล้วยกกำลังสองเพื่อไม่ให้ค่าบวกกับค่าลบหักล้างกัน [PAUSE-1] และสำหรับการเก็บตัวอย่าง (Sample) เราจะหารด้วย $n - 1$ เพื่อให้เป็นตัวประมาณค่าประชากรที่ไม่เอนเอียง
-- **TTS Clean Script (TH):**  
-  เพื่อให้เห็นการกระจายตัวของข้อมูลทุกตัว เราจึงใช้ แวเรียนซ์ หรือความแปรปรวน เอสกำลังสอง, หลักการคือวัดว่าข้อมูลแต่ละตัวห่างจากค่าเฉลี่ยเท่าไหร่ แล้วยกกำลังสองเพื่อไม่ให้ค่าบวกกับค่าลบหักล้างกัน, และสำหรับการเก็บตัวอย่าง เราจะหารด้วย เอ็น ลบ หนึ่ง เพื่อให้เป็นตัวประมาณค่าประชากรที่ไม่เอนเอียง
-- **EN Reference:**  
-  Sample variance averages the squared deviations from the mean across all observations using n minus 1 in the denominator to provide an unbiased estimate of process spread.
-
-### AUD-M1L3-S06 (45 sec) — Standard Deviation
-- **Display Script (TH):**  
-  เนื่องจาก Variance มีหน่วยเป็นกำลังสอง เช่น ตารางมิลลิเมตร อ่านยากหน้างาน เราจึงถอดรากที่สองกลับมาเป็น **Standard Deviation หรือส่วนเบี่ยงเบนมาตรฐาน ($s$ / $\sigma$)** เพื่อให้มีหน่วยเดียวกับชิ้นงานจริง [PAUSE-1] [ANIM: bell_sigma] ในโค้งปกติ ข้อมูลประมาณ **68% จะอยู่ในช่วง $\pm 1\sigma$**, **95% อยู่ในช่วง $\pm 2\sigma$**, และ **99.7% อยู่ในช่วง $\pm 3\sigma$** ซึ่งนี่แหละคือรากฐานของเส้น Control Limit ใน SPC!
-- **TTS Clean Script (TH):**  
-  เนื่องจาก แวเรียนซ์ มีหน่วยเป็นกำลังสอง เช่น ตารางมิลลิเมตร อ่านยากหน้างาน เราจึงถอดรากที่สองกลับมาเป็น สแตนดาร์ด ดีวิเอชั่น หรือส่วนเบี่ยงเบนมาตรฐาน ซิกม่า เพื่อให้มีหน่วยเดียวกับชิ้นงานจริง, ในโค้งปกติ ข้อมูลประมาณ 68 เปอร์เซ็นต์ จะอยู่ในช่วง บวกลบ 1 ซิกม่า, 95 เปอร์เซ็นต์ อยู่ในช่วง บวกลบ 2 ซิกม่า, และ 99.7 เปอร์เซ็นต์ อยู่ในช่วง บวกลบ 3 ซิกม่า ซึ่งนี่แหละคือรากฐานของเส้น คอนโทรล ลิมิต ใน เอสพีซี
-- **EN Reference:**  
-  Standard deviation returns spread to the original measurement unit. Under a normal distribution, roughly 68%, 95%, and 99.7% of output fall within plus or minus 1, 2, and 3 sigma of the mean.
-
-### AUD-M1L3-S07 (35 sec) — Coefficient of Variation (CV)
+### AUD-M1L3-S05 (35 sec) — Coefficient of Variation (CV) & Workshop 2
 - **Display Script (TH):**  
   แล้วถ้าอยากเทียบความนิ่งของงาน 2 ชิ้นที่ขนาดต่างกันมากๆ ? เช่น เทียบพินเล็ก 10 มม. กับเพลายาว 500 มม. [PAUSE-1] [ANIM: cv_dashboard] เราจะเทียบ SD ตรงๆ ไม่ได้ ต้องใช้ **CV หรือ Coefficient of Variation** คือเอา SD หารด้วย Mean แล้วคูณ 100% [PAUSE-1] ค่ายิ่งน้อย แปลว่ากระบวนการยิ่งนิ่งเมื่อเทียบกับขนาดของมัน
 - **TTS Clean Script (TH):**  
@@ -64,20 +48,20 @@
 - **EN Reference:**  
   The Coefficient of Variation expresses standard deviation as a percentage of the mean, allowing fair comparison of relative variation across different scales or units.
 
-### AUD-M1L3-S08 (45 sec) — Sigma Simulator & Match Game
+### AUD-M1L3-S06 (45 sec) — Sigma Simulator & Match Game
 - **Display Script (TH):**  
-  มาลองเล่น **Sigma Simulator** กัน [ANIM: sigma_slider] ลองเลื่อนแถบค่า Sigma จาก 0.1 ไป 3.0 แล้วสังเกตดูว่าเมื่อ Sigma เพิ่มขึ้น ฐานของ Histogram จะกว้างออกจนล้นออกนอกเส้น Spec USL และ LSL ทำให้เกิดของเสียเพิ่มขึ้นทันที [PAUSE-1] เล่นเสร็จแล้ว ลองจับคู่คำศัพท์สถิติ 7 คำด้านล่างให้ครบ
+  มาลองเล่น **Sigma Simulator** กัน [ANIM: sigma_slider] ลองเลื่อนแถบค่า Sigma จาก 0.1 ไป 3.0 แล้วสังเกตดูว่าเมื่อ Sigma เพิ่มขึ้น ฐานของ Histogram จะกว้างออกจนล้นออกนอกเส้น Spec USL และ LSL ทำให้เกิดของเสียเพิ่มขึ้นทันที [PAUSE-1] เล่นเสร็จแล้ว ลองจับคู่คำศัพท์สถิติ 7 คำในหน้าถัดไป
 - **TTS Clean Script (TH):**  
-  มาลองเล่น ซิกม่า ซิมูเลเตอร์ กัน, ลองเลื่อนแถบค่า ซิกม่า จาก 0.1 ไป 3.0 แล้วสังเกตดูว่าเมื่อ ซิกม่า เพิ่มขึ้น ฐานของ ฮิสโตแกรม จะกว้างออกจนล้นออกนอกเส้น สเปก ยูเอสแอล และ แอลเอสแอล ทำให้เกิดของเสียเพิ่มขึ้นทันที, เล่นเสร็จแล้ว ลองจับคู่คำศัพท์สถิติ 7 คำด้านล่างให้ครบ
+  มาลองเล่น ซิกม่า ซิมูเลเตอร์ กัน, ลองเลื่อนแถบค่า ซิกม่า จาก 0.1 ไป 3.0 แล้วสังเกตดูว่าเมื่อ ซิกม่า เพิ่มขึ้น ฐานของ ฮิสโตแกรม จะกว้างออกจนล้นออกนอกเส้น สเปก ยูเอสแอล และ แอลเอสแอล ทำให้เกิดของเสียเพิ่มขึ้นทันที, เล่นเสร็จแล้ว ลองจับคู่คำศัพท์สถิติ 7 คำในหน้าถัดไป
 - **EN Reference:**  
-  Move the sigma slider and observe the histogram. As sigma increases, the distribution widens toward specification limits, increasing nonconformance risk. Then complete the statistics matching game.
+  Move the sigma slider and observe the histogram. As sigma increases, the distribution widens toward specification limits, increasing nonconformance risk. Then proceed to match 7 statistical terms on the next screen.
 
-### AUD-M1L3-S09 (20 sec) — Lesson 3 Knowledge Check
+### AUD-M1L3-S07 (25 sec) — Lesson 3 Knowledge Check
 - **Display Script (TH):**  
-  มาทดสอบความเข้าใจสถิติเชิงพรรณนา 5 ข้อ ดูโจทย์ให้ดีว่าสถานการณ์ไหนควรใช้ Mean, Median, SD หรือ CV
+  มาทดสอบความเข้าใจสถิติเชิงพรรณนา 3 ข้อ ดูโจทย์ให้ดีว่าสถานการณ์ไหนควรใช้ Mean, Median, SD หรือ CV
 - **TTS Clean Script (TH):**  
-  มาทดสอบความเข้าใจสถิติเชิงพรรณนา 5 ข้อ ดูโจทย์ให้ดีว่าสถานการณ์ไหนควรใช้ มีน, มีเดียน, เอสดี หรือ ซีวี
+  มาทดสอบความเข้าใจสถิติเชิงพรรณนา 3 ข้อ ดูโจทย์ให้ดีว่าสถานการณ์ไหนควรใช้ มีน, มีเดียน, เอสดี หรือ ซีวี
 - **EN Reference:**  
-  Complete the 5-question Lesson 3 check to verify your ability to interpret and choose descriptive statistics.
+  Complete the 3-question Lesson 3 check to verify your ability to interpret and choose descriptive statistics.
 
 ---

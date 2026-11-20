@@ -35,8 +35,8 @@ export const InteractiveRouter: React.FC<Props> = ({ screen, moduleData, stepInd
           showMedian
         />
       )}
-      {sid === 'M1L3-S08' && (stepIndex === 0 ? <SigmaSimulator /> : <StatMatchGame />)}
-      {sid === 'M1L3-S09' && <KnowledgeCheck lessonId="M1-L3" questions={moduleData.questions} />}
+      {sid === 'M1L3-S06' && (stepIndex === 0 ? <SigmaSimulator /> : <StatMatchGame />)}
+      {sid === 'M1L3-S07' && <KnowledgeCheck lessonId="M1-L3" questions={moduleData.questions} />}
 
       {sid === 'M1L4-S07' &&
         (stepIndex === 0 ? (

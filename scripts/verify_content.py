@@ -160,7 +160,8 @@ def verify_all() -> int:
         print(f"\nFAIL: {len(issues)} issue(s) detected.")
         return 1
 
-    print("\nPASS: All 10 modules verified 100% (274 screens, 600 questions, 16 CSVs).")
+    total_screens = sum(int(r.split('|')[1].strip()) for r in rows_summary)
+    print(f"\nPASS: All 10 modules verified 100% ({total_screens} screens, 600 questions, 16 CSVs).")
     return 0
 
 

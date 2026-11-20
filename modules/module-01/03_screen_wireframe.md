@@ -23,18 +23,16 @@
 - **M1L2-S03 Measurement Scales:** 2×2 Grid of Flip Cards (`Nominal`, `Ordinal`, `Interval`, `Ratio` — `AST-M1-010`) + "Allowed Math" Badge
 - **M1L2-S04 Workshop 1 (`INT-M1-L2-01`, `INT-M1-L2-02`):** Top Item Cards (Drag/Select) | Bottom Drop Zones (`Variable` vs `Attribute`) + Scale Selector Dropdown (accessible keyboard fallback)
 - **M1L2-S05 Feedback & Rationale:** Diagnostic Summary Table highlighting missed items and engineering traps (Go/No-Go, Cavity ID, Celsius)
-- **M1L2-S06 Lesson Summary & Check (`KC-M1-L2`):** Quick Decision Tree + 2 Questions
+- **M1L2-S06 Lesson Summary & Check:** Quick Decision Tree + 2 Questions
 
-## M1-L3: Descriptive Statistics (9 Screens)
+## M1-L3: Descriptive Statistics (7 Screens)
 - **M1L3-S01 Mean:** Formula Card + Interactive Mean Builder (`INT-M1-L3-01` + `AST-M1-011`) with editable value to test Outlier pull
 - **M1L3-S02 Median:** Sorted Array Animation (`AST-M1-012`) + Mean vs Median Live Comparison Pill
 - **M1L3-S03 Mode:** Frequency Bar Highlight (`AST-M1-013`) + 1-Machine vs 2-Machine Bimodal Toggle
-- **M1L3-S04 Range:** Min–Max Span Bracket (`AST-M1-014`) + "Add Outlier" Stress Test Button
-- **M1L3-S05 Variance:** 3-Step Visual Walkthrough (`AST-M1-015`: Deviations → Squared Areas → Divide by `n-1`)
-- **M1L3-S06 Standard Deviation:** Interactive Normal Curve (`AST-M1-016`) with `±1σ (68%)`, `±2σ (95%)`, `±3σ (99.7%)` Click Tabs
-- **M1L3-S07 CV:** Dual-Process Dashboard (`AST-M1-017`: 10 mm Pin vs 500 mm Shaft + MC-A vs MC-B)
-- **M1L3-S08 Sigma Simulator & Match Game:** Top Live Histogram Slider (`INT-M1-L3-02`: `sigma 0.1–3.0` vs USL/LSL) | Bottom 7-Term Match Game (`INT-M1-L3-03`)
-- **M1L3-S09 Knowledge Check (`KC-M1-L3`):** 5-Question Assessment Card
+- **M1L3-S04 Measures of Dispersion:** Unified 3-Part Dispersion Comparison & Interactive Calculator (`INT-M1-L3-01`, `AST-M1-014`, `AST-M1-015`, `AST-M1-016`: Range bracket + Variance squared areas + SD Normal curve with $\pm 1\sigma, \pm 2\sigma, \pm 3\sigma$ tabs)
+- **M1L3-S05 CV & Workshop 2:** Dual-Process Dashboard (`AST-M1-017`: 10 mm Pin vs 500 mm Shaft + MC-A vs MC-B calculation)
+- **M1L3-S06 Sigma Simulator & Match Game:** Top Live Histogram Slider (`INT-M1-L3-02`: `sigma 0.1–3.0` vs USL/LSL) | Bottom 7-Term Match Game (`INT-M1-L3-03`)
+- **M1L3-S07 Knowledge Check (`KC-M1-L3`):** 3-Question Randomized Assessment Card
 
 ## M1-L4: Data Visualization & Final Exam (8 Screens)
 - **M1L4-S01 Why Visualize Data?:** Left Raw 30-Row Table Preview | Right 5 Chart Preview Cards

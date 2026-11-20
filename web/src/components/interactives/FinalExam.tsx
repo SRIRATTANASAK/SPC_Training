@@ -17,24 +17,38 @@ function sampleN<T>(arr: T[], n: number): T[] {
   return copy.slice(0, n);
 }
 
-function drawStratified(pool: QuestionItem[]): QuestionItem[] {
+export interface ExamQuestionItem extends QuestionItem {
+  shuffledChoices: Array<{ key: 'A' | 'B' | 'C' | 'D'; label: string }>;
+}
+
+function drawStratified(pool: QuestionItem[]): ExamQuestionItem[] {
   const byRange = (lo: number, hi: number) =>
     pool.filter((q) => {
       const n = Number(q.id.split('-Q')[1]);
       return n >= lo && n <= hi;
     });
-  return [
+  const selected = [
     ...sampleN(byRange(1, 10), 3),
     ...sampleN(byRange(11, 30), 6),
     ...sampleN(byRange(31, 50), 6),
     ...sampleN(byRange(51, 60), 5),
   ];
+  return selected.map((q) => {
+    const keys: Array<'A' | 'B' | 'C' | 'D'> = ['A', 'B', 'C', 'D'];
+    const valid = keys
+      .filter((k) => q.choices[k] && q.choices[k] !== '-')
+      .map((k) => ({ key: k, label: q.choices[k] }));
+    return {
+      ...q,
+      shuffledChoices: sampleN(valid, valid.length),
+    };
+  });
 }
 
 const PAGE_SIZE = 2;
 
 export const FinalExam: React.FC<Props> = ({ questions }) => {
-  const [examSet, setExamSet] = useState<QuestionItem[]>(() => drawStratified(questions));
+  const [examSet, setExamSet] = useState<ExamQuestionItem[]>(() => drawStratified(questions));
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [page, setPage] = useState(0);
@@ -138,16 +152,15 @@ export const FinalExam: React.FC<Props> = ({ questions }) => {
                 {qNum}. <InlineMarkdown text={q.question} />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                {(['A', 'B', 'C', 'D'] as const).map((k) => {
-                  const label = q.choices[k];
-                  if (!label || label === '-') return null;
+                {q.shuffledChoices.map(({ key: k, label }, choiceIdx) => {
+                  const displayLetter = String.fromCharCode(65 + choiceIdx);
                   const picked = answers[q.id] === k;
                   const isRight = q.correct === k;
                   return (
                     <button
                       key={k}
                       type="button"
-                      onClick={() => setAnswers((prev) => ({ ...prev, [q.id]: k }))}
+                      onClick={() => !submitted && setAnswers((prev) => ({ ...prev, [q.id]: k }))}
                       className={`rounded-lg border px-3 py-1.5 text-left text-xs transition ${
                         submitted
                           ? isRight
@@ -160,7 +173,7 @@ export const FinalExam: React.FC<Props> = ({ questions }) => {
                             : 'border-slate-200 bg-white hover:bg-slate-100'
                       }`}
                     >
-                      <strong>{k})</strong> <InlineMarkdown text={label} />
+                      <strong>{displayLetter})</strong> <InlineMarkdown text={label} />
                     </button>
                   );
                 })}

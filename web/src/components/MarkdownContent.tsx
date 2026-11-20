@@ -31,12 +31,12 @@ export const MarkdownContent: React.FC<Props> = ({ markdown, className = '' }) =
             <tr className="hover:bg-slate-50 transition-colors">{children}</tr>
           ),
           th: ({ children }) => (
-            <th className="px-4 sm:px-5 py-3 sm:py-3.5 font-bold text-slate-100 border-r border-slate-700 last:border-r-0 text-center first:text-left text-sm sm:text-base">
+            <th className="px-3 sm:px-4 py-2.5 sm:py-3 font-bold text-slate-100 border-r border-slate-700 last:border-r-0 text-center first:text-left text-xs sm:text-sm">
               {children}
             </th>
           ),
           td: ({ children }) => (
-            <td className="px-4 sm:px-5 py-3.5 sm:py-4 text-slate-700 border-r border-slate-200 last:border-r-0 leading-relaxed align-middle text-sm sm:text-base">
+            <td className="px-3 sm:px-4 py-2.5 sm:py-3 text-slate-700 border-r border-slate-200 last:border-r-0 leading-relaxed align-middle text-xs sm:text-sm">
               {children}
             </td>
           ),

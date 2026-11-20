@@ -9,6 +9,16 @@ import { InteractiveRouter } from './interactives/InteractiveRouter';
 import { OutlierMeanMedianLab } from './interactives/OutlierMeanMedianLab';
 import { AudioPlayerBar } from './AudioPlayerBar';
 import { withBase } from '../lib/base';
+import {
+  ModeVisualCard,
+  DispersionUnifiedCard,
+  Workshop2DataPreview,
+  HistogramChart,
+  BoxPlotChart,
+  ParetoChart,
+  ScatterPlotChart,
+  RunChart,
+} from './visuals/InteractiveLessonVisuals';
 
 interface Props {
   screen: ScreenItem;
@@ -23,22 +33,22 @@ const INTERACTIVE_SCREENS = new Set([
   'M1L2-S04',
   'M1L2-S06',
   'M1L3-S01',
-  'M1L3-S08',
-  'M1L3-S09',
+  'M1L3-S06',
+  'M1L3-S07',
   'M1L4-S07',
   'M1L4-S08',
 ]);
 
 // Screens that have 2 separate interactive steps
-const TWO_STEP_INTERACTIVE_SCREENS = new Set(['M1L3-S08', 'M1L4-S07']);
+const TWO_STEP_INTERACTIVE_SCREENS = new Set(['M1L3-S06', 'M1L4-S07']);
 
 // Workshop and Quiz/Assessment screens where auto-advance to the next screen pauses for user action
 const PAUSE_AUTO_ADVANCE_SCREENS = new Set([
   'M1L1-S06', // KC-M1-L1
   'M1L2-S04', // Workshop 1
   'M1L2-S06', // KC-M1-L2
-  'M1L3-S08', // Simulator & Match Game Workshop
-  'M1L3-S09', // KC-M1-L3
+  'M1L3-S06', // Simulator & Match Game Workshop
+  'M1L3-S07', // KC-M1-L3
   'M1L4-S07', // Workshop 2
   'M1L4-S08', // Final Exam
 ]);
@@ -87,24 +97,24 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
   const slides = useMemo<SlideView[]>(() => {
     const sid = screen.screenId;
     // Pure Quiz / Workshop / Exam screens where the markdown is just a 1-line intro
-    if (sid === 'M1L1-S06' || sid === 'M1L2-S04' || sid === 'M1L2-S06' || sid === 'M1L3-S09' || sid === 'M1L4-S08') {
+    if (sid === 'M1L1-S06' || sid === 'M1L2-S04' || sid === 'M1L2-S06' || sid === 'M1L3-S07' || sid === 'M1L4-S08') {
       return [{ id: 'interactive-0', label: 'กิจกรรม / แบบทดสอบ', kind: 'interactive', interactiveStep: 0 }];
     }
-    // M1L3-S01 & M1L3-S02: Merge Theory and Outlier Lab into 1 unified screen
-    if (sid === 'M1L3-S01' || sid === 'M1L3-S02') {
-      return [{ id: 'main', label: 'เนื้อหา & แบบจำลอง Outlier', kind: 'visual-content' }];
+    // M1L3-S01..S04 & M1L4-S01..S06: Rich visual content
+    if (sid === 'M1L3-S01' || sid === 'M1L3-S02' || sid === 'M1L3-S03' || sid === 'M1L3-S04' || sid.startsWith('M1L4-S0')) {
+      return [{ id: 'main', label: 'เนื้อหา & ภาพประกอบ', kind: 'visual-content' }];
     }
     if (TWO_STEP_INTERACTIVE_SCREENS.has(sid)) {
       return [
         {
           id: 'interactive-0',
-          label: sid === 'M1L3-S08' ? 'ส่วนที่ 1: Sigma Simulator' : 'ส่วนที่ 1: จับคู่เลือกกราฟ',
+          label: sid === 'M1L3-S06' ? 'ส่วนที่ 1: Sigma Simulator' : 'ส่วนที่ 1: จับคู่เลือกกราฟ',
           kind: 'interactive',
           interactiveStep: 0,
         },
         {
           id: 'interactive-1',
-          label: sid === 'M1L3-S08' ? 'ส่วนที่ 2: เกมจับคู่ค่าสถิติ' : 'ส่วนที่ 2: Factory Dashboard',
+          label: sid === 'M1L3-S06' ? 'ส่วนที่ 2: เกมจับคู่ค่าสถิติ' : 'ส่วนที่ 2: Factory Dashboard',
           kind: 'interactive',
           interactiveStep: 1,
         },
@@ -574,7 +584,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                     </div>
                     <div className="bg-gradient-to-r from-sky-50 to-white px-3.5 py-2 border-t border-sky-200 flex items-center justify-between text-xs sm:text-sm">
                       <span className="font-bold text-sky-950">
-                        AST-M1-006: Micrometer, Torque, อุณหภูมิ
+                        Micrometer, Torque, อุณหภูมิ
                       </span>
                       <span className="rounded-md bg-sky-100 px-2 py-0.5 text-xs font-bold text-sky-800 border border-sky-300">
                         ได้จากการ "วัดค่า" มีทศนิยม
@@ -597,7 +607,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                     </div>
                     <div className="bg-gradient-to-r from-amber-50 to-white px-3.5 py-2 border-t border-amber-200 flex items-center justify-between text-xs sm:text-sm">
                       <span className="font-bold text-amber-950">
-                        AST-M1-007: Go/No-Go Plug Gauge, Pass/Fail
+                        Go/No-Go Plug Gauge, Pass/Fail
                       </span>
                       <span className="rounded-md bg-amber-100 px-2 py-0.5 text-xs font-bold text-amber-900 border border-amber-300">
                         ได้จากการ "นับ/จำแนก" ดี-เสีย
@@ -1187,6 +1197,64 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                       title="แบบจำลองผลกระทบของ Outlier ต่อค่าเฉลี่ยและค่ามัธยฐาน"
                       showMedian
                     />
+                  </div>
+                </div>
+              ) : screen.screenId === 'M1L3-S03' ? (
+                <ModeVisualCard />
+              ) : screen.screenId === 'M1L3-S04' ? (
+                <DispersionUnifiedCard />
+              ) : screen.screenId === 'M1L4-S01' ? (
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start h-full w-full">
+                  <div className="lg:col-span-5">
+                    {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
+                  </div>
+                  <div className="lg:col-span-7">
+                    <Workshop2DataPreview />
+                  </div>
+                </div>
+              ) : screen.screenId === 'M1L4-S02' ? (
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start h-full w-full">
+                  <div className="lg:col-span-5">
+                    {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
+                  </div>
+                  <div className="lg:col-span-7">
+                    <HistogramChart />
+                  </div>
+                </div>
+              ) : screen.screenId === 'M1L4-S03' ? (
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start h-full w-full">
+                  <div className="lg:col-span-5">
+                    {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
+                  </div>
+                  <div className="lg:col-span-7">
+                    <BoxPlotChart />
+                  </div>
+                </div>
+              ) : screen.screenId === 'M1L4-S04' ? (
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start h-full w-full">
+                  <div className="lg:col-span-5">
+                    {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
+                  </div>
+                  <div className="lg:col-span-7">
+                    <ParetoChart />
+                  </div>
+                </div>
+              ) : screen.screenId === 'M1L4-S05' ? (
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start h-full w-full">
+                  <div className="lg:col-span-5">
+                    {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
+                  </div>
+                  <div className="lg:col-span-7">
+                    <ScatterPlotChart />
+                  </div>
+                </div>
+              ) : screen.screenId === 'M1L4-S06' ? (
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start h-full w-full">
+                  <div className="lg:col-span-5">
+                    {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
+                  </div>
+                  <div className="lg:col-span-7">
+                    <RunChart />
                   </div>
                 </div>
               ) : (

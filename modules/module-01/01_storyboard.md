@@ -161,7 +161,7 @@
 - **Accessibility Notes:** Semantic `<table>` with `scope="col"`.
 - **Developer Notes:** Reads state from `INT-M1-L2-01` & `INT-M1-L2-02`.
 
-## Screen M1L2-S06 — Lesson 2 Summary & Knowledge Check (`KC-M1-L2`)
+## Screen M1L2-S06 — Lesson 2 Summary & Knowledge Check
 - **Learning Objective:** สรุปและทดสอบความเข้าใจ Lesson 2
 - **Duration:** 30s
 - **Layout:** Top Decision Tree Summary + Bottom 2-Question Check (`M1-Q012`, `M1-Q018`)
@@ -213,75 +213,51 @@
 - **Accessibility Notes:** Captions + chart data table.
 - **Developer Notes:** Covers Mode requirement missing in v4 draft.
 
-## Screen M1L3-S04 — Range ($R$)
-- **Learning Objective:** คำนวณค่าพิสัย (Range) และเข้าใจข้อดีด้านความเร็วหน้างานกับข้อจำกัดเมื่อ $n$ ใหญ่
-- **Duration:** 30s
-- **Layout:** Max/Min Bracket Visualization
-- **Asset ID:** `AST-M1-014`
-- **On Screen Text:** `Range: R = Max - Min` — "คำนวณเร็วมากบน Shop Floor (เช่น Xbar-R Chart) แต่ดูแค่ 2 จุดหัวท้าย จึงอ่อนไหวต่อ Outlier"
+## Screen M1L3-S04 — Measures of Dispersion (Range, Variance, Standard Deviation)
+- **Learning Objective:** คำนวณและเปรียบเทียบตัววัดการกระจายตัวทั้ง 3 แบบ (Range, Variance, Standard Deviation) จากชุดข้อมูลเดียวกัน พร้อมเข้าใจกฎ Empirical Rule (68-95-99.73%)
+- **Duration:** 65s
+- **Layout:** Unified 3-Part Dispersion Comparison & Interactive Calculator
+- **Asset ID:** `AST-M1-014`, `AST-M1-015`, `AST-M1-016` | **Interactive ID:** `INT-M1-L3-01`
+- **On Screen Text:** "ตัววัดการกระจายตัว (Dispersion): Range (พิสัย), Variance (ความแปรปรวน), Standard Deviation (ส่วนเบี่ยงเบนมาตรฐาน) และกฎ 68-95-99.73%"
 - **Voice Over Script Ref:** `AUD-M1L3-S04`
-- **Motion Specification:** Bracket expands between Min (`49.98`) and Max (`50.14`) -> `R = 0.16 mm`.
-- **Trigger Logic:** Click "Add Outlier" to watch Range double while IQR stays steady.
-- **Accessibility Notes:** Keyboard toggle + captions.
-- **Developer Notes:** Connects directly to $\bar{X}$-$R$ chart limit ($n \le 10$) in Module 6.
+- **Motion Specification:** Dynamic step tabs showing Range bracket -> Squared deviations area -> Normal Bell Curve sigma bands for the exact same 5 shaft samples.
+- **Trigger Logic:** Interactive simulator allows switching parameters and observing Range, Variance, and SD live simultaneously.
+- **Accessibility Notes:** Semantic table summary and high-contrast formula callouts.
+- **Developer Notes:** Foundation for SPC Control Limits ($\pm 3\sigma$) in Module 5 and $\bar{X}$-$R$ charts in Module 6.
 
-## Screen M1L3-S05 — Variance ($s^2$)
-- **Learning Objective:** เข้าใจแนวคิดความแปรปรวน (Variance) ว่าทำไมต้องยกกำลังสองและหารด้วย $n-1$
-- **Duration:** 40s
-- **Layout:** Step-by-Step Formula Walkthrough (`x - x̄` → `(x - x̄)²` → `Σ / (n-1)`)
-- **Asset ID:** `AST-M1-015`
-- **On Screen Text:** `Sample Variance: s² = Σ(x - x̄)² / (n - 1)` — "วัดระยะห่างเฉลี่ยกำลังสองจากค่าเฉลี่ย (ใช้ข้อมูลทุกตัว ไม่ใช่แค่ Max-Min)"
-- **Voice Over Script Ref:** `AUD-M1L3-S05`
-- **Motion Specification:** Deviation arrows draw from Mean to each point, then flip into square areas.
-- **Trigger Logic:** Step button (`Step 1` → `Step 2` → `Step 3`).
-- **Accessibility Notes:** MathML / readable formula text.
-- **Developer Notes:** Covers Variance requirement missing in v4 draft.
-
-## Screen M1L3-S06 — Standard Deviation ($s$ / $\sigma$)
-- **Learning Objective:** ตีความ Standard Deviation และ Empirical Rule (68% – 95% – 99.7%)
-- **Duration:** 45s
-- **Layout:** Interactive Bell Curve with $\pm 1\sigma, \pm 2\sigma, \pm 3\sigma$ Zone Toggles
-- **Asset ID:** `AST-M1-016`
-- **On Screen Text:** `Standard Deviation: s = √s²` — "หน่วยเดียวกับชิ้นงานจริง! กฎ 68.27% (±1σ), 95.45% (±2σ), 99.73% (±3σ)"
-- **Voice Over Script Ref:** `AUD-M1L3-S06`
-- **Motion Specification:** Sigma bands illuminate outward from Mean (`±1σ` → `±2σ` → `±3σ`).
-- **Trigger Logic:** Clickable sigma zone tabs showing % parts inside vs outside.
-- **Accessibility Notes:** Distinct patterns + colors for sigma bands.
-- **Developer Notes:** Foundation for SPC Control Limits ($\pm 3\sigma$) in Module 5.
-
-## Screen M1L3-S07 — Coefficient of Variation (CV)
-- **Learning Objective:** ใช้ค่า CV (%) เปรียบเทียบความแปรปรวนระหว่างกระบวนการที่หน่วยหรือขนาดต่างกัน
+## Screen M1L3-S05 — Coefficient of Variation (CV) & Workshop 2
+- **Learning Objective:** ใช้ค่า CV (%) เปรียบเทียบความแปรปรวนระหว่างกระบวนการที่หน่วยหรือขนาดต่างกัน และคำนวณสถิติจาก Workshop 2
 - **Duration:** 35s
-- **Layout:** Side-by-Side Comparison Dashboard (Process A: Pin 10 mm vs Process B: Shaft 500 mm)
+- **Layout:** Side-by-Side Comparison Dashboard (Pin 10 mm vs Shaft 500 mm, MC-A vs MC-B)
 - **Asset ID:** `AST-M1-017`
 - **On Screen Text:** `CV = (s / x̄) × 100%` — "เปรียบเทียบความนิ่งข้ามขนาดหรือข้ามหน่วยได้ยุติธรรม (ตัวอย่าง: MC-A CV=0.03% vs MC-B CV=0.06%)"
-- **Voice Over Script Ref:** `AUD-M1L3-S07`
+- **Voice Over Script Ref:** `AUD-M1L3-S05`
 - **Motion Specification:** Dashboard card transition comparing raw SD vs normalized CV%.
 - **Trigger Logic:** Narration complete or toggle unit comparison.
 - **Accessibility Notes:** Clear ratio table.
-- **Developer Notes:** Covers CV requirement missing in v4 draft.
+- **Developer Notes:** Connects directly to `workshop_m1_dimensions_and_defects.csv`.
 
-## Screen M1L3-S08 — Sigma Simulator & Statistics Match Game
+## Screen M1L3-S06 — Sigma Simulator & Statistics Match Game
 - **Learning Objective:** ทดลองปรับค่า Mean และ Sigma เพื่อสังเกตผลต่อ Histogram และความเสี่ยงของเสีย (Out of Spec)
 - **Duration:** 60s
 - **Layout:** Interactive Histogram Slider (`INT-M1-L3-02`) + Quick Match Game (`INT-M1-L3-03`)
 - **Asset ID:** N/A | **Interactive ID:** `INT-M1-L3-02`, `INT-M1-L3-03`
 - **On Screen Text:** "ลองเลื่อนค่า Sigma (0.1 ถึง 3.0) แล้วสังเกตการกระจายตัวของชิ้นงานเทียบกับเส้น USL/LSL"
-- **Voice Over Script Ref:** `AUD-M1L3-S08`
+- **Voice Over Script Ref:** `AUD-M1L3-S06`
 - **Motion Specification:** Smooth 60fps SVG/Canvas bell curve & histogram bars morphing as slider moves.
 - **Trigger Logic:** Moving `var_sigma_value` updates curve width & out-of-spec %; complete Match Game (≥ 80%).
 - **Accessibility Notes:** Range slider keyboard accessible (`Left`/`Right` arrows).
 - **Developer Notes:** Reuses core curve renderer planned for Module 4 Cp/Cpk playground.
 
-## Screen M1L3-S09 — Lesson 3 Knowledge Check (`KC-M1-L3`)
-- **Learning Objective:** ทดสอบการเลือกใช้และคำนวณ Descriptive Statistics (5 ข้อ)
-- **Duration:** 60s
-- **Layout:** 5-Question Assessment Card (`M1-Q031`, `M1-Q035`, `M1-Q040`, `M1-Q044`, `M1-Q048`)
+## Screen M1L3-S07 — Lesson 3 Knowledge Check (`KC-M1-L3`)
+- **Learning Objective:** ทดสอบการเลือกใช้และคำนวณ Descriptive Statistics (3 ข้อสุ่ม)
+- **Duration:** 45s
+- **Layout:** 3-Question Randomized Assessment Card (`M1-Q031`, `M1-Q035`, `M1-Q040`, `M1-Q044`, `M1-Q048`)
 - **Asset ID:** N/A
-- **On Screen Text:** "แบบทดสอบความเข้าใจสถิติเชิงพรรณนา (5 ข้อ)"
-- **Voice Over Script Ref:** `AUD-M1L3-S09`
+- **On Screen Text:** "แบบทดสอบความเข้าใจสถิติเชิงพรรณนา (3 ข้อสุ่ม)"
+- **Voice Over Script Ref:** `AUD-M1L3-S07`
 - **Motion Specification:** Progress indicator per question.
-- **Trigger Logic:** Immediate feedback after each answer.
+- **Trigger Logic:** Immediate feedback after each answer; shuffle options.
 - **Accessibility Notes:** Full keyboard navigation.
 - **Developer Notes:** Update module progress bar to 75%.
 

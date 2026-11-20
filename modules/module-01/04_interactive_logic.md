@@ -81,13 +81,13 @@
 
 ## Lesson M1-L3 Interactions
 
-### INT-M1-L3-01 — Mean vs Median Outlier Lab (`M1L3-S01`, `M1L3-S02`)
+### INT-M1-L3-01 — Mean vs Median Outlier Lab & Dispersion Explorer (`M1L3-S01`, `M1L3-S02`, `M1L3-S04`)
 - **Type:** Interactive Array Editor
 - **Initial Dataset:** `[49.99, 50.00, 50.00, 50.01, 50.02]` (Mean = `50.004`, Median = `50.000`)
 - **Action:** User drags slider or edits 5th value up to `50.50`
-- **Logic:** Auto-recalculates `Mean`, `Median`, `Range`, `SD` step-by-step and highlights why `Mean` jumps to `50.100` while `Median` stays `50.000`!
+- **Logic:** Auto-recalculates `Mean`, `Median`, `Range`, `Variance`, `SD` step-by-step and highlights why `Mean` jumps to `50.100` while `Median` stays `50.000`!
 
-### INT-M1-L3-02 — Sigma Variation Simulator (`M1L3-S08`)
+### INT-M1-L3-02 — Sigma Variation Simulator (`M1L3-S06`)
 - **Type:** Real-Time Distribution Visualizer
 - **Variable:** `var_sigma_value` (`0.1` to `3.0`, step `0.1`) | Spec Limits fixed visually at `Target ± 3.0`
 - **Logic:**
@@ -98,7 +98,7 @@
     - `0.8 < sigma <= 1.2`: Moderate (`⚠ Variation Approaching Spec Limits`)
     - `sigma > 1.2`: High Risk (`✕ High Variation — Producing Defects!`)
 
-### INT-M1-L3-03 — Statistics Match Game (`M1L3-S08`)
+### INT-M1-L3-03 — Statistics Match Game (`M1L3-S06`)
 - **Type:** 7-Pair Card/Term Matching (`Passing >= 6/7 = 85%`)
 - **Pairs (`Term` ↔ `Definition`):**
   1. `Mean (ค่าเฉลี่ย)` ↔ `ผลรวมข้อมูลทั้งหมดหารด้วยจำนวนตัวอย่าง — บอก Process Centering แต่วิ่งตาม Outlier`

@@ -2,7 +2,7 @@
   "moduleId": "M1",
   "moduleTitle": "Statistics Foundation for Manufacturing",
   "moduleTitleTh": "พื้นฐานสถิติสำหรับงานวิศวกรรมการผลิต",
-  "totalScreens": 29,
+  "totalScreens": 27,
   "lessons": [
     {
       "id": "M1-L1",
@@ -38,9 +38,7 @@
         "M1L3-S04",
         "M1L3-S05",
         "M1L3-S06",
-        "M1L3-S07",
-        "M1L3-S08",
-        "M1L3-S09"
+        "M1L3-S07"
       ]
     },
     {
@@ -146,8 +144,8 @@
         "audioId": "AUD-M1L1-S04",
         "audioFile": "/audio/module-01/AUD-M1L1-S04.mp3",
         "duration": "50 sec",
-        "displayScriptTh": "ลองดูตัวอย่างจริงในโรงงาน สมมติเรากลึงเพลาขนาดเป้าหมาย 50.00 มิลลิเมตร แม้เครื่องจักรจะเดินนิ่งดี วัดออกมาแต่ละชิ้นก็จะได้ 49.99, 50.01, 50.00 ไม่ซ้ำกันเลย ความแปรปรวนเหล่านี้มาจาก 6 ปัจจัยหลัก หรือ 4M1E ได้แก่ วัตถุดิบ, เครื่องจักร, วิธีการทำงาน, พนักงาน, ระบบการวัด และสภาพแวดล้อม ลองสลับเปลี่ยนปัจจัยในกล่องจำลองด้านล่าง แล้วสังเกตดูว่าอัตราของเสียเปลี่ยนแปลงอย่างไร",
-        "ttsCleanTh": "ลองดูตัวอย่างจริงในโรงงาน, สมมติเรากลึงเพลาขนาดเป้าหมาย 50 มิลลิเมตร แม้เครื่องจักรจะเดินนิ่งดี วัดออกมาแต่ละชิ้นก็จะได้ 49.99, 50.01, 50.00 ไม่ซ้ำกันเลย, ความแปรปรวนเหล่านี้มาจาก 6 ปัจจัยหลัก หรือ สี่เอ็ม หนึ่งอี ได้แก่ วัตถุดิบ เครื่องจักร วิธีการทำงาน พนักงาน ระบบการวัด และสภาพแวดล้อม, ลองสลับเปลี่ยนปัจจัยในกล่องจำลองด้านล่าง แล้วสังเกตดูว่าอัตราของเสียเปลี่ยนแปลงอย่างไร",
+        "displayScriptTh": "ลองดูตัวอย่างจริงในโรงงาน สมมติเรากลึงเพลาขนาดเป้าหมาย 50.00 มิลลิเมตร แม้เครื่องจักรจะเดินนิ่งดี วัดออกมาแต่ละชิ้นก็จะได้ 49.99, 50.01, 50.00 ไม่ซ้ำกันเลย ความแปรปรวนเหล่านี้มาจาก 6 ปัจจัยหลัก หรือ 4M1E ได้แก่ วัตถุดิบ, เครื่องจักร, วิธีการทำงาน, พนักงาน, ระบบการวัด และสภาพแวดล้อม ในหน้าถัดไปจะเป็นการจำลอง ผลกระทบของ 5M1E ต่อกระบวนการผลิต โดยลองสลับเปลี่ยนปัจจัย แล้วลองสังเกตดูว่าอัตราของเสียเปลี่ยนแปลงอย่างไร",
+        "ttsCleanTh": "ลองดูตัวอย่างจริงในโรงงาน, สมมติเรากลึงเพลาขนาดเป้าหมาย 50 มิลลิเมตร แม้เครื่องจักรจะเดินนิ่งดี วัดออกมาแต่ละชิ้นก็จะได้ 49.99, 50.01, 50.00 ไม่ซ้ำกันเลย, ความแปรปรวนเหล่านี้มาจาก 6 ปัจจัยหลัก หรือ สี่เอ็ม หนึ่งอี ได้แก่ วัตถุดิบ เครื่องจักร วิธีการทำงาน พนักงาน ระบบการวัด และสภาพแวดล้อม, ในหน้าถัดไปจะเป็นการจำลอง ผลกระทบของ ห้าเอ็ม หนึ่งอี ต่อกระบวนการผลิต โดยลองสลับเปลี่ยนปัจจัย แล้วลองสังเกตดูว่าอัตราของเสียเปลี่ยนแปลงอย่างไร",
         "enReference": "Consider a shaft with a target diameter of 50 millimeters. Even when stable, measurements fluctuate due to materials, machines, methods, manpower, measurement systems, and environment. Experiment with the Variation Explorer below."
       },
       "prevScreenId": "M1L1-S03",
@@ -314,7 +312,7 @@
       "screenId": "M1L2-S06",
       "lessonId": "M1-L2",
       "lessonTitle": "Types of Data & Measurement Scales",
-      "title": "Lesson 2 Summary & Knowledge Check (`KC-M1-L2`)",
+      "title": "Lesson 2 Summary & Knowledge Check",
       "markdown": "- ทบทวน 2 ข้อ (`M1-Q012`, `M1-Q018`) จาก [06_assessment_bank.md](06_assessment_bank.md)",
       "interactiveIds": [],
       "assetIds": [],
@@ -359,10 +357,8 @@
       "lessonId": "M1-L3",
       "lessonTitle": "Descriptive Statistics",
       "title": "Median (ค่ามัธยฐาน)",
-      "markdown": "- **วิธีหา:** เรียงข้อมูลจากน้อยไปมาก: `49.99, 50.00, [50.00], 50.01, 50.02` → **Median = `50.00 mm`** (ถ้า $n$ เป็นเลขคู่ ให้เอา 2 ตัวกลางมาบวกกันหาร 2)\n\n| สถานการณ์ข้อมูล (5 ชิ้น) | ค่าข้อมูล (mm) | Mean ($\\bar{x}$) | Median (มัธยฐาน) | การตีความหน้างาน |\n|---|---|---|---|---|\n| **ปกติ (ไม่มี Outlier)** | `49.99, 50.00, 50.00, 50.01, 50.02` | `50.004 mm` | `50.000 mm` | ค่าใกล้เคียงกันมาก ข้อมูลสมมาตร |\n| **มี Outlier หลุด 1 ชิ้น** | `49.99, 50.00, 50.00, 50.01, 50.50` | **`50.100 mm`** (เพี้ยน!) | **`50.000 mm`** (นิ่ง!) | Median ทนทานต่อค่าโดด เหมาะกับข้อมูลเบ้ เช่น Lead Time / Cycle Time |",
-      "interactiveIds": [
-        "INT-M1-L3-01"
-      ],
+      "markdown": "- **วิธีหา:** เรียงข้อมูลจากน้อยไปมาก: `49.99, 50.00, [50.00], 50.01, 50.02` → **Median = `50.00 mm`** (ถ้า $n$ เป็นเลขคู่ ให้เอา 2 ตัวกลางมาบวกกันหาร 2)\n\n| สถานการณ์ข้อมูล (5 ชิ้น) | ค่าข้อมูล (mm) | Mean ($\\bar{X}$) | Median (มัธยฐาน) | การตีความหน้างาน |\n|---|---|---|---|---|\n| **ปกติ (ไม่มี Outlier)** | `49.99, 50.00, 50.00, 50.01, 50.02` | `50.004 mm` | `50.000 mm` | ค่าใกล้เคียงกันมาก ข้อมูลสมมาตร |\n| **มี Outlier หลุด 1 ชิ้น** | `49.99, 50.00, 50.00, 50.01, 50.50` | **`50.100 mm`** (เพี้ยน!) | **`50.000 mm`** (นิ่ง!) | Median ทนทานต่อค่าโดด เหมาะกับข้อมูลเบ้ เช่น Lead Time / Cycle Time |",
+      "interactiveIds": [],
       "assetIds": [
         "AST-M1-012"
       ],
@@ -404,19 +400,23 @@
       "screenId": "M1L3-S04",
       "lessonId": "M1-L3",
       "lessonTitle": "Descriptive Statistics",
-      "title": "Range ($R$ — พิสัย)",
-      "markdown": "$$R = X_{\\max} - X_{\\min}$$\n\n- **ตัวอย่างคำนวณ (ทั้งหมด 30 ชิ้นใน Workshop 2):** $R = 50.14 - 49.98 = 0.16\\text{ mm}$\n\n| ตัววัดการกระจายตัว | สูตรคำนวณ | จุดเด่นในการใช้งาน | ข้อจำกัด |\n|---|---|---|---|\n| **Range ($R$ — พิสัย)** | $X_{\\max} - X_{\\min}$ | คำนวณง่ายและเร็วมาก เหมาะกับ Subgroup เล็ก ($n = 2\\text{–}10$) ใน $\\bar{X}\\text{-}R$ Chart | ใช้ข้อมูลเพียง 2 จุดปลายสุด ไม่เหมาะกับชุดข้อมูลขนาดใหญ่ ($n > 10$) |\n| **Standard Deviation ($s$ — ส่วนเบี่ยงเบนมาตรฐาน)** | $\\sqrt{\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}}$ | นำข้อมูลทุกจุดมาคำนวณ ละเอียดแม่นยำสูง เป็นแกนหลักของเส้น Control Limits ใน SPC | คำนวณซับซ้อนกว่า ต้องใช้คอมพิวเตอร์หรือเครื่องคิดเลขวิทยาศาสตร์ |",
-      "interactiveIds": [],
+      "title": "Measures of Dispersion (Range, Variance, Standard Deviation)",
+      "markdown": "**หัวข้อ:** การวัดการกระจายตัวของข้อมูล: พิสัย ($R$), ความแปรปรวน ($s^2$), และส่วนเบี่ยงเบนมาตรฐาน ($s$)  \n   \n\nชุดข้อมูลตัวอย่างขนาดเพลา 5 ชิ้น: `50.00, 50.01, 49.99, 50.02, 50.00 mm` ($\\bar{x} = 50.004\\text{ mm}$)\n\n1. **Range (พิสัย — $R$):**\n   $$R = X_{\\max} - X_{\\min} = 50.02 - 49.99 = 0.03\\text{ mm}$$\n   - *จุดเด่น:* คำนวณง่าย รวดเร็ว เหมาะกับกลุ่มตัวอย่างย่อยขนาดเล็ก ($n = 2\\text{–}10$) ใน $\\bar{X}\\text{-}R$ Chart\n   - *ข้อจำกัด:* ดูเฉพาะ 2 จุดปลายสุด ไม่สะท้อนความผันแปรของข้อมูลตัวที่อยู่ตรงกลาง\n\n2. **Sample Variance (ความแปรปรวน — $s^2$):**\n   $$s^2 = \\frac{\\sum_{i=1}^{n} (x_i - \\bar{x})^2}{n - 1}$$\n   - คำนวณส่วนเบี่ยงเบนจากค่าเฉลี่ย: $(-0.004)^2 + (0.006)^2 + (-0.014)^2 + (0.016)^2 + (-0.004)^2 = 0.000520$\n   - หารด้วย $n - 1 = 4$: $s^2 = 0.000520 / 4 = 0.000130\\text{ mm}^2$\n\n3. **Sample Standard Deviation (ส่วนเบี่ยงเบนมาตรฐาน — $s$):**\n   $$s = \\sqrt{s^2} = \\sqrt{0.000130} \\approx 0.0114\\text{ mm}$$\n   - ถอดรากที่สองเพื่อให้กลับมามีหน่วยเดียวกับชิ้นงานจริง (มิลลิเมตร)\n   - **กฎการกระจายตัวปกติ (Empirical Rule 68-95-99.73%):**\n     - $\\bar{x} \\pm 1\\sigma \\approx 68.27\\%$ (ชิ้นงานเกาะกลุ่มใกล้ศูนย์กลาง)\n     - $\\bar{x} \\pm 2\\sigma \\approx 95.45\\%$ (ขอบเขตเฝ้าระวัง Warning Zone)\n     - $\\bar{x} \\pm 3\\sigma \\approx 99.73\\%$ (**หัวใจของขอบเขตควบคุม UCL / LCL ใน SPC**)\n\n| ตัววัดการกระจายตัว | สูตรคำนวณ | จุดเด่นในการใช้งาน | ข้อจำกัด |\n|---|---|---|---|\n| **Range ($R$)** | $X_{\\max} - X_{\\min}$ | ไวและง่ายมาก เหมาะกับกลุ่มตัวอย่างเล็กใน $\\bar{X}\\text{-}R$ Chart | ใช้เพียง 2 จุดปลายสุด ไม่เหมาะกับข้อมูลชุดใหญ่ |\n| **Variance ($s^2$)** | $\\frac{\\sum (x_i - \\bar{x})^2}{n - 1}$ | นำข้อมูลทุกจุดมาคิดอย่างสมบูรณ์ | หน่วยเป็นกำล้งสอง อ่านยากหน้างาน |\n| **Standard Deviation ($s$)** | $\\sqrt{s^2}$ | หน่วยเดียวกับชิ้นงาน นำข้อมูลทุกจุดมาคิด เป็นแกนหลักคำนวณ Control Limits | คำนวณซับซ้อนกว่า ต้องใช้โปรแกรมหรือเครื่องคำนวณ |",
+      "interactiveIds": [
+        "INT-M1-L3-01"
+      ],
       "assetIds": [
-        "AST-M1-014"
+        "AST-M1-014",
+        "AST-M1-015",
+        "AST-M1-016"
       ],
       "voiceover": {
         "audioId": "AUD-M1L3-S04",
         "audioFile": "/audio/module-01/AUD-M1L3-S04.mp3",
-        "duration": "30 sec",
-        "displayScriptTh": "ต่อมาคือตัววัดการกระจายตัวที่เร็วที่สุดบนไลน์ผลิต นั่นคือ Range หรือพิสัย ซึ่งเท่ากับ ค่าสูงสุด ลบด้วย ค่าต่ำสุด ข้อดีคือคำนวณง่ายมาก เหมาะกับกราฟ Xbar-R ที่เก็บตัวอย่างกลุ่มเล็กๆ แต่ข้อเสียคือดูแค่ 2 ตัวหัวท้าย จึงไม่ได้สะท้อนข้อมูลตัวที่อยู่ตรงกลาง",
-        "ttsCleanTh": "ต่อมาคือตัววัดการกระจายตัวที่เร็วที่สุดบนไลน์ผลิต นั่นคือ เรนจ์ หรือพิสัย ซึ่งเท่ากับ ค่าสูงสุด ลบด้วย ค่าต่ำสุด, ข้อดีคือคำนวณง่ายมาก เหมาะกับกราฟ เอ็กซ์บาร์ อาร์ ที่เก็บตัวอย่างกลุ่มเล็กๆ แต่ข้อเสียคือดูแค่ 2 ตัวหัวท้าย จึงไม่ได้สะท้อนข้อมูลตัวที่อยู่ตรงกลาง",
-        "enReference": "The RANGE is the difference between maximum and minimum values. It is quick for small shop-floor subgroups, though it uses only two extreme points."
+        "duration": "65 sec",
+        "displayScriptTh": "ในการวัดการกระจายตัวของข้อมูลบนสายการผลิต เรามี 3 เครื่องมือสำคัญ ตัวแรกคือ Range หรือพิสัย เท่ากับ ค่าสูงสุด ลบ ค่าต่ำสุด คำนวณง่ายและเร็วมาก เหมาะกับกราฟ Xbar-R ที่เก็บตัวอย่างกลุ่มเล็กๆ แต่ดูเฉพาะ 2 จุดปลายสุด ตัวที่สองคือ Variance หรือความแปรปรวน ($s^2$) นำข้อมูลทุกจุดมาคิด โดยหาผลต่างจากค่าเฉลี่ยแล้วยกกำลังสอง ก่อนหารด้วย $n - 1$ และตัวที่สามคือ Standard Deviation หรือส่วนเบี่ยงเบนมาตรฐาน ($s$) ถอดรากที่สองกลับมาเพื่อให้เป็นหน่วยเดียวกับชิ้นงานจริง โดยในโค้งปกติ 68% จะอยู่ในช่วง $\\pm 1\\sigma$, 95% อยู่ในช่วง $\\pm 2\\sigma$, และ 99.7% อยู่ในช่วง $\\pm 3\\sigma$ ซึ่งเป็นรากฐานของเส้น Control Limit ใน SPC!",
+        "ttsCleanTh": "ในการวัดการกระจายตัวของข้อมูลบนสายการผลิต เรามี 3 เครื่องมือสำคัญ, ตัวแรกคือ เรนจ์ หรือพิสัย เท่ากับ ค่าสูงสุด ลบ ค่าต่ำสุด คำนวณง่ายและเร็วมาก เหมาะกับกราฟ เอ็กซ์บาร์ อาร์ ที่เก็บตัวอย่างกลุ่มเล็กๆ แต่ดูเฉพาะ 2 จุดปลายสุด, ตัวที่สองคือ แวเรียนซ์ หรือความแปรปรวน เอสกำลังสอง นำข้อมูลทุกจุดมาคิด โดยหาผลต่างจากค่าเฉลี่ยแล้วยกกำลังสอง ก่อนหารด้วย เอ็น ลบ หนึ่ง, และตัวที่สามคือ สแตนดาร์ด ดีวิเอชั่น หรือส่วนเบี่ยงเบนมาตรฐาน ซิกม่า ถอดรากที่สองกลับมาเพื่อให้เป็นหน่วยเดียวกับชิ้นงานจริง โดยในโค้งปกติ 68 เปอร์เซ็นต์ จะอยู่ในช่วง บวกลบ 1 ซิกม่า, 95 เปอร์เซ็นต์ อยู่ในช่วง บวกลบ 2 ซิกม่า, และ 99.7 เปอร์เซ็นต์ อยู่ในช่วง บวกลบ 3 ซิกม่า ซึ่งเป็นรากฐานของเส้น คอนโทรล ลิมิต ใน เอสพีซี",
+        "enReference": "In manufacturing dispersion analysis, we use three key tools: Range gives rapid shop-floor feedback from max minus min; Variance squares all individual deviations over n minus 1; and Standard Deviation returns spread to original measurement units, underpinning the 68-95-99.7% empirical rule and SPC control limits."
       },
       "prevScreenId": "M1L3-S03",
       "nextScreenId": "M1L3-S05"
@@ -426,19 +426,19 @@
       "screenId": "M1L3-S05",
       "lessonId": "M1-L3",
       "lessonTitle": "Descriptive Statistics",
-      "title": "Variance ($s^2$ — ความแปรปรวน)",
-      "markdown": "$$s^2 = \\frac{\\sum_{i=1}^{n} (x_i - \\bar{x})^2}{n - 1}$$\n\n- **ตัวอย่างคำนวณ (`50.00, 50.01, 49.99, 50.02, 50.00`, $\\bar{x} = 50.004$):**\n  1. หาค่าเบี่ยงเบน $(x_i - \\bar{x})$: `-0.004, +0.006, -0.014, +0.016, -0.004`\n  2. ยกกำลังสอง (เพื่อไม่ให้บวกลบหักล้างกัน): `0.000016 + 0.000036 + 0.000196 + 0.000256 + 0.000016 = 0.000520`\n  3. หารด้วย $n - 1 = 4$: $s^2 = 0.000520 / 4 = 0.000130\\text{ mm}^2$",
+      "title": "Coefficient of Variation (CV — สัมประสิทธิ์การแปรผัน) & Workshop 2",
+      "markdown": "$$CV = \\left(\\frac{s}{\\bar{x}}\\right) \\times 100\\%$$\n\n| รายการเปรียบเทียบ | ค่าเฉลี่ย ($\\bar{x}$) | ส่วนเบี่ยงเบนมาตรฐาน ($s$) | สัมประสิทธิ์การแปรผัน ($CV$) | สรุปความเสถียรเปรียบเทียบ |\n|---|---|---|---|---|\n| **พินขนาดเล็ก (Small Pin)** | `10.0 mm` | `0.20 mm` | $2.0\\%$ | แกว่งตัวสูงกว่าเมื่อเทียบกับขนาดชิ้นงาน |\n| **เพลายาว (Long Shaft)** | `500.0 mm` | `2.00 mm` | **$0.4\\%$** | **นิ่งกว่า 5 เท่า** เมื่อเทียบสัดส่วนขนาด |\n| **Workshop 2: เครื่อง MC-A** | `50.003 mm` | `0.0152 mm` | **$0.0304\\%$** | กระบวนการนิ่งและเกาะกลุ่มดี |\n| **Workshop 2: เครื่อง MC-B** | `50.049 mm` | `0.0303 mm` | $0.0606\\%$ | แกว่งตัวสูงกว่า MC-A ถึง 2 เท่า |",
       "interactiveIds": [],
       "assetIds": [
-        "AST-M1-015"
+        "AST-M1-017"
       ],
       "voiceover": {
         "audioId": "AUD-M1L3-S05",
         "audioFile": "/audio/module-01/AUD-M1L3-S05.mp3",
-        "duration": "40 sec",
-        "displayScriptTh": "เพื่อให้เห็นการกระจายตัวของข้อมูล ทุกตัว เราจึงใช้ Variance หรือความแปรปรวน ($s^2$) หลักการคือวัดว่าข้อมูลแต่ละตัวห่างจากค่าเฉลี่ยเท่าไหร่ แล้วยกกำลังสองเพื่อไม่ให้ค่าบวกกับค่าลบหักล้างกัน และสำหรับการเก็บตัวอย่าง (Sample) เราจะหารด้วย $n - 1$ เพื่อให้เป็นตัวประมาณค่าประชากรที่ไม่เอนเอียง",
-        "ttsCleanTh": "เพื่อให้เห็นการกระจายตัวของข้อมูลทุกตัว เราจึงใช้ แวเรียนซ์ หรือความแปรปรวน เอสกำลังสอง, หลักการคือวัดว่าข้อมูลแต่ละตัวห่างจากค่าเฉลี่ยเท่าไหร่ แล้วยกกำลังสองเพื่อไม่ให้ค่าบวกกับค่าลบหักล้างกัน, และสำหรับการเก็บตัวอย่าง เราจะหารด้วย เอ็น ลบ หนึ่ง เพื่อให้เป็นตัวประมาณค่าประชากรที่ไม่เอนเอียง",
-        "enReference": "Sample variance averages the squared deviations from the mean across all observations using n minus 1 in the denominator to provide an unbiased estimate of process spread."
+        "duration": "35 sec",
+        "displayScriptTh": "แล้วถ้าอยากเทียบความนิ่งของงาน 2 ชิ้นที่ขนาดต่างกันมากๆ ? เช่น เทียบพินเล็ก 10 มม. กับเพลายาว 500 มม. เราจะเทียบ SD ตรงๆ ไม่ได้ ต้องใช้ CV หรือ Coefficient of Variation คือเอา SD หารด้วย Mean แล้วคูณ 100% ค่ายิ่งน้อย แปลว่ากระบวนการยิ่งนิ่งเมื่อเทียบกับขนาดของมัน",
+        "ttsCleanTh": "แล้วถ้าอยากเทียบความนิ่งของงาน 2 ชิ้นที่ขนาดต่างกันมากๆ เช่น เทียบพินเล็ก 10 มิลลิเมตร กับเพลายาว 500 มิลลิเมตร, เราจะเทียบ เอสดี ตรงๆ ไม่ได้ ต้องใช้ ซีวี หรือ คอเอฟฟิเชียนท์ ออฟ แวริเอชั่น คือเอา เอสดี หารด้วย มีน แล้วคูณ 100 เปอร์เซ็นต์, ค่ายิ่งน้อย แปลว่ากระบวนการยิ่งนิ่งเมื่อเทียบกับขนาดของมัน",
+        "enReference": "The Coefficient of Variation expresses standard deviation as a percentage of the mean, allowing fair comparison of relative variation across different scales or units."
       },
       "prevScreenId": "M1L3-S04",
       "nextScreenId": "M1L3-S06"
@@ -446,50 +446,6 @@
     {
       "index": 18,
       "screenId": "M1L3-S06",
-      "lessonId": "M1-L3",
-      "lessonTitle": "Descriptive Statistics",
-      "title": "Standard Deviation ($s$ / $\\sigma$ — ส่วนเบี่ยงเบนมาตรฐาน)",
-      "markdown": "$$s = \\sqrt{s^2} = \\sqrt{0.000130} \\approx 0.0114\\text{ mm}$$\n\n| ช่วงการกระจายตัว (Normal Curve) | สัดส่วนชิ้นงานที่ครอบคลุม | ความหมายในงานควบคุมคุณภาพ (SPC) |\n|---|---|---|\n| $\\bar{x} \\pm 1\\sigma$ | **~68.27%** | ชิ้นงานส่วนใหญ่ที่เกาะกลุ่มใกล้ค่าเป้าหมาย |\n| $\\bar{x} \\pm 2\\sigma$ | **~95.45%** | ขอบเขตเฝ้าระวัง (Warning Zone) |\n| $\\bar{x} \\pm 3\\sigma$ | **~99.73%** | **หัวใจของเส้น Control Limits (LCL / UCL) ใน SPC** (โอกาสหลุดตามธรรมชาติเพียง 0.27%) |",
-      "interactiveIds": [],
-      "assetIds": [
-        "AST-M1-016"
-      ],
-      "voiceover": {
-        "audioId": "AUD-M1L3-S06",
-        "audioFile": "/audio/module-01/AUD-M1L3-S06.mp3",
-        "duration": "45 sec",
-        "displayScriptTh": "เนื่องจาก Variance มีหน่วยเป็นกำลังสอง เช่น ตารางมิลลิเมตร อ่านยากหน้างาน เราจึงถอดรากที่สองกลับมาเป็น Standard Deviation หรือส่วนเบี่ยงเบนมาตรฐาน ($s$ / $\\sigma$) เพื่อให้มีหน่วยเดียวกับชิ้นงานจริง ในโค้งปกติ ข้อมูลประมาณ 68% จะอยู่ในช่วง $\\pm 1\\sigma$, 95% อยู่ในช่วง $\\pm 2\\sigma$, และ 99.7% อยู่ในช่วง $\\pm 3\\sigma$ ซึ่งนี่แหละคือรากฐานของเส้น Control Limit ใน SPC!",
-        "ttsCleanTh": "เนื่องจาก แวเรียนซ์ มีหน่วยเป็นกำลังสอง เช่น ตารางมิลลิเมตร อ่านยากหน้างาน เราจึงถอดรากที่สองกลับมาเป็น สแตนดาร์ด ดีวิเอชั่น หรือส่วนเบี่ยงเบนมาตรฐาน ซิกม่า เพื่อให้มีหน่วยเดียวกับชิ้นงานจริง, ในโค้งปกติ ข้อมูลประมาณ 68 เปอร์เซ็นต์ จะอยู่ในช่วง บวกลบ 1 ซิกม่า, 95 เปอร์เซ็นต์ อยู่ในช่วง บวกลบ 2 ซิกม่า, และ 99.7 เปอร์เซ็นต์ อยู่ในช่วง บวกลบ 3 ซิกม่า ซึ่งนี่แหละคือรากฐานของเส้น คอนโทรล ลิมิต ใน เอสพีซี",
-        "enReference": "Standard deviation returns spread to the original measurement unit. Under a normal distribution, roughly 68%, 95%, and 99.7% of output fall within plus or minus 1, 2, and 3 sigma of the mean."
-      },
-      "prevScreenId": "M1L3-S05",
-      "nextScreenId": "M1L3-S07"
-    },
-    {
-      "index": 19,
-      "screenId": "M1L3-S07",
-      "lessonId": "M1-L3",
-      "lessonTitle": "Descriptive Statistics",
-      "title": "Coefficient of Variation (CV — สัมประสิทธิ์การแปรผัน)",
-      "markdown": "$$CV = \\left(\\frac{s}{\\bar{x}}\\right) \\times 100\\%$$\n\n| รายการเปรียบเทียบ | ค่าเฉลี่ย ($\\bar{x}$) | ส่วนเบี่ยงเบนมาตรฐาน ($s$) | สัมประสิทธิ์การแปรผัน ($CV$) | สรุปความเสถียรเปรียบเทียบ |\n|---|---|---|---|---|\n| **พินขนาดเล็ก (Small Pin)** | `10.0 mm` | `0.20 mm` | $2.0\\%$ | แกว่งตัวสูงกว่าเมื่อเทียบกับขนาดชิ้นงาน |\n| **เพลายาว (Long Shaft)** | `500.0 mm` | `2.00 mm` | **$0.4\\%$** | **นิ่งกว่า 5 เท่า** เมื่อเทียบสัดส่วนขนาด |\n| **Workshop 2: เครื่อง MC-A** | `50.003 mm` | `0.0152 mm` | **$0.0304\\%$** | กระบวนการนิ่งและเกาะกลุ่มดี |\n| **Workshop 2: เครื่อง MC-B** | `50.049 mm` | `0.0303 mm` | $0.0606\\%$ | แกว่งตัวสูงกว่า MC-A ถึง 2 เท่า |",
-      "interactiveIds": [],
-      "assetIds": [
-        "AST-M1-017"
-      ],
-      "voiceover": {
-        "audioId": "AUD-M1L3-S07",
-        "audioFile": "/audio/module-01/AUD-M1L3-S07.mp3",
-        "duration": "35 sec",
-        "displayScriptTh": "แล้วถ้าอยากเทียบความนิ่งของงาน 2 ชิ้นที่ขนาดต่างกันมากๆ ? เช่น เทียบพินเล็ก 10 มม. กับเพลายาว 500 มม. เราจะเทียบ SD ตรงๆ ไม่ได้ ต้องใช้ CV หรือ Coefficient of Variation คือเอา SD หารด้วย Mean แล้วคูณ 100% ค่ายิ่งน้อย แปลว่ากระบวนการยิ่งนิ่งเมื่อเทียบกับขนาดของมัน",
-        "ttsCleanTh": "แล้วถ้าอยากเทียบความนิ่งของงาน 2 ชิ้นที่ขนาดต่างกันมากๆ เช่น เทียบพินเล็ก 10 มิลลิเมตร กับเพลายาว 500 มิลลิเมตร, เราจะเทียบ เอสดี ตรงๆ ไม่ได้ ต้องใช้ ซีวี หรือ คอเอฟฟิเชียนท์ ออฟ แวริเอชั่น คือเอา เอสดี หารด้วย มีน แล้วคูณ 100 เปอร์เซ็นต์, ค่ายิ่งน้อย แปลว่ากระบวนการยิ่งนิ่งเมื่อเทียบกับขนาดของมัน",
-        "enReference": "The Coefficient of Variation expresses standard deviation as a percentage of the mean, allowing fair comparison of relative variation across different scales or units."
-      },
-      "prevScreenId": "M1L3-S06",
-      "nextScreenId": "M1L3-S08"
-    },
-    {
-      "index": 20,
-      "screenId": "M1L3-S08",
       "lessonId": "M1-L3",
       "lessonTitle": "Descriptive Statistics",
       "title": "Sigma Simulator & Statistics Match Game",
@@ -500,38 +456,38 @@
       ],
       "assetIds": [],
       "voiceover": {
-        "audioId": "AUD-M1L3-S08",
-        "audioFile": "/audio/module-01/AUD-M1L3-S08.mp3",
+        "audioId": "AUD-M1L3-S06",
+        "audioFile": "/audio/module-01/AUD-M1L3-S06.mp3",
         "duration": "45 sec",
-        "displayScriptTh": "มาลองเล่น Sigma Simulator กัน ลองเลื่อนแถบค่า Sigma จาก 0.1 ไป 3.0 แล้วสังเกตดูว่าเมื่อ Sigma เพิ่มขึ้น ฐานของ Histogram จะกว้างออกจนล้นออกนอกเส้น Spec USL และ LSL ทำให้เกิดของเสียเพิ่มขึ้นทันที เล่นเสร็จแล้ว ลองจับคู่คำศัพท์สถิติ 7 คำด้านล่างให้ครบ",
-        "ttsCleanTh": "มาลองเล่น ซิกม่า ซิมูเลเตอร์ กัน, ลองเลื่อนแถบค่า ซิกม่า จาก 0.1 ไป 3.0 แล้วสังเกตดูว่าเมื่อ ซิกม่า เพิ่มขึ้น ฐานของ ฮิสโตแกรม จะกว้างออกจนล้นออกนอกเส้น สเปก ยูเอสแอล และ แอลเอสแอล ทำให้เกิดของเสียเพิ่มขึ้นทันที, เล่นเสร็จแล้ว ลองจับคู่คำศัพท์สถิติ 7 คำด้านล่างให้ครบ",
-        "enReference": "Move the sigma slider and observe the histogram. As sigma increases, the distribution widens toward specification limits, increasing nonconformance risk. Then complete the statistics matching game."
+        "displayScriptTh": "มาลองเล่น Sigma Simulator กัน ลองเลื่อนแถบค่า Sigma จาก 0.1 ไป 3.0 แล้วสังเกตดูว่าเมื่อ Sigma เพิ่มขึ้น ฐานของ Histogram จะกว้างออกจนล้นออกนอกเส้น Spec USL และ LSL ทำให้เกิดของเสียเพิ่มขึ้นทันที เล่นเสร็จแล้ว ลองจับคู่คำศัพท์สถิติ 7 คำในหน้าถัดไป",
+        "ttsCleanTh": "มาลองเล่น ซิกม่า ซิมูเลเตอร์ กัน, ลองเลื่อนแถบค่า ซิกม่า จาก 0.1 ไป 3.0 แล้วสังเกตดูว่าเมื่อ ซิกม่า เพิ่มขึ้น ฐานของ ฮิสโตแกรม จะกว้างออกจนล้นออกนอกเส้น สเปก ยูเอสแอล และ แอลเอสแอล ทำให้เกิดของเสียเพิ่มขึ้นทันที, เล่นเสร็จแล้ว ลองจับคู่คำศัพท์สถิติ 7 คำในหน้าถัดไป",
+        "enReference": "Move the sigma slider and observe the histogram. As sigma increases, the distribution widens toward specification limits, increasing nonconformance risk. Then proceed to match 7 statistical terms on the next screen."
       },
-      "prevScreenId": "M1L3-S07",
-      "nextScreenId": "M1L3-S09"
+      "prevScreenId": "M1L3-S05",
+      "nextScreenId": "M1L3-S07"
     },
     {
-      "index": 21,
-      "screenId": "M1L3-S09",
+      "index": 19,
+      "screenId": "M1L3-S07",
       "lessonId": "M1-L3",
       "lessonTitle": "Descriptive Statistics",
       "title": "Lesson 3 Knowledge Check (`KC-M1-L3`)",
-      "markdown": "- ทบทวน 5 ข้อ (`M1-Q031`, `M1-Q035`, `M1-Q040`, `M1-Q044`, `M1-Q048`)",
+      "markdown": "- ทบทวน 3 ข้อสุ่มจากคลังข้อสอบ (`M1-Q031`, `M1-Q035`, `M1-Q040`, `M1-Q044`, `M1-Q048`)",
       "interactiveIds": [],
       "assetIds": [],
       "voiceover": {
-        "audioId": "AUD-M1L3-S09",
-        "audioFile": "/audio/module-01/AUD-M1L3-S09.mp3",
-        "duration": "20 sec",
-        "displayScriptTh": "มาทดสอบความเข้าใจสถิติเชิงพรรณนา 5 ข้อ ดูโจทย์ให้ดีว่าสถานการณ์ไหนควรใช้ Mean, Median, SD หรือ CV",
-        "ttsCleanTh": "มาทดสอบความเข้าใจสถิติเชิงพรรณนา 5 ข้อ ดูโจทย์ให้ดีว่าสถานการณ์ไหนควรใช้ มีน, มีเดียน, เอสดี หรือ ซีวี",
-        "enReference": "Complete the 5-question Lesson 3 check to verify your ability to interpret and choose descriptive statistics. ---"
+        "audioId": "AUD-M1L3-S07",
+        "audioFile": "/audio/module-01/AUD-M1L3-S07.mp3",
+        "duration": "25 sec",
+        "displayScriptTh": "มาทดสอบความเข้าใจสถิติเชิงพรรณนา 3 ข้อ ดูโจทย์ให้ดีว่าสถานการณ์ไหนควรใช้ Mean, Median, SD หรือ CV",
+        "ttsCleanTh": "มาทดสอบความเข้าใจสถิติเชิงพรรณนา 3 ข้อ ดูโจทย์ให้ดีว่าสถานการณ์ไหนควรใช้ มีน, มีเดียน, เอสดี หรือ ซีวี",
+        "enReference": "Complete the 3-question Lesson 3 check to verify your ability to interpret and choose descriptive statistics. ---"
       },
-      "prevScreenId": "M1L3-S08",
+      "prevScreenId": "M1L3-S06",
       "nextScreenId": "M1L4-S01"
     },
     {
-      "index": 22,
+      "index": 20,
       "screenId": "M1L4-S01",
       "lessonId": "M1-L4",
       "lessonTitle": "Data Visualization & Final Assessment",
@@ -549,11 +505,11 @@
         "ttsCleanTh": "ตัวเลขในตาราง 30 แถว ดูด้วยตาเปล่าแทบไม่รู้เลยว่าเครื่องจักรกำลังมีปัญหา, การทำ เดต้า วิชวลไลเซชั่น หรือการแสดงผลด้วยกราฟ ช่วยให้วิศวกรเห็นความผิดปกติ รูปทรง และแนวโน้มได้ภายในไม่กี่วินาที",
         "enReference": "Visualizing data converts raw tables into clear patterns, anomalies, and trends that engineers can spot in seconds."
       },
-      "prevScreenId": "M1L3-S09",
+      "prevScreenId": "M1L3-S07",
       "nextScreenId": "M1L4-S02"
     },
     {
-      "index": 23,
+      "index": 21,
       "screenId": "M1L4-S02",
       "lessonId": "M1-L4",
       "lessonTitle": "Data Visualization & Final Assessment",
@@ -575,7 +531,7 @@
       "nextScreenId": "M1L4-S03"
     },
     {
-      "index": 24,
+      "index": 22,
       "screenId": "M1L4-S03",
       "lessonId": "M1-L4",
       "lessonTitle": "Data Visualization & Final Assessment",
@@ -597,7 +553,7 @@
       "nextScreenId": "M1L4-S04"
     },
     {
-      "index": 25,
+      "index": 23,
       "screenId": "M1L4-S04",
       "lessonId": "M1-L4",
       "lessonTitle": "Data Visualization & Final Assessment",
@@ -619,12 +575,12 @@
       "nextScreenId": "M1L4-S05"
     },
     {
-      "index": 26,
+      "index": 24,
       "screenId": "M1L4-S05",
       "lessonId": "M1-L4",
       "lessonTitle": "Data Visualization & Final Assessment",
       "title": "Scatter Plot (ความสัมพันธ์ระหว่าง 2 ตัวแปร)",
-      "markdown": "- พล็อตตัวแปรต้น $X$ (แกนนอน) กับตัวแปรผล $Y$ (แกนตั้ง) เพื่อประเมินทิศทางและความแรงของสหสัมพันธ์ ($r \\in [-1, +1]$)\n- **ผลจากข้อมูล Workshop 2:** `Mold_Temp_C` vs `Shaft_Diameter_mm` ให้ค่า **$r = +0.9949$** (สหสัมพันธ์เชิงบวกสูงมาก)\n\n| ค่า Correlation ($r$) | ทิศทางความสัมพันธ์ | ตัวอย่างในโรงงาน | การแปลผลทางวิศวกรรม |\n|---|---|---|---|\n| **$r \\approx +1$** | เชิงบวกอย่างมาก (จุดเรียงขึ้นทางขวา) | อุณหภูมิแม่พิมพ์ vs ขนาดเส้นผ่านศูนย์กลางเพลา ($r = +0.9949$) | ตัวแปรต้นเพิ่ม ตัวแปรผลจะเพิ่มขึ้นตามอย่างชัดเจน |\n| **$r \\approx 0$** | ไม่มีความสัมพันธ์เชิงเส้น (จุดกระจายสุ่ม) | หมายเลขกะทำงาน vs ความหนาแผ่นโลหะ | ตัวแปรทั้งสองไม่มีความสัมพันธ์กันในเชิงสถิติ |\n| **$r \\approx -1$** | เชิงลบอย่างมาก (จุดเรียงลงทางขวา) | ความเร็วรอบกลึง vs อายุการใช้งานของมีดกลึง | ตัวแปรต้นเพิ่ม จะส่งผลให้ตัวแปรผลลดลง |\n\n- **คำเตือนทองคำ:** **Correlation ≠ Causation** — ต้องทดสอบยืนยันเชิงวิศวกรรมเสมอว่าไม่ใช่ตัวแปรแฝง (Confounding Factor)",
+      "markdown": "- พล็อตตัวแปรต้น $X$ (แกนนอน) กับตัวแปรผล $Y$ (แกนตั้ง) เพื่อประเมินทิศทางและความแรงของสหสัมพันธ์ ($r \\in [-1, +1]$)\n- **ผลจากข้อมูล Workshop 2:** `Mold_Temp_C` vs `Shaft_Diameter_mm` ให้ค่า **$r = +0.9949$** (สหสัมพันธ์เชิงบวกสูงมาก)\n\n| ค่า Correlation ($r$) | ทิศทางความสัมพันธ์ | ตัวอย่างในโรงงาน | การแปลผลทางวิศวกรรม |\n|---|---|---|---|\n| **$r \\approx +1$** | เชิงบวกอย่างมาก (จุดเรียงขึ้นทางขวา) | อุณหภูมิแม่พิมพ์ vs ขนาดเส้นผ่านศูนย์กลางเพลา ($r = +0.9949$) | ตัวแปรต้นเพิ่ม ตัวแปรผลจะเพิ่มขึ้นตามอย่างชัดเจน |\n| **$r \\approx 0$** | ไม่มีความสัมพันธ์เชิงเส้น (จุดกระจายสุ่ม) | หมายเลขกะทำงาน vs ความหนาแผ่นโลหะ | ตัวแปรทั้งสองไม่มีความสัมพันธ์กันในเชิงสถิติ |\n| **$r \\approx -1$** | เชิงลบอย่างมาก (จุดเรียงลงทางขวา) | ความเร็วรอบกลึง vs อายุการใช้งานของมีดกลึง | ตัวแปรต้นเพิ่ม จะส่งผลให้ตัวแปรผลลดลง |\n\n- **ข้อควรระวัง:** **Correlation ≠ Causation** — ต้องทดสอบยืนยันเชิงวิศวกรรมเสมอว่าไม่ใช่ตัวแปรแฝง (Confounding Factor)",
       "interactiveIds": [],
       "assetIds": [
         "AST-M1-019"
@@ -641,7 +597,7 @@
       "nextScreenId": "M1L4-S06"
     },
     {
-      "index": 27,
+      "index": 25,
       "screenId": "M1L4-S06",
       "lessonId": "M1-L4",
       "lessonTitle": "Data Visualization & Final Assessment",
@@ -663,7 +619,7 @@
       "nextScreenId": "M1L4-S07"
     },
     {
-      "index": 28,
+      "index": 26,
       "screenId": "M1L4-S07",
       "lessonId": "M1-L4",
       "lessonTitle": "Data Visualization & Final Assessment",
@@ -686,7 +642,7 @@
       "nextScreenId": "M1L4-S08"
     },
     {
-      "index": 29,
+      "index": 27,
       "screenId": "M1L4-S08",
       "lessonId": "M1-L4",
       "lessonTitle": "Data Visualization & Final Assessment",
