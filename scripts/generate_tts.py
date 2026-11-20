@@ -49,6 +49,44 @@ def get_ffmpeg_cmd() -> str:
         return "ffmpeg"
 
 
+def prepare_clean_tts_text(text: str) -> str:
+    """Preprocess Thai TTS text to ensure complete speech synthesis without premature cutoffs.
+
+    1. Trims leading/trailing whitespace.
+    2. Ensures the text ends with proper terminal punctuation ('.') so auto-regressive TTS
+       models (Gemini, Azure, etc.) generate all phonemes and do not stop generation before the last syllable.
+    """
+    cleaned = text.strip()
+    if cleaned and not cleaned.endswith((".", "!", "?", "...", "ค่ะ", "ครับ")):
+        cleaned += "."
+    return cleaned
+
+
+def postprocess_audio(raw_audio: bytes, input_format: str = "mp3") -> bytes:
+    """Apply professional broadcast filters to guarantee clean start and complete ending:
+    1. Soft fade-in (40ms) to eliminate opening mic clicks/pops.
+    2. apad (0.5s padding silence) to guarantee speech is NEVER cut off prematurely at the end.
+    """
+    ffmpeg_exe = get_ffmpeg_cmd()
+    cmd = [
+        ffmpeg_exe,
+        "-y",
+        "-f", input_format,
+    ]
+    if input_format == "s16le":
+        cmd.extend(["-ar", "24000", "-ac", "1"])
+    cmd.extend([
+        "-i", "pipe:0",
+        "-af", "afade=t=in:ss=0:d=0.04,apad=pad_dur=0.5",
+        "-codec:a", "libmp3lame",
+        "-b:a", "128k",
+        "-f", "mp3",
+        "pipe:1"
+    ])
+    proc = subprocess.run(cmd, input=raw_audio, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True)
+    return proc.stdout
+
+
 def synth_gemini(
     text: str,
     api_key: str,
@@ -57,13 +95,14 @@ def synth_gemini(
 ) -> bytes:
     import urllib.error
 
+    clean_text = prepare_clean_tts_text(text)
     models = [preferred_model] + [m for m in GEMINI_TTS_MODELS if m != preferred_model] if preferred_model else list(GEMINI_TTS_MODELS)
     payload = {
         "contents": [
             {
                 "parts": [
                     {
-                        "text": text
+                        "text": clean_text
                     }
                 ]
             }
@@ -131,36 +170,9 @@ def synth_gemini(
     raw_bytes = base64.b64decode(part["data"])
     mime = part.get("mimeType", "audio/L16;rate=24000")
     if "mp3" in mime or "mpeg" in mime:
-        return raw_bytes
+        return postprocess_audio(raw_bytes, input_format="mp3")
 
-    # Convert PCM (audio/L16;codec=pcm;rate=24000) to MP3 via ffmpeg
-    ffmpeg_exe = get_ffmpeg_cmd()
-    proc = subprocess.run(
-        [
-            ffmpeg_exe,
-            "-y",
-            "-f",
-            "s16le",
-            "-ar",
-            "24000",
-            "-ac",
-            "1",
-            "-i",
-            "pipe:0",
-            "-codec:a",
-            "libmp3lame",
-            "-b:a",
-            "128k",
-            "-f",
-            "mp3",
-            "pipe:1",
-        ],
-        input=raw_bytes,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=True,
-    )
-    return proc.stdout
+    return postprocess_audio(raw_bytes, input_format="s16le")
 
 
 def synth_google(text: str, api_key: str) -> bytes:
@@ -217,15 +229,18 @@ def synth_edge_tts(
     except ImportError:
         raise RuntimeError("Please install edge-tts first: pip install edge-tts")
 
+    clean_text = prepare_clean_tts_text(text)
+
     async def _generate() -> bytes:
-        comm = edge_tts.Communicate(text, voice, rate=rate)
+        comm = edge_tts.Communicate(clean_text, voice, rate=rate)
         chunks = []
         async for chunk in comm.stream():
             if chunk["type"] == "audio":
                 chunks.append(chunk["data"])
         return b"".join(chunks)
 
-    return asyncio.run(_generate())
+    raw_mp3 = asyncio.run(_generate())
+    return postprocess_audio(raw_mp3, input_format="mp3")
 
 
 def main() -> int:
