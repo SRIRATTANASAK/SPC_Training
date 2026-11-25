@@ -1,11 +1,13 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import type { QuestionItem } from '../../lib/types';
-import { progressStore } from '../../lib/storage';
+import { getProgressStore } from '../../lib/storage';
 import { InlineMarkdown } from '../MarkdownContent';
 import { withBase } from '../../lib/base';
 
 interface Props {
   questions: QuestionItem[];
+  examId?: string;
+  moduleId?: string;
 }
 
 function sampleN<T>(arr: T[], n: number): T[] {
@@ -21,18 +23,28 @@ export interface ExamQuestionItem extends QuestionItem {
   shuffledChoices: Array<{ key: 'A' | 'B' | 'C' | 'D'; label: string }>;
 }
 
-function drawStratified(pool: QuestionItem[]): ExamQuestionItem[] {
+function drawStratified(pool: QuestionItem[], examId: string): ExamQuestionItem[] {
   const byRange = (lo: number, hi: number) =>
     pool.filter((q) => {
       const n = Number(q.id.split('-Q')[1]);
       return n >= lo && n <= hi;
     });
-  const selected = [
-    ...sampleN(byRange(1, 10), 3),
-    ...sampleN(byRange(11, 30), 6),
-    ...sampleN(byRange(31, 50), 6),
-    ...sampleN(byRange(51, 60), 5),
-  ];
+
+  const selected =
+    examId === 'EXAM-M2'
+      ? [
+          ...sampleN(byRange(1, 10), 3),
+          ...sampleN(byRange(11, 25), 5),
+          ...sampleN(byRange(26, 45), 7),
+          ...sampleN(byRange(46, 60), 5),
+        ]
+      : [
+          ...sampleN(byRange(1, 10), 3),
+          ...sampleN(byRange(11, 30), 6),
+          ...sampleN(byRange(31, 50), 6),
+          ...sampleN(byRange(51, 60), 5),
+        ];
+
   return selected.map((q) => {
     const keys: Array<'A' | 'B' | 'C' | 'D'> = ['A', 'B', 'C', 'D'];
     const valid = keys
@@ -47,8 +59,18 @@ function drawStratified(pool: QuestionItem[]): ExamQuestionItem[] {
 
 const PAGE_SIZE = 2;
 
-export const FinalExam: React.FC<Props> = ({ questions }) => {
-  const [examSet, setExamSet] = useState<ExamQuestionItem[]>(() => drawStratified(questions));
+export const FinalExam: React.FC<Props> = ({ questions, examId, moduleId }) => {
+  const resolvedModuleId = useMemo(() => {
+    if (moduleId) return moduleId.toUpperCase();
+    if (examId && examId.startsWith('EXAM-M')) return examId.replace('EXAM-', '').toUpperCase();
+    const firstQ = questions[0]?.id ?? 'M1-Q001';
+    return firstQ.split('-')[0] || 'M1';
+  }, [moduleId, examId, questions]);
+
+  const resolvedExamId = examId ?? `EXAM-${resolvedModuleId}`;
+  const modNum = resolvedModuleId.replace(/^M/i, '') || '1';
+
+  const [examSet, setExamSet] = useState<ExamQuestionItem[]>(() => drawStratified(questions, resolvedExamId));
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
   const [page, setPage] = useState(0);
@@ -57,16 +79,24 @@ export const FinalExam: React.FC<Props> = ({ questions }) => {
   const visibleQuestions = examSet.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE);
 
   const score = useMemo(() => examSet.filter((q) => answers[q.id] === q.correct).length, [examSet, answers]);
-  const pct = Math.round((score / examSet.length) * 100);
+  const pct = examSet.length > 0 ? Math.round((score / examSet.length) * 100) : 0;
   const passed = pct >= 80;
 
   const weakLessons = useMemo(() => {
-    const map: Record<string, { ok: number; total: number; href: string; label: string }> = {
-      'LO-M1-01': { ok: 0, total: 0, href: withBase('/module-01/M1L1-S01'), label: 'Lesson 1: Why Statistics & COPQ' },
-      'LO-M1-02': { ok: 0, total: 0, href: withBase('/module-01/M1L2-S01'), label: 'Lesson 2: Data Types & NOIR Scales' },
-      'LO-M1-03': { ok: 0, total: 0, href: withBase('/module-01/M1L3-S01'), label: 'Lesson 3: Descriptive Statistics' },
-      'LO-M1-04': { ok: 0, total: 0, href: withBase('/module-01/M1L4-S01'), label: 'Lesson 4: Data Visualization' },
-    };
+    const map: Record<string, { ok: number; total: number; href: string; label: string }> =
+      resolvedModuleId === 'M2'
+        ? {
+            'LO-M2-01': { ok: 0, total: 0, href: withBase('/module-02/M2L1-S01'), label: 'Lesson 1: Concept of Variation' },
+            'LO-M2-02': { ok: 0, total: 0, href: withBase('/module-02/M2L2-S01'), label: 'Lesson 2: Probability Basics & Sampling' },
+            'LO-M2-03': { ok: 0, total: 0, href: withBase('/module-02/M2L3-S01'), label: 'Lesson 3: Probability Distributions' },
+            'LO-M2-04': { ok: 0, total: 0, href: withBase('/module-02/M2L4-S01'), label: 'Lesson 4: Central Limit Theorem & CTQ' },
+          }
+        : {
+            'LO-M1-01': { ok: 0, total: 0, href: withBase('/module-01/M1L1-S01'), label: 'Lesson 1: Why Statistics & COPQ' },
+            'LO-M1-02': { ok: 0, total: 0, href: withBase('/module-01/M1L2-S01'), label: 'Lesson 2: Data Types & NOIR Scales' },
+            'LO-M1-03': { ok: 0, total: 0, href: withBase('/module-01/M1L3-S01'), label: 'Lesson 3: Descriptive Statistics' },
+            'LO-M1-04': { ok: 0, total: 0, href: withBase('/module-01/M1L4-S01'), label: 'Lesson 4: Data Visualization' },
+          };
     for (const q of examSet) {
       if (map[q.lo]) {
         map[q.lo].total++;
@@ -74,29 +104,34 @@ export const FinalExam: React.FC<Props> = ({ questions }) => {
       }
     }
     return Object.values(map).filter((m) => m.total > 0 && m.ok / m.total < 0.8);
-  }, [examSet, answers]);
+  }, [examSet, answers, resolvedModuleId]);
 
   const handleSubmit = () => {
     setSubmitted(true);
-    progressStore.save({
+    const store = getProgressStore(resolvedModuleId);
+    store.save({
       var_exam_score: pct,
       var_exam_passed: passed,
     });
   };
 
   const handleRetry = useCallback(() => {
-    setExamSet(drawStratified(questions));
+    setExamSet(drawStratified(questions, resolvedExamId));
     setAnswers({});
     setSubmitted(false);
     setPage(0);
-  }, [questions]);
+  }, [questions, resolvedExamId]);
 
   return (
     <div className="rounded-xl border border-slate-200 bg-white p-4 sm:p-5 shadow-sm space-y-4">
       <div className="flex flex-wrap items-center justify-between gap-2 border-b border-slate-200 pb-3">
         <div>
-          <h3 className="text-base sm:text-lg font-extrabold text-slate-900">แบบทดสอบปลายโมดูลที่ 1 (20 ข้อจากคลัง 60 ข้อ)</h3>
-          <p className="text-xs text-slate-600">เกณฑ์ผ่าน: ≥ 80% (16 / 20 ข้อ) — หน้า {page + 1} / {totalPages}</p>
+          <h3 className="text-base sm:text-lg font-extrabold text-slate-900">
+            แบบทดสอบปลายโมดูลที่ {modNum} (20 ข้อจากคลัง 60 ข้อ)
+          </h3>
+          <p className="text-xs text-slate-600">
+            เกณฑ์ผ่าน: ≥ 80% (16 / 20 ข้อ) — หน้า {page + 1} / {totalPages}
+          </p>
         </div>
         <div className="flex items-center gap-2">
           <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-700">
@@ -113,7 +148,8 @@ export const FinalExam: React.FC<Props> = ({ questions }) => {
         >
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="text-sm sm:text-base font-extrabold">
-              ผลคะแนน: {score} / {examSet.length} ({pct}%) — {passed ? '✓ ผ่านเกณฑ์ Module 1!' : '✕ ยังไม่ถึง 80% ลองทบทวนบทที่พลาดนะคะ'}
+              ผลคะแนน: {score} / {examSet.length} ({pct}%) —{' '}
+              {passed ? `✓ ผ่านเกณฑ์ Module ${modNum}!` : '✕ ยังไม่ถึง 80% ลองทบทวนบทที่พลาดนะคะ'}
             </div>
             <button
               type="button"
@@ -147,6 +183,7 @@ export const FinalExam: React.FC<Props> = ({ questions }) => {
             <div key={q.id} className="rounded-lg border border-slate-200 bg-slate-50 p-3.5 space-y-2">
               <div className="flex items-center justify-between gap-2 text-xs font-semibold text-slate-500">
                 <span>ข้อที่ {qNum} จาก {examSet.length} ข้อ</span>
+                <span className="font-mono text-[11px] text-slate-400">{q.id}</span>
               </div>
               <div className="text-sm font-bold text-slate-900">
                 {qNum}. <InlineMarkdown text={q.question} />
@@ -227,7 +264,7 @@ export const FinalExam: React.FC<Props> = ({ questions }) => {
           onClick={handleSubmit}
           className="rounded-lg bg-sky-700 px-4 py-2 text-xs sm:text-sm font-bold text-white hover:bg-sky-800 shadow"
         >
-          ส่งข้อสอบ EXAM-M1 ทั้ง 20 ข้อ
+          ส่งข้อสอบ {resolvedExamId} ทั้ง 20 ข้อ
         </button>
       </div>
     </div>

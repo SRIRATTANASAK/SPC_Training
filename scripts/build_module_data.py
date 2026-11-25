@@ -1,28 +1,55 @@
 #!/usr/bin/env python3
-"""Build structured JSON data for the Astro web app from Module 1 Markdown/CSV sources."""
+"""Build structured JSON data for the Astro web app from Module Markdown/CSV sources."""
 
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import re
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
-MOD1 = ROOT / "modules" / "module-01"
-OUT_JSON = ROOT / "web" / "src" / "data" / "module-01.json"
 
-LESSON_TITLES = {
-    "M1-L1": "Why Statistics in Manufacturing?",
-    "M1-L2": "Types of Data & Measurement Scales",
-    "M1-L3": "Descriptive Statistics",
-    "M1-L4": "Data Visualization & Final Assessment",
+MODULE_CONFIGS: dict[int, dict[str, Any]] = {
+    1: {
+        "moduleId": "M1",
+        "slug": "module-01",
+        "moduleTitle": "Statistics Foundation for Manufacturing",
+        "moduleTitleTh": "พื้นฐานสถิติสำหรับงานวิศวกรรมการผลิต",
+        "lessonTitles": {
+            "M1-L1": "Why Statistics in Manufacturing?",
+            "M1-L2": "Types of Data & Measurement Scales",
+            "M1-L3": "Descriptive Statistics",
+            "M1-L4": "Data Visualization & Final Assessment",
+        },
+        "workshops": {
+            "classification": "workshop_m1_data_classification.csv",
+            "dimensionsAndDefects": "workshop_m1_dimensions_and_defects.csv",
+        },
+    },
+    2: {
+        "moduleId": "M2",
+        "slug": "module-02",
+        "moduleTitle": "Probability and Distribution",
+        "moduleTitleTh": "",
+        "lessonTitles": {
+            "M2-L1": "Concept of Variation",
+            "M2-L2": "Probability Basics & Sampling",
+            "M2-L3": "Probability Distributions",
+            "M2-L4": "Central Limit Theorem & CTQ Workshop",
+        },
+        "workshops": {
+            "ctqBore": "workshop_m2_ctq_parts.csv",
+        },
+    },
 }
 
 
 def parse_lesson_content(text: str) -> dict[str, dict[str, str]]:
     sections: dict[str, dict[str, str]] = {}
-    matches = list(re.finditer(r"^##\s+(M1L\d+-S\d{2})\s+—\s+(.+)$", text, re.M))
+    matches = list(re.finditer(r"^##\s+(M\d+L\d+-S\d{2})\s+—\s+(.+)$", text, re.M))
     for i, m in enumerate(matches):
         sid = m.group(1)
         title = m.group(2).strip()
@@ -30,7 +57,7 @@ def parse_lesson_content(text: str) -> dict[str, dict[str, str]]:
         end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
         body = text[start:end].strip()
         # Strip trailing lesson header or module note if captured
-        body = re.sub(r"\n---\s*\n(?:#\s+LESSON\s+M1-L\d+|\*\(ใช้ตัวอย่างเพลา).*$", "", body, flags=re.S).strip()
+        body = re.sub(r"\n---\s*\n(?:#\s+LESSON\s+M\d+-L\d+|\*\(ใช้ตัวอย่างเพลา).*$", "", body, flags=re.S).strip()
         # Strip trailing horizontal rules
         body = re.sub(r"\n---\s*$", "", body).strip()
         # Strip inline <Asset id="..." /> and <Interactive id="..." /> tags so learners don't see raw tags
@@ -42,24 +69,25 @@ def parse_lesson_content(text: str) -> dict[str, dict[str, str]]:
     return sections
 
 
-def parse_storyboard(text: str) -> list[dict]:
-    screens: list[dict] = []
-    matches = list(re.finditer(r"^##\s+Screen\s+(M1L\d+-S\d{2})\s+—\s+(.+)$", text, re.M))
+def parse_storyboard(text: str, lesson_titles: dict[str, str]) -> list[dict[str, Any]]:
+    screens: list[dict[str, Any]] = []
+    matches = list(re.finditer(r"^##\s+Screen\s+(M\d+L\d+-S\d{2})\s+—\s+(.+)$", text, re.M))
     for i, m in enumerate(matches):
         sid = m.group(1)
         title = m.group(2).strip()
         start = m.end()
         end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
         block = text[start:end]
-        lesson_num = sid.split("L")[1].split("-")[0]
-        lesson_id = f"M1-L{lesson_num}"
-        interactive_ids = list(dict.fromkeys(re.findall(r"\bINT-M1-L\d+-\d{2}\b", block)))
-        asset_ids = list(dict.fromkeys(re.findall(r"\bAST-M1-\d{3}\b", block)))
+        mod_prefix, rest = sid.split("L", 1)
+        lesson_num = rest.split("-")[0]
+        lesson_id = f"{mod_prefix}-L{lesson_num}"
+        interactive_ids = list(dict.fromkeys(re.findall(r"\bINT-M\d+-L\d+-\d{2}\b", block)))
+        asset_ids = list(dict.fromkeys(re.findall(r"\bAST-M\d+-\d{3}\b", block)))
         screens.append(
             {
                 "screenId": sid,
                 "lessonId": lesson_id,
-                "lessonTitle": LESSON_TITLES.get(lesson_id, lesson_id),
+                "lessonTitle": lesson_titles.get(lesson_id, lesson_id),
                 "storyboardTitle": title,
                 "interactiveIds": interactive_ids,
                 "assetIds": asset_ids,
@@ -75,11 +103,11 @@ def clean_display_caption(raw: str) -> str:
     return " ".join(text.split())
 
 
-def parse_voiceover(text: str) -> dict[str, dict[str, str]]:
+def parse_voiceover(text: str, module_slug: str) -> dict[str, dict[str, str]]:
     tracks: dict[str, dict[str, str]] = {}
     matches = list(
         re.finditer(
-            r"^###\s+AUD-(M1L\d+-S\d{2})\s+\(([^)]+)\)\s+—\s+(.+)$", text, re.M
+            r"^###\s+AUD-(M\d+L\d+-S\d{2})\s+\(([^)]+)\)\s+—\s+(.+)$", text, re.M
         )
     )
     for i, m in enumerate(matches):
@@ -99,7 +127,7 @@ def parse_voiceover(text: str) -> dict[str, dict[str, str]]:
 
         tracks[sid] = {
             "audioId": f"AUD-{sid}",
-            "audioFile": f"/audio/module-01/AUD-{sid}.mp3",
+            "audioFile": f"/audio/{module_slug}/AUD-{sid}.mp3",
             "duration": duration,
             "displayScriptTh": clean_display_caption(extract_field("Display Script (TH)")),
             "ttsCleanTh": extract_field("TTS Clean Script (TH)"),
@@ -108,10 +136,10 @@ def parse_voiceover(text: str) -> dict[str, dict[str, str]]:
     return tracks
 
 
-def parse_questions(text: str) -> list[dict]:
-    questions: list[dict] = []
+def parse_questions(text: str) -> list[dict[str, Any]]:
+    questions: list[dict[str, Any]] = []
     for line in text.splitlines():
-        if not re.match(r"^\|\s*M1-Q\d{3}\s*\|", line):
+        if not re.match(r"^\|\s*M\d+-Q\d{3}\s*\|", line):
             continue
         cells = [c.strip() for c in line.strip().strip("|").split("|")]
         if len(cells) != 12:
@@ -142,12 +170,18 @@ def load_csv(path: Path) -> list[dict[str, str]]:
         return list(csv.DictReader(fh))
 
 
-def main() -> None:
-    content_map = parse_lesson_content((MOD1 / "00_lesson_content.md").read_text(encoding="utf-8"))
-    storyboard = parse_storyboard((MOD1 / "01_storyboard.md").read_text(encoding="utf-8"))
-    voice_map = parse_voiceover((MOD1 / "02_voiceover_th_en.md").read_text(encoding="utf-8"))
-    questions = parse_questions((MOD1 / "06_assessment_bank.md").read_text(encoding="utf-8"))
-    cheatsheet_md = (MOD1 / "08_cheatsheet_and_glossary.md").read_text(encoding="utf-8")
+def build_module(mod_num: int) -> None:
+    cfg = MODULE_CONFIGS[mod_num]
+    slug = cfg["slug"]
+    mod_dir = ROOT / "modules" / slug
+    out_json = ROOT / "web" / "src" / "data" / f"{slug}.json"
+    lesson_titles: dict[str, str] = cfg["lessonTitles"]
+
+    content_map = parse_lesson_content((mod_dir / "00_lesson_content.md").read_text(encoding="utf-8"))
+    storyboard = parse_storyboard((mod_dir / "01_storyboard.md").read_text(encoding="utf-8"), lesson_titles)
+    voice_map = parse_voiceover((mod_dir / "02_voiceover_th_en.md").read_text(encoding="utf-8"), slug)
+    questions = parse_questions((mod_dir / "06_assessment_bank.md").read_text(encoding="utf-8"))
+    cheatsheet_md = (mod_dir / "08_cheatsheet_and_glossary.md").read_text(encoding="utf-8")
 
     screens = []
     for idx, sb in enumerate(storyboard):
@@ -170,32 +204,47 @@ def main() -> None:
             }
         )
 
+    workshops: dict[str, list[dict[str, str]]] = {}
+    for ws_key, csv_filename in cfg["workshops"].items():
+        workshops[ws_key] = load_csv(mod_dir / "data" / csv_filename)
+
     payload = {
-        "moduleId": "M1",
-        "moduleTitle": "Statistics Foundation for Manufacturing",
-        "moduleTitleTh": "พื้นฐานสถิติสำหรับงานวิศวกรรมการผลิต",
+        "moduleId": cfg["moduleId"],
+        "moduleTitle": cfg["moduleTitle"],
+        "moduleTitleTh": cfg["moduleTitleTh"],
         "totalScreens": len(screens),
         "lessons": [
             {"id": lid, "title": title, "screens": [s["screenId"] for s in screens if s["lessonId"] == lid]}
-            for lid, title in LESSON_TITLES.items()
+            for lid, title in lesson_titles.items()
         ],
         "screens": screens,
         "questions": questions,
-        "workshops": {
-            "classification": load_csv(MOD1 / "data" / "workshop_m1_data_classification.csv"),
-            "dimensionsAndDefects": load_csv(MOD1 / "data" / "workshop_m1_dimensions_and_defects.csv"),
-        },
+        "workshops": workshops,
         "resourcesMarkdown": cheatsheet_md,
     }
 
-    OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
-    OUT_JSON.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    out_json.parent.mkdir(parents=True, exist_ok=True)
+    out_json.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
+    ws_summary = ", ".join(f"{len(rows)} {k} rows" for k, rows in workshops.items())
     print(
-        f"Built {OUT_JSON.relative_to(ROOT)}: "
-        f"{len(screens)} screens, {len(questions)} questions, "
-        f"{len(payload['workshops']['classification'])} classification rows, "
-        f"{len(payload['workshops']['dimensionsAndDefects'])} workshop rows."
+        f"Built {out_json.relative_to(ROOT)}: "
+        f"{len(screens)} screens, {len(questions)} questions, {ws_summary}."
     )
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Build structured JSON data for SPC_Training modules.")
+    parser.add_argument(
+        "--module",
+        type=int,
+        choices=sorted(MODULE_CONFIGS.keys()),
+        help="Module number to build (default: build all configured modules).",
+    )
+    args = parser.parse_args()
+
+    targets = [args.module] if args.module else sorted(MODULE_CONFIGS.keys())
+    for mod_num in targets:
+        build_module(mod_num)
 
 
 if __name__ == "__main__":

@@ -154,7 +154,7 @@ $$P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!}, \quad \mu = \lambda, \quad \sigm
 - จับคู่โจทย์โรงงาน 6 สถานการณ์ให้ตรงกับการแจกแจง (Normal vs Binomial vs Poisson vs Non-normal/Skewed)
 
 ## M2L3-S09 — Lesson 3 Knowledge Check (`KC-M2-L3`)
-- ทบทวน 3 ข้อ (`M2-Q025`, `M2-Q033`, `M2-Q040`)
+- ทบทวน 3 ข้อ (`M2-Q026`, `M2-Q033`, `M2-Q040`)
 
 ---
 

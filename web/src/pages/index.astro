@@ -1,56 +1,172 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import moduleData from '../data/module-01.json';
 import { withBase } from '../lib/base';
+
+export interface CurriculumModuleConfig {
+  id: string;
+  slug: string;
+  title: string;
+  titleTh: string;
+  screens: number;
+  webStatus: 'ready' | 'roadmap';
+  startScreen?: string;
+  examScreen?: string;
+  storageKey?: string;
+}
+
+export const CURRICULUM_MODULES: CurriculumModuleConfig[] = [
+  {
+    id: 'M1',
+    slug: 'module-01',
+    title: 'Statistics Foundation for Manufacturing',
+    titleTh: 'พื้นฐานสถิติสำหรับงานวิศวกรรมการผลิต',
+    screens: 27,
+    webStatus: 'ready',
+    startScreen: 'M1L1-S01',
+    examScreen: 'M1L4-S08',
+    storageKey: 'spc_training_m1_progress_v1',
+  },
+  {
+    id: 'M2',
+    slug: 'module-02',
+    title: 'Probability and Distribution',
+    titleTh: '',
+    screens: 28,
+    webStatus: 'ready',
+    startScreen: 'M2L1-S01',
+    examScreen: 'M2L4-S08',
+    storageKey: 'spc_training_m2_progress_v1',
+  },
+  {
+    id: 'M3',
+    slug: 'module-03',
+    title: 'Confidence and Hypothesis Testing',
+    titleTh: 'ช่วงความเชื่อมั่นและการทดสอบสมมติฐาน',
+    screens: 26,
+    webStatus: 'roadmap',
+  },
+  {
+    id: 'M4',
+    slug: 'module-04',
+    title: 'Process Variation and Capability',
+    titleTh: 'จุดเชื่อมก่อนเข้า SPC',
+    screens: 27,
+    webStatus: 'roadmap',
+  },
+  {
+    id: 'M5',
+    slug: 'module-05',
+    title: 'SPC Concept and Methodology',
+    titleTh: 'หลักการและวิธีการของ SPC',
+    screens: 28,
+    webStatus: 'roadmap',
+  },
+  {
+    id: 'M6',
+    slug: 'module-06',
+    title: 'Control Chart Selection',
+    titleTh: 'เลือก Chart ให้ถูกต้อง',
+    screens: 28,
+    webStatus: 'roadmap',
+  },
+  {
+    id: 'M7',
+    slug: 'module-07',
+    title: 'SPC for Manufacturing Process',
+    titleTh: 'SPC ในโรงงาน',
+    screens: 26,
+    webStatus: 'roadmap',
+  },
+  {
+    id: 'M8',
+    slug: 'module-08',
+    title: 'SPC Problem Solving',
+    titleTh: 'กระบวนการแก้ปัญหาด้วยเครื่องมือ SPC',
+    screens: 28,
+    webStatus: 'roadmap',
+  },
+  {
+    id: 'M9',
+    slug: 'module-09',
+    title: 'MSA Connection to SPC',
+    titleTh: 'หัวข้อที่ Engineer ใหม่มักไม่เข้าใจ',
+    screens: 30,
+    webStatus: 'roadmap',
+  },
+  {
+    id: 'M10',
+    slug: 'module-10',
+    title: 'Industrial Case Study (AIAG-Based)',
+    titleTh: 'กรณีศึกษาจริงในโรงงานตามมาตรฐาน AIAG',
+    screens: 24,
+    webStatus: 'roadmap',
+  },
+];
+
+const totalCurriculumScreens = CURRICULUM_MODULES.reduce((sum, m) => sum + m.screens, 0);
 ---
-<BaseLayout title="SPC & Manufacturing Statistics Online Training — Module 1">
-  <div class="flex h-screen w-screen flex-col overflow-hidden bg-slate-950 text-white">
-    <header class="shrink-0 border-b border-slate-800 bg-slate-900/90">
-      <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+<BaseLayout title="SPC & Manufacturing Statistics Online Training — Curriculum Hub">
+  <div class="flex min-h-screen w-screen flex-col bg-slate-950 text-white">
+    <header class="shrink-0 border-b border-slate-800 bg-slate-900/90 sticky top-0 z-20 backdrop-blur">
+      <div class="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         <div class="flex items-center gap-3">
           <span class="rounded-lg bg-sky-600 px-3 py-1 text-xs font-extrabold tracking-wider">SPC TRAINING</span>
           <span class="text-sm font-semibold text-slate-300">SRIRATTANASAK Manufacturing Academy</span>
         </div>
-        <a
-          href={withBase('/module-01/M1L1-S01')}
-          class="rounded-lg bg-amber-500 px-4 py-1.5 text-xs font-extrabold text-slate-950 hover:bg-amber-400 transition"
-        >
-          เริ่มเรียน Module 1 →
-        </a>
+        <div class="flex items-center gap-2">
+          <a
+            href={withBase('/module-01/M1L1-S01')}
+            class="rounded-lg bg-sky-600 px-3.5 py-1.5 text-xs font-extrabold text-white hover:bg-sky-500 transition"
+          >
+            Module 1 →
+          </a>
+          <a
+            href={withBase('/module-02/M2L1-S01')}
+            class="rounded-lg bg-amber-500 px-3.5 py-1.5 text-xs font-extrabold text-slate-950 hover:bg-amber-400 transition"
+          >
+            Module 2 →
+          </a>
+        </div>
       </div>
     </header>
 
-    <main class="mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center gap-5 overflow-hidden px-4 py-4">
-      <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center rounded-2xl border border-slate-800 bg-slate-900 p-5 sm:p-6">
-        <div class="lg:col-span-7 space-y-3">
-          <span class="inline-block rounded-full bg-sky-900/70 px-3 py-1 text-xs font-bold text-sky-300 border border-sky-700">
-            Phase B Prototype • Module 1 Ready (29 Screens)
-          </span>
+    <main class="mx-auto flex w-full max-w-7xl flex-1 flex-col gap-6 px-4 py-6">
+      <!-- Hero Banner -->
+      <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center rounded-2xl border border-slate-800 bg-slate-900 p-5 sm:p-6 shadow-lg">
+        <div class="lg:col-span-8 space-y-3">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="inline-block rounded-full bg-sky-900/70 px-3 py-1 text-xs font-bold text-sky-300 border border-sky-700">
+              Phase B1 Curriculum Hub • 10 Modules ({totalCurriculumScreens} Screens)
+            </span>
+            <span class="inline-block rounded-full bg-emerald-900/60 px-3 py-1 text-xs font-bold text-emerald-300 border border-emerald-700/70">
+              Module 1 &amp; Module 2 พร้อมเรียน
+            </span>
+          </div>
           <h1 class="text-2xl sm:text-3xl font-extrabold leading-tight">
-            {moduleData.moduleTitle}
+            Statistical Process Control (SPC) &amp; Manufacturing Statistics
           </h1>
-          <p class="text-sm text-slate-300">
-            {moduleData.moduleTitleTh} — เรียนรู้ผ่าน Interactive Simulators, ข้อมูลโรงงานจริง (CSV), คลังข้อสอบ 60 ข้อ และเสียงบรรยายภาษาไทยแบบเล่นต่อเนื่องอัตโนมัติ
+          <p class="text-sm text-slate-300 leading-relaxed">
+            หลักสูตรวิศวกรรมคุณภาพและสถิติอุตสาหกรรมการผลิตครบวงจร 10 โมดูล เรียนรู้ผ่าน Interactive Simulators, ข้อมูลโรงงานจริง (CSV), คลังข้อสอบ 600 ข้อ (โมดูลละ 60 ข้อ) และระบบติดตามความคืบหน้าแยกตามโมดูล
           </p>
           <div class="flex flex-wrap gap-3 pt-1">
             <a
-              id="resume-btn"
+              id="hero-m1-btn"
               href={withBase('/module-01/M1L1-S01')}
               class="rounded-xl bg-sky-600 px-4 py-2.5 text-xs sm:text-sm font-extrabold text-white hover:bg-sky-500 transition shadow-lg"
             >
-              เริ่มเรียนตั้งแต่หน้าแรก (M1L1-S01)
+              เข้าเรียน Module 1 (M1L1-S01)
             </a>
             <a
-              href={withBase('/module-01/M1L4-S08')}
-              class="rounded-xl border border-slate-700 bg-slate-800 px-4 py-2.5 text-xs sm:text-sm font-bold text-slate-200 hover:bg-slate-700 transition"
+              id="hero-m2-btn"
+              href={withBase('/module-02/M2L1-S01')}
+              class="rounded-xl bg-amber-500 px-4 py-2.5 text-xs sm:text-sm font-extrabold text-slate-950 hover:bg-amber-400 transition shadow-lg"
             >
-              เข้าทำข้อสอบ EXAM-M1 (20 ข้อ)
+              เข้าเรียน Module 2 (M2L1-S01)
             </a>
           </div>
-          <p id="progress-summary" class="text-xs text-slate-400"></p>
         </div>
 
-        <div class="lg:col-span-5 overflow-hidden rounded-xl border border-slate-700">
+        <div class="lg:col-span-4 overflow-hidden rounded-xl border border-slate-700">
           <img
             src={withBase('/images/module-01/AST-M1-001.jpg')}
             alt="Manufacturing SPC Line"
@@ -59,26 +175,109 @@ import { withBase } from '../lib/base';
         </div>
       </section>
 
-      <section class="space-y-2.5">
-        <h2 class="text-base font-extrabold text-white">บทเรียนใน Module 1 (4 บทเรียน • 29 หน้าจอ)</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-          {moduleData.lessons.map((lesson) => (
-            <a
-              href={withBase(`/module-01/${lesson.screens[0]}`)}
-              class="group rounded-xl border border-slate-800 bg-slate-900 p-4 hover:border-sky-500 transition"
-            >
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-extrabold uppercase text-sky-400">{lesson.id}</span>
-                <span class="rounded bg-slate-800 px-2 py-0.5 text-[11px] text-slate-300">
-                  {lesson.screens.length} Screens
-                </span>
+      <!-- 10 Modules Grid -->
+      <section class="space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <h2 class="text-base sm:text-lg font-extrabold text-white">
+            โครงสร้างหลักสูตรทั้งหมด (10 Modules • {totalCurriculumScreens} Screens)
+          </h2>
+          <span class="text-xs text-slate-400">
+            คลิกที่การ์ด Module 1 หรือ Module 2 เพื่อเริ่มเรียนหรือทำแบบทดสอบท้ายโมดูล
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {CURRICULUM_MODULES.map((mod) => {
+            const isReady = mod.webStatus === 'ready';
+            return (
+              <div
+                class={`flex flex-col justify-between rounded-xl border p-4 transition ${
+                  isReady
+                    ? 'border-sky-500/60 bg-slate-900 shadow-md hover:border-sky-400'
+                    : 'border-slate-800 bg-slate-900/50 opacity-85'
+                }`}
+                data-module-card={mod.id}
+                data-module-slug={mod.slug}
+                data-module-screens={mod.screens}
+                data-storage-key={mod.storageKey ?? ''}
+              >
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between gap-2">
+                    <span
+                      class={`rounded-md px-2.5 py-0.5 text-xs font-extrabold ${
+                        isReady
+                          ? 'bg-sky-600 text-white'
+                          : 'bg-slate-800 text-slate-300 border border-slate-700'
+                      }`}
+                    >
+                      {mod.id}
+                    </span>
+
+                    <div class="flex items-center gap-1.5">
+                      <span class="rounded bg-slate-800 px-2 py-0.5 text-[11px] font-semibold text-slate-300">
+                        {mod.screens} Screens
+                      </span>
+                      {isReady ? (
+                        <span class="rounded-full bg-emerald-950 px-2.5 py-0.5 text-[11px] font-bold text-emerald-300 border border-emerald-700">
+                          พร้อมเรียน
+                        </span>
+                      ) : (
+                        <span class="rounded-full bg-slate-800 px-2.5 py-0.5 text-[11px] font-semibold text-amber-300 border border-slate-700">
+                          Upcoming / Phase B2
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 class="text-base font-extrabold text-white leading-snug">{mod.title}</h3>
+                    {mod.titleTh && (
+                      <p class="mt-0.5 text-xs font-medium text-sky-300">{mod.titleTh}</p>
+                    )}
+                  </div>
+                </div>
+
+                {isReady ? (
+                  <div class="mt-4 space-y-2.5 pt-3 border-t border-slate-800">
+                    <div class="space-y-1">
+                      <div class="flex items-center justify-between text-[11px] text-slate-300">
+                        <span data-progress-label={mod.id}>ความคืบหน้า: 0/{mod.screens} หน้าจอ</span>
+                        <span data-exam-label={mod.id} class="font-semibold text-amber-300"></span>
+                      </div>
+                      <div class="h-1.5 w-full overflow-hidden rounded-full bg-slate-800">
+                        <div
+                          data-progress-bar={mod.id}
+                          class="h-full bg-sky-500 transition-all"
+                          style="width: 0%"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                      <a
+                        data-start-link={mod.id}
+                        href={withBase(`/${mod.slug}/${mod.startScreen}`)}
+                        class="flex-1 rounded-lg bg-sky-600 px-3 py-2 text-center text-xs font-extrabold text-white hover:bg-sky-500 transition"
+                      >
+                        เริ่มเรียน ({mod.startScreen})
+                      </a>
+                      <a
+                        href={withBase(`/${mod.slug}/${mod.examScreen}`)}
+                        class="rounded-lg border border-slate-700 bg-slate-800 px-3 py-2 text-center text-xs font-bold text-slate-200 hover:bg-slate-700 transition"
+                      >
+                        สอบ EXAM-{mod.id}
+                      </a>
+                    </div>
+                  </div>
+                ) : (
+                  <div class="mt-4 pt-3 border-t border-slate-800/70 flex items-center justify-between text-[11px] text-slate-400">
+                    <span>เนื้อหาและคลังข้อสอบ 60 ข้อพร้อมแล้ว</span>
+                    <span class="font-semibold text-slate-500">Phase B2 Roadmap</span>
+                  </div>
+                )}
               </div>
-              <h3 class="mt-1.5 text-sm font-bold text-white group-hover:text-sky-300 line-clamp-1">{lesson.title}</h3>
-              <p class="mt-1 text-[11px] text-slate-400">
-                {lesson.screens[0]} .. {lesson.screens[lesson.screens.length - 1]}
-              </p>
-            </a>
-          ))}
+            );
+          })}
         </div>
       </section>
     </main>
@@ -86,24 +285,44 @@ import { withBase } from '../lib/base';
 
   <script is:inline define:vars={{ baseUrl: import.meta.env.BASE_URL }}>
     try {
-      const raw = localStorage.getItem('spc_training_m1_progress_v1');
-      if (raw) {
+      const cleanBase = (baseUrl || '/').replace(/\/$/, '');
+      const cards = document.querySelectorAll('[data-module-card]');
+      cards.forEach((card) => {
+        const modId = card.getAttribute('data-module-card');
+        const slug = card.getAttribute('data-module-slug');
+        const total = Number(card.getAttribute('data-module-screens') || '27');
+        const key = card.getAttribute('data-storage-key');
+        if (!modId || !slug || !key) return;
+
+        const raw = localStorage.getItem(key);
+        if (!raw) return;
         const data = JSON.parse(raw);
-        const btn = document.getElementById('resume-btn');
-        const summary = document.getElementById('progress-summary');
-        const cleanBase = (baseUrl || '/').replace(/\/$/, '');
-        if (btn && data.var_current_screen) {
-          btn.href = (cleanBase ? cleanBase : '') + '/module-01/' + data.var_current_screen;
-          btn.textContent = 'เรียนต่อจากหน้าล่าสุด (' + data.var_current_screen + ')';
+
+        const completed = Array.isArray(data.var_completed_screens)
+          ? data.var_completed_screens.length
+          : 0;
+        const pct = Math.min(100, Math.round((completed / total) * 100));
+
+        const labelEl = card.querySelector(`[data-progress-label="${modId}"]`);
+        const examEl = card.querySelector(`[data-exam-label="${modId}"]`);
+        const barEl = card.querySelector(`[data-progress-bar="${modId}"]`);
+        const startLink = card.querySelector(`[data-start-link="${modId}"]`);
+
+        if (labelEl) {
+          labelEl.textContent = `ความคืบหน้า: ${completed}/${total} หน้าจอ (${pct}%)`;
         }
-        if (summary && Array.isArray(data.var_completed_screens)) {
-          summary.textContent =
-            'ความคืบหน้า: ' +
-            data.var_completed_screens.length +
-            '/29 หน้าจอ' +
-            (data.var_exam_score ? ' | คะแนนสอบล่าสุด: ' + data.var_exam_score + '%' : '');
+        if (examEl && typeof data.var_exam_score === 'number' && data.var_exam_score > 0) {
+          examEl.textContent = `คะแนนสอบ: ${data.var_exam_score}%`;
         }
-      }
+        if (barEl) {
+          barEl.style.width = `${pct}%`;
+        }
+        if (startLink && data.var_current_screen) {
+          const resumeHref = `${cleanBase ? cleanBase : ''}/${slug}/${data.var_current_screen}`;
+          startLink.setAttribute('href', resumeHref);
+          startLink.textContent = `เรียนต่อ (${data.var_current_screen})`;
+        }
+      });
     } catch {}
   </script>
 </BaseLayout>

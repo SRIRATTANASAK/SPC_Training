@@ -246,7 +246,7 @@
 - **Developer Notes:** Includes Skewed/Non-normal trap item.
 
 ## Screen M2L3-S09 — Lesson 3 Knowledge Check (`KC-M2-L3`)
-- **Learning Objective:** ทดสอบการคำนวณและเลือกใช้ Probability Distributions (`M2-Q025`, `M2-Q033`, `M2-Q040`)
+- **Learning Objective:** ทดสอบการคำนวณและเลือกใช้ Probability Distributions (`M2-Q026`, `M2-Q033`, `M2-Q040`)
 - **Duration:** 45s
 - **Layout:** 3-Question Assessment Card
 - **Asset ID:** N/A

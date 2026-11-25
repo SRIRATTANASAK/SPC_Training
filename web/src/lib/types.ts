@@ -61,6 +61,18 @@ export interface DimensionDefectRow {
   Inspection_Result: string;
 }
 
+export interface CtqBoreRow {
+  Part_ID: string;
+  Subgroup_ID: string;
+  Sample_In_Subgroup: string;
+  Timestamp: string;
+  Shift: string;
+  Operator: string;
+  Bore_Diameter_mm: string;
+  Surface_Defect_Count: string;
+  Visual_Pass_Fail: string;
+}
+
 export interface ModulePayload {
   moduleId: string;
   moduleTitle: string;
@@ -70,8 +82,9 @@ export interface ModulePayload {
   screens: ScreenItem[];
   questions: QuestionItem[];
   workshops: {
-    classification: ClassificationRow[];
-    dimensionsAndDefects: DimensionDefectRow[];
+    classification?: ClassificationRow[];
+    dimensionsAndDefects?: DimensionDefectRow[];
+    ctqBore?: CtqBoreRow[];
   };
   resourcesMarkdown: string;
 }

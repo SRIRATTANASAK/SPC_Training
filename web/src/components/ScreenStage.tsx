@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { BookOpen, ChevronLeft, ChevronRight, Database, Layers, ListChecks, X } from 'lucide-react';
 import type { ModulePayload, ScreenItem } from '../lib/types';
-import { progressStore } from '../lib/storage';
+import { getProgressStore } from '../lib/storage';
 import { InlineMarkdown, MarkdownContent } from './MarkdownContent';
 import { AssetViewer } from './visuals/AssetViewer';
 import { FishboneDiagram } from './visuals/FishboneDiagram';
@@ -37,6 +37,17 @@ const INTERACTIVE_SCREENS = new Set([
   'M1L3-S07',
   'M1L4-S07',
   'M1L4-S08',
+  'M2L1-S04',
+  'M2L1-S05',
+  'M2L2-S05',
+  'M2L2-S06',
+  'M2L3-S03',
+  'M2L3-S07',
+  'M2L3-S08',
+  'M2L3-S09',
+  'M2L4-S05',
+  'M2L4-S06',
+  'M2L4-S08',
 ]);
 
 // Screens that have 2 separate interactive steps
@@ -51,6 +62,35 @@ const PAUSE_AUTO_ADVANCE_SCREENS = new Set([
   'M1L3-S07', // KC-M1-L3
   'M1L4-S07', // Workshop 2
   'M1L4-S08', // Final Exam
+  'M2L1-S04', // Classifier & Deming Funnel Lab
+  'M2L1-S05', // KC-M2-L1
+  'M2L2-S05', // FPY & Random Sampling Simulator
+  'M2L2-S06', // KC-M2-L2
+  'M2L3-S03', // Z-Score Calculator
+  'M2L3-S07', // Distribution Explorer
+  'M2L3-S08', // Distribution Selection Matrix
+  'M2L3-S09', // KC-M2-L3
+  'M2L4-S05', // CLT Simulator
+  'M2L4-S06', // CTQ Bore Analyzer Workshop
+  'M2L4-S08', // Final Exam M2
+]);
+
+const PURE_INTERACTIVE_SCREENS = new Set([
+  'M1L1-S06',
+  'M1L2-S04',
+  'M1L2-S06',
+  'M1L3-S07',
+  'M1L4-S08',
+  'M2L1-S04',
+  'M2L1-S05',
+  'M2L2-S05',
+  'M2L2-S06',
+  'M2L3-S07',
+  'M2L3-S08',
+  'M2L3-S09',
+  'M2L4-S05',
+  'M2L4-S06',
+  'M2L4-S08',
 ]);
 
 // Screens that actually render a visible asset in AssetViewer
@@ -73,6 +113,12 @@ interface SlideView {
 
 export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
   const [completedCount, setCompletedCount] = useState(0);
+  const moduleNum = useMemo(() => {
+    const m = (moduleData.moduleId || screen.screenId || 'M1').match(/M(\d+)/i);
+    return m ? Number(m[1]) : 1;
+  }, [moduleData.moduleId, screen.screenId]);
+  const moduleSlug = `module-${String(moduleNum).padStart(2, '0')}`;
+  const store = useMemo(() => getProgressStore(moduleData.moduleId || `M${moduleNum}`), [moduleData.moduleId, moduleNum]);
   const [drawer, setDrawer] = useState<'none' | 'resources' | 'workshop' | 'nav'>('none');
   const [slideIdx, setSlideIdx] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
@@ -97,7 +143,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
   const slides = useMemo<SlideView[]>(() => {
     const sid = screen.screenId;
     // Pure Quiz / Workshop / Exam screens where the markdown is just a 1-line intro
-    if (sid === 'M1L1-S06' || sid === 'M1L2-S04' || sid === 'M1L2-S06' || sid === 'M1L3-S07' || sid === 'M1L4-S08') {
+    if (PURE_INTERACTIVE_SCREENS.has(sid)) {
       return [{ id: 'interactive-0', label: 'กิจกรรม / แบบทดสอบ', kind: 'interactive', interactiveStep: 0 }];
     }
     // M1L3-S01..S04 & M1L4-S01..S06: Rich visual content
@@ -136,9 +182,9 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
     setFadeIn(true);
     setAudioTime(0);
     setAudioPlaying(false);
-    const next = progressStore.markScreenCompleted(screen.screenId);
+    const next = store.markScreenCompleted(screen.screenId);
     setCompletedCount(next.var_completed_screens.length);
-  }, [screen.screenId]);
+  }, [screen.screenId, store]);
 
   const goToSlide = (nextIdx: number) => {
     if (nextIdx === slideIdx || nextIdx < 0 || nextIdx >= slides.length) return;
@@ -163,7 +209,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
       return;
     }
     if (screen.nextScreenId) {
-      window.location.href = withBase(`/module-01/${screen.nextScreenId}`);
+      window.location.href = withBase(`/${moduleSlug}/${screen.nextScreenId}`);
     }
   };
 
@@ -1436,7 +1482,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
             <div className="flex items-center gap-2">
               {screen.prevScreenId ? (
                 <a
-                  href={withBase(`/module-01/${screen.prevScreenId}`)}
+                  href={withBase(`/${moduleSlug}/${screen.prevScreenId}`)}
                   className="rounded-lg border border-slate-300 bg-white px-3.5 py-1.5 text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-50"
                 >
                   ← หน้าก่อนหน้า
@@ -1494,7 +1540,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                 </button>
               ) : screen.nextScreenId ? (
                 <a
-                  href={withBase(`/module-01/${screen.nextScreenId}`)}
+                  href={withBase(`/${moduleSlug}/${screen.nextScreenId}`)}
                   className="rounded-lg bg-sky-700 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-white hover:bg-sky-800 shadow-sm transition"
                 >
                   หน้าถัดไป →
@@ -1504,7 +1550,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                   href={withBase('/')}
                   className="rounded-lg bg-emerald-700 px-3.5 py-1.5 text-xs sm:text-sm font-bold text-white hover:bg-emerald-800 shadow-sm transition"
                 >
-                  จบ Module 1 ✓
+                  จบ Module {moduleNum} ✓
                 </a>
               )}
             </div>
@@ -1517,9 +1563,9 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
           <div className="h-full w-full max-w-xl overflow-y-auto bg-white p-6 shadow-2xl">
             <div className="mb-4 flex items-center justify-between border-b border-slate-200 pb-3">
               <h2 className="text-lg font-extrabold text-slate-900">
-                {drawer === 'resources' && 'Cheat Sheet & Glossary (Module 1)'}
-                {drawer === 'workshop' && 'Workshop Raw CSV Data (Module 1)'}
-                {drawer === 'nav' && 'สารบัญหน้าจอ Module 1 (29 Screens)'}
+                {drawer === 'resources' && `Cheat Sheet & Glossary (Module ${moduleNum})`}
+                {drawer === 'workshop' && `Workshop Raw CSV Data (Module ${moduleNum})`}
+                {drawer === 'nav' && `สารบัญหน้าจอ Module ${moduleNum} (${moduleData.totalScreens} Screens)`}
               </h2>
               <button
                 type="button"
@@ -1544,7 +1590,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                       {l.screens.map((sid) => (
                         <a
                           key={sid}
-                          href={withBase(`/module-01/${sid}`)}
+                          href={withBase(`/${moduleSlug}/${sid}`)}
                           className={`rounded-lg border px-2.5 py-1.5 text-xs font-bold ${
                             sid === screen.screenId
                               ? 'border-sky-600 bg-sky-50 text-sky-900'
@@ -1562,33 +1608,69 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
 
             {drawer === 'workshop' && (
               <div className="space-y-4 text-xs">
-                <p className="text-slate-600">
-                  ข้อมูลโรงงานจริงจาก <code>workshop_m1_dimensions_and_defects.csv</code> (30 ตัวอย่าง):
-                </p>
-                <div className="overflow-x-auto rounded-lg border border-slate-200">
-                  <table className="w-full text-left border-collapse">
-                    <thead className="bg-slate-100">
-                      <tr>
-                        <th className="p-2">#</th>
-                        <th className="p-2">MC</th>
-                        <th className="p-2">Temp</th>
-                        <th className="p-2">OD (mm)</th>
-                        <th className="p-2">Defect</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-slate-100">
-                      {moduleData.workshops.dimensionsAndDefects.map((r) => (
-                        <tr key={r.Sample_No}>
-                          <td className="p-2 font-mono">{r.Sample_No}</td>
-                          <td className="p-2">{r.Machine}</td>
-                          <td className="p-2">{r.Mold_Temp_C}°C</td>
-                          <td className="p-2 font-mono font-bold">{r.Shaft_Diameter_mm}</td>
-                          <td className="p-2">{r.Defect_Type}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
+                {moduleData.workshops?.ctqBore ? (
+                  <>
+                    <p className="text-slate-600">
+                      ข้อมูลโรงงานจริงจาก <code>workshop_m2_ctq_parts.csv</code> ({moduleData.workshops.ctqBore.length} ตัวอย่าง):
+                    </p>
+                    <div className="overflow-x-auto rounded-lg border border-slate-200">
+                      <table className="w-full text-left border-collapse">
+                        <thead className="bg-slate-100">
+                          <tr>
+                            <th className="p-2">Part</th>
+                            <th className="p-2">Subgroup</th>
+                            <th className="p-2">Time</th>
+                            <th className="p-2">Bore (mm)</th>
+                            <th className="p-2">Defects</th>
+                            <th className="p-2">Visual</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          {moduleData.workshops.ctqBore.map((r) => (
+                            <tr key={r.Part_ID} className={r.Subgroup_ID === 'SG-09' ? 'bg-rose-50/70' : ''}>
+                              <td className="p-2 font-mono">{r.Part_ID}</td>
+                              <td className="p-2 font-semibold">{r.Subgroup_ID}</td>
+                              <td className="p-2 text-slate-500">{r.Timestamp}</td>
+                              <td className="p-2 font-mono font-bold">{r.Bore_Diameter_mm}</td>
+                              <td className="p-2 font-mono">{r.Surface_Defect_Count}</td>
+                              <td className="p-2 font-bold">{r.Visual_Pass_Fail}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-slate-600">
+                      ข้อมูลโรงงานจริงจาก <code>workshop_m1_dimensions_and_defects.csv</code> (30 ตัวอย่าง):
+                    </p>
+                    <div className="overflow-x-auto rounded-lg border border-slate-200">
+                      <table className="w-full text-left border-collapse">
+                        <thead className="bg-slate-100">
+                          <tr>
+                            <th className="p-2">#</th>
+                            <th className="p-2">MC</th>
+                            <th className="p-2">Temp</th>
+                            <th className="p-2">OD (mm)</th>
+                            <th className="p-2">Defect</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-slate-100">
+                          {(moduleData.workshops?.dimensionsAndDefects ?? []).map((r) => (
+                            <tr key={r.Sample_No}>
+                              <td className="p-2 font-mono">{r.Sample_No}</td>
+                              <td className="p-2">{r.Machine}</td>
+                              <td className="p-2">{r.Mold_Temp_C}°C</td>
+                              <td className="p-2 font-mono font-bold">{r.Shaft_Diameter_mm}</td>
+                              <td className="p-2">{r.Defect_Type}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </>
+                )}
               </div>
             )}
           </div>

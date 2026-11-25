@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { ScreenStage } from '../../components/ScreenStage';
+import module01Data from '../../data/module-01.json';
+import module02Data from '../../data/module-02.json';
+import type { ModulePayload, ScreenItem } from '../../lib/types';
+
+export function getStaticPaths() {
+  const modules: Array<{ slug: string; payload: ModulePayload }> = [
+    { slug: 'module-01', payload: module01Data as unknown as ModulePayload },
+    { slug: 'module-02', payload: module02Data as unknown as ModulePayload },
+  ];
+
+  return modules.flatMap(({ slug, payload }) =>
+    payload.screens.map((screen) => ({
+      params: { moduleId: slug, screenId: screen.screenId },
+      props: { screen, moduleData: payload },
+    }))
+  );
+}
+
+interface Props {
+  screen: ScreenItem;
+  moduleData: ModulePayload;
+}
+
+const { screen, moduleData: payload } = Astro.props;
+---
+<BaseLayout title={`${screen.screenId} — ${screen.title} | SPC Training`}>
+  <ScreenStage client:load screen={screen} moduleData={payload} />
+</BaseLayout>

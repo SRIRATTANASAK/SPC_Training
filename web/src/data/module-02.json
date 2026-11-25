@@ -1,0 +1,2192 @@
+{
+  "moduleId": "M2",
+  "moduleTitle": "Probability and Distribution",
+  "moduleTitleTh": "",
+  "totalScreens": 28,
+  "lessons": [
+    {
+      "id": "M2-L1",
+      "title": "Concept of Variation",
+      "screens": [
+        "M2L1-S01",
+        "M2L1-S02",
+        "M2L1-S03",
+        "M2L1-S04",
+        "M2L1-S05"
+      ]
+    },
+    {
+      "id": "M2-L2",
+      "title": "Probability Basics & Sampling",
+      "screens": [
+        "M2L2-S01",
+        "M2L2-S02",
+        "M2L2-S03",
+        "M2L2-S04",
+        "M2L2-S05",
+        "M2L2-S06"
+      ]
+    },
+    {
+      "id": "M2-L3",
+      "title": "Probability Distributions",
+      "screens": [
+        "M2L3-S01",
+        "M2L3-S02",
+        "M2L3-S03",
+        "M2L3-S04",
+        "M2L3-S05",
+        "M2L3-S06",
+        "M2L3-S07",
+        "M2L3-S08",
+        "M2L3-S09"
+      ]
+    },
+    {
+      "id": "M2-L4",
+      "title": "Central Limit Theorem & CTQ Workshop",
+      "screens": [
+        "M2L4-S01",
+        "M2L4-S02",
+        "M2L4-S03",
+        "M2L4-S04",
+        "M2L4-S05",
+        "M2L4-S06",
+        "M2L4-S07",
+        "M2L4-S08"
+      ]
+    }
+  ],
+  "screens": [
+    {
+      "index": 1,
+      "screenId": "M2L1-S01",
+      "lessonId": "M2-L1",
+      "lessonTitle": "Concept of Variation",
+      "title": "Welcome & Why Variation Matters for Probability",
+      "markdown": "- **จาก Module 1 สู่ Module 2:** เรารู้แล้วว่า *ทุกกระบวนการมีความแปรปรวน* — คำถามต่อไปของวิศวกรคือ: **\"ความแปรปรวนนั้นบอกโอกาสเกิดของเสีย (Probability) ได้อย่างไร?\"**\n- **วัตถุประสงค์การเรียนรู้ประจำ Module 2:**\n  1. แยกแยะ **Common Cause** ออกจาก **Special Cause Variation** ได้อย่างถูกต้อง\n  2. คำนวณความน่าจะเป็นพื้นฐาน, First Pass Yield (FPY) และแยก **Population vs Sample**\n  3. เลือกใช้และคำนวณการแจกแจง **Normal**, **Binomial** และ **Poisson** ให้ตรงกับงานโรงงาน\n  4. เข้าใจ **Central Limit Theorem (CLT)** — หัวใจสำคัญที่ทำให้ Control Chart ใน SPC ใช้งานได้จริง",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-001",
+        "AST-M2-002"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L1-S01",
+        "audioFile": "/audio/module-02/AUD-M2L1-S01.mp3",
+        "duration": "25 sec",
+        "displayScriptTh": "ยินดีต้อนรับเข้าสู่ Module ที่ 2 ความน่าจะเป็นและการแจกแจง ในบทที่แล้วเรารู้ว่าทุกกระบวนการมีความแปรปรวน ในบทนี้เราจะยกระดับขึ้นอีกขั้น เพื่อดูว่า ความแปรปรวนนั้นใช้คำนวณโอกาสเกิดของเสียได้อย่างไร และทำไมทฤษฎีสถิติจึงเป็นหัวใจของ SPC",
+        "ttsCleanTh": "ยินดีต้อนรับเข้าสู่ โมดูลที่ 2 ความน่าจะเป็นและการแจกแจง, ในบทที่แล้วเรารู้ว่าทุกกระบวนการมีความแปรปรวน ในบทนี้เราจะยกระดับขึ้นอีกขั้น เพื่อดูว่า ความแปรปรวนนั้นใช้คำนวณโอกาสเกิดของเสียได้อย่างไร และทำไมทฤษฎีสถิติจึงเป็นหัวใจของ เอสพีซี",
+        "enReference": "Welcome to Module 2: Probability and Distribution. Now that you understand variation, let us see how variation translates into defect probability and forms the foundation of SPC."
+      },
+      "prevScreenId": null,
+      "nextScreenId": "M2L1-S02"
+    },
+    {
+      "index": 2,
+      "screenId": "M2L1-S02",
+      "lessonId": "M2-L1",
+      "lessonTitle": "Concept of Variation",
+      "title": "Common Cause Variation (ความแปรปรวนปกติ)",
+      "markdown": "- **นิยาม:** ความแปรปรวนตามธรรมชาติที่ฝังอยู่ในระบบอยู่แล้ว เกิดจากปัจจัยเล็กๆ น้อยๆ นับไม่ถ้วนรวมกัน (เช่น แรงสั่นสะเทือนปกติ, ความต่างอุณหภูมิห้องเล็กน้อย, ความต่างความแข็งวัตถุดิบใน Spec)\n- **ลักษณะบนกราฟ:** สม่ำเสมอ คาดเดารูปแบบได้ เป็น **Noise (เสียงรบกวนปกติ)** กระบวนการอยู่ในสภาวะ **Stable / In Statistical Control**\n- **วิธีจัดการที่ถูกต้อง:** ห้ามปรับเครื่องเฉพาะหน้า! ถ้าต้องการลด Common Cause ต้องแก้ที่ **ระบบ (System Improvement)** โดยวิศวกร/ผู้บริหาร เช่น เปลี่ยนเครื่องจักร, ปรับ Tooling, ปรับ Process Parameter",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-002"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L1-S02",
+        "audioFile": "/audio/module-02/AUD-M2L1-S02.mp3",
+        "duration": "35 sec",
+        "displayScriptTh": "ความแปรปรวนแบบแรกคือ Common Cause Variation หรือความแปรปรวนปกติของระบบ เกิดจากปัจจัยเล็กๆ น้อยๆ นับไม่ถ้วนที่ฝังอยู่ในเครื่องจักรและวัตถุดิบตามธรรมชาติ กราฟจะแกว่งสม่ำเสมอคาดเดาได้ เรียกว่ากระบวนการมีเสถียรภาพ และถ้าอยากลดมัน ต้องแก้ที่ระบบโดยวิศวกร ไม่ใช่ให้ช่างไปคอยปรับเครื่องหน้างาน",
+        "ttsCleanTh": "ความแปรปรวนแบบแรกคือ คอมม่อน คอส แวริเอชั่น หรือความแปรปรวนปกติของระบบ, เกิดจากปัจจัยเล็กๆ น้อยๆ นับไม่ถ้วนที่ฝังอยู่ในเครื่องจักรและวัตถุดิบตามธรรมชาติ, กราฟจะแกว่งสม่ำเสมอคาดเดาได้ เรียกว่ากระบวนการมีเสถียรภาพ และถ้าอยากลดมัน ต้องแก้ที่ระบบโดยวิศวกร ไม่ใช่ให้ช่างไปคอยปรับเครื่องหน้างาน",
+        "enReference": "Common cause variation is the natural, predictable noise inherent in a stable system. Reducing it requires engineering or management changes to the system itself, not operator adjustments."
+      },
+      "prevScreenId": "M2L1-S01",
+      "nextScreenId": "M2L1-S03"
+    },
+    {
+      "index": 3,
+      "screenId": "M2L1-S03",
+      "lessonId": "M2-L1",
+      "lessonTitle": "Concept of Variation",
+      "title": "Special Cause Variation & Tampering Trap",
+      "markdown": "- **นิยาม:** ความแปรปรวนที่เกิดจาก **สาเหตุเฉพาะเจาะจงที่ระบุตัวได้ (Assignable Cause)** เช่น มีดกลึงบิ่น, Fixture หลวม, เปลี่ยน Lot วัตถุดิบผิด Spec, พนักงานใหม่ปรับ Offset ผิด\n- **ลักษณะบนกราฟ:** กระโดดเป็นจุดหลุด, ไหลเป็น Trend, หรือเลื่อนระดับ (Shift) — เป็น **Signal (สัญญาณผิดปกติ)** กระบวนการ **Unstable / Out of Control**\n- **กับดัก Tampering (Over-adjustment):** การเข้าไปปรับเครื่องทันทีเพราะเห็นค่าแกว่งแบบ Common Cause จะทำให้ความแปรปรวนรวม **กว้างขึ้นกว่าเดิม 1.4–2 เท่า!**\n\n| เปรียบเทียบ | Common Cause (Noise) | Special Cause (Signal) |\n|---|---|---|\n| **ความถี่/ลักษณะ** | เกิดตลอดเวลา เป็นธรรมชาติ | เกิดเป็นครั้งคราว มีเหตุการณ์กระตุ้น |\n| **สถานะกระบวนการ** | **Stable** (คาดเดาผลลัพธ์ได้) | **Unstable** (คาดเดาไม่ได้!) |\n| **ผู้รับผิดชอบหลัก** | System / Management / Engineering | Operator Reaction Plan + OCAP |",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-003"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L1-S03",
+        "audioFile": "/audio/module-02/AUD-M2L1-S03.mp3",
+        "duration": "40 sec",
+        "displayScriptTh": "แบบที่สองคือ Special Cause Variation หรือความแปรปรวนจากสาเหตุพิเศษ เช่น มีดกลึงบิ่น จิ๊กหลวม หรือวัตถุดิบผิดสเปก กราฟจะกระโดดหรือไหลชัดเจน กระบวนการจะไม่เสถียร ต้องรีบหยุดตรวจหาสาเหตุ แต่ระวัง! ถ้าเครื่องเป็นแค่ Common Cause แต่เราไปปรับแก้มั่วๆ จะเกิด Tampering ทำให้ชิ้นงานแกว่งกว้างขึ้นกว่าเดิมเกือบสองเท่า",
+        "ttsCleanTh": "แบบที่สองคือ สเปเชียล คอส แวริเอชั่น หรือความแปรปรวนจากสาเหตุพิเศษ, เช่น มีดกลึงบิ่น จิ๊กหลวม หรือวัตถุดิบผิดสเปก กราฟจะกระโดดหรือไหลชัดเจน กระบวนการจะไม่เสถียร ต้องรีบหยุดตรวจหาสาเหตุ, แต่ระวัง ถ้าเครื่องเป็นแค่ คอมม่อน คอส แต่เราไปปรับแก้มั่วๆ จะเกิด แทมเปอริ่ง ทำให้ชิ้นงานแกว่งกว้างขึ้นกว่าเดิมเกือบสองเท่า",
+        "enReference": "Special cause variation comes from assignable disruptions like a chipped tool or loose fixture. Conversely, adjusting a stable process due to common-cause noise causes tampering, which nearly doubles variation."
+      },
+      "prevScreenId": "M2L1-S02",
+      "nextScreenId": "M2L1-S04"
+    },
+    {
+      "index": 4,
+      "screenId": "M2L1-S04",
+      "lessonId": "M2-L1",
+      "lessonTitle": "Concept of Variation",
+      "title": "Interactive Classifier & Funnel Tampering Lab",
+      "markdown": "- ทดลองจำแนกสถานการณ์โรงงาน 8 ข้อว่าเป็น Common Cause หรือ Special Cause + กดจำลอง **Deming Funnel Experiment** เพื่อดูผลของการปรับเครื่องมั่ว (Rule 2 Tampering) เทียบกับการปล่อยนิ่ง (Rule 1)",
+      "interactiveIds": [
+        "INT-M2-L1-01"
+      ],
+      "assetIds": [
+        "AST-M2-004"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L1-S04",
+        "audioFile": "/audio/module-02/AUD-M2L1-S04.mp3",
+        "duration": "35 sec",
+        "displayScriptTh": "ลองทดสอบแยกสถานการณ์หน้างาน 8 ข้อด้านบนว่าเป็น Common หรือ Special Cause แล้วลองกดปล่อยลูกแก้วใน Deming Funnel ด้านล่างเทียบกันระหว่างแบบไม่ปรับมั่ว กับแบบปรับชดเชยทุกครั้งที่ลูกแก้วพลาดเป้า จะเห็นผลของ Tampering ชัดเจนเลย",
+        "ttsCleanTh": "ลองทดสอบแยกสถานการณ์หน้างาน 8 ข้อด้านบนว่าเป็น คอมม่อน หรือ สเปเชียล คอส, แล้วลองกดปล่อยลูกแก้วใน เดมมิ่ง ฟันเนล ด้านล่างเทียบกันระหว่างแบบไม่ปรับมั่ว กับแบบปรับชดเชยทุกครั้งที่ลูกแก้วพลาดเป้า จะเห็นผลของ แทมเปอริ่ง ชัดเจนเลย",
+        "enReference": "Classify the eight shop-floor scenarios, then run the Deming Funnel simulation to compare leaving a stable process alone versus over-adjusting every sample."
+      },
+      "prevScreenId": "M2L1-S03",
+      "nextScreenId": "M2L1-S05"
+    },
+    {
+      "index": 5,
+      "screenId": "M2L1-S05",
+      "lessonId": "M2-L1",
+      "lessonTitle": "Concept of Variation",
+      "title": "Lesson 1 Knowledge Check (`KC-M2-L1`)",
+      "markdown": "- ทบทวน 2 ข้อ (`M2-Q001`, `M2-Q005`) จาก [06_assessment_bank.md](06_assessment_bank.md)",
+      "interactiveIds": [],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M2L1-S05",
+        "audioFile": "/audio/module-02/AUD-M2L1-S05.mp3",
+        "duration": "20 sec",
+        "displayScriptTh": "ทบทวนความเข้าใจบทที่ 1 ด้วยคำถาม 2 ข้อเกี่ยวกับ Common Cause, Special Cause และ Tampering",
+        "ttsCleanTh": "ทบทวนความเข้าใจบทที่ 1 ด้วยคำถาม 2 ข้อเกี่ยวกับ คอมม่อน คอส สเปเชียล คอส และ แทมเปอริ่ง",
+        "enReference": "Complete these two check questions on common cause, special cause, and tampering. ---"
+      },
+      "prevScreenId": "M2L1-S04",
+      "nextScreenId": "M2L2-S01"
+    },
+    {
+      "index": 6,
+      "screenId": "M2L2-S01",
+      "lessonId": "M2-L2",
+      "lessonTitle": "Probability Basics & Sampling",
+      "title": "Probability Concept & First Pass Yield (FPY)",
+      "markdown": "$$P(A) = \\frac{\\text{จำนวนเหตุการณ์ที่สนใจ}}{\\text{จำนวนเหตุการณ์ทั้งหมดที่เป็นไปได้}}, \\quad 0 \\le P(A) \\le 1$$\n\n- **ตัวอย่างโรงงาน — Series Line First Pass Yield (กฎการคูณของเหตุการณ์อิสระ):**\n  - ถ้าไลน์ประกอบมี 3 สถานีอิสระ แต่ละสถานีมีโอกาสผ่านดี 95% (`0.95`)\n  - **FPY รวมของทั้งไลน์** = $0.95 \\times 0.95 \\times 0.95 = 0.8574 \\text{ หรือ } \\mathbf{85.74\\%}$ (ไม่ใช่ 95%!)\n  - ยิ่งมีสถานีเยอะ ความน่าจะเป็นของเสียสะสมยิ่งสูง (Rolled Throughput Yield: RTY)",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-005"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L2-S01",
+        "audioFile": "/audio/module-02/AUD-M2L2-S01.mp3",
+        "duration": "40 sec",
+        "displayScriptTh": "ความน่าจะเป็นคือตัวเลขตั้งแต่ 0 ถึง 1 ที่บอกโอกาสเกิดเหตุการณ์ ลองดูตัวอย่างสายประกอบ 3 สถานี ถ้าแต่ละสถานีมี Yield 95% หลายคนนึกว่าทั้งไลน์จะได้ 95% ด้วย แต่ความจริงต้องจับมาคูณกัน `0.95 × 0.95 × 0.95` First Pass Yield ทั้งไลน์จะเหลือเพียง 85.74% เท่านั้น!",
+        "ttsCleanTh": "ความน่าจะเป็นคือตัวเลขตั้งแต่ 0 ถึง 1 ที่บอกโอกาสเกิดเหตุการณ์, ลองดูตัวอย่างสายประกอบ 3 สถานี ถ้าแต่ละสถานีมี ยีลด์ 95 เปอร์เซ็นต์ หลายคนนึกว่าทั้งไลน์จะได้ 95 เปอร์เซ็นต์ด้วย, แต่ความจริงต้องจับมาคูณกัน 0.95 คูณ 0.95 คูณ 0.95, เฟิร์ส พาส ยีลด์ ทั้งไลน์จะเหลือเพียง 85.74 เปอร์เซ็นต์ เท่านั้น",
+        "enReference": "Probability ranges from zero to one. Across three independent stations each at 95% yield, overall First Pass Yield multiplies to just 85.74%."
+      },
+      "prevScreenId": "M2L1-S05",
+      "nextScreenId": "M2L2-S02"
+    },
+    {
+      "index": 7,
+      "screenId": "M2L2-S02",
+      "lessonId": "M2-L2",
+      "lessonTitle": "Probability Basics & Sampling",
+      "title": "Conditional Probability & Inspection Risk",
+      "markdown": "- **เหตุการณ์ไม่เป็นอิสระ (Conditional Probability $P(B \\mid A)$):** เช่น โอกาสเกิดรอยขีดข่วน *เมื่อใช้เครื่อง MC-B* สูงกว่า *เมื่อใช้ MC-A*\n- **เชื่อมสู่ Module 3 & 9:** ความน่าจะเป็นช่วยให้เข้าใจความเสี่ยง 2 ด้านของการตรวจงานและ SPC:\n  - **False Alarm ($\\alpha$ Risk):** ของดีแต่ระบบฟ้องว่าเสีย / เครื่องปกติแต่ Chart ร้องเตือน\n  - **Escape Risk ($\\beta$ Risk):** ของเสียหรือเครื่องเพี้ยนแล้ว แต่ตรวจไม่เจอหลุดไปหาลูกค้า",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-006"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L2-S02",
+        "audioFile": "/audio/module-02/AUD-M2L2-S02.mp3",
+        "duration": "35 sec",
+        "displayScriptTh": "ในโรงงาน หลายเหตุการณ์ไม่เป็นอิสระต่อกัน เช่น โอกาสเกิดของเสียอาจพุ่งสูงขึ้นเฉพาะเมื่อผลิตบนเครื่องจักรเก่า นอกจากนี้ ความน่าจะเป็นยังทำให้เรารู้จักความเสี่ยง 2 ฝั่งของการตรวจ คือ False Alarm หรือเตือนผิดพลาด กับ Escape Risk ที่ของเสียหลุดรอดไปหาลูกค้า",
+        "ttsCleanTh": "ในโรงงาน หลายเหตุการณ์ไม่เป็นอิสระต่อกัน เช่น โอกาสเกิดของเสียอาจพุ่งสูงขึ้นเฉพาะเมื่อผลิตบนเครื่องจักรเก่า, นอกจากนี้ ความน่าจะเป็นยังทำให้เรารู้จักความเสี่ยง 2 ฝั่งของการตรวจ คือ ฟอลส์ อลาร์ม หรือเตือนผิดพลาด กับ เอสเคป ริสก์ ที่ของเสียหลุดรอดไปหาลูกค้า",
+        "enReference": "Conditional probability captures dependencies like machine-specific defect rates and introduces the two inspection risks: false alarms and customer escapes."
+      },
+      "prevScreenId": "M2L2-S01",
+      "nextScreenId": "M2L2-S03"
+    },
+    {
+      "index": 8,
+      "screenId": "M2L2-S03",
+      "lessonId": "M2-L2",
+      "lessonTitle": "Probability Basics & Sampling",
+      "title": "Why Sampling? (ทำไมไม่ตรวจ 100%)",
+      "markdown": "1. **Destructive Testing:** ทดสอบดึงขาด (Pull Test), ตัดผ่าเช็ครอยเชื่อม — ตรวจหมด 100% ก็ไม่มีของขาย!\n2. **Speed & Cost:** ผลิต 10,000 ชิ้น/ชั่วโมง ไม่สามารถวัด Micrometer ทุกชิ้นทัน\n3. **Inspection Fatigue:** งานวิจัยพบว่าคนตรวจ 100% ด้วยสายตา มักตรวจจับของเสียได้เพียง **~80–85%** เพราะความล้า",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-007"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L2-S03",
+        "audioFile": "/audio/module-02/AUD-M2L2-S03.mp3",
+        "duration": "30 sec",
+        "displayScriptTh": "ทำไมโรงงานไม่ตรวจ 100% ทุกชิ้น? หนึ่ง งานทดสอบทำลายชิ้นงาน เช่น ดึงขาด ตรวจหมดก็ไม่มีของขาย สอง ต้นทุนและเวลาไม่ทันไลน์ผลิต และสาม การตรวจด้วยสายตา 100% คนจะล้า จนจับของเสียได้เฉลี่ยแค่ประมาณ 80–85% เท่านั้น",
+        "ttsCleanTh": "ทำไมโรงงานไม่ตรวจ 100 เปอร์เซ็นต์ทุกชิ้น, หนึ่ง งานทดสอบทำลายชิ้นงาน เช่น ดึงขาด ตรวจหมดก็ไม่มีของขาย สอง ต้นทุนและเวลาไม่ทันไลน์ผลิต และสาม การตรวจด้วยสายตา 100 เปอร์เซ็นต์ คนจะล้า จนจับของเสียได้เฉลี่ยแค่ประมาณ 80 ถึง 85 เปอร์เซ็นต์เท่านั้น",
+        "enReference": "Sampling is essential when testing is destructive, 100% inspection is too slow or costly, and human visual inspection suffers from fatigue."
+      },
+      "prevScreenId": "M2L2-S02",
+      "nextScreenId": "M2L2-S04"
+    },
+    {
+      "index": 9,
+      "screenId": "M2L2-S04",
+      "lessonId": "M2-L2",
+      "lessonTitle": "Probability Basics & Sampling",
+      "title": "Population vs Sample (ประชากร vs ตัวอย่าง)",
+      "markdown": "| แนวคิด | Population (ประชากรทั้งหมด — Parameter) | Sample (กลุ่มตัวอย่าง — Statistic) |\n|---|---|---|\n| **ความหมาย** | ชิ้นงานทั้งหมดที่ผลิต (หรือกำลังจะผลิต) | ชิ้นงานบางส่วนที่สุ่มมาวัดเพื่อเป็นตัวแทน |\n| **ขนาด** | $N$ | $n$ |\n| **ค่าเฉลี่ย** | $\\mu$ (อ่านว่า มิว) | $\\bar{x}$ (เอ็กซ์บาร์) |\n| **ส่วนเบี่ยงเบนมาตรฐาน** | $\\sigma$ (ซิกม่า) | $s$ (เอส) |\n| **สัดส่วนของเสีย** | $p$ | $\\hat{p}$ (พี-แฮต) |\n\n- **Sampling Error:** ความคลาดเคลื่อนธรรมชาติที่ $\\bar{x} \\ne \\mu$ เพราะสุ่มมาบางส่วน *(ลดลงได้เมื่อเพิ่ม $n$)*\n- **Bias (Non-sampling Error):** ความเอนเอียงจากการสุ่มผิดวิธี เช่น หยิบเฉพาะชิ้นบนสุดของกล่อง *(เพิ่ม $n$ ก็ไม่หาย ต้องแก้ที่วิธีสุ่ม!)*",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-008"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L2-S04",
+        "audioFile": "/audio/module-02/AUD-M2L2-S04.mp3",
+        "duration": "45 sec",
+        "displayScriptTh": "เมื่อเราสุ่มตัวอย่าง จึงต้องแยกสัญลักษณ์ให้ออก Population หรือประชากรทั้งหมด ใช้ตัวอักษรกรีกคือ มิว ($\\mu$) และ ซิกม่า ($\\sigma$) ส่วน Sample หรือกลุ่มตัวอย่าง ที่เราสุ่มมาวัด ใช้ เอ็กซ์บาร์ ($\\bar{x}$) และ เอส ($s$) จำไว้ว่าความคลาดเคลื่อนจากการสุ่มลดได้ด้วยการเพิ่มขนาดตัวอย่าง แต่ถ้าสุ่มแบบลำเอียง เช่น หยิบแต่ชิ้นบนสุด เพิ่มตัวอย่างกี่ชิ้นก็ยังเพี้ยนเหมือนเดิม!",
+        "ttsCleanTh": "เมื่อเราสุ่มตัวอย่าง จึงต้องแยกสัญลักษณ์ให้ออก, ประชากรทั้งหมด หรือ ป๊อปปูเลชั่น ใช้ตัวอักษรกรีกคือ มิว และ ซิกม่า, ส่วนกลุ่มตัวอย่าง หรือ แซมเปิล ที่เราสุ่มมาวัด ใช้ เอ็กซ์บาร์ และ เอส, จำไว้ว่าความคลาดเคลื่อนจากการสุ่มลดได้ด้วยการเพิ่มขนาดตัวอย่าง แต่ถ้าสุ่มแบบลำเอียง เช่น หยิบแต่ชิ้นบนสุด เพิ่มตัวอย่างกี่ชิ้นก็ยังเพี้ยนเหมือนเดิม",
+        "enReference": "Distinguish population parameters mu and sigma from sample statistics x-bar and s. Increasing sample size reduces random sampling error, whereas biased sampling requires fixing the sampling method."
+      },
+      "prevScreenId": "M2L2-S03",
+      "nextScreenId": "M2L2-S05"
+    },
+    {
+      "index": 10,
+      "screenId": "M2L2-S05",
+      "lessonId": "M2-L2",
+      "lessonTitle": "Probability Basics & Sampling",
+      "title": "Interactive FPY & Random Sampling Simulator",
+      "markdown": "- ปรับ % Yield รายสถานีเพื่อคำนวณ FPY รวม + ทดลองกด \"สุ่มตัวอย่าง\" `n = 5, 20, 50` จากประชากร `N = 1,000` ชิ้น ดูความคลาดเคลื่อนของ $\\bar{x}$ เทียบ $\\mu$",
+      "interactiveIds": [
+        "INT-M2-L2-01"
+      ],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M2L2-S05",
+        "audioFile": "/audio/module-02/AUD-M2L2-S05.mp3",
+        "duration": "30 sec",
+        "displayScriptTh": "ลองปรับ Yield ของแต่ละสถานีในตัวคำนวณ FPY ด้านบน จากนั้นลองกดสุ่มตัวอย่างขนาด 5, 20, และ 50 ชิ้นจากประชากร 1,000 ชิ้น แล้วดูว่าค่าเฉลี่ยตัวอย่างเข้าใกล้ค่าจริงแค่ไหน",
+        "ttsCleanTh": "ลองปรับ ยีลด์ ของแต่ละสถานีในตัวคำนวณ เอฟพีวาย ด้านบน จากนั้นลองกดสุ่มตัวอย่างขนาด 5, 20, และ 50 ชิ้นจากประชากร 1,000 ชิ้น แล้วดูว่าค่าเฉลี่ยตัวอย่างเข้าใกล้ค่าจริงแค่ไหน",
+        "enReference": "Experiment with station yields in the FPY calculator, then draw random samples of 5, 20, and 50 parts to observe sampling error shrink."
+      },
+      "prevScreenId": "M2L2-S04",
+      "nextScreenId": "M2L2-S06"
+    },
+    {
+      "index": 11,
+      "screenId": "M2L2-S06",
+      "lessonId": "M2-L2",
+      "lessonTitle": "Probability Basics & Sampling",
+      "title": "Lesson 2 Knowledge Check (`KC-M2-L2`)",
+      "markdown": "- ทบทวน 2 ข้อ (`M2-Q012`, `M2-Q018`) จาก [06_assessment_bank.md](06_assessment_bank.md)",
+      "interactiveIds": [],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M2L2-S06",
+        "audioFile": "/audio/module-02/AUD-M2L2-S06.mp3",
+        "duration": "20 sec",
+        "displayScriptTh": "เช็คความเข้าใจเรื่องความน่าจะเป็น FPY และ Population vs Sample ด้วยคำถาม 2 ข้อ",
+        "ttsCleanTh": "เช็คความเข้าใจเรื่องความน่าจะเป็น เอฟพีวาย และ ป๊อปปูเลชั่น กับ แซมเปิล ด้วยคำถาม 2 ข้อ",
+        "enReference": "Answer these two check questions on FPY and population versus sample concepts. ---"
+      },
+      "prevScreenId": "M2L2-S05",
+      "nextScreenId": "M2L3-S01"
+    },
+    {
+      "index": 12,
+      "screenId": "M2L3-S01",
+      "lessonId": "M2-L3",
+      "lessonTitle": "Probability Distributions",
+      "title": "Continuous vs Discrete Distributions Roadmap",
+      "markdown": "| ประเภทข้อมูล | การแจกแจงหลัก (Distribution) | ตัวอย่างหน้างาน | เชื่อมต่อไป Control Chart (Module 6) |\n|---|---|---|---|\n| **Variable (Continuous)** | **Normal Distribution** | Diameter (mm), Weight (g), Torque (N·m) | $\\bar{X}$-$R$, $\\bar{X}$-$S$, $I$-$MR$ |\n| **Attribute (Pass/Fail Count)** | **Binomial Distribution** | จำนวนชิ้นงานเสีย (`Defective`) จาก $n$ ชิ้น | $P$ Chart, $NP$ Chart |\n| **Attribute (Defect Count)** | **Poisson Distribution** | จำนวนรอยขีดข่วน/ตำหนิ (`Defects`) ต่อชิ้น/พื้นที่ | $C$ Chart, $U$ Chart |",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-009"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L3-S01",
+        "audioFile": "/audio/module-02/AUD-M2L3-S01.mp3",
+        "duration": "30 sec",
+        "displayScriptTh": "ในโรงงาน ข้อมูลแต่ละชนิดจะมีพฤติกรรมการกระจายตัวต่างกัน ข้อมูลวัดค่าต่อเนื่องจะใช้ Normal Distribution ข้อมูลนับชิ้นงานผ่าน-ไม่ผ่านใช้ Binomial และข้อมูลนับจำนวนจุดตำหนิใช้ Poisson ซึ่งทั้ง 3 ตัวนี้คือรากฐานตรงไปยัง Control Chart ใน Module 6",
+        "ttsCleanTh": "ในโรงงาน ข้อมูลแต่ละชนิดจะมีพฤติกรรมการกระจายตัวต่างกัน, ข้อมูลวัดค่าต่อเนื่องจะใช้ นอร์มอล ดิสทริบิวชั่น ข้อมูลนับชิ้นงานผ่านหรือไม่ผ่านใช้ ไบโนเมียล และข้อมูลนับจำนวนจุดตำหนิใช้ ปัวส์ซง ซึ่งทั้ง 3 ตัวนี้คือรากฐานตรงไปยัง คอนโทรล ชาร์ท ใน โมดูล 6",
+        "enReference": "Continuous measurements typically follow Normal distributions, pass-fail defective counts follow Binomial, and defect counts follow Poisson—each mapping directly to specific SPC charts."
+      },
+      "prevScreenId": "M2L2-S06",
+      "nextScreenId": "M2L3-S02"
+    },
+    {
+      "index": 13,
+      "screenId": "M2L3-S02",
+      "lessonId": "M2-L3",
+      "lessonTitle": "Probability Distributions",
+      "title": "Normal Distribution (การแจกแจงปกติ)",
+      "markdown": "- รูประฆังคว่ำสมมาตร 2 ข้าง, **Mean = Median = Mode**, กำหนดรูปทรงด้วย 2 ค่าคือ **$\\mu$ (ตำแหน่ง)** และ **$\\sigma$ (ความกว้าง)**\n- **พื้นที่ใต้โค้งรวม = `1.0` (100%):** $\\pm 1\\sigma = 68.27\\%$, $\\pm 2\\sigma = 95.45\\%$, $\\pm 3\\sigma = 99.73\\%$, $\\pm 6\\sigma = 99.9999998\\%$ (`0.002 PPM` ฝั่งละ `1 ppb`)",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-010"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L3-S02",
+        "audioFile": "/audio/module-02/AUD-M2L3-S02.mp3",
+        "duration": "40 sec",
+        "displayScriptTh": "Normal Distribution คือกราฟระฆังคว่ำสมมาตรที่เจอบ่อยที่สุดในงานวัดขนาด มีจุดศูนย์กลางที่ Mean = Median = Mode โดยมี $\\mu$ เลื่อนตำแหน่งซ้ายขวา และ $\\sigma$ กำหนดความกว้าง และในช่วง $\\pm 3\\sigma$ จะครอบคลุมชิ้นงานถึง 99.73%",
+        "ttsCleanTh": "นอร์มอล ดิสทริบิวชั่น คือกราฟระฆังคว่ำสมมาตรที่เจอบ่อยที่สุดในงานวัดขนาด, มีจุดศูนย์กลางที่ มีน เท่ากับ มีเดียน เท่ากับ โหมด โดยมี มิว เลื่อนตำแหน่งซ้ายขวา และ ซิกม่า กำหนดความกว้าง, และในช่วง บวกลบ 3 ซิกม่า จะครอบคลุมชิ้นงานถึง 99.73 เปอร์เซ็นต์",
+        "enReference": "The Normal distribution is symmetric with equal mean, median, and mode. Mean sets location, sigma sets spread, and plus or minus 3 sigma covers 99.73% of output."
+      },
+      "prevScreenId": "M2L3-S01",
+      "nextScreenId": "M2L3-S03"
+    },
+    {
+      "index": 14,
+      "screenId": "M2L3-S03",
+      "lessonId": "M2-L3",
+      "lessonTitle": "Probability Distributions",
+      "title": "Z-Score Standardization & Defect Prediction",
+      "markdown": "$$Z = \\frac{X - \\mu}{\\sigma}$$\n\n- **ความหมาย:** บอกว่าค่า $X$ อยู่ห่างจากค่าเฉลี่ยกี่เท่าของ $\\sigma$\n- **ตัวอย่างคำนวณ (รูเจาะ `USL = 20.10 mm`):** ถ้ากระบวนการมี $\\mu = 20.04\\text{ mm}, \\sigma = 0.03\\text{ mm}$\n  - $Z_{\\text{USL}} = \\frac{20.10 - 20.04}{0.03} = \\mathbf{+2.00}$\n  - เปิดตาราง Z พบพื้นที่เกิน $+2.00 = 0.02275$ → คาดการณ์ของเสียฝั่งบน **$\\mathbf{2.28\\%}$ (`22,750 PPM`)**!",
+      "interactiveIds": [
+        "INT-M2-L3-01"
+      ],
+      "assetIds": [
+        "AST-M2-011"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L3-S03",
+        "audioFile": "/audio/module-02/AUD-M2L3-S03.mp3",
+        "duration": "50 sec",
+        "displayScriptTh": "ถ้าอยากรู้ว่ากระบวนการนี้จะมีของเสียหลุด Spec กี่เปอร์เซ็นต์ เราใช้ Z-Score สูตรง่ายๆ คือเอา ขอบ Spec ลบด้วย Mean แล้วหารด้วย Sigma ตัวอย่างเช่น รูเจาะมี Mean 20.04, Sigma 0.03 เทียบกับ USL 20.10 จะได้ค่า Z เท่ากับ +2.00 ซึ่งพื้นที่หางกราฟที่เกิน +2.00 คือ 2.28% หรือประมาณ 22,750 ชิ้นในล้านชิ้น ลองกดคำนวณเองในเครื่องคิดเลข Z-Score ด้านข้างได้เลย",
+        "ttsCleanTh": "ถ้าอยากรู้ว่ากระบวนการนี้จะมีของเสียหลุด สเปก กี่เปอร์เซ็นต์ เราใช้ แซด สกอร์, สูตรง่ายๆ คือเอา ขอบ สเปก ลบด้วย มีน แล้วหารด้วย ซิกม่า, ตัวอย่างเช่น รูเจาะมี มีน 20.04, ซิกม่า 0.03 เทียบกับ ยูเอสแอล 20.10 จะได้ค่า แซด เท่ากับ บวก 2.00 ซึ่งพื้นที่หางกราฟที่เกิน บวก 2.00 คือ 2.28 เปอร์เซ็นต์ หรือประมาณ 22,750 ชิ้นในล้านชิ้น ลองกดคำนวณเองในเครื่องคิดเลข แซด สกอร์ ด้านข้างได้เลย",
+        "enReference": "The Z-score standardizes distance from the mean in units of sigma, allowing engineers to convert process centering and spread directly into predicted out-of-spec percentage and PPM."
+      },
+      "prevScreenId": "M2L3-S02",
+      "nextScreenId": "M2L3-S04"
+    },
+    {
+      "index": 15,
+      "screenId": "M2L3-S04",
+      "lessonId": "M2-L3",
+      "lessonTitle": "Probability Distributions",
+      "title": "Normality Check & Non-Normal Reality (จุดเสริมสำคัญ)",
+      "markdown": "- **อย่าเหมารวมว่าทุกตัวแปรในโรงงานเป็น Normal!** ค่าที่มัก **เบ้ขวา (Skewed)** เช่น Flatness, Concentricity, Roughness ($R_a$), Tool Life (Weibull), Cycle Time (ติดขอบ 0 ด้านซ้าย)\n- **วิธีตรวจ Normality ก่อนคำนวณ Z / Cp / Ppk:**\n  1. **Histogram + Probability Plot (Q-Q Plot):** จุดเรียงเกาะเส้นตรง = Normal\n  2. **Anderson-Darling Test (`p-value`):**\n     - ถ้า **`p-value ≥ 0.05`** → ยอมรับว่าเป็น Normal (ใช้สูตร Z / Cpk มาตรฐานได้)\n     - ถ้า **`p-value < 0.05`** → ข้อมูลไม่ Normal (ห้ามใช้สูตร Z ตรงๆ ต้องตรวจหา Special Cause ก่อน หรือใช้ Transformation / Non-normal Capability!)",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-012"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L3-S04",
+        "audioFile": "/audio/module-02/AUD-M2L3-S04.mp3",
+        "duration": "40 sec",
+        "displayScriptTh": "ข้อควรระวังระดับมืออาชีพ: อย่าเหมารวมว่าข้อมูลวัดทุกตัวต้องเป็น Normal เสมอไป ค่าอย่างความเรียบผิว Flatness หรืออายุมีดกลึงมักจะเบ้ขวา ก่อนใช้สูตร Z-Score หรือ Cpk ควรเช็คกราฟ Probability Plot และดูค่า p-value ของ Normality Test ต้องมากกว่าหรือเท่ากับ 0.05 ก่อนเสมอ",
+        "ttsCleanTh": "ข้อควรระวังระดับมืออาชีพ อย่าเหมารวมว่าข้อมูลวัดทุกตัวต้องเป็น นอร์มอล เสมอไป, ค่าอย่างความเรียบผิว แฟลตเนส หรืออายุมีดกลึงมักจะเบ้ขวา, ก่อนใช้สูตร แซด สกอร์ หรือ ซีพีเค ควรเช็คกราฟ พรอบบาบิลิตี้ พล็อต และดูค่า พีแวลู ของการทดสอบ นอร์มอลิตี้ ต้องมากกว่าหรือเท่ากับ 0.05 ก่อนเสมอ",
+        "enReference": "Never assume every metric is Normal. Features like flatness or tool life are often skewed. Verify normality using a probability plot and check for p-value greater than or equal to 0.05 before applying standard Z or Cpk formulas."
+      },
+      "prevScreenId": "M2L3-S03",
+      "nextScreenId": "M2L3-S05"
+    },
+    {
+      "index": 16,
+      "screenId": "M2L3-S05",
+      "lessonId": "M2-L3",
+      "lessonTitle": "Probability Distributions",
+      "title": "Binomial Distribution (การแจกแจงทวินาม)",
+      "markdown": "$$P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}, \\quad \\mu = np, \\quad \\sigma = \\sqrt{np(1-p)}$$\n\n- **เงื่อนไข 4 ข้อ:** (1) ทดลองซ้ำ $n$ ครั้งคงที่ (2) แต่ละชิ้นมีผลแค่ 2 แบบ: Pass หรือ Fail (3) โอกาสเสีย $p$ คงที่ทุกชิ้น (4) ชิ้นงานเป็นอิสระต่อกัน\n- **ตัวอย่างโรงงาน:** ไลน์ผลิตมีอัตราของเสีย $p = 0.05$ (5%) สุ่มมาตรวจ $n = 20$ ชิ้น\n  - คาดว่าจะเจอของเสียเฉลี่ย $\\mu = 20 \\times 0.05 = 1\\text{ ชิ้น}$, $\\sigma = \\sqrt{20 \\times 0.05 \\times 0.95} = 0.975$\n  - โอกาสไม่เจอของเสียเลย ($k=0$): $P(X=0) = (0.95)^{20} = \\mathbf{35.85\\%}$ *(นี่คือเหตุผลว่าทำไมตรวจแค่ 20 ชิ้นแล้วผ่าน ไม่ได้แปลว่าล็อตนั้นไม่มีของเสีย!)*",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-013"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L3-S05",
+        "audioFile": "/audio/module-02/AUD-M2L3-S05.mp3",
+        "duration": "45 sec",
+        "displayScriptTh": "สำหรับงานตรวจ Pass หรือ Fail เราใช้ Binomial Distribution มีค่าเฉลี่ย $\\mu = np$ และส่วนเบี่ยงเบนมาตรฐาน $\\sigma = \\sqrt{np(1-p)}$ ลองคิดดู ถ้าในล็อตมีของเสียอยู่ 5% แล้วเราสุ่มมาตรวจแค่ 20 ชิ้น โอกาสที่สุ่มออกมาแล้ว ไม่เจอของเสียเลยสักชิ้น สูงถึง 35.85% เลย! นี่คือเหตุผลว่าทำไมการสุ่มตรวจปลายทางอย่างเดียวถึงไม่ปลอดภัยเท่าการคุม SPC ต้นทาง",
+        "ttsCleanTh": "สำหรับงานตรวจ ผ่าน หรือ ไม่ผ่าน เราใช้ ไบโนเมียล ดิสทริบิวชั่น, มีค่าเฉลี่ยเท่ากับ เอ็น คูณ พี, ลองคิดดู ถ้าในล็อตมีของเสียอยู่ 5 เปอร์เซ็นต์ แล้วเราสุ่มมาตรวจแค่ 20 ชิ้น โอกาสที่สุ่มออกมาแล้วไม่เจอของเสียเลยสักชิ้น สูงถึง 35.85 เปอร์เซ็นต์ เลย, นี่คือเหตุผลว่าทำไมการสุ่มตรวจปลายทางอย่างเดียวถึงไม่ปลอดภัยเท่าการคุม เอสพีซี ต้นทาง",
+        "enReference": "The Binomial distribution models pass-fail outcomes. With a 5% lot defect rate and a sample of 20, there is still a 35.85% chance of seeing zero defects—showing why final sampling alone is risky."
+      },
+      "prevScreenId": "M2L3-S04",
+      "nextScreenId": "M2L3-S06"
+    },
+    {
+      "index": 17,
+      "screenId": "M2L3-S06",
+      "lessonId": "M2-L3",
+      "lessonTitle": "Probability Distributions",
+      "title": "Poisson Distribution (การแจกแจงปัวส์ซง)",
+      "markdown": "$$P(X = k) = \\frac{e^{-\\lambda} \\lambda^k}{k!}, \\quad \\mu = \\lambda, \\quad \\sigma = \\sqrt{\\lambda}$$\n\n- **ใช้เมื่อไร:** นับ **จำนวนเหตุการณ์/จุดตำหนิ (Defects)** ที่เกิดบนพื้นที่ เวลา หรือชิ้นงาน 1 หน่วย โดยรู้ค่าเฉลี่ยต่อหน่วยคือ $\\lambda$ (เช่น รอยขีดข่วนเฉลี่ย `0.2 จุด/ชิ้น` หรือรอยเชื่อมเสียบนแผง PCB)\n- **ตัวอย่างโรงงาน:** เฉลี่ยพบรอยตำหนิบนชิ้นงาน $\\lambda = 0.5\\text{ จุด/ชิ้น}$\n  - โอกาสได้ชิ้นงานไร้ตำหนิ ($k=0$): $P(X=0) = e^{-0.5} = \\mathbf{60.65\\%}$\n  - โอกาสเจอ 2 จุดขึ้นไป ($k \\ge 2$): $1 - [P(0) + P(1)] = 1 - (0.6065 + 0.3033) = \\mathbf{9.02\\%}$",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-014"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L3-S06",
+        "audioFile": "/audio/module-02/AUD-M2L3-S06.mp3",
+        "duration": "45 sec",
+        "displayScriptTh": "แต่ถ้าเราไม่ได้นับจำนวน \"ชิ้นที่เสีย\" แต่ไปนับ จำนวนจุดตำหนิที่เกิดขึ้นบนชิ้นงาน พื้นที่ หรือเวลา เช่น รอยขีดข่วนบนตัวถัง หรือจุดบัดกรีเสียบนแผง PCB 1 แผง เราจะใช้ Poisson Distribution ซึ่งมีพารามิเตอร์ตัวเดียวคือ $\\lambda$ และมีค่าความแปรปรวนเท่ากับค่าเฉลี่ยพอดี โดยใช้เป็นฐานของ C Chart และ U Chart ในบทหน้า",
+        "ttsCleanTh": "แต่ถ้าเราไม่ได้นับจำนวนชิ้นที่เสีย แต่ไปนับจำนวนจุดตำหนิที่เกิดขึ้นบนชิ้นงาน พื้นที่ หรือเวลา เช่น รอยขีดข่วนบนตัวถัง หรือจุดบัดกรีเสียบนแผง พีซีบี 1 แผง, เราจะใช้ ปัวส์ซง ดิสทริบิวชั่น ซึ่งมีพารามิเตอร์ตัวเดียวคือ แลมบ์ดา และมีค่าความแปรปรวนเท่ากับค่าเฉลี่ยพอดี โดยใช้เป็นฐานของ ซี ชาร์ท และ ยู ชาร์ท ในบทหน้า",
+        "enReference": "When counting defect occurrences per unit, area, or time—such as scratches per panel—the Poisson distribution applies, forming the basis for C and U control charts."
+      },
+      "prevScreenId": "M2L3-S05",
+      "nextScreenId": "M2L3-S07"
+    },
+    {
+      "index": 18,
+      "screenId": "M2L3-S07",
+      "lessonId": "M2-L3",
+      "lessonTitle": "Probability Distributions",
+      "title": "Interactive Distribution Explorer",
+      "markdown": "- สลับกราฟ `Normal` / `Binomial` / `Poisson` และปรับค่า $\\mu, \\sigma, n, p, \\lambda$ แบบ Real-time",
+      "interactiveIds": [
+        "INT-M2-L3-02"
+      ],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M2L3-S07",
+        "audioFile": "/audio/module-02/AUD-M2L3-S07.mp3",
+        "duration": "35 sec",
+        "displayScriptTh": "ลองสลับแท็บทั้ง 3 การแจกแจงในตัวจำลองด้านล่าง สังเกตดูว่าเวลาปรับค่า $n$ ให้ใหญ่ขึ้นใน Binomial รูปกราฟจะค่อยๆ คล้าย Normal Distribution ขึ้นมาเลย",
+        "ttsCleanTh": "ลองสลับแท็บทั้ง 3 การแจกแจงในตัวจำลองด้านล่าง สังเกตดูว่าเวลาปรับค่า เอ็น ให้ใหญ่ขึ้นใน ไบโนเมียล รูปกราฟจะค่อยๆ คล้าย นอร์มอล ดิสทริบิวชั่น ขึ้นมาเลย",
+        "enReference": "Explore all three distributions below and notice how Binomial begins resembling a Normal curve as sample size n increases."
+      },
+      "prevScreenId": "M2L3-S06",
+      "nextScreenId": "M2L3-S08"
+    },
+    {
+      "index": 19,
+      "screenId": "M2L3-S08",
+      "lessonId": "M2-L3",
+      "lessonTitle": "Probability Distributions",
+      "title": "Distribution Selection Matrix (`INT-M2-L3-03`)",
+      "markdown": "- จับคู่โจทย์โรงงาน 6 สถานการณ์ให้ตรงกับการแจกแจง (Normal vs Binomial vs Poisson vs Non-normal/Skewed)",
+      "interactiveIds": [
+        "INT-M2-L3-03"
+      ],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M2L3-S08",
+        "audioFile": "/audio/module-02/AUD-M2L3-S08.mp3",
+        "duration": "25 sec",
+        "displayScriptTh": "ลองจับคู่สถานการณ์จริงจากโรงงาน 6 ข้อด้านล่าง ว่าแต่ละโจทย์ควรใช้การแจกแจงแบบใดจึงจะถูกต้อง",
+        "ttsCleanTh": "ลองจับคู่สถานการณ์จริงจากโรงงาน 6 ข้อด้านล่าง ว่าแต่ละโจทย์ควรใช้การแจกแจงแบบใดจึงจะถูกต้อง",
+        "enReference": "Match each of the six factory scenarios to its appropriate probability distribution."
+      },
+      "prevScreenId": "M2L3-S07",
+      "nextScreenId": "M2L3-S09"
+    },
+    {
+      "index": 20,
+      "screenId": "M2L3-S09",
+      "lessonId": "M2-L3",
+      "lessonTitle": "Probability Distributions",
+      "title": "Lesson 3 Knowledge Check (`KC-M2-L3`)",
+      "markdown": "- ทบทวน 3 ข้อ (`M2-Q026`, `M2-Q033`, `M2-Q040`)",
+      "interactiveIds": [],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M2L3-S09",
+        "audioFile": "/audio/module-02/AUD-M2L3-S09.mp3",
+        "duration": "20 sec",
+        "displayScriptTh": "ทดสอบความเข้าใจเรื่อง Normal, Z-Score, Binomial และ Poisson 3 ข้อ ก่อนเข้าสู่หัวใจสำคัญที่สุดในบทที่ 4",
+        "ttsCleanTh": "ทดสอบความเข้าใจเรื่อง นอร์มอล แซด สกอร์ ไบโนเมียล และ ปัวส์ซง 3 ข้อ ก่อนเข้าสู่หัวใจสำคัญที่สุดในบทที่ 4",
+        "enReference": "Answer three check questions on probability distributions before moving to Lesson 4. ---"
+      },
+      "prevScreenId": "M2L3-S08",
+      "nextScreenId": "M2L4-S01"
+    },
+    {
+      "index": 21,
+      "screenId": "M2L4-S01",
+      "lessonId": "M2-L4",
+      "lessonTitle": "Central Limit Theorem & CTQ Workshop",
+      "title": "Sampling Distribution of the Mean ($\\bar{X}$)",
+      "markdown": "- หากเราสุ่มตัวอย่างกลุ่มละ $n = 5$ ชิ้น มาคำนวณ $\\bar{X}_1, \\bar{X}_2, \\bar{X}_3, \\dots$ ไปเรื่อยๆ แล้วนำ **ค่าเฉลี่ย $\\bar{X}$ เหล่านั้น** มาพล็อตเป็น Histogram ใหม่ กราฟที่ได้เรียกว่า **Sampling Distribution of the Mean**",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-015"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L4-S01",
+        "audioFile": "/audio/module-02/AUD-M2L4-S01.mp3",
+        "duration": "35 sec",
+        "displayScriptTh": "สมมติทุกๆ ชั่วโมง เราสุ่มหยิบชิ้นงาน 5 ชิ้น มาหาค่าเฉลี่ย $\\bar{X}$ แล้วนำค่าเฉลี่ยของแต่ละชั่วโมงมาพล็อตกราฟใหม่ กราฟที่ได้นี้ไม่ได้พล็อตชิ้นงานเดี่ยวๆ แต่พล็อต ค่าเฉลี่ย $\\bar{X}$ จึงเรียกว่า Sampling Distribution of the Mean",
+        "ttsCleanTh": "สมมติทุกๆ ชั่วโมง เราสุ่มหยิบชิ้นงาน 5 ชิ้น มาหาค่าเฉลี่ย เอ็กซ์บาร์ แล้วนำค่าเฉลี่ยของแต่ละชั่วโมงมาพล็อตกราฟใหม่, กราฟที่ได้นี้ไม่ได้พล็อตชิ้นงานเดี่ยวๆ แต่พล็อตค่าเฉลี่ย เอ็กซ์บาร์ จึงเรียกว่า แซมปลิ้ง ดิสทริบิวชั่น ออฟ เดอะ มีน",
+        "enReference": "Repeatedly taking subgroups of n parts and plotting their subgroup averages forms the Sampling Distribution of the Mean."
+      },
+      "prevScreenId": "M2L3-S09",
+      "nextScreenId": "M2L4-S02"
+    },
+    {
+      "index": 22,
+      "screenId": "M2L4-S02",
+      "lessonId": "M2-L4",
+      "lessonTitle": "Central Limit Theorem & CTQ Workshop",
+      "title": "Central Limit Theorem (CLT)",
+      "markdown": "- **ทฤษฎีบทขีดจำกัดกลาง (CLT):** ไม่ว่าข้อมูลดิบของประชากรเดิมจะมีรูปร่างใด (Normal, Uniform, หรือแม้แต่ **Skewed**!) เมื่อเราสุ่มตัวอย่างขนาด $n$ ขึ้นมาหาค่าเฉลี่ย $\\bar{X}$ การแจกแจงของ $\\bar{X}$ จะ **ลู่เข้าสู่ Normal Distribution เสมอ** เมื่อ $n$ ใหญ่พอ (และแม้ $n = 4\\text{–}5$ ก็ใกล้เคียง Normal มากแล้วสำหรับข้อมูลโรงงานส่วนใหญ่)",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-016"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L4-S02",
+        "audioFile": "/audio/module-02/AUD-M2L4-S02.mp3",
+        "duration": "40 sec",
+        "displayScriptTh": "และนี่คือมหัศจรรย์ทางสถิติที่ชื่อว่า Central Limit Theorem หรือ CLT มันบอกเราว่า ไม่ว่าประชากรดิบจะมีรูปร่างเบ้หรือแบนแค่ไหนก็ตาม เมื่อสุ่มมาหาค่าเฉลี่ย $\\bar{X}$ กราฟของค่าเฉลี่ยจะแปลงร่างเข้าใกล้ Normal Distribution เสมอ !",
+        "ttsCleanTh": "และนี่คือมหัศจรรย์ทางสถิติที่ชื่อว่า เซ็นทรัล ลิมิต เธียแรม หรือ ซีแอลที, มันบอกเราว่า ไม่ว่าประชากรดิบจะมีรูปร่างเบ้หรือแบนแค่ไหนก็ตาม เมื่อสุ่มมาหาค่าเฉลี่ย เอ็กซ์บาร์ กราฟของค่าเฉลี่ยจะแปลงร่างเข้าใกล้ นอร์มอล ดิสทริบิวชั่น เสมอ",
+        "enReference": "The Central Limit Theorem states that regardless of the underlying population shape, the distribution of sample means approaches a Normal distribution as sample size grows."
+      },
+      "prevScreenId": "M2L4-S01",
+      "nextScreenId": "M2L4-S03"
+    },
+    {
+      "index": 23,
+      "screenId": "M2L4-S03",
+      "lessonId": "M2-L4",
+      "lessonTitle": "Central Limit Theorem & CTQ Workshop",
+      "title": "Standard Error & The Spec Limit Trap",
+      "markdown": "$$\\mu_{\\bar{x}} = \\mu, \\qquad \\sigma_{\\bar{x}} = \\frac{\\sigma}{\\sqrt{n}}$$\n\n- **ความหมาย:** การแจกแจงของค่าเฉลี่ย $\\bar{X}$ **แคบกว่า** การแจกแจงของชิ้นงานรายชิ้นถึง $\\sqrt{n}$ เท่า! (เช่น $n=4$ แคบลง 2 เท่า, $n=9$ แคบลง 3 เท่า)\n- **กับดักอันตรายที่สุดของมือใหม่ SPC:** **ห้ามนำเส้น Specification Limit (`USL / LSL`) ของชิ้นงานรายชิ้น มาวาดเปรียบเทียบกับกราฟค่าเฉลี่ย $\\bar{X}$ เด็ดขาด!** เพราะ $\\bar{X}$ แคบกว่ามาก ถึงจุด $\\bar{X}$ อยู่ใน Spec ก็อาจมีชิ้นงานจริงหลุด Spec ไปแล้ว!",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-017"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L4-S03",
+        "audioFile": "/audio/module-02/AUD-M2L4-S03.mp3",
+        "duration": "45 sec",
+        "displayScriptTh": "ไม่เพียงเท่านั้น ความกว้างของกราฟค่าเฉลี่ยหรือ Standard Error จะหดแคบลงเท่ากับ $\\sigma$ หารด้วย รากที่สองของ $n$ ตัวอย่างถ้า $n=4$ กราฟ $\\bar{X}$ จะแคบลงครึ่งหนึ่ง! จุดนี้สำคัญมากๆ: ห้ามนำเส้น Spec USL/LSL ของชิ้นงานเดี่ยว มาทาบวัดกับจุดค่าเฉลี่ย $\\bar{X}$ บน Control Chart เด็ดขาด เพราะมันคนละสเกลกัน!",
+        "ttsCleanTh": "ไม่เพียงเท่านั้น ความกว้างของกราฟค่าเฉลี่ยหรือ สแตนดาร์ด เออร์เรอร์ จะหดแคบลงเท่ากับ ซิกม่า หารด้วย รากที่สองของ เอ็น, ตัวอย่างถ้า เอ็น เท่ากับ 4 กราฟ เอ็กซ์บาร์ จะแคบลงครึ่งหนึ่ง, จุดนี้สำคัญมากๆ ห้ามนำเส้น สเปก ยูเอสแอล และ แอลเอสแอล ของชิ้นงานเดี่ยว มาทาบวัดกับจุดค่าเฉลี่ย เอ็กซ์บาร์ บน คอนโทรล ชาร์ท เด็ดขาด เพราะมันคนละสเกลกัน",
+        "enReference": "Standard error equals sigma divided by the square root of n, making the distribution of means narrower than individual parts. Therefore, never compare subgroup averages directly against individual specification limits."
+      },
+      "prevScreenId": "M2L4-S02",
+      "nextScreenId": "M2L4-S04"
+    },
+    {
+      "index": 24,
+      "screenId": "M2L4-S04",
+      "lessonId": "M2-L4",
+      "lessonTitle": "Central Limit Theorem & CTQ Workshop",
+      "title": "Why CLT Is the Backbone of SPC",
+      "markdown": "1. **เหตุผลที่ $\\bar{X}$ Chart ใช้กฎ $\\pm 3\\sigma_{\\bar{x}}$ (Normal 99.73%) ได้:** เพราะ CLT รับประกันว่าค่าเฉลี่ย $\\bar{X}$ มีการแจกแจงใกล้เคียง Normal แม้ชิ้นงานเดี่ยวจะเบ้เล็กน้อย\n2. **เหตุผลที่โรงงานนิยมเก็บ Subgroup $n = 4$ หรือ $n = 5$:**\n   - $n=5$ ให้ $\\sigma_{\\bar{x}} = \\sigma / \\sqrt{5} \\approx 0.447\\sigma$ ทำให้จับความเคลื่อนตัวของ Mean (`Mean Shift`) ได้ไวกว่ากราฟรายชิ้น\n   - คำนวณหาร 5 ง่ายหน้างาน และค่า $n \\ge 4$ เพียงพอให้ CLT ทำงานได้มีประสิทธิภาพ",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-018"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L4-S04",
+        "audioFile": "/audio/module-02/AUD-M2L4-S04.mp3",
+        "duration": "35 sec",
+        "displayScriptTh": "ทีนี้เห็นภาพแล้วใช่ไหมว่าทำไมโรงงานทั่วโลกถึงนิยมเก็บ Subgroup n = 4 หรือ 5 ชิ้น ใน Xbar-R Chart เพราะ CLT ทำให้กฎ $\\pm 3\\sigma_{\\bar{x}}$ ทำงานได้แม่นยำ แม้ข้อมูลดิบจะเบ้นิดหน่อย และยังช่วยให้จับการไหลของเครื่องจักรได้ไวกว่าการดูทีละชิ้นถึง 2.24 เท่า เมื่อเทียบที่ $n=5$",
+        "ttsCleanTh": "ทีนี้เห็นภาพแล้วใช่ไหมว่าทำไมโรงงานทั่วโลกถึงนิยมเก็บ แซมเปิลกรุ๊ป เอ็น เท่ากับ 4 หรือ 5 ชิ้น ใน เอ็กซ์บาร์ อาร์ ชาร์ท, เพราะ ซีแอลที ทำให้กฎ บวกลบ 3 ซิกม่า ทำงานได้แม่นยำ แม้ข้อมูลดิบจะเบ้นิดหน่อย และยังช่วยให้จับการไหลของเครื่องจักรได้ไวกว่าการดูทีละชิ้นถึง 2.24 เท่า เมื่อเทียบที่ เอ็น เท่ากับ 5",
+        "enReference": "CLT justifies why factories use subgroup sizes of 4 or 5: subgroup means behave normally and detect mean shifts over twice as fast as individual observations."
+      },
+      "prevScreenId": "M2L4-S03",
+      "nextScreenId": "M2L4-S05"
+    },
+    {
+      "index": 25,
+      "screenId": "M2L4-S05",
+      "lessonId": "M2-L4",
+      "lessonTitle": "Central Limit Theorem & CTQ Workshop",
+      "title": "Interactive Live CLT Simulator",
+      "markdown": "- เลือกรูปทรงประชากร (`Normal`, `Right-Skewed`, `Uniform`, `Bimodal`) แล้วปรับ Subgroup Size `n = 1, 2, 5, 15, 30` ดู Sampling Distribution หดแคบลงด้วยอัตรา $1/\\sqrt{n}$ และแปลงร่างเป็นระฆังคว่ำทันที!",
+      "interactiveIds": [
+        "INT-M2-L4-01"
+      ],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M2L4-S05",
+        "audioFile": "/audio/module-02/AUD-M2L4-S05.mp3",
+        "duration": "35 sec",
+        "displayScriptTh": "มาลองพิสูจน์ด้วยตาตัวเองใน CLT Simulator กัน ลองเลือกประชากรแบบเบ้ (Skewed) แล้วเปลี่ยนขนาดตัวอย่าง $n$ จาก 1 เป็น 5, 15, และ 30 ดูกราฟด้านขวาหดแคบลงและเรียงตัวเป็นระฆังคว่ำทันทีเลย",
+        "ttsCleanTh": "มาลองพิสูจน์ด้วยตาตัวเองใน ซีแอลที ซิมูเลเตอร์ กัน ลองเลือกประชากรแบบเบ้ แล้วเปลี่ยนขนาดตัวอย่าง เอ็น จาก 1 เป็น 5, 15, และ 30 ดูกราฟด้านขวาหดแคบลงและเรียงตัวเป็นระฆังคว่ำทันทีเลย",
+        "enReference": "Prove it yourself in the live CLT Simulator: pick a skewed population and watch the sampling distribution narrow and turn Normal as n increases."
+      },
+      "prevScreenId": "M2L4-S04",
+      "nextScreenId": "M2L4-S06"
+    },
+    {
+      "index": 26,
+      "screenId": "M2L4-S06",
+      "lessonId": "M2-L4",
+      "lessonTitle": "Central Limit Theorem & CTQ Workshop",
+      "title": "Workshop: วิเคราะห์ข้อมูล CTQ ชิ้นงานจริง",
+      "markdown": "- **ไฟล์ข้อมูล:** [data/workshop_m2_ctq_parts.csv](data/workshop_m2_ctq_parts.csv) — ขนาดรูเจาะ `Bore_Diameter_mm` (`Target = 20.00 ± 0.10 mm`, `LSL = 19.90`, `USL = 20.10`) จำนวน `50` ชิ้น (`10 Subgroups × 5 ชิ้น`)\n- **ภารกิจ 4 ขั้นตอน:**\n  1. คำนวณ Mean, SD, Z-score และ % Out of Spec ของข้อมูลทั้งหมด (`n=50`)\n  2. พล็อต Subgroup Means (`SG-01` .. `SG-10`) เพื่อตรวจหา **Special Cause**\n  3. เปรียบเทียบ Baseline ที่เสถียร (`n=45`, ตัด `SG-09` ออก) vs ภาพรวมทั้งหมด (`n=50`) และตรวจดูการลดลงของความกว้างตาม CLT ($\\sigma_{\\bar{x}} = s / \\sqrt{5}$)\n  4. คำนวณอัตราของเสีย Binomial ($\\hat{p}$) และค่าเฉลี่ยจุดตำหนิ Poisson ($\\hat{\\lambda}$) จากคอลัมน์ Attribute",
+      "interactiveIds": [
+        "INT-M2-L4-02"
+      ],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M2L4-S06",
+        "audioFile": "/audio/module-02/AUD-M2L4-S06.mp3",
+        "duration": "45 sec",
+        "displayScriptTh": "ถึงเวลา Workshop ประจำ Module 2 เรามีข้อมูลขนาดรูเจาะ CTQ จำนวน 50 ชิ้น แบ่งเป็น 10 Subgroups กลุ่มละ 5 ชิ้น ลองคำนวณค่า Z-Score เทียบ Spec `20.00 ± 0.10` มิลลิเมตร หาว่ามี Subgroup ไหนเกิด Special Cause และดูความต่างระหว่างความกว้างของชิ้นงานจริงเทียบกับ Standard Error ตามกฎ CLT",
+        "ttsCleanTh": "ถึงเวลา เวิร์คช็อป ประจำ โมดูล 2, เรามีข้อมูลขนาดรูเจาะ ซีทีคิว จำนวน 50 ชิ้น แบ่งเป็น 10 ซับกรุ๊ป กลุ่มละ 5 ชิ้น, ลองคำนวณค่า แซด สกอร์ เทียบ สเปก 20.00 บวกลบ 0.10 มิลลิเมตร หาว่ามี ซับกรุ๊ป ไหนเกิด สเปเชียล คอส และดูความต่างระหว่างความกว้างของชิ้นงานจริงเทียบกับ สแตนดาร์ด เออร์เรอร์ ตามกฎ ซีแอลที",
+        "enReference": "Analyze the 50-part CTQ bore diameter dataset across 10 subgroups. Compute Z-scores, detect any special-cause subgroup, and verify the CLT standard error reduction."
+      },
+      "prevScreenId": "M2L4-S05",
+      "nextScreenId": "M2L4-S07"
+    },
+    {
+      "index": 27,
+      "screenId": "M2L4-S07",
+      "lessonId": "M2-L4",
+      "lessonTitle": "Central Limit Theorem & CTQ Workshop",
+      "title": "Workshop Solution & Engineering Interpretation",
+      "markdown": "- **ภาพรวม (`n=50`):** $\\bar{x} = 20.0102$, $s = 0.0356\\text{ mm}$, $Z_{\\text{USL}} = +2.52$, คาดการณ์ OOS = `0.68%`\n- **พบ Special Cause ชัดเจนที่ `SG-09` (`16:00`):** ค่าเฉลี่ยพุ่งขึ้นเป็น **`20.0940 mm`** (ห่าง Target ถึง `+0.094 mm` หรือ ~`9.5` เท่าของ Standard Error!) และมีชิ้นงานทะลุ `USL 20.10` (`20.11, 20.12 mm`)\n- **Baseline เสถียร (`SG 1–8, 10`, `n=45`):** $\\bar{x} = 20.0009$, $s = 0.0220\\text{ mm}$, $Z_{\\text{USL}} = +4.50$, $\\sigma_{\\bar{x}} = 0.0220/\\sqrt{5} = 0.0099\\text{ mm}$ → หากคุมไม่มี Special Cause กระบวนการนี้แข็งแรงมาก!\n- ดูเฉลยละเอียดใน [07_workshop_guide.md](07_workshop_guide.md)",
+      "interactiveIds": [],
+      "assetIds": [
+        "AST-M2-019"
+      ],
+      "voiceover": {
+        "audioId": "AUD-M2L4-S07",
+        "audioFile": "/audio/module-02/AUD-M2L4-S07.mp3",
+        "duration": "40 sec",
+        "displayScriptTh": "ดูเฉลยกัน ถ้าเหมารวมทั้งหมด 50 ชิ้น จะดูเหมือนคาดการณ์ของเสีย `0.68%` แต่พอพล็อตแยกตาม Subgroup จะเห็นชัดทันทีว่า `SG-09` เกิด Special Cause พุ่งขึ้นไปถึง 20.094 มิลลิเมตร ทำให้ชิ้นงานหลุด Spec! และเมื่อแก้ SG-09 ออกได้ กระบวนการจริงนิ่งมาก มีค่า Z สูงถึง `4.50`",
+        "ttsCleanTh": "ดูเฉลยกัน, ถ้าเหมารวมทั้งหมด 50 ชิ้น จะดูเหมือนคาดการณ์ของเสีย 0.68 เปอร์เซ็นต์, แต่พอพล็อตแยกตาม ซับกรุ๊ป จะเห็นชัดทันทีว่า เอสจี 09 เกิด สเปเชียล คอส พุ่งขึ้นไปถึง 20.094 มิลลิเมตร ทำให้ชิ้นงานหลุด สเปก, และเมื่อแก้ เอสจี 09 ออกได้ กระบวนการจริงนิ่งมาก มีค่า แซด สูงถึง 4.50",
+        "enReference": "Separating subgroup 9 reveals a severe special-cause shift to 20.094 mm. Without SG-09, the stable baseline achieves Z equals 4.50, demonstrating why stability must precede capability analysis."
+      },
+      "prevScreenId": "M2L4-S06",
+      "nextScreenId": "M2L4-S08"
+    },
+    {
+      "index": 28,
+      "screenId": "M2L4-S08",
+      "lessonId": "M2-L4",
+      "lessonTitle": "Central Limit Theorem & CTQ Workshop",
+      "title": "Module 2 Final Assessment (`EXAM-M2`)",
+      "markdown": "- สอบประมวลผลสุ่ม **20 ข้อ** จากคลัง [06_assessment_bank.md](06_assessment_bank.md) (`M2-Q001`–`M2-Q060`) | เกณฑ์ผ่าน **80% (`16/20`)**",
+      "interactiveIds": [],
+      "assetIds": [],
+      "voiceover": {
+        "audioId": "AUD-M2L4-S08",
+        "audioFile": "/audio/module-02/AUD-M2L4-S08.mp3",
+        "duration": "25 sec",
+        "displayScriptTh": "ยอดเยี่ยมมาก ตอนนี้คุณเข้าใจทั้ง Common vs Special Cause, ความน่าจะเป็น, การแจกแจง 3 แบบหลัก, และ Central Limit Theorem แล้ว ทำข้อสอบ 20 ข้อ (เกณฑ์ผ่าน 80%) เพื่อปลดล็อก Module 3 เรื่อง Confidence & Hypothesis Testing กันเลย!",
+        "ttsCleanTh": "ยอดเยี่ยมมาก ตอนนี้คุณเข้าใจทั้ง คอมม่อน กับ สเปเชียล คอส, ความน่าจะเป็น, การแจกแจง 3 แบบหลัก, และ เซ็นทรัล ลิมิต เธียแรม แล้ว, ทำข้อสอบ 20 ข้อ เกณฑ์ผ่าน 80 เปอร์เซ็นต์ เพื่อปลดล็อก โมดูล 3 เรื่อง การทดสอบสมมติฐาน กันเลย",
+        "enReference": "Congratulations on finishing Module 2. Complete the 20-question final exam (80% pass score) to unlock Module 3: Confidence and Hypothesis Testing. ---"
+      },
+      "prevScreenId": "M2L4-S07",
+      "nextScreenId": null
+    }
+  ],
+  "questions": [
+    {
+      "id": "M2-Q001",
+      "lo": "LO-M2-01",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ความแปรปรวนที่มีสาเหตุเฉพาะเจาะจง ระบุตัวได้ และทำให้กระบวนการไม่เสถียร (Unstable) เรียกว่าอะไร",
+      "choices": {
+        "A": "Common Cause Variation",
+        "B": "Special Cause Variation",
+        "C": "Sampling Error",
+        "D": "Natural Tolerance"
+      },
+      "correct": "B",
+      "explanation": "Special Cause (Assignable Cause) เกิดจากเหตุผิดปกติเฉพาะจุด เช่น มีดบิ่นหรือจิ๊กหลวม"
+    },
+    {
+      "id": "M2-Q002",
+      "lo": "LO-M2-01",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ข้อใดจัดเป็น **Common Cause Variation** ในสายการผลิต",
+      "choices": {
+        "A": "เม็ดมีดกลึงแตกหักระหว่างเดินเครื่อง",
+        "B": "พนักงานตั้งค่า Offset ผิดไป 0.5 mm",
+        "C": "ความสั่นสะเทือนปกติของเครื่องจักรและการเปลี่ยนแปลงอุณหภูมิห้องเล็กน้อยตลอดวัน",
+        "D": "ไฟดับชั่วขณะทำให้ความดันฉีดตก"
+      },
+      "correct": "C",
+      "explanation": "Common Cause คือความแปรปรวนเล็กน้อยตามธรรมชาติที่ฝังอยู่ในระบบตลอดเวลา"
+    },
+    {
+      "id": "M2-Q003",
+      "lo": "LO-M2-01",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ใครคือผู้รับผิดชอบหลักในการลด **Common Cause Variation** ของระบบการผลิต",
+      "choices": {
+        "A": "พนักงานคุมเครื่องโดยปรับ Offset ทุกชั่วโมง",
+        "B": "ฝ่ายวิศวกรรมและผู้บริหารผ่านการปรับปรุงระบบ เครื่องจักร หรือกระบวนการ",
+        "C": "พนักงานแพ็คกิ้งท้ายไลน์",
+        "D": "ลูกค้าปลายทาง"
+      },
+      "correct": "B",
+      "explanation": "W. Edwards Deming ย้ำว่า Common Cause เป็นปัญหาของระบบ ต้องแก้ด้วยการออกแบบและปรับปรุงเชิงวิศวกรรม"
+    },
+    {
+      "id": "M2-Q004",
+      "lo": "LO-M2-01",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "การที่ช่างเข้าไปปรับ Offset เครื่อง CNC ทันทีที่วัดชิ้นงานพบค่าเบี่ยงจาก Target เล็กน้อยทั้งที่ยังเป็นแค่ Common Cause เรียกว่าอะไร และเกิดผลเสียอย่างไร",
+      "choices": {
+        "A": "Continuous Improvement — ช่วยให้เครื่องนิ่งขึ้น",
+        "B": "**Tampering (Over-adjustment)** — ทำให้ความแปรปรวนรวมกว้างขึ้นกว่าเดิม",
+        "C": "Root Cause Analysis — ลดของเสียทันที",
+        "D": "Calibration — เพิ่มความแม่นยำ"
+      },
+      "correct": "B",
+      "explanation": "จากการทดลอง Deming Funnel (Rule 2) การปรับชดเชยความแปรปรวนปกติจะเพิ่มความแปรปรวนเป็น ~2 เท่าของ Variance เดิม"
+    },
+    {
+      "id": "M2-Q005",
+      "lo": "LO-M2-01",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "TF",
+      "question": "กระบวนการที่มีเพียง Common Cause Variation เท่านั้น จะถือว่าอยู่ในสภาวะเสถียร (Stable / In Statistical Control) และคาดการณ์ผลลัพธ์ได้",
+      "choices": {
+        "A": "ถูก (True)",
+        "B": "ผิด (False)",
+        "C": "-",
+        "D": "-"
+      },
+      "correct": "A",
+      "explanation": "เมื่อไม่มี Special Cause กระบวนการจะเสถียรและสามารถคาดการณ์ประสิทธิภาพหรือ Capability ได้"
+    },
+    {
+      "id": "M2-Q006",
+      "lo": "LO-M2-01",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "จากการทดลอง Deming Funnel หากเปรียบเทียบ Rule 1 (ไม่ขยับกรวยเมื่อตกจากเป้าแบบสุ่ม) กับ Rule 2 (ขยับกรวยชดเชยทิศทางตรงข้ามทุกครั้ง) ผลลัพธ์จะเป็นอย่างไร",
+      "choices": {
+        "A": "Rule 2 ตกใกล้จุดศูนย์กลางมากกว่า",
+        "B": "Rule 1 ให้กลุ่มกระสุนแคบกว่า และ Rule 2 ทำให้การกระจายกว้างขึ้น (~1.4 เท่าของ SD)",
+        "C": "ทั้งสองแบบให้ผลเท่ากัน",
+        "D": "Rule 2 ลด Common Cause เหลือศูนย์"
+      },
+      "correct": "B",
+      "explanation": "Rule 2 คือภาพจำลองของ Tampering ที่ทำให้ผลลัพธ์แกว่งกว้างกว่าการปล่อยให้กระบวนการเดินตามธรรมชาติ"
+    },
+    {
+      "id": "M2-Q007",
+      "lo": "LO-M2-01",
+      "bloom": "Apply",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "เหตุการณ์ใดต้องใช้ **Reaction Plan / OCAP** เข้าแก้ไขหน้างานทันทีเพราะเป็น Special Cause",
+      "choices": {
+        "A": "ชิ้นงานแกว่งขึ้นลงสม่ำเสมอภายในขอบเขตปกติ",
+        "B": "จู่ๆ ขนาดชิ้นงานกระโดดสูงขึ้น 4 เท่าของ SD หลังเปลี่ยน Lot วัตถุดิบ",
+        "C": "ค่าความหยาบผิวอยู่ในช่วงปกติทุกชั่วโมง",
+        "D": "พนักงานวัดชิ้นงานด้วยไมโครมิเตอร์ที่สอบเทียบแล้ว"
+      },
+      "correct": "B",
+      "explanation": "การกระโดดผิดปกติหลังเปลี่ยน Lot เป็นสัญญาณ Special Cause ชัดเจน ต้องหยุดตรวจสอบตาม OCAP"
+    },
+    {
+      "id": "M2-Q008",
+      "lo": "LO-M2-01",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "คำเปรียบเทียบใดอธิบาย **Common Cause vs Special Cause** ในงาน SPC ได้ถูกต้องที่สุด",
+      "choices": {
+        "A": "Signal vs Noise",
+        "B": "**Noise (เสียงรบกวนปกติ) vs Signal (สัญญาณผิดปกติ)**",
+        "C": "Variable vs Attribute",
+        "D": "Mean vs Median"
+      },
+      "correct": "B",
+      "explanation": "Common Cause คือ Background Noise ของระบบ ส่วน Special Cause คือ Signal ที่เตือนว่ามีเหตุการณ์พิเศษเกิดขึ้น"
+    },
+    {
+      "id": "M2-Q009",
+      "lo": "LO-M2-01",
+      "bloom": "Evaluate",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "หากกระบวนการผลิตยัง **ไม่เสถียร (มี Special Cause เกิดขึ้นบ่อย)** ข้อใดเป็นลำดับการทำงานที่ถูกต้องก่อนคำนวณ Capability ($C_{pk}$)",
+      "choices": {
+        "A": "คำนวณ $C_{pk}$ ทันทีแล้วส่งลูกค้า",
+        "B": "กำจัด Special Cause ให้กระบวนการเสถียรก่อน มิฉะนั้นค่าทำนายความน่าจะเป็นและ $C_{pk}$ จะไม่น่าเชื่อถือ",
+        "C": "เพิ่มขนาด Spec ให้กว้างขึ้น",
+        "D": "เปลี่ยนไปใช้ Attribute Chart"
+      },
+      "correct": "B",
+      "explanation": "กระบวนการที่ Unstable ไม่สามารถทำนายอนาคตได้ จึงต้องกำจัด Special Cause ก่อนประเมิน Capability"
+    },
+    {
+      "id": "M2-Q010",
+      "lo": "LO-M2-01",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "หลังพักเที่ยงพนักงานเปิดเครื่องแล้วลืมวอร์มอัพตาม SOP ทำให้ 5 ชิ้นแรกมีขนาดเล็กผิดปกติ จากนั้นจึงกลับมาปกติ พฤติกรรม 5 ชิ้นแรกนี้จัดเป็นอะไร",
+      "choices": {
+        "A": "Common Cause",
+        "B": "Special Cause (Assignable Cause)",
+        "C": "Tampering",
+        "D": "Sampling Error"
+      },
+      "correct": "B",
+      "explanation": "มีสาเหตุเฉพาะเจาะจง (ลืมวอร์มอัพเครื่อง) และเกิดชั่วคราว จึงเป็น Special Cause"
+    },
+    {
+      "id": "M2-Q011",
+      "lo": "LO-M2-02",
+      "bloom": "Remember",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ค่าความน่าจะเป็น $P(A)$ ของเหตุการณ์ใดๆ จะมีค่าอยู่ในช่วงใดเสมอ",
+      "choices": {
+        "A": "`-1` ถึง `+1`",
+        "B": "`0` ถึง `1` (หรือ `0%` ถึง `100%`)",
+        "C": "`0` ถึง `∞`",
+        "D": "`-3` ถึง `+3`"
+      },
+      "correct": "B",
+      "explanation": "ความน่าจะเป็นต้องอยู่ระหว่าง 0 (ไม่มีโอกาสเกิด) ถึง 1 (เกิดแน่นอน)"
+    },
+    {
+      "id": "M2-Q012",
+      "lo": "LO-M2-02",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "สายการผลิตมี 3 สถานีทำงานต่อกันเป็นอนุกรม (อิสระต่อกัน) โดยแต่ละสถานีมี Yield `95%` (`0.95`) ค่า **First Pass Yield (FPY)** รวมของทั้งสายการผลิตเท่ากับข้อใด",
+      "choices": {
+        "A": "95.00%",
+        "B": "90.25%",
+        "C": "85.74%",
+        "D": "75.00%"
+      },
+      "correct": "C",
+      "explanation": "FPY รวม = $0.95 \\times 0.95 \\times 0.95 = 0.857375 \\approx 85.74\\%$"
+    },
+    {
+      "id": "M2-Q013",
+      "lo": "LO-M2-02",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "จากล็อตสินค้า 500 ชิ้น พบชิ้นงานมีรอยบุบ 15 ชิ้น โอกาสที่สุ่มหยิบ 1 ชิ้นแล้วเจอชิ้นที่มีรอยบุบ (Empirical Probability) เท่ากับเท่าใด",
+      "choices": {
+        "A": "0.015 (1.5%)",
+        "B": "0.030 (3.0%)",
+        "C": "0.050 (5.0%)",
+        "D": "0.150 (15.0%)"
+      },
+      "correct": "B",
+      "explanation": "$P(\\text{Dent}) = 15 / 500 = 0.030 = 3.0\\%$"
+    },
+    {
+      "id": "M2-Q014",
+      "lo": "LO-M2-02",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "เหตุใดงานทดสอบแรงดึงจนชิ้นงานขาด (Destructive Pull Test) จึงต้องใช้วิธี **Sampling** แทนการตรวจ 100%",
+      "choices": {
+        "A": "เพราะเครื่องดึงขาดราคาถูก",
+        "B": "เพราะหากตรวจ 100% ชิ้นงานจะถูกทำลายหมดจนไม่เหลือส่งลูกค้า",
+        "C": "เพราะ Sampling ไม่มี Sampling Error",
+        "D": "เพราะคนงานไม่อยากบันทึกข้อมูล"
+      },
+      "correct": "B",
+      "explanation": "การทดสอบเชิงทำลายไม่สามารถทำ 100% ได้ จึงต้องใช้สถิติจากการสุ่มตัวอย่างเพื่ออนุมานทั้งล็อต"
+    },
+    {
+      "id": "M2-Q015",
+      "lo": "LO-M2-02",
+      "bloom": "Remember",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "งานวิจัยด้านคุณภาพพบว่า **การตรวจด้วยสายตา 100% (100% Visual Inspection)** มักตรวจจับของเสียได้เพียงประมาณกี่เปอร์เซ็นต์เนื่องจากความล้า",
+      "choices": {
+        "A": "100% เสมอ",
+        "B": "~80–85%",
+        "C": "~10–15%",
+        "D": "50% พอดี"
+      },
+      "correct": "B",
+      "explanation": "ความเมื่อยล้าและความซ้ำซากทำให้การตรวจ 100% ด้วยคนมักมี Escape ~15–20%"
+    },
+    {
+      "id": "M2-Q016",
+      "lo": "LO-M2-02",
+      "bloom": "Remember",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "สัญลักษณ์ **$\\mu$ (มิว)** และ **$\\sigma$ (ซิกม่า)** เป็นค่าที่ใช้อธิบายสิ่งใด",
+      "choices": {
+        "A": "Sample Statistics (ค่าจากกลุ่มตัวอย่าง)",
+        "B": "Population Parameters (ค่าพารามิเตอร์ของประชากรทั้งหมด)",
+        "C": "Control Limits",
+        "D": "Spec Limits"
+      },
+      "correct": "B",
+      "explanation": "อักษรกรีก ($\\mu, \\sigma, p$) แทน Parameter ของประชากร ส่วนอักษรโรมัน ($\\bar{x}, s, \\hat{p}$) แทน Statistic ของตัวอย่าง"
+    },
+    {
+      "id": "M2-Q017",
+      "lo": "LO-M2-02",
+      "bloom": "Remember",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "สัญลักษณ์ **$\\bar{x}$** และ **$s$** ใช้แทนค่าของสิ่งใด",
+      "choices": {
+        "A": "Population Mean และ Population SD",
+        "B": "Sample Mean และ Sample SD",
+        "C": "Defect Rate และ Yield",
+        "D": "Variance และ Range"
+      },
+      "correct": "B",
+      "explanation": "$\\bar{x}$ และ $s$ คำนวณจากกลุ่มตัวอย่างขนาด $n$ ที่สุ่มมาวัด"
+    },
+    {
+      "id": "M2-Q018",
+      "lo": "LO-M2-02",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "พนักงานสุ่มตรวจชิ้นงานโดยหยิบเฉพาะ **5 ชิ้นที่อยู่ชั้นบนสุดของกล่อง** ทุกครั้ง ข้อผิดพลาดที่เกิดขึ้นเรียกว่าอะไร และแก้ด้วยวิธีใด",
+      "choices": {
+        "A": "Sampling Error — แก้โดยเพิ่มเป็นหยิบ 50 ชิ้นจากชั้นบนสุด",
+        "B": "**Sampling Bias** — เพิ่มจำนวนชิ้นก็ไม่หาย ต้องแก้ด้วยการสุ่มให้ทั่วทั้งกล่อง (Random Sampling)",
+        "C": "Special Cause — แก้โดยปรับเครื่อง",
+        "D": "Poisson Error — แก้โดยเปลี่ยนเป็น Normal"
+      },
+      "correct": "B",
+      "explanation": "การสุ่มที่มี Bias ไม่ว่าจะเพิ่ม $n$ มากแค่ไหน ค่าที่ได้ก็จะยังคงเอนเอียงจากประชากรจริง"
+    },
+    {
+      "id": "M2-Q019",
+      "lo": "LO-M2-02",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ความคลาดเคลื่อนที่เกิดโดยธรรมชาติจากการที่เราวัดแค่กลุ่มตัวอย่าง $n$ ชิ้น ไม่ได้วัดทั้งประชากร $N$ ชิ้น ($\\bar{x} \\ne \\mu$) เรียกว่าอะไร",
+      "choices": {
+        "A": "Measurement Bias",
+        "B": "Sampling Error",
+        "C": "Tampering",
+        "D": "Non-conformance"
+      },
+      "correct": "B",
+      "explanation": "Sampling Error เป็นความต่างธรรมชาติระหว่างค่าตัวอย่างกับประชากร และลดขนาดลงได้เมื่อเพิ่ม $n$"
+    },
+    {
+      "id": "M2-Q020",
+      "lo": "LO-M2-02",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "หากสุ่มหยิบชิ้นงานจากเครื่อง A ที่มีโอกาสเสีย `2%` กับเครื่อง B ที่มีโอกาสเสีย `5%` ความรู้เรื่องโอกาสเสียที่เปลี่ยนไปเมื่อรู้ว่าเป็นเครื่อง B เรียกว่าอะไร",
+      "choices": {
+        "A": "Independent Event",
+        "B": "Conditional Probability $P(\\text{Defect} \\mid \\text{MC-B})$",
+        "C": "Normal Distribution",
+        "D": "Central Limit Theorem"
+      },
+      "correct": "B",
+      "explanation": "Conditional Probability คือความน่าจะเป็นของเหตุการณ์หนึ่งเมื่อทราบเงื่อนไขของอีกเหตุการณ์เกิดขึ้นแล้ว"
+    },
+    {
+      "id": "M2-Q021",
+      "lo": "LO-M2-02",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ในความเสี่ยงของการตรวจสอบคุณภาพ คำว่า **False Alarm** หมายถึงข้อใด",
+      "choices": {
+        "A": "ของเสียหลุดรอดไปถึงมือลูกค้า",
+        "B": "ระบบหรือผู้ตรวจแจ้งว่าชิ้นงาน/เครื่องจักรมีปัญหา ทั้งที่ความจริงยังปกติดี",
+        "C": "ค่าเฉลี่ยเท่ากับเป้าหมายพอดี",
+        "D": "การทดสอบทำลายชิ้นงาน"
+      },
+      "correct": "B",
+      "explanation": "False Alarm ($\\alpha$ risk / Type I) ทำให้เสียต้นทุนหยุดเครื่องตรวจเช็คหรือทิ้งของดีโดยไม่จำเป็น"
+    },
+    {
+      "id": "M2-Q022",
+      "lo": "LO-M2-02",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "คำว่า **Escape Risk (Consumer's Risk)** หมายถึงความเสี่ยงด้านใด",
+      "choices": {
+        "A": "เครื่องเตือนผิดพลาดบ่อย",
+        "B": "ของเสียหรือล็อตที่มีปัญหาผ่านการตรวจและหลุดออกไปถึงมือลูกค้า",
+        "C": "ตัวอย่างมีขนาดใหญ่เกินไป",
+        "D": "พนักงานบันทึกค่าทศนิยมเกิน"
+      },
+      "correct": "B",
+      "explanation": "Escape Risk ($\\beta$ risk / Type II) คือการพลาดไม่เจอปัญหาจริง ทำให้ลูกค้าได้รับของเสีย"
+    },
+    {
+      "id": "M2-Q023",
+      "lo": "LO-M2-02",
+      "bloom": "Apply",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "กระบวนการเชื่อมมี 4 สถานีเรียงกัน ต้องการให้ **FPY รวมของทั้งไลน์ ≥ 90%** โดยประมาณแต่ละสถานีควรมี Yield เฉลี่ยอย่างน้อยประมาณเท่าใด (`0.974⁴ ≈ 0.90`)",
+      "choices": {
+        "A": "90.0%",
+        "B": "92.5%",
+        "C": "97.4%",
+        "D": "85.0%"
+      },
+      "correct": "C",
+      "explanation": "$\\sqrt[4]{0.90} \\approx 0.974$ หรือ ~97.4% ต่อสถานี"
+    },
+    {
+      "id": "M2-Q024",
+      "lo": "LO-M2-02",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "เหตุใดการเพิ่มขนาดตัวอย่างสุ่มแบบสุ่มแท้จริงจาก $n=5$ เป็น $n=50$ จึงช่วยให้ค่า $\\bar{x}$ ใกล้เคียง $\\mu$ มากขึ้น",
+      "choices": {
+        "A": "เพราะลดค่า $\\sigma$ ของเครื่องจักร",
+        "B": "เพราะช่วยลด Sampling Error ($\\sigma/\\sqrt{n}$)",
+        "C": "เพราะเปลี่ยนประชากรให้เป็น Sample",
+        "D": "เพราะทำให้ Bias เพิ่มขึ้น"
+      },
+      "correct": "B",
+      "explanation": "เมื่อสุ่มอย่างถูกต้องไม่มี Bias การเพิ่ม $n$ จะลดความคลาดเคลื่อนของการประมาณค่าเฉลี่ย"
+    },
+    {
+      "id": "M2-Q025",
+      "lo": "LO-M2-02",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ถ้าโอกาสที่ชิ้นงาน 1 ชิ้นจะเกิดตำหนิคือ `0.04` โอกาสที่ชิ้นงานนั้นจะ **ไม่มีตำหนิ (ผ่าน)** คือเท่าใด",
+      "choices": {
+        "A": "0.04",
+        "B": "0.96",
+        "C": "0.50",
+        "D": "0.16"
+      },
+      "correct": "B",
+      "explanation": "กฎคอมพลีเมนต์: $P(\\text{Pass}) = 1 - P(\\text{Defect}) = 1 - 0.04 = 0.96$"
+    },
+    {
+      "id": "M2-Q026",
+      "lo": "LO-M2-03",
+      "bloom": "Remember",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "การแจกแจงความน่าจะเป็นแบบใดเหมาะกับ **ข้อมูลวัดค่าต่อเนื่อง (Variable Data)** เช่น เส้นผ่านศูนย์กลาง, น้ำหนัก, แรงบิด",
+      "choices": {
+        "A": "Binomial Distribution",
+        "B": "Poisson Distribution",
+        "C": "Normal Distribution",
+        "D": "Hypergeometric Distribution"
+      },
+      "correct": "C",
+      "explanation": "Normal Distribution เป็นหัวใจของการจำลองข้อมูล Variable ต่อเนื่องในงานผลิต"
+    },
+    {
+      "id": "M2-Q027",
+      "lo": "LO-M2-03",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "คุณสมบัติสำคัญของ **Normal Distribution** คือข้อใด",
+      "choices": {
+        "A": "เบ้ขวาเสมอ",
+        "B": "สมมาตร 2 ข้าง โดยมี Mean = Median = Mode",
+        "C": "ใช้ได้กับข้อมูล Pass/Fail เท่านั้น",
+        "D": "พื้นที่ใต้กราฟรวมเท่ากับ 3.0"
+      },
+      "correct": "B",
+      "explanation": "โค้งระฆังคว่ำปกติมีความสมมาตรสมบูรณ์ที่ค่ากลาง (Mean = Median = Mode) และพื้นที่รวม = 1"
+    },
+    {
+      "id": "M2-Q028",
+      "lo": "LO-M2-03",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "กระบวนการกลึงเพลาเป็น Normal มี $\\mu = 50.00\\text{ mm}, \\sigma = 0.02\\text{ mm}$ ชิ้นงานหนึ่งวัดได้ $X = 50.06\\text{ mm}$ ค่า **Z-Score** เท่ากับเท่าใด",
+      "choices": {
+        "A": "+1.0",
+        "B": "+2.0",
+        "C": "+3.0",
+        "D": "-3.0"
+      },
+      "correct": "C",
+      "explanation": "$Z = (50.06 - 50.00) / 0.02 = +3.0$"
+    },
+    {
+      "id": "M2-Q029",
+      "lo": "LO-M2-03",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "จากสูตร $Z = (X - \\mu)/\\sigma$ หากรูเจาะมี $\\mu = 20.04\\text{ mm}, \\sigma = 0.03\\text{ mm}$ และ `USL = 20.10 mm` ค่า $Z_{\\text{USL}}$ และโอกาสที่ชิ้นงานจะใหญ่เกิน USL ประมาณเท่าใด",
+      "choices": {
+        "A": "$Z = +1.00$ (OOS ~15.87%)",
+        "B": "$Z = +2.00$ (OOS ~2.28%)",
+        "C": "$Z = +3.00$ (OOS ~0.135%)",
+        "D": "$Z = -2.00$ (OOS ~97.7%)"
+      },
+      "correct": "B",
+      "explanation": "$Z = (20.10 - 20.04)/0.03 = +2.00$ พื้นที่หางบนเกิน $+2\\sigma$ คือ ~2.28% (`22,750 PPM`)"
+    },
+    {
+      "id": "M2-Q030",
+      "lo": "LO-M2-03",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "พื้นที่ใต้โค้ง Normal ที่อยู่ **เกินขอบ $+3\\sigma$** (หางข้างเดียว) มีค่าประมาณกี่เปอร์เซ็นต์",
+      "choices": {
+        "A": "0.135% (~1,350 PPM)",
+        "B": "0.270% (~2,700 PPM)",
+        "C": "2.28%",
+        "D": "68.27%"
+      },
+      "correct": "A",
+      "explanation": "ช่วง $\\pm 3\\sigma$ ครอบคลุม 99.73% เหลือหางสองข้างรวม 0.27% ดังนั้นหางข้างเดียว = 0.135%"
+    },
+    {
+      "id": "M2-Q031",
+      "lo": "LO-M2-03",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ก่อนนำสูตร Z-Score หรือ $C_{pk}$ แบบ Normal ไปใช้ วิศวกรทำ **Anderson-Darling Normality Test** แล้วได้ **`p-value = 0.003`** ควรตีความอย่างไร",
+      "choices": {
+        "A": "ข้อมูลเป็น Normal ดีเยี่ยม ใช้สูตรทันทีได้",
+        "B": "**`p-value < 0.05` แสดงว่าข้อมูลไม่เป็น Normal** — ต้องตรวจหา Special Cause / การเบ้ก่อนใช้สูตร Normal",
+        "C": "ต้องเปลี่ยน Spec ทันที",
+        "D": "ข้อมูลมีค่าเฉลี่ยเท่ากับศูนย์"
+      },
+      "correct": "B",
+      "explanation": "เกณฑ์ทั่วไป: `p-value >= 0.05` ไม่ปฏิเสธสมมติฐาน Normal; หาก `< 0.05` ข้อมูลเบี่ยงเบนจาก Normal อย่างมีนัยสำคัญ"
+    },
+    {
+      "id": "M2-Q032",
+      "lo": "LO-M2-03",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "คุณลักษณะใดในโรงงานที่มีแนวโน้มจะแจกแจงแบบ **Non-Normal (เบ้ขวา)** โดยธรรมชาติ แม้กระบวนการจะปกติ",
+      "choices": {
+        "A": "เส้นผ่านศูนย์กลางเพลาที่ตัดสองด้าน",
+        "B": "ความเรียบผิว (Flatness / Runout) และอายุการใช้งานมีดกลึง (Tool Life)",
+        "C": "น้ำหนักก้อนแป้ง",
+        "D": "แรงดันไฟ 220V"
+      },
+      "correct": "B",
+      "explanation": "ค่าที่มีขอบเขตศูนย์ด้านซ้าย (เช่น Flatness >= 0) หรือข้อมูลความล้า/เวลาชีวิตมักเบ้ขวา"
+    },
+    {
+      "id": "M2-Q033",
+      "lo": "LO-M2-03",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "การแจกแจงแบบ **Binomial** เหมาะกับสถานการณ์ใดมากที่สุด",
+      "choices": {
+        "A": "วัดความหนาแผ่นเหล็กเป็น mm",
+        "B": "นับ **จำนวนชิ้นงานที่ไม่ผ่าน (Pass/Fail)** จากการสุ่มตรวจ $n$ ชิ้น",
+        "C": "นับจำนวนรอยขีดข่วนบนตัวถังรถยนต์ 1 คัน",
+        "D": "วัดอุณหภูมิเตาอบทุก 5 นาที"
+      },
+      "correct": "B",
+      "explanation": "Binomial ใช้กับการทดลอง $n$ ครั้งที่เป็นอิสระและมีผลลัพธ์ 2 แบบ (Pass/Fail, Defective/Good)"
+    },
+    {
+      "id": "M2-Q034",
+      "lo": "LO-M2-03",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "สุ่มตรวจชิ้นงาน $n = 100$ ชิ้น จากกระบวนการที่มีอัตราของเสีย $p = 0.04$ (4%) ตามการแจกแจง **Binomial** ค่าเฉลี่ยจำนวนชิ้นเสีย ($\\mu$) และ SD ($\\sigma$) เท่ากับเท่าใด",
+      "choices": {
+        "A": "$\\mu = 4.0$, $\\sigma \\approx 1.96$",
+        "B": "$\\mu = 4.0$, $\\sigma = 4.00$",
+        "C": "$\\mu = 2.0$, $\\sigma = 1.41$",
+        "D": "$\\mu = 0.04$, $\\sigma = 0.20$"
+      },
+      "correct": "A",
+      "explanation": "$\\mu = np = 100(0.04) = 4.0$; $\\sigma = \\sqrt{np(1-p)} = \\sqrt{100(0.04)(0.96)} = \\sqrt{3.84} \\approx 1.96$"
+    },
+    {
+      "id": "M2-Q035",
+      "lo": "LO-M2-03",
+      "bloom": "Apply",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "ล็อตสินค้ามีของเสียแฝงอยู่จริง $p = 5\\%$ ถ้า QA สุ่มหยิบตรวจแค่ $n = 20$ ชิ้น โอกาสที่จะ **สุ่มแล้วไม่เจอของเสียเลย ($X=0$)** จนเผลออนุมัติล็อต เท่ากับข้อใด (`0.95²⁰ ≈ 0.3585`)",
+      "choices": {
+        "A": "5.00%",
+        "B": "0.00%",
+        "C": "35.85%",
+        "D": "95.00%"
+      },
+      "correct": "C",
+      "explanation": "$P(X=0) = (1 - 0.05)^{20} = 0.95^{20} \\approx 35.85\\%$ (ความเสี่ยงสุ่มตรวจปลายทาง)"
+    },
+    {
+      "id": "M2-Q036",
+      "lo": "LO-M2-03",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "การแจกแจงแบบ **Poisson** เหมาะกับงานใดในโรงงาน",
+      "choices": {
+        "A": "นับจำนวน **จุดตำหนิ (Defects)** ต่อชิ้น ต่อแผ่น หรือต่อตารางเมตร เช่น รอยขีดข่วนบนจอ LCD",
+        "B": "วัดค่าความต้านทานไฟฟ้า ($\\Omega$)",
+        "C": "ชั่งน้ำหนักชิ้นงานฉีด (g)",
+        "D": "ตรวจชิ้นงานว่า Pass หรือ Fail จาก $n$ ชิ้น"
+      },
+      "correct": "A",
+      "explanation": "Poisson ใช้นับจำนวนครั้งที่เกิดเหตุการณ์/ตำหนิต่อหน่วยพื้นที่ เวลา หรือชิ้นงาน"
+    },
+    {
+      "id": "M2-Q037",
+      "lo": "LO-M2-03",
+      "bloom": "Remember",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "สำหรับ **Poisson Distribution** ที่มีอัตราเกิดตำหนิเฉลี่ย $\\lambda = 9$ จุดต่อแผ่น ค่า Mean และ Standard Deviation เท่ากับเท่าใด",
+      "choices": {
+        "A": "$\\mu = 9$, $\\sigma = 9$",
+        "B": "$\\mu = 9$, $\\sigma = 3$",
+        "C": "$\\mu = 3$, $\\sigma = 9$",
+        "D": "$\\mu = 9$, $\\sigma = 81$"
+      },
+      "correct": "B",
+      "explanation": "ใน Poisson: Variance $\\sigma^2 = \\lambda = 9$ ดังนั้น $\\sigma = \\sqrt{\\lambda} = \\sqrt{9} = 3$"
+    },
+    {
+      "id": "M2-Q038",
+      "lo": "LO-M2-03",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "เฉลี่ยพบรอยตำหนิบนชิ้นงาน $\\lambda = 0.5$ จุด/ชิ้น ตามกฎ Poisson โอกาสที่จะสุ่มเจอชิ้นงาน **ไร้ตำหนิเลย ($X=0$)** เท่ากับเท่าใด (`e⁻⁰·⁵ ≈ 0.6065`)",
+      "choices": {
+        "A": "30.33%",
+        "B": "50.00%",
+        "C": "60.65%",
+        "D": "9.02%"
+      },
+      "correct": "C",
+      "explanation": "$P(X=0) = \\frac{e^{-0.5} (0.5)^0}{0!} = e^{-0.5} \\approx 60.65\\%$"
+    },
+    {
+      "id": "M2-Q039",
+      "lo": "LO-M2-03",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "เชื่อมโยงสู่ Module 6: **Binomial Distribution** เป็นรากฐานทางคณิตศาสตร์ของ Control Chart คู่ใด",
+      "choices": {
+        "A": "$\\bar{X}$-$R$ และ $\\bar{X}$-$S$",
+        "B": "$P$ Chart และ $NP$ Chart",
+        "C": "$C$ Chart และ $U$ Chart",
+        "D": "$I$-$MR$ Chart"
+      },
+      "correct": "B",
+      "explanation": "P และ NP Chart ใช้วิเคราะห์สัดส่วน/จำนวนชิ้นงานเสีย (`Defective`) ซึ่งแจกแจงแบบ Binomial"
+    },
+    {
+      "id": "M2-Q040",
+      "lo": "LO-M2-03",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "เชื่อมโยงสู่ Module 6: **Poisson Distribution** เป็นรากฐานทางคณิตศาสตร์ของ Control Chart คู่ใด",
+      "choices": {
+        "A": "$P$ Chart และ $NP$ Chart",
+        "B": "$C$ Chart และ $U$ Chart",
+        "C": "$\\bar{X}$-$R$ Chart",
+        "D": "Scatter Plot"
+      },
+      "correct": "B",
+      "explanation": "C และ U Chart ใช้วิเคราะห์จำนวนจุดตำหนิ (`Defects`) ต่อหน่วย ซึ่งแจกแจงแบบ Poisson"
+    },
+    {
+      "id": "M2-Q041",
+      "lo": "LO-M2-03",
+      "bloom": "Remember",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ใน **Binomial Distribution** แต่ละชิ้นงานที่สุ่มมาต้องมีผลลัพธ์ที่เป็นไปได้กี่แบบ",
+      "choices": {
+        "A": "2 แบบเท่านั้น (เช่น Pass/Fail)",
+        "B": "3 แบบ",
+        "C": "ไม่จำกัด",
+        "D": "ค่าทศนิยมต่อเนื่อง"
+      },
+      "correct": "A",
+      "explanation": "การทดลอง Bernoulli แต่ละครั้งใน Binomial มีเพียง Success/Failure (2 ผลลัพธ์)"
+    },
+    {
+      "id": "M2-Q042",
+      "lo": "LO-M2-03",
+      "bloom": "Analyze",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "เมื่อใดที่ **Binomial Distribution** สามารถประมาณด้วย **Normal Distribution** ได้ดี (กฎนิ้วมือทางสถิติ)",
+      "choices": {
+        "A": "เมื่อ $n = 2$",
+        "B": "เมื่อ $np \\ge 5$ และ $n(1-p) \\ge 5$",
+        "C": "เมื่อ $p = 0.0001$ และ $n = 10$",
+        "D": "เมื่อข้อมูลเป็น Continuous เท่านั้น"
+      },
+      "correct": "B",
+      "explanation": "เมื่อ $np \\ge 5$ และ $n(1-p) \\ge 5$ รูปแท่งของ Binomial จะสมมาตรใกล้เคียงระฆังคว่ำ Normal"
+    },
+    {
+      "id": "M2-Q043",
+      "lo": "LO-M2-03",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "หากค่าเฉลี่ยน้ำหนักพาร์ท = 100 g, SD = 2 g และลูกค้าต้องการ `94–106 g` ($\\pm 3\\sigma$) จะคาดการณ์ชิ้นงาน **ที่อยู่ใน Spec** กี่เปอร์เซ็นต์",
+      "choices": {
+        "A": "68.27%",
+        "B": "95.45%",
+        "C": "99.73%",
+        "D": "99.999%"
+      },
+      "correct": "C",
+      "explanation": "ช่วง $\\pm 3\\sigma$ ของ Normal Distribution ครอบคลุม 99.73%"
+    },
+    {
+      "id": "M2-Q044",
+      "lo": "LO-M2-03",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "หากต้องลดของเสียฝั่งบน (`Z_USL = +1.5`) ให้ดีขึ้นเป็นระดับ 3 Sigma (`Z_USL = +3.0`) ควรทำสิ่งใด",
+      "choices": {
+        "A": "เพิ่มความแปรปรวน ($\\sigma$) ให้ใหญ่ขึ้น",
+        "B": "ขยับค่าเฉลี่ย ($\\mu$) เข้าหาเป้า และ/หรือ ลดความแปรปรวน ($\\sigma$) ลง",
+        "C": "เลิกวัดข้อมูล",
+        "D": "ใช้ Poisson แทน Normal"
+      },
+      "correct": "B",
+      "explanation": "ตามสูตร $Z = (\\text{USL} - \\mu)/\\sigma$ การทำให้ $Z$ เพิ่มขึ้นทำได้โดยดึง $\\mu$ ห่างจาก USL (เข้าเป้า) และลด $\\sigma$"
+    },
+    {
+      "id": "M2-Q045",
+      "lo": "LO-M2-03",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "การวัดจำนวนรอยตำหนิ (`0, 1, 2, 3, ...`) บนพื้นผิวสีรถยนต์ 1 คัน ต่างจาก Pass/Fail อย่างไรในทาง Distribution",
+      "choices": {
+        "A": "ใช้ Normal ทั้งคู่",
+        "B": "นับจุดตำหนิบนพื้นที่ 1 หน่วยไม่มีเพดาน $n$ ชัดเจน ใช้ **Poisson** ส่วน Pass/Fail จาก $n$ ชิ้นใช้ **Binomial**",
+        "C": "สลับกัน",
+        "D": "ใช้ Uniform ทั้งคู่"
+      },
+      "correct": "B",
+      "explanation": "Poisson นับเหตุการณ์/ตำหนิต่อหน่วยพื้นที่/เวลา ส่วน Binomial นับชิ้นผ่าน-ไม่ผ่านจากจำนวนชิ้นจำกัด $n$"
+    },
+    {
+      "id": "M2-Q046",
+      "lo": "LO-M2-04",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "**Sampling Distribution of the Mean** คือกราฟการแจกแจงของค่าใด",
+      "choices": {
+        "A": "ค่าชิ้นงานรายชิ้นทั้งหมดในโรงงาน",
+        "B": "ค่าเฉลี่ย ($\\bar{X}$) ที่คำนวณได้จากแต่ละ Subgroup ซ้ำๆ กันหลายกลุ่ม",
+        "C": "ค่า Range เพียงอย่างเดียว",
+        "D": "จำนวน Defect ต่อเดือน"
+      },
+      "correct": "B",
+      "explanation": "เมื่อเก็บกลุ่มตัวอย่างขนาด $n$ หลายๆ กลุ่มแล้วนำ $\\bar{X}_1, \\bar{X}_2, \\dots$ มาพล็อต จะได้ Sampling Distribution of the Mean"
+    },
+    {
+      "id": "M2-Q047",
+      "lo": "LO-M2-04",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ใจความสำคัญของ **Central Limit Theorem (CLT)** คือข้อใด",
+      "choices": {
+        "A": "ข้อมูลดิบทุกตัวในโรงงานต้องเป็น Normal เสมอ",
+        "B": "ไม่ว่าประชากรเดิมจะมีรูปร่างใด (เช่น เบ้หรือแบน) การแจกแจงของ **ค่าเฉลี่ยตัวอย่าง ($\\bar{X}$)** จะลู่เข้าใกล้ Normal Distribution เมื่อ $n$ ใหญ่พอ",
+        "C": "เมื่อ $n$ เพิ่มขึ้น ความกว้างของกราฟ $\\bar{X}$ จะกว้างขึ้นด้วย",
+        "D": "ค่า Mean ของตัวอย่างไม่เกี่ยวกับ Mean ของประชากร"
+      },
+      "correct": "B",
+      "explanation": "CLT รับประกันว่าค่าเฉลี่ย $\\bar{X}$ มีแนวโน้มแจกแจงแบบ Normal และแคบลงตาม $\\sqrt{n}$"
+    },
+    {
+      "id": "M2-Q048",
+      "lo": "LO-M2-04",
+      "bloom": "Remember",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "สูตรคำนวณ **Standard Error of the Mean ($\\sigma_{\\bar{x}}$)** คือข้อใด",
+      "choices": {
+        "A": "$\\sigma \\times n$",
+        "B": "$\\sigma / n$",
+        "C": "$\\sigma / \\sqrt{n}$",
+        "D": "$\\sigma \\times \\sqrt{n}$"
+      },
+      "correct": "C",
+      "explanation": "$\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}$ ยิ่ง $n$ ใหญ่ ความแปรปรวนของค่าเฉลี่ยยิ่งเล็กลง"
+    },
+    {
+      "id": "M2-Q049",
+      "lo": "LO-M2-04",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "กระบวนการมี $\\sigma$ รายชิ้น = `0.04 mm` หากเก็บ Subgroup ขนาด `n = 4` ชิ้น ค่า **Standard Error ($\\sigma_{\\bar{x}}$)** เท่ากับเท่าใด",
+      "choices": {
+        "A": "0.04 mm",
+        "B": "0.02 mm",
+        "C": "0.01 mm",
+        "D": "0.08 mm"
+      },
+      "correct": "B",
+      "explanation": "$\\sigma_{\\bar{x}} = 0.04 / \\sqrt{4} = 0.04 / 2 = 0.02\\text{ mm}$"
+    },
+    {
+      "id": "M2-Q050",
+      "lo": "LO-M2-04",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "หากต้องการลดความกว้างของ Standard Error ($\\sigma_{\\bar{x}}$) ลงให้เหลือ **1 ใน 3** ของค่า $\\sigma$ รายชิ้น ต้องใช้ขนาด Subgroup `n` เท่าใด",
+      "choices": {
+        "A": "`n = 3`",
+        "B": "`n = 6`",
+        "C": "`n = 9`",
+        "D": "`n = 27`"
+      },
+      "correct": "C",
+      "explanation": "เพราะ $\\sqrt{9} = 3$ ดังนั้น $\\sigma_{\\bar{x}} = \\sigma / 3$"
+    },
+    {
+      "id": "M2-Q051",
+      "lo": "LO-M2-04",
+      "bloom": "Analyze",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "เหตุใดจึง **ห้ามนำเส้น Specification Limit (USL/LSL)** ของชิ้นงานรายชิ้น มาวาดเทียบกับจุด **$\\bar{X}$** บน Control Chart เด็ดขาด",
+      "choices": {
+        "A": "เพราะ USL/LSL วาดบนกระดาษกราฟไม่ได้",
+        "B": "เพราะค่า $\\bar{X}$ มีความกว้างแคบกว่าชิ้นงานเดี่ยวถึง $\\sqrt{n}$ เท่า ถึงจุด $\\bar{X}$ อยู่ใน USL/LSL ก็อาจมีชิ้นงานจริงหลุด Spec ไปแล้ว",
+        "C": "เพราะ $\\bar{X}$ ไม่มีหน่วยเหมือนชิ้นงาน",
+        "D": "เพราะ Spec Limit เคลื่อนที่ตลอดเวลา"
+      },
+      "correct": "B",
+      "explanation": "Spec Limit ใช้เทียบชิ้นงานรายชิ้น ($X$) ส่วน Control Limit ใช้เทียบค่าสถิติกลุ่ม ($\\bar{X}$) ซึ่งแคบกว่า $\\sqrt{n}$ เท่า"
+    },
+    {
+      "id": "M2-Q052",
+      "lo": "LO-M2-04",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "เหตุใดโรงงานจึงนิยมเก็บ Subgroup size **$n = 4$ หรือ $5$** ใน $\\bar{X}$-$R$ Control Chart",
+      "choices": {
+        "A": "เพราะ CLT ทำให้ $\\bar{X}$ ใกล้ Normal, จับ Mean Shift ได้ไวขึ้น ~2 เท่า และคำนวณง่ายหน้างาน",
+        "B": "เพราะกฎหมายบังคับห้ามเกิน 5",
+        "C": "เพราะ $n=5$ ทำให้ Standard Error ใหญ่กว่าชิ้นเดี่ยว",
+        "D": "เพราะใช้ได้กับข้อมูล Attribute เท่านั้น"
+      },
+      "correct": "A",
+      "explanation": "$n=4\\text{–}5$ ให้สมดุลดีที่สุดระหว่างต้นทุนการวัด, ความเป็น Normal ตาม CLT, และความไวในการจับ Mean Shift"
+    },
+    {
+      "id": "M2-Q053",
+      "lo": "LO-M2-04",
+      "bloom": "Understand",
+      "difficulty": "Easy",
+      "type": "MC",
+      "question": "ความสัมพันธ์ระหว่างค่าเฉลี่ยของ Sampling Distribution ($\\mu_{\\bar{x}}$) กับค่าเฉลี่ยของประชากร ($\\mu$) คือข้อใด",
+      "choices": {
+        "A": "$\\mu_{\\bar{x}} = \\mu / \\sqrt{n}$",
+        "B": "$\\mu_{\\bar{x}} = \\mu$",
+        "C": "$\\mu_{\\bar{x}} = \\mu^2$",
+        "D": "$\\mu_{\\bar{x}} = 0$ เสมอ"
+      },
+      "correct": "B",
+      "explanation": "ค่าเฉลี่ยของค่าเฉลี่ยกลุ่มตัวอย่างเป็นตัวประมาณค่าที่ไม่เอนเอียงเท่ากับ $\\mu$ ของประชากรเสมอ"
+    },
+    {
+      "id": "M2-Q054",
+      "lo": "LO-M2-04",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "เครื่องจักร 1 มีชิ้นงานรายชิ้นเบ้ขวาเล็กน้อย เมื่อนำมาสร้าง $\\bar{X}$ Chart ด้วย `n = 5` ชิ้น กราฟของจุด $\\bar{X}$ จะมีลักษณะอย่างไรตาม CLT",
+      "choices": {
+        "A": "เบ้ขวามากกว่าเดิม 5 เท่า",
+        "B": "สมมาตรใกล้เคียง Normal Distribution มากขึ้นและแคบลง `√5` เท่า",
+        "C": "กลายเป็น Uniform Distribution",
+        "D": "ไม่สามารถหาค่าเฉลี่ยได้"
+      },
+      "correct": "B",
+      "explanation": "CLT ช่วยปรับรูปร่างการแจกแจงของค่าเฉลี่ยให้สมมาตรใกล้ Normal และบีบความกว้างลงด้วย $\\sqrt{n}$"
+    },
+    {
+      "id": "M2-Q055",
+      "lo": "LO-M2-04",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "จากข้อมูล Workshop `Bore_Diameter_mm` ช่วงเสถียร (`SD = 0.0220 mm`, `n = 5`) ค่า Standard Error ($\\sigma_{\\bar{x}}$) มีค่าประมาณเท่าใด",
+      "choices": {
+        "A": "`0.0220 mm`",
+        "B": "`0.0099 mm`",
+        "C": "`0.0044 mm`",
+        "D": "`0.0492 mm`"
+      },
+      "correct": "B",
+      "explanation": "$\\sigma_{\\bar{x}} = 0.0220 / \\sqrt{5} \\approx 0.0220 / 2.236 \\approx 0.0099\\text{ mm}$"
+    },
+    {
+      "id": "M2-Q056",
+      "lo": "LO-M2-04",
+      "bloom": "Analyze",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "จาก Workshop (`Mean = 20.0009, SE = 0.0099`) หากเกิด Special Cause ทำให้ค่าเฉลี่ยของ `SG-09` พุ่งเป็น `20.0940 mm` ค่านี้ห่างจาก Target ในหน่วย Standard Error กี่เท่า",
+      "choices": {
+        "A": "~1.0 เท่า",
+        "B": "~3.0 เท่า",
+        "C": "~9.4 เท่า",
+        "D": "~0.5 เท่า"
+      },
+      "correct": "C",
+      "explanation": "$(20.0940 - 20.0009) / 0.0099 \\approx +9.4\\sigma_{\\bar{x}}$ ทะลุขอบ $3\\sigma$ อย่างรุนแรง"
+    },
+    {
+      "id": "M2-Q057",
+      "lo": "LO-M2-04",
+      "bloom": "Evaluate",
+      "difficulty": "Hard",
+      "type": "MC",
+      "question": "หากค่าเฉลี่ยของตัวอย่าง $n = 25$ ชิ้น อยู่ที่ `20.04 mm` ในขณะที่เป้าหมายคือ `20.00 mm` และ $\\sigma$ ของเครื่องปกติคือ `0.02 mm` คุณควรสรุปอย่างไร",
+      "choices": {
+        "A": "ปกติดีเพราะห่างแค่ `2σ` ของชิ้นงาน",
+        "B": "ผิดปกติรุนแรงมาก เพราะเทียบกับ $\\sigma_{\\bar{x}} = 0.02/\\sqrt{25} = 0.004\\text{ mm}$ ค่าเฉลี่ยนี้กระโดดห่างถึง **`10` Standard Errors**!",
+        "C": "ต้องใช้ Binomial Chart",
+        "D": "ลด $n$ เหลือ 1 แล้วหายปกติ"
+      },
+      "correct": "B",
+      "explanation": "ห้ามเอา SD ของรายชิ้นมาเทียบค่าเฉลี่ยของ 25 ชิ้น; ต้องหารด้วย $\\sqrt{25}=5$ ก่อน ($\\sigma_{\\bar{x}} = 0.004$)"
+    },
+    {
+      "id": "M2-Q058",
+      "lo": "LO-M2-04",
+      "bloom": "Understand",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ข้อใดกล่าว **ผิด** เกี่ยวกับ Central Limit Theorem",
+      "choices": {
+        "A": "$\\mu_{\\bar{x}} = \\mu$",
+        "B": "$\\sigma_{\\bar{x}} = \\sigma / \\sqrt{n}$",
+        "C": "ถ้าประชากรเบ้มาก อาจต้องใช้ $n$ ที่ใหญ่ขึ้น (เช่น $n \\ge 30$) เพื่อเป็น Normal สมบูรณ์",
+        "D": "**CLT ทำให้ชิ้นงานรายชิ้น (Raw Individual Parts) กลายเป็น Normal ได้ด้วย**"
+      },
+      "correct": "D",
+      "explanation": "CLT ทำให้ **ค่าเฉลี่ย $\\bar{X}$** เป็น Normal ไม่ได้เปลี่ยนรูปร่างของชิ้นงานรายชิ้น!"
+    },
+    {
+      "id": "M2-Q059",
+      "lo": "LO-M2-04",
+      "bloom": "Apply",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ในกระบวนการที่ข้อมูลดิบมีความเบ้มาก (Extremely Skewed เช่น Tool Life) กฎทั่วไปทางสถิติแนะนำขนาดตัวอย่าง $n$ อย่างน้อยเท่าใดเพื่อให้ CLT ทำงานได้สมบูรณ์",
+      "choices": {
+        "A": "`n >= 2`",
+        "B": "`n >= 30`",
+        "C": "`n = 1`",
+        "D": "`n = 0`"
+      },
+      "correct": "B",
+      "explanation": "สำหรับประชากรที่เบ้รุนแรง กฎทั่วไปใช้ $n \\ge 30$ (ส่วนข้อมูลโรงงานทั่วไปที่เบ้ไม่มาก $n = 4\\text{–}5$ ก็ใกล้ Normal แล้ว)"
+    },
+    {
+      "id": "M2-Q060",
+      "lo": "LO-M2-04",
+      "bloom": "Analyze",
+      "difficulty": "Medium",
+      "type": "MC",
+      "question": "ความเข้าใจใน Module 2 ข้อใดที่เชื่อมโยงตรงสู่ **Module 3 (Confidence Interval & Hypothesis Testing)**",
+      "choices": {
+        "A": "การรู้ค่า Standard Error ($\\sigma / \\sqrt{n}$) ช่วยสร้างช่วงความเชื่อมั่น (CI) และทดสอบสมมติฐานค่าเฉลี่ย",
+        "B": "การใช้ Common Cause แก้ด้วย Tampering",
+        "C": "การใช้ Pareto Chart 80/20",
+        "D": "การวัด Nominal Scale"
+      },
+      "correct": "A",
+      "explanation": "Standard Error จาก CLT เป็นตัวแปรหลักในการคำนวณ Margin of Error และ T-statistic ใน Module 3"
+    }
+  ],
+  "workshops": {
+    "ctqBore": [
+      {
+        "Part_ID": "P01",
+        "Subgroup_ID": "SG-01",
+        "Sample_In_Subgroup": "1",
+        "Timestamp": "2026-11-02 08:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "20.01",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P02",
+        "Subgroup_ID": "SG-01",
+        "Sample_In_Subgroup": "2",
+        "Timestamp": "2026-11-02 08:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "19.98",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P03",
+        "Subgroup_ID": "SG-01",
+        "Sample_In_Subgroup": "3",
+        "Timestamp": "2026-11-02 08:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "20.02",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P04",
+        "Subgroup_ID": "SG-01",
+        "Sample_In_Subgroup": "4",
+        "Timestamp": "2026-11-02 08:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "19.99",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P05",
+        "Subgroup_ID": "SG-01",
+        "Sample_In_Subgroup": "5",
+        "Timestamp": "2026-11-02 08:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "20.00",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P06",
+        "Subgroup_ID": "SG-02",
+        "Sample_In_Subgroup": "1",
+        "Timestamp": "2026-11-02 09:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "20.03",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P07",
+        "Subgroup_ID": "SG-02",
+        "Sample_In_Subgroup": "2",
+        "Timestamp": "2026-11-02 09:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "19.97",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P08",
+        "Subgroup_ID": "SG-02",
+        "Sample_In_Subgroup": "3",
+        "Timestamp": "2026-11-02 09:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "20.01",
+        "Surface_Defect_Count": "1",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P09",
+        "Subgroup_ID": "SG-02",
+        "Sample_In_Subgroup": "4",
+        "Timestamp": "2026-11-02 09:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "20.00",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P10",
+        "Subgroup_ID": "SG-02",
+        "Sample_In_Subgroup": "5",
+        "Timestamp": "2026-11-02 09:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "19.99",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P11",
+        "Subgroup_ID": "SG-03",
+        "Sample_In_Subgroup": "1",
+        "Timestamp": "2026-11-02 10:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "19.96",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P12",
+        "Subgroup_ID": "SG-03",
+        "Sample_In_Subgroup": "2",
+        "Timestamp": "2026-11-02 10:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "20.02",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P13",
+        "Subgroup_ID": "SG-03",
+        "Sample_In_Subgroup": "3",
+        "Timestamp": "2026-11-02 10:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "20.01",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P14",
+        "Subgroup_ID": "SG-03",
+        "Sample_In_Subgroup": "4",
+        "Timestamp": "2026-11-02 10:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "20.04",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P15",
+        "Subgroup_ID": "SG-03",
+        "Sample_In_Subgroup": "5",
+        "Timestamp": "2026-11-02 10:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "19.99",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P16",
+        "Subgroup_ID": "SG-04",
+        "Sample_In_Subgroup": "1",
+        "Timestamp": "2026-11-02 11:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "20.00",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P17",
+        "Subgroup_ID": "SG-04",
+        "Sample_In_Subgroup": "2",
+        "Timestamp": "2026-11-02 11:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "20.03",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P18",
+        "Subgroup_ID": "SG-04",
+        "Sample_In_Subgroup": "3",
+        "Timestamp": "2026-11-02 11:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "19.98",
+        "Surface_Defect_Count": "1",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P19",
+        "Subgroup_ID": "SG-04",
+        "Sample_In_Subgroup": "4",
+        "Timestamp": "2026-11-02 11:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "20.02",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P20",
+        "Subgroup_ID": "SG-04",
+        "Sample_In_Subgroup": "5",
+        "Timestamp": "2026-11-02 11:00",
+        "Shift": "Day",
+        "Operator": "OP-1",
+        "Bore_Diameter_mm": "19.97",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P21",
+        "Subgroup_ID": "SG-05",
+        "Sample_In_Subgroup": "1",
+        "Timestamp": "2026-11-02 12:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.01",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P22",
+        "Subgroup_ID": "SG-05",
+        "Sample_In_Subgroup": "2",
+        "Timestamp": "2026-11-02 12:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "19.95",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P23",
+        "Subgroup_ID": "SG-05",
+        "Sample_In_Subgroup": "3",
+        "Timestamp": "2026-11-02 12:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.02",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P24",
+        "Subgroup_ID": "SG-05",
+        "Sample_In_Subgroup": "4",
+        "Timestamp": "2026-11-02 12:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.00",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P25",
+        "Subgroup_ID": "SG-05",
+        "Sample_In_Subgroup": "5",
+        "Timestamp": "2026-11-02 12:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.03",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P26",
+        "Subgroup_ID": "SG-06",
+        "Sample_In_Subgroup": "1",
+        "Timestamp": "2026-11-02 13:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "19.99",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P27",
+        "Subgroup_ID": "SG-06",
+        "Sample_In_Subgroup": "2",
+        "Timestamp": "2026-11-02 13:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.04",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P28",
+        "Subgroup_ID": "SG-06",
+        "Sample_In_Subgroup": "3",
+        "Timestamp": "2026-11-02 13:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "19.98",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P29",
+        "Subgroup_ID": "SG-06",
+        "Sample_In_Subgroup": "4",
+        "Timestamp": "2026-11-02 13:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.01",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P30",
+        "Subgroup_ID": "SG-06",
+        "Sample_In_Subgroup": "5",
+        "Timestamp": "2026-11-02 13:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.00",
+        "Surface_Defect_Count": "1",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P31",
+        "Subgroup_ID": "SG-07",
+        "Sample_In_Subgroup": "1",
+        "Timestamp": "2026-11-02 14:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.02",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P32",
+        "Subgroup_ID": "SG-07",
+        "Sample_In_Subgroup": "2",
+        "Timestamp": "2026-11-02 14:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "19.97",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P33",
+        "Subgroup_ID": "SG-07",
+        "Sample_In_Subgroup": "3",
+        "Timestamp": "2026-11-02 14:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.01",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P34",
+        "Subgroup_ID": "SG-07",
+        "Sample_In_Subgroup": "4",
+        "Timestamp": "2026-11-02 14:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "19.99",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P35",
+        "Subgroup_ID": "SG-07",
+        "Sample_In_Subgroup": "5",
+        "Timestamp": "2026-11-02 14:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.03",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P36",
+        "Subgroup_ID": "SG-08",
+        "Sample_In_Subgroup": "1",
+        "Timestamp": "2026-11-02 15:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "19.98",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P37",
+        "Subgroup_ID": "SG-08",
+        "Sample_In_Subgroup": "2",
+        "Timestamp": "2026-11-02 15:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.02",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P38",
+        "Subgroup_ID": "SG-08",
+        "Sample_In_Subgroup": "3",
+        "Timestamp": "2026-11-02 15:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.00",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P39",
+        "Subgroup_ID": "SG-08",
+        "Sample_In_Subgroup": "4",
+        "Timestamp": "2026-11-02 15:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "19.96",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P40",
+        "Subgroup_ID": "SG-08",
+        "Sample_In_Subgroup": "5",
+        "Timestamp": "2026-11-02 15:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.01",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P41",
+        "Subgroup_ID": "SG-09",
+        "Sample_In_Subgroup": "1",
+        "Timestamp": "2026-11-02 16:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.08",
+        "Surface_Defect_Count": "1",
+        "Visual_Pass_Fail": "Fail"
+      },
+      {
+        "Part_ID": "P42",
+        "Subgroup_ID": "SG-09",
+        "Sample_In_Subgroup": "2",
+        "Timestamp": "2026-11-02 16:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.11",
+        "Surface_Defect_Count": "2",
+        "Visual_Pass_Fail": "Fail"
+      },
+      {
+        "Part_ID": "P43",
+        "Subgroup_ID": "SG-09",
+        "Sample_In_Subgroup": "3",
+        "Timestamp": "2026-11-02 16:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.09",
+        "Surface_Defect_Count": "1",
+        "Visual_Pass_Fail": "Fail"
+      },
+      {
+        "Part_ID": "P44",
+        "Subgroup_ID": "SG-09",
+        "Sample_In_Subgroup": "4",
+        "Timestamp": "2026-11-02 16:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.12",
+        "Surface_Defect_Count": "2",
+        "Visual_Pass_Fail": "Fail"
+      },
+      {
+        "Part_ID": "P45",
+        "Subgroup_ID": "SG-09",
+        "Sample_In_Subgroup": "5",
+        "Timestamp": "2026-11-02 16:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.07",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P46",
+        "Subgroup_ID": "SG-10",
+        "Sample_In_Subgroup": "1",
+        "Timestamp": "2026-11-02 17:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.00",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P47",
+        "Subgroup_ID": "SG-10",
+        "Sample_In_Subgroup": "2",
+        "Timestamp": "2026-11-02 17:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.01",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P48",
+        "Subgroup_ID": "SG-10",
+        "Sample_In_Subgroup": "3",
+        "Timestamp": "2026-11-02 17:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "19.99",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P49",
+        "Subgroup_ID": "SG-10",
+        "Sample_In_Subgroup": "4",
+        "Timestamp": "2026-11-02 17:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "20.02",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      },
+      {
+        "Part_ID": "P50",
+        "Subgroup_ID": "SG-10",
+        "Sample_In_Subgroup": "5",
+        "Timestamp": "2026-11-02 17:00",
+        "Shift": "Day",
+        "Operator": "OP-2",
+        "Bore_Diameter_mm": "19.98",
+        "Surface_Defect_Count": "0",
+        "Visual_Pass_Fail": "Pass"
+      }
+    ]
+  },
+  "resourcesMarkdown": "# Module 2 Quick Reference: Formula Cheat Sheet & Glossary\n\nเอกสารสรุปสำหรับปุ่ม **`Resources`** ประจำ Module 2 (Probability & Distribution)\n\n---\n\n## 1. Common Cause vs Special Cause\n\n| หัวข้อ | Common Cause (Noise) | Special Cause (Signal) |\n|---|---|---|\n| **ลักษณะ** | แปรปรวนปกติของระบบ คาดเดาได้ | เกิดจากเหตุเฉพาะ เช่น มีดบิ่น, จิ๊กหลวม |\n| **สถานะ** | Stable (In Control) | Unstable (Out of Control) |\n| **การจัดการ** | แก้ที่ระบบโดยวิศวกร (**ห้ามปรับเครื่องหน้างาน**) | หยุดเช็ค/แก้ไขทันทีตาม Reaction Plan (OCAP) |\n\n---\n\n## 2. สูตรความน่าจะเป็นและสัญลักษณ์ประชากร vs ตัวอย่าง\n\n- **Series First Pass Yield (FPY):** $FPY_{\\text{total}} = Y_1 \\times Y_2 \\times \\dots \\times Y_k$\n- **Population Parameters:** ขนาด $N$, ค่าเฉลี่ย $\\mu$, ส่วนเบี่ยงเบน $\\sigma$, สัดส่วน $p$\n- **Sample Statistics:** ขนาด $n$, ค่าเฉลี่ย $\\bar{x}$, ส่วนเบี่ยงเบน $s$, สัดส่วน $\\hat{p}$\n\n---\n\n## 3. การแจกแจงความน่าจะเป็น 3 แบบหลัก & Central Limit Theorem\n\n| Distribution | ใช้เมื่อไร | สูตรสำคัญ | ค่าเฉลี่ย / ส่วนเบี่ยงเบน |\n|---|---|---|---|\n| **Normal** | วัดค่าต่อเนื่อง (Variable: mm, g, N·m) | $Z = \\dfrac{X - \\mu}{\\sigma}$ | $\\mu$, $\\sigma$ (เช็ค Normality `p >= 0.05`) |\n| **Binomial** | นับชิ้นงาน Pass/Fail (`Defective`) จาก $n$ ชิ้น | $P(X=k) = \\binom{n}{k}p^k(1-p)^{n-k}$ | $\\mu = np$, $\\sigma = \\sqrt{np(1-p)}$ |\n| **Poisson** | นับจำนวนจุดตำหนิ (`Defects`) ต่อหน่วย | $P(X=k) = \\dfrac{e^{-\\lambda}\\lambda^k}{k!}$ | $\\mu = \\lambda$, $\\sigma = \\sqrt{\\lambda}$ |\n| **CLT ($\\bar{X}$)** | ค่าเฉลี่ยของ Subgroup ขนาด $n$ | $\\sigma_{\\bar{x}} = \\dfrac{\\sigma}{\\sqrt{n}}$ | $\\mu_{\\bar{x}} = \\mu$ (**ห้ามเทียบ $\\bar{X}$ กับ USL/LSL!**) |\n\n---\n\n## 4. อภิธานศัพท์ (Bilingual Glossary)\n\n| Term (EN) | คำศัพท์ / ความหมาย (TH) |\n|---|---|\n| **Common / Special Cause** | ความแปรปรวนปกติของระบบ / ความแปรปรวนจากสาเหตุพิเศษที่ระบุตัวได้ |\n| **Tampering** | การปรับแต่งกระบวนการตามสัญญาณรบกวนปกติ จนความแปรปรวนยิ่งเพิ่มขึ้น |\n| **First Pass Yield (FPY)** | สัดส่วนชิ้นงานที่ดีตั้งแต่ครั้งแรกโดยไม่ต้องซ่อม (ผลคูณข้ามสถานี) |\n| **Sampling Error vs Bias** | ความคลาดเคลื่อนจากการสุ่มบางส่วน (ลดได้ด้วย $n$) vs ความเอนเอียงจากวิธีสุ่มผิด |\n| **Z-Score** | ระยะห่างจากค่าเฉลี่ยในหน่วยจำนวนเท่าของส่วนเบี่ยงเบนมาตรฐาน ($\\sigma$) |\n| **Normality Test (`p >= 0.05`)** | การทดสอบว่าข้อมูลแจกแจงปกติหรือไม่ ก่อนใช้สูตร Z หรือ Cpk มาตรฐาน |\n| **Central Limit Theorem (CLT)** | ทฤษฎีบทขีดจำกัดกลาง: ค่าเฉลี่ย $\\bar{X}$ ลู่เข้า Normal เสมอเมื่อ $n$ ใหญ่พอ |\n| **Standard Error ($\\sigma_{\\bar{x}}$)** | ส่วนเบี่ยงเบนมาตรฐานของค่าเฉลี่ยกลุ่มตัวอย่าง ($\\sigma / \\sqrt{n}$) |\n"
+}
