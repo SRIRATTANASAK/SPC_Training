@@ -792,7 +792,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                         A
                       </span>
                       <span className="text-xs font-bold uppercase tracking-wider text-amber-900">
-                        Attribute Data (ข้อมูลเชิงคุณลักษณะ)
+                        Discrete / Attribute Data (ข้อมูลเชิงคุณลักษณะ/จำนวนนับ)
                       </span>
                     </div>
                     <p className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
@@ -814,7 +814,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                             Continuous Data (ข้อมูลต่อเนื่อง)
                           </th>
                           <th className="w-[39%] px-4 sm:px-5 py-3 text-sm sm:text-base font-extrabold text-amber-200">
-                            Attribute Data (ข้อมูลเชิงคุณลักษณะ)
+                            Discrete / Attribute Data (ข้อมูลเชิงคุณลักษณะ/จำนวนนับ)
                           </th>
                         </tr>
                       </thead>

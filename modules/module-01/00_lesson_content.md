@@ -96,10 +96,10 @@ $$\text{COPQ} = \text{Internal Failure Costs} + \text{External Failure Costs}$$
 
 ---
 
-## M1L2-S02 — Continuous vs Attribute Data
+## M1L2-S02 — Continuous vs Discrete / Attribute Data
 `<Asset id="AST-M1-008" />` `<Asset id="AST-M1-009" />`
 
-| มิติเปรียบเทียบ | Continuous Data (ข้อมูลต่อเนื่อง) | Attribute Data (ข้อมูลเชิงคุณลักษณะ) |
+| มิติเปรียบเทียบ | Continuous Data (ข้อมูลต่อเนื่อง) | Discrete / Attribute Data (ข้อมูลเชิงคุณลักษณะ/จำนวนนับ) |
 |---|---|---|
 | **ลักษณะค่าข้อมูล** | แบ่งย่อยเป็นทศนิยมได้ไม่สิ้นสุดตามความละเอียดเครื่องมือวัด | เป็นจำนวนนับเต็มหน่วย หรือหมวดหมู่ชัดเจน (ไม่มีทศนิยม) |
 | **ตัวอย่างในโรงงาน** | ขนาดเพลา `50.00`, `50.01`, `50.014 mm` | จำนวนจุดเสีย `0, 1, 2, 3 จุด` หรือ `Day / Night`, `Pass / Fail` |
