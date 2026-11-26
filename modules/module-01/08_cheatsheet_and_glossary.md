@@ -44,7 +44,7 @@
 | Term (EN) | คำศัพท์ / ความหมาย (TH) |
 |---|---|
 | **Variation** | ความแปรปรวน — ความแตกต่างของผลลัพธ์จากกระบวนการผลิตแม้ตั้งค่าเหมือนเดิม |
-| **COPQ (Cost of Poor Quality)** | ต้นทุนความสูญเสียจากคุณภาพต่ำ (Prevention, Appraisal, Internal & External Failure) |
+| **COPQ (Cost of Poor Quality)** | ต้นทุนความสูญเสียจากคุณภาพต่ำ: COPQ = Internal Failure + External Failure (โดย COQ = Cost of Conformance + COPQ) |
 | **Data-Driven Decision** | การตัดสินใจบนฐานข้อมูลและหลักฐานทางสถิติ |
 | **Statistical Thinking** | การคิดเชิงสถิติเพื่อแยก Normal Variation ออกจาก Abnormal Variation ก่อนปรับตั้งเครื่อง |
 | **Variable / Continuous Data** | ข้อมูลเชิงปริมาณแบบวัดค่าต่อเนื่องบนสเกล (เช่น mm, g, N·m) |

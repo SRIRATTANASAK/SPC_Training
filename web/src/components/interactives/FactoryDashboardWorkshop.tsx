@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import type { DimensionDefectRow } from '../../lib/types';
-import { Workshop2DataPreview } from '../visuals/InteractiveLessonVisuals';
+import { Workshop2DataPreview, boxStats } from '../visuals/InteractiveLessonVisuals';
 
 interface Props {
   rows: DimensionDefectRow[];
@@ -82,12 +82,11 @@ export const FactoryDashboardWorkshop: React.FC<Props> = ({ rows }) => {
       return { label: lo.toFixed(2), count };
     });
 
-    // Box plot stats by machine
-    const boxFor = (mc: string) => {
-      const vals = nums.filter((r) => r.machine === mc).map((r) => r.diam).sort((a, b) => a - b);
-      const q = (p: number) => vals[Math.min(vals.length - 1, Math.floor(p * (vals.length - 1)))];
-      return { mc, min: vals[0], q1: q(0.25), med: q(0.5), q3: q(0.75), max: vals[vals.length - 1] };
-    };
+    // Box plot stats by machine (Moore & McCabe ชุดเดียวกับหน้า M1L4-S03)
+    const boxFor = (mc: string) => ({
+      mc,
+      ...boxStats(nums.filter((r) => r.machine === mc).map((r) => r.diam)),
+    });
 
     return { nums, pareto, totalDef, bins, boxes: [boxFor('MC-A'), boxFor('MC-B')] };
   }, [rows]);
@@ -198,7 +197,10 @@ export const FactoryDashboardWorkshop: React.FC<Props> = ({ rows }) => {
               return (
                 <g key={b.mc}>
                   <text x="20" y={y + 4} className="fill-slate-900 text-[12px] font-bold">{b.mc}</text>
-                  <line x1={mapX(b.min)} y1={y} x2={mapX(b.max)} y2={y} stroke="#475569" strokeWidth="2" />
+                  <line x1={mapX(b.whiskerLo)} y1={y} x2={mapX(b.whiskerHi)} y2={y} stroke="#475569" strokeWidth="2" />
+                  {[b.whiskerLo, b.whiskerHi].map((w) => (
+                    <line key={w} data-whisker={w.toFixed(2)} x1={mapX(w)} y1={y - 9} x2={mapX(w)} y2={y + 9} stroke="#475569" strokeWidth="2" />
+                  ))}
                   <rect
                     x={mapX(b.q1)}
                     y={y - 16}
@@ -210,13 +212,27 @@ export const FactoryDashboardWorkshop: React.FC<Props> = ({ rows }) => {
                     rx="3"
                   />
                   <line x1={mapX(b.med)} y1={y - 16} x2={mapX(b.med)} y2={y + 16} stroke="#dc2626" strokeWidth="3" />
-                  <circle cx={mapX(b.max)} cy={y} r="4" fill="#dc2626" />
+                  {b.outliers.map((o, i) => (
+                    <g key={i}>
+                      <circle data-outlier={o.toFixed(2)} cx={mapX(o)} cy={y} r="4" fill="#dc2626" />
+                      <text x={mapX(o)} y={y - 9} textAnchor="middle" className="fill-rose-700 text-[10px] font-bold">
+                        {o.toFixed(2)}
+                      </text>
+                    </g>
+                  ))}
+                  <text x="275" y={y + 28} textAnchor="middle" className="fill-slate-700 text-[10px]">
+                    Q1 {b.q1.toFixed(2)} · Median {b.med.toFixed(2)} · Q3 {b.q3.toFixed(2)} · Whisker {b.whiskerLo.toFixed(2)}–
+                    {b.whiskerHi.toFixed(2)}
+                    {b.outliers.length ? '' : ' · ไม่มี Outlier'}
+                  </text>
                 </g>
               );
             })}
-            <text x="80" y="175" className="fill-slate-600 text-[10px]">49.96 mm</text>
-            <text x="260" y="175" className="fill-slate-600 text-[10px]">50.06 mm</text>
-            <text x="430" y="175" className="fill-rose-700 text-[10px] font-bold">50.14+ mm</text>
+            {[49.96, 50.0, 50.05, 50.1, 50.14].map((v) => (
+              <text key={v} x={80 + ((v - 49.96) / 0.2) * 370} y="175" textAnchor="middle" className="fill-slate-600 text-[10px]">
+                {v.toFixed(2)}
+              </text>
+            ))}
           </svg>
         )}
 

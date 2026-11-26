@@ -22,6 +22,34 @@ const toSamples = (rows: CsvRow[]) =>
     defect: r.Defect_Type,
   }));
 
+const medianOf = (v: number[]) => {
+  const m = Math.floor(v.length / 2);
+  return v.length % 2 ? v[m] : (v[m - 1] + v[m]) / 2;
+};
+
+// Box Plot แบบ Moore & McCabe: Q1/Q3 = median ของครึ่งล่าง/บน (n คี่ ไม่รวม median)
+// whisker = ค่าจริงต่ำสุด/สูงสุดที่อยู่ในรั้ว Q1 − 1.5×IQR, Q3 + 1.5×IQR; ค่าเกินรั้ว = outlier
+export const boxStats = (values: number[]) => {
+  const v = [...values].sort((a, b) => a - b);
+  const half = Math.floor(v.length / 2);
+  const q1 = medianOf(v.slice(0, half));
+  const med = medianOf(v);
+  const q3 = medianOf(v.slice(v.length - half));
+  const iqr = q3 - q1;
+  const eps = 1e-9;
+  const inside = (x: number) => x >= q1 - 1.5 * iqr - eps && x <= q3 + 1.5 * iqr + eps;
+  const kept = v.filter(inside);
+  return {
+    q1,
+    med,
+    q3,
+    iqr,
+    whiskerLo: kept[0],
+    whiskerHi: kept[kept.length - 1],
+    outliers: v.filter((x) => !inside(x)),
+  };
+};
+
 // โครงการ์ดกราฟมาตรฐาน: หัวเรื่อง → พื้นที่กราฟสูงเท่ากัน → กล่องคำอธิบายตำแหน่งเดียวกัน
 const ChartCard: React.FC<{
   label: string;
@@ -211,6 +239,10 @@ export const DispersionUnifiedCard: React.FC = () => {
           <div className="mt-2 text-xs text-slate-800 flex items-center justify-between">
             <span>ผลรวมกำลังสองหารด้วย n−1:</span>
             <span className="font-mono font-bold text-sm text-indigo-950">s² = {variance.toFixed(6)} mm²</span>
+          </div>
+          <div className="text-[11px] text-slate-700 mt-1 leading-relaxed">
+            <strong>ทำไมหารด้วย n−1:</strong> การประมาณค่าเฉลี่ย (x̄) จากข้อมูลตัวอย่างทำให้เสียองศาอิสระ (Degrees of Freedom)
+            ไป 1 ระดับ การหารด้วย n−1 จึงชดเชยส่วนนี้และได้ตัวประมาณค่าความแปรปรวนที่ไม่เอนเอียง (Unbiased Estimator)
           </div>
           <div className="text-[11px] text-slate-600 mt-1">
             📐 นำข้อมูลทุกจุดมาคิด แต่หน่วยเป็นกำลังสอง (<InlineMarkdown text="$\text{mm}^2$" />) ทำให้อ่านเทียบสเปกจริงยาก
@@ -495,7 +527,24 @@ export const HistogramChart: React.FC<{ audioTime?: number; audioDuration?: numb
 // =============================================================
 // 5. M1L4-S03: Interactive Box Plot Chart
 // =============================================================
-export const BoxPlotChart: React.FC = () => {
+export const BoxPlotChart: React.FC<{ rows: CsvRow[] }> = ({ rows }) => {
+  const samples = toSamples(rows);
+  const groups = [
+    { mc: 'MC-A', y: 48, color: '#0284c7', dark: '#0369a1', fill: '#e0f2fe' },
+    { mc: 'MC-B', y: 122, color: '#d97706', dark: '#b45309', fill: '#fef3c7' },
+  ]
+    .map((g) => ({ ...g, values: samples.filter((s) => s.mc === g.mc).map((s) => s.diam) }))
+    .filter((g) => g.values.length > 1)
+    .map((g) => ({ ...g, stats: boxStats(g.values) }));
+
+  // แกน X ครอบคลุมทั้งข้อมูลจริงและเส้นสเปก
+  const all = [LSL, USL, ...samples.map((s) => s.diam)];
+  const min = Math.min(...all) - 0.01;
+  const max = Math.max(...all) + 0.01;
+  const xOf = (v: number) => 50 + ((v - min) / (max - min)) * 390;
+  const f = (v: number) => v.toFixed(2);
+  const b = groups.find((g) => g.mc === 'MC-B')?.stats;
+
   return (
     <ChartCard
       label="Box Plot (แผนภาพกล่อง)"
@@ -503,53 +552,66 @@ export const BoxPlotChart: React.FC = () => {
       badge="5-Point Summary"
       explanation={
         <>
-          <strong>การอ่านกราฟ:</strong> Box Plot สรุปข้อมูลด้วย Min (ปลาย Whisker ล่าง), Q1 (25%), Median (เส้นกลางกล่อง
-          50%), Q3 (75%) และ Max (ปลาย Whisker บน) ส่วนจุด Outlier คือค่าที่มากกว่า Q3 + 1.5×IQR หรือน้อยกว่า Q1 − 1.5×IQR{' '}
-          <strong>การแปลผล:</strong> MC-A นิ่งและเกาะกลุ่มตรงกลางเป้าหมาย ส่วน MC-B ค่ากลางเริ่มเลื่อนสูงขึ้น (Median =
-          50.04) กล่องกว้างขึ้น และมี Outlier หลุดสเปกที่ 50.14 mm!
+          <strong>การอ่านกราฟ:</strong> กล่องคือ Q1 ถึง Q3 เส้นกลางกล่องคือ Median (Q1/Q3 คิดจากมัธยฐานของครึ่งล่าง/ครึ่งบน
+          ไม่รวม Median) ปลาย Whisker คือค่าจริงต่ำสุดและสูงสุดที่อยู่ในช่วง Q1 − 1.5×IQR ถึง Q3 + 1.5×IQR
+          ค่าที่อยู่นอกช่วงนี้คือจุด Outlier <strong>การแปลผล:</strong> MC-A นิ่งและเกาะกลุ่มใกล้เป้าหมาย ส่วน MC-B
+          ค่ากลางเริ่มเลื่อนสูงขึ้น{b ? ` (Median = ${f(b.med)})` : ''} กล่องกว้างขึ้น
+          {b && b.outliers.length > 0 ? ` และมี Outlier หลุดสเปกที่ ${b.outliers.map(f).join(', ')} mm!` : ''}
         </>
       }
     >
-      <svg viewBox="0 0 420 180" className="w-full h-full">
-        {/* Spec background lines */}
-        <line x1="40" y1="20" x2="40" y2="160" stroke="#94a3b8" strokeDasharray="3 3" />
-        <text x="40" y="15" textAnchor="middle" fill="#64748b" fontSize="9">LSL 49.95</text>
+      <svg viewBox="0 0 460 180" className="w-full h-full">
+        {[
+          { v: LSL, color: '#64748b', text: 'LSL 49.95' },
+          { v: TARGET, color: '#0284c7', text: 'Target 50.00' },
+          { v: USL, color: '#e11d48', text: 'USL 50.05' },
+        ].map((l) => (
+          <g key={l.text}>
+            <line x1={xOf(l.v)} y1="18" x2={xOf(l.v)} y2="165" stroke={l.color} strokeDasharray="3 3" />
+            <text x={xOf(l.v)} y="12" textAnchor="middle" fill={l.color} fontSize="9" fontWeight="bold">
+              {l.text}
+            </text>
+          </g>
+        ))}
 
-        <line x1="160" y1="20" x2="160" y2="160" stroke="#0284c7" strokeDasharray="2 2" />
-        <text x="160" y="15" textAnchor="middle" fill="#0284c7" fontSize="9" fontWeight="bold">Target 50.00</text>
-
-        <line x1="280" y1="20" x2="280" y2="160" stroke="#e11d48" strokeDasharray="3 3" />
-        <text x="280" y="15" textAnchor="middle" fill="#e11d48" fontSize="9" fontWeight="bold">USL 50.05</text>
-
-        {/* MC-A Box Plot (Morning Shift) */}
-        <text x="15" y="60" fill="#0369a1" fontSize="11" fontWeight="bold">MC-A</text>
-        {/* Whisker line */}
-        <line x1="110" y1="55" x2="210" y2="55" stroke="#0284c7" strokeWidth="2" />
-        <line x1="110" y1="45" x2="110" y2="65" stroke="#0284c7" strokeWidth="2" />
-        <line x1="210" y1="45" x2="210" y2="65" stroke="#0284c7" strokeWidth="2" />
-        {/* Box Q1-Q3 */}
-        <rect x="140" y="40" width="40" height="30" fill="#e0f2fe" stroke="#0284c7" strokeWidth="2" rx="3" />
-        {/* Median Line */}
-        <line x1="160" y1="40" x2="160" y2="70" stroke="#0369a1" strokeWidth="3" />
-        <text x="160" y="83" textAnchor="middle" fill="#0369a1" fontSize="9" fontWeight="bold">Med = 50.00</text>
-
-        {/* MC-B Box Plot (Afternoon Shift) */}
-        <text x="15" y="125" fill="#b45309" fontSize="11" fontWeight="bold">MC-B</text>
-        {/* Whisker line */}
-        <line x1="200" y1="120" x2="310" y2="120" stroke="#d97706" strokeWidth="2" />
-        <line x1="200" y1="110" x2="200" y2="130" stroke="#d97706" strokeWidth="2" />
-        <line x1="310" y1="110" x2="310" y2="130" stroke="#d97706" strokeWidth="2" />
-        {/* Box Q1-Q3 */}
-        <rect x="230" y="105" width="60" height="30" fill="#fef3c7" stroke="#d97706" strokeWidth="2" rx="3" />
-        {/* Median Line */}
-        <line x1="260" y1="105" x2="260" y2="135" stroke="#b45309" strokeWidth="3" />
-        <text x="260" y="148" textAnchor="middle" fill="#b45309" fontSize="9" fontWeight="bold">Med = 50.04</text>
-
-        {/* Outlier Dot for MC-B */}
-        <circle cx="380" cy="120" r="5" fill="#e11d48" stroke="#fff" strokeWidth="1.5" />
-        <text x="380" y="108" textAnchor="middle" fill="#e11d48" fontSize="9" fontWeight="bold">
-          Outlier (50.14)
-        </text>
+        {groups.map(({ mc, y, color, dark, fill, stats: s }) => (
+          <g key={mc} data-box={mc}>
+            <text x="6" y={y + 4} fill={dark} fontSize="11" fontWeight="bold">{mc}</text>
+            <line x1={xOf(s.whiskerLo)} y1={y} x2={xOf(s.whiskerHi)} y2={y} stroke={color} strokeWidth="2" />
+            {[s.whiskerLo, s.whiskerHi].map((w) => (
+              <line key={w} data-whisker={f(w)} x1={xOf(w)} y1={y - 10} x2={xOf(w)} y2={y + 10} stroke={color} strokeWidth="2" />
+            ))}
+            <rect x={xOf(s.q1)} y={y - 15} width={xOf(s.q3) - xOf(s.q1)} height="30" fill={fill} stroke={color} strokeWidth="2" rx="3" />
+            <line data-median={f(s.med)} x1={xOf(s.med)} y1={y - 15} x2={xOf(s.med)} y2={y + 15} stroke={dark} strokeWidth="3" />
+            {s.outliers.map((o, i) => (
+              <g key={i}>
+                <circle data-outlier={f(o)} cx={xOf(o)} cy={y} r="5" fill="#e11d48" stroke="#fff" strokeWidth="1.5" />
+                <text x={xOf(o)} y={y - 11} textAnchor="middle" fill="#e11d48" fontSize="9" fontWeight="bold">
+                  Outlier {f(o)}
+                </text>
+              </g>
+            ))}
+            {[
+              `Q1 ${f(s.q1)} · Median ${f(s.med)} · Q3 ${f(s.q3)} · IQR ${f(s.iqr)}`,
+              `Whisker ${f(s.whiskerLo)}–${f(s.whiskerHi)} · ${s.outliers.length ? `Outlier ${s.outliers.map(f).join(', ')}` : 'ไม่มี Outlier'}`,
+            ].map((line, i) => (
+              <text
+                key={i}
+                x="230"
+                y={y + 28 + i * 12}
+                textAnchor="middle"
+                fill={dark}
+                stroke="#ffffff"
+                strokeWidth="3"
+                paintOrder="stroke"
+                fontSize="9.5"
+                fontWeight="bold"
+              >
+                {line}
+              </text>
+            ))}
+          </g>
+        ))}
       </svg>
     </ChartCard>
   );

@@ -54,7 +54,7 @@
 - **Duration:** 45s (รวมเวลาลองกดคำนวณ)
 - **Layout:** Top COPQ Formula + Center Interactive Calculator + Bottom Severity Feedback
 - **Asset ID:** `AST-M1-003` | **Interactive ID:** `INT-M1-L1-02`
-- **On Screen Text:** `COPQ = Prevention + Appraisal + Internal Failure (Scrap/Rework/Sorting) + External Failure (Warranty/Claim)` — "ภูเขาน้ำแข็งแห่งความสูญเสีย"
+- **On Screen Text:** `Total COQ = Cost of Conformance + Cost of Non-Conformance (COPQ)` | `COPQ = Internal Failure Costs (Scrap/Rework/Sorting) + External Failure Costs (Warranty/Claim)` — "ภูเขาน้ำแข็งแห่งความสูญเสีย"
 - **Voice Over Script Ref:** `AUD-M1L1-S03`
 - **Motion Specification:** Iceberg reveal animation (Visible Scrap vs Hidden Costs); live bar gauge update.
 - **Trigger Logic:** Live calculation on input change; Green (`< 10,000`), Yellow (`10,000–50,000`), Red (`> 50,000`).

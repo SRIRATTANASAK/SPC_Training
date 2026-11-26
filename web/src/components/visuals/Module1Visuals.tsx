@@ -80,7 +80,7 @@ export const NoirScaleCards: React.FC = () => {
       id: 'R',
       title: 'Ratio (อัตราส่วน)',
       example: 'Shaft OD (mm), น้ำหนัก (g), แรงบิด (N·m)',
-      math: 'มี 0 แท้ ทำ Mean, SD, Cpk, SPC ได้ครบ',
+      math: 'มี 0 แท้ คำนวณสัดส่วนกี่เท่าและค่า CV (%) ได้ครบทุกตัว (ส่วน Control Chart และ Cpk ใช้ได้ตั้งแต่ระดับ Interval Scale เช่น อุณหภูมิ °C เป็นต้นไป)',
       color: 'border-emerald-300 bg-emerald-50',
     },
   ];

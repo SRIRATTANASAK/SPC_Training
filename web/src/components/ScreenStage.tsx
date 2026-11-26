@@ -477,8 +477,8 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
               </div>
             ) : screen.screenId === 'M1L1-S05' ? (
               <div className="flex h-full flex-col items-center justify-start gap-4 sm:gap-5 w-full max-w-5xl xl:max-w-6xl mx-auto pt-1 sm:pt-2">
-                {/* ข้อ 2: นำ 2 หลักคิดขึ้นด้านบน และปรับขนาดตัวหนังสือให้ใหญ่ขึ้น ชัดเจน โดดเด่น */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 w-full">
+                {/* ข้อ 2: นำ 3 หลักคิดขึ้นด้านบน และปรับขนาดตัวหนังสือให้ใหญ่ขึ้น ชัดเจน โดดเด่น */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 w-full">
                   {/* กล่องหลักคิดที่ 1 */}
                   <div className="rounded-xl border border-sky-200 bg-gradient-to-br from-sky-50 to-white p-4 shadow-sm hover:shadow transition">
                     <div className="flex items-center gap-2 mb-1.5">
@@ -512,6 +512,21 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                       <span className="font-mono text-sm sm:text-base font-semibold text-indigo-700 whitespace-nowrap bg-indigo-100/70 px-2 py-0.5 rounded-md border border-indigo-300/60">
                         (เสถียร ≠ เท่ากันทุกชิ้น)
                       </span>
+                    </p>
+                  </div>
+
+                  {/* กล่องหลักคิดที่ 3 */}
+                  <div className="rounded-xl border border-emerald-200 bg-gradient-to-br from-emerald-50 to-white p-4 shadow-sm hover:shadow transition">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-emerald-700 text-white font-extrabold text-xs shadow-sm">
+                        3
+                      </span>
+                      <span className="text-xs font-bold uppercase tracking-wider text-emerald-800">
+                        Understanding and reducing variation are keys to success
+                      </span>
+                    </div>
+                    <p className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+                      การเข้าใจและลดความแปรปรวนอย่างถูกวิธีคือกุญแจของความสำเร็จ
                     </p>
                   </div>
                 </div>
@@ -579,7 +594,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                             </div>
                           </td>
                           <td className="px-4 py-3.5 border-r border-slate-200 text-slate-700 leading-relaxed">
-                            มีดกลึงแตก (Tool wear), วัตถุดิบผิดสเปก, ช่างตั้งค่าผิด
+                            มีดกลึงสึกหรอหรือแตกหัก (Tool wear / breakage), วัตถุดิบผิดสเปก, ช่างตั้งค่าผิด
                           </td>
                           <td className="px-4 py-3.5 border-r border-slate-200 leading-relaxed">
                             <span className="inline-block rounded-md bg-rose-100 px-2 py-0.5 text-xs sm:text-sm font-bold text-rose-800 border border-rose-300 mb-1">
@@ -1091,7 +1106,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                           <td className="px-4 py-2.5 sm:py-3 bg-emerald-50/30 text-emerald-950 leading-relaxed">
                             💡 <strong className="text-emerald-950 font-bold">ทรงพลังที่สุดในวิศวกรรม</strong>
                             <div className="text-xs text-slate-600 mt-0.5">
-                              (ใช้ทำ Cpk &amp; Control Charts ได้ครบ)
+                              มี 0 แท้ คำนวณสัดส่วนกี่เท่าและค่า CV (%) ได้ครบทุกตัว (ส่วน Control Chart และ Cpk ใช้ได้ตั้งแต่ระดับ Interval Scale เช่น อุณหภูมิ °C เป็นต้นไป)
                             </div>
                           </td>
                         </tr>
@@ -1405,7 +1420,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                     {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
                   </div>
                   <div className="lg:col-span-7">
-                    <BoxPlotChart />
+                    <BoxPlotChart rows={moduleData.workshops.dimensionsAndDefects ?? []} />
                   </div>
                 </div>
               ) : screen.screenId === 'M1L4-S04' ? (
