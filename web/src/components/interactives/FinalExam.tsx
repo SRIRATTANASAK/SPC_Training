@@ -8,6 +8,7 @@ interface Props {
   questions: QuestionItem[];
   examId?: string;
   moduleId?: string;
+  showQuestionId?: boolean;
 }
 
 function sampleN<T>(arr: T[], n: number): T[] {
@@ -59,7 +60,7 @@ function drawStratified(pool: QuestionItem[], examId: string): ExamQuestionItem[
 
 const PAGE_SIZE = 2;
 
-export const FinalExam: React.FC<Props> = ({ questions, examId, moduleId }) => {
+export const FinalExam: React.FC<Props> = ({ questions, examId, moduleId, showQuestionId = false }) => {
   const resolvedModuleId = useMemo(() => {
     if (moduleId) return moduleId.toUpperCase();
     if (examId && examId.startsWith('EXAM-M')) return examId.replace('EXAM-', '').toUpperCase();
@@ -183,7 +184,7 @@ export const FinalExam: React.FC<Props> = ({ questions, examId, moduleId }) => {
             <div key={q.id} className="rounded-lg border border-slate-200 bg-slate-50 p-3.5 space-y-2">
               <div className="flex items-center justify-between gap-2 text-xs font-semibold text-slate-500">
                 <span>ข้อที่ {qNum} จาก {examSet.length} ข้อ</span>
-                <span className="font-mono text-[11px] text-slate-400">{q.id}</span>
+                {showQuestionId && <span className="font-mono text-[11px] text-slate-400">{q.id}</span>}
               </div>
               <div className="text-sm font-bold text-slate-900">
                 {qNum}. <InlineMarkdown text={q.question} />

@@ -104,17 +104,16 @@ const ALL_SCENARIOS: QuestionScenario[] = [
 const CHART_CHOICES = ['Histogram', 'Box Plot', 'Pareto Chart', 'Scatter Plot', 'Run Chart'];
 
 export const ChartSelectionMatrix: React.FC = () => {
-  // Randomize 2 questions on mount (Task 4.7 / Checklist Item 18)
-  const [selectedQuestions] = useState<QuestionScenario[]>(() => {
-    const shuffled = [...ALL_SCENARIOS].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 2);
-  });
+  // แสดงครบทั้ง 5 สถานการณ์ (สลับลำดับตอนเปิดหน้า)
+  const [selectedQuestions] = useState<QuestionScenario[]>(() =>
+    [...ALL_SCENARIOS].sort(() => 0.5 - Math.random())
+  );
 
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState(false);
 
   const score = useMemo(() => {
-    return selectedQuestions.filter((q) => answers[q.id] === q.chartType).length * 5;
+    return selectedQuestions.filter((q) => answers[q.id] === q.chartType).length * 2;
   }, [selectedQuestions, answers]);
 
   const handleCheck = () => {
@@ -133,7 +132,7 @@ export const ChartSelectionMatrix: React.FC = () => {
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-sky-700">Workshop 2 (ส่วนที่ 1)</span>
           <h3 className="text-base font-bold text-slate-900">
-            แบบทดสอบเลือกใช้กราฟแสดงผลข้อมูล (สุ่ม 2 ข้อพร้อมภาพประกอบ)
+            แบบทดสอบเลือกใช้กราฟแสดงผลข้อมูล (5 สถานการณ์พร้อมภาพประกอบ)
           </h3>
         </div>
         {submitted && (
@@ -141,6 +140,18 @@ export const ChartSelectionMatrix: React.FC = () => {
             คะแนน: {score} / 10
           </span>
         )}
+      </div>
+
+      {/* คำชี้แจงขั้นตอน */}
+      <div className="rounded-lg border border-sky-300 bg-sky-50 p-3 text-xs sm:text-sm text-slate-800">
+        <div className="font-bold text-sky-900">วิธีทำกิจกรรม (จับคู่สถานการณ์กับกราฟ 5 คู่)</div>
+        <ol className="mt-1 list-decimal space-y-0.5 pl-5 leading-relaxed">
+          <li>อ่านสถานการณ์ในแต่ละข้อ ว่าต้องการดูรูปร่าง ลำดับความสำคัญ ความสัมพันธ์ การเปรียบเทียบ หรือแนวโน้มตามเวลา</li>
+          <li>ดูภาพประกอบและคำใบ้ใต้ภาพ</li>
+          <li>กดเลือกชนิดกราฟข้อละ 1 ชนิด ให้ครบทั้ง 5 ข้อ</li>
+          <li>กด "ตรวจคำตอบ" เพื่อดูคะแนน (ข้อละ 2 คะแนน เต็ม 10) และเฉลย</li>
+          <li>กด "ส่วนที่ 2: Factory Dashboard" เพื่อวิเคราะห์ข้อมูลจริง 30 ตัวอย่างต่อ</li>
+        </ol>
       </div>
 
       <div className="space-y-4">

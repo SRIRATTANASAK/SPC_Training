@@ -32,7 +32,9 @@ const M1L1_S02_HOTSPOTS = [
     idx: 1,
     x: '36%',
     y: '58%',
-    calloutClass: 'left-3 top-3 sm:left-4 sm:top-4',
+    calloutClass: 'left-3 top-3 sm:left-4 sm:top-4 w-52 sm:w-56',
+    anchorX: '14%',
+    anchorY: '12%',
     title: 'Hotspot 1: Trial & Error vs Root Cause',
     desc: 'กระดาษจดมือทำให้รู้ปัญหาช้า หลังผลิตของเสียไปแล้ว',
   },
@@ -40,7 +42,9 @@ const M1L1_S02_HOTSPOTS = [
     idx: 2,
     x: '72%',
     y: '34%',
-    calloutClass: 'right-3 top-3 sm:right-4 sm:top-4',
+    calloutClass: 'right-3 top-3 w-40 sm:w-44',
+    anchorX: '86%',
+    anchorY: '12%',
     title: 'Hotspot 2: Opinion vs Fact',
     desc: 'กราฟ Real-time เตือนทันทีเมื่อ Mean หรือ SD เริ่มขยับ',
   },
@@ -48,7 +52,9 @@ const M1L1_S02_HOTSPOTS = [
     idx: 3,
     x: '75%',
     y: '66%',
-    calloutClass: 'right-3 top-3 sm:right-4 sm:top-4',
+    calloutClass: 'right-3 bottom-3 w-40 sm:w-44',
+    anchorX: '86%',
+    anchorY: '88%',
     title: 'Hotspot 3: Firefighting vs Prevention',
     desc: 'จัดอันดับต้นตอด้วยข้อมูลจริง ไม่เดาสุ่ม',
   },
@@ -108,16 +114,39 @@ export const AssetViewer: React.FC<Props> = ({ assetIds, screenId }) => {
                 />
                 {isHotspotScreen && (
                   <div className="absolute inset-0">
+                    {/* เส้นชี้จากจุดไปยังกล่องคำอธิบาย ใช้พิกัด % ชุดเดียวกับจุด */}
+                    {currentHs && (
+                      <svg className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true">
+                        <line
+                          x1={currentHs.x}
+                          y1={currentHs.y}
+                          x2={currentHs.anchorX}
+                          y2={currentHs.anchorY}
+                          stroke="#0f172a"
+                          strokeWidth="5"
+                          strokeLinecap="round"
+                        />
+                        <line
+                          x1={currentHs.x}
+                          y1={currentHs.y}
+                          x2={currentHs.anchorX}
+                          y2={currentHs.anchorY}
+                          stroke="#fbbf24"
+                          strokeWidth="2.5"
+                          strokeLinecap="round"
+                        />
+                      </svg>
+                    )}
                     {M1L1_S02_HOTSPOTS.map((hs) => {
                       const isActive = activeHotspot === hs.idx;
                       return (
                         <button
                           key={hs.idx}
                           type="button"
-                          onClick={() => setActiveHotspot(isActive ? null : hs.idx)}
+                          onClick={() => setActiveHotspot(hs.idx)}
                           onMouseEnter={() => setActiveHotspot(hs.idx)}
                           style={{ left: hs.x, top: hs.y }}
-                          className={`absolute -translate-x-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full text-xs font-extrabold transition cursor-pointer ${
+                          className={`absolute z-30 -translate-x-1/2 -translate-y-1/2 flex h-7 w-7 items-center justify-center rounded-full text-xs font-extrabold transition cursor-pointer ${
                             isActive
                               ? 'bg-sky-500 text-white ring-4 ring-sky-300 scale-115 shadow-lg'
                               : 'bg-amber-400 text-slate-950 ring-4 ring-amber-300/60 hover:scale-110'
@@ -131,7 +160,7 @@ export const AssetViewer: React.FC<Props> = ({ assetIds, screenId }) => {
 
                     {currentHs && (
                       <div
-                        className={`absolute z-20 w-64 sm:w-72 max-w-[85%] rounded-xl border border-amber-400 bg-slate-900/95 p-3 text-left text-xs text-white shadow-2xl backdrop-blur transition-all ${currentHs.calloutClass}`}
+                        className={`absolute z-20 max-w-[85%] rounded-xl border border-amber-400 bg-slate-900/95 p-3 text-left text-xs text-white shadow-2xl backdrop-blur transition-all ${currentHs.calloutClass}`}
                       >
                         <div className="flex items-center justify-between gap-2 border-b border-slate-700/80 pb-1.5">
                           <span className="font-extrabold text-amber-300 text-xs sm:text-sm">

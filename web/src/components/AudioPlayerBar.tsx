@@ -3,6 +3,7 @@ import { FastForward, Minus, Pause, Play, Plus, Subtitles, Volume1, Volume2, Vol
 import type { VoiceoverTrack } from '../lib/types';
 import { progressStore } from '../lib/storage';
 import { withBase } from '../lib/base';
+import { InlineMarkdown } from './MarkdownContent';
 
 /**
  * Master Template Props สำหรับ AudioPlayerBar
@@ -13,12 +14,10 @@ export interface MasterAudioPlayerBarProps {
   voiceover: VoiceoverTrack;
   /** รหัสหน้าจอปัจจุบัน เช่น M1L1-S01 หรือ M2L1-S01 */
   screenId: string;
-  /** ระบุว่าเป็นหน้ากิจกรรม/แบบทดสอบ/Workshop หรือไม่ (เพื่อหยุด auto-advance) */
+  /** ระบุว่าเป็นหน้ากิจกรรม/แบบทดสอบ/Workshop หรือไม่ (แสดงป้ายกิจกรรม) */
   isQuizOrWorkshop?: boolean;
-  /** Callback เมื่อเสียงบรรยายเล่นจบ (สำหรับ auto-advance) */
-  onAudioEnded?: () => void;
-  /** Callback รายงานเวลาปัจจุบันของเสียง (วินาที) สำหรับ sync แอนิเมชัน */
-  onTimeUpdate?: (currentTime: number) => void;
+  /** Callback รายงานเวลาปัจจุบันและความยาวเสียง (วินาที) สำหรับ sync แอนิเมชัน */
+  onTimeUpdate?: (currentTime: number, duration: number) => void;
   /** Callback แจ้งสถานะการเล่นว่ากำลังเล่นอยู่หรือไม่ */
   onPlayStateChange?: (isPlaying: boolean) => void;
   /** ส่วนแสดงผลฝั่งซ้ายของแถบ Header ด้านบน (เช่น ชื่อหลักสูตร / Breadcrumbs) */
@@ -34,7 +33,7 @@ export interface MasterAudioPlayerBarProps {
  * - เล่น / หยุดชั่วคราว (Play/Pause)
  * - ปุ่มปิดเสียง / เปิดเสียง (Mute/Unmute)
  * - ตัวเลือกปรับระดับเสียง (Volume Slider + ปุ่มเพิ่ม-ลด + แสดงผลเปอร์เซ็นต์)
- * - เปิด/ปิด เปลี่ยนหน้าอัตโนมัติ (Auto-advance)
+ * - เปิด/ปิด การเล่นเสียงอัตโนมัติ (ไม่มีการเปลี่ยนหน้าหรือสเต็ปเมื่อเสียงจบ)
  * - ปรับความเร็วเสียง (Speed 1x / 1.25x)
  * - สลับภาษาคำบรรยาย (TH / EN)
  * - เปิด/ปิด แถบคำบรรยาย (CC)
@@ -44,7 +43,6 @@ export const AudioPlayerBar: React.FC<MasterAudioPlayerBarProps> = ({
   voiceover,
   screenId,
   isQuizOrWorkshop = false,
-  onAudioEnded,
   onTimeUpdate,
   onPlayStateChange,
   leftSlot,
@@ -273,9 +271,6 @@ export const AudioPlayerBar: React.FC<MasterAudioPlayerBarProps> = ({
   const handleEnded = () => {
     setPlaying(false);
     onPlayStateChange?.(false);
-    if (autoPlay && onAudioEnded) {
-      onAudioEnded();
-    }
   };
 
   const captionText =
@@ -291,7 +286,9 @@ export const AudioPlayerBar: React.FC<MasterAudioPlayerBarProps> = ({
           ref={audioRef}
           src={withBase(voiceover.audioFile)}
           onEnded={handleEnded}
-          onTimeUpdate={(e) => onTimeUpdate?.(e.currentTarget.currentTime)}
+          onTimeUpdate={(e) =>
+            onTimeUpdate?.(e.currentTarget.currentTime, e.currentTarget.duration || 0)
+          }
           onPlay={() => {
             setPlaying(true);
             setAutoplayBlocked(false);
@@ -440,11 +437,11 @@ export const AudioPlayerBar: React.FC<MasterAudioPlayerBarProps> = ({
 
           <span className="h-3.5 w-px bg-slate-700 mx-0.5" />
 
-          {/* Auto Play / Auto Advance Toggle */}
+          {/* Auto Play Toggle */}
           <button
             type="button"
             onClick={handleAutoPlayToggle}
-            title="เปิด/ปิด การเล่นและเปลี่ยนหน้าอัตโนมัติ (ยกเว้นหน้ากิจกรรม/Workshop/แบบทดสอบ)"
+            title="เล่นเสียงต่อเนื่อง / ไม่เปลี่ยนหน้าให้"
             className={`flex h-6 items-center gap-1 rounded border px-2 text-[11px] font-bold shrink-0 transition ${
               autoPlay
                 ? 'border-emerald-500 bg-emerald-950 text-emerald-200'
@@ -495,7 +492,7 @@ export const AudioPlayerBar: React.FC<MasterAudioPlayerBarProps> = ({
       {/* Row 3: Caption Strip Directly Below Top Bar */}
       {showCaptions && captionText && (
         <div className="border-t border-slate-800 bg-slate-900/95 px-4 py-1.5 text-center text-xs sm:text-sm text-sky-100 leading-snug">
-          {captionText}
+          <InlineMarkdown text={captionText} />
         </div>
       )}
     </header>

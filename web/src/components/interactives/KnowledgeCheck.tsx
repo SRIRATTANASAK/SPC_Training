@@ -8,6 +8,7 @@ interface Props {
   questions: QuestionItem[];
   fixedQuestionIds?: string[];
   moduleId?: string;
+  showQuestionId?: boolean;
 }
 
 const LESSON_QUESTION_RANGES: Record<string, [number, number]> = {
@@ -31,7 +32,13 @@ interface PreparedQuestion {
   shuffledChoices: Array<{ key: 'A' | 'B' | 'C' | 'D'; label: string }>;
 }
 
-export const KnowledgeCheck: React.FC<Props> = ({ lessonId, questions, fixedQuestionIds, moduleId }) => {
+export const KnowledgeCheck: React.FC<Props> = ({
+  lessonId,
+  questions,
+  fixedQuestionIds,
+  moduleId,
+  showQuestionId = false,
+}) => {
   const [selected, setSelected] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
 
@@ -96,9 +103,11 @@ export const KnowledgeCheck: React.FC<Props> = ({ lessonId, questions, fixedQues
             <div className="text-sm sm:text-base font-bold text-slate-900 leading-snug">
               ข้อ {idx + 1}. <InlineMarkdown text={q.question} />
             </div>
-            <span className="shrink-0 rounded bg-slate-100 px-2 py-0.5 font-mono text-[11px] font-bold text-slate-600">
-              {q.id}
-            </span>
+            {showQuestionId && (
+              <span className="shrink-0 rounded bg-slate-100 px-2 py-0.5 font-mono text-[11px] font-bold text-slate-600">
+                {q.id}
+              </span>
+            )}
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {shuffledChoices.map(({ key, label }, choiceIdx) => {

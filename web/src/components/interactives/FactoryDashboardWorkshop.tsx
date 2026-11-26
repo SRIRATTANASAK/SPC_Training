@@ -1,5 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import type { DimensionDefectRow } from '../../lib/types';
+import { Workshop2DataPreview } from '../visuals/InteractiveLessonVisuals';
 
 interface Props {
   rows: DimensionDefectRow[];
@@ -121,6 +122,26 @@ export const FactoryDashboardWorkshop: React.FC<Props> = ({ rows }) => {
           ))}
         </div>
       </div>
+
+      {/* คำชี้แจงขั้นตอน */}
+      <div className="rounded-lg border border-sky-300 bg-sky-50 p-3 text-xs sm:text-sm text-slate-800">
+        <div className="font-bold text-sky-900">วิธีทำกิจกรรม (สำรวจข้อมูลหน้างานแล้ววินิจฉัย)</div>
+        <ol className="mt-1 list-decimal space-y-0.5 pl-5 leading-relaxed">
+          <li>เปิดตารางข้อมูลจริง {rows.length} ตัวอย่างด้านล่าง ดูเวลา เครื่องจักร อุณหภูมิแม่พิมพ์ ขนาดเพลา และของเสียที่พบ</li>
+          <li>กดสลับกราฟทั้ง 5 แบบ ซึ่งสร้างจากข้อมูลชุดเดียวกันนี้ เพื่อหาว่าของเสียใดพบมาก เครื่องใดแกว่งกว่า และขนาดเปลี่ยนตามอุณหภูมิและเวลาอย่างไร</li>
+          <li>ตอบคำถามวินิจฉัย 3 ข้อ โดยอ้างอิงจากกราฟที่โจทย์ระบุ</li>
+          <li>กด "ตรวจคำตอบ Workshop 2" เพื่อดูเฉลยและคำอธิบาย</li>
+        </ol>
+      </div>
+
+      <details className="rounded-lg border border-slate-300 bg-white">
+        <summary className="cursor-pointer px-3 py-2 text-xs sm:text-sm font-bold text-slate-900">
+          ดูตารางข้อมูลจริง {rows.length} ตัวอย่าง (จาก workshop_m1_dimensions_and_defects.csv)
+        </summary>
+        <div className="p-2">
+          <Workshop2DataPreview rows={rows} />
+        </div>
+      </details>
 
       <div className="rounded-xl border border-slate-200 bg-slate-50 p-4">
         {tab === 'pareto' && (

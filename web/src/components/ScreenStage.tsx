@@ -123,6 +123,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
   const [slideIdx, setSlideIdx] = useState(0);
   const [fadeIn, setFadeIn] = useState(true);
   const [audioTime, setAudioTime] = useState(0);
+  const [audioDuration, setAudioDuration] = useState(0);
   const [audioPlaying, setAudioPlaying] = useState(false);
 
   const hasVisibleAsset = useMemo(
@@ -146,8 +147,14 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
     if (PURE_INTERACTIVE_SCREENS.has(sid)) {
       return [{ id: 'interactive-0', label: 'กิจกรรม / แบบทดสอบ', kind: 'interactive', interactiveStep: 0 }];
     }
-    // M1L3-S01..S04 & M1L4-S01..S06: Rich visual content
-    if (sid === 'M1L3-S01' || sid === 'M1L3-S02' || sid === 'M1L3-S03' || sid === 'M1L3-S04' || sid.startsWith('M1L4-S0')) {
+    // M1L3-S01..S04 & M1L4-S01..S06: Rich visual content (M1L4-S07 เป็น Workshop 2 สเต็ป)
+    if (
+      sid === 'M1L3-S01' ||
+      sid === 'M1L3-S02' ||
+      sid === 'M1L3-S03' ||
+      sid === 'M1L3-S04' ||
+      (sid.startsWith('M1L4-S0') && sid !== 'M1L4-S07')
+    ) {
       return [{ id: 'main', label: 'เนื้อหา & ภาพประกอบ', kind: 'visual-content' }];
     }
     if (TWO_STEP_INTERACTIVE_SCREENS.has(sid)) {
@@ -181,6 +188,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
     setSlideIdx(0);
     setFadeIn(true);
     setAudioTime(0);
+    setAudioDuration(0);
     setAudioPlaying(false);
     const next = store.markScreenCompleted(screen.screenId);
     setCompletedCount(next.var_completed_screens.length);
@@ -193,24 +201,6 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
       setSlideIdx(nextIdx);
       setFadeIn(true);
     }, 180);
-  };
-
-  // Auto-advance handler when narration finishes
-  const handleAudioEnded = () => {
-    // กฎข้อที่ 1: ในกรณีที่มีกิจกรรม เช่น Hotspots ในหน้าที่ 2, คำถาม-ตอบ (KC/Exam), เครื่องคิดเลข, Lab จำลอง หรือ Workshop
-    // ต้องรอให้ผู้เรียนทำกิจกรรมเสร็จ และกดปุ่ม "Next หรือ หน้าถัดไป" ด้วยตนเองเท่านั้น ระบบจะไม่ข้ามหน้าอัตโนมัติ
-    if (isActivityScreen) {
-      return;
-    }
-
-    // สำหรับหน้าบรรยายทั่วไป (ไม่มีกิจกรรม)
-    if (slideIdx + 1 < slides.length) {
-      goToSlide(slideIdx + 1);
-      return;
-    }
-    if (screen.nextScreenId) {
-      window.location.href = withBase(`/${moduleSlug}/${screen.nextScreenId}`);
-    }
   };
 
   const progressPct = Math.round((screen.index / moduleData.totalScreens) * 100);
@@ -285,8 +275,10 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
         voiceover={screen.voiceover}
         screenId={screen.screenId}
         isQuizOrWorkshop={isActivityScreen}
-        onAudioEnded={handleAudioEnded}
-        onTimeUpdate={setAudioTime}
+        onTimeUpdate={(time, duration) => {
+          setAudioTime(time);
+          setAudioDuration(duration);
+        }}
         onPlayStateChange={setAudioPlaying}
         leftSlot={headerLeft}
         rightSlot={headerRight}
@@ -1391,11 +1383,11 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                 <DispersionUnifiedCard />
               ) : screen.screenId === 'M1L4-S01' ? (
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start h-full w-full">
-                  <div className="lg:col-span-5">
+                  <div className="lg:col-span-4">
                     {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
                   </div>
-                  <div className="lg:col-span-7">
-                    <Workshop2DataPreview />
+                  <div className="lg:col-span-8">
+                    <Workshop2DataPreview rows={moduleData.workshops.dimensionsAndDefects ?? []} />
                   </div>
                 </div>
               ) : screen.screenId === 'M1L4-S02' ? (
@@ -1404,7 +1396,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                     {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
                   </div>
                   <div className="lg:col-span-7">
-                    <HistogramChart />
+                    <HistogramChart audioTime={audioTime} audioDuration={audioDuration} />
                   </div>
                 </div>
               ) : screen.screenId === 'M1L4-S03' ? (
@@ -1422,7 +1414,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                     {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
                   </div>
                   <div className="lg:col-span-7">
-                    <ParetoChart />
+                    <ParetoChart rows={moduleData.workshops.dimensionsAndDefects ?? []} />
                   </div>
                 </div>
               ) : screen.screenId === 'M1L4-S05' ? (
@@ -1431,7 +1423,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                     {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
                   </div>
                   <div className="lg:col-span-7">
-                    <ScatterPlotChart />
+                    <ScatterPlotChart rows={moduleData.workshops.dimensionsAndDefects ?? []} />
                   </div>
                 </div>
               ) : screen.screenId === 'M1L4-S06' ? (
@@ -1440,7 +1432,7 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                     {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
                   </div>
                   <div className="lg:col-span-7">
-                    <RunChart />
+                    <RunChart rows={moduleData.workshops.dimensionsAndDefects ?? []} />
                   </div>
                 </div>
               ) : (

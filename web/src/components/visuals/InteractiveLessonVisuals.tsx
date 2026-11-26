@@ -1,29 +1,51 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { InlineMarkdown } from '../MarkdownContent';
+import type { DimensionDefectRow } from '../../lib/types';
 
 // -------------------------------------------------------------
-// Sample data from workshop_m1_dimensions_and_defects.csv
+// ข้อมูลจริงจาก workshop_m1_dimensions_and_defects.csv (ส่งผ่าน moduleData.workshops)
 // -------------------------------------------------------------
-const WORKSHOP_SAMPLES = [
-  { id: 1, time: '08:00', mc: 'MC-A', cavity: 1, temp: 175.2, diam: 50.00, defect: 'None' },
-  { id: 2, time: '08:30', mc: 'MC-A', cavity: 2, temp: 175.4, diam: 50.01, defect: 'None' },
-  { id: 3, time: '09:00', mc: 'MC-A', cavity: 3, temp: 174.9, diam: 49.99, defect: 'None' },
-  { id: 4, time: '09:30', mc: 'MC-A', cavity: 4, temp: 175.5, diam: 50.02, defect: 'None' },
-  { id: 5, time: '10:00', mc: 'MC-A', cavity: 1, temp: 175.1, diam: 50.00, defect: 'None' },
-  { id: 6, time: '10:30', mc: 'MC-A', cavity: 2, temp: 175.3, diam: 50.01, defect: 'Scratch' },
-  { id: 7, time: '11:00', mc: 'MC-A', cavity: 3, temp: 174.8, diam: 49.98, defect: 'None' },
-  { id: 8, time: '11:30', mc: 'MC-A', cavity: 4, temp: 175.6, diam: 50.02, defect: 'Scratch' },
-  { id: 9, time: '12:00', mc: 'MC-A', cavity: 1, temp: 175.0, diam: 50.00, defect: 'None' },
-  { id: 10, time: '12:30', mc: 'MC-A', cavity: 2, temp: 175.2, diam: 50.01, defect: 'Burr' },
-  { id: 11, time: '13:00', mc: 'MC-B', cavity: 1, temp: 176.1, diam: 50.03, defect: 'None' },
-  { id: 12, time: '13:30', mc: 'MC-B', cavity: 2, temp: 176.5, diam: 50.04, defect: 'Scratch' },
-  { id: 13, time: '14:00', mc: 'MC-B', cavity: 3, temp: 177.0, diam: 50.06, defect: 'Burr' },
-  { id: 14, time: '14:30', mc: 'MC-B', cavity: 4, temp: 177.4, diam: 50.07, defect: 'Scratch' },
-  { id: 15, time: '15:00', mc: 'MC-B', cavity: 1, temp: 178.2, diam: 50.09, defect: 'Dent' },
-  { id: 16, time: '15:30', mc: 'MC-B', cavity: 2, temp: 178.8, diam: 50.11, defect: 'Scratch' },
-  { id: 17, time: '16:00', mc: 'MC-B', cavity: 3, temp: 179.5, diam: 50.14, defect: 'Crack' }, // Outlier!
-  { id: 18, time: '16:30', mc: 'MC-B', cavity: 4, temp: 178.1, diam: 50.08, defect: 'Scratch' },
-];
+type CsvRow = DimensionDefectRow;
+
+const LSL = 49.95;
+const TARGET = 50.0;
+const USL = 50.05;
+
+const toSamples = (rows: CsvRow[]) =>
+  rows.map((r) => ({
+    id: Number(r.Sample_No),
+    time: (r.Timestamp ?? '').split(' ')[1] ?? '',
+    mc: r.Machine,
+    temp: Number(r.Mold_Temp_C),
+    diam: Number(r.Shaft_Diameter_mm),
+    defectCount: Number(r.Defect_Count),
+    defect: r.Defect_Type,
+  }));
+
+// โครงการ์ดกราฟมาตรฐาน: หัวเรื่อง → พื้นที่กราฟสูงเท่ากัน → กล่องคำอธิบายตำแหน่งเดียวกัน
+const ChartCard: React.FC<{
+  label: string;
+  title: string;
+  badge: string;
+  explanation: React.ReactNode;
+  children: React.ReactNode;
+}> = ({ label, title, badge, explanation, children }) => (
+  <div className="rounded-xl border border-sky-300 bg-white p-4 shadow-sm space-y-3">
+    <div className="flex items-center justify-between gap-2">
+      <div>
+        <span className="text-xs font-bold uppercase tracking-wider text-sky-700">{label}</span>
+        <h4 className="text-sm font-bold text-slate-900">{title}</h4>
+      </div>
+      <span className="shrink-0 rounded bg-sky-100 px-2 py-0.5 text-xs font-bold text-sky-900 border border-sky-300">
+        {badge}
+      </span>
+    </div>
+    <div className="h-56 rounded-xl border border-sky-200 bg-sky-50/50 p-2">{children}</div>
+    <p className="rounded-lg border border-sky-200 bg-sky-50 p-3 text-xs sm:text-sm leading-relaxed text-slate-800">
+      {explanation}
+    </p>
+  </div>
+);
 
 // =============================================================
 // 1. M1L3-S03: Mode & Bimodal Explorer Card
@@ -160,11 +182,11 @@ export const DispersionUnifiedCard: React.FC = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start w-full">
       {/* Left 6 cols: 3 Dispersion Formulas & Calculations */}
-      <div className="lg:col-span-6 space-y-3">
+      <div className="lg:col-span-5 space-y-3">
         {/* Card 1: Range */}
         <div className="rounded-xl border border-sky-200 bg-sky-50/60 p-3.5 shadow-2xs">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-sky-950 uppercase">1. พิสัย (Range: R)</span>
+            <span className="text-xs font-bold text-sky-950">1. พิสัย (Range: R)</span>
             <span className="rounded bg-sky-200/80 px-2 py-0.5 text-[11px] font-mono font-bold text-sky-900">
               R = Max − Min
             </span>
@@ -181,7 +203,7 @@ export const DispersionUnifiedCard: React.FC = () => {
         {/* Card 2: Variance */}
         <div className="rounded-xl border border-indigo-200 bg-indigo-50/60 p-3.5 shadow-2xs">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-indigo-950 uppercase">2. ความแปรปรวน (Variance: s²)</span>
+            <span className="text-xs font-bold text-indigo-950">2. ความแปรปรวน (Variance: s²)</span>
             <span className="rounded bg-indigo-200/80 px-2 py-0.5 text-[11px] font-mono font-bold text-indigo-900">
               s² = Σ(x − x̄)² / (n − 1)
             </span>
@@ -198,7 +220,7 @@ export const DispersionUnifiedCard: React.FC = () => {
         {/* Card 3: Standard Deviation */}
         <div className="rounded-xl border border-emerald-200 bg-emerald-50/60 p-3.5 shadow-2xs">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-emerald-950 uppercase">3. ส่วนเบี่ยงเบนมาตรฐาน (SD: s / σ)</span>
+            <span className="text-xs font-bold text-emerald-950">3. ส่วนเบี่ยงเบนมาตรฐาน (SD: s / σ)</span>
             <span className="rounded bg-emerald-200/80 px-2 py-0.5 text-[11px] font-mono font-bold text-emerald-900">
               s = √s²
             </span>
@@ -214,7 +236,7 @@ export const DispersionUnifiedCard: React.FC = () => {
       </div>
 
       {/* Right 6 cols: Empirical Rule (68-95-99.7) & Outlier Test */}
-      <div className="lg:col-span-6 rounded-2xl border border-slate-300 bg-white p-4 shadow-sm space-y-3">
+      <div className="lg:col-span-7 rounded-2xl border border-sky-200 bg-white p-4 shadow-sm space-y-3">
         <div className="flex items-center justify-between">
           <span className="text-xs font-bold uppercase tracking-wider text-slate-900">
             กฎการกระจายตัวปกติ (Empirical Rule)
@@ -262,47 +284,47 @@ export const DispersionUnifiedCard: React.FC = () => {
         </div>
 
         {/* SVG Normal Distribution Curve */}
-        <div className="relative rounded-xl border border-slate-200 bg-slate-950 p-3 overflow-hidden">
-          <svg viewBox="0 0 320 140" className="w-full h-28">
+        <div className="relative rounded-xl border border-sky-200 bg-sky-50 p-3 overflow-hidden">
+          <svg viewBox="-12 0 344 140" className="w-full h-48">
             {/* Shaded Areas */}
             <path
               d="M 20 120 C 60 120 110 30 160 30 C 210 30 260 120 300 120 Z"
-              fill={activeSigma === 3 ? '#059669' : '#1e293b'}
-              opacity={activeSigma === 3 ? '0.4' : '0.2'}
+              fill={activeSigma === 3 ? '#34d399' : '#bae6fd'}
+              opacity={activeSigma === 3 ? '0.55' : '0.4'}
             />
             {activeSigma >= 2 && (
               <path
                 d="M 60 120 C 90 120 120 30 160 30 C 200 30 230 120 260 120 Z"
-                fill="#4f46e5"
-                opacity="0.5"
+                fill="#818cf8"
+                opacity="0.55"
               />
             )}
             {activeSigma >= 1 && (
               <path
                 d="M 110 120 C 130 120 140 30 160 30 C 180 30 190 120 210 120 Z"
-                fill="#0284c7"
-                opacity="0.65"
+                fill="#38bdf8"
+                opacity="0.7"
               />
             )}
             {/* Outline curve */}
             <path
               d="M 20 120 C 60 120 110 30 160 30 C 210 30 260 120 300 120"
               fill="none"
-              stroke="#38bdf8"
+              stroke="#0284c7"
               strokeWidth="2.5"
             />
             {/* Mean Center line */}
-            <line x1="160" y1="20" x2="160" y2="125" stroke="#f8fafc" strokeWidth="2" strokeDasharray="3 3" />
-            <text x="160" y="16" textAnchor="middle" fill="#f8fafc" fontSize="10" fontWeight="bold">
+            <line x1="160" y1="20" x2="160" y2="125" stroke="#0f172a" strokeWidth="1.5" strokeDasharray="3 3" />
+            <text x="160" y="16" textAnchor="middle" fill="#0f172a" fontSize="10" fontWeight="bold">
               Mean ({mean.toFixed(3)})
             </text>
             {/* Bottom labels */}
-            <text x="110" y="135" textAnchor="middle" fill="#94a3b8" fontSize="9">−1σ</text>
-            <text x="60" y="135" textAnchor="middle" fill="#94a3b8" fontSize="9">−2σ</text>
-            <text x="20" y="135" textAnchor="middle" fill="#34d399" fontSize="9" fontWeight="bold">−3σ (LCL)</text>
-            <text x="210" y="135" textAnchor="middle" fill="#94a3b8" fontSize="9">+1σ</text>
-            <text x="260" y="135" textAnchor="middle" fill="#94a3b8" fontSize="9">+2σ</text>
-            <text x="300" y="135" textAnchor="middle" fill="#34d399" fontSize="9" fontWeight="bold">+3σ (UCL)</text>
+            <text x="110" y="135" textAnchor="middle" fill="#334155" fontSize="9">−1σ</text>
+            <text x="60" y="135" textAnchor="middle" fill="#334155" fontSize="9">−2σ</text>
+            <text x="20" y="135" textAnchor="middle" fill="#047857" fontSize="9" fontWeight="bold">−3σ (LCL)</text>
+            <text x="210" y="135" textAnchor="middle" fill="#334155" fontSize="9">+1σ</text>
+            <text x="260" y="135" textAnchor="middle" fill="#334155" fontSize="9">+2σ</text>
+            <text x="300" y="135" textAnchor="middle" fill="#047857" fontSize="9" fontWeight="bold">+3σ (UCL)</text>
           </svg>
         </div>
 
@@ -325,145 +347,146 @@ export const DispersionUnifiedCard: React.FC = () => {
 };
 
 // =============================================================
-// 3. M1L4-S01: Real Data Preview (Shaft 30 Samples Table)
+// 3. M1L4-S01: Real Data Preview (Shaft Samples Table)
 // =============================================================
-export const Workshop2DataPreview: React.FC = () => {
+export const Workshop2DataPreview: React.FC<{ rows: CsvRow[] }> = ({ rows }) => {
+  const samples = toSamples(rows);
+  const half = Math.ceil(samples.length / 2);
+  const columns = [samples.slice(0, half), samples.slice(half)];
+  // แถวบีบตามความสูงจอ เพื่อให้เห็นครบทุกแถวโดยไม่ต้องเลื่อน
+  const rowStyle = { height: 'clamp(14px, 2.3vh, 22px)', lineHeight: 'clamp(14px, 2.3vh, 22px)' };
+
   return (
-    <div className="w-full space-y-3">
-      <div className="rounded-xl border border-slate-300 bg-white shadow-sm overflow-hidden">
-        <div className="bg-slate-900 text-white px-4 py-2.5 flex items-center justify-between text-xs sm:text-sm font-bold">
-          <span>ตัวอย่างชุดข้อมูลจริง Workshop 2: ขนาดและ Defect ของเพลา (30 ตัวอย่าง)</span>
-          <span className="text-sky-300 font-mono text-xs">Spec: 50.00 ± 0.05 mm</span>
-        </div>
-        <div className="max-h-64 overflow-y-auto">
-          <table className="w-full text-left text-xs border-collapse">
-            <thead className="bg-slate-100 text-slate-800 sticky top-0 border-b border-slate-300 font-bold">
+    <div className="w-full overflow-hidden rounded-xl border border-slate-300 bg-white shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-x-2 bg-slate-900 px-3 py-1 text-xs sm:text-sm font-bold text-white">
+        <span>ข้อมูลจริง {samples.length} แถว (ตัวอย่างการวัดชิ้นงาน)</span>
+        <span className="font-mono text-[11px] text-sky-300">
+          Spec: 50.00 ± 0.05 mm · <span className="text-rose-300">แถวสีแดง = เกิน USL</span>
+        </span>
+      </div>
+      <div className="grid grid-cols-2 divide-x-2 divide-slate-300">
+        {columns.map((group, col) => (
+          <table key={col} className="w-full self-start border-collapse text-center text-[10px] xl:text-[11px]">
+            <thead className="border-b border-slate-300 bg-slate-100 font-bold text-slate-800">
               <tr>
-                <th className="px-3 py-2 border-r border-slate-200 text-center">#</th>
-                <th className="px-3 py-2 border-r border-slate-200">เวลา</th>
-                <th className="px-3 py-2 border-r border-slate-200">เครื่องจักร</th>
-                <th className="px-3 py-2 border-r border-slate-200 text-center">Cavity</th>
-                <th className="px-3 py-2 border-r border-slate-200 text-right">อุณหภูมิ (°C)</th>
-                <th className="px-3 py-2 border-r border-slate-200 text-right">ขนาด (mm)</th>
-                <th className="px-3 py-2">ของเสียที่พบ</th>
+                <th className="px-0.5 py-0.5">#</th>
+                <th className="px-0.5 py-0.5">เวลา</th>
+                <th className="px-0.5 py-0.5">เครื่อง</th>
+                <th className="px-0.5 py-0.5">°C</th>
+                <th className="px-0.5 py-0.5">ขนาด (mm)</th>
+                <th className="px-0.5 py-0.5">จำนวน</th>
+                <th className="px-0.5 py-0.5">ของเสีย</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-200 font-mono text-[11px]">
-              {WORKSHOP_SAMPLES.map((row) => (
-                <tr key={row.id} className={row.diam > 50.05 ? 'bg-rose-50 text-rose-900 font-bold' : 'hover:bg-slate-50'}>
-                  <td className="px-3 py-1.5 border-r border-slate-200 text-center text-slate-500">{row.id}</td>
-                  <td className="px-3 py-1.5 border-r border-slate-200 text-slate-700">{row.time}</td>
-                  <td className="px-3 py-1.5 border-r border-slate-200 font-sans font-bold">
-                    <span className={row.mc === 'MC-A' ? 'text-sky-700' : 'text-amber-700'}>{row.mc}</span>
-                  </td>
-                  <td className="px-3 py-1.5 border-r border-slate-200 text-center text-slate-700">{row.cavity}</td>
-                  <td className="px-3 py-1.5 border-r border-slate-200 text-right text-slate-700">{row.temp.toFixed(1)}</td>
-                  <td className="px-3 py-1.5 border-r border-slate-200 text-right font-bold">
-                    {row.diam.toFixed(2)}
-                    {row.diam > 50.05 && <span className="ml-1 text-[10px] text-rose-600 font-sans">(Out!)</span>}
-                  </td>
-                  <td className="px-3 py-1.5 font-sans">
-                    {row.defect === 'None' ? (
-                      <span className="text-slate-400">ปกติ</span>
-                    ) : (
-                      <span className="rounded bg-rose-100 text-rose-800 px-1.5 py-0.5 text-[10px] font-bold">
-                        {row.defect}
-                      </span>
-                    )}
+            <tbody className="divide-y divide-slate-200 font-mono">
+              {group.map((row) => (
+                <tr
+                  key={row.id}
+                  style={rowStyle}
+                  className={`whitespace-nowrap ${row.diam > USL ? 'bg-rose-100 font-bold text-rose-900' : 'text-slate-700'}`}
+                >
+                  <td className="px-0.5 py-0 text-slate-500">{row.id}</td>
+                  <td className="px-0.5 py-0">{row.time}</td>
+                  <td className={`px-0.5 py-0 font-bold ${row.mc === 'MC-A' ? 'text-sky-700' : 'text-amber-700'}`}>{row.mc}</td>
+                  <td className="px-0.5 py-0">{row.temp}</td>
+                  <td className="px-0.5 py-0 font-bold">{row.diam.toFixed(2)}</td>
+                  <td className="px-0.5 py-0">{row.defectCount}</td>
+                  <td className="px-0.5 py-0 font-sans">
+                    {row.defect === 'None' ? <span className="text-slate-400">ปกติ</span> : row.defect}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
+        ))}
       </div>
     </div>
   );
 };
 
 // =============================================================
-// 4. M1L4-S02: Interactive Histogram Chart
+// 4. M1L4-S02: Histogram Shapes synced with narration
 // =============================================================
-export const HistogramChart: React.FC = () => {
-  const [filter, setFilter] = useState<'all' | 'mc-a' | 'mc-b'>('all');
+// startAt = สัดส่วนของความยาวเสียง (0–1) ที่บทบรรยายเริ่มพูดถึงรูปร่างนั้น
+// อ้างอิงช่วงเว้นวรรคของ AUD-M1L4-S02.mp3 ปัจจุบัน (ต้องตรวจซ้ำหลังสร้างเสียงใหม่)
+const HISTOGRAM_SHAPES = [
+  {
+    key: 'bell',
+    startAt: 0,
+    tab: 'ระฆังคว่ำ (ตรงเป้า)',
+    name: 'Normal / Bell-shaped',
+    look: 'ระฆังคว่ำสมมาตร',
+    cause: 'กระบวนการเสถียรตามธรรมชาติ (Common cause เท่านั้น)',
+    bars: [2, 5, 9, 12, 9, 5, 2],
+  },
+  {
+    key: 'skewed',
+    startAt: 0.46,
+    tab: 'เบ้ซ้าย/ขวา',
+    name: 'Skewed (Right/Left)',
+    look: 'หางยาวข้างเดียว',
+    cause: 'มีขีดจำกัดทางกายภาพด้านหนึ่ง หรือเกิด Tool wear ไหลทางเดียว',
+    bars: [5, 12, 10, 7, 4, 2, 1],
+  },
+  {
+    key: 'cliff',
+    startAt: 0.55,
+    tab: 'หน้าผา (Cliff)',
+    name: 'Cliff / Truncated',
+    look: 'ขอบตัดตรงเป็นหน้าผา',
+    cause: 'มีการคัดงานเสีย (100% Sorting) ทิ้งไปก่อนบันทึกข้อมูล!',
+    bars: [2, 4, 7, 10, 12, 0, 0],
+  },
+] as const;
 
-  const bins = [
-    { range: '49.98–49.99', countAll: 4, countA: 3, countB: 1 },
-    { range: '50.00–50.01', countAll: 11, countA: 8, countB: 3 },
-    { range: '50.02–50.03', countAll: 6, countA: 4, countB: 2 },
-    { range: '50.04–50.05', countAll: 3, countA: 0, countB: 3 },
-    { range: '50.06–50.07', countAll: 3, countA: 0, countB: 3 },
-    { range: '50.08–50.09', countAll: 2, countA: 0, countB: 2 },
-    { range: '50.10+', countAll: 1, countA: 0, countB: 1 }, // Outlier bin
-  ];
+type ShapeKey = (typeof HISTOGRAM_SHAPES)[number]['key'];
 
-  const maxCount = 12;
+export const HistogramChart: React.FC<{ audioTime?: number; audioDuration?: number }> = ({
+  audioTime = 0,
+  audioDuration = 0,
+}) => {
+  const progress = audioDuration > 0 ? audioTime / audioDuration : 0;
+  const cued = [...HISTOGRAM_SHAPES].reverse().find((s) => progress >= s.startAt) ?? HISTOGRAM_SHAPES[0];
+  const [manual, setManual] = useState<ShapeKey | null>(null);
+  // เมื่อเสียงข้ามไปช่วงใหม่ ให้กลับมาตามเสียง
+  useEffect(() => setManual(null), [cued.key]);
+  const shape = HISTOGRAM_SHAPES.find((s) => s.key === manual) ?? cued;
 
   return (
     <div className="rounded-xl border border-sky-300 bg-white p-4 shadow-sm space-y-3">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-sky-700">Histogram (ฮิสโตแกรม)</span>
-          <h4 className="text-sm font-bold text-slate-900">ดูรูปร่างและการกระจายตัวของขนาดเพลาเทียบกับ Spec</h4>
-        </div>
-        <div className="flex gap-1 rounded-lg bg-slate-100 p-1 text-xs">
+      <div>
+        <span className="text-xs font-bold uppercase tracking-wider text-sky-700">Histogram (ฮิสโตแกรม)</span>
+        <h4 className="text-sm font-bold text-slate-900">รูปร่างการกระจายตัวของข้อมูล</h4>
+      </div>
+      <div className="flex gap-1 rounded-lg bg-sky-50 p-1 text-xs">
+        {HISTOGRAM_SHAPES.map((s) => (
           <button
+            key={s.key}
             type="button"
-            onClick={() => setFilter('all')}
-            className={`px-2 py-0.5 rounded font-bold transition ${
-              filter === 'all' ? 'bg-sky-700 text-white' : 'text-slate-600 hover:text-slate-900'
+            onClick={() => setManual(s.key)}
+            aria-pressed={shape.key === s.key}
+            className={`flex-1 rounded px-2 py-1 font-bold transition ${
+              shape.key === s.key ? 'bg-sky-700 text-white shadow-sm' : 'text-slate-700 hover:bg-sky-100'
             }`}
           >
-            รวม (30 ชิ้น)
+            {s.tab}
           </button>
-          <button
-            type="button"
-            onClick={() => setFilter('mc-a')}
-            className={`px-2 py-0.5 rounded font-bold transition ${
-              filter === 'mc-a' ? 'bg-sky-700 text-white' : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            MC-A (กะเช้า)
-          </button>
-          <button
-            type="button"
-            onClick={() => setFilter('mc-b')}
-            className={`px-2 py-0.5 rounded font-bold transition ${
-              filter === 'mc-b' ? 'bg-sky-700 text-white' : 'text-slate-600 hover:text-slate-900'
-            }`}
-          >
-            MC-B (กะบ่าย)
-          </button>
-        </div>
+        ))}
       </div>
 
-      {/* SVG Bars */}
-      <div className="h-44 w-full flex items-end justify-between gap-1.5 pt-6 pb-2 border-b border-slate-300">
-        {bins.map((b) => {
-          const val = filter === 'all' ? b.countAll : filter === 'mc-a' ? b.countA : b.countB;
-          const hPct = (val / maxCount) * 100;
-          const isOut = b.range.includes('50.06') || b.range.includes('50.08') || b.range.includes('50.10');
-          return (
-            <div key={b.range} className="flex-1 flex flex-col items-center gap-1 group relative">
-              <span className="text-[10px] font-bold text-slate-600">{val > 0 ? val : ''}</span>
-              <div
-                className={`w-full rounded-t transition-all duration-300 ${
-                  isOut ? 'bg-rose-500 group-hover:bg-rose-600' : 'bg-sky-600 group-hover:bg-sky-700'
-                }`}
-                style={{ height: `${Math.max(hPct, 4)}%` }}
-              />
-              <span className="text-[9px] sm:text-[10px] font-mono text-slate-600 text-center whitespace-nowrap">
-                {b.range}
-              </span>
-            </div>
-          );
-        })}
+      <div className="h-48 w-full flex items-end justify-between gap-1 rounded-xl border border-sky-200 bg-sky-50/50 px-4 pt-4">
+        {shape.bars.map((v, i) => (
+          <div
+            key={i}
+            className="flex-1 rounded-t bg-sky-500 transition-all duration-500"
+            style={{ height: `${(v / 12) * 100}%` }}
+          />
+        ))}
       </div>
+      <div className="text-center text-[11px] text-slate-500">ภาพจำลองเพื่ออธิบายรูปร่าง (ไม่ใช่ข้อมูลวัดจริง)</div>
 
-      <div className="flex items-center justify-between text-xs text-slate-600">
-        <span>LSL = 49.95 mm</span>
-        <span className="font-bold text-slate-900">Target = 50.00 mm</span>
-        <span className="text-rose-600 font-bold">USL = 50.05 mm</span>
+      <div className="rounded-lg border border-sky-200 bg-sky-50 p-3 text-sm leading-relaxed text-slate-800">
+        <strong className="text-sky-900">{shape.name}</strong> — {shape.look}: {shape.cause}
       </div>
     </div>
   );
@@ -474,18 +497,20 @@ export const HistogramChart: React.FC = () => {
 // =============================================================
 export const BoxPlotChart: React.FC = () => {
   return (
-    <div className="rounded-xl border border-indigo-300 bg-white p-4 shadow-sm space-y-3">
-      <div className="flex items-center justify-between">
-        <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-indigo-700">Box Plot (แผนภาพกล่อง)</span>
-          <h4 className="text-sm font-bold text-slate-900">เปรียบเทียบ MC-A vs MC-B และตรวจจับ Outlier</h4>
-        </div>
-        <span className="rounded bg-indigo-50 px-2 py-0.5 text-xs font-bold text-indigo-900 border border-indigo-200">
-          5-Point Summary
-        </span>
-      </div>
-
-      <svg viewBox="0 0 420 180" className="w-full h-44">
+    <ChartCard
+      label="Box Plot (แผนภาพกล่อง)"
+      title="เปรียบเทียบ MC-A vs MC-B และตรวจจับ Outlier"
+      badge="5-Point Summary"
+      explanation={
+        <>
+          <strong>การอ่านกราฟ:</strong> Box Plot สรุปข้อมูลด้วย Min (ปลาย Whisker ล่าง), Q1 (25%), Median (เส้นกลางกล่อง
+          50%), Q3 (75%) และ Max (ปลาย Whisker บน) ส่วนจุด Outlier คือค่าที่มากกว่า Q3 + 1.5×IQR หรือน้อยกว่า Q1 − 1.5×IQR{' '}
+          <strong>การแปลผล:</strong> MC-A นิ่งและเกาะกลุ่มตรงกลางเป้าหมาย ส่วน MC-B ค่ากลางเริ่มเลื่อนสูงขึ้น (Median =
+          50.04) กล่องกว้างขึ้น และมี Outlier หลุดสเปกที่ 50.14 mm!
+        </>
+      }
+    >
+      <svg viewBox="0 0 420 180" className="w-full h-full">
         {/* Spec background lines */}
         <line x1="40" y1="20" x2="40" y2="160" stroke="#94a3b8" strokeDasharray="3 3" />
         <text x="40" y="15" textAnchor="middle" fill="#64748b" fontSize="9">LSL 49.95</text>
@@ -526,199 +551,279 @@ export const BoxPlotChart: React.FC = () => {
           Outlier (50.14)
         </text>
       </svg>
-
-      <div className="p-2.5 rounded-lg bg-indigo-50 border border-indigo-200 text-xs text-indigo-950">
-        <strong>การแปลผล:</strong> MC-A นิ่งและเกาะกลุ่มตรงกลางเป้าหมาย ส่วน MC-B ค่ากลางเริ่มเลื่อนสูงขึ้น (Median = 50.04) กล่องกว้างขึ้น และมี Outlier หลุดสเปกที่ 50.14 mm!
-      </div>
-    </div>
+    </ChartCard>
   );
 };
 
 // =============================================================
 // 6. M1L4-S04: Interactive Pareto Chart
 // =============================================================
-export const ParetoChart: React.FC = () => {
-  const items = [
-    { defect: 'Scratch (รอยขีดข่วน)', count: 9, pct: 60.0, cum: 60.0 },
-    { defect: 'Burr (ครีบคม)', count: 4, pct: 26.7, cum: 86.7 },
-    { defect: 'Dent (รอยบุบ)', count: 1, pct: 6.7, cum: 93.3 },
-    { defect: 'Crack (รอยร้าว)', count: 1, pct: 6.7, cum: 100.0 },
-  ];
+export const ParetoChart: React.FC<{ rows: CsvRow[] }> = ({ rows }) => {
+  // นับจำนวนจุดเสียจาก CSV (ถ่วงด้วย Defect_Count) เรียงมากไปน้อย แล้วคิดเปอร์เซ็นต์สะสม
+  const counts = new Map<string, number>();
+  toSamples(rows).forEach((s) => {
+    if (s.defect !== 'None' && s.defectCount > 0) counts.set(s.defect, (counts.get(s.defect) ?? 0) + s.defectCount);
+  });
+  const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  const total = sorted.reduce((sum, [, v]) => sum + v, 0);
+  let running = 0;
+  const items = sorted.map(([defect, count]) => {
+    running += count;
+    return { defect, count, cum: total ? (running / total) * 100 : 0 };
+  });
+  const topTwo = items[1] ?? items[0];
+
+  // สเกลกราฟ: แกนซ้าย 0..จำนวนสูงสุด, แกนขวา 0..100%
+  const left = 52;
+  const right = 408;
+  const top = 40;
+  const bottom = 180;
+  const maxCount = Math.max(1, ...items.map((i) => i.count));
+  const slot = (right - left) / Math.max(items.length, 1);
+  const xOf = (i: number) => left + slot * (i + 0.5);
+  const yCount = (v: number) => bottom - (v / maxCount) * (bottom - top);
+  const yPct = (v: number) => bottom - (v / 100) * (bottom - top);
+  const countTicks = Array.from({ length: Math.floor(maxCount / 3) + 1 }, (_, i) => i * 3);
+  if (countTicks[countTicks.length - 1] !== maxCount) countTicks.push(maxCount);
 
   return (
-    <div className="rounded-xl border border-rose-300 bg-white p-4 shadow-sm space-y-3">
-      <div className="flex items-center justify-between">
+    <div className="rounded-xl border border-sky-300 bg-white p-4 shadow-sm space-y-3">
+      <div className="flex items-center justify-between gap-2">
         <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-rose-700">Pareto Chart (พาเรโต)</span>
+          <span className="text-xs font-bold uppercase tracking-wider text-sky-700">Pareto Chart (พาเรโต)</span>
           <h4 className="text-sm font-bold text-slate-900">กฎ 80/20 จัดลำดับความสำคัญของเสียหน้างาน</h4>
         </div>
-        <span className="rounded bg-rose-50 px-2 py-0.5 text-xs font-bold text-rose-800 border border-rose-200">
+        <span className="shrink-0 rounded bg-sky-100 px-2 py-0.5 text-xs font-bold text-sky-900 border border-sky-300">
           Vital Few vs Trivial Many
         </span>
       </div>
 
-      <div className="h-44 w-full flex items-end justify-between gap-3 pt-6 pb-2 border-b border-slate-300 relative">
-        {/* 80% Cutoff Line */}
-        <div className="absolute top-12 left-0 right-0 border-t-2 border-dashed border-amber-500 z-10 flex justify-end pr-2">
-          <span className="bg-amber-100 text-amber-900 text-[10px] font-bold px-1.5 py-0.5 rounded -mt-2.5">
-            เส้น 80% Cutoff
-          </span>
-        </div>
+      <div className="rounded-xl border border-sky-200 bg-sky-50/50 p-2">
+        <svg viewBox="0 0 460 210" className="w-full h-60" role="img" aria-label="กราฟพาเรโตของเสียพร้อมเส้นเปอร์เซ็นต์สะสม">
+          <text x={left} y="14" textAnchor="middle" fill="#334155" fontSize="9" fontWeight="bold">จำนวน (จุด)</text>
+          <text x={right} y="14" textAnchor="middle" fill="#b45309" fontSize="9" fontWeight="bold">สะสม (%)</text>
+          <line x1={left} y1={top} x2={left} y2={bottom} stroke="#64748b" strokeWidth="1.2" />
+          <line x1={right} y1={top} x2={right} y2={bottom} stroke="#b45309" strokeWidth="1.2" />
+          <line x1={left} y1={bottom} x2={right} y2={bottom} stroke="#64748b" strokeWidth="1.2" />
 
-        {items.map((it) => (
-          <div key={it.defect} className="flex-1 flex flex-col items-center gap-1 z-20">
-            <span className="text-xs font-bold text-slate-800">{it.count} ชิ้น</span>
-            <div
-              className={`w-full rounded-t transition-all ${
-                it.cum <= 86.7 ? 'bg-rose-600' : 'bg-slate-400'
-              }`}
-              style={{ height: `${(it.count / 10) * 120}px` }}
-            />
-            <span className="text-[10px] sm:text-[11px] font-bold text-slate-700 text-center">
-              {it.defect.split(' ')[0]}
-            </span>
-            <span className="text-[10px] font-mono text-amber-800 font-bold">
-              สะสม {it.cum}%
-            </span>
-          </div>
-        ))}
-      </div>
+          {countTicks.map((v) => (
+            <g key={`c${v}`}>
+              <line x1={left - 4} y1={yCount(v)} x2={left} y2={yCount(v)} stroke="#64748b" />
+              <text x={left - 7} y={yCount(v) + 3} textAnchor="end" fill="#334155" fontSize="9">{v}</text>
+            </g>
+          ))}
+          {[0, 20, 40, 60, 80, 100].map((v) => (
+            <g key={`p${v}`}>
+              <line x1={right} y1={yPct(v)} x2={right + 4} y2={yPct(v)} stroke="#b45309" />
+              <text x={right + 7} y={yPct(v) + 3} fill="#92400e" fontSize="9">{v}%</text>
+            </g>
+          ))}
 
-      <div className="p-2.5 rounded-lg bg-rose-50 border border-rose-200 text-xs text-rose-950">
-        <strong>สรุปการจัดการ:</strong> แก้ไขเพียง 2 ปัญหาแรก (<strong>Scratch + Burr</strong>) จะลดของเสียในกระบวนการได้ถึง <strong>86.7%</strong> ทันที!
-      </div>
-    </div>
-  );
-};
-
-// =============================================================
-// 7. M1L4-S05: Interactive Scatter Plot
-// =============================================================
-export const ScatterPlotChart: React.FC = () => {
-  return (
-    <div className="rounded-xl border border-emerald-300 bg-white p-4 shadow-sm space-y-3">
-      <div className="flex items-center justify-between">
-        <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-emerald-700">Scatter Plot (แผนภาพการกระจาย)</span>
-          <h4 className="text-sm font-bold text-slate-900">ความสัมพันธ์ระหว่าง อุณหภูมิแม่พิมพ์ vs ขนาดเพลา</h4>
-        </div>
-        <span className="rounded bg-emerald-100 px-2 py-0.5 text-xs font-mono font-bold text-emerald-900 border border-emerald-300">
-          r = +0.9949 (เชิงบวกสูงมาก)
-        </span>
-      </div>
-
-      <div className="relative rounded-xl border border-slate-200 bg-slate-50 p-2">
-        <svg viewBox="0 0 400 160" className="w-full h-40">
-          {/* Axis */}
-          <line x1="40" y1="130" x2="380" y2="130" stroke="#64748b" strokeWidth="1.5" />
-          <line x1="40" y1="20" x2="40" y2="130" stroke="#64748b" strokeWidth="1.5" />
-
-          {/* Labels */}
-          <text x="210" y="150" textAnchor="middle" fill="#475569" fontSize="10" fontWeight="bold">
-            อุณหภูมิแม่พิมพ์ Mold Temp (°C: 174–180)
-          </text>
-          <text x="15" y="75" textAnchor="middle" fill="#475569" fontSize="9" fontWeight="bold" transform="rotate(-90 15 75)">
-            ขนาด (mm)
-          </text>
-
-          {/* Trendline */}
-          <line x1="50" y1="120" x2="370" y2="35" stroke="#059669" strokeWidth="2.5" strokeDasharray="4 2" />
-
-          {/* Points */}
-          {WORKSHOP_SAMPLES.map((s, i) => {
-            const cx = 50 + ((s.temp - 174) / 6) * 320;
-            const cy = 125 - ((s.diam - 49.95) / 0.20) * 100;
-            return (
-              <circle
-                key={i}
-                cx={cx}
-                cy={cy}
-                r="4"
-                fill={s.diam > 50.05 ? '#e11d48' : '#0284c7'}
-                stroke="#fff"
-                strokeWidth="1"
+          {items.map((it, i) => (
+            <g key={it.defect}>
+              <rect
+                data-bar={it.defect}
+                x={xOf(i) - slot * 0.32}
+                y={yCount(it.count)}
+                width={slot * 0.64}
+                height={bottom - yCount(it.count)}
+                fill={i < 2 ? '#0284c7' : '#94a3b8'}
+                rx="2"
               />
-            );
-          })}
-        </svg>
-      </div>
+              <text x={xOf(i)} y={bottom - 5} textAnchor="middle" fill="#ffffff" fontSize="10" fontWeight="bold">
+                {it.count}
+              </text>
+              <text x={xOf(i)} y={bottom + 14} textAnchor="middle" fill="#0f172a" fontSize="10" fontWeight="bold">
+                {it.defect}
+              </text>
+            </g>
+          ))}
 
-      {/* Checklist Item 16: ข้อควรระวัง */}
-      <div className="p-2.5 rounded-lg bg-amber-50 border border-amber-300 text-xs text-amber-950">
-        <strong>ข้อควรระวัง:</strong> <strong>Correlation ≠ Causation</strong> — สหสัมพันธ์สูง (<InlineMarkdown text="$r = +0.99$" />) บอกว่าตัวแปรเปลี่ยนไปพร้อมกัน แต่ต้องพิสูจน์ทางวิศวกรรมเสมอว่าอุณหภูมิที่สูงขึ้นทำให้เนื้อโลหะขยายตัวจริง หรือมีปัจจัยแฝงอื่น!
-      </div>
-    </div>
-  );
-};
+          {/* เส้นอ้างอิง 80% ตามสเกลแกนขวา */}
+          <line data-ref="80" x1={left} y1={yPct(80)} x2={right} y2={yPct(80)} stroke="#e11d48" strokeWidth="1.5" strokeDasharray="5 3" />
+          <text x={right - 6} y={yPct(80) + 12} textAnchor="end" fill="#be123c" fontSize="10" fontWeight="bold">80%</text>
 
-// =============================================================
-// 8. M1L4-S06: Interactive Run Chart
-// =============================================================
-export const RunChart: React.FC = () => {
-  return (
-    <div className="rounded-xl border border-blue-300 bg-white p-4 shadow-sm space-y-3">
-      <div className="flex items-center justify-between">
-        <div>
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-700">Run Chart (กราฟแสดงแนวโน้มตามเวลา)</span>
-          <h4 className="text-sm font-bold text-slate-900">ตรวจจับแนวโน้ม Upward Drift (ขนาดค่อยๆ ไหลสูงขึ้น)</h4>
-        </div>
-        <span className="rounded bg-blue-100 px-2 py-0.5 text-xs font-bold text-blue-900 border border-blue-300">
-          Time-Ordered
-        </span>
-      </div>
-
-      <div className="relative rounded-xl border border-slate-200 bg-slate-900 p-3">
-        <svg viewBox="0 0 420 160" className="w-full h-40">
-          {/* Limits */}
-          <line x1="30" y1="35" x2="410" y2="35" stroke="#f43f5e" strokeWidth="1.5" strokeDasharray="4 3" />
-          <text x="35" y="30" fill="#f43f5e" fontSize="9" fontWeight="bold">USL 50.05 mm</text>
-
-          <line x1="30" y1="80" x2="410" y2="80" stroke="#38bdf8" strokeWidth="1.5" strokeDasharray="2 2" />
-          <text x="35" y="75" fill="#38bdf8" fontSize="9">Target 50.00 mm</text>
-
-          <line x1="30" y1="125" x2="410" y2="125" stroke="#94a3b8" strokeWidth="1.5" strokeDasharray="4 3" />
-          <text x="35" y="138" fill="#94a3b8" fontSize="9">LSL 49.95 mm</text>
-
-          {/* Dividing MC-A vs MC-B line */}
-          <line x1="220" y1="10" x2="220" y2="150" stroke="#e2e8f0" strokeWidth="1" strokeDasharray="2 4" opacity="0.4" />
-          <text x="120" y="20" fill="#7dd3fc" fontSize="9" fontWeight="bold">MC-A (ช่วงเช้า 08:00–12:30)</text>
-          <text x="310" y="20" fill="#fcd34d" fontSize="9" fontWeight="bold">MC-B (ช่วงบ่าย 13:00–16:30)</text>
-
-          {/* Line connecting points */}
           <polyline
-            points={WORKSHOP_SAMPLES.map((s, idx) => {
-              const x = 40 + (idx / (WORKSHOP_SAMPLES.length - 1)) * 360;
-              const y = 80 - ((s.diam - 50.00) / 0.05) * 45;
-              return `${x},${y}`;
-            }).join(' ')}
+            points={items.map((it, i) => `${xOf(i)},${yPct(it.cum)}`).join(' ')}
             fill="none"
-            stroke="#fbbf24"
-            strokeWidth="2"
+            stroke="#d97706"
+            strokeWidth="2.5"
           />
-
-          {/* Points */}
-          {WORKSHOP_SAMPLES.map((s, idx) => {
-            const x = 40 + (idx / (WORKSHOP_SAMPLES.length - 1)) * 360;
-            const y = 80 - ((s.diam - 50.00) / 0.05) * 45;
-            const isOut = s.diam > 50.05;
-            return (
-              <circle
-                key={s.id}
-                cx={x}
-                cy={y}
-                r={isOut ? '5' : '3.5'}
-                fill={isOut ? '#f43f5e' : '#38bdf8'}
-                stroke="#ffffff"
-                strokeWidth="1"
-              />
-            );
-          })}
+          {items.map((it, i) => (
+            <g key={`m${it.defect}`}>
+              <circle data-cum={it.cum.toFixed(1)} cx={xOf(i)} cy={yPct(it.cum)} r="4" fill="#d97706" stroke="#ffffff" strokeWidth="1.5" />
+              <text x={xOf(i)} y={yPct(it.cum) - 8} textAnchor="middle" fill="#92400e" stroke="#ffffff" strokeWidth="3" paintOrder="stroke" fontSize="10" fontWeight="bold">
+                {it.cum.toFixed(1)}%
+              </text>
+            </g>
+          ))}
         </svg>
       </div>
 
-      <div className="p-2.5 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-950">
-        <strong>จุดเด่นของ Run Chart:</strong> Histogram มองไม่เห็นลำดับเวลา แต่ Run Chart เผยให้เห็นชัดเจนว่าขนาดชิ้นงานค่อยๆ ไหลสูงขึ้นเรื่อยๆ ในช่วงบ่าย จนทะลุเส้นสเปก USL!
-      </div>
+      {topTwo && (
+        <p className="rounded-lg border border-sky-200 bg-sky-50 p-3 text-xs sm:text-sm leading-relaxed text-slate-800">
+          <strong>สรุปการจัดการ:</strong> แก้ไขเพียง 2 ปัญหาแรก (
+          <strong>
+            {items[0].defect} + {topTwo.defect}
+          </strong>
+          ) จะลดของเสียในกระบวนการได้ถึง <strong>{topTwo.cum.toFixed(1)}%</strong> ทันที! (จุดเสียรวม {total} จุด)
+        </p>
+      )}
     </div>
+  );
+};
+
+// =============================================================
+// 7. M1L4-S05: Scatter Plot
+// =============================================================
+export const ScatterPlotChart: React.FC<{ rows: CsvRow[] }> = ({ rows }) => {
+  const samples = toSamples(rows);
+  const n = samples.length || 1;
+  const meanX = samples.reduce((a, s) => a + s.temp, 0) / n;
+  const meanY = samples.reduce((a, s) => a + s.diam, 0) / n;
+  const sxy = samples.reduce((a, s) => a + (s.temp - meanX) * (s.diam - meanY), 0);
+  const sxx = samples.reduce((a, s) => a + (s.temp - meanX) ** 2, 0);
+  const syy = samples.reduce((a, s) => a + (s.diam - meanY) ** 2, 0);
+  const r = sxx && syy ? sxy / Math.sqrt(sxx * syy) : 0;
+  const slope = sxx ? sxy / sxx : 0;
+
+  const temps = samples.map((s) => s.temp);
+  const minT = samples.length ? Math.min(...temps) : 0;
+  const maxT = samples.length ? Math.max(...temps) : 1;
+  const xOf = (t: number) => 62 + ((t - minT) / (maxT - minT || 1)) * 320;
+  // แกน Y 49.96–50.16 mm เว้นขอบให้จุดไม่ล้น
+  const yOf = (d: number) => 150 - ((d - 49.96) / 0.2) * 135;
+
+  return (
+    <ChartCard
+      label="Scatter Plot (แผนภาพการกระจาย)"
+      title="ความสัมพันธ์ระหว่าง อุณหภูมิแม่พิมพ์ vs ขนาดเพลา"
+      badge={`r = ${r >= 0 ? '+' : ''}${r.toFixed(4)}`}
+      explanation={
+        <>
+          <strong>การอ่านกราฟ:</strong> พล็อตตัวแปรต้น X (อุณหภูมิแม่พิมพ์, แกนนอน) กับตัวแปรผล Y (ขนาดเพลา, แกนตั้ง)
+          เพื่อประเมินทิศทางและความแรงของสหสัมพันธ์ ข้อมูล Workshop 2 ให้ค่า{' '}
+          <InlineMarkdown text={`$r = +${r.toFixed(4)}$`} /> (สหสัมพันธ์เชิงบวกสูงมาก) <strong>ข้อควรระวัง:</strong>{' '}
+          <strong>Correlation ≠ Causation</strong> — สหสัมพันธ์สูงบอกว่าตัวแปรเปลี่ยนไปพร้อมกัน แต่ต้องพิสูจน์ทางวิศวกรรมเสมอว่า
+          อุณหภูมิที่สูงขึ้นทำให้เนื้อโลหะขยายตัวจริง หรือมีปัจจัยแฝงอื่น!
+        </>
+      }
+    >
+      <svg viewBox="0 0 400 190" className="w-full h-full">
+        <line x1="50" y1="160" x2="392" y2="160" stroke="#64748b" strokeWidth="1.5" />
+        <line x1="50" y1="8" x2="50" y2="160" stroke="#64748b" strokeWidth="1.5" />
+        {[50.0, 50.05, 50.1, 50.15].map((v) => (
+          <text key={v} x="46" y={yOf(v) + 3} textAnchor="end" fill="#475569" fontSize="9">
+            {v.toFixed(2)}
+          </text>
+        ))}
+        <text x={xOf(minT)} y="172" textAnchor="middle" fill="#475569" fontSize="9">{minT}</text>
+        <text x={xOf(maxT)} y="172" textAnchor="middle" fill="#475569" fontSize="9">{maxT}</text>
+        <text x="220" y="185" textAnchor="middle" fill="#334155" fontSize="10" fontWeight="bold">
+          อุณหภูมิแม่พิมพ์ Mold Temp (°C: {minT}–{maxT})
+        </text>
+        <text x="12" y="84" textAnchor="middle" fill="#334155" fontSize="9" fontWeight="bold" transform="rotate(-90 12 84)">
+          ขนาด (mm)
+        </text>
+
+        {/* เส้นแนวโน้ม (least squares) */}
+        <line
+          x1={xOf(minT)}
+          y1={yOf(meanY + slope * (minT - meanX))}
+          x2={xOf(maxT)}
+          y2={yOf(meanY + slope * (maxT - meanX))}
+          stroke="#059669"
+          strokeWidth="2"
+          strokeDasharray="4 2"
+        />
+        {samples.map((s) => (
+          <circle
+            key={s.id}
+            cx={xOf(s.temp)}
+            cy={yOf(s.diam)}
+            r="4"
+            fill={s.diam > USL ? '#e11d48' : '#0284c7'}
+            stroke="#fff"
+            strokeWidth="1"
+          />
+        ))}
+      </svg>
+    </ChartCard>
+  );
+};
+
+// =============================================================
+// 8. M1L4-S06: Run Chart
+// =============================================================
+export const RunChart: React.FC<{ rows: CsvRow[] }> = ({ rows }) => {
+  const samples = toSamples(rows);
+  const xOf = (idx: number) => 40 + (idx / Math.max(samples.length - 1, 1)) * 330;
+  // แกน Y 49.94–50.15 mm ภายในพื้นที่ y = 25..170 (เว้นขอบให้จุดไม่ล้น)
+  const yOf = (d: number) => 170 - ((d - 49.94) / 0.21) * 145;
+  const firstB = samples.findIndex((s) => s.mc === 'MC-B');
+  const split = firstB > 0 ? (xOf(firstB - 1) + xOf(firstB)) / 2 : null;
+  const range = (mc: string) => {
+    const group = samples.filter((s) => s.mc === mc);
+    return group.length ? `${group[0].time}–${group[group.length - 1].time}` : '';
+  };
+
+  return (
+    <ChartCard
+      label="Run Chart (กราฟแสดงแนวโน้มตามเวลา)"
+      title="ตรวจจับแนวโน้ม Upward Drift (ขนาดค่อยๆ ไหลสูงขึ้น)"
+      badge="Time-Ordered"
+      explanation={
+        <>
+          <strong>จุดเด่นของ Run Chart:</strong> Histogram มองไม่เห็นลำดับเวลา แต่ Run Chart พล็อตข้อมูลเรียงตามเวลาการผลิต
+          เมื่อพล็อต Sample 1..30 ตามเวลา 08:00–16:30 จะเห็นชัดว่าช่วงเช้า (MC-A) นิ่ง แต่ช่วงบ่าย (MC-B) ขนาดเพลาค่อยๆ
+          ไหลสูงขึ้นเรื่อยๆ (Upward Drift) จนทะลุเส้นสเปก USL (50.05 mm) จึงใช้จับสัญญาณการเลื่อน (Shift), ไหลเอียง (Drift)
+          หรือเป็นรอบ (Cycles) ก่อนเติมเส้น Control Limits ใน SPC
+        </>
+      }
+    >
+      <svg viewBox="0 0 460 190" className="w-full h-full">
+        <rect x="25" y="4" width="432" height="182" fill="#ffffff" rx="6" />
+        {[
+          { v: USL, color: '#e11d48', text: 'USL 50.05 mm' },
+          { v: TARGET, color: '#0284c7', text: 'Target 50.00 mm' },
+          { v: LSL, color: '#64748b', text: 'LSL 49.95 mm' },
+        ].map((l) => (
+          <g key={l.text}>
+            <line x1="30" y1={yOf(l.v)} x2="378" y2={yOf(l.v)} stroke={l.color} strokeWidth="1.5" strokeDasharray="4 3" />
+            <text x="382" y={yOf(l.v) + 3} fill={l.color} fontSize="9" fontWeight="bold">
+              {l.text}
+            </text>
+          </g>
+        ))}
+
+        {split !== null && (
+          <line x1={split} y1="10" x2={split} y2="180" stroke="#94a3b8" strokeWidth="1" strokeDasharray="2 4" />
+        )}
+        <text x="122" y="16" textAnchor="middle" fill="#0369a1" fontSize="9" fontWeight="bold">
+          MC-A (ช่วงเช้า {range('MC-A')})
+        </text>
+        <text x="288" y="16" textAnchor="middle" fill="#b45309" fontSize="9" fontWeight="bold">
+          MC-B (ช่วงบ่าย {range('MC-B')})
+        </text>
+
+        <polyline
+          points={samples.map((s, idx) => `${xOf(idx)},${yOf(s.diam)}`).join(' ')}
+          fill="none"
+          stroke="#d97706"
+          strokeWidth="2"
+        />
+        {samples.map((s, idx) => (
+          <circle
+            key={s.id}
+            cx={xOf(idx)}
+            cy={yOf(s.diam)}
+            r={s.diam > USL ? 5 : 3.5}
+            fill={s.diam > USL ? '#e11d48' : '#0284c7'}
+            stroke="#ffffff"
+            strokeWidth="1"
+          />
+        ))}
+      </svg>
+    </ChartCard>
   );
 };
