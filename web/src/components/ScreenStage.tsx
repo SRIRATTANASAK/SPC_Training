@@ -1397,11 +1397,11 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
               ) : screen.screenId === 'M1L3-S04' ? (
                 <DispersionUnifiedCard />
               ) : screen.screenId === 'M1L4-S01' ? (
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start h-full w-full">
-                  <div className="lg:col-span-4">
+                <div className="flex flex-col gap-2 h-full w-full">
+                  <div className="w-full shrink-0 [&_p]:mb-0 [&_ul]:my-0 [&_li]:my-0 text-xs sm:text-sm">
                     {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
                   </div>
-                  <div className="lg:col-span-8">
+                  <div className="w-full grow min-h-0 [&_tbody_tr]:!h-[18px] [&_tbody_tr]:!leading-[18px] [&_thead_th]:!py-0.5">
                     <Workshop2DataPreview rows={moduleData.workshops.dimensionsAndDefects ?? []} />
                   </div>
                 </div>
@@ -1433,14 +1433,30 @@ export const ScreenStage: React.FC<Props> = ({ screen, moduleData }) => {
                   </div>
                 </div>
               ) : screen.screenId === 'M1L4-S05' ? (
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start h-full w-full">
-                  <div className="lg:col-span-5">
-                    {cleanMarkdown && <MarkdownContent markdown={cleanMarkdown} />}
-                  </div>
-                  <div className="lg:col-span-7">
-                    <ScatterPlotChart rows={moduleData.workshops.dimensionsAndDefects ?? []} />
-                  </div>
-                </div>
+                (() => {
+                  const s05Lines = (cleanMarkdown ?? '').split('\n');
+                  const tableStartIdx = s05Lines.findIndex((line) => line.trimStart().startsWith('|'));
+                  const splitIdx = tableStartIdx >= 0 ? tableStartIdx : 2;
+                  const s05Intro = s05Lines.slice(0, splitIdx).join('\n').trim();
+                  const s05Details = s05Lines.slice(splitIdx).join('\n').trim();
+                  return (
+                    <div className="flex flex-col gap-2 h-full w-full">
+                      {s05Intro && (
+                        <div className="w-full shrink-0 [&_p]:mb-0.5 [&_ul]:my-0 [&_li]:my-0 text-xs sm:text-sm">
+                          <MarkdownContent markdown={s05Intro} />
+                        </div>
+                      )}
+                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start w-full grow">
+                        <div className="lg:col-span-5 [&_div.my-2\.5]:!mt-0 [&_div.my-2\.5]:!mb-1.5 [&_th]:!px-2 [&_th]:!py-1.5 [&_th]:!text-xs [&_td]:!px-2 [&_td]:!py-1 [&_td]:!text-xs [&_td]:!leading-tight [&_p]:mb-0 [&_li]:text-xs [&_li]:leading-snug">
+                          {s05Details && <MarkdownContent markdown={s05Details} />}
+                        </div>
+                        <div className="lg:col-span-7 [&>div]:!p-3 [&>div]:!space-y-2 [&_div.h-56]:!h-40 [&>div>p]:!p-2 [&>div>p]:!text-xs [&>div>p]:!leading-snug">
+                          <ScatterPlotChart rows={moduleData.workshops.dimensionsAndDefects ?? []} />
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()
               ) : screen.screenId === 'M1L4-S06' ? (
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start h-full w-full">
                   <div className="lg:col-span-5">
