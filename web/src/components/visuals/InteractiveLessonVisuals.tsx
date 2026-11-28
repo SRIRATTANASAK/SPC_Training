@@ -448,7 +448,7 @@ const HISTOGRAM_SHAPES = [
     tab: 'ระฆังคว่ำ (ตรงเป้า)',
     name: 'Normal / Bell-shaped',
     look: 'ระฆังคว่ำสมมาตร',
-    cause: 'กระบวนการเสถียรตามธรรมชาติ (Common cause เท่านั้น)',
+    cause: 'รูปร่างระฆังบอกได้เพียงว่า "ดูปกติ" — ยังสรุปความเสถียรไม่ได้ ต้องดู Run/Control Chart (AIAG p.29)',
     bars: [2, 5, 9, 12, 9, 5, 2],
   },
   {
