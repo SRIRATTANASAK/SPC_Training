@@ -80,11 +80,11 @@
 
 ## M10L3-S02 — Case 3 Analysis: Staircase Limits & Dual OOC Signals
 `<Asset id="AST-M10-009" />`
-- **ค่าเฉลี่ยรวม:** $\bar{p} = \mathbf{0.0282}$ (`2.82%`), $\bar{u} = \mathbf{0.0501}$ จุด/ชิ้น
+- **ค่าเฉลี่ยรวม:** $\bar{p} = \mathbf{0.0282}$ (`2.82%`), $\bar{u} = \mathbf{0.0519}$ จุด/ชิ้น *(`LOT-13` ใช้ `Total_Defects = 14` เป็นข้อมูลตัวอย่าง)*
 - **เส้นควบคุมแบบขั้นบันได (Staircase Limits):** เปลี่ยนตาม $n_i$ ของแต่ละ Lot!
 - **ผลการตรวจจับ OOC:**
   - **`LOT-13` (`n = 160`):** พบ `14` ชิ้นเสีย → $p = 0.0875 > \text{UCL}_p (0.0675)$ (**`OOC บน p Chart`**)
-  - **`LOT-17` (`n = 120`):** พบ `18` จุดตำหนิ (จาก `3` ชิ้นเสีย) → $u = 0.1500 > \text{UCL}_u (0.1114)$ (**`OOC บน u Chart`**)
+  - **`LOT-17` (`n = 120`):** พบ `18` จุดตำหนิ (จาก `3` ชิ้นเสีย) → $u = 0.1500 > \text{UCL}_u (0.1142)$ (**`OOC บน u Chart`**)
 
 ## M10L3-S03 — Case 3 Insight: Why Both `p` and `u` Matter Together
 `<Asset id="AST-M10-010" />`
@@ -117,7 +117,7 @@
 - **ผลคำนวณจาก `100` ชิ้น:**
   - $\bar{X} = \mathbf{50.0019\text{ mm}}$, $s_{\text{overall}} = \mathbf{0.01322\text{ mm}}$
   - $P_{pu} = \frac{50.100 - 50.0019}{3 \times 0.01322} = 2.474$, $\quad P_{pl} = \frac{50.0019 - 49.900}{3 \times 0.01322} = 2.569$
-  - **$P_{pk} = \mathbf{2.474} \ge 1.67$** → **APPROVED FOR PPAP RELEASE!** (ส่งมอบไลน์ผลิตจริงและลดความถี่คุมเป็น Ongoing `Cpk >= 1.33` บน Control Plan)
+  - **$P_{pk} = \mathbf{2.474} \ge 1.67$** → **APPROVED FOR PPAP RELEASE!** *(เกณฑ์ `1.67` ตามข้อกำหนดลูกค้า/PPAP (ยังไม่ได้ยืนยันจากต้นฉบับ))* (ส่งมอบไลน์ผลิตจริงและลดความถี่คุมเป็น Ongoing `Cpk >= 1.33` บน Control Plan)
 
 ## M10L4-S04 — Interactive Capstone Case 4 Dashboard (`PPAP Release`)
 `<Interactive id="INT-M10-L4-01" />`

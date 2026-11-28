@@ -37,7 +37,7 @@
   3. **Scenario 3 (Range `R` Exceeds `UCL_R`):**
      - Correct Route: **`Do NOT Adjust X̄ Offset!`** → `Contain Batch` → `Inspect Loose Clamp / Multi-Cavity / Mixed Stream / Gage Failure`.
   4. **Scenario 4 (Repeated `Raw Data > USL` on Automated Line):**
-     - Correct Route: `Immediate Auto-Hold Lot (OCAP / JESD557)` → `Escalate Tier 3 QE/PE` → `Launch 7 QC + 8D RCA`.
+     - Correct Route: `Immediate Hold Lot (แนวปฏิบัติ) ตาม OCAP` → `Escalate Tier 3 QE/PE` → `Launch 7 QC + 8D RCA`.
 
 ---
 
@@ -93,7 +93,7 @@
 - **3 Required Closure Challenges (`+15 pts`):**
   1. **Select Verified 3-Legged Root Cause:** Occurrence = Cracked hydraulic check-valve seal letting pressure bleed (`< 55 bar`); Detection = Mixed-fixture charting + no pressure sensor interlock; Systemic = Missing seal PM & Control Plan stratification.
   2. **Deploy Poka-Yoke & Living Controls:** Toggle `var_pokayoke_active = true` (**Pressure Switch `< 55 bar` PLC Interlock + Stratified `FIX-A / FIX-B` Chart + 500-hr Seal PM + Horizontal Deployment to CNC #2–#4**).
-  3. **Verify Post-PDCA Capability (`SG-17..24`):** Observe **`0` OOC**, Mean = **`40.0000 mm`**, `R̄ = 0.0190`, and **`Cpk = 2.040`** (`Ppk = 2.637`) vs Before **`Ppk = 0.843`** (Incident **`0.737`**).
+  3. **Verify Post-PDCA Capability (`SG-17..24`):** Observe **`0` OOC**, Mean = **`40.0000 mm`**, `R̄ = 0.0190`, and **`Cpk = 2.040`** (`Ppk = 2.637`) [ค่าเบื้องต้น / ข้อมูลตัวอย่าง] vs Before **`Ppk = 0.843`** (Incident **`0.737`**).
 
 ---
 

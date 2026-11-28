@@ -98,16 +98,16 @@
 - **Developer Notes:** Connects back to M5 Roughness zero-bound.
 
 ## Screen M7L2-S02 — Assembly & Electronics Processes (Torque / Press-Fit / SMT)
-- **Learning Objective:** เลือกวิธีเก็บข้อมูลอัตโนมัติ (`PLC 100% I-MR`, `SMT X̄-S`, `u Chart`) สำหรับสาย Assembly & Electronics
+- **Learning Objective:** เลือกวิธีเก็บข้อมูลอัตโนมัติ (`PLC 100% I-MR`, `SMT I-MR ค่าเฉลี่ยต่อแผ่น`, `u Chart`) สำหรับสาย Assembly & Electronics
 - **Duration:** 40s
-- **Layout:** Split Electronics & Torque Station (`AST-M7-006`: PLC `I-MR` Interlock | SMT 16-Site `X̄-S` & `JESD557`)
+- **Layout:** Split Electronics & Torque Station (`AST-M7-006`: PLC `I-MR` Interlock | SMT 16-Site `I-MR` ของค่าเฉลี่ยต่อแผ่น)
 - **Asset ID:** `AST-M7-006`
-- **On Screen Text:** `Assembly & SMT:` "Piece-to-Piece / Driver Dominant → Auto PLC I-MR Interlock + Multi-Site X̄-S"
+- **On Screen Text:** `Assembly & SMT:` "Piece-to-Piece / Driver Dominant → Auto PLC I-MR Interlock + Multi-Site: I-MR ของค่าเฉลี่ยต่อแผ่น + chart ภายในแผ่น"
 - **Voice Over Script Ref:** `AUD-M7L2-S02`
 - **Motion Specification:** Torque wrench PLC triggers pallet interlock pin immediately on 1-piece OOC.
 - **Trigger Logic:** Narration complete unlocks Next.
 - **Accessibility Notes:** Clear legend for PLC interlock.
-- **Developer Notes:** Integrates semiconductor/SMT JEDEC context.
+- **Developer Notes:** Integrates semiconductor/SMT multi-site context.
 
 ## Screen M7L2-S03 — Injection Molding (Multi-Cavity Plastic Molding)
 - **Learning Objective:** แก้ปัญหาการผสม Cavities ในงานฉีดพลาสติกด้วยการทำ Stratified Per-Cavity Control Charts
@@ -186,16 +186,16 @@
 - **Developer Notes:** Prepares learners for Workshop Part B.
 
 ## Screen M7L3-S03 — 3-Tier Escalation Matrix & SLA
-- **Learning Objective:** กำหนดกรอบเวลาและอำนาจการตัดสินใจใน **Tier 1 (Operator), Tier 2 (Leader/Tech), Tier 3 (Eng/QA Auto Hold)**
+- **Learning Objective:** กำหนดกรอบเวลาและอำนาจการตัดสินใจใน **Tier 1 (Operator), Tier 2 (Leader/Tech), Tier 3 (Eng/QA Hold Lot (แนวปฏิบัติ))**
 - **Duration:** 45s
-- **Layout:** 3-Tier Escalation Ladder with Timers (`AST-M7-011`: `0–15m` | `15–60m` | `>60m / Auto Lot Hold`)
+- **Layout:** 3-Tier Escalation Ladder with Timers (`AST-M7-011`: `0–15m` | `15–60m` | `>60m / Lot Hold (แนวปฏิบัติ)`)
 - **Asset ID:** `AST-M7-011`
-- **On Screen Text:** `3-Tier Escalation:` `Tier 1 (0–15m)` → `Tier 2 (15–60m)` → `Tier 3 (>60m / Auto Hold & OCAP)`
+- **On Screen Text:** `3-Tier Escalation:` `Tier 1 (0–15m)` → `Tier 2 (15–60m)` → `Tier 3 (>60m / Hold Lot (แนวปฏิบัติ) & OCAP)`
 - **Voice Over Script Ref:** `AUD-M7L3-S03`
 - **Motion Specification:** Unresolved timer climbs sequentially from Tier 1 green badge to Tier 2 amber to Tier 3 red hold lock.
 - **Trigger Logic:** Narration complete unlocks Next.
 - **Accessibility Notes:** Accessible ladder breakdown.
-- **Developer Notes:** Connects directly to `JESD557` Lot Hold & Module 8 OCAP.
+- **Developer Notes:** Connects directly to Lot Hold (แนวปฏิบัติ) & Module 8 OCAP.
 
 ## Screen M7L3-S04 — Interactive Reaction & Escalation Flowchart Simulator
 - **Learning Objective:** ฝึกตัดสินใจเดินขั้นตอนใน Escalation Flowchart กับเหตุการณ์ OOC 4 รูปแบบ

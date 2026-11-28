@@ -166,11 +166,11 @@
 
 ### AUD-M10L4-S03 (35 sec) — Case 4 Calculation & Release Decision
 - **Display Script (TH):**  
-  จากข้อมูล 100 ชิ้น ได้ค่าเฉลี่ย `50.0019 mm`, `s_overall = 0.01322` [ANIM: ppap_approved] คำนวณได้ **`Ppk = 2.474`** ซึ่งสูงกว่าเกณฑ์ PPAP `1.67` → **อนุมัติ Release สายการผลิตได้ 100 เปอร์เซ็นต์!**
+  จากข้อมูล 100 ชิ้น ได้ค่าเฉลี่ย `50.0019 mm`, `s_overall = 0.01322` [ANIM: ppap_approved] คำนวณได้ **`Ppk = 2.474`** ซึ่งสูงกว่าเกณฑ์ `1.67` ตามข้อกำหนดลูกค้าหรือ PPAP → **อนุมัติ Release สายการผลิตได้ 100 เปอร์เซ็นต์!**
 - **TTS Clean Script (TH):**  
-  จากข้อมูล 100 ชิ้น ได้ค่าเฉลี่ย 50.0019 มิลลิเมตร เอส โอเวอร์ออล 0.01322 คำนวณได้ พีพีเค เท่ากับ 2.474 ซึ่งสูงกว่าเกณฑ์ พีแพป 1.67 อนุมัติ รีลีส สายการผลิตได้ 100 เปอร์เซ็นต์
+  จากข้อมูล 100 ชิ้น ได้ค่าเฉลี่ย 50.0019 มิลลิเมตร เอส โอเวอร์ออล 0.01322 คำนวณได้ พีพีเค เท่ากับ 2.474 ซึ่งสูงกว่าเกณฑ์ 1.67 ตามข้อกำหนดลูกค้าหรือ พีแพป อนุมัติ รีลีส สายการผลิตได้ 100 เปอร์เซ็นต์
 - **EN Reference:**  
-  With a mean of 50.0019 and overall standard deviation of 0.01322, Ppk equals 2.474—exceeding the 1.67 PPAP threshold for full production release.
+  With a mean of 50.0019 and overall standard deviation of 0.01322, Ppk equals 2.474—exceeding the 1.67 customer or PPAP threshold for full production release.
 
 ### AUD-M10L4-S04 (30 sec) — Interactive Case 4 Dashboard
 - **Display Script (TH):**  

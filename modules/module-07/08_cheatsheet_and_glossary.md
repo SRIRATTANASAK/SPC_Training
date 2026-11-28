@@ -18,7 +18,7 @@ $$\text{Max Parts at Risk (Containment)} = \text{Line Speed (pcs/hr)} \times \fr
 | กระบวนการ | Dominant Noise | ตัวอย่าง CTQ | วิธีเก็บ Subgroup & Chart แนะนำ | กฎเสริม / Event Log สำคัญ |
 |---|---|---|---|---|
 | **Machining** (CNC Turning/Grinding) | Tool Wear / Thermal Drift | Shaft OD / Bore / **Roughness ($R_a$)** | `5` ชิ้นติดกันจาก Spindle เดียว (`X̄-R`) | **Trend (6 pts)**, `Ra` ใช้ **UCL Only**, ลง Log เปลี่ยนมีด |
-| **Assembly & SMT** (Torque / Paste) | Piece-to-Piece / Multi-Site | Bolt Torque / Paste Vol / Solder Defects | PLC 100% **`I-MR`** / 16-site **`X̄-S`** / **`u`** | Auto Interlock หยุดทีละ `1` ชิ้น / `JESD557` Auto Hold |
+| **Assembly & SMT** (Torque / Paste) | Piece-to-Piece / Multi-Site | Bolt Torque / Paste Vol / Solder Defects | PLC 100% **`I-MR`** / 16-site **`I-MR`** (ค่าเฉลี่ยต่อแผ่น + chart ภายในแผ่น) / **`u`** | Auto Interlock หยุดทีละ `1` ชิ้น / Hold Lot (แนวปฏิบัติ) |
 | **Injection Molding** (Multi-Cavity) | **Cavity-to-Cavity Stream Bias** | Part Weight / Critical Boss ID | **Stratified Per Cavity (`X̄-R`)** | **ห้ามผสม Cav 1–4 ลงกลุ่มเดียวเด็ดขาด!** |
 | **Stamping Press** (Die & Coil) | **Coil Lot Swap** & Punch Wear | Bend Angle / Burr Height | `5` ชิ้นติดกัน (`X̄-R`) + `np` (`n` คงที่) | ตรวจเพิ่ม **ทุกครั้งที่เปลี่ยน Coil**, ปัด `LCL_np = 0` |
 
@@ -30,7 +30,7 @@ $$\text{Max Parts at Risk (Containment)} = \text{Line Speed (pcs/hr)} \times \fr
 |---|---|---|---|
 | **Tier 1** | Operator หน้าเครื่อง | **`0 – 15 นาที`** | Auto-Pause → Verify วัดซ้ำ (`< 2 นาที`) → Contain ย้อนหลัง → เช็กพื้นฐาน/เปลี่ยนมีด |
 | **Tier 2** | Line Leader / Tech | **`15 – 60 นาที`** | ตรวจ Setup/Fixture/Parameter เครื่องจักร + สั่ง 100% Sort ในโซนกักกัน |
-| **Tier 3** | QE / PE Engineer | **`> 60 นาที` หรือ Raw > Spec ร้ายแรง** | สั่ง **Lot Hold (`OCAP / JESD557`)**, เปิด MRB & 8D Root Cause Analysis (**Module 8**) |
+| **Tier 3** | QE / PE Engineer | **`> 60 นาที` หรือ Raw > Spec ร้ายแรง** | สั่ง **Lot Hold (แนวปฏิบัติตาม `OCAP`)**, เปิด MRB & 8D Root Cause Analysis (**Module 8**) |
 
 ---
 

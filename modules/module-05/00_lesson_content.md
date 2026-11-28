@@ -35,12 +35,12 @@
 
 ## M5L1-S04 — AIAG SPC Framework & JEDEC `JESD557`
 `<Asset id="AST-M5-004" />`
-- **AIAG SPC (4th Ed.) — มาตรฐานยานยนต์ & IATF 16949:**
+- **AIAG SPC (2nd Edition, July 2005) — มาตรฐานยานยนต์ & IATF 16949:**
   - เน้น **Continual Improvement & Variation Reduction** ผูก Control Chart เข้ากับ **PFMEA** และ **Control Plan**
   - วงจร 3 ขั้น: *1) Collect Data → 2) Control (Stability) → 3) Analyze Capability ($C_{pk}/P_{pk}$)*
-- **JEDEC `JESD557` — มาตรฐานเซมิคอนดักเตอร์ & อิเล็กทรอนิกส์:**
-  - กำหนดระบบ **Automated Real-Time SPC** ตลอด Wafer Fab / Assembly / ATE
-  - เน้น **Zone/Run Rules**, **Auto Lot Hold**, และการผูกทุก Out-of-Control Signal เข้ากับ **OCAP (Out-of-Control Action Plan)** ทันที
+- **JEDEC `JESD557C` — เซมิคอนดักเตอร์ & อิเล็กทรอนิกส์ (p.9):**
+  - ระบบ SPC แบบ **online / real-time**
+  - ตัวอย่างกฎตรวจจับ เช่น **Western Electric rules** และการมี **OCAP (Out-of-Control Action Plan)**
 
 ## M5L1-S05 — Lesson 1 Knowledge Check (`KC-M5-L1`)
 - ทบทวน 2 ข้อ (`M5-Q001`, `M5-Q006`) จาก [06_assessment_bank.md](06_assessment_bank.md)
@@ -156,7 +156,7 @@ $$\text{CL}_{R} = \bar{R}, \quad \text{UCL}_{R} = D_4\bar{R}, \quad \text{LCL}_{
 - หากกระบวนการเสถียรจริง (`Normal`) โอกาสสุ่มปกติของจุดถัดไปคือ:
   - ตกนอก $\pm 3\sigma$: `0.27%` (`0.0027`) — แทบไม่มีทางบังเอิญ!
   - ตกเกิน $\pm 2\sigma$ ข้างเดียวกัน 2 ใน 3 จุด: โอกาสบังเอิญ `< 0.19%`
-  - ตกด้านเดียวกับ `CL` ต่อเนื่องกันถึง 8 จุด: $(0.5)^8 \times 2 \approx 0.78\%$
+  - ตกด้านเดียวกับ `CL` ต่อเนื่องกัน **7 จุด (AIAG — หลัก)**: $(0.5)^7 \times 2 \approx 1.56\%$ · **8 จุด (ISQC)**: $(0.5)^8 \times 2 \approx 0.78\%$
 - **สรุป:** Run Rules คือเครื่องมือ **เพิ่มความไว (Sensitivity)** ให้จับ Shift ขนาดเล็ก-กลาง (`1σ–2σ`) ได้เร็วขึ้น โดยไม่ต้องรอให้หลุด `3σ`!
 
 ## M5L4-S02 — Western Electric Rules (WECO Rules 1–4)
@@ -167,21 +167,22 @@ $$\text{CL}_{R} = \bar{R}, \quad \text{UCL}_{R} = D_4\bar{R}, \quad \text{LCL}_{
 | **WE Rule 1** | **1 จุด** อยู่นอกเส้นควบคุม (`> +3σ` หรือ `< −3σ`) | **Large Sudden Shift**, วัดผิด, เครื่องขัดข้องรุนแรง |
 | **WE Rule 2** | **2 ใน 3 จุดติดกัน** อยู่ใน **Zone A หรือไกลกว่า** (`> 2σ` ฝั่งเดียวกัน) | **Medium Shift (~2σ)** เริ่มขยับชัดเจน |
 | **WE Rule 3** | **4 ใน 5 จุดติดกัน** อยู่ใน **Zone B หรือไกลกว่า** (`> 1σ` ฝั่งเดียวกัน) | **Small–Medium Shift (~1.5σ)** กำลังเคลื่อนตัว |
-| **WE Rule 4** | **8 จุดติดกัน** อยู่ **ฝั่งเดียวกันของ Center Line** (ข้างบนหมด หรือ ข้างล่างหมด) | **Small Sustained Shift (~1σ)** เช่น เปลี่ยนล็อตวัสดุ, Offset เปลี่ยนกะ |
+| **Rule 4 (Shift)** | **7 จุดติดกัน** อยู่ **ฝั่งเดียวกันของ Center Line** (AIAG pp.71, 75 — หลัก) · WE Rule 4 ตาม ISQC pp.196–197 ใช้ **8 จุด** | **Small Sustained Shift (~1σ)** เช่น เปลี่ยนล็อตวัสดุ, Offset เปลี่ยนกะ |
 
 > *(หมายเหตุ: เวอร์ชันสั้นบางตำรารวมเงื่อนไข Zone ไว้ชัดเจนบน Chart เดียว และใน Control Chart ของ $\bar{X}$ ใช้กฎทั้ง 4 นี้ได้ตรงไปตรงมา)*
+> หลักสูตรยึด **AIAG** (7 จุดฝั่งเดียว pp.71, 75 · trend 6 p.75) กำกับด้วย **ISQC pp.196–197** (8 จุดฝั่งเดียว · trend 6) — สองเล่มใช้ค่าต่างกัน · หมายเหตุ: AIAG p.71 ระบุขึ้น/ลง 7 จุด ต่างจากตาราง p.75 ที่ระบุ trend 6
 
 ## M5L4-S03 — Nelson Rules (Rules 5–8) & Avoiding False Alarm Fatigue
 `<Asset id="AST-M5-016" />`
 - **4 กฎเพิ่มเติมในชุด Nelson Rules (1984) ที่นิยมในโปรแกรมสถิติ (Minitab / JMP / AIAG):**
-  - **Trend Rule:** **6 จุดติดกัน** เพิ่มขึ้นเรื่อยๆ หรือลดลงเรื่อยๆ → *Tool Wear, Thermal Drift*
+  - **Trend Rule:** **6 จุดติดกัน** เพิ่มขึ้นเรื่อยๆ หรือลดลงเรื่อยๆ (AIAG p.75; ISQC pp.196–197) → *Tool Wear, Thermal Drift*
   - **Alternating Rule:** **14 จุดติดกัน** สลับขึ้น-ลงเป็นฟันปลา → *2 หัวฉีดสลับกัน หรือ Tampering!*
   - **Stratification Rule:** **15 จุดติดกัน** เกาะใน Zone C ($\pm 1\sigma$) → *Rational Subgroup ผิด หรือข้อมูลปลอม*
   - **Mixture Rule:** **8 จุดติดกัน** ไม่อยู่ใน Zone C เลย (สลับออกทั้ง 2 ฝั่ง > $\pm 1\sigma$) → *ผสม 2 แหล่ง*
 - **คำเตือนวิศวกรเรื่อง False Alarm (`ARL` Trade-off):**
   - ใช้ **Rule 1 อย่างเดียว:** False Alarm เฉลี่ยทุก **`~370 จุด`** (`p = 0.0027`)
-  - เปิด **ทุกกฎ (WECO / Nelson 8 Rules) พร้อมกัน:** ความเสี่ยง False Alarm พุ่งเป็นทุก **`~91 จุด`** (เกือบ **4 เท่า**!) จนพนักงานหน้าไลน์ **"ชินชาต่อสัญญาณเตือน (Alarm Fatigue)"**
-  - **Best Practice (AIAG & JEDEC):** ต้องวางโครงสร้างกฎอย่างเป็นระบบ (เช่น **Rule 1 + Raw Data Check** เป็นกฎบังคับ และคัดเลือกกฎเสริมตามพฤติกรรมกระบวนการจริง) ซึ่งเราจะเจาะลึกวิธีเลือกในหน้าถัดไป!
+  - เปิดชุด **Western Electric 4 กฎ**: False Alarm เฉลี่ยทุก **`~91 จุด`** (ISQC p.198: `ARL₀ = 91.25` — เป็นค่าของชุด WE ที่ Rule 4 = 8 จุด ไม่ใช่ชุด 7 จุด) และ **เปิดกฎมากกว่านี้ False Alarm ยิ่งถี่** จนพนักงานหน้าไลน์ **"ชินชาต่อสัญญาณเตือน (Alarm Fatigue)"**
+  - **Best Practice:** ต้องวางโครงสร้างกฎอย่างเป็นระบบ (เช่น **Rule 1 + Raw Data Check** เป็นกฎบังคับ และคัดเลือกกฎเสริมตามพฤติกรรมกระบวนการจริง) ซึ่งเราจะเจาะลึกวิธีเลือกในหน้าถัดไป!
 
 ## M5L4-S04 — SPC Rule Selection Strategy: Mandatory Rules, Zero-Bounds & Engineering Judgement
 `<Asset id="AST-M5-020" />`
@@ -221,7 +222,7 @@ $$\text{CL}_{R} = \bar{R}, \quad \text{UCL}_{R} = D_4\bar{R}, \quad \text{LCL}_{
   - $\bar{X}$ Chart: `CL = 25.0067 mm`, `UCL = 25.0226 mm`, `LCL = 24.9907 mm` | $R$ Chart: `CL_R = 0.0276 mm`, `UCL_R = 0.0584 mm`
 - **สัญญาณ Special Cause ที่จับได้ (ทั้งที่ชิ้นงานเดี่ยวสูงสุด `25.068 mm` ยังไม่ตก `USL = 25.080`!):**
   1. **`SG-11` (`18:00`):** `X̄ = 25.0350 > UCL_X` และ `R = 0.0720 > UCL_R` → **WE Rule 1** ทั้งกราฟ $\bar{X}$ และ $R$ (เช่น มีดกลึงบิ่น/จับยึดหลวม)
-  2. **`SG-18` – `SG-25` (`01:00`–`08:00`):** 8 จุดติดกันอยู่เหนือ `CL` ทั้งหมด → **WE Rule 4** (และ `SG-23..25` เข้า **WE Rule 2: 2 ใน 3 อยู่ Zone A `> +2σ`**) ทั้งที่ไม่มีจุดใดหลุด `UCL_X` เลย!
+  2. **`SG-18` – `SG-25` (`01:00`–`08:00`):** ค่าเฉลี่ยอยู่เหนือ `CL` ต่อเนื่อง → **กฎ 7 จุด (AIAG)** ส่งสัญญาณแรกที่ **`SG-24`** (กฎ 8 จุดของ ISQC ที่ `SG-25`) และ **Rule 2 (2 ใน 3 `> +2σ`)** กับ **Rule 3 (4 ใน 5 `> +1σ`)** ส่งสัญญาณที่ **`SG-24` และ `SG-25`** ทั้งที่ไม่มีจุดใดหลุด `UCL_X` เลย!
 - **Revised Control Limits (หลังตัด `SG-11` และ `SG-18..25` เหลือ `16` กลุ่มเสถียร):** `CL_X = 25.0013`, `UCL_X = 25.0181`, `LCL_X = 24.9845` | `UCL_R = 0.0616` ดูรายละเอียดใน [07_workshop_guide.md](07_workshop_guide.md)
 
 ## M5L4-S09 — Module 5 Summary & Bridge to Module 6

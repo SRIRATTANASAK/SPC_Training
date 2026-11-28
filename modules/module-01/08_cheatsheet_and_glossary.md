@@ -33,7 +33,7 @@
 
 - **อยากดูรูปร่างการกระจายตัว & เทียบ Spec** → **Histogram** *(ระวัง Cliff shape = มี Sorting)*
 - **อยากเทียบหลายเครื่องจักร / หลายกะ & หา Outlier** → **Box Plot** *(Q1, Median, Q3, Outlier)*
-- **อยากจัดลำดับปัญหาใหญ่สุดเพื่อลดของเสีย 80/20** → **Pareto Chart** *(Bars + Cumulative %)*
+- **อยากจัดลำดับปัญหาใหญ่สุดเพื่อลดของเสีย 80/20 (ค่าประมาณเพื่อการสอน)** → **Pareto Chart** *(Bars + Cumulative %)*
 - **อยากเช็คความสัมพันธ์ระหว่างตัวแปร $X$ กับ $Y$** → **Scatter Plot** *(Correlation ≠ Causation)*
 - **อยากเห็นการไหล (Drift) หรือความเปลี่ยนตามเวลา** → **Run Chart** *(ฐานก่อนเข้า Control Chart)*
 

@@ -10,7 +10,7 @@
 ## M8L1-S01 — Welcome: When the Alarm Rings, What Happens Next?
 `<Asset id="AST-M8-001" />`
 - **จากสัญญาณเตือนสู่การปิดปัญหาถาวร:** ใน Module 7 เราเรียนรู้วิธีวาง SPC ลงสายการผลิตและสร้าง Reaction Plan / 3-Tier Escalation แล้ว — แต่เมื่อปัญหาถูกส่งต่อเข้าสู่ **Tier 2 / Tier 3 (`OCAP`)** คำถามสำคัญคือ *"เราจะสืบค้นและกำจัดต้นตออย่างไรไม่ให้ของเสียกลับมาเป็นซ้ำอีก?"*
-- **มาตรฐานที่เชื่อมโยง:** **AIAG SPC (Ch. IV Problem Solving)** และ **JEDEC `JESD557`** (กำหนดให้ทุกจุด OOC ต้องมี **OCAP + Lot Containment + Root Cause + Corrective Verification** ก่อนปล่อย Lot)
+- **มาตรฐานที่เชื่อมโยง:** **AIAG SPC (Chapter I — การปฏิบัติต่อสาเหตุ)** และ **JEDEC `JESD557C` p.9** (เอกสาร **OCAP**, สืบ **Root Cause** และ **Corrective Action** ตามความเหมาะสม)
 - **วัตถุประสงค์การเรียนรู้ประจำ Module 8:**
   1. ออกแบบและดำเนินการตาม **5-Gate Out of Control Action Plan (`OCAP`)**
   2. ใช้ **7 QC Tools** ร่วมกับ Control Chart เพื่อแยกชั้น (`Stratify`), จัดลำดับ (`Pareto`), ระดมสาเหตุ (`Fishbone`), และพิสูจน์ความสัมพันธ์ (`Scatter`)
@@ -21,7 +21,7 @@
 `<Asset id="AST-M8-002" />`
 - **ความหมายของ OCAP (`Out of Control Action Plan`):** แผนผังคำสั่งมาตรฐาน (**Flowchart**) ที่กำหนดขั้นตอนล่วงหน้าว่าเมื่อ Control Chart ส่งสัญญาณผิดปกติ ทีมงานต้องทำอะไรตามลำดับ **ไม่ให้คิดสดหน้าเครื่องจนเกิดการปรับมั่ว (`Tampering`)**:
   1. **Gate 1 — Detection:** ระบุชนิดสัญญาณ (เช่น `Rule 1 > UCL`, `Trend 6 pts`, `R > UCL_R`, หรือ `Raw Data > Spec`) และลงเวลาเกิดเหตุ
-  2. **Gate 2 — Immediate Containment:** หยุด/Auto-Hold สินค้าในโซนเสี่ยงย้อนหลังถึง **Last Good Subgroup (`100% Backtrack`)** ป้องกันของเสียหลุดไปสถานีถัดไปหรือลูกค้า
+  2. **Gate 2 — Immediate Containment:** หยุด/Hold (แนวปฏิบัติ) สินค้าในโซนเสี่ยงย้อนหลังถึง **Last Good Subgroup (`100% Backtrack`)** ป้องกันของเสียหลุดไปสถานีถัดไปหรือลูกค้า
   3. **Gate 3 — Data & Measurement Verification:** ตรวจการคีย์ตัวเลข วัดชิ้นงานเดิมซ้ำ และตรวจเครื่องวัดเบื้องต้น (*ตัด Human/Gage Error ก่อนแตะเครื่องจักร!*)
   4. **Gate 4 — Root Cause Investigation (`RCA`):** ใช้ **7 QC Tools + 5 Why + FTA** ค้นหา Special Cause ตัวจริง
   5. **Gate 5 — Corrective Action, Verification & Closure:** แก้ต้นตอ + สร้าง **Poka-Yoke** + เก็บ Confirmation Run พิสูจน์บนกราฟ SPC + อัปเดต `PFMEA / Control Plan`
@@ -63,11 +63,11 @@
 - **การทำงานประสานกัน (`SPC + 6 Other QC Tools`):**
   - เก็บบันทึกบริบทด้วย **Check Sheet** → แยกกลุ่มด้วย **Stratification** → จัดอันดับผู้ร้ายตัวใหญ่ด้วย **Pareto Chart** → ส่องรูปทรงประชากรด้วย **Histogram** → ระดมสมมติฐานครบด้านด้วย **Fishbone (`4M1E+M`)** → พิสูจน์ความสัมพันธ์ตัวเลขด้วย **Scatter Diagram** → แล้วกลับมายืนยันบน **Control Chart**!
 
-## M8L2-S02 — Tools 1–3: Check Sheet, Stratification & Pareto (`80/20` by Count & COPQ)
+## M8L2-S02 — Tools 1–3: Check Sheet, Stratification & Pareto (`80/20` (ค่าประมาณเพื่อการสอน) by Count & COPQ)
 `<Asset id="AST-M8-006" />`
 - **1. Check Sheet (ใบตรวจสอบ):** ออกแบบให้บันทึก *เวลา + กะ + เครื่อง/Fixture + Cavity + ลักษณะเสีย* ไปพร้อมกัน ไม่ใช่ขีดแค่จำนวนรวมจนแยกชั้นย้อนหลังไม่ได้
 - **2. Stratification (การแยกชั้นข้อมูล — อาวุธลับที่ถูกมองข้าม!):** แยกข้อมูลรวมออกเป็นชั้นย่อย เช่น `Day vs Night`, `Fixture A vs Fixture B`, `Cavity 1–4` — หากไม่แยกชั้น ข้อมูลดีกับข้อมูลเสียจะปนกันจนมองไม่เห็นผู้ร้าย!
-- **3. Pareto Chart (`80/20 Vital Few`):** เรียงแท่งจากมากไปน้อยพร้อมเส้นสะสม (%) เพื่อเลือกแก้ **20% แรกที่สร้างปัญหา ~80%**
+- **3. Pareto Chart (`80/20 Vital Few` (ค่าประมาณเพื่อการสอน)):** เรียงแท่งจากมากไปน้อยพร้อมเส้นสะสม (%) เพื่อเลือกแก้ **20% แรกที่สร้างปัญหา ~80%** (ค่าประมาณเพื่อการสอน)
   - **Pro Tip:** ควรทำ **Dual Pareto** ทั้ง **ตามจำนวนชิ้น (`Defect Count`)** และ **ตามต้นทุนความสูญเสีย (`COPQ Cost THB`)** เสมอ! เพราะ Defect ที่เกิดน้อยครั้งแต่อะไหล่แพงอาจสร้างความเสียหายสูงกว่า Defect เล็กน้อยที่เกิดบ่อย
 
 ## M8L2-S03 — Tools 4–5: Histogram Diagnostics & Fishbone (`4M1E + Measurement`)
@@ -162,7 +162,7 @@
 `<Asset id="AST-M8-014" />`
 - **ห้ามปิด Case เพียงเพราะ *"เปลี่ยนซีลแล้วจบ"*!** ก่อนปิด `PDCA / 8D` ต้องผ่าน 4 ด่านยืนยัน:
   1. **Confirmation Run บน SPC Chart:** เก็บข้อมูลหลังแก้ไขอย่างน้อย `8–20 Subgroups` ยืนยันว่า Mean กลับมาชิด Target, Range ลดลง, และ **`0` OOC**
-  2. **Before vs After Capability Check:** เปรียบเทียบ $P_{pk}$ ช่วงเกิดเหตุ vs $C_{pk}$ หลังแก้ไข (ต้องผ่านเกณฑ์ AIAG/ลูกค้า เช่น $\ge 1.33$ หรือ $1.67$)
+  2. **Before vs After Capability Check:** เปรียบเทียบ $P_{pk}$ ช่วงเกิดเหตุ vs $C_{pk}$ หลังแก้ไข (ต้องผ่านเกณฑ์ตามข้อกำหนดลูกค้า เช่น $\ge 1.33$ หรือ $1.67$)
   3. **Phase I Limit Update (ถ้าลด Common Cause สำเร็จ):** คำนวณเส้น `UCL/LCL` ใหม่ให้แคบลงตามศักยภาพใหม่ (ห้ามขยายเส้นเพื่อซ่อนปัญหา!)
   4. **Living Documentation & Horizontal Deployment:** อัปเดต **PFMEA (ลด Occurrence/Detection Rating)**, **Control Plan**, **WI**, และขยายผล **Poka-Yoke** ไปยังเครื่องจักรพี่น้อง (`Machine #2, #3`)!
 
@@ -170,7 +170,7 @@
 `<Asset id="AST-M8-015" />`
 - **โจทย์โรงงานจริง (`CNC Housing Bore ID` — Spec `40.000 ± 0.050 mm`, Baseline `X̄̄ = 40.000`, `R̄ = 0.020`, `UCL_X = 40.0115`, `UCL_R = 0.0423`):**
   - ไฟล์ข้อมูล: [data/workshop_m8_ooc_case_study.csv](data/workshop_m8_ooc_case_study.csv) (`24 Subgroups × 5` ชิ้น = `120 ชิ้น` ครอบคลุม Before / OOC Incident / After PDCA) และ [data/workshop_m8_defect_pareto.csv](data/workshop_m8_defect_pareto.csv) (`200` Defects / COPQ `61,740 THB`)
-  - กะดึกพบค่าหลุดทั้ง **`UCL_X`**, **`UCL_R`**, และ **`Raw Data > 40.050 USL`** จนต้องสั่ง **Tier 3 OCAP Lot Hold**! ภารกิจของคุณคือใช้ **OCAP + 7 QC Tools + 5 Why + Poka-Yoke + PDCA/8D** ปิดปัญหาให้จบขาด!
+  - กะดึกพบค่าหลุดทั้ง **`UCL_X`**, **`UCL_R`**, และ **`Raw Data > 40.050 USL`** จนต้องสั่ง **Tier 3 OCAP Lot Hold** (แนวปฏิบัติ)! ภารกิจของคุณคือใช้ **OCAP + 7 QC Tools + 5 Why + Poka-Yoke + PDCA/8D** ปิดปัญหาให้จบขาด!
 
 ## M8L4-S04 — Interactive Workshop Part A: OCAP & 7 QC Tools Investigation
 `<Interactive id="INT-M8-L4-01" />`
@@ -188,12 +188,12 @@
 
 ## M8L4-S06 — Interactive Workshop Part B: 5 Why, Poka-Yoke & PDCA Closure
 `<Interactive id="INT-M8-L4-02" />`
-- ต่อห่วงโซ่ **5 Why** ของเหตุการณ์ `FIX-B Clamp Leak` → เลือก **Poka-Yoke (`Hydraulic Pressure Interlock < 55 bar`)** → อัปเดต **Control Plan (Stratify `FIX-A / FIX-B`)** → ตรวจผล **`SG-17..24`** ยืนยัน **`Ppk` พุ่งจาก `0.84` (Incident `0.74`) → `Cpk = 2.04` (`Ppk = 2.64`)**! (`+15 pts`)
+- ต่อห่วงโซ่ **5 Why** ของเหตุการณ์ `FIX-B Clamp Leak` → เลือก **Poka-Yoke (`Hydraulic Pressure Interlock < 55 bar`)** → อัปเดต **Control Plan (Stratify `FIX-A / FIX-B`)** → ตรวจผล **`SG-17..24`** ยืนยัน **`Ppk` พุ่งจาก `0.84` (Incident `0.74`) → `Cpk = 2.04` (`Ppk = 2.64`)** (ค่าเบื้องต้น / ข้อมูลตัวอย่าง)! (`+15 pts`)
 
 ## M8L4-S07 — Workshop Part B Verified Closure: Before vs After SPC Proof
 `<Asset id="AST-M8-017" />`
 - **Before (`SG-01..16`):** Mean = `40.0102 mm`, $s_{\text{overall}} = 0.01575$, **`Ppk = 0.843`** (ช่วง Incident `SG-05..16`: **`Ppk = 0.737`**, `6` OOC Subgroups, `Raw > USL`)
-- **After PDCA (`SG-17..24`):** Mean = `40.0000 mm`, $\bar{R} = 0.01900$, $\hat{\sigma}_{\text{within}} = 0.00817$, **`Cpk = 2.040`** (`Ppk = 2.637`), **`0` OOC** — พร้อม Horizontal Deployment ไปยัง CNC เครื่องพี่น้อง!
+- **After PDCA (`SG-17..24`):** Mean = `40.0000 mm`, $\bar{R} = 0.01900$, $\hat{\sigma}_{\text{within}} = 0.00817$, **`Cpk = 2.040`** (`Ppk = 2.637`) *(ค่าเบื้องต้น / ข้อมูลตัวอย่าง: 8 กลุ่ม 40 ชิ้น; AIAG p.57; ISQC p.354)*, **`0` OOC** — พร้อม Horizontal Deployment ไปยัง CNC เครื่องพี่น้อง!
 
 ## M8L4-S08 — Module 8 Summary & Bridge to Module 9 (`MSA Connection to SPC`)
 `<Asset id="AST-M8-018" />`

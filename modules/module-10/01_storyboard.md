@@ -123,7 +123,7 @@
 - **Layout:** 3-Gate Checklist
 
 ## Screen M10L4-S03 — Case 4 Calculation & Release Decision (`Ppk = 2.474`)
-- **Learning Objective:** คำนวณ `Ppk = 2.474 >= 1.67` และอนุมัติ **PPAP Release**
+- **Learning Objective:** คำนวณ `Ppk = 2.474 >= 1.67` และอนุมัติ **PPAP Release** (เกณฑ์ตามข้อกำหนดลูกค้า/PPAP (ยังไม่ได้ยืนยันจากต้นฉบับ))
 - **Duration:** 35s | **Asset ID:** `AST-M10-013` | **Voice Over:** `AUD-M10L4-S03`
 - **Layout:** PPAP Approval Scorecard
 

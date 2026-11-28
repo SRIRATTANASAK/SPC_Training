@@ -10,7 +10,7 @@
 # LESSON M8-L1: Out of Control Action Plan (`OCAP`) (`8.1`)
 
 ## Screen M8L1-S01 — Welcome: When the Alarm Rings, What Happens Next?
-- **Learning Objective:** เชื่อมโยงสัญญาณ OOC จาก Control Plan (Module 7) เข้าสู่ระบบปิดปัญหาถาวรตามมาตรฐาน AIAG SPC & JEDEC `JESD557`
+- **Learning Objective:** เชื่อมโยงสัญญาณ OOC จาก Control Plan (Module 7) เข้าสู่ระบบปิดปัญหาถาวรตาม AIAG SPC (Chapter I) และ JEDEC `JESD557C` p.9 (OCAP)
 - **Duration:** 25s
 - **Layout:** Hero Split (Left Live Flashing OOC Alarm Routing to Problem Solving Toolkit `AST-M8-001` 60% | Right 4 Objectives 40%)
 - **Asset ID:** `AST-M8-001`
@@ -43,7 +43,7 @@
 - **Motion Specification:** Red hand turning knob wildly widens scatter; green checklist pauses line, backtracks lot basket, verifies gage first.
 - **Trigger Logic:** Narration complete unlocks Next.
 - **Accessibility Notes:** Clear visual warning markers.
-- **Developer Notes:** Emphasizes JEDEC Auto Hold & Backtrack discipline.
+- **Developer Notes:** Emphasizes OCAP & Backtrack discipline.
 
 ## Screen M8L1-S04 — Mapping Control Chart Signatures to Likely Root Causes
 - **Learning Objective:** แปลงลักษณะอาการบน Control Chart (`Spike, Trend, Shift, R > UCL_R, Cyclic`) เป็นแนวทางสืบค้นเบื้องต้น
@@ -104,7 +104,7 @@
 - **Asset ID:** `AST-M8-006`
 - **On Screen Text:** "แยกชั้นข้อมูลให้ขาด แล้วดู Pareto ทั้ง 'จำนวนชิ้น' และ 'มูลค่าความเสียหาย (COPQ)'!"
 - **Voice Over Script Ref:** `AUD-M8L2-S02`
-- **Motion Specification:** Mixed gray bar splits into red `FIX-B` vs blue `FIX-A`; Pareto bars sort tallest-first with 80% cumulative curve.
+- **Motion Specification:** Mixed gray bar splits into red `FIX-B` vs blue `FIX-A`; Pareto bars sort tallest-first with 80% (ค่าประมาณเพื่อการสอน) cumulative curve.
 - **Trigger Logic:** Narration complete unlocks Next.
 - **Accessibility Notes:** Data values displayed inside bar labels.
 - **Developer Notes:** Mirrors `workshop_m8_defect_pareto.csv` structure (`56%` count vs `81.6%` cost).
@@ -316,19 +316,19 @@
 - **Asset ID:** N/A | **Interactive ID:** `INT-M8-L4-02`
 - **On Screen Text:** "Workshop Part B: เลือก 5 Why + ออกแบบ Poka-Yoke + ตรวจผล `SG-17..24` ก่อนปิด 8D!"
 - **Voice Over Script Ref:** `AUD-M8L4-S06`
-- **Motion Specification:** Activating `< 55 bar` Pressure Interlock switches `SG-17..24` trend green and recalculates `Cpk = 2.040`.
+- **Motion Specification:** Activating `< 55 bar` Pressure Interlock switches `SG-17..24` trend green and recalculates `Cpk = 2.040` (ค่าเบื้องต้น / ข้อมูลตัวอย่าง).
 - **Trigger Logic:** Complete 3 closure challenges (`+15 pts`).
 - **Accessibility Notes:** Keyboard form steps and clear contrast.
 - **Developer Notes:** Enforces Yokoten horizontal deployment across sister CNC machines.
 
 ## Screen M8L4-S07 — Workshop Part B Verified Closure: Before vs After SPC Proof
-- **Learning Objective:** ยืนยันการปิดเคส 8D ด้วยตัวเลข Before (`Ppk = 0.843`) vs After (`Cpk = 2.040`, `0 OOC`)
+- **Learning Objective:** ยืนยันการปิดเคส 8D ด้วยตัวเลข Before (`Ppk = 0.843`) vs After (`Cpk = 2.040` ค่าเบื้องต้น / ข้อมูลตัวอย่าง, `0 OOC`)
 - **Duration:** 35s
 - **Layout:** Executive Before/After Scorecard (`AST-M8-017`)
 - **Asset ID:** `AST-M8-017`
-- **On Screen Text:** "`APPROVED 8D CLOSURE:` `Ppk 0.84` (Incident `0.74`) → **`Cpk 2.04` (`0` OOC)**!"
+- **On Screen Text:** "`APPROVED 8D CLOSURE:` `Ppk 0.84` (Incident `0.74`) → **`Cpk 2.04` (`0` OOC)** (ค่าเบื้องต้น / ข้อมูลตัวอย่าง)!"
 - **Voice Over Script Ref:** `AUD-M8L4-S07`
-- **Motion Specification:** Capability gauge sweeps from red `0.84` into emerald `2.04` with `8D CLOSED` seal stamp.
+- **Motion Specification:** Capability gauge sweeps from red `0.84` into emerald `2.04` (labelled ค่าเบื้องต้น / ข้อมูลตัวอย่าง) with `8D CLOSED` seal stamp.
 - **Trigger Logic:** Narration complete unlocks Next.
 - **Accessibility Notes:** High-contrast scorecard summary.
 - **Developer Notes:** Celebrates real data closure.

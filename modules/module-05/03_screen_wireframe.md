@@ -35,7 +35,7 @@
 ## M5-L4: Western Electric Rules, Nelson Rules & Workshop (10 Screens)
 - **M5L4-S01 Zone Probability Logic:** Bell Curve & Run Odds Visual (`AST-M5-014`)
 - **M5L4-S02 Western Electric Rules 1–4:** 4-Panel Zone Diagram Grid (`AST-M5-015`)
-- **M5L4-S03 Nelson Rules & `ARL` Fatigue:** 4 Additional Rules + `ARL 370 vs 91` Gauge (`AST-M5-016`)
+- **M5L4-S03 Nelson Rules & `ARL` Fatigue:** 4 Additional Rules + `ARL 370 vs 91 (WE 4 rules)` Gauge (`AST-M5-016`)
 - **M5L4-S04 Rule Selection Strategy & Zero-Bounds:** Mandatory (`Rule 1` + `Raw Data vs Spec`), Invalid `LCL<0` & `LCL=0`, and ≥1 Optional Rule Selection (`AST-M5-020`)
 - **M5L4-S05 OOC to OCAP Hook:** 3-Step Response Flow (`AST-M5-017`)
 - **M5L4-S06 WECO, Nelson & Rule Selection Trigger Lab (`INT-M5-L4-01`):** Process Profile Switcher + Interactive Zone Chart + Mandatory/Optional Rules + Live ARL

@@ -86,7 +86,7 @@
 - **Live False Alarm ARL Readout:**
   - `WE1 only`: `ARL ≈ 370` subgroups (`p = 0.0027`) + Prompt: *"Please select ≥ 1 Optional Rule based on Engineering Judgement & Process Characteristic"*
   - `Mandatory + WE1_Valid + Trend + WE4` (Recommended): `ARL ≈ 175` subgroups (Balanced sensitivity + low false alarm)
-  - `All Rules ON`: `ARL ≈ 91` subgroups (**Warning Badge: High False-Alarm Fatigue Risk!**)
+  - `All Rules ON`: more frequent than the Western Electric 4-rule set (`ARL ≈ 91`, 8-point version) (**Warning Badge: High False-Alarm Fatigue Risk!**)
 - **Completion Trigger:** Test `>= 2` Process Profiles (including Near-Zero or Variation `LCL=0` check), ensure `>= 1` Optional Rule selected, and inspect at least 4 distinct triggers (`+10 pts`).
 
 ### INT-M5-L4-02 — Workshop: Shaft OD Control Chart Analyzer (`M5L4-S07`)
@@ -107,7 +107,7 @@
      - `D)` ติดกฎ 14 จุดสลับขึ้นลง
   3. **Q3:** ในช่วง **`SG-18` ถึง `SG-25`** ไม่มีจุดใดทะลุเส้น `UCL_X = 25.0226` เลย แต่เหตุใดระบบ SPC จึงเตือนว่าเกิด Special Cause?
      - `A)` เพราะชิ้นงานหลุด USL `25.080 mm` แล้ว
-     - `B)` เพราะทั้ง 8 จุดเรียงตัวอยู่ **ฝั่งบนของ CL (`25.0067`) ทั้งหมด — ติด WE Rule 4** และช่วง `SG-23..25` อยู่ใน Zone A เกิน `+2σ` ถึง 3 จุด — **ติด WE Rule 2**! ✅
+     - `B)` เพราะค่าอยู่ **ฝั่งบนของ CL (`25.0067`) ต่อเนื่อง (`SG-18..25`) — ติด Rule 4 (7 จุดตาม AIAG; สัญญาณแรก `SG-24`)** และ `SG-24`, `SG-25` ติด **Rule 2** กับ **Rule 3**! ✅
      - `C)` เพราะ R Chart เกิน `UCL_R`
      - `D)` เพราะเป็นความแปรปรวนปกติ
   4. **Q4:** จากช่วงค่าจริงของชิ้นงานทั้ง 125 ชิ้น (`24.960 .. 25.068 mm` เทียบกับ Spec `24.920 .. 25.080 mm`) สิ่งนี้พิสูจน์ข้อได้เปรียบสำคัญที่สุดของ SPC ข้อใด?

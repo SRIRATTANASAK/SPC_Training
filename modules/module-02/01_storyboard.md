@@ -100,7 +100,7 @@
 ## Screen M2L2-S03 — Why Sampling?
 - **Learning Objective:** อธิบาย 3 เหตุผลที่โรงงานต้องใช้ Sampling แทนการตรวจ 100%
 - **Duration:** 30s
-- **Layout:** 3 Icon Cards (Destructive Test, Speed/Cost, Fatigue ~80–85% detection)
+- **Layout:** 3 Icon Cards (Destructive Test, Speed/Cost, Fatigue ~80–85% detection (ค่าประมาณเพื่อการสอน))
 - **Asset ID:** `AST-M2-007`
 - **On Screen Text:** "ทำไมต้องสุ่มตัวอย่าง? — ทดสอบทำลายชิ้นงาน, ต้นทุน/เวลา, และความล้าของการตรวจ 100%"
 - **Voice Over Script Ref:** `AUD-M2L2-S03`
@@ -340,7 +340,7 @@
 - **Asset ID:** `AST-M2-019`
 - **On Screen Text:** "เฉลย Workshop: เมื่อแยก SG-09 ออก กระบวนการนิ่งมาก (Mean 20.0009, SD 0.0220, Z_USL = 4.50, σ_x̄ = 0.0099)"
 - **Voice Over Script Ref:** `AUD-M2L4-S07`
-- **Motion Specification:** Highlight `SG-09` removal transforming predicted OOS from `0.68%` to `<0.001%`.
+- **Motion Specification:** Highlight `SG-09` removal transforming predicted OOS from `0.68%` (ตัวอย่างว่าใช้ไม่ได้: `n=50` มี Special Cause) to ≈ `5.8 PPM` (ช่วงเสถียร `n=45`).
 - **Trigger Logic:** Review solution to unlock Final Exam.
 - **Accessibility Notes:** Semantic comparison table.
 - **Developer Notes:** Bridges directly to Module 3 (Sampling/Hypothesis) & Module 4 (Cp/Cpk).

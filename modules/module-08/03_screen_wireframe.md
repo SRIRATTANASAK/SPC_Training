@@ -40,6 +40,6 @@
 - **M8L4-S04 Workshop Part A Lab (`INT-M8-L4-01`):** OOC + Stratify + Dual Pareto + Scatter Console
 - **M8L4-S05 Workshop Part A Solution:** Verified Evidence Dashboard (`AST-M8-016`)
 - **M8L4-S06 Workshop Part B Lab (`INT-M8-L4-02`):** 5 Why + Poka-Yoke + `SG-17..24` Closure Workbench
-- **M8L4-S07 Workshop Part B Closure Proof:** Before `Ppk 0.84` vs After `Cpk 2.04` (`AST-M8-017`)
+- **M8L4-S07 Workshop Part B Closure Proof:** Before `Ppk 0.84` vs After `Cpk 2.04` (ค่าเบื้องต้น / ข้อมูลตัวอย่าง) (`AST-M8-017`)
 - **M8L4-S08 Summary & Bridge to M9:** MSA Connection Variance Teaser (`AST-M8-018`)
 - **M8L4-S09 Module 8 Final Exam (`EXAM-M8`):** 20-Question Stratified Random Exam Runner

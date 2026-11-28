@@ -26,7 +26,7 @@
 | `AST-M1-016` | SD Bell Curve Empirical Rule | `M1L3-S04` | Interactive SVG | Normal curve shaded in `±1σ (68.27%)`, `±2σ (95.45%)`, `±3σ (99.73%)` bands | Sequential sigma band reveal |
 | `AST-M1-017` | CV Comparison Dashboard | `M1L3-S05` | SVG Dashboard | Side-by-side Pin (`10 mm`) vs Shaft (`500 mm`) & MC-A vs MC-B normalized CV% bars | Bar transition animation |
 | `AST-M1-018` | Histogram Shape Gallery | `M1L4-S01`, `M1L4-S02` | Interactive SVG | Normal, Skewed, Bimodal, and Cliff-shaped histograms | Bars animate upward from baseline |
-| `AST-M1-019` | Pareto & Scatter Assets | `M1L4-S04`, `M1L4-S05` | Interactive SVG | Pareto 80/20 cumulative line + Scatter correlation dots & trendline | Sort bars + draw trendline |
+| `AST-M1-019` | Pareto & Scatter Assets | `M1L4-S04`, `M1L4-S05` | Interactive SVG | Pareto 80/20 (ค่าประมาณเพื่อการสอน) cumulative line + Scatter correlation dots & trendline | Sort bars + draw trendline |
 | `AST-M1-020` | Box Plot & Run Chart Assets | `M1L4-S03`, `M1L4-S06` | Interactive SVG | Box plot anatomy (`Q1/Med/Q3/Outlier`) + Time-ordered Run Chart (`Sample 1..30`) | Box expand + time-series draw |
 
 ## Visual & Localization Requirements

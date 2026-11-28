@@ -56,7 +56,7 @@
 - **Type:** 3-Step Guided Decision Wizard (Roadmap Core Deliverable, `+10 pts`)
 - **Decision Flow:**
   1. `Q1`: Data Type = `Variable (Continuous)` or `Attribute (Count)`?
-  2. `Q2`: If Variable → Subgroup `n` (`n=1`, `2–10`, `>10`) | If Attribute → Counting `Defective Units` or `Defects`?
+  2. `Q2`: If Variable → **คัดกรองก่อน:** หลาย stream (spindle) → แยก chart ราย stream; หลายจุดบนชิ้นเดียว (wafer/แผง) → `I-MR` ของค่าเฉลี่ย + chart ความแปรปรวนภายใน; จากนั้นเลือก Subgroup `n` (`n=1`, `2–10`, `>10` — `>10` ใช้เฉพาะชิ้นที่ต่างกันจาก stream เดียว) | If Attribute → Counting `Defective Units` or `Defects`?
   3. `Q3` *(Attribute)*: Sample/Unit Size `Constant` or `Varying`?
 - **Outputs:** Recommended Chart Card + Exact Center/Control Limit Formula + Valid `LCL` Check Rule + Shop-floor Caution Note.
 - **Completion Trigger:** Complete at least 3 distinct Wizard paths.
@@ -71,13 +71,13 @@
 - **Answer Key:**
   1. `SCEN-01` Chemical Bath Temp (`n=1`): **`I-MR Chart`**
   2. `SCEN-02` CNC Shaft OD (`n=5`): **`Xbar-R Chart`**
-  3. `SCEN-03` Wafer Oxide Thickness (`n=16`): **`Xbar-S Chart`**
+  3. `SCEN-03` Wafer Oxide Thickness (16 จุดต่อแผ่น): **`I-MR Chart`** — I-MR ของค่าเฉลี่ยต่อ wafer + chart ความแปรปรวนภายใน wafer แยกต่างหาก — 16 จุดบนแผ่นเดียวไม่ใช่ subgroup ของ X̄–S
   4. `SCEN-04` PCB Solder Defects (`varying 8–20 panels`): **`u Chart`**
   5. `SCEN-05` Fixed 100 Motors Pass/Fail (`constant n=100`): **`np Chart`**
   6. `SCEN-06` Incoming Brackets % Defective (`varying n=80..250`): **`p Chart`**
   7. `SCEN-07` Paint Scratches per 1 Car Body (`fixed 1 car`): **`c Chart`**
   8. `SCEN-08` Destructive Weld Pull-Force (`1/shift`): **`I-MR Chart`**
-  9. `SCEN-09` 12-Spindle Hole Size (`n=12`): **`Xbar-S Chart`**
+  9. `SCEN-09` 12-Spindle Hole Size (12 หัว หัวละ 1 ค่า): **`I-MR Chart`** — I-MR แยกราย Spindle (หรือ Group Chart) — ห้ามรวม 12 หัวเป็น subgroup เดียว เพราะเป็นคนละ stream
   10. `SCEN-10` Plastic Cover Weight (`n=4`): **`Xbar-R Chart`**
 - **Completion Trigger:** Score `>= 8/10` (`+15 pts`) with instant engineering feedback per card.
 

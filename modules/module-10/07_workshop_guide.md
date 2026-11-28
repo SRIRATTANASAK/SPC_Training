@@ -16,7 +16,7 @@
 
 ## Case 3: Defect Monitoring (`p` & `u` Chart)
 - **ไฟล์ข้อมูล:** [data/case3_defect_p_u_chart.csv](data/case3_defect_p_u_chart.csv) (`20 Lots`, `∑n = 2,835` ชิ้น)
-- **ค่าเฉลี่ยรวม:** $\bar{p} = \mathbf{0.0282}$ (`2.82%`), $\bar{u} = \mathbf{0.0501}$ จุด/ชิ้น (Staircase Limits ตาม $n_i$)
+- **ค่าเฉลี่ยรวม:** $\bar{p} = \mathbf{0.0282}$ (`2.82%`), $\bar{u} = \mathbf{0.0519}$ จุด/ชิ้น (`LOT-13` `Total_Defects = 14` เป็นข้อมูลตัวอย่าง) (Staircase Limits ตาม $n_i$)
 - **OOC & Action:**
   - **`LOT-13` (`n=160`):** `14` ชิ้นเสีย → `p = 0.0875 > UCL_p` (**OOC บน `p` Chart**)
   - **`LOT-17` (`n=120`):** `3` ชิ้นเสีย (`p` ปกติ) แต่มี **`18` จุดตำหนิ** → `u = 0.1500 > UCL_u` (**OOC บน `u` Chart**) → กักกัน Lot และทำ Pareto แยกประเภทตำหนิ
@@ -24,4 +24,4 @@
 ## Case 4: PPAP Process Release Study (`Ppk >= 1.67`)
 - **ไฟล์ข้อมูล:** [data/case4_ppap_release_ppk.csv](data/case4_ppap_release_ppk.csv) (`50.000 ± 0.100 mm`, `20 × 5 = 100` ชิ้น)
 - **3 Gates:** MSA `< 10%` (Pass) + Stability `0` OOC (Pass) + Normality (Pass)
-- **Calculation:** $\bar{X} = 50.0019\text{ mm}$, $s_{\text{overall}} = 0.01322\text{ mm}$ → **`Ppk = 2.474 >= 1.67`** → **APPROVED FOR PPAP RELEASE!**
+- **Calculation:** $\bar{X} = 50.0019\text{ mm}$, $s_{\text{overall}} = 0.01322\text{ mm}$ → **`Ppk = 2.474 >= 1.67`** → **APPROVED FOR PPAP RELEASE!** *(เกณฑ์ `1.67` ตามข้อกำหนดลูกค้า/PPAP (ยังไม่ได้ยืนยันจากต้นฉบับ))*

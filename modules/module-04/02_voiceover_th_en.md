@@ -174,35 +174,35 @@
 
 ### AUD-M4L4-S01 (35 sec) — 3 Prerequisite Gates
 - **Display Script (TH):**  
-  ก่อนจะส่ง Report ค่า Cpk ให้ลูกค้า ต้องผ่าน 3 ด่านบังคับก่อนเสมอ [PAUSE-1] [ANIM: three_gates] หนึ่ง **ระบบวัด (MSA)** ต้องแม่น สอง **Control Chart** ต้องเสถียรก่อน ถ้ายังไม่นิ่งให้เรียก Ppk เท่านั้น และสาม **Normality Test** ต้องผ่าน
+  ก่อนจะส่ง Report ค่า Cpk ให้ลูกค้า ต้องผ่าน 3 ด่านบังคับก่อนเสมอ [PAUSE-1] [ANIM: three_gates] หนึ่ง **ระบบวัด (MSA)** ต้องแม่น สอง **Control Chart** ต้องเสถียรก่อน ถ้ายังไม่นิ่ง ยังไม่รายงานความสามารถ หากลูกค้าบังคับ ให้ติดป้ายว่าเป็น performance ของข้อมูลชุดนั้น ทำนายอนาคตไม่ได้ และสาม **Normality Test** ต้องผ่าน
 - **TTS Clean Script (TH):**  
-  ก่อนจะส่ง รีพอร์ต ค่า ซีพีเค ให้ลูกค้า ต้องผ่าน 3 ด่านบังคับก่อนเสมอ, หนึ่ง ระบบวัด เอ็มเอสเอ ต้องแม่น สอง คอนโทรล ชาร์ท ต้องเสถียรก่อน ถ้ายังไม่นิ่งให้เรียก พีพีเค เท่านั้น และสาม การทดสอบ นอร์มอลิตี้ ต้องผ่าน
+  ก่อนจะส่ง รีพอร์ต ค่า ซีพีเค ให้ลูกค้า ต้องผ่าน 3 ด่านบังคับก่อนเสมอ, หนึ่ง ระบบวัด เอ็มเอสเอ ต้องแม่น สอง คอนโทรล ชาร์ท ต้องเสถียรก่อน ถ้ายังไม่นิ่ง ยังไม่รายงานความสามารถ หากลูกค้าบังคับ ให้ติดป้ายว่าเป็น เพอร์ฟอร์แมนซ์ ของข้อมูลชุดนั้น ทำนายอนาคตไม่ได้ และสาม การทดสอบ นอร์มอลิตี้ ต้องผ่าน
 - **EN Reference:**  
-  Never issue a Cpk report without passing three gates: verified MSA, statistical stability on control charts, and checked normality.
+  Never report capability before verified MSA, statistical stability, and checked normality. If a customer insists on an unstable data set, label it as performance of that data only; it cannot predict the future.
 
-### AUD-M4L4-S02 (40 sec) — AIAG / VDA & IATF 16949
+### AUD-M4L4-S02 (40 sec) — Customer / PPAP Requirements
 - **Display Script (TH):**  
-  ในอุตสาหกรรมยานยนต์ตามมาตรฐาน **AIAG, VDA และ IATF 16949** [PAUSE-1] [ANIM: aiag_table] ช่วงขออนุมัติผลิตใหม่ (PPAP Initial Study) ต้องได้ **`Ppk ≥ 1.67`** จึงจะผ่านฉลุย [PAUSE-1] หากอยู่ระหว่าง `1.33–1.67` ต้องมีแผนคัดกรองหรือแก้ไข ส่วนช่วงเดินผลิตประจำ (Ongoing) ขั้นต่ำต้องคุมให้ได้ **`Cpk ≥ 1.33`**
+  เกณฑ์ในอุตสาหกรรมยานยนต์ให้ยึด **ข้อกำหนดลูกค้าหรือ PPAP** (หลักสูตรยังไม่ได้ยืนยันจากต้นฉบับ) [PAUSE-1] [ANIM: aiag_table] ตัวอย่างเช่น ช่วงขออนุมัติผลิตใหม่ต้องได้ **`Ppk ≥ 1.67`** [PAUSE-1] หากอยู่ระหว่าง `1.33–1.67` ต้องมีแผนคัดกรองหรือแก้ไข ส่วนช่วงเดินผลิตประจำคุมให้ได้ **`Cpk ≥ 1.33`**
 - **TTS Clean Script (TH):**  
-  ในอุตสาหกรรมยานยนต์ตามมาตรฐาน เอไอเอจี วีดีเอ และ ไอเอทีเอฟ 16949, ช่วงขออนุมัติผลิตใหม่ หรือ พีแพ็ป ต้องได้ พีพีเค มากกว่าหรือเท่ากับ 1.67 จึงจะผ่านฉลุย, หากอยู่ระหว่าง 1.33 ถึง 1.67 ต้องมีแผนคัดกรองหรือแก้ไข ส่วนช่วงเดินผลิตประจำ ขั้นต่ำต้องคุมให้ได้ ซีพีเค มากกว่าหรือเท่ากับ 1.33
+  เกณฑ์ในอุตสาหกรรมยานยนต์ให้ยึดข้อกำหนดลูกค้าหรือ พีแพ็ป ซึ่งหลักสูตรยังไม่ได้ยืนยันจากต้นฉบับ, ตัวอย่างเช่น ช่วงขออนุมัติผลิตใหม่ต้องได้ พีพีเค มากกว่าหรือเท่ากับ 1.67, หากอยู่ระหว่าง 1.33 ถึง 1.67 ต้องมีแผนคัดกรองหรือแก้ไข ส่วนช่วงเดินผลิตประจำคุมให้ได้ ซีพีเค มากกว่าหรือเท่ากับ 1.33
 - **EN Reference:**  
-  Under AIAG, VDA, and IATF 16949, initial PPAP studies require Ppk at least 1.67 for full acceptance, while ongoing stable production requires Cpk at least 1.33.
+  Acceptance limits follow the customer or PPAP requirement (not verified against the source here), for example Ppk at least 1.67 for initial studies and Cpk at least 1.33 for ongoing stable production.
 
-### AUD-M4L4-S03 (50 sec) — JEDEC `JESD557` & Why It Matters Today
+### AUD-M4L4-S03 (50 sec) — JEDEC `JESD557C`
 - **Display Script (TH):**  
-  ทีนี้มาดูมาตรฐาน **JEDEC `JESD557`** ของฝั่งเซมิคอนดักเตอร์และอิเล็กทรอนิกส์ [PAUSE-1] [ANIM: jedec_cards] ทำไมมาตรฐานนี้ถึงถูกให้ความสำคัญมากขึ้นเรื่อยๆ ในยุคปัจจุบัน? เพราะรถยนต์ไฟฟ้า **EV และระบบช่วยขับ ADAS** เต็มไปด้วยชิปกำลังและ ECU นับพันชิ้น ทำให้ต้องใช้หลัก **Zero-Defect** ที่ผลิตกันทีละหลายสิบล้านชิ้น [PAUSE-1] ลำพัง `Cpk 1.00` ยังหลุดถึง `2,700 DPPM` ซึ่งเสี่ยงเกินไป อุตสาหกรรมจึงผลักดัน `Cpk 1.67` ถึง `2.00` และให้ **JESD557** กำกับทั้งสเปกด้านเดียว ข้อมูลเบ้ Non-Normal ไปจนถึงการทำ **Auto Lot Hold ตาม OCAP** แบบอัตโนมัติ
+  ทีนี้มาดูมาตรฐาน **JEDEC `JESD557C`** [PAUSE-1] [ANIM: jedec_cards] มาตรฐานให้ **ผู้ผลิตกำหนด Cpk target เอง** ตามความสำคัญของคุณลักษณะ ส่วน **Cp และ Cpk ใช้ SD ของข้อมูลดิบทั้งหมด** และต้องระบุนิยามที่ใช้เมื่อรายงาน [PAUSE-1] เส้นควบคุมของกราฟค่าเฉลี่ยใช้ SD ของค่าเฉลี่ยกลุ่ม และเมื่อออกนอกการควบคุมต้องมี **OCAP** และสืบหาสาเหตุ
 - **TTS Clean Script (TH):**  
-  ทีนี้มาดูมาตรฐาน เจเด็ค เจอีเอสดี 557 ของฝั่งเซมิคอนดักเตอร์และอิเล็กทรอนิกส์, ทำไมมาตรฐานนี้ถึงถูกให้ความสำคัญมากขึ้นเรื่อยๆ ในยุคปัจจุบัน, เพราะรถยนต์ไฟฟ้า อีวี และระบบช่วยขับ เอแดส เต็มไปด้วยชิปกำลังและอีซียูนับพันชิ้น ทำให้ต้องใช้หลัก ซีโร่ ดีเฟกต์ ที่ผลิตกันทีละหลายสิบล้านชิ้น, ลำพัง ซีพีเค 1.00 ยังหลุดถึง 2,700 ดีพีพีเอ็ม ซึ่งเสี่ยงเกินไป อุตสาหกรรมจึงผลักดัน ซีพีเค 1.67 ถึง 2.00 และให้ เจอีเอสดี 557 กำกับทั้งสเปกด้านเดียว ข้อมูลเบ้ ไปจนถึงการทำ ออโต้ ล็อต โฮลด์ ตาม โอแค็ป แบบอัตโนมัติ
+  ทีนี้มาดูมาตรฐาน เจเด็ค เจอีเอสดี 557 ซี, มาตรฐานให้ผู้ผลิตกำหนดเป้า ซีพีเค เองตามความสำคัญของคุณลักษณะ ส่วน ซีพี และ ซีพีเค ใช้ เอสดี ของข้อมูลดิบทั้งหมด และต้องระบุนิยามที่ใช้เมื่อรายงาน, เส้นควบคุมของกราฟค่าเฉลี่ยใช้ เอสดี ของค่าเฉลี่ยกลุ่ม และเมื่อออกนอกการควบคุมต้องมี โอแค็ป และสืบหาสาเหตุ
 - **EN Reference:**  
-  JEDEC JESD557 has grown critical in modern manufacturing as EV, ADAS, and high-volume smart electronics demand zero-defect performance—pushing Cpk targets to 1.67–2.00 alongside one-sided handling, non-normal awareness, and automated OCAP lot holds.
+  JEDEC JESD557C lets the manufacturer set Cpk targets by criticality, defines Cp and Cpk with the standard deviation of all raw data (state the definition when reporting), bases mean-chart limits on the standard deviation of subgroup means, and requires an OCAP and cause investigation.
 
-### AUD-M4L4-S04 (45 sec) — AIAG vs JEDEC $C_{pk}$ Connection & Decision Flow
+### AUD-M4L4-S04 (45 sec) — AIAG vs JEDEC $C_{pk}$: Different Sigma Definitions
 - **Display Script (TH):**  
-  หลายคนสงสัยว่า **Cpk ของ JEDEC เกี่ยวข้องกับ Cpk ของ AIAG อย่างไร?** [PAUSE-1] [ANIM: aiag_jedec_bridge] คำตอบคือ **ใช้สูตรคณิตศาสตร์และระดับเกณฑ์ตัวเดียวกัน 100%** ทั้งคู่ใช้ `1.33` สำหรับ Ongoing และ `1.67` สำหรับ Qualification! [PAUSE-1] จุดเชื่อมสำคัญคือเมื่อโรงงานอิเล็กทรอนิกส์ผลิตชิ้นส่วนป้อนอุตสาหกรรมยานยนต์ จึงต้องส่ง **AIAG PPAP (`Ppk ≥ 1.67`)** ให้ลูกค้า แต่บริหารไลน์จริงด้วยระบบ **JEDEC `JESD557`** ที่รองรับความแปรปรวนข้าม Wafer/Lot และการคุมแบบ Real-time อัตโนมัติ [PAUSE-1] จำเป็นไฟจราจร 3 สีเหมือนกัน: **เขียว `≥ 1.67` ปล่อยผ่าน**, **เหลือง `1.33–1.66` คัดกรองและปรับปรุง**, และ **แดง `< 1.33` หยุดตาม OCAP ทันที!**
+  หลายคนสงสัยว่า **Cpk ของ JEDEC ต่างจาก Cpk ของ AIAG อย่างไร?** [PAUSE-1] [ANIM: aiag_jedec_bridge] คำตอบคือ **ชื่อดัชนีเหมือนกัน แต่นิยาม σ ต่างกัน** AIAG ใช้ σ ภายในกลุ่มจาก R̄/d2 ส่วน JESD557C ใช้ SD ของข้อมูลดิบทั้งหมด ซึ่งใกล้กับ Ppk ของ AIAG [PAUSE-1] จึงต้องระบุนิยามทุกครั้งที่รายงาน [PAUSE-1] ส่วนไฟจราจรตามข้อกำหนดลูกค้า: **เขียว `≥ 1.67`**, **เหลือง `1.33–1.66` คัดกรองและปรับปรุง**, และ **แดง `< 1.33` หยุดตาม OCAP**
 - **TTS Clean Script (TH):**  
-  หลายคนสงสัยว่า ซีพีเค ของ เจเด็ค เกี่ยวข้องกับ ซีพีเค ของ เอไอเอจี อย่างไร, คำตอบคือ ใช้สูตรคณิตศาสตร์และระดับเกณฑ์ตัวเดียวกัน 100 เปอร์เซ็นต์ ทั้งคู่ใช้ 1.33 สำหรับการผลิตประจำ และ 1.67 สำหรับการรับรองกระบวนการ, จุดเชื่อมสำคัญคือเมื่อโรงงานอิเล็กทรอนิกส์ผลิตชิ้นส่วนป้อนอุตสาหกรรมยานยนต์ จึงต้องส่ง เอไอเอจี พีแพ็ป ให้ลูกค้า แต่บริหารไลน์จริงด้วยระบบ เจเด็ค เจอีเอสดี 557 ที่รองรับความแปรปรวนข้ามเวเฟอร์และล็อต รวมถึงการคุมแบบเรียลไทม์อัตโนมัติ, จำเป็นไฟจราจร 3 สีเหมือนกัน สีเขียว มากกว่าหรือเท่ากับ 1.67 ปล่อยผ่าน สีเหลือง 1.33 ถึง 1.66 คัดกรองและปรับปรุง และ สีแดง น้อยกว่า 1.33 หยุดตาม โอแค็ป ทันที
+  หลายคนสงสัยว่า ซีพีเค ของ เจเด็ค ต่างจาก ซีพีเค ของ เอไอเอจี อย่างไร, คำตอบคือ ชื่อดัชนีเหมือนกัน แต่นิยาม ซิกม่า ต่างกัน เอไอเอจี ใช้ ซิกม่า ภายในกลุ่มจาก อาร์บาร์ หาร ดีสอง ส่วน เจอีเอสดี 557 ซี ใช้ เอสดี ของข้อมูลดิบทั้งหมด ซึ่งใกล้กับ พีพีเค ของ เอไอเอจี, จึงต้องระบุนิยามทุกครั้งที่รายงาน, ส่วนไฟจราจรตามข้อกำหนดลูกค้า สีเขียว มากกว่าหรือเท่ากับ 1.67 สีเหลือง 1.33 ถึง 1.66 คัดกรองและปรับปรุง และ สีแดง น้อยกว่า 1.33 หยุดตาม โอแค็ป
 - **EN Reference:**  
-  JEDEC and AIAG share the exact same Cpk/Ppk formulas and 1.33/1.67 thresholds. In modern EV supply chains, factories submit AIAG PPAP while running JEDEC JESD557 real-time SPC—unified under one Green-Amber-Red decision gate.
+  JEDEC and AIAG use the same index names but different sigma definitions: AIAG uses within-subgroup sigma from R-bar over d2, JESD557C uses the standard deviation of all raw data. State the definition when reporting; the traffic-light limits follow customer requirements.
 
 ### AUD-M4L4-S05 (25 sec) — Release Gate Simulator
 - **Display Script (TH):**  
@@ -210,23 +210,23 @@
 - **TTS Clean Script (TH):**  
   ลองสวมบทบาท เอนจิเนียร์ ตรวจอนุมัติกระบวนการ 5 เคสจริงด้านล่าง ดูว่าจะกดอนุมัติ มีเงื่อนไข หรือสั่งหยุด
 - **EN Reference:**  
-  Act as the release engineer and evaluate five capability study reports against AIAG and JEDEC rules.
+  Act as the release engineer and evaluate five capability study reports against customer and PPAP requirements.
 
 ### AUD-M4L4-S06 (45 sec) — Workshop: Capability Calculation
 - **Display Script (TH):**  
-  ถึงเวลา **Workshop ประจำ Module 4** [PAUSE-1] เรามีชุดข้อมูลความยาว Pin 100 ชิ้น แบ่งเป็น 20 Subgroups กลุ่มละ 5 ชิ้น ลองคำนวณค่า `Cp, Cpk, Pp, Ppk` แล้วตัดสินตามเกณฑ์ PPAP และหาสาเหตุที่แท้จริงในข้อมูลชุดนี้
+  ถึงเวลา **Workshop ประจำ Module 4** [PAUSE-1] เรามีชุดข้อมูลความยาว Pin 100 ชิ้น แบ่งเป็น 20 Subgroups กลุ่มละ 5 ชิ้น ลองคำนวณค่า `Cp, Cpk, Pp, Ppk` แล้วตัดสินตามข้อกำหนดลูกค้า/PPAP และหาสาเหตุที่แท้จริงในข้อมูลชุดนี้
 - **TTS Clean Script (TH):**  
-  ถึงเวลา เวิร์คช็อป ประจำ โมดูล 4, เรามีชุดข้อมูลความยาวพิน 100 ชิ้น แบ่งเป็น 20 ซับกรุ๊ป กลุ่มละ 5 ชิ้น ลองคำนวณค่า ซีพี ซีพีเค พีพี พีพีเค แล้วตัดสินตามเกณฑ์ พีแพ็ป และหาสาเหตุที่แท้จริงในข้อมูลชุดนี้
+  ถึงเวลา เวิร์คช็อป ประจำ โมดูล 4, เรามีชุดข้อมูลความยาวพิน 100 ชิ้น แบ่งเป็น 20 ซับกรุ๊ป กลุ่มละ 5 ชิ้น ลองคำนวณค่า ซีพี ซีพีเค พีพี พีพีเค แล้วตัดสินตามข้อกำหนดลูกค้าหรือ พีแพ็ป และหาสาเหตุที่แท้จริงในข้อมูลชุดนี้
 - **EN Reference:**  
   Analyze the 100-part pin length dataset across 20 subgroups, calculate Cp, Cpk, Pp, and Ppk, and make the process release decision.
 
 ### AUD-M4L4-S07 (40 sec) — Workshop Solution
 - **Display Script (TH):**  
-  มาดูเฉลยกัน [ANIM: sg15_drift] รวม 20 กลุ่มได้ `Cp 1.87, Cpk 1.64` แต่ **`Ppk` ร่วงลงมาที่ `1.15` ไม่ผ่านเกณฑ์!** [PAUSE-1] ต้นเหตุเกิดจากกะดึกช่วง `SG-15` ถึง `20` ขนาดพินไหลขึ้น `+0.060 มิลลิเมตร` พอแก้การไหลตรงนี้ได้ `Ppk` จะพุ่งขึ้นเป็น **`1.93` ผ่านมาตรฐานทันที!**
+  มาดูเฉลยกัน [ANIM: sg15_drift] รวม 20 กลุ่มได้ `Cp 1.87, Cpk 1.64` แต่ **`Ppk` ร่วงลงมาที่ `1.15` ไม่ผ่านเกณฑ์!** [PAUSE-1] ต้นเหตุเกิดจากกะดึกช่วง `SG-15` ถึง `20` ขนาดพินไหลขึ้น `+0.060 มิลลิเมตร` พอแก้การไหลตรงนี้ได้ `Ppk` จะพุ่งขึ้นเป็น **`1.93`** ซึ่งยังเป็น **ค่าเบื้องต้น** เพราะมีเพียง 14 กลุ่ม
 - **TTS Clean Script (TH):**  
-  มาดูเฉลยกัน, รวม 20 กลุ่มได้ ซีพี 1.87 ซีพีเค 1.64 แต่ พีพีเค ร่วงลงมาที่ 1.15 ไม่ผ่านเกณฑ์, ต้นเหตุเกิดจากกะดึกช่วง เอสจี 15 ถึง 20 ขนาดพินไหลขึ้น 0.060 มิลลิเมตร พอแก้การไหลตรงนี้ได้ พีพีเค จะพุ่งขึ้นเป็น 1.93 ผ่านมาตรฐานทันที
+  มาดูเฉลยกัน, รวม 20 กลุ่มได้ ซีพี 1.87 ซีพีเค 1.64 แต่ พีพีเค ร่วงลงมาที่ 1.15 ไม่ผ่านเกณฑ์, ต้นเหตุเกิดจากกะดึกช่วง เอสจี 15 ถึง 20 ขนาดพินไหลขึ้น 0.060 มิลลิเมตร พอแก้การไหลตรงนี้ได้ พีพีเค จะพุ่งขึ้นเป็น 1.93 ซึ่งยังเป็นค่าเบื้องต้น เพราะมีเพียง 14 กลุ่ม
 - **EN Reference:**  
-  The overall study shows Cpk 1.64 but Ppk 1.15—failing release due to a +0.060 mm shift in subgroups 15–20. Once stabilized, Ppk jumps to 1.93.
+  The overall study shows Cpk 1.64 but Ppk 1.15—failing release due to a +0.060 mm shift in subgroups 15–20. Using only the stable subgroups, Ppk is 1.93, a preliminary value from 14 subgroups.
 
 ### AUD-M4L4-S08 (25 sec) — Module 4 Wrap-Up & Exam
 - **Display Script (TH):**  

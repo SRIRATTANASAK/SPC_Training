@@ -11,7 +11,7 @@
 | **Case 1** | **Machining** (`Shaft OD`) | Variable, `n = 5` | **`X̄-R` + `Cp/Cpk`** | `UCL_X = 30.0028`, `Cpk = 8.08` → จับ Tool Wear `SG-16..20` |
 | **Case 2** | **Assembly** (`Bolt Torque`) | Variable, `n = 1` (PLC) | **`I-MR`** | `LCL_I = 24.19` → จับ Clutch Slippage `PT-21..25` ก่อนหลุด `LSL` |
 | **Case 3** | **Defect Monitoring** | Attribute (`n_i` เปลี่ยน) | **`p` & `u` Chart** | `LOT-13` OOC `p` (`0.0875`), `LOT-17` OOC `u` (`0.1500`) |
-| **Case 4** | **PPAP Release** (`Bracket`) | `100` ชิ้น (`20 × 5`) | **3 Gates + `Ppk`** | `Ppk = 2.474 >= 1.67` → **Approved for PPAP Release!** |
+| **Case 4** | **PPAP Release** (`Bracket`) | `100` ชิ้น (`20 × 5`) | **3 Gates + `Ppk`** | `Ppk = 2.474 >= 1.67` → **Approved for PPAP Release!** (เกณฑ์ `1.67` ตามข้อกำหนดลูกค้า/PPAP (ยังไม่ได้ยืนยันจากต้นฉบับ)) |
 
 ---
 

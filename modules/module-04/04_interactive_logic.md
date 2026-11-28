@@ -85,7 +85,7 @@
 
 ## Lesson M4-L4 Interactions
 
-### INT-M4-L4-01 — AIAG/VDA & JEDEC Release Gate Decision Simulator (`M4L4-S05`)
+### INT-M4-L4-01 — Customer / PPAP Release Gate Decision Simulator (`M4L4-S05`)
 - **Type:** 5-Case Release Engineer Console (`Passing >= 4/5`, `+10 pts`)
 - **Choices per Case:** `Approve Release` | `Conditional (Containment + Action Plan)` | `Hold / Reject (Fix Stability / MSA / Distribution First)`
 - **Cases:**
@@ -94,10 +94,10 @@
   2. **Stamping Pin Initial Study (Drift Trap):** MSA `%GRR = 8%`, Control Chart พบช่วงท้ายกะ Drift ชัดเจน, ได้ `Cpk = 1.64` แต่ `Ppk = 1.15`
      - *Correct:* `Hold / Reject` (กระบวนการยังไม่เสถียร ห้ามรายงาน `Cpk = 1.64` เพื่อขอผ่าน — และ `Ppk = 1.15 < 1.33`)
   3. **Automotive Ongoing Production:** เสถียร (`Normality p = 0.31`), ลักษณะทั่วไป (Non-CC) ได้ `Cpk = 1.48, Ppk = 1.44` แต่ลูกค้าตั้งขอ `1.67` สำหรับ PPAP แรกเริ่ม หรืออยู่ช่วง `1.33–1.66` ใน PPAP
-     - *Case Framing in Console:* "Initial PPAP Study ที่เสถียรและ Normal แล้ว แต่ได้ `Ppk = 1.48` (`1.33–1.66`)" → *Correct:* `Conditional (Containment + Action Plan)` (ตาม AIAG PPAP เกณฑ์ `1.33–1.67` ต้องมีแผนคัดกรอง/ปรับปรุงส่งอนุมัติ)
-  4. **JEDEC Semiconductor Wire Bond Pull (One-Sided LSL only):** `n = 125`, เสถียร, `%GRR = 6%`, `Normality p = 0.25`, `Cpl = 1.82` (ไม่มี `Cp`)
-     - *Correct:* `Approve Release` (งาน One-sided LSL ใช้ `Cpk = Cpl = 1.82 >= 1.67` ผ่านเกณฑ์ JEDEC Automotive Grade)
-  5. **JEDEC Leakage Current Test (Skew Trap):** ข้อมูลเบ้ขวาจัด (`Normality p = 0.002`), มีแต่ `USL`, คำนวณตรงๆ ด้วยสูตร Normal ได้ `Cpu = 1.55`
+     - *Case Framing in Console:* "Initial PPAP Study ที่เสถียรและ Normal แล้ว แต่ได้ `Ppk = 1.48` (`1.33–1.66`)" → *Correct:* `Conditional (Containment + Action Plan)` (เกณฑ์ `1.33–1.67` ตามข้อกำหนดลูกค้า/PPAP (ยังไม่ได้ยืนยันจากต้นฉบับ) ต้องมีแผนคัดกรอง/ปรับปรุงส่งอนุมัติ)
+  4. **Semiconductor Wire Bond Pull (One-Sided LSL only):** `n = 125`, เสถียร, `%GRR = 6%`, `Normality p = 0.25`, `Cpl = 1.82` (ไม่มี `Cp`)
+     - *Correct:* `Approve Release` (งาน One-sided LSL ใช้ `Cpk = Cpl = 1.82 >= 1.67` ผ่านเกณฑ์ที่ลูกค้ากำหนด)
+  5. **Semiconductor Leakage Current Test (Skew Trap):** ข้อมูลเบ้ขวาจัด (`Normality p = 0.002`), มีแต่ `USL`, คำนวณตรงๆ ด้วยสูตร Normal ได้ `Cpu = 1.55`
      - *Correct:* `Hold / Reject (Fix Stability / MSA / Distribution First)` (ข้อมูลไม่เป็น Normal ห้ามใช้สูตร Normal Capability ตรงๆ ต้องแปลงข้อมูล Box-Cox/Log หรือใช้ Percentile Method ก่อน!)
 
 ### INT-M4-L4-02 — Workshop: Pin Length Capability Lab (`M4L4-S06`)
@@ -122,7 +122,7 @@
      - `C)` เฉพาะชิ้นที่ 1 ของทุกกลุ่ม
      - `D)` ไม่มีช่วงไหนเปลี่ยนเลย
   4. **Q4:** หากทีมวิศวกรพบและแก้ไขต้นเหตุ Drift ในกะดึก (เปรียบเทียบด้วยข้อมูลช่วงเสถียร `SG-01..14`, `70` ชิ้น) ค่า **`Cpk`** และ **`Ppk`** ที่ได้คือเท่าใด และตัดสินใจอย่างไร?
-     - `A)` `Cpk = 1.83`, `Ppk = 1.93` — **PASS เกณฑ์ `>= 1.67`** (ยืนยันว่าตัวเครื่องจักรมีศักยภาพสูงจริง เพียงต้องคุม Special Cause กะดึกด้วย SPC ใน Control Plan!) ✅
+     - `A)` `Cpk = 1.83`, `Ppk = 1.93` — สูงกว่า `1.67` แต่เป็น **ค่าเบื้องต้น** (14 กลุ่ม) (ยืนยันว่าตัวเครื่องจักรมีศักยภาพสูงจริง เพียงต้องคุม Special Cause กะดึกด้วย SPC ใน Control Plan!) ✅
      - `B)` `Cpk = 0.95`, `Ppk = 0.90` — ต้องเปลี่ยนเครื่องใหม่
      - `C)` `Cpk = 1.15`, `Ppk = 1.64` — ปรับ Offset อย่างเดียว
      - `D)` คำนวณไม่ได้เพราะ `n < 200`

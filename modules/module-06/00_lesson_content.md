@@ -47,7 +47,7 @@
 `<Asset id="AST-M6-005" />`
 - **ทำไมเมื่อ `n > 10` จึงห้ามใช้ $R$ Chart แต่ต้องเปลี่ยนเป็น $\bar{X}$-$S$ Chart?**
   - ค่า **Range ($R$)** ใช้เพียงข้อมูล **ค่ามากสุดและน้อยสุด (`2` ตัว)** โดย **ทิ้งข้อมูลตัวเลขตรงกลางทั้งหมด!**
-  - เมื่อ `n = 15` หรือ `n = 25` (เช่น วัดความหนาออกไซด์ `16` จุดบนแผ่น Wafer หรือ `12` Spindles) ค่า `R` จะสูญเสีย **Statistical Efficiency** อย่างรุนแรงและไวต่อ Outlier แค่ตัวเดียว!
+  - เมื่อ `n = 15` หรือ `n = 25` ค่า `R` จะสูญเสีย **Statistical Efficiency** อย่างรุนแรงและไวต่อ Outlier แค่ตัวเดียว!
 - **สูตรมาตรฐานของ $\bar{X}$-$S$ Chart (ใช้ Sample SD: $S_i$):**
   $$\text{CL}_{\bar{X}} = \bar{\bar{x}}, \quad \text{UCL}_{\bar{X}}/\text{LCL}_{\bar{X}} = \bar{\bar{x}} \pm A_3\bar{S}$$
   $$\text{CL}_S = \bar{S}, \quad \text{UCL}_S = B_4\bar{S}, \quad \text{LCL}_S = B_3\bar{S} \quad (\text{และ } \hat{\sigma} = \bar{S}/c_4)$$
@@ -152,7 +152,7 @@
 |---|---|---|---|---|---|
 | **`I-MR`** | Variable | ค่าเดี่ยว ($X_i$) & Moving Range | **`n = 1`** | $\bar{X} \pm 2.660\overline{MR}$ | Temp อ่างเคมี, Destructive Pull |
 | **$\bar{X}$-$R$** | Variable | ค่าเฉลี่ย ($\bar{X}$) & Range ($R$) | **`n = 2–10`** (`3–5`) | $\bar{\bar{x}} \pm A_2\bar{R}$ | CNC Diameter, Injection Weight |
-| **$\bar{X}$-$S$** | Variable | ค่าเฉลี่ย ($\bar{X}$) & SD ($S$) | **`n > 10`** | $\bar{\bar{x}} \pm A_3\bar{S}$ | Wafer 16 sites, 12-Spindle Bore |
+| **$\bar{X}$-$S$** | Variable | ค่าเฉลี่ย ($\bar{X}$) & SD ($S$) | **`n > 10`** | $\bar{\bar{x}} \pm A_3\bar{S}$ | — |
 | **`p`** | Attribute (Defective) | สัดส่วนชิ้นเสีย ($p_i$) | **คงที่ หรือ ไม่คงที่** | $\bar{p} \pm 3\sqrt{\bar{p}(1-\bar{p})/n_i}$ | % Scrap ตรวจ Lot ยอดไม่เท่ากัน |
 | **`np`** | Attribute (Defective) | จำนวนชิ้นเสีย ($d_i$) | **ต้องคงที่ 100%** | $\overline{np} \pm 3\sqrt{\overline{np}(1-\bar{p})}$ | จำนวนชิ้นเสียใน 100 ชิ้น/กะ |
 | **`c`** | Attribute (Defect) | จำนวนจุดตำหนิ ($c_i$) | **หน่วยคงที่ 100%** | $\bar{c} \pm 3\sqrt{\bar{c}}$ | รอยสีรถ 1 คัน, ตำหนิ PCB รุ่นเดียว |
@@ -188,7 +188,7 @@
 `<Asset id="AST-M6-015" />`
 1. **SCEN-01 (Chemical Bath Temp, 1 reading/4hr):** Variable, `n = 1` → **`I-MR Chart`**
 2. **SCEN-02 (CNC Shaft OD, 5 parts/hr):** Variable, `n = 5` (`2–10`) → **$\bar{X}$-$R$ Chart**
-3. **SCEN-03 (Wafer Oxide Thickness, 16 sites/wafer):** Variable, `n = 16 > 10` → **$\bar{X}$-$S$ Chart**
+3. **SCEN-03 (Wafer Oxide Thickness, 16 จุดต่อแผ่น):** Variable → **`I-MR Chart`** — I-MR ของค่าเฉลี่ยต่อ wafer + chart ความแปรปรวนภายใน wafer แยกต่างหาก — 16 จุดบนแผ่นเดียวไม่ใช่ subgroup ของ X̄–S (ISQC pp.271, 286)
 4. **SCEN-04 (PCB Solder Defects, 8–20 panels varying):** Attribute Defects, Varying Size → **`u Chart`**
 5. **SCEN-05 (Fixed 100 Motors/Shift Pass/Fail count):** Attribute Defective, Constant `n = 100` → **`np Chart`** *(หรือ `p` ก็ได้ แต่ `np` อ่านง่ายตรงๆ)*
 
@@ -197,7 +197,7 @@
 6. **SCEN-06 (Incoming Brackets % Defective, Lot `n = 80..250`):** Attribute Defective, Varying `n` → **`p Chart`**
 7. **SCEN-07 (Paint Scratches per 1 Car Body, fixed 1 car):** Attribute Defects, Fixed Unit → **`c Chart`**
 8. **SCEN-08 (Destructive Weld Pull-Force, 1 part/shift):** Variable, `n = 1` → **`I-MR Chart`**
-9. **SCEN-09 (12-Spindle Hole Size, 12 readings/2hr):** Variable, `n = 12 > 10` → **$\bar{X}$-$S$ Chart**
+9. **SCEN-09 (12-Spindle Hole Size, 12 หัว หัวละ 1 ค่า ทุก 2 ชม.):** Variable → **`I-MR Chart`** — I-MR แยกราย Spindle (หรือ Group Chart) — ห้ามรวม 12 หัวเป็น subgroup เดียว เพราะเป็นคนละ stream (AIAG p.73; ISQC p.443)
 10. **SCEN-10 (Plastic Cover Weight, 4 parts/hr same group):** Variable, `n = 4` (`2–10`) → **$\bar{X}$-$R$ Chart**
 
 ## M6L4-S04 — Workshop Part B Lab: `p` Chart & `u` Chart Analysis (20 Lots)
@@ -210,6 +210,7 @@
 `<Asset id="AST-M6-017" />`
 - **`p` Chart (Defective Parts, `∑d = 80 / ∑n = 2,835`):**
   - Center Line $\bar{p} = 0.02822$ (`2.82%`)
+  - **เงื่อนไขก่อนใช้ `p` Chart:** ควรให้ $n\bar{p} \ge 5$ (AIAG pp.89, 93; IGNOU p.85: $nP > 5$ และ $nQ > 5$) — ข้อมูลชุดนี้ $n\bar{p} \approx 2.8$–$5.1$ ผ่านเพียง **1 จาก 20 lot** เส้น `p` Chart จึงเป็น **ค่าประมาณหยาบ**
   - **Zero-Bound Check:** `LCL_p` Raw ของทุก Lot (`20/20`) คำนวณได้ติดลบ (`-0.0215` ถึง `-0.0088`) → ไม่ Valid ทั้งหมด ให้ปัดเป็น **`LCL = 0`**!
   - **Out-of-Control Signal:** **`LOT-12`** (`n = 150, d = 14 → p = 0.0933 > UCL_p = 0.0688`) → Revised $\bar{p}$ หลังตัด `LOT-12` = **`0.02458` (`2.46%`)**
 - **`u` Chart (Defects per Unit, `∑c = 183 / ∑n = 2,835`):**

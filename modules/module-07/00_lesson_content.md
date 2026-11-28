@@ -65,7 +65,7 @@
 - **Dominant Variation:** **Piece-to-Piece & Machine/Fixture/Driver Variation** (เช่น ความต่างระหว่างปืนขันสกรูตัวที่ 1–4 หรือหัวบัดกรี)
 - **ตัวอย่าง CTQ & Chart:**
   - `Automated Bolt Torque (N·m)` หรือ `Press-Fit Force (kN)`: ข้อมูลจาก PLC/Sensor อ่าน 100% ทุกชิ้น → ใช้ **`I-MR` Chart (Auto PLC Interlock)** หรือสุ่มจัดกลุ่มตามรอบ Fixture → **$\bar{X}$-$R$**
-  - `SMT Solder Paste Thickness / Volume`: สุ่มหลายจุดต่อแผ่น (`16+` sites) → **$\bar{X}$-$S$ Chart** (ในสาย Semiconductor/SMT นิยมเชื่อมกับระบบ Auto Lot Hold ตามมาตรฐาน **JEDEC `JESD557`**)
+  - `SMT Solder Paste Thickness / Volume`: สุ่มหลายจุดต่อแผ่น (`16+` sites) → **`I-MR` ของค่าเฉลี่ยต่อแผ่น + chart ความแปรปรวนภายในแผ่นแยกต่างหาก** (หลายจุดบนแผ่นเดียวไม่ใช่ subgroup ของ $\bar{X}$-$S$) · การ Hold Lot เมื่อ OOC เป็นแนวปฏิบัติของโรงงาน ไม่ใช่ข้อกำหนดมาตรฐาน
   - `Visual Solder Bridge / Missing Component`: นับจำนวนจุดตำหนิเมื่อยอดแผงเปลี่ยน → **`u` Chart**
 
 ## M7L2-S03 — Injection Molding (Multi-Cavity Plastic Molding)
@@ -114,11 +114,11 @@
 - เมื่อเกิดสัญญาณ Out-of-Control และแก้ไขเบื้องต้นไม่หาย ต้องมีระบบ **Escalation เป็นลำดับขั้นพร้อมเวลา (Time-Bound SLA):**
   - **Tier 1 — Operator (`0–15 นาที`):** หยุด/Auto-Pause → Verify การวัด (ตัดปัญหา Measure Error) → กักกันชิ้นงาน (`Containment Block`) → ตรวจ Condition พื้นฐาน (เปลี่ยนมีด/ทำความสะอาด/Event Log)
   - **Tier 2 — Line Leader / Process Technician (`15–60 นาที`):** หากยัง OOC ซ้ำ 2 จุดติด หรือแก้ไม่จบ → ตรวจพารามิเตอร์เครื่อง, Setup, Fixture, และตรวจสอบสินค้าในโซนกักกัน (`Sort 100%`)
-  - **Tier 3 — Quality Engineer / Process Engineer (`> 60 นาที` หรือ Raw Data > Spec ร้ายแรง / Multi-lot OOC):** สั่ง **Hold Lot (ตามแนวทาง `OCAP / JEDEC JESD557`)** เปิด MRB / 8D / Root Cause Analysis (Module 8) ก่อน Release ไลน์ใหม่!
+  - **Tier 3 — Quality Engineer / Process Engineer (`> 60 นาที` หรือ Raw Data > Spec ร้ายแรง / Multi-lot OOC):** สั่ง **Hold Lot (แนวปฏิบัติตาม `OCAP` ของโรงงาน ไม่ใช่ข้อกำหนดมาตรฐาน)** เปิด MRB / 8D / Root Cause Analysis (Module 8) ก่อน Release ไลน์ใหม่!
 
 ## M7L3-S04 — Interactive Reaction & Escalation Flowchart Simulator
 `<Interactive id="INT-M7-L3-01" />`
-- จำลองเหตุการณ์ OOC หน้าไลน์ 4 สถานการณ์ (`1. Single Measurement Typo`, `2. Tool Wear Resolved at Tier 1`, `3. Unresolved Parameter Drift Escalated to Tier 2`, `4. Repeated Raw Data > USL Escalated to Tier 3 Lot Hold`) เพื่อฝึกตัดสินใจตาม Escalation Flowchart & SLA (`+10 pts`)
+- จำลองเหตุการณ์ OOC หน้าไลน์ 4 สถานการณ์ (`1. Single Measurement Typo`, `2. Tool Wear Resolved at Tier 1`, `3. Unresolved Parameter Drift Escalated to Tier 2`, `4. Repeated Raw Data > USL Escalated to Tier 3 Lot Hold (แนวปฏิบัติ)`) เพื่อฝึกตัดสินใจตาม Escalation Flowchart & SLA (`+10 pts`)
 
 ## M7L3-S05 — Lesson 3 Knowledge Check (`KC-M7-L3`)
 - ทบทวน 2 ข้อ (`M7-Q031`, `M7-Q038`)

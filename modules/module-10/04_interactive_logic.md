@@ -34,12 +34,12 @@
 - **Tasks (`+15 pts`):** Flag `PT-21..25 < LCL_I (24.19)` and toggle `var_case2_interlock_on = true` (**Replace Worn Clutch + Enable PLC Auto-Interlock**).
 
 ### INT-M10-L3-01 — Case 3 Defect Monitoring Dashboard (`M10L3-S04`)
-- **Data Source:** `data/case3_defect_p_u_chart.csv` (`20 Lots`, `∑n = 2,835`, `p̄ = 0.0282`, `ū = 0.0501`)
+- **Data Source:** `data/case3_defect_p_u_chart.csv` (`20 Lots`, `∑n = 2,835`, `p̄ = 0.0282`, `ū = 0.0519`)
 - **Tasks (`+15 pts`):** Switch `var_case3_active_chart` between `"p"` and `"u"` to flag **`LOT-13` (`OOC_p = 0.0875`)** and **`LOT-17` (`OOC_u = 0.1500`)**.
 
 ### INT-M10-L4-01 — Case 4 PPAP Release Console (`M10L4-S04`)
 - **Data Source:** `data/case4_ppap_release_ppk.csv` (`50.000 ± 0.100 mm`, `100` parts)
-- **Tasks (`+15 pts`):** Verify 3 Gates (`MSA < 10%`, `Stability 0 OOC`, `Normality`), confirm **`Ppk = 2.474 >= 1.67`**, and click **Approve PPAP Release** (`var_case4_ppap_approved = true`).
+- **Tasks (`+15 pts`):** Verify 3 Gates (`MSA < 10%`, `Stability 0 OOC`, `Normality`), confirm **`Ppk = 2.474 >= 1.67`** (เกณฑ์ตามข้อกำหนดลูกค้า/PPAP (ยังไม่ได้ยืนยันจากต้นฉบับ)), and click **Approve PPAP Release** (`var_case4_ppap_approved = true`).
 
 ---
 

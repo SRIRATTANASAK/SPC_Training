@@ -14,7 +14,7 @@
   1. แยกแยะ **Voice of Process (VOP)** ออกจาก **Voice of Customer (VOC)**
   2. เข้าใจ **USL, LSL, Target** ทั้งแบบ 2 ด้าน (Bilateral) และ 1 ด้าน (Unilateral)
   3. คำนวณและตีความ **$C_p, C_{pk}, P_p, P_{pk}$** พร้อมวินิจฉัยความต่างของ $\hat{\sigma}_{\text{within}}$ กับ $s_{\text{overall}}$
-  4. ประยุกต์ใช้เกณฑ์ **AIAG/VDA** และ **JEDEC Standard** ในการตรวจรับและ Release กระบวนการ
+  4. ใช้เกณฑ์ Capability (ISQC p.354 และข้อกำหนดลูกค้า/PPAP) ในการตรวจรับและ Release กระบวนการ และเข้าใจนิยาม σ ของ **JEDEC `JESD557C`**
 
 ## M4L1-S02 — Voice of Process (VOP)
 `<Asset id="AST-M4-002" />`
@@ -119,8 +119,8 @@ $$P_p = \frac{\text{USL} - \text{LSL}}{6 s_{\text{overall}}}, \qquad P_{pk} = \m
 |---|---|---|---|
 | `0.67` | `±2σ` | `95.45%` | `45,500 PPM` |
 | `1.00` | `±3σ` | `99.73%` | `2,700 PPM` |
-| **`1.33`** | **`±4σ`** | **`99.9937%`** | **`63 PPM`** *(เกณฑ์ขั้นต่ำอุตสาหกรรม)* |
-| **`1.67`** | **`±5σ`** | **`99.99994%`** | **`0.57 PPM`** *(เกณฑ์ PPAP / Critical)* |
+| **`1.33`** | **`±4σ`** | **`99.9937%`** | **`63 PPM`** *(ISQC p.354: ขั้นต่ำกระบวนการเดิม)* |
+| **`1.67`** | **`±5σ`** | **`99.99994%`** | **`0.57 PPM`** *(ISQC p.354: critical ใหม่; PPAP ตามข้อกำหนดลูกค้า — ยังไม่ได้ยืนยันจากต้นฉบับ)* |
 | `2.00` | `±6σ` | `99.9999998%` | `0.002 PPM` *(หรือ `3.4 PPM` เมื่อรวม Shift `1.5σ`)* |
 
 ## M4L3-S06 — Worked Step-by-Step Calculation (`n = 5, d2 = 2.326`)
@@ -151,59 +151,64 @@ $$P_p = \frac{\text{USL} - \text{LSL}}{6 s_{\text{overall}}}, \qquad P_{pk} = \m
 `<Asset id="AST-M4-014" />`
 - **กฎเหล็ก 3 ด่านก่อนรายงาน $C_p/C_{pk}$:**
   1. **MSA Ready:** ระบบวัดผ่าน Gage R&R (`%GRR < 10%` หรือตามเกณฑ์ AIAG) — มิฉะนั้น Measurement Error จะกด $C_{pk}$ ต่ำปลอม!
-  2. **Statistical Stability:** ตรวจ Control Chart ก่อน! ถ้ายัง **Unstable** ห้ามรายงาน $C_{pk}$ ให้รายงานเป็น Preliminary $P_{pk}$ และรีบกำจัด Special Cause
+  2. **Statistical Stability:** ตรวจ Control Chart ก่อน! ถ้ายัง **Unstable** ยังไม่รายงานความสามารถ ($C_p/C_{pk}$) และรีบกำจัด Special Cause — ถ้าลูกค้าบังคับ ให้ติดป้ายว่าเป็น performance ของข้อมูลชุดนั้น ทำนายอนาคตไม่ได้ (AIAG p.132, p.127; ISQC p.363)
   3. **Normality Check:** ถ้าข้อมูลเบ้ (`p-value < 0.05`) ห้ามใช้สูตร $\bar{x} \pm 3\sigma$ ตรงๆ (ต้องใช้ Box-Cox/Johnson Transformation หรือ Percentile Non-normal Capability)
 
-## M4L4-S02 — AIAG / VDA & IATF 16949 Requirements (Automotive)
+## M4L4-S02 — เกณฑ์ Capability ตามข้อกำหนดลูกค้า/PPAP (Automotive)
 `<Asset id="AST-M4-015" />`
 
-| ช่วงการประเมิน (AIAG SPC / PPAP / VDA) | ดัชนีที่ใช้ | เกณฑ์มาตรฐาน | การดำเนินการเมื่อไม่ผ่าน |
+| ช่วงการประเมิน (ตามข้อกำหนดลูกค้า/PPAP (ยังไม่ได้ยืนยันจากต้นฉบับ)) | ดัชนีที่ใช้ | เกณฑ์ (ลูกค้า/PPAP) | การดำเนินการเมื่อไม่ผ่าน |
 |---|---|---|---|
 | **Initial Process Study / PPAP Release** (Short-term 25+ Subgroups / ≥ 100 ชิ้น) | **$P_{pk}$** | **≥ 1.67** (ผ่าน)<br>`1.33 – 1.67` (มีเงื่อนไข)<br>`< 1.33` (ไม่ผ่าน) | ถ้า `1.33–1.67` หรือ `< 1.33`: ต้องทำ Containment (เช่น 100% Sorting / Poka-Yoke) + Corrective Action Plan ส่งลูกค้าอนุมัติ |
 | **Ongoing Production Monitoring** (กระบวนการเดินเสถียรแล้ว) | **$C_{pk}$** | **≥ 1.33** (ทั่วไป)<br>**≥ 1.67** (CC / SC สำคัญ) | ปรับปรุง Centering / ลดความแปรปรวน + คงความถี่ SPC ใน Control Plan |
 
-## M4L4-S03 — JEDEC Standard Requirements (`JESD557`: Semiconductor & Electronics)
-`<Asset id="AST-M4-016" />`
-- **JEDEC `JESD557` (*Statistical Process Control Systems*):** มาตรฐานระบบ SPC และ Process Capability สำหรับอุตสาหกรรมเซมิคอนดักเตอร์และอิเล็กทรอนิกส์ (Wafer Fab, Wire Bonding, Die Attach, Mold/Solder Ball, และ Automated Electrical Test / ATE)
-- **ทำไมมาตรฐาน JEDEC (`JESD557`) ถึงมีความสำคัญมากขึ้นอย่างมากในอุตสาหกรรมปัจจุบัน?**
-  1. **การเปลี่ยนผ่านสู่ยุค EV, ADAS และ Smart Mobility:** รถยนต์สมัยใหม่ไม่ได้มีแค่ชิ้นส่วนกลึง-ปั๊มโลหะ แต่เต็มไปด้วย **ชิปกำลัง SiC/IGBT, ECU, Radar/LiDAR, BMS และเซนเซอร์ความปลอดภัย** — ส่งผลให้โรงงานอิเล็กทรอนิกส์ต้องผ่านมาตรฐาน **AEC-Q100/101/200 + JESD557** ควบคู่กับ **IATF 16949 / AIAG PPAP**
-  2. **Zero-Defect & Sub-PPM Mindset:** สายการผลิตเซมิคอนดักเตอร์ผลิตระดับ **หลายสิบล้านชิ้น/เดือน** ถ้าใช้เกณฑ์เดิม (`Cpk = 1.00 ≈ 2,700 DPPM`) จะมีชิปเสียหลุดเข้าสู่ระบบเบรกหรือแบตเตอรี่ EV มหาศาล อุตสาหกรรมจึงยกระดับเป้าเป็น **$C_{pk} \ge 1.67 - 2.00$** พร้อมเสริม **PAT (Part Average Testing)** และ **SBL/SYL (Statistical Bin/Yield Limits)**
-  3. **Smart Factory / Automated FDC & OCAP:** เครื่องจักรเซมิคอนดักเตอร์และ SMT เก็บข้อมูลอัตโนมัติความถี่สูงตลอด 24 ชม. **`JESD557`** จึงกำหนดให้ผูกสัญญาณ Out-of-Control เข้ากับ **Automated OCAP (Out-of-Control Action Plan) และ Auto Lot Hold** ทันที
-- **จุดเน้นทางเทคนิคของ JEDEC:**
-  - **One-Sided Specs เยอะมาก:** เช่น Wire Bond Pull (`LSL only → Cpl`), Leakage Current (`USL only → Cpu`)
-  - **Non-Normal Distribution Awareness:** พารามิเตอร์ไฟฟ้ามักเบ้ขวา (Log-normal/Weibull) ต้องตรวจ Normality หรือ Transform ข้อมูลก่อนคำนวณ $C_{pk}$ เสมอ
+- **เกณฑ์อ้างอิงจากตำรา** — ISQC p.354: กระบวนการเดิม `1.33` · กระบวนการใหม่หรือ critical เดิม `1.50` · critical ใหม่ `1.67` · สเปกด้านเดียว `1.25 / 1.45 / 1.60`
 
-## M4L4-S04 — ความเชื่อมโยง $C_{pk}$ ของ JEDEC กับ AIAG & Decision Flow
+## M4L4-S03 — JEDEC `JESD557C`: สิ่งที่มาตรฐานระบุ
+`<Asset id="AST-M4-016" />`
+- **JEDEC `JESD557C` (*Statistical Process Control Systems*):** ประเด็นที่ใช้ในหลักสูตรนี้
+- **p.8 — นิยาม σ ของ $C_p/C_{pk}$:** ใช้ `ST` = SD ของข้อมูลดิบทั้งหมด (ใกล้ $P_p/P_{pk}$ ของ AIAG) ไม่ใช่ $\bar{R}/d_2$ และต้องระบุนิยามที่ใช้เมื่อรายงาน
+- **p.6 — $C_{pk}$ target:** ผู้ผลิตกำหนดเองตามระดับความสำคัญของคุณลักษณะ
+- **p.7 — เส้นควบคุมของ mean chart:** ใช้ SD ของค่าเฉลี่ยกลุ่ม (p.14 ให้วิธีทางเลือก)
+- **p.9 — เมื่อออกนอกการควบคุม:** ต้องมี **OCAP (Out-of-Control Action Plan)** สืบหาสาเหตุ และแก้ไขตามความเหมาะสม
+- **ข้อมูลไม่ปกติ (p.8):** มาตรฐานระบุแนวทาง log-normal และ quantile — ตรวจ Normality ก่อนคำนวณเสมอ
+- **สเปกด้านเดียว:** เช่น Wire Bond Pull (`LSL only → Cpl`), Leakage Current (`USL only → Cpu`)
+
+
+## M4L4-S04 — $C_{pk}$ ของ JEDEC เทียบ AIAG: ชื่อเหมือนกัน นิยาม σ ต่างกัน
 `<Asset id="AST-M4-017" />`
 
 - **คำถามยอดฮิตของวิศวกร: "$C_{pk}$ ของ JEDEC ต่างจาก $C_{pk}$ ของ AIAG อย่างไร?"**
-  - **สูตรคณิตศาสตร์เดียวกัน 100%:** ทั้ง AIAG และ JEDEC ใช้สมการ $C_p, C_{pk}, P_p, P_{pk}$ แบบเดียวกันเป๊ะ รวมถึงความหมายของระดับเกณฑ์ (`1.33 ≈ 63 DPPM` สำหรับ Ongoing, และ `1.67 ≈ 0.57 DPPM` สำหรับ Qualification/Critical)
-  - **จุดบรรจบในยุค EV & Electronics Supply Chain:** เมื่อโรงงานชิปหรือ PCBA ส่งงานให้ Tier-1/OEM ยานยนต์ ลูกค้าจะขอ **AIAG PPAP (`Ppk/Cpk ≥ 1.67`)** ขณะที่ในไลน์ผลิตจริงใช้ระบบ SPC ตาม **JEDEC `JESD557`** — ทั้งสองมาตรฐานจึงทำหน้าที่เป็น **"สะพานเชื่อมภาษาเดียวกัน"** ระหว่างฝั่งยานยนต์และฝั่งเซมิคอนดักเตอร์!
+  - **ชื่อดัชนีเหมือนกัน แต่นิยาม σ ต่างกัน:** AIAG ใช้ $\hat{\sigma}_{\text{within}} = \bar{R}/d_2$ กับ $C_p/C_{pk}$ ส่วน **JESD557C p.8** ใช้ `ST` = SD ของข้อมูลดิบทั้งหมด (ใกล้ $P_p/P_{pk}$ ของ AIAG)
+  - **เวลารายงาน:** ต้องระบุนิยาม σ ที่ใช้ (p.8) เพราะข้อมูลชุดเดียวกันอาจได้ค่า $C_{pk}$ ต่างกันตามนิยาม
 
-| มิติเปรียบเทียบ | AIAG / VDA (Automotive / Mechanical) | JEDEC `JESD557` (Semiconductor / Electronics) |
+| มิติเปรียบเทียบ | AIAG (Automotive) | JEDEC `JESD557C` |
 |---|---|---|
-| **สูตรคำนวณ $C_{pk}, P_{pk}$** | มาตรฐานเดียวกัน ($\bar{\bar{x}}$, $\hat{\sigma}_{\text{within}}$, $s_{\text{overall}}$) | **สูตรเดียวกัน 100%** (แต่เจอบ่อยที่ Non-normal ต้อง Transform ก่อน) |
-| **เกณฑ์มาตรฐานหลัก** | Initial PPAP: **`Ppk ≥ 1.67`** / Ongoing: **`Cpk ≥ 1.33`** | Ongoing: **`Cpk ≥ 1.33`** / Automotive AEC-Q & Critical: **`1.67 – 2.00`** |
-| **ลักษณะ Spec ที่พบบ่อย** | ส่วนใหญ่เป็น **2-Sided** (ขนาดเพลา, รูเจาะ, ระยะตัด) | ส่วนใหญ่เป็น **1-Sided** (`Cpl/Cpu`: Pull, Shear, Leakage, Resistance) |
-| **โครงสร้าง Variation** | Within-subgroup vs Between-hour/Shift (`Ppk`) | Multi-level: **Within-Wafer / Wafer-to-Wafer / Lot-to-Lot** |
-| **มาตรการเมื่อหลุดเกณฑ์** | Containment (100% Sort) + Control Plan + Action Plan | **Automated OCAP + Auto Lot Hold + SYL/SBL/PAT Screening** |
+| **σ ของ $C_p / C_{pk}$** | $\hat{\sigma}_{\text{within}} = \bar{R}/d_2$ | `ST` = SD ของข้อมูลดิบทั้งหมด (p.8) |
+| **เกณฑ์ $C_{pk}$** | ตามข้อกำหนดลูกค้า/PPAP (ยังไม่ได้ยืนยันจากต้นฉบับ) | ผู้ผลิตกำหนด target เองตามความสำคัญ (p.6) |
+| **เส้นควบคุม mean chart** | จาก $\bar{R}$ หรือ $\bar{S}$ ภายในกลุ่ม | SD ของค่าเฉลี่ยกลุ่ม (p.7; p.14 วิธีทางเลือก) |
+| **ข้อมูลไม่ปกติ** | ตรวจ Normality / Transform ก่อนคำนวณ | log-normal และ quantile (p.8) |
+| **เมื่อออกนอกการควบคุม / ไม่ผ่านเกณฑ์** | Containment + Action Plan ตามข้อกำหนดลูกค้า | OCAP + สืบสาเหตุ + แก้ไขตามความเหมาะสม (p.9) |
 
-- **Unified Traffic Light Gate:** **`≥ 1.67` (Release / Green)** | **`1.33 – 1.66` (Conditional: Containment + Action / Amber)** | **`< 1.33` (Hold / Reject & OCAP / Red)**
+- **เกณฑ์อ้างอิง** — ISQC p.354: กระบวนการเดิม `1.33` · กระบวนการใหม่หรือ critical เดิม `1.50` · critical ใหม่ `1.67` · สเปกด้านเดียว `1.25 / 1.45 / 1.60`
+- **Traffic Light (ตามข้อกำหนดลูกค้า/PPAP (ยังไม่ได้ยืนยันจากต้นฉบับ)):** **`≥ 1.67` (Release / Green)** | **`1.33 – 1.66` (Conditional: Containment + Action / Amber)** | **`< 1.33` (Hold / Reject & OCAP / Red)**
 
 ## M4L4-S05 — Interactive Release Gate Decision Simulator
 `<Interactive id="INT-M4-L4-01" />`
-- สวมบทบาท Supplier Quality / Process Release Engineer ตัดสินผล Process Study 5 เคสจริงตามเกณฑ์ AIAG/VDA และ JEDEC
+- สวมบทบาท Supplier Quality / Process Release Engineer ตัดสินผล Process Study 5 เคสจริงตามเกณฑ์ตามข้อกำหนดลูกค้า/PPAP (ยังไม่ได้ยืนยันจากต้นฉบับ)
 
 ## M4L4-S06 — Workshop: คำนวณ $C_p / C_{pk} / P_p / P_{pk}$ จากข้อมูลจริง
 `<Interactive id="INT-M4-L4-02" />`
 - **ไฟล์ข้อมูล:** [data/workshop_m4_capability_subgroups.csv](data/workshop_m4_capability_subgroups.csv) (`100` ชิ้น, `20 Subgroups × 5 ชิ้น`, Spec `10.00 ± 0.15 mm`)
-- **ภารกิจ:** คำนวณ $\bar{\bar{x}}, \bar{R}, \hat{\sigma}_{\text{within}}, s_{\text{overall}}, C_p, C_{pk}, P_p, P_{pk}$ และตัดสินตามเกณฑ์ PPAP/JEDEC (`>= 1.67`) พร้อมเปรียบเทียบช่วง Day/Early (`SG-01..14`) vs ช่วง Night Drift (`SG-15..20`)
+- **ภารกิจ:** คำนวณ $\bar{\bar{x}}, \bar{R}, \hat{\sigma}_{\text{within}}, s_{\text{overall}}, C_p, C_{pk}, P_p, P_{pk}$ และตัดสินตามเกณฑ์ `>= 1.67` ตามข้อกำหนดลูกค้า/PPAP (ยังไม่ได้ยืนยันจากต้นฉบับ) พร้อมเปรียบเทียบช่วง Day/Early (`SG-01..14`) vs ช่วง Night Drift (`SG-15..20`)
 
 ## M4L4-S07 — Workshop Solution & Diagnosis
 `<Asset id="AST-M4-018" />`
-- **รวม 20 Subgroups:** `Cp = 1.87`, `Cpk = 1.64` vs `Pp = 1.31`, **`Ppk = 1.15` (FAIL!)**
+- **รวม 20 Subgroups:** `Cp = 1.87`, `Cpk = 1.64` vs `Pp = 1.31`, **`Ppk = 1.15` (FAIL!)** *(ข้อมูลยังไม่เสถียร — เป็น performance ของข้อมูลชุดนี้ ทำนายอนาคตไม่ได้)*
 - **วินิจฉัย:** เครื่องจักรมีความสามารถภายในกลุ่มดีมาก (`Cp = 1.87`) แต่ช่วง `SG-15..20` ค่าเฉลี่ยไหลขึ้น `+0.060 mm` ทำให้ `s_overall` พุ่งจาก `0.0268` เป็น `0.0383` จน `Ppk` ร่วงลงมาที่ `1.15`!
-- **เมื่อแก้ Drift (ดูเฉพาะช่วงเสถียร `SG-01..14`):** `Cp = 1.83`, `Cpk = 1.83`, `Ppk = 1.93` → **PASS `>= 1.67` อย่างสวยงาม!** ดูเฉลยละเอียดใน [07_workshop_guide.md](07_workshop_guide.md)
+- **เมื่อแก้ Drift (ดูเฉพาะช่วงเสถียร `SG-01..14`):** `Cp = 1.83`, `Cpk = 1.83`, `Ppk = 1.93` → สูงกว่า `1.67` แต่เป็น **ค่าเบื้องต้น** ดูเฉลยละเอียดใน [07_workshop_guide.md](07_workshop_guide.md)
+- **$\bar{X}$ Chart (เส้นจาก 20 กลุ่ม: `LCL 9.9822` – `UCL 10.0542`):** `SG-07` (`9.9696`) หลุด LCL และ `SG-15, 16, 18, 19, 20` หลุด UCL
+- **เส้นจาก 14 กลุ่ม (`SG-01..14`):** `SG-07` อยู่ในเส้น แต่ 14 กลุ่มน้อยกว่า 25 กลุ่ม (AIAG p.57) → `Cpk 1.83` / `Ppk 1.93` เป็น **ค่าเบื้องต้น**
 
 ## M4L4-S08 — Module 4 Final Assessment (`EXAM-M4`)
 - สอบประมวลผลสุ่ม **20 ข้อ** จากคลัง [06_assessment_bank.md](06_assessment_bank.md) (`M4-Q001`–`M4-Q060`) | เกณฑ์ผ่าน **80% (`16/20`)**

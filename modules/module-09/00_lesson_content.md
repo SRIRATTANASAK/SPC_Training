@@ -132,10 +132,10 @@
   - **Precision (ความแม่นยำเชิงเกาะกลุ่ม):** วัดซ้ำหลายครั้งแล้วค่า **เกาะกลุ่มชิดกัน** (ประเมินด้วย **Gage R&R: `EV` & `AV`**)
   - **Accuracy (ความถูกต้องตรงเป้า):** ค่าเฉลี่ยที่วัดได้ **ตรงกับค่าจริงของ Master** (ประเมินด้วย **Bias, Linearity, Stability**)
 - **คำถามสำคัญ: การทำ MSA ควรเริ่มจากส่วนไหนก่อน และระหว่าง Precision กับ Accuracy ควรทำอันไหนก่อน?**
-  1. **Step 1 — เตรียมความพร้อม:** เช็กความละเอียด **`10-to-1` Resolution** และสอบเทียบ (**Calibration**)
-  2. **Step 2 — ตรวจ Accuracy (`Bias & Linearity`) ก่อน:** เพื่อให้มั่นใจว่าเครื่องวัด **"เล็งตรงเป้า"** (ถ้าเกจชี้ผิดที่ การทำ Gage R&R ต่อให้เกาะกลุ่มดีก็ยังอ่านค่าผิด!)
-  3. **Step 3 — ตรวจ Precision (`Gage R&R`):** ทดสอบ `EV` และ `AV` ให้ผ่าน `< 10%` และ `ndc >= 5`
-  4. **Step 4 — คุมระยะยาว (`Stability`):** ใช้ Control Chart เฝ้าระวังเกจต่อเนื่องทุกกะ/ทุกวัน!
+  1. **Step 1 — Discrimination:** เช็กความละเอียด **`10-to-1` Resolution** และสอบเทียบ (**Calibration**)
+  2. **Step 2 — ตรวจ `Stability` ก่อน:** ใช้ Control Chart แสดงว่าระบบวัดเสถียรก่อนประเมิน Bias (MSA pp.92, 102)
+  3. **Step 3 — ตรวจ Accuracy (`Bias & Linearity`):** เพื่อให้มั่นใจว่าเครื่องวัด **"เล็งตรงเป้า"** (ถ้าเกจชี้ผิดที่ การทำ Gage R&R ต่อให้เกาะกลุ่มดีก็ยังอ่านค่าผิด!)
+  4. **Step 4 — ตรวจ Precision (`Gage R&R`):** ทดสอบ `EV` และ `AV` ให้ผ่าน `< 10%` และ `ndc >= 5` แล้ว **เฝ้า Stability ต่อเนื่อง** ทุกกะ/ทุกวัน
 
 ## M9L3-S02 — Bias (`9.3`): Systematic Offset From Master Reference
 `<Asset id="AST-M9-010" />`
@@ -206,7 +206,7 @@
 
 ## M9L4-S06 — Module 9 Summary & Bridge to Module 10 (`Capstone Industrial Cases`)
 `<Asset id="AST-M9-017" />`
-- **สรุป 4 กุญแจสำคัญของ Module 9:** $\sigma^2_{\text{obs}} = \sigma^2_{\text{part}} + \sigma^2_{\text{gage}}$ → `EV` vs `AV` (`%GRR < 10%`, `ndc >= 5`) → `Bias / Linearity / Stability` → Attribute `Kappa`
+- **สรุป 4 กุญแจสำคัญของ Module 9:** $\sigma^2_{\text{obs}} = \sigma^2_{\text{part}} + \sigma^2_{\text{gage}}$ → `Stability` → `Bias / Linearity` → Gage R&R: `EV` vs `AV` (`%GRR < 10%`, `ndc >= 5`) แล้วเฝ้า `Stability` ต่อเนื่อง → Attribute `Kappa`
 - **ก้าวสุดท้ายสู่ Module 10 (`Industrial Case Study`):** เมื่อระบบวัดผ่าน MSA แล้ว เราจะนำความรู้ทั้งหมดตั้งแต่ **Module 1–9** มาลงสนามจริงใน **4 กรณีศึกษาอุตสาหกรรมมาตรฐาน AIAG** (Machining `X̄-R + Cpk`, Assembly `I-MR`, Defect `p/u Chart`, และ PPAP `Ppk` Release Study)!
 
 ## M9L4-S07 — Lesson 4 Knowledge Check (`KC-M9-L4`)

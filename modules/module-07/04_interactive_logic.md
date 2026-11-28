@@ -59,7 +59,7 @@
   1. **Scenario 1 (Single WE1 Spike — Suspected Typo):** Operator pauses → Re-measures same part within 2 min (Verification) → Finds decimal entry typo → Corrects log & resumes (No machine adjustment!).
   2. **Scenario 2 (6-Point Trend on Machining Shaft):** Tier 1 Operator pauses → Quarantines last `60 pcs` back to last good subgroup → Inspects tool insert & detects chipping → Replaces insert + logs `"Tool Change"` (`Resolved inside 15 min` at Tier 1).
   3. **Scenario 3 (Persistent Shift Across 2 Subgroups After Tool Change):** Tier 1 cannot resolve inside 15 min → Escalates to **Tier 2 Process Technician (`15–60 min`)** → Checks hydraulic clamp & fixture alignment.
-  4. **Scenario 4 (Repeated Raw Data > USL After 60 min):** Escalates to **Tier 3 QE/PE** → Triggers **Auto Lot Hold (OCAP)** & MRB containment sort across batch (`Module 8` handoff).
+  4. **Scenario 4 (Repeated Raw Data > USL After 60 min):** Escalates to **Tier 3 QE/PE** → Triggers **Hold Lot (แนวปฏิบัติ) ตาม OCAP** & MRB containment sort across batch (`Module 8` handoff).
 
 ---
 

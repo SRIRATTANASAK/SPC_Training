@@ -11,13 +11,13 @@
 |---|---|---|---|---|---|
 | `SCEN-01` | Chemical Bath Temperature (วัด 1 ค่าทุก 4 ชม.) | Variable | `n = 1` (Batch เป็นเนื้อเดียว) | **`I-MR Chart`** | วัดได้ 1 ค่าต่อเนื่องต่อรอบ ใช้ Moving Range + `E2 = 2.660` |
 | `SCEN-02` | CNC Shaft OD (เก็บ 5 ชิ้นติดกันทุก ชม.) | Variable | `n = 5` (`2 <= n <= 10`) | **$\bar{X}$-$R$ Chart** | กลุ่มขนาด 5 เหมาะสมและแม่นยำตาม AIAG (`A2 = 0.577`) |
-| `SCEN-03` | Wafer Oxide Thickness (วัด 16 จุด/แผ่น) | Variable | `n = 16` (`n > 10`) | **$\bar{X}$-$S$ Chart** | `n > 10` ห้ามใช้ Range (ทิ้งข้อมูลตรงกลาง) ต้องใช้ Sample SD (`S`) |
+| `SCEN-03` | Wafer Oxide Thickness (วัด 16 จุด/แผ่น) | Variable | **16 จุดต่อแผ่น** | **`I-MR Chart`** | I-MR ของค่าเฉลี่ยต่อ wafer + chart ความแปรปรวนภายใน wafer แยกต่างหาก — 16 จุดบนแผ่นเดียวไม่ใช่ subgroup ของ X̄–S |
 | `SCEN-04` | PCB Solder Defects (ตรวจ Lot 8–20 แผงไม่เท่ากัน) | Attribute (Defect) | Varying unit count | **`u Chart`** | นับ **จุดตำหนิ** บนจำนวนแผงที่ **เปลี่ยนตาม Lot** (Staircase limits) |
 | `SCEN-05` | Final Motor Audit (สุ่มคงที่กะละ 100 ตัว Pass/Fail) | Attribute (Defective) | Constant `n = 100` | **`np Chart`** | นับ **ชิ้นเสีย** ที่ขนาดตรวจ **คงที่ 100% เสมอ** อ่านเป็นจำนวนชิ้นตรงๆ |
 | `SCEN-06` | Incoming Brackets (% เสีย Lot ละ 80–250 ชิ้น) | Attribute (Defective) | Varying `n = 80..250` | **`p Chart`** | นับ **ชิ้นเสีย** โดยขนาดตัวอย่าง **ไม่คงที่** ต้องหารเป็นสัดส่วน |
 | `SCEN-07` | Paint Line Scratches (นับรอยขีดข่วนต่อรถ 1 คันรุ่นเดิม) | Attribute (Defect) | Constant (`1 car body`) | **`c Chart`** | นับ **จุดตำหนิ** บนหน่วยตรวจสอบ **ขนาดคงที่เสมอ** |
 | `SCEN-08` | Destructive Weld Pull-Force (ทำลายกะละ 1 ชิ้น) | Variable | `n = 1` (Destructive) | **`I-MR Chart`** | ทดสอบทำลายได้แค่ 1 ค่าต่อเนื่องต่อกะ |
-| `SCEN-09` | 12-Spindle Machining Bore Size (วัดทั้ง 12 หัวทุก 2 ชม.) | Variable | `n = 12` (`n > 10`) | **$\bar{X}$-$S$ Chart** | กลุ่ม `12 > 10` ต้องใช้ $S$ เพื่อคงประสิทธิภาพการวัด Spread |
+| `SCEN-09` | 12-Spindle Machining Bore Size (วัดทั้ง 12 หัวทุก 2 ชม.) | Variable | **12 หัว หัวละ 1 ค่า** | **`I-MR Chart`** | I-MR แยกราย Spindle (หรือ Group Chart) — ห้ามรวม 12 หัวเป็น subgroup เดียว เพราะเป็นคนละ stream |
 | `SCEN-10` | Injection Molding Cover Weight (4 ชิ้น/ชม. กลุ่มเดียว) | Variable | `n = 4` (`2 <= n <= 10`) | **$\bar{X}$-$R$ Chart** | `n = 4` อยู่ในช่วง `2–10` ใช้ `A2 = 0.729, D4 = 2.282` |
 
 ---
@@ -37,6 +37,7 @@
   - `LOT-03` (`n = 100`, เล็กสุด): $\text{UCL}_p = 0.0779$, Raw $\text{LCL}_p = -0.0215 \to \mathbf{0}$ (ไม่ Valid)
   - **`LOT-12`** (`n = 150, d = 14`): $p_{12} = 14/150 = \mathbf{0.0933} > \text{UCL}_{p,12} = \mathbf{0.0688}$ → **OUT OF CONTROL!**
 - **Zero-Bound Check:** ทุก Lot (`20/20`) คำนวณ Raw `LCL_p` ได้ค่าติดลบ (`-0.0215` ถึง `-0.0088`) → **ไม่ Valid ทั้งหมด ปัดเป็น `LCL_p = 0` และไม่ตั้ง Rule เช็ก `< LCL`**
+- **เงื่อนไขก่อนใช้ `p` Chart:** ควรให้ $n\bar{p} \ge 5$ (AIAG pp.89, 93; IGNOU p.85: $nP > 5$ และ $nQ > 5$) — ข้อมูลชุดนี้ $n\bar{p} \approx 2.8$–$5.1$ ผ่านเพียง **1 จาก 20 lot** เส้น `p` Chart จึงเป็น **ค่าประมาณหยาบ**
 - **Revised $\bar{p}$ (หลังตัด `LOT-12` เหลือ 19 Lots เสถียร `66 / 2,685`):** **`0.02458` (`2.46%`)** — ไม่มี Lot ใดหลุด `UCL_p` อีกเลย!
 
 ### เฉลย Step 3: ผลคำนวณจริงบน **`u` Chart** & ข้อค้นพบ **`LOT-17`**!

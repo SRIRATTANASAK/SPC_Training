@@ -48,11 +48,11 @@
 ## Screen M5L1-S04 — AIAG SPC Framework & JEDEC `JESD557`
 - **Learning Objective:** เห็นภาพการใช้งานจริงของระบบ SPC ในกรอบ AIAG/IATF 16949 และ JEDEC `JESD557`
 - **Duration:** 40s
-- **Layout:** Dual Standard Pillar Visual (`AST-M5-004`: AIAG 3-Step Cycle | JEDEC Automated FDC/OCAP)
+- **Layout:** Dual Standard Pillar Visual (`AST-M5-004`: AIAG 3-Step Cycle | JEDEC Online / Real-time SPC + OCAP)
 - **Asset ID:** `AST-M5-004`
-- **On Screen Text:** `AIAG SPC & JEDEC JESD557` — "Data → Control Stability → Capability + Automated OCAP"
+- **On Screen Text:** `AIAG SPC & JEDEC JESD557` — "Data → Control Stability → Capability + OCAP"
 - **Voice Over Script Ref:** `AUD-M5L1-S04`
-- **Motion Specification:** Three-step AIAG cycle loops smoothly alongside JEDEC automated OCAP hold trigger.
+- **Motion Specification:** Three-step AIAG cycle loops smoothly alongside JEDEC OCAP trigger.
 - **Trigger Logic:** Narration complete unlocks Next.
 - **Accessibility Notes:** Descriptive diagram labels.
 - **Developer Notes:** Ties back to Module 4 standards.
@@ -242,9 +242,9 @@
 - **Duration:** 35s
 - **Layout:** Bell Curve Probability vs Run Probability Visual (`AST-M5-014`)
 - **Asset ID:** `AST-M5-014`
-- **On Screen Text:** "ทำไม 8 จุดติดกันด้านเดียวถึงเป็น Special Cause? เพราะโอกาสเกิดโดยบังเอิญมีไม่ถึง 0.8%!"
+- **On Screen Text:** "ทำไม 7 จุดติดกันด้านเดียว (AIAG; ISQC ใช้ 8 จุด) ถึงเป็น Special Cause? โอกาสเกิดโดยบังเอิญประมาณ 1.6% (8 จุด ≈ 0.8%)!"
 - **Voice Over Script Ref:** `AUD-M5L4-S01`
-- **Motion Specification:** Coin-flip / zone probabilities multiply sequentially (`0.5⁸`) showing vanishing random chance.
+- **Motion Specification:** Coin-flip / zone probabilities multiply sequentially (`0.5⁷` ตาม AIAG; `0.5⁸` ตาม ISQC) showing vanishing random chance.
 - **Trigger Logic:** Narration complete unlocks Next.
 - **Accessibility Notes:** Probability annotations accessible.
 - **Developer Notes:** Builds statistical conviction behind WECO rules.
@@ -254,7 +254,7 @@
 - **Duration:** 50s
 - **Layout:** 4-Panel Zone Diagram Grid (`AST-M5-015`)
 - **Asset ID:** `AST-M5-015`
-- **On Screen Text:** `WE Rule 1: 1 > 3σ` | `Rule 2: 2/3 > 2σ` | `Rule 3: 4/5 > 1σ` | `Rule 4: 8 on same side of CL`
+- **On Screen Text:** `WE Rule 1: 1 > 3σ` | `Rule 2: 2/3 > 2σ` | `Rule 3: 4/5 > 1σ` | `Rule 4: 7 on same side of CL (AIAG; ISQC 8)`
 - **Voice Over Script Ref:** `AUD-M5L4-S02`
 - **Motion Specification:** Red violation rings illuminate triggered points in each of the 4 mini-charts.
 - **Trigger Logic:** Narration complete unlocks Next.
@@ -262,13 +262,13 @@
 - **Developer Notes:** Core canonical WECO 1–4 rules.
 
 ## Screen M5L4-S03 — Nelson Rules (Rules 5–8) & Avoiding False Alarm Fatigue
-- **Learning Objective:** รู้จัก Nelson Rules เพิ่มเติม (`6 Trend`, `14 Alternating`, `15 in Zone C`, `8 outside Zone C`) และ Trade-off ของ `ARL` (`370` vs `91`)
+- **Learning Objective:** รู้จัก Nelson Rules เพิ่มเติม (`6 Trend`, `14 Alternating`, `15 in Zone C`, `8 outside Zone C`) และ Trade-off ของ `ARL` (`370` vs `91` ของชุด Western Electric 4 กฎ)
 - **Duration:** 50s
 - **Layout:** Left 4 Nelson Pattern Cards (`AST-M5-016`) | Right `ARL False Alarm` Gauge
 - **Asset ID:** `AST-M5-016`
-- **On Screen Text:** "เปิดทุกกฎพร้อมกัน False Alarm พุ่ง 4 เท่า (ARL ลดจาก 370 เหลือ ~91 จุด!) — เลือกเปิดกฎให้เหมาะกับอาการ"
+- **On Screen Text:** "ชุด Western Electric 4 กฎ: ARL ลดจาก 370 เหลือ ~91 จุด (ค่าของชุดที่ใช้ 8 จุด) เปิดกฎมากกว่านี้ False Alarm ยิ่งถี่ — เลือกเปิดกฎให้เหมาะกับอาการ"
 - **Voice Over Script Ref:** `AUD-M5L4-S03`
-- **Motion Specification:** ARL counter drops from `370` to `91` as extra rules toggle ON.
+- **Motion Specification:** ARL counter drops from `370` to `91` for the Western Electric 4-rule set; extra rules make false alarms more frequent.
 - **Trigger Logic:** Narration complete unlocks Next.
 - **Accessibility Notes:** Clear ARL comparison bar.
 - **Developer Notes:** Prevents blind "enable all 8 rules" mistake in Minitab.
@@ -322,11 +322,11 @@
 - **Developer Notes:** Exact numbers verified in `07_workshop_guide.md`.
 
 ## Screen M5L4-S08 — Workshop Solution: Phase I vs Revised Limits & Diagnosis
-- **Learning Objective:** สรุปการตรวจจับ `SG-11` (Rule 1) และ `SG-18..25` (Rule 4 + Rule 2) ทั้งที่ไม่มีชิ้นงานหลุด Spec เลย
+- **Learning Objective:** สรุปการตรวจจับ `SG-11` (Rule 1) และ `SG-18..25` (Rule 4 7 จุด + Rule 2 + Rule 3) ทั้งที่ไม่มีชิ้นงานหลุด Spec เลย
 - **Duration:** 45s
 - **Layout:** Annotated Dual X̄-R Solution Dashboard (`AST-M5-018`)
 - **Asset ID:** `AST-M5-018`
-- **On Screen Text:** "เฉลย: จับ SG-11 (Rule 1 X̄&R) + SG-18..25 (Rule 4 & Rule 2) ทั้งที่ทุกชิ้นยังอยู่ใน Spec (24.960–25.068 mm)!"
+- **On Screen Text:** "เฉลย: จับ SG-11 (Rule 1 X̄&R) + SG-18..25 (Rule 4 7 จุด, Rule 2 & Rule 3) ทั้งที่ทุกชิ้นยังอยู่ใน Spec (24.960–25.068 mm)!"
 - **Voice Over Script Ref:** `AUD-M5L4-S08`
 - **Motion Specification:** Trial limits tighten to Revised Limits after flagging `SG-11` and `SG-18..25`.
 - **Trigger Logic:** Review solution to continue.

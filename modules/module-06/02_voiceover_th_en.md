@@ -42,9 +42,9 @@
 
 ### AUD-M6L1-S05 (45 sec) — $\bar{X}$-$S$ Chart (`n > 10`)
 - **Display Script (TH):**  
-  แต่ถ้ากลุ่มตัวอย่างใหญ่กว่า 10 ชิ้น เช่น วัด **16 จุดบนแผ่น Wafer** หรือ **12 Spindles** ห้ามใช้ Range แล้ว! [PAUSE-1] [ANIM: xbar_s_efficiency] เพราะ Range ใช้แค่ค่าสูงสุดกับต่ำสุดแล้ว **โยนข้อมูลตรงกลางทิ้งทั้งหมด** ทำให้เสียประสิทธิภาพมาก เราจึงต้องใช้ **$\bar{X}$-$S$ Chart** ที่นำทุกจุดมาคำนวณ Standard Deviation ด้วยค่าคงที่ **`A3`, `B3`, `B4`, `c4`**
+  แต่ถ้ากลุ่มตัวอย่างใหญ่กว่า 10 ชิ้น ห้ามใช้ Range แล้ว! [PAUSE-1] [ANIM: xbar_s_efficiency] เพราะ Range ใช้แค่ค่าสูงสุดกับต่ำสุดแล้ว **โยนข้อมูลตรงกลางทิ้งทั้งหมด** ทำให้เสียประสิทธิภาพมาก เราจึงต้องใช้ **$\bar{X}$-$S$ Chart** ที่นำทุกจุดมาคำนวณ Standard Deviation ด้วยค่าคงที่ **`A3`, `B3`, `B4`, `c4`**
 - **TTS Clean Script (TH):**  
-  แต่ถ้ากลุ่มตัวอย่างใหญ่กว่า 10 ชิ้น เช่น วัด 16 จุดบนแผ่น เวเฟอร์ หรือ 12 สปินเดิลส์ ห้ามใช้ เรนจ์ แล้ว, เพราะ เรนจ์ ใช้แค่ค่าสูงสุดกับต่ำสุดแล้ว โยนข้อมูลตรงกลางทิ้งทั้งหมด ทำให้เสียประสิทธิภาพมาก เราจึงต้องใช้ เอ็กซ์บาร์ เอส ชาร์ท ที่นำทุกจุดมาคำนวณ สแตนดาร์ด ดีวิเอชั่น ด้วยค่าคงที่ เอทรี บีทรี บีโฟร์ ซีโฟร์
+  แต่ถ้ากลุ่มตัวอย่างใหญ่กว่า 10 ชิ้น ห้ามใช้ เรนจ์ แล้ว, เพราะ เรนจ์ ใช้แค่ค่าสูงสุดกับต่ำสุดแล้ว โยนข้อมูลตรงกลางทิ้งทั้งหมด ทำให้เสียประสิทธิภาพมาก เราจึงต้องใช้ เอ็กซ์บาร์ เอส ชาร์ท ที่นำทุกจุดมาคำนวณ สแตนดาร์ด ดีวิเอชั่น ด้วยค่าคงที่ เอทรี บีทรี บีโฟร์ ซีโฟร์
 - **EN Reference:**  
   Once subgroup size exceeds 10, range discards all middle data points and loses efficiency. Switch to the X-bar and S chart using standard deviation and constants A3, B3, B4, and c4.
 
@@ -190,19 +190,19 @@
 
 ### AUD-M6L4-S02 (45 sec) — Workshop Part A Solution (Cases 1–5)
 - **Display Script (TH):**  
-  มาดูเฉลย **Case 1 ถึง 5** [ANIM: cases_1_to_5] อุณหภูมิอ่างเคมีราย Batch ใช้ **`I-MR`**, เพลากลึง CNC ชั่วโมงละ 5 ชิ้นใช้ **$\bar{X}$-$R$**, วัด Wafer `16` จุด ใช้ **$\bar{X}$-$S$**, ตำหนิบัดกรี PCB ที่จำนวนแผงไม่เท่ากันใช้ **`u` Chart**, และตรวจมอเตอร์คงที่กะละ `100` ตัว Pass/Fail ใช้ **`np` Chart**
+  มาดูเฉลย **Case 1 ถึง 5** [ANIM: cases_1_to_5] อุณหภูมิอ่างเคมีราย Batch ใช้ **`I-MR`**, เพลากลึง CNC ชั่วโมงละ 5 ชิ้นใช้ **$\bar{X}$-$R$**, วัด Wafer `16` จุดต่อแผ่น ใช้ **`I-MR` ของค่าเฉลี่ยต่อแผ่น พร้อม chart ความแปรปรวนภายในแผ่น**, ตำหนิบัดกรี PCB ที่จำนวนแผงไม่เท่ากันใช้ **`u` Chart**, และตรวจมอเตอร์คงที่กะละ `100` ตัว Pass/Fail ใช้ **`np` Chart**
 - **TTS Clean Script (TH):**  
-  มาดูเฉลย เคส 1 ถึง 5 อุณหภูมิอ่างเคมีราย แบตช์ ใช้ ไอ เอ็มอาร์, เพลากลึง ซีเอ็นซี ชั่วโมงละ 5 ชิ้นใช้ เอ็กซ์บาร์ อาร์, วัด เวเฟอร์ 16 จุด ใช้ เอ็กซ์บาร์ เอส, ตำหนิบัดกรี พีซีบี ที่จำนวนแผงไม่เท่ากันใช้ ยู ชาร์ท, และตรวจมอเตอร์คงที่กะละ 100 ตัว พาส เฟล ใช้ เอ็นพี ชาร์ท
+  มาดูเฉลย เคส 1 ถึง 5 อุณหภูมิอ่างเคมีราย แบตช์ ใช้ ไอ เอ็มอาร์, เพลากลึง ซีเอ็นซี ชั่วโมงละ 5 ชิ้นใช้ เอ็กซ์บาร์ อาร์, วัด เวเฟอร์ 16 จุดต่อแผ่น ใช้ ไอ เอ็มอาร์ ของค่าเฉลี่ยต่อแผ่น พร้อม ชาร์ท ความแปรปรวนภายในแผ่น, ตำหนิบัดกรี พีซีบี ที่จำนวนแผงไม่เท่ากันใช้ ยู ชาร์ท, และตรวจมอเตอร์คงที่กะละ 100 ตัว พาส เฟล ใช้ เอ็นพี ชาร์ท
 - **EN Reference:**  
-  Cases 1 to 5 match bath temperature to I-MR, CNC five-part samples to X-bar R, 16-site wafers to X-bar S, variable PCB defect counts to u chart, and constant 100-motor audits to np chart.
+  Cases 1 to 5 match bath temperature to I-MR, CNC five-part samples to X-bar R, 16-site wafers to I-MR of wafer means plus a within-wafer variation chart, variable PCB defect counts to u chart, and constant 100-motor audits to np chart.
 
 ### AUD-M6L4-S03 (45 sec) — Workshop Part A Solution (Cases 6–10)
 - **Display Script (TH):**  
-  ต่อที่ **Case 6 ถึง 10** [ANIM: cases_6_to_10] ตรวจรับ Lot ที่ยอดไม่เท่ากันดูชิ้นเสียใช้ **`p` Chart**, นับรอยขีดข่วนรถ `1` คันรุ่นเดิมใช้ **`c` Chart**, ทดสอบดึงทำลาย 1 ชิ้นต่อกะใช้ **`I-MR`**, วัด `12` Spindles ใช้ **$\bar{X}$-$S$**, และชั่งน้ำหนักพลาสติกกลุ่ม `4` ชิ้นใช้ **$\bar{X}$-$R$** !
+  ต่อที่ **Case 6 ถึง 10** [ANIM: cases_6_to_10] ตรวจรับ Lot ที่ยอดไม่เท่ากันดูชิ้นเสียใช้ **`p` Chart**, นับรอยขีดข่วนรถ `1` คันรุ่นเดิมใช้ **`c` Chart**, ทดสอบดึงทำลาย 1 ชิ้นต่อกะใช้ **`I-MR`**, วัด `12` Spindles หัวละ 1 ค่า ใช้ **`I-MR` แยกราย Spindle หรือ Group Chart**, และชั่งน้ำหนักพลาสติกกลุ่ม `4` ชิ้นใช้ **$\bar{X}$-$R$** !
 - **TTS Clean Script (TH):**  
-  ต่อที่ เคส 6 ถึง 10 ตรวจรับ ล็อต ที่ยอดไม่เท่ากันดูชิ้นเสียใช้ พี ชาร์ท, นับรอยขีดข่วนรถ 1 คันรุ่นเดิมใช้ ซี ชาร์ท, ทดสอบดึงทำลาย 1 ชิ้นต่อกะใช้ ไอ เอ็มอาร์, วัด 12 สปินเดิลส์ ใช้ เอ็กซ์บาร์ เอส, และชั่งน้ำหนักพลาสติกกลุ่ม 4 ชิ้นใช้ เอ็กซ์บาร์ อาร์
+  ต่อที่ เคส 6 ถึง 10 ตรวจรับ ล็อต ที่ยอดไม่เท่ากันดูชิ้นเสียใช้ พี ชาร์ท, นับรอยขีดข่วนรถ 1 คันรุ่นเดิมใช้ ซี ชาร์ท, ทดสอบดึงทำลาย 1 ชิ้นต่อกะใช้ ไอ เอ็มอาร์, วัด 12 สปินเดิลส์ หัวละ 1 ค่า ใช้ ไอ เอ็มอาร์ แยกรายสปินเดิล หรือ กรุ๊ป ชาร์ท, และชั่งน้ำหนักพลาสติกกลุ่ม 4 ชิ้นใช้ เอ็กซ์บาร์ อาร์
 - **EN Reference:**  
-  Cases 6 to 10 assign varying incoming defective lots to p chart, single car body defects to c chart, destructive pull tests to I-MR, 12-spindle bores to X-bar S, and four-part mold weights to X-bar R.
+  Cases 6 to 10 assign varying incoming defective lots to p chart, single car body defects to c chart, destructive pull tests to I-MR, 12-spindle bores to I-MR per spindle or a group chart, and four-part mold weights to X-bar R.
 
 ### AUD-M6L4-S04 (40 sec) — Workshop Part B: `p` vs `u` Chart Lab
 - **Display Script (TH):**  

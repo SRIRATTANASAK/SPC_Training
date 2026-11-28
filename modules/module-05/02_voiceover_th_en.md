@@ -34,11 +34,11 @@
 
 ### AUD-M5L1-S04 (40 sec) — AIAG SPC & JEDEC `JESD557`
 - **Display Script (TH):**  
-  ในโรงงานจริง ปัจจุบันเราใช้กรอบมาตรฐานคู่กัน 2 ค่ายหลัก [ANIM: aiag_jedec_spc] ฝั่งยานยนต์ใช้ **AIAG SPC** เชื่อม Control Chart เข้ากับ Control Plan เพื่อควบคุมความเสถียรและต่อยอด $C_{pk}$ [PAUSE-1] ส่วนฝั่งเซมิคอนดักเตอร์และอิเล็กทรอนิกส์ใช้ **JEDEC `JESD557`** ซึ่งผูกการตรวจจับ Run Rules เข้ากับระบบ Auto Lot Hold และ OCAP อัตโนมัติ
+  ในโรงงานจริง ปัจจุบันเราใช้กรอบมาตรฐานคู่กัน 2 ค่ายหลัก [ANIM: aiag_jedec_spc] ฝั่งยานยนต์ใช้ **AIAG SPC** เชื่อม Control Chart เข้ากับ Control Plan เพื่อควบคุมความเสถียรและต่อยอด $C_{pk}$ [PAUSE-1] ส่วนฝั่งเซมิคอนดักเตอร์และอิเล็กทรอนิกส์มี **JEDEC `JESD557C`** ซึ่งระบุระบบ SPC แบบ online หรือ real-time ตัวอย่างกฎ Western Electric และการมี OCAP
 - **TTS Clean Script (TH):**  
-  ในโรงงานจริง ปัจจุบันเราใช้กรอบมาตรฐานคู่กัน 2 ค่ายหลัก ฝั่งยานยนต์ใช้ เอไอเอจี เอสพีซี เชื่อม คอนโทรล ชาร์ท เข้ากับ คอนโทรล แพลน เพื่อควบคุมความเสถียรและต่อยอด ซีพีเค, ส่วนฝั่งเซมิคอนดักเตอร์และอิเล็กทรอนิกส์ใช้ เจเด็ค เจอีเอสดี 557 ซึ่งผูกการตรวจจับ รัน รูลส์ เข้ากับระบบ ออโต้ ล็อต โฮลด์ และ โอแค็ป อัตโนมัติ
+  ในโรงงานจริง ปัจจุบันเราใช้กรอบมาตรฐานคู่กัน 2 ค่ายหลัก ฝั่งยานยนต์ใช้ เอไอเอจี เอสพีซี เชื่อม คอนโทรล ชาร์ท เข้ากับ คอนโทรล แพลน เพื่อควบคุมความเสถียรและต่อยอด ซีพีเค, ส่วนฝั่งเซมิคอนดักเตอร์และอิเล็กทรอนิกส์มี เจเด็ค เจอีเอสดี 557 ซี ซึ่งระบุระบบ เอสพีซี แบบออนไลน์หรือเรียลไทม์ ตัวอย่างกฎ เวสเทิร์น อิเล็กทริก และการมี โอแค็ป
 - **EN Reference:**  
-  Automotive factories rely on AIAG SPC linked to Control Plans, while semiconductor and electronics lines implement JEDEC JESD557 with automated OCAP lot holds.
+  Automotive factories rely on AIAG SPC linked to Control Plans, while JEDEC JESD557C covers online or real-time SPC for electronics, with Western Electric rules as an example and an OCAP.
 
 ### AUD-M5L1-S05 (20 sec) — Lesson 1 Knowledge Check
 - **Display Script (TH):**  
@@ -166,27 +166,27 @@
 
 ### AUD-M5L4-S01 (35 sec) — Zone Logic Behind Run Rules
 - **Display Script (TH):**  
-  ทำไมเราไม่ดูแค่จุดที่หลุด `3 ซิกม่า` อย่างเดียว? [PAUSE-1] [ANIM: zone_probability] เพราะหากกระบวนการนิ่งจริง โอกาสที่จุดจะตกลงด้านเดียวกับเส้นกลางติดต่อกันถึง 8 จุด มีไม่ถึง **1 เปอร์เซ็นต์** กฎ Run Rules จึงใช้ความน่าจะเป็นใน Zone A, B, C ช่วยจับการไหลเล็กๆ ได้ไวขึ้นมาก
+  ทำไมเราไม่ดูแค่จุดที่หลุด `3 ซิกม่า` อย่างเดียว? [PAUSE-1] [ANIM: zone_probability] เพราะหากกระบวนการนิ่งจริง โอกาสที่จุดจะตกลงด้านเดียวกับเส้นกลางติดต่อกันถึง 7 จุดตาม AIAG มีประมาณ **1.6 เปอร์เซ็นต์** (ตำรา ISQC ใช้ 8 จุด ซึ่งไม่ถึง 1 เปอร์เซ็นต์) กฎ Run Rules จึงใช้ความน่าจะเป็นใน Zone A, B, C ช่วยจับการไหลเล็กๆ ได้ไวขึ้นมาก
 - **TTS Clean Script (TH):**  
-  ทำไมเราไม่ดูแค่จุดที่หลุด 3 ซิกม่า อย่างเดียว, เพราะหากกระบวนการนิ่งจริง โอกาสที่จุดจะตกลงด้านเดียวกับเส้นกลางติดต่อกันถึง 8 จุด มีไม่ถึง 1 เปอร์เซ็นต์ กฎ รัน รูลส์ จึงใช้ความน่าจะเป็นใน โซน เอ บี ซี ช่วยจับการไหลเล็กๆ ได้ไวขึ้นมาก
+  ทำไมเราไม่ดูแค่จุดที่หลุด 3 ซิกม่า อย่างเดียว, เพราะหากกระบวนการนิ่งจริง โอกาสที่จุดจะตกลงด้านเดียวกับเส้นกลางติดต่อกันถึง 7 จุดตาม เอไอเอจี มีประมาณ 1.6 เปอร์เซ็นต์ ส่วนตำรา ไอเอสคิวซี ใช้ 8 จุด ซึ่งไม่ถึง 1 เปอร์เซ็นต์ กฎ รัน รูลส์ จึงใช้ความน่าจะเป็นใน โซน เอ บี ซี ช่วยจับการไหลเล็กๆ ได้ไวขึ้นมาก
 - **EN Reference:**  
-  Because eight consecutive points on one side of the center line have less than a one-percent chance of happening randomly, zone run rules detect subtle shifts much faster.
+  Seven consecutive points on one side of the center line (AIAG) happen by chance only about 1.6% of the time (ISQC uses eight, under 1%), so run rules detect subtle shifts much faster.
 
 ### AUD-M5L4-S02 (50 sec) — Western Electric Rules 1–4
 - **Display Script (TH):**  
-  จำ **Western Electric Rules 4 ข้อหลัก** ให้แม่น [PAUSE-1] [ANIM: weco_4] **ข้อ 1:** 1 จุดหลุด `3 ซิกม่า` — จับ Shift ใหญ่ทันที [PAUSE-1] **ข้อ 2:** 2 ใน 3 จุดอยู่ใน Zone A เกิน `2 ซิกม่า` ฝั่งเดียวกัน [PAUSE-1] **ข้อ 3:** 4 ใน 5 จุดเกิน `1 ซิกม่า` ฝั่งเดียวกัน และ **ข้อ 4:** 8 จุดติดกันอยู่ข้างเดียวกันของ Center Line
+  จำ **Western Electric Rules 4 ข้อหลัก** ให้แม่น [PAUSE-1] [ANIM: weco_4] **ข้อ 1:** 1 จุดหลุด `3 ซิกม่า` — จับ Shift ใหญ่ทันที [PAUSE-1] **ข้อ 2:** 2 ใน 3 จุดอยู่ใน Zone A เกิน `2 ซิกม่า` ฝั่งเดียวกัน [PAUSE-1] **ข้อ 3:** 4 ใน 5 จุดเกิน `1 ซิกม่า` ฝั่งเดียวกัน และ **ข้อ 4:** 7 จุดติดกันอยู่ข้างเดียวกันของ Center Line ตาม AIAG (ตำรา ISQC ใช้ 8 จุด)
 - **TTS Clean Script (TH):**  
-  จำ เวสเทิร์น อิเล็กทริก รูลส์ 4 ข้อหลัก ให้แม่น, ข้อ 1 คือ 1 จุดหลุด 3 ซิกม่า จับ ซิฟต์ ใหญ่ทันที, ข้อ 2 คือ 2 ใน 3 จุดอยู่ใน โซน เอ เกิน 2 ซิกม่า ฝั่งเดียวกัน, ข้อ 3 คือ 4 ใน 5 จุดเกิน 1 ซิกม่า ฝั่งเดียวกัน และ ข้อ 4 คือ 8 จุดติดกันอยู่ข้างเดียวกันของ เซ็นเตอร์ ไลน์
+  จำ เวสเทิร์น อิเล็กทริก รูลส์ 4 ข้อหลัก ให้แม่น, ข้อ 1 คือ 1 จุดหลุด 3 ซิกม่า จับ ซิฟต์ ใหญ่ทันที, ข้อ 2 คือ 2 ใน 3 จุดอยู่ใน โซน เอ เกิน 2 ซิกม่า ฝั่งเดียวกัน, ข้อ 3 คือ 4 ใน 5 จุดเกิน 1 ซิกม่า ฝั่งเดียวกัน และ ข้อ 4 คือ 7 จุดติดกันอยู่ข้างเดียวกันของ เซ็นเตอร์ ไลน์ ตาม เอไอเอจี ส่วนตำรา ไอเอสคิวซี ใช้ 8 จุด
 - **EN Reference:**  
-  Master the four core Western Electric rules: one point beyond 3 sigma, two of three beyond 2 sigma, four of five beyond 1 sigma, and eight consecutive points on one side.
+  Master the four core run rules: one point beyond 3 sigma, two of three beyond 2 sigma, four of five beyond 1 sigma, and seven consecutive points on one side (AIAG; ISQC uses eight).
 
 ### AUD-M5L4-S03 (50 sec) — Nelson Rules & Avoiding False Alarm Fatigue
 - **Display Script (TH):**  
-  นอกจากนี้ยังมี **Nelson Rules** ที่จับ **Trend 6 จุดเรียง**, **ฟันปลา 14 จุดสลับขึ้นลง**, **เกาะกลาง 15 จุด**, และ **หนีตรงกลาง 8 จุด** [PAUSE-1] [ANIM: arl_fatigue] แต่ระวัง! ถ้าใช้ Rule 1 อย่างเดียวจะเกิด False Alarm แค่ทุก **370 จุด** แต่ถ้าเปิดทุกกฎพร้อมกัน False Alarm จะถี่ขึ้นเป็นทุก **91 จุด** จนช่างหน้างานชินชาต่อสัญญาณเตือน!
+  นอกจากนี้ยังมี **Nelson Rules** ที่จับ **Trend 6 จุดเรียง**, **ฟันปลา 14 จุดสลับขึ้นลง**, **เกาะกลาง 15 จุด**, และ **หนีตรงกลาง 8 จุด** [PAUSE-1] [ANIM: arl_fatigue] แต่ระวัง! ถ้าใช้ Rule 1 อย่างเดียวจะเกิด False Alarm แค่ทุก **370 จุด** ถ้าเปิดชุด Western Electric 4 กฎ (ชุดที่ใช้ 8 จุด) False Alarm จะถี่ขึ้นเป็นประมาณทุก **91 จุด** และยิ่งเปิดกฎมากกว่านี้ยิ่งถี่ จนช่างหน้างานชินชาต่อสัญญาณเตือน!
 - **TTS Clean Script (TH):**  
-  นอกจากนี้ยังมี เนลสัน รูลส์ ที่จับ เทรนด์ 6 จุดเรียง ฟันปลา 14 จุดสลับขึ้นลง เกาะกลาง 15 จุด และ หนีตรงกลาง 8 จุด, แต่ระวัง ถ้าใช้ รูล 1 อย่างเดียวจะเกิด ฟอลส์ อะลาร์ม แค่ทุก 370 จุด แต่ถ้าเปิดทุกกฎพร้อมกัน ฟอลส์ อะลาร์ม จะถี่ขึ้นเป็นทุก 91 จุด จนช่างหน้างานชินชาต่อสัญญาณเตือน
+  นอกจากนี้ยังมี เนลสัน รูลส์ ที่จับ เทรนด์ 6 จุดเรียง ฟันปลา 14 จุดสลับขึ้นลง เกาะกลาง 15 จุด และ หนีตรงกลาง 8 จุด, แต่ระวัง ถ้าใช้ รูล 1 อย่างเดียวจะเกิด ฟอลส์ อะลาร์ม แค่ทุก 370 จุด ถ้าเปิดชุด เวสเทิร์น อิเล็กทริก 4 กฎ ซึ่งใช้ 8 จุด ฟอลส์ อะลาร์ม จะถี่ขึ้นเป็นประมาณทุก 91 จุด และยิ่งเปิดกฎมากกว่านี้ยิ่งถี่ จนช่างหน้างานชินชาต่อสัญญาณเตือน
 - **EN Reference:**  
-  Nelson rules add trends, alternating waves, and hugging patterns—but enabling all rules at once drops the average run length to false alarm from 370 down to about 91 points, risking alarm fatigue.
+  Nelson rules add trends, alternating waves, and hugging patterns. The four Western Electric rules (with the eight-point rule) already cut the average run length to false alarm from 370 to about 91 points; enabling more rules makes false alarms even more frequent.
 
 ### AUD-M5L4-S04 (55 sec) — Smart SPC Rule Selection: Mandatory Rules, Zero-Bounds & Engineering Judgement
 - **Display Script (TH):**  
@@ -222,11 +222,11 @@
 
 ### AUD-M5L4-S08 (45 sec) — Workshop Solution
 - **Display Script (TH):**  
-  มาดูเฉลยกัน [ANIM: workshop5_solution] จุด `SG-11` พุ่งหลุด **Rule 1 ทั้งกราฟ $\bar{X}$ และ $R$ Chart** [PAUSE-1] ส่วนช่วง `SG-18` ถึง `25` ไม่มีจุดไหนหลุด `UCL` เลย แต่ **Rule 4 (8 จุดเหนือเส้นกลาง)** กับ **Rule 2 (Zone A)** จับ Shift เจอทันที! ที่น่าทึ่งคือทุกชิ้นยังอยู่ในสเปก `24.92–25.08 mm` นี่แหละพลังของ SPC!
+  มาดูเฉลยกัน [ANIM: workshop5_solution] จุด `SG-11` พุ่งหลุด **Rule 1 ทั้งกราฟ $\bar{X}$ และ $R$ Chart** [PAUSE-1] ส่วนช่วง `SG-18` ถึง `25` ไม่มีจุดไหนหลุด `UCL` เลย แต่ **Rule 4 (7 จุดเหนือเส้นกลาง)** กับ **Rule 2 (Zone A)** และ **Rule 3 (Zone B)** จับ Shift ได้ที่ `SG-24`! ที่น่าทึ่งคือทุกชิ้นยังอยู่ในสเปก `24.92–25.08 mm` นี่แหละพลังของ SPC!
 - **TTS Clean Script (TH):**  
-  มาดูเฉลยกัน, จุด เอสจี 11 พุ่งหลุด รูล 1 ทั้งกราฟ เอ็กซ์บาร์ และ อาร์ ชาร์ท, ส่วนช่วง เอสจี 18 ถึง 25 ไม่มีจุดไหนหลุด ยูซีแอล เลย แต่ รูล 4 ที่มี 8 จุดเหนือเส้นกลาง กับ รูล 2 ใน โซน เอ จับ ซิฟต์ เจอทันที, ที่น่าทึ่งคือทุกชิ้นยังอยู่ในสเปก 24.92 ถึง 25.08 มิลลิเมตร นี่แหละพลังของ เอสพีซี
+  มาดูเฉลยกัน, จุด เอสจี 11 พุ่งหลุด รูล 1 ทั้งกราฟ เอ็กซ์บาร์ และ อาร์ ชาร์ท, ส่วนช่วง เอสจี 18 ถึง 25 ไม่มีจุดไหนหลุด ยูซีแอล เลย แต่ รูล 4 ที่มี 7 จุดเหนือเส้นกลาง กับ รูล 2 ใน โซน เอ และ รูล 3 ใน โซน บี จับ ซิฟต์ ได้ที่ เอสจี 24, ที่น่าทึ่งคือทุกชิ้นยังอยู่ในสเปก 24.92 ถึง 25.08 มิลลิเมตร นี่แหละพลังของ เอสพีซี
 - **EN Reference:**  
-  SG-11 breaches Rule 1 on both charts, while SG-18 to SG-25 stay inside UCL yet trigger Rule 4 and Rule 2—catching the shift before any defective part is produced.
+  SG-11 breaches Rule 1 on both charts, while SG-18 to SG-25 stay inside UCL yet trigger Rule 4 (seven points), Rule 2 and Rule 3 from SG-24—catching the shift before any defective part is produced.
 
 ### AUD-M5L4-S09 (25 sec) — Bridge to Module 6
 - **Display Script (TH):**  

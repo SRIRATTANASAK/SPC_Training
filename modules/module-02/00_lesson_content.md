@@ -65,7 +65,7 @@ $$P(A) = \frac{\text{จำนวนเหตุการณ์ที่สน�
 `<Asset id="AST-M2-007" />`
 1. **Destructive Testing:** ทดสอบดึงขาด (Pull Test), ตัดผ่าเช็ครอยเชื่อม — ตรวจหมด 100% ก็ไม่มีของขาย!
 2. **Speed & Cost:** ผลิต 10,000 ชิ้น/ชั่วโมง ไม่สามารถวัด Micrometer ทุกชิ้นทัน
-3. **Inspection Fatigue:** งานวิจัยพบว่าคนตรวจ 100% ด้วยสายตา มักตรวจจับของเสียได้เพียง **~80–85%** เพราะความล้า
+3. **Inspection Fatigue:** งานวิจัยพบว่าคนตรวจ 100% ด้วยสายตา มักตรวจจับของเสียได้เพียง **~80–85%** (ค่าประมาณเพื่อการสอน) เพราะความล้า
 
 ## M2L2-S04 — Population vs Sample (ประชากร vs ตัวอย่าง)
 `<Asset id="AST-M2-008" />`
@@ -198,9 +198,9 @@ $$\mu_{\bar{x}} = \mu, \qquad \sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}$$
 
 ## M2L4-S07 — Workshop Solution & Engineering Interpretation
 `<Asset id="AST-M2-019" />`
-- **ภาพรวม (`n=50`):** $\bar{x} = 20.0102$, $s = 0.0356\text{ mm}$, $Z_{\text{USL}} = +2.52$, คาดการณ์ OOS = `0.68%`
+- **ภาพรวม (`n=50`):** $\bar{x} = 20.0102$, $s = 0.0356\text{ mm}$, $Z_{\text{USL}} = +2.52$, คาดการณ์ OOS = `0.68%` ❌ **ตัวอย่างว่าใช้ไม่ได้** — ข้อมูล `n=50` มี Special Cause (`SG-09`) และ Shapiro-Wilk `p=0.0005` (ไม่ปกติ) จึงห้ามใช้ทำนาย ให้รายงานผลทำนายเฉพาะช่วงเสถียร `n=45` (ISQC p.354; AIAG p.132)
 - **พบ Special Cause ชัดเจนที่ `SG-09` (`16:00`):** ค่าเฉลี่ยพุ่งขึ้นเป็น **`20.0940 mm`** (ห่าง Target ถึง `+0.094 mm` หรือ ~`9.5` เท่าของ Standard Error!) และมีชิ้นงานทะลุ `USL 20.10` (`20.11, 20.12 mm`)
-- **Baseline เสถียร (`SG 1–8, 10`, `n=45`):** $\bar{x} = 20.0009$, $s = 0.0220\text{ mm}$, $Z_{\text{USL}} = +4.50$, $\sigma_{\bar{x}} = 0.0220/\sqrt{5} = 0.0099\text{ mm}$ → หากคุมไม่มี Special Cause กระบวนการนี้แข็งแรงมาก!
+- **Baseline เสถียร (`SG 1–8, 10`, `n=45`):** $\bar{x} = 20.0009$, $s = 0.0220\text{ mm}$, $Z_{\text{USL}} = +4.50$, Shapiro-Wilk `p=0.26`, คาดการณ์ OOS ≈ `5.8 PPM` (สองด้าน), $\sigma_{\bar{x}} = 0.0220/\sqrt{5} = 0.0099\text{ mm}$ → หากคุมไม่มี Special Cause กระบวนการนี้แข็งแรงมาก!
 - ดูเฉลยละเอียดใน [07_workshop_guide.md](07_workshop_guide.md)
 
 ## M2L4-S08 — Module 2 Final Assessment (`EXAM-M2`)

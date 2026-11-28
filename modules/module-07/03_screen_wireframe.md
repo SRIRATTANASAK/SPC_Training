@@ -18,7 +18,7 @@
 
 ## M7-L2: SPC Across 4 Manufacturing Processes (6 Screens)
 - **M7L2-S01 Machining Processes:** CNC `X̄-R`, Roughness Zero-Bound & Tool Log (`AST-M7-005`)
-- **M7L2-S02 Assembly & Electronics:** Auto PLC `I-MR` Interlock & SMT `X̄-S` (`AST-M7-006`)
+- **M7L2-S02 Assembly & Electronics:** Auto PLC `I-MR` Interlock & SMT `I-MR` ค่าเฉลี่ยต่อแผ่น (`AST-M7-006`)
 - **M7L2-S03 Injection Molding:** Per-Cavity Stratification (`AST-M7-007`)
 - **M7L2-S04 Stamping & Forming:** Coil Changeover Markers & Burr `np` (`AST-M7-008`)
 - **M7L2-S05 Line CTQ & Subgroup Planner (`INT-M7-L2-01`):** 4-Process Interactive Configurator
@@ -27,7 +27,7 @@
 ## M7-L3: Process Monitoring, Reaction Plan & Escalation (5 Screens)
 - **M7L3-S01 Real-Time vs Wallpaper SPC:** End-of-Shift Dead Chart vs Live Alert (`AST-M7-009`)
 - **M7L3-S02 Actionable Reaction Plan:** Vague vs Time-Bound 4-Step Plan (`AST-M7-010`)
-- **M7L3-S03 3-Tier Escalation Matrix:** Tier 1 (`0–15m`), Tier 2 (`15–60m`), Tier 3 (`>60m Auto Hold`) (`AST-M7-011`)
+- **M7L3-S03 3-Tier Escalation Matrix:** Tier 1 (`0–15m`), Tier 2 (`15–60m`), Tier 3 (`>60m Hold Lot (แนวปฏิบัติ)`) (`AST-M7-011`)
 - **M7L3-S04 Escalation Flowchart Simulator (`INT-M7-L3-01`):** 4-Event Interactive Branch Trainer
 - **M7L3-S05 Knowledge Check (`KC-M7-L3`):** 2-Question Card
 

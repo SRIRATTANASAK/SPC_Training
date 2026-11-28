@@ -261,44 +261,44 @@
 - **Accessibility Notes:** Step list captions.
 - **Developer Notes:** Links directly to Module 5 (SPC) and Module 9 (MSA).
 
-## Screen M4L4-S02 — AIAG / VDA & IATF 16949 Requirements
-- **Learning Objective:** เข้าใจเกณฑ์ PPAP Initial Study (`Ppk ≥ 1.67`) vs Ongoing (`Cpk ≥ 1.33`) และแผนรับมือตาม AIAG/VDA
+## Screen M4L4-S02 — เกณฑ์ Capability ตามข้อกำหนดลูกค้า/PPAP
+- **Learning Objective:** เข้าใจเกณฑ์ Initial Study (`Ppk ≥ 1.67`) vs Ongoing (`Cpk ≥ 1.33`) และแผนรับมือ ตามข้อกำหนดลูกค้า/PPAP (ยังไม่ได้ยืนยันจากต้นฉบับ)
 - **Duration:** 40s
 - **Layout:** Automotive Standard Comparison Matrix (`AST-M4-015`)
 - **Asset ID:** `AST-M4-015`
-- **On Screen Text:** `AIAG / VDA`: "Initial PPAP Study: Ppk ≥ 1.67 | Ongoing Stable: Cpk ≥ 1.33 | 1.33–1.67 ต้องมี Containment/Action Plan"
+- **On Screen Text:** `ข้อกำหนดลูกค้า/PPAP (ยังไม่ได้ยืนยันจากต้นฉบับ)`: "Initial PPAP Study: Ppk ≥ 1.67 | Ongoing Stable: Cpk ≥ 1.33 | 1.33–1.67 ต้องมี Containment/Action Plan"
 - **Voice Over Script Ref:** `AUD-M4L4-S02`
 - **Motion Specification:** Traffic light gates highlight thresholds.
 - **Trigger Logic:** Narration complete unlocks Next.
 - **Accessibility Notes:** Full table readout.
 - **Developer Notes:** Include CC/SC (Critical/Special Characteristics) note.
 
-## Screen M4L4-S03 — JEDEC `JESD557` Requirements & Why It Matters Today
-- **Learning Objective:** เข้าใจข้อกำหนด JEDEC (`JESD557`) และเหตุผลที่อุตสาหกรรมยุคใหม่ (EV, ADAS, Zero-Defect, Smart Factory) ให้ความสำคัญสูงขึ้นมาก
+## Screen M4L4-S03 — JEDEC `JESD557C`: สิ่งที่มาตรฐานระบุ
+- **Learning Objective:** เข้าใจประเด็นที่ JEDEC `JESD557C` ระบุ (นิยาม σ, Cpk target, mean chart, OCAP)
 - **Duration:** 50s
-- **Layout:** Top EV/Semiconductor Drivers + Bottom JEDEC Technical Pillars (`AST-M4-016`)
+- **Layout:** JESD557C Key Points Cards (`AST-M4-016`)
 - **Asset ID:** `AST-M4-016`
-- **On Screen Text:** `JEDEC JESD557`: "ทำไมสำคัญยิ่งขึ้น? ยุค EV/ADAS + Zero-Defect + Auto FDC/OCAP | Ongoing ≥ 1.33, Critical ≥ 1.67–2.00 | 1-Sided & Skewed Handling"
+- **On Screen Text:** `JEDEC JESD557C`: "p.6 ผู้ผลิตกำหนด Cpk target | p.7 mean chart ใช้ SD ของค่าเฉลี่ยกลุ่ม | p.8 Cp/Cpk ใช้ ST ของข้อมูลดิบทั้งหมด | p.9 OCAP"
 - **Voice Over Script Ref:** `AUD-M4L4-S03`
-- **Motion Specification:** EV/Chip convergence graphic lights up, then Wire Bond Pull, Leakage, and Automated OCAP cards animate.
+- **Motion Specification:** Cards p.6, p.7, p.8, p.9 animate sequentially.
 - **Trigger Logic:** Narration complete unlocks Next.
 - **Accessibility Notes:** Clear pillar comparison cards.
-- **Developer Notes:** Explains why JESD557 is critical across modern automotive & electronics supply chains.
+- **Developer Notes:** Cite only what JESD557C states.
 
-## Screen M4L4-S04 — AIAG vs JEDEC $C_{pk}$ Connection & Decision Flow
-- **Learning Objective:** เชื่อมโยงความสัมพันธ์ของ $C_{pk}$ ระหว่าง AIAG กับ JEDEC และใช้ Traffic-Light Gate ตัดสินใจได้อย่างถูกต้อง
+## Screen M4L4-S04 — AIAG vs JEDEC $C_{pk}$: นิยาม σ ต่างกัน & Decision Flow
+- **Learning Objective:** แยกนิยาม σ ของ $C_{pk}$ ระหว่าง AIAG กับ JEDEC และใช้ Traffic-Light Gate ตามข้อกำหนดลูกค้า
 - **Duration:** 45s
-- **Layout:** Top AIAG vs JEDEC Convergence Table + Bottom Unified Traffic-Light Tree (`AST-M4-017`)
+- **Layout:** Top AIAG vs JEDEC σ Definition Table + Bottom Traffic-Light Tree (`AST-M4-017`)
 - **Asset ID:** `AST-M4-017`
-- **On Screen Text:** "JEDEC Cpk × AIAG Cpk: สูตรเดียวกัน เกณฑ์เดียวกัน (`1.33 / 1.67`) — เชื่อม IATF 16949 PPAP เข้ากับ AEC-Q & JESD557 ในไลน์จริง!"
+- **On Screen Text:** "Cpk ชื่อเหมือนกัน นิยาม σ ต่างกัน: AIAG ใช้ R̄/d2 | JESD557C p.8 ใช้ ST = SD ของข้อมูลดิบทั้งหมด — ต้องระบุนิยามเมื่อรายงาน"
 - **Voice Over Script Ref:** `AUD-M4L4-S04`
-- **Motion Specification:** Side-by-side bridge lines connect AIAG formulas to JEDEC multi-level/1-sided context, then traffic-light flow animates downward.
+- **Motion Specification:** Two σ definitions appear side by side, then traffic-light flow animates downward.
 - **Trigger Logic:** Narration complete unlocks Next.
 - **Accessibility Notes:** Semantic comparison table + icon/color paired badges.
-- **Developer Notes:** Clarifies "same statistical math, complementary industrial scope."
+- **Developer Notes:** Same index names, different σ definitions.
 
 ## Screen M4L4-S05 — Interactive Release Gate Decision Simulator
-- **Learning Objective:** ประเมินผล Capability Study 5 เคสจริงตามกฎ AIAG/VDA & JEDEC
+- **Learning Objective:** ประเมินผล Capability Study 5 เคสจริงตามข้อกำหนดลูกค้า/PPAP
 - **Duration:** 50s
 - **Layout:** 5-Case Release Gate Console (`INT-M4-L4-01`)
 - **Asset ID:** N/A | **Interactive ID:** `INT-M4-L4-01`
@@ -322,13 +322,13 @@
 - **Developer Notes:** Exact verified numbers in `07_workshop_guide.md`.
 
 ## Screen M4L4-S07 — Workshop Solution & Engineering Diagnosis
-- **Learning Objective:** สรุปผลเปรียบเทียบช่วง All (`SG 1–20`) vs Stable (`SG 1–14`) และการตัดสินใจตาม AIAG/JEDEC
+- **Learning Objective:** สรุปผลเปรียบเทียบช่วง All (`SG 1–20`) vs Stable (`SG 1–14`) และการตัดสินใจตามข้อกำหนดลูกค้า/PPAP
 - **Duration:** 40s
 - **Layout:** Before/After Drift Fix Dashboard (`AST-M4-018`)
 - **Asset ID:** `AST-M4-018`
-- **On Screen Text:** "เฉลย: รวม 20 กลุ่มได้ Cpk=1.64 แต่ Ppk=1.15 (FAIL!) เพราะกะดึก SG-15..20 ไหลขึ้น +0.060 mm — เมื่อแก้ Drift ได้ Ppk=1.93!"
+- **On Screen Text:** "เฉลย: รวม 20 กลุ่มได้ Cpk=1.64 แต่ Ppk=1.15 (FAIL!) เพราะกะดึก SG-15..20 ไหลขึ้น +0.060 mm — เมื่อแก้ Drift ได้ Ppk=1.93 (ค่าเบื้องต้น: 14 กลุ่ม)!"
 - **Voice Over Script Ref:** `AUD-M4L4-S07`
-- **Motion Specification:** Highlight `SG-15..20` removal shifting `Ppk` from Red `1.15` to Green `1.93`.
+- **Motion Specification:** Highlight `SG-15..20` removal shifting `Ppk` from Red `1.15` to Green `1.93` (labelled preliminary).
 - **Trigger Logic:** Review solution to unlock Final Exam.
 - **Accessibility Notes:** Structured comparison table.
 - **Developer Notes:** Sets up Module 5 SPC Control Charts directly.

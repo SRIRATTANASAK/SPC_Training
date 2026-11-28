@@ -38,7 +38,7 @@
 - **M1L4-S01 Why Visualize Data?:** Left Raw 30-Row Table Preview | Right 5 Chart Preview Cards
 - **M1L4-S02 Histogram:** Interactive Histogram (`AST-M1-018`) + 4 Shape Tabs (Normal, Skewed, Bimodal, Cliff)
 - **M1L4-S03 Box Plot:** Left Anatomy Diagram (Min, Q1, Med, Q3, Max, Outlier) | Right MC-A vs MC-B Side-by-Side Box Plot (`AST-M1-020`)
-- **M1L4-S04 Pareto Chart:** Interactive Defect Bar + Cumulative % Line (`AST-M1-019`) with "Sort 80/20" Trigger
+- **M1L4-S04 Pareto Chart:** Interactive Defect Bar + Cumulative % Line (`AST-M1-019`) with "Sort 80/20" Trigger (ค่าประมาณเพื่อการสอน)
 - **M1L4-S05 Scatter Plot:** Correlation Explorer (`AST-M1-019`: `Mold_Temp_C` vs `Shaft_Diameter_mm`, `r = +0.99`) + Pattern Presets
 - **M1L4-S06 Run Chart:** Time-Series Line (`Sample 1..30`, `AST-M1-020`) + Toggle comparing Histogram vs Run Chart
 - **M1L4-S07 Workshop 2 (`INT-M1-L4-01`, `INT-M1-L4-02`):** Top 5-Scenario Chart Selector Matrix | Bottom Interactive 30-Part Production Dashboard (`CSV` Downloadable)

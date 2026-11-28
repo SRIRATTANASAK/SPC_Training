@@ -70,11 +70,11 @@
 
 ### AUD-M7L2-S02 (40 sec) — Assembly & Electronics
 - **Display Script (TH):**  
-  กระบวนการที่ 2 คือ **Assembly และอิเล็กทรอนิกส์** [ANIM: assembly_smt] เช่น ขันสกรูอัตโนมัติ Torque หรือ Press-Fit ที่ PLC อ่านค่าได้ 100 เปอร์เซ็นต์ ใช้ **`I-MR` ผูก Auto Interlock** จับงานเสียทีละชิ้นทันที ส่วนงานแผงวงจร **SMT** วัดหลายจุดต่อแผ่นใช้ $\bar{X}$-$S$ และคุมจุดบัดกรีเสียด้วย **`u` Chart**
+  กระบวนการที่ 2 คือ **Assembly และอิเล็กทรอนิกส์** [ANIM: assembly_smt] เช่น ขันสกรูอัตโนมัติ Torque หรือ Press-Fit ที่ PLC อ่านค่าได้ 100 เปอร์เซ็นต์ ใช้ **`I-MR` ผูก Auto Interlock** จับงานเสียทีละชิ้นทันที ส่วนงานแผงวงจร **SMT** วัดหลายจุดต่อแผ่นใช้ `I-MR` ของค่าเฉลี่ยต่อแผ่น พร้อม chart ความแปรปรวนภายในแผ่น และคุมจุดบัดกรีเสียด้วย **`u` Chart**
 - **TTS Clean Script (TH):**  
-  กระบวนการที่ 2 คือ แอสเซมบลี และอิเล็กทรอนิกส์ เช่น ขันสกรูอัตโนมัติ ทอร์ก หรือ เพรสฟิต ที่ พีแอลซี อ่านค่าได้ 100 เปอร์เซ็นต์ ใช้ ไอ เอ็มอาร์ ผูก ออโต้ อินเตอร์ล็อก จับงานเสียทีละชิ้นทันที ส่วนงานแผงวงจร เอสเอ็มที วัดหลายจุดต่อแผ่นใช้ เอ็กซ์บาร์ เอส และคุมจุดบัดกรีเสียด้วย ยู ชาร์ท
+  กระบวนการที่ 2 คือ แอสเซมบลี และอิเล็กทรอนิกส์ เช่น ขันสกรูอัตโนมัติ ทอร์ก หรือ เพรสฟิต ที่ พีแอลซี อ่านค่าได้ 100 เปอร์เซ็นต์ ใช้ ไอ เอ็มอาร์ ผูก ออโต้ อินเตอร์ล็อก จับงานเสียทีละชิ้นทันที ส่วนงานแผงวงจร เอสเอ็มที วัดหลายจุดต่อแผ่นใช้ ไอ เอ็มอาร์ ของค่าเฉลี่ยต่อแผ่น พร้อม ชาร์ท ความแปรปรวนภายในแผ่น และคุมจุดบัดกรีเสียด้วย ยู ชาร์ท
 - **EN Reference:**  
-  For automated torque or press-fit assembly, pair PLC 100% I-MR tracking with instant interlocks; for multi-site SMT boards, apply X-bar S and u charts.
+  For automated torque or press-fit assembly, pair PLC 100% I-MR tracking with instant interlocks; for multi-site SMT boards, chart the board means with I-MR plus a within-board variation chart, and use u charts for solder defects.
 
 ### AUD-M7L2-S03 (45 sec) — Injection Molding
 - **Display Script (TH):**  
@@ -130,11 +130,11 @@
 
 ### AUD-M7L3-S03 (45 sec) — 3-Tier Escalation Matrix & SLA
 - **Display Script (TH):**  
-  ถ้าแก้เบื้องต้นแล้วจุดยังไม่กลับมาปกติ ต้องส่งต่อตาม **3-Tier Escalation** พร้อมเวลาชัดเจน [PAUSE-1] [ANIM: escalation_ladder] **Tier 1** Operator แก้ภายใน 15 นาที, **Tier 2** หัวหน้าไลน์หรือช่างเทคนิคเข้ามาช่วยภายใน 60 นาที, และถ้าเกิน 60 นาทีหรือ Raw Data หลุด Spec ร้ายแรง ส่ง **Tier 3 วิศวกรสั่ง Auto Lot Hold และเปิด OCAP** ทันที!
+  ถ้าแก้เบื้องต้นแล้วจุดยังไม่กลับมาปกติ ต้องส่งต่อตาม **3-Tier Escalation** พร้อมเวลาชัดเจน [PAUSE-1] [ANIM: escalation_ladder] **Tier 1** Operator แก้ภายใน 15 นาที, **Tier 2** หัวหน้าไลน์หรือช่างเทคนิคเข้ามาช่วยภายใน 60 นาที, และถ้าเกิน 60 นาทีหรือ Raw Data หลุด Spec ร้ายแรง ส่ง **Tier 3 วิศวกรสั่ง Hold Lot ตามแนวปฏิบัติและเปิด OCAP** ทันที!
 - **TTS Clean Script (TH):**  
-  ถ้าแก้เบื้องต้นแล้วจุดยังไม่กลับมาปกติ ต้องส่งต่อตาม ทรีเทียร์ เอสคาเลชั่น พร้อมเวลาชัดเจน, เทียร์ 1 โอเปอเรเตอร์ แก้ภายใน 15 นาที, เทียร์ 2 หัวหน้าไลน์หรือช่างเทคนิคเข้ามาช่วยภายใน 60 นาที, และถ้าเกิน 60 นาทีหรือ รอว์ ดาต้า หลุด สเปก ร้ายแรง ส่ง เทียร์ 3 วิศวกรสั่ง ออโต้ ล็อต โฮลด์ และเปิด โอแค็ป ทันที
+  ถ้าแก้เบื้องต้นแล้วจุดยังไม่กลับมาปกติ ต้องส่งต่อตาม ทรีเทียร์ เอสคาเลชั่น พร้อมเวลาชัดเจน, เทียร์ 1 โอเปอเรเตอร์ แก้ภายใน 15 นาที, เทียร์ 2 หัวหน้าไลน์หรือช่างเทคนิคเข้ามาช่วยภายใน 60 นาที, และถ้าเกิน 60 นาทีหรือ รอว์ ดาต้า หลุด สเปก ร้ายแรง ส่ง เทียร์ 3 วิศวกรสั่ง โฮลด์ ล็อต ตามแนวปฏิบัติ และเปิด โอแค็ป ทันที
 - **EN Reference:**  
-  Define clear escalation SLAs: Tier 1 operators act within 15 minutes, Tier 2 technicians engage within 60 minutes, and Tier 3 engineers trigger lot hold and OCAP beyond 60 minutes.
+  Define clear escalation SLAs: Tier 1 operators act within 15 minutes, Tier 2 technicians engage within 60 minutes, and Tier 3 engineers trigger lot hold (a plant practice) and OCAP beyond 60 minutes.
 
 ### AUD-M7L3-S04 (30 sec) — Escalation Flowchart Simulator
 - **Display Script (TH):**  

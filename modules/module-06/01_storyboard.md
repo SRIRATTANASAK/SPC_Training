@@ -278,7 +278,7 @@
 - **Duration:** 45s
 - **Layout:** 5-Row Annotated Solution Grid (`AST-M6-015`)
 - **Asset ID:** `AST-M6-015`
-- **On Screen Text:** "เฉลย Case 1–5: Temp `I-MR` | CNC `X̄-R` | Wafer `X̄-S` | PCB Defects `u` | Fixed Motors `np`"
+- **On Screen Text:** "เฉลย Case 1–5: Temp `I-MR` | CNC `X̄-R` | Wafer `I-MR` (ค่าเฉลี่ยต่อแผ่น + chart ภายในแผ่น) | PCB Defects `u` | Fixed Motors `np`"
 - **Voice Over Script Ref:** `AUD-M6L4-S02`
 - **Motion Specification:** Highlight pins sequentially verify data type + sample size logic for Cases 1–5.
 - **Trigger Logic:** Narration complete unlocks Next.
@@ -290,7 +290,7 @@
 - **Duration:** 45s
 - **Layout:** 5-Row Annotated Solution Grid (`AST-M6-016`)
 - **Asset ID:** `AST-M6-016`
-- **On Screen Text:** "เฉลย Case 6–10: Incoming `p` | Paint `c` | Pull Test `I-MR` | 12-Spindle `X̄-S` | Mold Weight `X̄-R`"
+- **On Screen Text:** "เฉลย Case 6–10: Incoming `p` | Paint `c` | Pull Test `I-MR` | 12-Spindle `I-MR` แยกราย Spindle | Mold Weight `X̄-R`"
 - **Voice Over Script Ref:** `AUD-M6L4-S03`
 - **Motion Specification:** Highlight pins sequentially verify logic for Cases 6–10.
 - **Trigger Logic:** Narration complete unlocks Next.

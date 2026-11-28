@@ -301,12 +301,12 @@
 - **Accessibility Notes:** Keyboard tooltips on each anatomy marker.
 - **Developer Notes:** Directly shows MC-A vs MC-B from `workshop_m1_dimensions_and_defects.csv`.
 
-## Screen M1L4-S04 — Pareto Chart (กฎ 80/20)
+## Screen M1L4-S04 — Pareto Chart (กฎ 80/20 (ค่าประมาณเพื่อการสอน))
 - **Learning Objective:** สร้างและอ่าน Pareto Chart เพื่อจัดลำดับความสำคัญของปัญหา (Vital Few vs Trivial Many)
 - **Duration:** 40s
-- **Layout:** Left Interactive Pareto (Bars + Cumulative % Line) + Right 80/20 Callout
+- **Layout:** Left Interactive Pareto (Bars + Cumulative % Line) + Right 80/20 Callout (ค่าประมาณเพื่อการสอน)
 - **Asset ID:** `AST-M1-019`
-- **On Screen Text:** `Pareto Chart` — "โฟกัส 20% ของสาเหตุ ที่สร้าง 80% ของปัญหา (ในโรงงานเรา: Scratch + Burr = 86.7%!)"
+- **On Screen Text:** `Pareto Chart` — "โฟกัส 20% ของสาเหตุ ที่สร้าง 80% ของปัญหา (ค่าประมาณเพื่อการสอน) (ในโรงงานเรา: Scratch + Burr = 86.7%!)"
 - **Voice Over Script Ref:** `AUD-M1L4-S04`
 - **Motion Specification:** Unsorted defect bars sort descending, then cumulative % curve draws left-to-right.
 - **Trigger Logic:** Click "Sort by Impact" animation button.
