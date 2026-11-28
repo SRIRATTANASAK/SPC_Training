@@ -9,10 +9,10 @@ interface Props {
 
 const DIAGNOSTIC_QUESTIONS = [
   {
-    q: 'Q1: เมื่อวิเคราะห์ข้อมูลทั้งหมด 50 ชิ้น (Mean = 20.0102, SD = 0.0356) ค่า Z_USL (USL = 20.10) และโอกาสหลุด Spec รวมอยู่ที่ประมาณเท่าใด?',
+    q: 'Q1: เมื่อวิเคราะห์ข้อมูลทั้งหมด 50 ชิ้น (Mean = 20.0102, SD = 0.0356) ค่า Z_USL (USL = 20.10) และโอกาสหลุด Spec รวมอยู่ที่ประมาณเท่าใด? (ตัวเลข OOS ที่คำนวณได้จากข้อมูลชุดนี้เป็นค่าเบื้องต้น ยังใช้ตัดสิน Capability ไม่ได้)',
     options: [
       'A) Z = +4.50, OOS < 0.01%',
-      'B) Z = +2.52, OOS ≈ 0.68% (ค่าเบื้องต้น)',
+      'B) Z = +2.52, OOS ≈ 0.68%',
       'C) Z = +1.00, OOS ≈ 15.87%',
       'D) Z = +3.10, OOS ≈ 0.10%',
     ],
@@ -185,7 +185,7 @@ export const CtqBoreAnalyzer: React.FC<Props> = ({ rows }) => {
             </div>
           </div>
           <div className="rounded-lg border border-rose-200 bg-rose-50 p-2">
-            <div className="text-[10px] text-rose-800">Predicted OOS</div>
+            <div className="text-[10px] text-rose-800">Predicted OOS{!excludeSg09 && ' (ค่าเบื้องต้น)'}</div>
             <div className="font-mono text-xs sm:text-sm font-extrabold text-rose-900">
               {analysis.oosPct < 0.001 ? '< 0.001%' : `${analysis.oosPct.toFixed(2)}%`}
             </div>
