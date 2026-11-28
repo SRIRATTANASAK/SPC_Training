@@ -92,11 +92,15 @@ def synth_gemini(
     api_key: str,
     voice_name: str = "Achernar",
     preferred_model: str = "",
+    no_fallback: bool = False,
 ) -> bytes:
     import urllib.error
 
     clean_text = prepare_clean_tts_text(text)
-    models = [preferred_model] + [m for m in GEMINI_TTS_MODELS if m != preferred_model] if preferred_model else list(GEMINI_TTS_MODELS)
+    if no_fallback:
+        models = [preferred_model]
+    else:
+        models = [preferred_model] + [m for m in GEMINI_TTS_MODELS if m != preferred_model] if preferred_model else list(GEMINI_TTS_MODELS)
     payload = {
         "contents": [
             {
@@ -150,6 +154,9 @@ def synth_gemini(
                 last_err = err
                 body = err.read().decode("utf-8", errors="ignore")
                 if err.code == 429:
+                    if no_fallback:
+                        print(f"QUOTA_EXCEEDED {model}", file=sys.stderr, flush=True)
+                        sys.exit(2)
                     if "PerDay" in body or "daily" in body.lower():
                         print(f"Model {model} hit daily quota, trying next model...", flush=True)
                         break
@@ -261,7 +268,16 @@ def main() -> int:
     parser.add_argument("--limit", type=int, default=0, help="Optional limit for test runs")
     parser.add_argument("--screen", default="", help="Generate for a specific screenId, e.g. M1L1-S03")
     parser.add_argument("--skip-existing", action="store_true", help="Skip already generated MP3s")
+    parser.add_argument(
+        "--no-fallback",
+        action="store_true",
+        help="Gemini: use only --model; exit 2 on quota (HTTP 429) instead of switching models",
+    )
     args = parser.parse_args()
+
+    if args.no_fallback and not args.model.strip():
+        print("Error: --no-fallback requires --model <gemini-tts-model>.", file=sys.stderr)
+        return 1
 
     if not DATA_JSON.exists():
         print("Run scripts/build_module_data.py first.", file=sys.stderr)
@@ -320,7 +336,9 @@ def main() -> int:
             continue
         if args.provider == "gemini":
             voice = args.voice or "Achernar"
-            audio_bytes = synth_gemini(text, api_key, voice_name=voice, preferred_model=args.model)
+            audio_bytes = synth_gemini(
+                text, api_key, voice_name=voice, preferred_model=args.model, no_fallback=args.no_fallback
+            )
         elif args.provider == "edge-tts":
             voice = args.voice or "th-TH-PremwadeeNeural"
             audio_bytes = synth_edge_tts(text, voice=voice, rate=args.rate)
