@@ -33,10 +33,10 @@
 - **M4L3-S08 Diagnostic Match (`INT-M4-L3-02`):** 4-Profile Root Cause Matcher
 - **M4L3-S09 Knowledge Check (`KC-M4-L3`):** 3-Question Card
 
-## M4-L4: AIAG/VDA, JEDEC & Workshop (8 Screens)
+## M4-L4: AIAG/VDA, JEDEC JESD557C & Workshop (8 Screens) (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)
 - **M4L4-S01 Prerequisite Gates:** 3-Gate Pipeline (`AST-M4-014`: MSA → Stability → Normality)
 - **M4L4-S02 Customer / PPAP Requirements:** Threshold Table (`AST-M4-015`)
-- **M4L4-S03 JEDEC `JESD557` Key Points:** JESD557C Key Points (p.6–p.9) (`AST-M4-016`)
+- **M4L4-S03 JEDEC `JESD557C` Key Points:** JESD557C Key Points (p.6–p.9) (`AST-M4-016`)
 - **M4L4-S04 AIAG vs JEDEC $C_{pk}$ & Decision Flow:** σ Definition Table + Traffic-Light Flow (`AST-M4-017`)
 - **M4L4-S05 Release Gate Simulator (`INT-M4-L4-01`):** 5-Case Release Console (`Approve / Conditional / Hold`)
 - **M4L4-S06 Workshop Capability (`INT-M4-L4-02`):** 100-Part Pin Length CSV Lab + Subgroup Drift Plot + 4 Questions

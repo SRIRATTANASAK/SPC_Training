@@ -1,6 +1,6 @@
 # Module 4 Voice Over Script Package (Thai Primary + TTS-Ready + EN Reference)
 
-**Module:** Module 4 — Process Variation and Capability (AIAG/VDA & JEDEC Standard)  
+**Module:** Module 4 — Process Variation and Capability (AIAG/VDA & JEDEC JESD557C) (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)  
 **Total Audio Tracks:** 27 Tracks (`AUD-M4L1-S01` .. `AUD-M4L4-S08`)  
 **Dual Format Ready:** Display Script (TH) สำหรับนักพากย์/Sync Animation + TTS Clean Script (TH) ปลอดสัญลักษณ์ พร้อมป้อน AI Thai TTS ทันที
 
@@ -166,11 +166,11 @@
 - **TTS Clean Script (TH):**  
   ทบทวนความเข้าใจสูตรและการวินิจฉัย ซีพี ซีพีเค พีพี พีพีเค ด้วยคำถาม 3 ข้อ
 - **EN Reference:**  
-  Answer three check questions on capability indices before reviewing AIAG/VDA and JEDEC standards.
+  Answer three check questions on capability indices before reviewing AIAG/VDA requirements and JEDEC JESD557C.
 
 ---
 
-## LESSON M4-L4: AIAG/VDA & JEDEC Requirements + Workshop
+## LESSON M4-L4: AIAG/VDA & JEDEC JESD557C + Workshop (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)
 
 ### AUD-M4L4-S01 (35 sec) — 3 Prerequisite Gates
 - **Display Script (TH):**  

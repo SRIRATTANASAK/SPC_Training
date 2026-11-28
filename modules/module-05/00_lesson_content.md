@@ -11,7 +11,7 @@
 `<Asset id="AST-M5-001" />`
 - **ภาพต่อจาก Module 4:** แม้เครื่องจักรจะมีศักยภาพสูง ($C_{pk} = 1.83$) แต่ในหน้างานจริงหากไม่มีระบบเฝ้าระวัง ปัญหา **Shift/Drift (เช่นกะดึก `SG-15..20`)** จะทำลายสมรรถนะโดยไม่รู้ตัว!
 - **วัตถุประสงค์การเรียนรู้ประจำ Module 5:**
-  1. เข้าใจแนวคิดต้นกำเนิด **Statistical Process Control (SPC)** ของ Walter Shewhart, กรอบ **AIAG SPC** และ **JEDEC `JESD557`**
+  1. เข้าใจแนวคิดต้นกำเนิด **Statistical Process Control (SPC)** ของ Walter Shewhart, กรอบ **AIAG SPC** และ **JEDEC `JESD557C`** (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)
   2. แยกแยะ **Control Limits (`UCL/CL/LCL`)** ออกจาก **Specification Limits (`USL/LSL`)** อย่างเด็ดขาด พร้อมเข้าใจ **Phase I vs Phase II**
   3. ประเมิน **Process Stability** และอ่านสัญญาณรูปทรง Special Cause บนกราฟได้อย่างแม่นยำ
   4. ประยุกต์ใช้ **Western Electric Rules (1–4)** และ **Nelson Rules** เพื่อจับปัญหาก่อนเกิดของเสีย โดยไม่สร้าง False Alarm ล้นไลน์
@@ -33,7 +33,7 @@
 | **จังหวะการรู้ตัว** | รู้เมื่อ **ของเสียเกิดขึ้นแล้ว** (Waste, Rework, Scrap) | รู้ตั้งแต่ **กราฟเริ่มขยับ/มีแนวโน้ม** ทั้งที่ชิ้นงานยังอยู่ใน Spec! |
 | **ผลกระทบต่อ COPQ** | ต้นทุน Appraisal + Internal Failure สูงลิ่ว | ลด Scrap, ป้องกัน Escape ไปหาลูกค้า และคุม Process ให้ Predictable |
 
-## M5L1-S04 — AIAG SPC Framework & JEDEC `JESD557`
+## M5L1-S04 — AIAG SPC Framework & JEDEC `JESD557C` (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)
 `<Asset id="AST-M5-004" />`
 - **AIAG SPC (2nd Edition, July 2005) — มาตรฐานยานยนต์ & IATF 16949:**
   - เน้น **Continual Improvement & Variation Reduction** ผูก Control Chart เข้ากับ **PFMEA** และ **Control Plan**
@@ -196,7 +196,7 @@ $$\text{CL}_{R} = \bar{R}, \quad \text{UCL}_{R} = D_4\bar{R}, \quad \text{LCL}_{
     2. **Individual Raw Data vs Specification Limits (`> USL` / `< LSL`):** ในสายผลิตยุคใหม่ มีการตรวจสอบ **ข้อมูลดิบรายชิ้น (Individual Raw Data) เทียบกับเส้น Spec** ด้วย *(เป็นการตรวจ Layer ชิ้นงานคู่ขนานกับ Control Chart — ไม่ใช่เอา Spec มาวาดแทน `UCL/LCL`!)* เพื่อป้องกันของเสียหลุดสายพานทันที
 - **3. การเลือก `Optional SPC Rules` ที่เหลือ (ควรเลือกอย่างน้อย `1` Rule เสมอ):**
   - นอกจาก Mandatory Rules แล้ว ควรเลือกกฎเสริมอย่างน้อย **`1` SPC Rule** โดยพิจารณาจาก **`2` เสาหลัก**:
-    1. **Engineering Judgement (เหตุผลทางวิศวกรรม):** ความเสี่ยงของเครื่องจักร (เช่น มีดสึก → เปิด Trend `6 pts`, เปลี่ยนล็อต/Offset → เปิด Shift `8–9 pts`), ความไวในการจับ Shift, และต้นทุน False Alarm
+    1. **Engineering Judgement (เหตุผลทางวิศวกรรม):** ความเสี่ยงของเครื่องจักร (เช่น มีดสึก → เปิด Trend `6 pts`, เปลี่ยนล็อต/Offset → เปิด Shift `7 pts` (AIAG; ISQC 8)), ความไวในการจับ Shift, และต้นทุน False Alarm
     2. **Process Characteristic (พฤติกรรมของกระบวนการนั้นๆ):** ลักษณะการแจกแจงข้อมูลจริง เช่น ข้อมูลแบบ Normal สมมาตร vs ข้อมูลเบ้ชิดศูนย์ (`Roughness / Coplanarity`) ที่ไม่ควรเปิดกฎด้านล่างให้ร้องเตือนมั่ว
   - **หัวใจของวิศวกร:** **วิศวกรต้องเข้าใจ Process ของตนเองอย่างลึกซึ้ง** จึงจะเลือก SPC Rules ได้แม่นยำและ **หลีกเลี่ยง False Alarm (Alarm Fatigue)** หน้าไลน์ผลิตได้สำเร็จ!
 

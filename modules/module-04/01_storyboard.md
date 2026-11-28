@@ -1,6 +1,6 @@
 # Module 4 Production Storyboard (Developer & Web/LMS Ready)
 
-**Module:** Module 4 — Process Variation and Capability (VOP/VOC, Cp/Cpk/Pp/Ppk, AIAG/VDA & JEDEC Standard)  
+**Module:** Module 4 — Process Variation and Capability (VOP/VOC, Cp/Cpk/Pp/Ppk, AIAG/VDA & JEDEC JESD557C) (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)  
 **Total Lessons:** 4 Lessons | **Total Screens:** 27 Screens (`M4L1-S01` .. `M4L4-S08`)  
 **Estimated Duration:** ~35 minutes (including interactive capability labs & workshop)  
 **Delivery Target:** Web Interactive Training (MDX/React + Thai Audio Sync) & SCORM 2004 Compatible  
@@ -247,7 +247,7 @@
 
 ---
 
-# LESSON M4-L4: AIAG/VDA & JEDEC Requirements + Capability Workshop (`4.4`)
+# LESSON M4-L4: AIAG/VDA & JEDEC JESD557C + Capability Workshop (`4.4`) (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)
 
 ## Screen M4L4-S01 — Prerequisite Gate: Stability + Normality + MSA
 - **Learning Objective:** ตรวจ 3 เงื่อนไขบังคับ (MSA ผ่าน, Control Chart เสถียร, ข้อมูล Normal) ก่อนประกาศค่า Capability

@@ -45,12 +45,12 @@
 - **Accessibility Notes:** Accessible comparison table.
 - **Developer Notes:** Connects directly to COPQ reduction from Module 1.
 
-## Screen M5L1-S04 — AIAG SPC Framework & JEDEC `JESD557`
-- **Learning Objective:** เห็นภาพการใช้งานจริงของระบบ SPC ในกรอบ AIAG/IATF 16949 และ JEDEC `JESD557`
+## Screen M5L1-S04 — AIAG SPC Framework & JEDEC `JESD557C` (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)
+- **Learning Objective:** เห็นภาพการใช้งานจริงของระบบ SPC ในกรอบ AIAG/IATF 16949 และ JEDEC `JESD557C`
 - **Duration:** 40s
 - **Layout:** Dual Standard Pillar Visual (`AST-M5-004`: AIAG 3-Step Cycle | JEDEC Online / Real-time SPC + OCAP)
 - **Asset ID:** `AST-M5-004`
-- **On Screen Text:** `AIAG SPC & JEDEC JESD557` — "Data → Control Stability → Capability + OCAP"
+- **On Screen Text:** `AIAG SPC & JEDEC JESD557C` — "Data → Control Stability → Capability + OCAP"
 - **Voice Over Script Ref:** `AUD-M5L1-S04`
 - **Motion Specification:** Three-step AIAG cycle loops smoothly alongside JEDEC OCAP trigger.
 - **Trigger Logic:** Narration complete unlocks Next.

@@ -1,6 +1,6 @@
 # Module 4 Asset Production Specification (Web & Animation Ready)
 
-**Module:** Process Variation and Capability (VOP/VOC, Cp/Cpk/Pp/Ppk, AIAG/VDA & JEDEC Standard)  
+**Module:** Process Variation and Capability (VOP/VOC, Cp/Cpk/Pp/Ppk, AIAG/VDA & JEDEC JESD557C) (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)  
 **Style Guide:** Consistent blue-slate-amber-emerald industrial theme (`#0F172A`, `#1E40AF`, `#0284C7`, `#F59E0B`, `#10B981`), 16:9 format
 
 | Asset ID | Asset Name | Used In | Type | Visual Spec | Animation Requirement |

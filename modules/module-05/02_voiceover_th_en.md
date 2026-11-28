@@ -32,7 +32,7 @@
 - **EN Reference:**  
   Detection counts scrap after money is wasted; SPC provides prevention by signaling process drift while parts are still inside specification.
 
-### AUD-M5L1-S04 (40 sec) — AIAG SPC & JEDEC `JESD557`
+### AUD-M5L1-S04 (40 sec) — AIAG SPC & JEDEC `JESD557C` (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)
 - **Display Script (TH):**  
   ในโรงงานจริง ปัจจุบันเราใช้กรอบมาตรฐานคู่กัน 2 ค่ายหลัก [ANIM: aiag_jedec_spc] ฝั่งยานยนต์ใช้ **AIAG SPC** เชื่อม Control Chart เข้ากับ Control Plan เพื่อควบคุมความเสถียรและต่อยอด $C_{pk}$ [PAUSE-1] ส่วนฝั่งเซมิคอนดักเตอร์และอิเล็กทรอนิกส์มี **JEDEC `JESD557C`** ซึ่งระบุระบบ SPC แบบ online หรือ real-time ตัวอย่างกฎ Western Electric และการมี OCAP
 - **TTS Clean Script (TH):**  

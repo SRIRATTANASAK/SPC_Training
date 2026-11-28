@@ -73,13 +73,13 @@
     2. `"near_zero_lower_better"` (`Surface Roughness Ra / Coplanarity / Flatness / Tilt`): calculated `LCL < 0` is flagged `"INVALID (LCL < 0)"` → `we1_lcl` auto-disabled (`N/A`), keeping `we1_ucl = true` + `raw_data_vs_spec = true`
     3. `"variation_r_chart"` (`Range / SD Variation Chart`, `n = 5`, `D3 = 0`): `LCL_R = 0` → `we1_lcl` auto-disabled (`Unnecessary: Physical Min = 0`), keeping `we1_ucl = true`
   - Mandatory Rules Lock (`var_mandatory_rules`): Locked ON for valid upper/lower limits + modern `Individual Raw Data vs USL/LSL` check
-  - Optional Rule Toggles (`var_active_rules`): `WE2 (2/3>2σ)`, `WE3 (4/5>1σ)`, `WE4 (8 same side)`, `Trend (6 up/down)`, `Alternating (14)`, `Zone C Hug (15)` — validation badge warns if `< 1` Optional Rule is chosen or displays guidance on **Engineering Judgement** & **Process Characteristic**
+  - Optional Rule Toggles (`var_active_rules`): `WE2 (2/3>2σ)`, `WE3 (4/5>1σ)`, `WE4 (7 same side, AIAG; ISQC 8)`, `Trend (6 up/down)`, `Alternating (14)`, `Zone C Hug (15)` — validation badge warns if `< 1` Optional Rule is chosen or displays guidance on **Engineering Judgement** & **Process Characteristic**
   - Preset Injection Buttons:
     1. `"Inject 3σ Spike"` → Triggers `WE1` (and tests `< LCL` validity across profiles)
     2. `"Inject Individual Raw Data > USL"` → Triggers `Raw Data vs Spec` Mandatory Gate even when subgroup `X̄` stays inside `UCL`
     3. `"Inject 2σ Shift (2 of 3 Zone A)"` → Triggers `WE2`
     4. `"Inject 1.5σ Drift (4 of 5 Zone B+)"` → Triggers `WE3`
-    5. `"Inject Subtle 1σ Shift (8 Above CL)"` → Triggers `WE4`
+    5. `"Inject Subtle 1σ Shift (7 Above CL, AIAG; ISQC 8)"` → Triggers `WE4`
     6. `"Inject Tool Wear (6 Increasing)"` → Triggers `Trend`
     7. `"Simulate Tampering (14 Alternating)"` → Triggers `Alternating`
     8. `"Simulate Mixed Subgroup (15 in Zone C)"` → Triggers `Zone C Hug`

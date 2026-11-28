@@ -1,6 +1,6 @@
 # Module 4 Quick Reference: Formula Cheat Sheet & Glossary
 
-เอกสารสรุปสำหรับปุ่ม **`Resources`** ประจำ Module 4 (Process Variation, Capability Indices, AIAG/VDA & JEDEC)
+เอกสารสรุปสำหรับปุ่ม **`Resources`** ประจำ Module 4 (Process Variation, Capability Indices, AIAG/VDA & JEDEC JESD557C) (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)
 
 ---
 

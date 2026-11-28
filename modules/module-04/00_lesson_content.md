@@ -1,6 +1,6 @@
 # Module 4 Full Lesson Content (Web & MDX Ready — 27 Screens)
 
-**Module 4: Process Variation and Capability (จุดเชื่อมก่อนเข้า SPC — VOP/VOC, Cp/Cpk/Pp/Ppk, AIAG/VDA & JEDEC Standard)**  
+**Module 4: Process Variation and Capability (จุดเชื่อมก่อนเข้า SPC — VOP/VOC, Cp/Cpk/Pp/Ppk, AIAG/VDA & JEDEC JESD557C) (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)**  
 เอกสารนี้คือ **เนื้อหาบนหน้าจอฉบับสมบูรณ์ (On-Screen Teaching Copy)** สำหรับนักพัฒนาเว็บนำไปสร้างหน้าเว็บ/สไลด์ (MDX/React) คู่กับเสียงบรรยายใน [02_voiceover_th_en.md](02_voiceover_th_en.md) และตัวจำลองใน [04_interactive_logic.md](04_interactive_logic.md)
 
 ---
@@ -145,7 +145,7 @@ $$P_p = \frac{\text{USL} - \text{LSL}}{6 s_{\text{overall}}}, \qquad P_{pk} = \m
 
 ---
 
-# LESSON M4-L4: AIAG/VDA & JEDEC Requirements + Capability Workshop (`4.4`)
+# LESSON M4-L4: AIAG/VDA & JEDEC JESD557C + Capability Workshop (`4.4`) (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)
 
 ## M4L4-S01 — Prerequisite Gate Before Claiming Capability
 `<Asset id="AST-M4-014" />`

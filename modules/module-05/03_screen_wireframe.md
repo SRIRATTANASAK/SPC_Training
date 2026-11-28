@@ -12,7 +12,7 @@
 - **M5L1-S01 Welcome & Bridge:** Hero Transition Curve (`AST-M5-001`) | 4 Objectives
 - **M5L1-S02 Walter Shewhart (1924):** Bell Labs Memo Timeline (`AST-M5-002`) + Noise vs Signal Card
 - **M5L1-S03 Prevention vs Detection:** Dual Conveyor Visual (`AST-M5-003`) + Comparison Table
-- **M5L1-S04 AIAG SPC & JEDEC `JESD557`:** Dual Standard Architecture (`AST-M5-004`)
+- **M5L1-S04 AIAG SPC & JEDEC `JESD557C`:** Dual Standard Architecture (`AST-M5-004`) (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)
 - **M5L1-S05 Knowledge Check (`KC-M5-L1`):** 2-Question Card
 
 ## M5-L2: Control Chart Principle (6 Screens)

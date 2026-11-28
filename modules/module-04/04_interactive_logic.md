@@ -1,6 +1,6 @@
 # Module 4 Interactive Logic Specification (Web-Native & SCORM Ready)
 
-**Module:** Module 4 — Process Variation and Capability (VOP/VOC, Cp/Cpk/Pp/Ppk, AIAG/VDA & JEDEC Standard)  
+**Module:** Module 4 — Process Variation and Capability (VOP/VOC, Cp/Cpk/Pp/Ppk, AIAG/VDA & JEDEC JESD557C) (เกณฑ์ตัวเลข: ISQC หรือข้อกำหนดลูกค้า ซึ่งยังไม่ยืนยันจากต้นฉบับ)  
 **Primary Runtime:** Web App (React / Astro MDX / HTML5 Interactive Components)  
 **Passing Score (`EXAM-M4`):** 80% (`>= 16 / 20`)
 

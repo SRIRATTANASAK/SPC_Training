@@ -11,10 +11,10 @@
 |---|---|---|---|---|---|---|
 | **`STN-10`** | **CNC Turning** (`Shaft_OD_mm`) | Tool Wear / Time | **`Xbar-R`**, `n=5` ต่อเนื่อง / `30 min` | `Rule 1 (UCL/LCL)` + `Raw Spec` + `Trend (6)` | `120 × 30/60` = **`60 pcs`** | หยิบ 5 ชิ้นติดกันไม่ Cherry-pick + ลง Tool Change Log |
 | **`STN-20`** | **CNC Grinding** (`Roughness Ra Max 0.80`) | Wheel Glazing / Wear | **`Xbar-R`**, `n=5` / `60 min` | **`Rule 1 (UCL Only: LCL<0 Invalid)`** + `Raw USL` + `Trend (6)` | `90 × 60/60` = **`90 pcs`** | ยืนยันไม่มี `< LCL` ร้องเตือนมั่วใกล้ 0 + เช็ก Log ล้างหิน |
-| **`STN-30`** | **Injection 4-Cavity** (`Boss_ID_mm`) | **Cavity-to-Cavity Bias** | **`Xbar-R` Stratified Per Cavity** (`n=4` / `60 min`) | `Rule 1 (UCL/LCL)` + `Raw Spec` + `Shift (8)` | `240 × 60/60` = **`240 pcs`** | สุ่มดูหน้างานว่า **ไม่ผสม Cavity 1–4 ลงกลุ่มเดียวกัน** |
+| **`STN-30`** | **Injection 4-Cavity** (`Boss_ID_mm`) | **Cavity-to-Cavity Bias** | **`Xbar-R` Stratified Per Cavity** (`n=4` / `60 min`) | `Rule 1 (UCL/LCL)` + `Raw Spec` + Shift (7 จุด AIAG; ISQC 8) | `240 × 60/60` = **`240 pcs`** | สุ่มดูหน้างานว่า **ไม่ผสม Cavity 1–4 ลงกลุ่มเดียวกัน** |
 | **`STN-40`** | **Stamping Press** (`Tab Burr Go/No-Go`) | Die Wear / Coil Swap | **`np Chart`**, คงที่ `n=100` / `120 min` | **`Rule 1 (UCL Only: LCL=0)`** + Rejects + `Trend` | `600 × 120/60` = **`1,200 pcs`** *(สูง!)* | ยืนยันตรวจครบ `n=100` + ป้าย Calibration เกจยังไม่หมดอายุ |
-| **`STN-50`** | **Auto Torque** (`Bolt_Torque_Nm`) | Piece-to-Piece Driver | **`I-MR (Auto PLC)`** (`100%` ทุก 1 นาที) | `Rule 1 (UCL/LCL)` + `Raw Spec` + `Shift (8)` | `60 × 1/60` = **`1 pc`** *(Interlock!)* | ยืนยัน Auto-Interlock เปิดทำงาน + Tier 1 ตรวจ Alarm Log |
-| **`STN-60`** | **SMT Solder** (`Solder Bridge Defects`) | Stencil Clog / Paste Drift | **`u Chart`** (`Varying 20–50 boards` / `120 min`) | **`Rule 1 (UCL Only if LCL<0)`** + `Shift (8)` | `40 × 120/60` = **`80 boards`** | จดจำนวนแผง `n_i` ตรงจริงเพื่อให้ Staircase `UCL` แม่น |
+| **`STN-50`** | **Auto Torque** (`Bolt_Torque_Nm`) | Piece-to-Piece Driver | **`I-MR (Auto PLC)`** (`100%` ทุก 1 นาที) | `Rule 1 (UCL/LCL)` + `Raw Spec` + Shift (7 จุด AIAG; ISQC 8) | `60 × 1/60` = **`1 pc`** *(Interlock!)* | ยืนยัน Auto-Interlock เปิดทำงาน + Tier 1 ตรวจ Alarm Log |
+| **`STN-60`** | **SMT Solder** (`Solder Bridge Defects`) | Stencil Clog / Paste Drift | **`u Chart`** (`Varying 20–50 boards` / `120 min`) | **`Rule 1 (UCL Only if LCL<0)`** + Shift (7 จุด AIAG; ISQC 8) | `40 × 120/60` = **`80 boards`** | จดจำนวนแผง `n_i` ตรงจริงเพื่อให้ Staircase `UCL` แม่น |
 
 ---
 
